@@ -1,0 +1,988 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+ <head>
+  <title>Use of Appropriate Medications for Asthma</title>
+  <style type="text/css">
+  body {
+   	color: rgb(26, 26, 26);
+   	background-color: rgb(255,255,255);
+   	font-family: Verdana, Tahoma, sans-serif;
+   	font-size: 11px;
+       width: 100%;
+       overflow-y: auto;
+   }
+
+
+
+   h1 {
+   	font-size: 12pt;
+   	font-weight: bold;
+   }
+
+   h2 {
+   	font-size: 11pt;
+   	font-weight: bold;
+   }
+
+   h3 {
+   	font-size: 10pt;
+   	font-weight: bold;
+   }
+
+   h4 {
+   	font-size: 8pt;
+   	font-weight: bold;
+   }
+
+
+
+
+
+   tr {
+   	background-color: rgb(224,224,224);
+   }
+
+   td {
+   	padding: 0.1cm 0.2cm;
+   	vertical-align: top;
+   }
+
+   /*Begin Joshua Clingo's changes*/
+
+   a {
+   	/*color: rgb(0, 0, 255);
+   	background-color: rgb(255,255,255);*/
+   }
+
+   table {
+   	line-height: 10pt;
+   }
+
+   /*div {
+   	width: 80%;
+   }*/
+
+   .list-unstyled {
+       list-style-type: none;
+   }
+
+   .list-unstyled li {
+       padding-top: 10px;
+       padding-bottom: 10px;
+   }
+
+   .list-header {
+       font-size: 12px;
+       color: rgb(0, 0, 238);
+   }
+
+   .list-header:hover {
+       text-decoration: underline;
+   }
+
+   .code {
+       font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+       color:black;
+       background-color:rgb(250,250,250);
+       margin-top: 1em;
+       margin-bottom: 1em;
+       padding: 10px;
+       line-height: 1.5em;
+       font-size: 13px;
+       overflow: auto;
+   }
+
+   .p-l-10 {
+       padding-left: 10px;
+   }
+
+   .section {
+       font-size: 10pt;
+       margin-top: 1em;
+       margin-bottom: 1em;
+       margin-right: 0.5em;
+       font-weight: 700;
+       display: inline-block;
+   }
+
+   .cql-class, .cql-object {
+       color: rgb(25, 127, 157);
+   }
+
+   .cql-function {
+       color: rgb(25, 127, 157);
+   }
+
+   .cql-keyword {
+       color: rgb(0, 0, 255);
+       font-weight: 700;
+   }
+
+   .cql-variable, .cql-property {
+       color: rgb(128, 0, 0);
+   }
+
+   .cql-interface {
+       color: rgb(43, 170, 175);
+   }
+
+   .cql-literal, .cql-operator {
+       color: rgb(64,64,64);
+   }
+
+   .cql-reserved {
+       color: rgb(0,0,0);
+   }
+
+   .cql-string {
+       color: rgb(163, 21, 21);
+   }
+
+   .cql-comment {
+       color: rgb(0, 128, 0);
+   }
+
+   .treeview {
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     -o-user-select: none;
+     user-select: none;
+   }
+
+   .treeview:hover input ~ label:before,
+   .treeview.hover input ~ label:before {
+     opacity: 1.0;
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -ms-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+     transition-duration: 0.5s;
+   }
+
+   .treeview ul {
+     -webkit-transition-duration: 1s;
+     -moz-transition-duration: 1s;
+     -ms-transition-duration: 1s;
+     -o-transition-duration: 1s;
+     transition-duration: 1s;
+     list-style: none;
+     padding-left: 1em;
+   }
+   .treeview ul li span {
+     -webkit-transition-property: color;
+     -moz-transition-property: color;
+     -ms-transition-property: color;
+     -o-transition-property: color;
+     transition-property: color;
+     -webkit-transition-duration: 1s;
+     -moz-transition-duration: 1s;
+     -ms-transition-duration: 1s;
+     -o-transition-duration: 1s;
+     transition-duration: 1s;
+   }
+
+   .treeview input {
+     display: none;
+   }
+   .treeview input:checked ~ ul {
+     display: none;
+   }
+   .treeview input ~ label {
+     cursor: pointer;
+   }
+   .treeview input ~ label:before {
+     content: '';
+     width: 0;
+     height: 0;
+     position: absolute;
+     margin-left: -1em;
+     margin-top: 0.25em;
+     border-width: 4px;
+     border-style: solid;
+     border-top-color: transparent;
+     border-right-color: rgb(0, 0, 238);
+     border-bottom-color: rgb(0, 0, 238);
+     border-left-color: transparent;
+     opacity: 0.0;
+     -webkit-transition-property: opacity;
+     -moz-transition-property: opacity;
+     -ms-transition-property: opacity;
+     -o-transition-property: opacity;
+     transition-property: opacity;
+     -webkit-transition-duration: 1s;
+     -moz-transition-duration: 1s;
+     -ms-transition-duration: 1s;
+     -o-transition-duration: 1s;
+     transition-duration: 1s;
+   }
+   .treeview input:checked ~ label:before {
+     margin-left: -0.8em;
+     border-width: 5px;
+     border-top-color: transparent;
+     border-right-color: transparent;
+     border-bottom-color: transparent;
+     border-left-color: rgb(0, 0, 238);
+   }
+
+
+   /*End Joshua Clingo's changes*/
+
+   .h1center {
+   	font-size: 12pt;
+   	font-weight: bold;
+   	text-align: center;
+   	width: 80%;
+   }
+
+   .header_table{
+   	border: 1pt inset rgb(0,0,0);
+   }
+
+   .narr_table {
+   	width: 100%;
+   }
+
+   .narr_tr {
+   	background-color: rgb(225,225,225);
+   }
+
+   pre {
+    overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 11px;
+    text-align:left;
+    margin: 0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+   }
+   .narr_th {
+   	background-color: rgb(201,201,201);
+   }
+
+   .td_label{
+   	font-weight: bold;
+   	color: white;
+   }
+
+   .hll { background-color: #ffffcc }
+   .c { color: #408080; font-style: italic } /* Comment */
+   .err { border: 1px solid #FF0000 } /* Error */
+   .k { color: #008000; font-weight: bold } /* Keyword */
+   .o { color: #666666 } /* Operator */
+   .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+   .cp { color: #BC7A00 } /* Comment.Preproc */
+   .c1 { color: #408080; font-style: italic } /* Comment.Single */
+   .cs { color: #408080; font-style: italic } /* Comment.Special */
+   .gd { color: #A00000 } /* Generic.Deleted */
+   .ge { font-style: italic } /* Generic.Emph */
+   .gr { color: #FF0000 } /* Generic.Error */
+   .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+   .gi { color: #00A000 } /* Generic.Inserted */
+   .go { color: #888888 } /* Generic.Output */
+   .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+   .gs { font-weight: bold } /* Generic.Strong */
+   .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+   .gt { color: #0044DD } /* Generic.Traceback */
+   .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+   .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+   .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+   .kp { color: #008000 } /* Keyword.Pseudo */
+   .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+   .kt { color: #B00040 } /* Keyword.Type */
+   .m { color: #666666 } /* Literal.Number */
+   .s { color: #BA2121 } /* Literal.String */
+   .na { color: #7D9029 } /* Name.Attribute */
+   .nb { color: #008000 } /* Name.Builtin */
+   .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+   .no { color: #880000 } /* Name.Constant */
+   .nd { color: #AA22FF } /* Name.Decorator */
+   .ni { color: #999999; font-weight: bold } /* Name.Entity */
+   .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+   .nf { color: #0000FF } /* Name.Function */
+   .nl { color: #A0A000 } /* Name.Label */
+   .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+   .nt { color: #008000; font-weight: bold } /* Name.Tag */
+   .nv { color: #19177C } /* Name.Variable */
+   .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+   .w { color: #bbbbbb } /* Text.Whitespace */
+   .mf { color: #666666 } /* Literal.Number.Float */
+   .mh { color: #666666 } /* Literal.Number.Hex */
+   .mi { color: #666666 } /* Literal.Number.Integer */
+   .mo { color: #666666 } /* Literal.Number.Oct */
+   .sb { color: #BA2121 } /* Literal.String.Backtick */
+   .sc { color: #BA2121 } /* Literal.String.Char */
+   .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+   .s2 { color: #BA2121 } /* Literal.String.Double */
+   .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+   .sh { color: #BA2121 } /* Literal.String.Heredoc */
+   .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+   .sx { color: #008000 } /* Literal.String.Other */
+   .sr { color: #BB6688 } /* Literal.String.Regex */
+   .s1 { color: #BA2121 } /* Literal.String.Single */
+   .ss { color: #19177C } /* Literal.String.Symbol */
+   .bp { color: #008000 } /* Name.Builtin.Pseudo */
+   .vc { color: #19177C } /* Name.Variable.Class */
+   .vg { color: #19177C } /* Name.Variable.Global */
+   .vi { color: #19177C } /* Name.Variable.Instance */
+   .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+   #nn-text
+   {
+       text-align: center;
+       text-align: center;
+       color:lightgrey;
+       font-size:40px;
+   }</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">Use of Appropriate Medications for Asthma</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">126</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Version number</span></td>
+     <td style="width:30%">4.0.000</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">0036</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>59e84144-6332-4369-aebd-03a7899ca3da</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">National Committee for Quality Assurance</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">National Committee for Quality Assurance</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">National Quality Forum</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Percentage of patients 5-64 years of age who were identified as having persistent asthma and were appropriately prescribed medication during the measurement period.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA).
+
+The Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures.
+
+(C) 2008-2015 National Committee for Quality Assurance. All Rights Reserved.
+
+Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.
+
+CPT(R) contained in the Measure specifications is copyright 2004-2014 American Medical Association. LOINC(R) copyright 2004-2014 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2014 International Health Terminology Standards Development Organisation. ICD-10 copyright 2014 World Health Organization. All Rights Reserved.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.
+
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Proportion</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Process</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Report a total score, and each of the following strata:
+Stratum 1: Patients age 5-11
+Stratum 2: Patients age 12-18
+Stratum 3: Patients age 19-50
+Stratum 4: Patients age 51-64</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Asthma is one of the most prevalent chronic diseases, becoming increasingly more commonplace over the past twenty years. Approximately 24.6 million Americans have asthma, and it is responsible for over 3,000 deaths in the U.S. annually (American Lung Association 2010). In 2006, 13.3 million clinical visits (hospital, outpatient, emergency department, and physician offices) were attributed to asthma (Centers for Disease Control and Prevention 2009). The incidence rate, and subsequently the number of asthma-related health visits, is expected to increase by an additional 100 million globally by 2025 (World Health Organization 2007).
+
+Asthma accounts for over $20 billion spent on health care in the United States. Direct costs, including prescriptions, make up $15.6 billion of that total. Indirect costs, such as lost productivity, add an additional $5.1 billion (Centers for Disease Control and Prevention 2009). Inpatient hospitalization accounts for over 50 percent of overall asthma-related costs (Bahadori et al. 2009). In addition to the direct financial burden, asthma is also a leading cause of absenteeism and productivity, accounting for an estimated 14.2 million missed workdays for adults and over 14 million missed school days for children (Akinbami et al. 2009). Studies have shown that the indirect costs of asthma are becoming a growing financial burden on patients, and resulting in significant additional costs (Bahadori et al. 2009).
+
+Appropriate medication management could potentially prevent a significant proportion of asthma-related costs (hospitalizations, emergency room visits and missed work and school days) (Akinbami et al. 2009). The Asthma Regional Council supported this inference, stating that proper management could potentially save at least 25 percent of total asthma costs, or $5 billion, nationally by reducing health care costs (American Lung Association 2009).
+
+Another initiative, the Children's Health Fund's Childhood Asthma Initiative, examined patients enrolled in an asthma intervention program. Results illustrated that treatment that aligned with clinical guidelines reduced the severity of symptoms experienced, as well as asthma-related events (e.g., hospitalizations, emergency room visits, etc.) (Columbia University 2010). Additionally, subsequent savings attributed to improved clinical outcomes totaled to nearly $4.2 million or $4,525 per patient. This translated to a significant reduction in federally subsidized and private insurance-based costs for this population (Columbia University 2010).</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Heart Lung and Blood Institute/National Asthma and Education Prevention Program (2007)
+* Long-term control medications (include inhaled corticosteroids (ICSs), inhaled long-acting bronchodilators, leukotriene modifiers, cromolyn, theophylline, and immunomodulators) are used daily to achieve and maintain control of persistent asthma. The most effective are those that attenuate the underlying inflammation characteristic of asthma. The Expert Panel defines anti-inflammatory medications as those that cause a reduction in the markers of airway inflammation in airway tissue or airway secretions (e.g., eosinophils, mast cells, activated lymphocytes, macrophages, and cytokines; or Eosinophil cationic protein (ECP) and tryptase; or extravascular leakage of albumin, fibrinogen, or other vascular protein).
+* Inhaled corticosteroids are the preferred treatment option for mild persistent asthma in adults and children. Leukotriene Receptor Antagonists (LTRAs) are an alternative, although not preferred, treatment.
+* Long-acting beta-2 agonists (LABAs) should only be used in combination with ICSs for long-term control and prevention of symptoms in moderate or severe persistent asthma (step 3 care or higher in children =5 years of age and adults). There is a strong recommendation against the use of LABAs as monotherapy. Of the adjunctive therapies available, long-acting beta-2 agonists is the preferred therapy to combine with ICS in youths =12 years of age and adults.
+* The beneficial effects of long-acting beta-2 agonists in combination therapy for the great majority of patients who require more therapy than low-dose ICS alone to control asthma (i.e., require step 3 care or higher) should be weighed against the increased risk of severe exacerbations, although uncommon, associated with the daily use of long-acting beta-2 agonists (see discussion in text).
+* The NHLBI/NAEPP guideline strongly recommends against the use of long-acting beta-2 agonists for the treatment of acute symptoms or exacerbations.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Higher score indicates better quality</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Akinbami, L.J., J.E. Moorman, P.L. Garbe, E.J. Sondik. 2009. &quot;Status of Childhood Asthma, United States, 1980-2007.&quot; Pediatrics 123 (Supplement 3):S131-45. </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>American Lung Association. 2010. Trends in Asthma Morbidity and Mortality.  http://www.lung.org/finding-cures/our-research/trend-reports/asthma-trend-report.pdf
+</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Bahadori, K., M.M. Doyle-Waters, C. Marra, L. Lynd, K. Alasaly, J. Swiston, J.M. FitzGerald. 2009. &quot;Economic burden of asthma: a systematic review.&quot; BMC Pulm Med 9(24): 1-16.
+</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. 2009. &quot;Asthma: A Presentation of Asthma Management and Prevention.&quot; http://www.cdc.gov/asthma/speakit/default.htm</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Columbia University. 2010. &quot;Best Practice Asthma Program Saves the US Healthcare System More than $4500 a Year per Child.&quot; http://www.mailman.columbia.edu/news/best-practice-asthma-program-saves-us-healthcare-system-more-4500-year-child </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Heart Lung and Blood Institute/National Asthma Education and Prevention Program. 2007. Measures of asthma assessment and monitoring: Expert panel report 3: guidelines for the diagnosis and management of asthma. Washington: National Heart Lung and Blood Institute (NHLBI).</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>World Health Organization. 2007. Global surveillance, prevention and control of chronic respiratory diseases: a comprehensive approach.  http://www.who.int/gard/publications/GARD_Manual/en/index.html</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>TBD</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients 5-64 years of age with persistent asthma and a visit during the measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Equals Initial Population</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients with emphysema, COPD, cystic fibrosis or acute respiratory failure during or prior to the measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients who were dispensed at least one prescription for a preferred therapy during the measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exceptions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Observations</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex.</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul>
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e539">Data Criteria (QDM Variables)</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-initial population"checked>
+			<label for="cb-initial population" class="list-header">
+				<strong>Initial Population</strong> (click to expand)
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPopulation">InitialPopulation</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#InDemographic">InDemographic</a><span  class="cql-generic"> </span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-keyword"> exists </span><span class="cql-generic"> ( </span><a class="cql-interface" href="#ActivePersistentAsthmaDiagnosis">ActivePersistentAsthmaDiagnosis</a><span  class="cql-generic"> </span><span class="cql-generic"> ) </span>
+<br>
+<span class="cql-keyword"> and </span><span class="cql-keyword"> exists </span><span class="cql-generic"> ( </span><a class="cql-interface" href="#EncountersDuringMeasurementPeriod">EncountersDuringMeasurementPeriod</a><span  class="cql-generic"> </span><span class="cql-generic"> ) </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="InDemographic">InDemographic</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">5</span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> < </span><span class="cql-literal">64</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="ActivePersistentAsthmaDiagnosis">ActivePersistentAsthmaDiagnosis</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#PersistentAsthmaDiagnoses">PersistentAsthmaDiagnoses</a><span  class="cql-generic"> </span><span class="cql-object">A</span><span class="cql-keyword"> where </span><span class="cql-keyword"> Interval </span><span class="cql-generic"> [ </span><span class="cql-object">A</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">start </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> , </span><span class="cql-object">A</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">stop </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-keyword"> overlaps </span><span class="cql-class"> MeasurementPeriod </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncountersDuringMeasurementPeriod">EncountersDuringMeasurementPeriod</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#ValidEncounters">ValidEncounters</a><span  class="cql-generic"> </span><span class="cql-object">E</span><span class="cql-keyword"> where </span><span class="cql-keyword"> Interval </span><span class="cql-generic"> [ </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">start </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> , </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">stop </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-keyword"> during </span><span class="cql-class"> MeasurementPeriod </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="ValidEncounters">ValidEncounters</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#OfficeVisitEncounter">OfficeVisitEncounter</a><span  class="cql-generic"> </span><span class="cql-keyword"> union </span><a class="cql-interface" href="#HomeHealthcareEncounter">HomeHealthcareEncounter</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#FaceToFaceEncounter">FaceToFaceEncounter</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#EstablishedPreventiveCareForMinorEncounter">EstablishedPreventiveCareForMinorEncounter</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#EstablishedPreventiveCareForAdultEncounter">EstablishedPreventiveCareForAdultEncounter</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#InitialPreventiveCareForAdultEncounter">InitialPreventiveCareForAdultEncounter</a><span  class="cql-generic"> </span>
+<br>
+
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#InitialPreventiveCareForMinorEncounter">InitialPreventiveCareForMinorEncounter</a><span  class="cql-generic"> </span>
+<br>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="HomeHealthcareEncounter">HomeHealthcareEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Home </span><span class="cql-string">Healthcare </span><span class="cql-string">Services </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="FaceToFaceEncounter">FaceToFaceEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Face </span><span class="cql-string">to</span><span class="cql-string">Face </span><span class="cql-string">Interaction </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EstablishedPreventiveCareForMinorEncounter">EstablishedPreventiveCareForMinorEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Preventive </span><span class="cql-string">Care </span><span class="cql-string">Established </span><span class="cql-string">Office </span><span class="cql-string">Visit, </span><span class="cql-literal">0 </span><span class="cql-string">to </span><span class="cql-literal">17</span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EstablishedPreventiveCareForAdultEncounter">EstablishedPreventiveCareForAdultEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Preventive </span><span class="cql-string">Care </span><span class="cql-string">Services </span><span class="cql-string">Established </span><span class="cql-string">Office </span><span class="cql-string">Visit, </span><span class="cql-literal">18 and </span><span class="cql-string">Up </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPreventiveCareForAdultEncounter">InitialPreventiveCareForAdultEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Preventive </span><span class="cql-string">Care </span><span class="cql-string">Services </span><span class="cql-string">Initial </span><span class="cql-string">Office </span><span class="cql-string">Visit </span><span class="cql-literal">18 and </span><span class="cql-string">Up </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<br>
+
+<div class="p-l-10">
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPreventiveCareForMinorEncounter">InitialPreventiveCareForMinorEncounter</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Preventive </span><span class="cql-string">Care </span><span class="cql-string">Initial </span><span class="cql-string">Office </span><span class="cql-string">Visit, </span><span class="cql-literal">0 </span><span class="cql-string">to </span><span class="cql-literal">17</span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-denominator"checked>
+			<label for="cb-denominator" class="list-header">
+				<strong>Denominator</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Denominator">Denominator</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#InitialPopulation">InitialPopulation</a><span  class="cql-generic"> </span>
+<br>
+
+</div>
+<br>
+</div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-denominator exclusions"checked>
+			<label for="cb-denominator exclusions" class="list-header">
+				<strong>Denominator Exclusions</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="DenominatorExclusions">DenominatorExclusions</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-keyword"> exists </span><span class="cql-generic"> ( </span><a class="cql-interface" href="#ActiveDiagnosesDuringMeasurementPeriod">ActiveDiagnosesDuringMeasurementPeriod</a><span  class="cql-generic"> </span><span class="cql-generic"> ) </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="ActiveDiagnosesDuringMeasurementPeriod">ActiveDiagnosesDuringMeasurementPeriod</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#ActiveDiagnoses">ActiveDiagnoses</a><span  class="cql-generic"> </span><span class="cql-object">D</span><span class="cql-keyword"> where </span><span class="cql-keyword"> Interval </span><span class="cql-generic"> [ </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">start </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> , </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">stop </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-keyword"> overlaps </span><span class="cql-class"> MeasurementPeriod </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="ActiveDiagnoses">ActiveDiagnoses</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#ChronicObstructivePulmonaryDiseaseDiagnoses">ChronicObstructivePulmonaryDiseaseDiagnoses</a><span  class="cql-generic"> </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#EmphysemaDiagnoses">EmphysemaDiagnoses</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#CysticFibrosisDiagnoses">CysticFibrosisDiagnoses</a><span  class="cql-generic"> </span>
+<br>
+<span class="cql-keyword"> union </span><a class="cql-interface" href="#AcuteRespiratoryFailureDiagnoses">AcuteRespiratoryFailureDiagnoses</a><span  class="cql-generic"> </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="ChronicObstructivePulmonaryDiseaseDiagnoses">ChronicObstructivePulmonaryDiseaseDiagnoses</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">Active </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Chronic </span><span class="cql-string">Obstructive </span><span class="cql-string">Pulmonary </span><span class="cql-string">Disease </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EmphysemaDiagnoses">EmphysemaDiagnoses</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">Active </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Emphysema </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="CysticFibrosisDiagnoses">CysticFibrosisDiagnoses</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">Active </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Cystic </span><span class="cql-string">Fibrosis </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="AcuteRespiratoryFailureDiagnoses">AcuteRespiratoryFailureDiagnoses</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">Active </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Acute </span><span class="cql-string">Respiratory </span><span class="cql-string">Failure </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator"checked>
+			<label for="cb-numerator" class="list-header">
+				<strong>Numerator</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Numerator">Numerator</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#PreferredAsthmaTherapy">PreferredAsthmaTherapy</a><span  class="cql-generic"> </span><span class="cql-object">P</span><span class="cql-keyword"> where </span><span class="cql-keyword"> Interval </span><span class="cql-generic"> [ </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">start </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> , </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">stop </span><span class="cql-string">datetime</span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-keyword"> during </span><span class="cql-class"> MeasurementPeriod </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="PreferredAsthmaTherapy">PreferredAsthmaTherapy</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Medication </span><span class="cql-string">Dispensed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Preferred </span><span class="cql-string">Asthma </span><span class="cql-string">Therapy </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator exclusion"checked>
+			<label for="cb-numerator exclusion" class="list-header">
+				<strong>Numerator Exclusions</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+            <span class="cql-comment">// none</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <div class="treeview hover p-l-10">
+  	<ul class="list-unstyled">
+  		<input type="checkbox" id="cb-denominator exceptions"checked>
+  			<label for="cb-denominator exceptions" class="list-header">
+  				<strong>Denominator Exceptions</strong>
+  			</label>
+  			<ul class="code">
+  				<li>
+  					<div>
+              <span class="cql-comment">// none</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <h3>Stratifications:</h3>
+      <div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-stratification 1"checked>
+			<label for="cb-stratification 1" class="list-header">
+				<strong>Stratification 1</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Stratification1">Stratification1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">5</span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> < </span><span class="cql-literal">11</span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-stratification 2"checked>
+			<label for="cb-stratification 2" class="list-header">
+				<strong>Stratification 2</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Stratification2">Stratification2</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">11</span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> < </span><span class="cql-literal">18</span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-stratification 3"checked>
+			<label for="cb-stratification 3" class="list-header">
+				<strong>Stratification 3</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Stratification3">Stratification3</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">18</span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> < </span><span class="cql-literal">50</span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-stratification 4"checked>
+			<label for="cb-stratification 4" class="list-header">
+				<strong>Stratification 4</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Stratification4">Stratification4</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">50</span>
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-class"> AgeInYearsAt </span><span class="cql-generic"> ( </span><span class="cql-keyword"> start </span><span class="cql-keyword"> of </span><span class="cql-class"> MeasurementPeriod </span><span class="cql-generic"> ) </span><span class="cql-generic"> < </span><span class="cql-literal">64</span></div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+  <h3><a name="d1e539" href="#toc">Data Criteria (QDM Variables)</a></h3>
+  <div>
+   <ul>
+    <li>None</li>
+   </ul>
+  </div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Diagnosis, Active: Acute Respiratory Failure&quot; using &quot;Acute Respiratory Failure Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1018)&quot;</li>
+    <li>&quot;Diagnosis, Active: Chronic Obstructive Pulmonary Disease&quot; using &quot;Chronic Obstructive Pulmonary Disease Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1007)&quot;</li>
+    <li>&quot;Diagnosis, Active: Cystic Fibrosis&quot; using &quot;Cystic Fibrosis Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1002)&quot;</li>
+    <li>&quot;Diagnosis, Active: Emphysema&quot; using &quot;Emphysema Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1004)&quot;</li>
+    <li>&quot;Diagnosis, Active: Persistent Asthma&quot; using &quot;Persistent Asthma Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1023)&quot;</li>
+    <li>&quot;Encounter, Performed: Face-to-Face Interaction&quot; using &quot;Face-to-Face Interaction Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1048)&quot;</li>
+    <li>&quot;Encounter, Performed: Home Healthcare Services&quot; using &quot;Home Healthcare Services Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1016)&quot;</li>
+    <li>&quot;Encounter, Performed: Office Visit&quot; using &quot;Office Visit Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1001)&quot;</li>
+    <li>&quot;Encounter, Performed: Preventive Care - Established Office Visit, 0 to 17&quot; using &quot;Preventive Care - Established Office Visit, 0 to 17 Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1024)&quot;</li>
+    <li>&quot;Encounter, Performed: Preventive Care Services - Established Office Visit, 18 and Up&quot; using &quot;Preventive Care Services - Established Office Visit, 18 and Up Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1025)&quot;</li>
+    <li>&quot;Encounter, Performed: Preventive Care Services-Initial Office Visit, 18 and Up&quot; using &quot;Preventive Care Services-Initial Office Visit, 18 and Up Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1023)&quot;</li>
+    <li>&quot;Encounter, Performed: Preventive Care- Initial Office Visit, 0 to 17&quot; using &quot;Preventive Care- Initial Office Visit, 0 to 17 Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1022)&quot;</li>
+    <li>&quot;Medication, Dispensed: Preferred Asthma Therapy&quot; using &quot;Preferred Asthma Therapy Grouping Value Set (2.16.840.1.113883.3.464.1003.196.12.1212)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Patient Characteristic Ethnicity: Ethnicity&quot; using &quot;Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)&quot;</li>
+    <li>&quot;Patient Characteristic Payer: Payer&quot; using &quot;Payer SOP Value Set (2.16.840.1.114222.4.11.3591)&quot;</li>
+    <li>&quot;Patient Characteristic Race: Race&quot; using &quot;Race CDCREC Value Set (2.16.840.1.114222.4.11.836)&quot;</li>
+    <li>&quot;Patient Characteristic Sex: ONC Administrative Sex&quot; using &quot;ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul>
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

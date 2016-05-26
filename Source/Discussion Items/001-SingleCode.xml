@@ -1,0 +1,37 @@
+"Encounter, Performed: Encounter Inpatient" using "Encounter Inpatient SNOMEDCT Value Set (2.16.840.1.113883.3.666.5.307)"
+
+<entry typeCode="DRIV">
+   <localVariableName value="EncounterInpatient_EncounterPerformed_Gyjcg"/>
+   <encounterCriteria classCode="ENC" moodCode="EVN">
+      <templateId>
+         <item extension="2015-09-30" root="2.16.840.1.113883.10.20.28.3.5"/>
+      </templateId>
+      <id extension="EncounterInpatient_EncounterPerformed"
+          root="ea6be543-6718-4a29-a928-c4acc1b20fca"/>
+      <code valueSet="2.16.840.1.113883.3.666.5.307">
+         <displayName value="Encounter Inpatient SNOMEDCT Value Set"/>
+      </code>
+      <title value="Encounter, Performed"/>
+      <statusCode code="COMPLETED"/>
+   </encounterCriteria>
+</entry>
+
+"Risk Assessment, Performed: Breastfeeding intention" using "Breastfeeding intention SNOMED-CT version 2016A Code (123456789)"
+
+// TODO: Current schematron provides warnings if valuesets are not provided on the code element, should be potentially backed out of the schematron?
+
+<entry typeCode="DRIV">
+   <localVariableName value="EncounterInpatient_EncounterPerformed_Gyjcg"/>
+   <encounterCriteria classCode="ENC" moodCode="EVN">
+      <templateId>
+         <item extension="2015-09-30" root="2.16.840.1.113883.10.20.28.3.5"/>
+      </templateId>
+      <id extension="EncounterInpatient_EncounterPerformed"
+          root="ea6be543-6718-4a29-a928-c4acc1b20fca"/>
+      <code code="123456789" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" codeSystemVersion="2016A">
+         <displayName value="Breastfeeding intention"/>
+      </code>
+      <title value="Encounter, Performed"/>
+      <statusCode code="COMPLETED"/>
+   </encounterCriteria>
+</entry>

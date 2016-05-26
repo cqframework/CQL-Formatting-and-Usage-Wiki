@@ -1,0 +1,862 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:hl7-org:v3" xml:lang="en" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <title>Appropriate Testing for Children with Pharyngitis</title><style type="text/css">
+body {
+	color: rgb(26, 26, 26);
+	background-color: rgb(255,255,255);
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 11px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+
+
+h1 {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+
+
+
+
+tr {
+	background-color: rgb(224,224,224);
+}
+
+td {
+	padding: 0.1cm 0.2cm;
+	vertical-align: top;
+}
+
+/*Begin Joshua Clingo's changes*/
+
+a {
+	/*color: rgb(0, 0, 255);
+	background-color: rgb(255,255,255);*/
+}
+
+table {
+	line-height: 10pt;
+}
+
+/*div {
+	width: 80%;
+}*/
+
+.list-unstyled {
+    list-style-type: none;
+}
+
+.list-unstyled li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-header {
+    font-size: 12px;
+    color: rgb(0, 0, 238);
+}
+
+.list-header:hover {
+    text-decoration: underline;
+}
+
+.code {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    color:black;
+    background-color:rgb(250,250,250);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 10px;
+    line-height: 1.5em;
+    font-size: 13px;
+    overflow: auto;
+}
+
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.section {
+    font-size: 10pt;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cql-class, .cql-object {
+    color: rgb(25, 127, 157);
+}
+
+.cql-function {
+    color: rgb(25, 127, 157);
+}
+
+.cql-keyword {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.cql-variable, .cql-property {
+    color: rgb(128, 0, 0);
+}
+
+.cql-interface {
+    color: rgb(43, 170, 175);
+}
+
+.cql-literal, .cql-operator {
+    color: rgb(64,64,64);
+}
+
+.cql-reserved {
+    color: rgb(0,0,0);
+}
+
+.cql-string {
+    color: rgb(163, 21, 21);
+}
+
+.cql-comment {
+    color: rgb(0, 128, 0);
+}
+
+.treeview {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.treeview:hover input ~ label:before,
+.treeview.hover input ~ label:before {
+  opacity: 1.0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.treeview ul {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  list-style: none;
+  padding-left: 1em;
+}
+.treeview ul li span {
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -ms-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+.treeview input {
+  display: none;
+}
+.treeview input:checked ~ ul {
+  display: none;
+}
+.treeview input ~ label {
+  cursor: pointer;
+}
+.treeview input ~ label:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  border-width: 4px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: rgb(0, 0, 238);
+  border-bottom-color: rgb(0, 0, 238);
+  border-left-color: transparent;
+  opacity: 0.0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.treeview input:checked ~ label:before {
+  margin-left: -0.8em;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(0, 0, 238);
+}
+
+
+/*End Joshua Clingo's changes*/
+
+.h1center {
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+	width: 80%;
+}
+
+.header_table{
+	border: 1pt inset rgb(0,0,0);
+}
+
+.narr_table {
+	width: 100%;
+}
+
+.narr_tr {
+	background-color: rgb(225,225,225);
+}
+
+pre {
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-family: Verdana, Tahoma, sans-serif;
+ font-size: 11px;
+ text-align:left;
+ margin: 0px 0px 0px 0px;
+ padding:0px 0px 0px 0px;
+}
+.narr_th {
+	background-color: rgb(201,201,201);
+}
+
+.td_label{
+	font-weight: bold;
+	color: white;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#nn-text
+{
+    text-align: center;
+    text-align: center;
+    color:lightgrey;
+    font-size:40px;
+}
+
+	</style></head>
+   <body>
+      <p id="nn-text">Non-normative Example</p>
+	      <table class="header_table">
+         <tbody>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Title</span></td>
+               <td width="80%" colspan="3">Appropriate Testing for Children with Pharyngitis</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Identifier<br>(Measure Authoring Tool)</span></td>
+               <td width="30%">146</td>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Version number</span></td>
+               <td width="30%">3</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">NQF Number</span></td>
+               <td width="30%">0002</td>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">GUID</span></td>
+               <td> beb1c33c-2549-4e7f-9567-05ed38448464</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measurement Period</span></td>
+               <td width="80%" colspan="3">January 1, 20xx  through December 31, 20xx </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Steward</span></td>
+               <td width="80%" colspan="3">National Committee for Quality Assurance</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Developer</span></td>
+               <td width="80%" colspan="3">National Committee for Quality Assurance</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Endorsed By</span></td>
+               <td width="80%" colspan="3">National Quality Forum</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Description</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Percentage of children 2-18 years of age who were diagnosed with pharyngitis, ordered an antibiotic and received a group A streptococcus (strep) test for the episode.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Copyright</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Physician Performance Measure (Measures) and related data specifications were developed by the National Committee for Quality Assurance (NCQA). &#xD;
+&#xD;
+The Measures are copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices). Commercial use is defined as the sale, licensing, or distribution of the Measures for commercial gain, or incorporation of the Measures into a product or service that is sold, licensed or distributed for commercial gain. Commercial use of the Measures requires a license agreement between the user and NCQA. NCQA is not responsible for any use of the Measures. &#xD;
+&#xD;
+(c) 2008 -2014 National Committee for Quality Assurance. All Rights Reserved. &#xD;
+&#xD;
+Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.&#xD;
+&#xD;
+CPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Disclaimer</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.&#xD;
+&#xD;
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTY OF ANY KIND.&#xD;
+ &#xD;
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Scoring</span></td>
+               <td width="80%" colspan="3">Proportion</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Type</span></td>
+               <td width="80%" colspan="3">Process</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Stratification</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Risk Adjustment</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Rate Aggregation</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Rationale</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Group A streptococcal bacterial infections and other infections that cause pharyngitis (which are most often viral) often produce the same signs and symptoms (IDSA 2002). The American Academy of Pediatrics, the Centers for Disease Control and Prevention, and the Infectious Diseases Society of America all recommend a diagnostic test for Strep A to improve diagnostic accuracy and avoid unnecessary antibiotic treatment (Linder et al. 2005).  A study on antibiotic treatment of children with sore throat found that although only 15 to 36 percent of children with sore throat have Strep A pharyngitis, physicians prescribed antibiotics to 53 percent of children with a chief complaint of sore throat between 1995 and 2003 (Linder et al. 2005).</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Clinical Recommendation Statement</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Institute for Clinical Systems Improvement (ICSI) (2007) &#xD;
+&#xD;
+Reduce unnecessary use of antibiotics. Antibiotic treatment should be reserved for a bacterial illness. Diagnosis of group A beta streptococcal Pharyngitis should be made by laboratory testing rather than clinically. &#xD;
+&#xD;
+Infectious Disease Society of America (Bisno et al. 2002) &#xD;
+&#xD;
+The signs and symptoms of group A streptococcal and other (most frequently viral) pharyngitides overlap broadly. Therefore, unless the physician is able with confidence to exclude the diagnosis of streptococcal pharyngitis on epidemiological and clinical grounds alone, a laboratory test should be done to determine whether group A streptococci are present in the pharynx. &#xD;
+&#xD;
+With the exception of very rare infections by certain other pharyngeal bacterial pathogens (eg, Corynebacterium diphtheriae and Neisseria gonorrhoeae), antimicrobial therapy is of no proven benefit as treatment for acute pharyngitis due to bacteria other than group A streptococci. Therefore, it is extremely important that physicians exclude the diagnosis of group A streptococcal pharyngitis to prevent inappropriate administration of antimicrobials to large numbers of patients with pharyngitis. &#xD;
+&#xD;
+Michigan Quality Improvement Consortium (2007)&#xD;
+&#xD;
+Probability of group A beta hemolytic streptococci (GABHS): Low; Testing: None; Treatment: Symptomatic treatment only. Avoid antibiotics. Probability of GABHS: Intermediate or High; Testing: Throat Culture (TC) OR Rapid Screen; Treatment: If TC is positive, use antibiotics. If TC is negative, use symptomatic treatment only. Avoid antibiotics. If treatment is started and culture result is negative, stop antibiotics. If Rapid Screen is positive, use antibiotics. If Rapid Screen is negative, culture (Culture is optional for age 16 and over) and only use antibiotics if throat culture is positive. (Michigan, 2007)</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Improvement Notation</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Higher score indicates better quality</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Linder, J.A., D.W. Bates, G.M. Lee, J.A. Finkelstein. 2005. &#8220;Antibiotic treatment of children with sore throat.&#8221; JAMA 294(18):2315-2322.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Bisno, A.L., M.A. Gerber, J.M. Gwaltney Jr., E.L. Kaplan, R.H. Schwartz, Infectious Diseases Society of America. 2002. &#8220;Practice guidelines for the diagnosis and management of group A streptococcal pharyngitis. Infectious Diseases Society of America.&#8221; Clin Infect Dis 35(2):113-25.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Institute for Clinical Systems Improvement (ICSI). 2008. "Diagnosis and treatment of respiratory illness in children and adults.&#8221; Bloomington: Institute for Clinical Systems Improvement (ICSI).</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Michigan Quality Improvement Consortium. 2007. Acute pharyngitis in children. Southfield: Michigan Quality Improvement Consortium.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Definition</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Guidance</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>This is an episode of care measure that examines all eligible episodes for the patient during the measurement period. If the patient has more than one episode, include all episodes in the measure.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Transmission Format</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>TBD</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Initial Patient Population</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Children 2-18 years of age who had an outpatient or emergency department (ED) visit with a diagnosis of pharyngitis during the measurement period and an antibiotic ordered on or three days after the visit</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Equals Initial Patient Population</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator Exclusions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Children who are taking antibiotics in the 30 days prior to the diagnosis of pharyngitis</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Numerator</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Children with a group A streptococcus test in the 7-day period from 3 days prior through 3 days after the diagnosis of pharyngitis</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Numerator Exclusions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator Exceptions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Population</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Observations</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Supplemental Data Elements</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex.</pre></div>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2><a name="toc">Table of Contents</a></h2>
+      <ul>
+         <li><a href="#d1e521">Population Criteria</a></li>
+         <li><a href="#d1e1413">Data Criteria (QDM Data Elements)</a></li>
+         <li><a href="#d1e1758">Reporting Stratification</a></li>
+         <li><a href="#d1e1779">Supplemental Data Elements</a></li>
+      </ul>
+      <hr align="left" color="teal" size="2">
+      <span id="d1e521" class="section">Population Criteria</span>
+      <a href="#toc" style="margin-top:-10px;">Table of Contents</a>
+      
+        <div class="treeview hover p-l-10">
+            <ul class="list-unstyled">
+                <li class="list-unstyled">
+                    <input type="checkbox" id="cb-initial-population" checked>
+                    <label for="cb-initial-population" class="list-header">
+                        <strong>Initial Patient Population</strong> (click to expand)      
+                    </label>
+                
+                    <ul class="code">
+                        <li>
+                            <div>
+                                <span class="cql-keyword">define </span><span class="cql-class" id="InitialPopulation">InitialPopulation</span><!--
+                                --><span class="cql-generic">: </span><a href="#PharyngitisEncountersWithAntibiotics" class="cql-interface">PharyngitisEncountersWithAntibiotics</a>
+                                <br>
+                                <br>
+                                <div class="p-l-10">
+                                    <span class="cql-keyword">define </span><span class="cql-class" id="PharyngitisEncountersWithAntibiotics">PharyngitisEncountersWithAntibiotics</span><!--
+                                    --><span class="cql-generic">: </span><a href="#MeasurementPeriodEncounters" class="cql-interface">MeasurementPeriodEncounters</a><span class="cql-variable"> E</span>
+                                    <div class="p-l-10">
+                                        <span class="cql-keyword">with </span><a href="#Pharyngitis" class="cql-object">Pharyngitis</a><span class="cql-variable"> P </span><!--
+                                        --><span class="cql-keyword">such </span><span class="cql-keyword">that </span><span class="cql-class">Common</span><!--
+                                        --><span class="cql-generic">.</span><span class="cql-property">includesOrStartsDuring</span><span class="cql-generic">(</span><!--
+                                        --><span class="cql-variable">P</span><span class="cql-generic">, </span><span class="cql-variable">E</span><span class="cql-generic">)</span>
+                                    </div>
+                                    <div class="p-l-10">
+                                        <span class="cql-keyword">with </span><a class="cql-object" href="#Antibiotics">Antibiotics</a><span class="cql-variable"> A </span><!--
+                                        --><span class="cql-keyword">such </span><span class="cql-keyword">that </span><span class="cql-variable">A</span><span class="p">.</span><!--
+                                        --><span class="cql-string">&quot;signed datetime&quot;</span><span class="cql-literal"> 3 </span> <span class="cql-reserved">days </span><!--
+                                        --><span class="cql-keyword">or </span> <span class="cql-generic">less</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-keyword">after </span><span class="cql-variable">E</span><span class="p">.</span><span class="cql-string">&quot;start datetime&quot;</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="MeasurementPeriodEncounters">MeasurementPeriodEncounters</span><span class="cql-generic">: </span><!--
+                                        --><span class="cql-generic">[</span><span class="cql-string">&quot;Encounter, Performed&quot;</span><span class="cql-generic">: </span><!--
+                                        --><span class="cql-string">&quot;Ambulatory/ED Visit&quot;</span><span class="cql-generic">]</span> <span class="cql-variable">E</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-keyword">where </span><a href="#InDemographic" class="cql-object">InDemographic</a>
+                                            <div class="p-l-10">
+                                                <span class="cql-keyword">and </span><span class="cql-keyword">Interval</span><span class="cql-generic">[</span><span class="cql-variable">E</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                                --><span class="cql-variable">E</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                                --><span class="cql-generic">] </span><span class="cql-keyword">during </span><span class="cql-object">MeasurementPeriod</span>
+                                            </div>
+                                        </div> 
+                                        <br>
+                                        <div class="p-l-10">
+                                            <span class="cql-keyword">define </span><span class="cql-class" id="InDemographic">InDemographic</span><span class="cql-generic">:</span>
+                                            <div class="p-l-10">
+                                                <span class="cql-function">AgeInYearsAt</span><span class="cql-generic">(</span><span class="cql-keyword">start </span><!--
+                                                --><span class="cql-keyword">of </span><span class="cql-generic">MeasurementPeriod</span><span class="cql-generic">) </span><!--
+                                                --><span class="cql-operator">&gt;= </span><span class="cql-literal">2</span>
+                                            </div>
+                                            <div class="p-l-10">
+                                                <span class="cql-keyword">and </span><span class="cql-function">AgeInYearsAt</span><span class="cql-generic">(</span><!--
+                                                --><span class="cql-keyword">start </span><span class="cql-keyword">of </span><span class="cql-generic">MeasurementPeriod</span><!--
+                                                --><span class="cql-generic">) </span><span class="cql-operator">&lt; </span><span class="cql-literal">18</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="Pharyngitis">Pharyngitis</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Diagnosis, Active&quot;</span><span class="cql-generic">: </span><!--                                                
+                                            --><span class="cql-string">&quot;Acute Pharyngitis&quot;</span><span class="cql-generic">] </span><span class="cql-keyword">union </span><!--
+                                            --><span class="cql-generic">[</span><span class="cql-string">&quot;Diagnosis, Active&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Acute Tonsillitis&quot;</span><span class="cql-generic">]</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="Antibiotics">Antibiotics</span><span class="cql-generic">:</span>
+                                            <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Medication, Order&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Antibiotic Medications&quot;</span><span class="cql-generic">]</span>    
+                                            </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </li>
+                    </ul>     
+                </li>
+                
+                <li class="list-unstyled">
+                    <input type="checkbox" id="cb-numerator" checked>
+                    <label for="cb-numerator" class="list-header">
+                        <strong>Numerator</strong> (click to expand)      
+                    </label>
+                    
+                    <ul class="code">
+                        <li>
+                            <div>
+                                <div>
+                                    <span class="cql-keyword">define </span><span class="cql-class" id="Numerator">Numerator</span><span class="cql-generic">: </span><!--
+                                    --><a class="cql-interface" href="#StrepTestEncounters">StrepTestEncounters</a>    
+                                </div>
+                                <br>
+                                <div class="p-l-10">
+                                    <span class="cql-keyword">define </span><span class="cql-class" id="StrepTestEncounters">StrepTestEncounters</span><span class="cql-generic">: </span><!--
+                                    --><a class="cql-interface" href="#PharyngitisEncountersWithAntibiotics">PharyngitisEncountersWithAntibiotics</a><span class="cql-object"> E</span>
+                                    <div class="p-l-10">
+                                        <span class="cql-keyword">with </span><span class="cql-generic">[</span><span class="cql-string">&quot;Laboratory Test, Performed&quot;</span><!--
+                                        --><span class="cql-generic">: </span><span class="cql-string">&quot;Group A Streptococcus Test&quot;</span><span class="cql-generic">] </span><!--
+                                        --><span class="cql-object">T</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-keyword">such </span><span class="cql-keyword">that </span><span class="cql-object">T</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-attribute">result </span><span class="cql-keyword">is </span><span class="cql-keyword">not </span><span class="cql-keyword">null</span>
+                                            <div class="p-l-10">
+                                                <span class="cql-keyword">and </span><span class="cql-object">T </span><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot; </span><!--
+                                                --><span class="cql-keyword">in </span><span class="cql-keyword">Interval</span><span class="cql-generic">[</span><span class="cql-object">E</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot; </span><span class="cql-operator">- </span><span class="cql-literal">3 </span><!--
+                                                --><span class="cql-reserved">days</span><span class="cql-generic">, </span><span class="cql-object">E</span><span class="cql-generic">.</span><!--
+                                                --><span class="cql-string">&quot;stop datetime&quot; </span><span class="cql-operator">+ </span><span class="cql-literal">3 </span><!--
+                                                --><span class="cql-reserved">days</span><span class="cql-generic">]</span>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="list-unstyled">
+                    <input type="checkbox" id="cb-denominator" checked>
+                    <label for="cb-denominator" class="list-header">
+                        <strong>Denominator</strong> (click to expand)      
+                    </label>
+                    <ul class="code">
+                        <li>
+                            <div>
+                                <span class="cql-keyword">define </span><span class="cql-class" id="Denominator">Denominator</span><span class="p">: </span><!--
+                                --><a class="cql-interface" href="#InitialPopulation">InitialPopulation</a> 
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="cb-denominator-exclusions" checked>
+                    <label for="cb-denominator-exclusions" class="list-header">
+                        <strong>Denominator Exclusions</strong> (click to expand)
+                    </label>
+                    <ul class="code">
+                        <li>
+                            <div>
+                                <div>
+                                    <span class="cql-keyword">define </span><span class="cql-class" id="DenominatorExclusions">DenominatorExclusions</span><span class="cql-generic">: </span><!--
+                                    --><a class="cql-interface" href="#ExcludedEncounters">ExcludedEncounters</a>    
+                                </div>
+                                <br>
+                                <div class="p-l-10">
+                                    <div>
+                                        <div>
+                                            <span class="cql-keyword">define </span><span class="cql-class" id="ExcludedEncounters">ExcludedEncounters</span><span class="cql-generic">: </span><!--
+                                            --><a class="cql-interface" href="#PharyngitisEncountersWithAntibiotics">PharyngitisEncountersWithAntibiotics</a><span class="cql-object"> E</span>    
+                                        </div>
+                                        <div class="p-l-10">
+                                            <div>
+                                                <span class="cql-keyword">with </span><a href="#PharyngitisWithPriorAntibiotics" class="cql-interface">PharyngitisWithPriorAntibiotics</a><!--
+                                                --><span class="cql-object"> P </span><span class="cql-keyword">such </span><span class="cql-keyword">that </span><!--
+                                                --><span class="cql-class">Common</span><span class="cql-generic">.</span><span class="cql-function">includesOrStartsDuring</span><!--
+                                                --><span class="cql-generic">(</span><span class="cql-class">P</span><span class="cql-generic">, </span><span class="cql-object">E</span><!--
+                                                --><span class="cql-generic">)</span>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <div>
+                                                    <span class="cql-keyword">define </span><span class="cql-class" id="PharyngitisWithPriorAntibiotics">PharyngitisWithPriorAntibiotics</span><!--
+                                                    --><span class="cql-generic">: </span><a class="cql-interface" href="#Pharyngitis">Pharyngitis</a></span><span class="cql-object"> P</span>    
+                                                </div>    
+                                                <div class="p-l-10">
+                                                    <span class="cql-keyword">with </span><a class="cql-interface" href="#Antibiotics">Antibiotics</a><span class="cql-object"> A </span><!--
+                                                    --><span class="cql-keyword">such </span><span class="cql-keyword">that </span><span class="cql-object">A</span><span class="cql-generic">.</span><!--
+                                                    --><span class="cql-string">&quot;signed datetime&quot; </span><span class="cql-literal">30 </span><span class="cql-reserved">days </span><!--
+                                                    --><span class="cql-keyword">or </span><span class="cql-reserved">less </span><span class="cql-keyword">before </span><!--
+                                                    --><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span>
+                                                </div>
+                                            </div>                                            
+                                        </div> 
+                                    </div>                                       
+                                </div>                               
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="list-unstyled">
+                    <input type="checkbox" id="cb-denominator-exceptions" checked>
+                    <label for="cb-denominator-exceptions" class="list-header">
+                        <strong>Denominator Exceptions</strong> (click to expand)      
+                    </label>
+                    <ul class="code">
+                        <li>
+                            <span class="cql-comment">//None</span>
+                        </li>
+                    </ul>
+                </li>
+                
+                
+
+                
+        </ul>
+
+      </div>
+
+      <span id="d1e1413" class="section">Data Criteria (QDM Data Elements)</span>
+      <a href="#toc" style="margin-top:-10px;">Table of Contents</a>
+
+      <div>
+
+         <ul>
+            <li>
+               "Diagnosis, Active: Acute Pharyngitis" using "Acute Pharyngitis Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1011)"
+            </li>
+            <li>
+               "Diagnosis, Active: Acute Tonsillitis" using "Acute Tonsillitis Grouping Value Set (2.16.840.1.113883.3.464.1003.102.12.1012)"
+            </li>
+            <li>
+               "Encounter, Performed: Ambulatory/ED Visit" using "Ambulatory/ED Visit Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1061)"
+            </li>
+            <li>
+               "Laboratory Test, Performed: Group A Streptococcus Test" using "Group A Streptococcus Test Grouping Value Set (2.16.840.1.113883.3.464.1003.198.12.1012)"
+            </li>
+            <li>
+               "Medication, Active: Antibiotic Medications for Pharyngitis" using "Antibiotic Medications for Pharyngitis Grouping Value Set (2.16.840.1.113883.3.464.1003.196.12.1001)"
+            </li>
+            <li>
+               "Medication, Order: Antibiotic Medications for Pharyngitis" using "Antibiotic Medications for Pharyngitis Grouping Value Set (2.16.840.1.113883.3.464.1003.196.12.1001)"
+            </li>
+            <li>
+               "Patient Characteristic Birthdate: birth date" using "birth date LOINC Value Set (2.16.840.1.113883.3.560.100.4)"
+            </li>
+         </ul>
+
+      </div>
+      
+      <span id="d1e1757" class="section">Reporting Stratification</span>
+      <a href="#toc" style="margin-top:-10px;">Table of Contents</a>
+      
+      <div>
+
+         <ul>
+            <li>None</li>
+         </ul>
+
+      </div>
+      
+      <span id="d1e1779" class="section">Supplemental Data Elements</span>
+      <a href="#toc" style="margin-top:-10px;">Table of Contents</a>
+      
+      <div>
+
+         <ul>
+            <li>
+               "Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)"
+            </li>
+            <li>
+               "Patient Characteristic Payer: Payer" using "Payer SOP Value Set (2.16.840.1.114222.4.11.3591)"
+            </li>
+            <li>
+               "Patient Characteristic Race: Race" using "Race CDCREC Value Set (2.16.840.1.114222.4.11.836)"
+            </li>
+            <li>
+               "Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex AdministrativeSex Value Set (2.16.840.1.113762.1.4.1)"
+            </li>
+         </ul>
+
+      </div>
+      <br>
+      <hr align="left" color="teal" size="2">
+      <br>
+      <table class="header_table">
+         <tbody>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Set</span></td>
+               <td colspan="3" width="80%">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto;word-wrap:break-word">None</div>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>

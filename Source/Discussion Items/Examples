@@ -1,0 +1,11 @@
+
+library Composite1
+
+include Measure1 called Measure1
+include Measure2 called Measure2
+include Measure3 called Measure3
+
+
+define Numerator: Measure3.Num
+
+define SupplmentalDataSex: ["Patient Characteristic Sex": "ONC Administrative Sex"]
