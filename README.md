@@ -8,6 +8,6 @@ The contents of this wiki are a work in progress and nothing contained here shou
 
 Please feel free to submit edits, comments, and concerns to this wiki, as well as examples of formatting and usage. We encourage active participation and look forward to your feedback!
 
-Use the Wiki link at the top of this page, or follow this [link](wiki)
+Use the Wiki link at the top of this page, or follow this [link](https://github.com/esacinc/CQL-Formatting-and-Usage-Wiki/wiki).
 
 The Clinical Quality Framework Team
