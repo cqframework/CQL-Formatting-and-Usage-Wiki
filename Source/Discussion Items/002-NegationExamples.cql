@@ -69,6 +69,12 @@ define "Antithrombotic Not Done":
       where O.negationRationale in "Medical Reason"
         or O.negationRationale in "Patient Refusal"
 
+define "Antithrombotic Not Done":
+  (["Not Done": "Antithrombotic ingredient specific"]
+    ["Not Done": "Antithrombotic Therapy"]) NotDone
+    where NotDone.actionType = 'Medication, Order'
+      and NotDone.negationRationale in "Medical Reason"
+
 /*
   Union of:
     * "Medication, Discharge not done: Patient Refusal" for "Statin ingredient specific"
