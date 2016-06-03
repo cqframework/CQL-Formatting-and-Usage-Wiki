@@ -6,6 +6,22 @@
     * "Medication, Administered not done: Patient Refusal" for "Antithrombotic Therapy"
 */
 
+define codesystem "QDM Data Types": 'X.Y.Z' version '5.0'
+define code "Medication, Order": 'Medication, Order' from "QDM Data Types"
+define code "Encounter, Performed": 'Encounter, Performed' from "QDM Data Types"
+
+"Encounter, Performed" {
+  code: Code,
+  startDateTime: DateTime,
+  ...
+}
+
+"Not Done" {
+  code: Code - "QDM Data Types" { 'Encounter, Performed', 'Medication, Order', ... }
+  actionCode: Code, - code of the action being negated
+  negationRationale: Code
+}
+
 // Current
 define "Antithrombotic Not Done":
   (["Medication, Order": "Antithrombotic ingredient specific"]
@@ -15,9 +31,8 @@ define "Antithrombotic Not Done":
 
 // Proposed
 define "Antithrombotic Not Done":
-  (["Not Done": "Antithrombotic ingredient specific"]
-    ["Not Done": "Antithrombotic Therapy"]) NotDone
-    where NotDone.actionType = 'Medication, Order'
+  ["Not Done": "Medication, Order"] NotDone
+    where (NotDone.actionCode in "Antithrombotic ingredient specific" or NotDone.actionCode in "Antithrombotic Therapy")
       and NotDone.negationRationale in "Medical Reason"
 
 /*
@@ -34,8 +49,8 @@ define "Statin At Discharge Not Done":
 
 // Proposed
 define "Statin At Discharge Not Done":
-  ["Not Done": "Statin ingredient specific"] NotDone
-    where NotDone.actionType = "Medication, Discharge"
+  ["Not Done": "Medication, Discharge"] NotDone
+    where NotDone.actionCode in "Statin ingredient specific"
       and (
         NotDone.negationRationale in "Patient Refusal"
           or NotDone.negationRationale in "Medical Reason"
@@ -77,4 +92,12 @@ define "No Device VTE Prophylaxis Medical Reason":
       union ["Not Done": "Graduated compression stockings (GCS)"]
     ) NotDone
       where NotDone.actionType in { 'Device, Applied', 'Device, Order' }
+        and NotDone.negationRationale in "Medical Reason"
+
+define "No Device VTE Prophylaxis Medical Reason":
+    (["Not Done": "Device, Applied"]
+      union ["Not Done": "Device, Order"]
+    ) NotDone
+      where (NotDone.actionCode in "Intermittent pneumatic compression devices (IPC)"
+          or NotDone.actionCode in ...)
         and NotDone.negationRationale in "Medical Reason"
