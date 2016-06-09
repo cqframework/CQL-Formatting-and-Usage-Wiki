@@ -19,24 +19,6 @@ Initial Population =
     during "Measurement Period"
 */
 
-define "Birthdate":
-  ["Birthdate": "Patient Characteristic Birthdate"]
-
-define "Encounter During Measurement Period":
-  (
-    ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-      union ["Encounter, Performed": "Home Healthcare Service"]
-      union ["Encounter, Performed": "Preventive Care - Established Office Visit, 0 to 17"]
-      union ["Encounter, Performed": "Preventive Care- Initial Office Visit, 0 to 17"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Initial Population":
-  CalculateAgeInYearsAt("Birthdate", start of "Measurement Period") >= 1
-    and CalculateAgeInYearsAt("Birthdate", end of "Measurement Period") = 2
-    and exists ("Encounter During Measurement Period")
-
 /*
 Example 02
 IP: Age, sex, and encounter (CMS125) (Patient-based Proportion Measure)
@@ -55,23 +37,6 @@ Initial Population =
     during "Measurement Period"
 */
 
-define "Encounter During Measurement Period":
-  (
-    ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-      union ["Encounter, Performed": "Preventive Care Services - Established Office Visit, 18 and Up"]
-      union ["Encounter, Performed": "Preventive Care Services-Initial Office Visit, 18 and Up"]
-      union ["Encounter, Performed": "Home Healthcare Service"]
-      union ["Encounter, Performed": "Annual Wellness Visit"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Initial Population":
-  AgeInYearsAt(start of "Measurement Period") >= 51
-    and AgeInYearsAt(start of "Measurement Period") < 74
-    and exists (["Patient Characteristic Sex": "Female"])
-    and exists ("Encounter During Measurement Period")
-
 /*
 Example 03:
 IP: Diagnosis overlaps MP and sex (CMS129) (Patient-based Proportion Measure)
@@ -80,14 +45,6 @@ Initial Population =
   AND: "Occurrence A of Diagnosis: Prostate Cancer" overlaps "Measurement Period"
   AND: "Patient Characteristic Sex: Male"
 */
-
-define "Prostate Cancer Diagnosis":
-  ["Diagnosis": "Prostate Cancer"] Diagnosis
-    where Interval[Diagnosis.onsetDateTime, Diagnosis.abatementDateTime] overlaps "Measurement Period"
-
-define "Initial Population":
-  exists ("Prostate Cancer Diagnosis")
-    and exists (["Patient Characteristic Sex": "Male"])
 
 /*
 Example 04:
@@ -105,19 +62,6 @@ $EncounterInpatient =
     ends during "Measurement Period"
 */
 
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where Encounter.lengthOfStay <= 120 days
-      and Encounter.dischargeDateTime during "Measurement Period"
-
-define "Encounter with Principal Diagnosis of AMI":
-  "Inpatient Encounter" Encounter
-    where Encounter.principalDiagnosis in "Acute Myocardial Infarction (AMI)"
-      and AgeInYearsAt(Encounter.admissionDateTime) >= 18
-
-define "Initial Population":
-  "Encounter with Principal Diagnosis of AMI"
-
 /*
 Example 05:
 IP: Encounter relative to another encounter (CMS55) (Episode-of-care Continuous Variable Measure)
@@ -130,19 +74,6 @@ $EncounterInpatient =
     (length of stay <= 120 day(s))
     ends during "Measurement Period"
 */
-
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where Encounter.lengthOfStay <= 120 days
-      and Encounter.dischargeDateTime during "Measurement Period"
-
-define "Emergency Encounter":
-  ["Encounter, Performed": "Emergency Department Visit"] EmergencyEncounter
-    with "Inpatient Encounter" InpatientEncounter
-      such that EmergencyEncounter.dischargeDateTime 1 hour or less before InpatientEncounter.admissionDateTime
-
-define "Initial Population":
-  "Emergency Encounter"
 
 /*
 Example 06:
@@ -157,21 +88,6 @@ $EncounterInpatient =
     (length of stay <= 120 day(s))
     ends during "Measurement Period"
 */
-
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where Encounter.lengthOfStay <= 120 days
-      and Encounter.dischargeDateTime during "Measurement Period"
-
-define "Emergency Encounter":
-  ["Encounter, Performed": "Emergency Department Visit"] EmergencyEncounter
-    with "Inpatient Encounter" InpatientEncounter
-      such that EmergencyEncounter.dischargeDateTime 1 hour or less before InpatientEncounter.admissionDateTime
-
-define "Initial Population":
-  "Emergency Encounter" EmergencyEncounter
-    with ["Encounter, Order": "Decision to Admit to Hospital Inpatient"] AdmissionOrder
-      such that AdmissionOrder.startDateTime during Interval[EmergencyEncounter.admissionDateTime, EmergencyEncounter.dischargeDateTime]
 
 /*
 Example 07:
@@ -188,18 +104,6 @@ $EncounterInpatient =
     ends during "Measurement Period"
 */
 
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where Encounter.lengthOfStay <= 120 days
-      and Encounter.dischargeDateTime during "Measurement Period"
-
-define "Initial Population":
-  "Inpatient Encounter" Encounter
-    with ["Procedure, Performed": "Delivery Procedures"] Procedure
-      such that Procedure.startDateTime during Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-    where AgeInYearsAt(Encounter.admissionDateTime) >= 8
-      and AgeInYearsAt(Encounter.admissionDateTime) < 65
-
 /*
 Example 08:
 IP: Procedure relative to MP end (CMS133) (Procedure-based Proportion Measure)
@@ -209,12 +113,6 @@ Initial Population =
   AND: "Occurrence A of Procedure, Performed: Cataract Surgery" during "Measurement Period"
   AND: "Occurrence A of Procedure, Performed: Cataract Surgery" > 92 day(s) starts before end of "Measurement Period"
 */
-
-define "Initial Population":
-  ["Procedure, Performed": "Cataract Surgery"] Procedure
-    where AgeInYearsAt(start of "Measurement Period") >= 18
-      and Interval[Procedure.startDateTime, Procedure.stopDateTime] during "Measurement Period"
-      and Procedure.startDateTime 92 days or more before end of "Measurement Period"
 
 /*
 Example 09:
@@ -247,41 +145,6 @@ Initial Population =
       during "Measurement Period"
 */
 
-define "Behavioral Visits":
-  (
-    ["Encounter, Performed": "Psych Visit - Diagnostic Evaluation"]
-      union ["Encounter, Performed": "Health and Behavioral Assessment - Initial"]
-      union ["Encounter, Performed": "Health and Behavioral Assessment, Reassessment"]
-      union ["Encounter, Performed": "Health & Behavioral Assessment - Individual"]
-      union ["Encounter, Performed": "Occupational Therapy Evaluation"]
-      union ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Psych Visit - Psychotherapy"]
-      union ["Encounter, Performed": "Psychoanalysis"]
-      union ["Encounter, Performed": "Ophthalmological Services"]
-      union ["Encounter, Performed": "Home Healthcare Services"]
-  ) Visit
-    where Interval[Visit.admissionDateTime, Visit.dischargeDateTime] during "Measurement Period"
-
-define "Counseling Visits":
-  (
-    ["Encounter, Performed": "Preventive Care Services - Group Counseling"]
-      union ["Encounter, Performed": "Preventive Care Services - Other"]
-      union ["Encounter, Performed": "Preventive Care Services-Initial Office Visit, 18 and Up"]
-      union ["Encounter, Performed": "Preventive Care Services - Established Office Visit, 18 and Up"]
-      union ["Encounter, Performed": "Preventive Care Services-Individual Counseling"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-      union ["Encounter, Performed": "Annual Wellness Visit"]
-      union ["Encounter, Performed": "Speech and Hearing Evaluation"]
-  ) Visit
-    where Interval[Visit.admissionDateTime, Visit.dischargeDateTime] during "Measurement Period"
-
-define "Initial Population":
-  AgeInYearsAt(start of "Measurement Period") >= 18
-    and (
-        Count("Behavioral Visits") >= 2
-          or Count("Counseling Visits") >= 1
-    )
-
 /*
 Example 10:
 IP: Count of encounters with diagnosis (CMS135) (Patient-based Proportion)
@@ -312,36 +175,6 @@ $HFEncounters135 =
     during "Measurement Period"
 */
 
-define "HF Encounters":
-  (
-    ["Encounter, Performed": "Care Services in Long-Term Residential Facility"]
-      union ["Encounter, Performed": "Home Healthcare Services"]
-      union ["Encounter, Performed": "Nursing Facility Visit"]
-      union ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Outpatient Consultation"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-      union ["Encounter, Performed": "Discharge Services - Hospital Inpatient"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Discharge Services":
-  ["Encounter, Performed": "Discharge Services - Hospital Inpatient"] Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Heart Failure Diagnosis":
-  ["Diagnosis": "Heart Failure"] Diagnosis
-    with "HF Encounters" Encounter
-      such that Interval[Diagnosis.onsetDateTime, Diagnosis.abatementDateTime]
-        overlaps Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-
-define "Initial Population":
-  AgeInYearsAt(start of "Measurement Period") >= 18
-    and (
-      Count("HF Encounters") >= 2
-        or exists ("Discharge Services")
-    )
-    and exists ("Heart Failure Diagnosis")
-
 /*
 Example 11:
 IP: Cumulative medication (CMS136) (Patient-based Proportion)
@@ -368,41 +201,6 @@ $Encounter =
     during "Measurement Period"
 */
 
-define "Encounter":
-  (
-    ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-      union ["Encounter, Performed": "Home Healthcare Services"]
-      union ["Encounter, Performed": "Preventive Care - Established Office Visit, 0 to 17"]
-      union ["Encounter, Performed": "Preventive Care- Initial Office Visit, 0 to 17"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Initial ADHD Medication":
-  First(
-    ["Medication, Dispensed": "ADHD Medications"] Medication
-      where Medication.startDateTime
-        during Interval[start of "Measurement Period" - 90 days, start of "Measurement Period" + 60 days]
-  )
-
-define "ADHD Medication Intervals":
-  collapse (
-    ["Medication, Dispensed": "ADHD Medications"] Medication
-      with "Initial ADHD Medication" InitialMedication
-        such that Medication.startDateTime 300 days or less after start of "Measurement Period"
-      return Interval[Medication.startDateTime, Medication.stopDateTime]
-  )
-
-define "ADHD Medication Days":
-  "ADHD Medication Intervals" I return duration in days of I
-
-define "Initial Population":
-  AgeInYearsAt(start of "Measurement Period") >= 6
-    and AgeInYearsAt(start of "Measurement Period") < 12
-    and exists ("Encounter")
-    and exists ("Initial ADHD Medication")
-    and Sum("ADHD Medication Days") >= 210
-
 /*
 Example 12:
 IP: First occurrence (CMS140) (Patient-based Proportion Measure)
@@ -422,26 +220,6 @@ $OVorF2FEncounter =
     "Encounter, Performed: Face-to-Face Interaction"
     during "Measurement Period"
 */
-
-define "Office Visit or Face-to-Face Encounter":
-  (
-    ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "First Breast Cancer Diagnosis":
-  First(
-    ["Diagnosis": "Breast Cancer"] Diagnosis
-      with "Office Visit or Face-to-Face Encounter" Encounter
-        such that Diagnosis.onsetDateTime 5 years or less before Encounter.dischargeDateTime
-  )
-
-define "Initial Population":
-  exists ("First Breast Cancer Diagnosis")
-    and AgeInYearsAt(start of "Measurement Period") >= 18
-    and Count("Office Visit or Face-to-Face Encounter") >= 2
-    and exists (["Patient Characteristic Sex": "Female"])
 
 /*
 Example 13:
@@ -466,32 +244,6 @@ $URIEncounter =
     "Encounter, Performed: Face-to-Face Interaction"
     during "Measurement Period"
 */
-
-define "URI Encounter":
-  (
-    ["Encounter, Performed": "Office Visit"]
-      union ["Encounter, Performed": "Emergency Department Visit"]
-      union ["Encounter, Performed": "Preventive Care- Initial Office Visit, 0 to 17"]
-      union ["Encounter, Performed": "Preventive Care - Established Office Visit, 0 to 17"]
-      union ["Encounter, Performed": "Hospital Observation Care - Initial"]
-      union ["Encounter, Performed": "Face-to-Face Interaction"]
-  ) Encounter
-    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Initial Population":
-  AgeInMonthsAt(start of "Measurement Period") >= 3
-    and AgeInYearsAt(start of "Measurement Period") < 18 years
-
-define "URI Diagnosis During Encounter":
-  ["Diagnosis": "Upper Respiratory Infection"] Diagnosis
-    with "URI Encounter" Encounter
-      such that Diagnosis.onsetDateTime during Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-
-define "URI Diagnosis Before Or After Encounter":
-  ["Diagnosis": "Upper Respiratory Infection"] Diagnosis
-    with "URI Encounter" Encounter
-      such that Diagnosis.onsetDateTime same or before Encounter.admissionDateTime
-        and Diagnosis.abatementDateTime same or after Encounter.dischargeDateTime
 
 /*
 Example 14:
@@ -530,42 +282,3 @@ $DepressionIndex =
     $DepressionEncounterBH
     $DepressionF2FSnomed
 */
-
-define "Major Depression or Dysthymia Diagnosis":
-  ["Diagnosis": "Major Depression Including Remission"]
-    union ["Diagnosis": "Dysthymia"]
-
-define "Depression Encounter":
-  ["Encounter, Performed": "Office Visit"] Encounter
-    with "Major Depression or Dysthymia Diagnosis" Diagnosis
-      such that Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-        overlaps Interval[Diagnosis.onsetDateTime, Diagnosis.abatementDateTime]
-    where Encounter.dischargeDateTime in Interval[start of "Measurement Period" - 12 months, start of "Measurement Period"]
-
-define "Depression Encounter BH":
-  ["Encounter, Performed": "Psych Visit"] Encounter
-    where Encounter.dischargeDateTime in Interval[start of "Measurement Period" - 12 months, start of "Measurement Period"]
-      and (
-        Encounter.principalDiagnosis in "Major Depression Including Remission"
-          or Encounter.principalDiagnosis in "Dysthymia"
-      )
-
-define "Depression Face-to-Face":
-  ["Encounter, Performed": "Face to Face Interaction - No ED"] Encounter
-    with "Major Depression or Dysthymia Diagnosis" Diagnosis
-      such that Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-        overlaps Interval[Diagnosis.onsetDateTime, Diagnosis.abatementDateTime]
-    where Encounter.dischargeDateTime in Interval[start of "Measurement Period" - 12 months, start of "Measurement Period"]
-
-define "Depression Index":
-  ["Risk Category Assessment": "PHQ-9 Tool"] Assessment
-    with ("Depression Encounter" union "Depression Encounter BH" union "Depression Face-to-Face") Encounter
-      such that Interval[Assessment.startDateTime, Assessment.stopDateTime]
-        during Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime]
-    where Assessment.result > 9
-
-define "Initial Population":
-  exists (
-    "Depression Index" Index
-      where AgeInYearsAt(Index.startDateTime) >= 18
-  )
