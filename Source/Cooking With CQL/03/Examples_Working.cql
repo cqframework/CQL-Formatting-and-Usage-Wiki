@@ -248,6 +248,7 @@ Initial Population =
 */
 
 define "Behavioral Visits":
+  distinct
   (
     ["Encounter, Performed": "Psych Visit - Diagnostic Evaluation"]
       union ["Encounter, Performed": "Health and Behavioral Assessment - Initial"]
@@ -263,6 +264,7 @@ define "Behavioral Visits":
     where Interval[Visit.admissionDateTime, Visit.dischargeDateTime] during "Measurement Period"
 
 define "Counseling Visits":
+  distinct
   (
     ["Encounter, Performed": "Preventive Care Services - Group Counseling"]
       union ["Encounter, Performed": "Preventive Care Services - Other"]
@@ -278,8 +280,8 @@ define "Counseling Visits":
 define "Initial Population":
   AgeInYearsAt(start of "Measurement Period") >= 18
     and (
-        Count("Behavioral Visits") >= 2
-          or Count("Counseling Visits") >= 1
+      Count("Behavioral Visits") >= 2
+        or Count("Counseling Visits") >= 1
     )
 
 /*
@@ -313,6 +315,7 @@ $HFEncounters135 =
 */
 
 define "HF Encounters":
+  distinct
   (
     ["Encounter, Performed": "Care Services in Long-Term Residential Facility"]
       union ["Encounter, Performed": "Home Healthcare Services"]
@@ -321,6 +324,18 @@ define "HF Encounters":
       union ["Encounter, Performed": "Outpatient Consultation"]
       union ["Encounter, Performed": "Face-to-Face Interaction"]
       union ["Encounter, Performed": "Discharge Services - Hospital Inpatient"]
+  ) Encounter
+    where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
+
+define "HF Encounters Without Discharge":
+  distinct
+  (
+    ["Encounter, Performed": "Care Services in Long-Term Residential Facility"]
+      union ["Encounter, Performed": "Home Healthcare Services"]
+      union ["Encounter, Performed": "Nursing Facility Visit"]
+      union ["Encounter, Performed": "Office Visit"]
+      union ["Encounter, Performed": "Outpatient Consultation"]
+      union ["Encounter, Performed": "Patient Provider Interaction"]
   ) Encounter
     where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
 
@@ -369,6 +384,7 @@ $Encounter =
 */
 
 define "Encounter":
+  distinct
   (
     ["Encounter, Performed": "Office Visit"]
       union ["Encounter, Performed": "Face-to-Face Interaction"]
@@ -389,7 +405,7 @@ define "ADHD Medication Intervals":
   collapse (
     ["Medication, Dispensed": "ADHD Medications"] Medication
       with "Initial ADHD Medication" InitialMedication
-        such that Medication.startDateTime 300 days or less after start of "Measurement Period"
+        such that Medication.startDateTime 300 days or less after start of InitialMedication.startDateTime
       return Interval[Medication.startDateTime, Medication.stopDateTime]
   )
 
@@ -424,6 +440,7 @@ $OVorF2FEncounter =
 */
 
 define "Office Visit or Face-to-Face Encounter":
+  distinct
   (
     ["Encounter, Performed": "Office Visit"]
       union ["Encounter, Performed": "Face-to-Face Interaction"]
@@ -431,14 +448,17 @@ define "Office Visit or Face-to-Face Encounter":
     where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
 
 define "First Breast Cancer Diagnosis":
-  First(
-    ["Diagnosis": "Breast Cancer"] Diagnosis
-      with "Office Visit or Face-to-Face Encounter" Encounter
-        such that Diagnosis.onsetDateTime 5 years or less before Encounter.dischargeDateTime
-  )
+First(
+  ["Diagnosis": "Breast Cancer"] Diagnosis
+    sort by onsetDateTime
+)
 
 define "Initial Population":
-  exists ("First Breast Cancer Diagnosis")
+  exists (
+      "First Breast Cancer Diagnosis" Diagnosis
+        with "Office Visit or Face-to-Face Encounter" Encounter
+          such that Diagnosis.onsetDateTime 5 years or less before Encounter.dischargeDateTime
+      )
     and AgeInYearsAt(start of "Measurement Period") >= 18
     and Count("Office Visit or Face-to-Face Encounter") >= 2
     and exists (["Patient Characteristic Sex": "Female"])
@@ -468,6 +488,7 @@ $URIEncounter =
 */
 
 define "URI Encounter":
+  distinct
   (
     ["Encounter, Performed": "Office Visit"]
       union ["Encounter, Performed": "Emergency Department Visit"]
@@ -477,10 +498,6 @@ define "URI Encounter":
       union ["Encounter, Performed": "Face-to-Face Interaction"]
   ) Encounter
     where Interval[Encounter.admissionDateTime, Encounter.dischargeDateTime] during "Measurement Period"
-
-define "Initial Population":
-  AgeInMonthsAt(start of "Measurement Period") >= 3
-    and AgeInYearsAt(start of "Measurement Period") < 18 years
 
 define "URI Diagnosis During Encounter":
   ["Diagnosis": "Upper Respiratory Infection"] Diagnosis
@@ -492,6 +509,14 @@ define "URI Diagnosis Before Or After Encounter":
     with "URI Encounter" Encounter
       such that Diagnosis.onsetDateTime same or before Encounter.admissionDateTime
         and Diagnosis.abatementDateTime same or after Encounter.dischargeDateTime
+
+define "Initial Population":
+  AgeInMonthsAt(start of "Measurement Period") >= 3
+    and AgeInYearsAt(start of "Measurement Period") < 18 years
+    and (
+        exists ("URI Diagnosis During Encounter")
+          or exists ("URI Diagnosis Before Or After Encounter")
+    )
 
 /*
 Example 14:
