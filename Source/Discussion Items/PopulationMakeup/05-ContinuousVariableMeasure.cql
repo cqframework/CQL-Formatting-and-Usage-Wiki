@@ -35,7 +35,7 @@ define "Measure Population":
 		where Encounter.admissionDatetime is not null
 			and Encounter.dischargeDatetime is not null
 
-define function "Measure Observation"(Encounter "Encounter, Performed")
+define function "Median ED Time"(Encounter "Encounter, Performed")
 	return minutes between Encounter.facilityLocationArrivalDatetime and Encounter.facilityLocationDepartureDatetime
 
 // Measure score definition starts here
@@ -50,5 +50,5 @@ context Population
 define "Measure Score":
   Avg(
     "Measure Population" PopulationMember
-      return "Measure Observation"(PopulationMember)
+      return "Median ED Time"(PopulationMember)
   )
