@@ -46,8 +46,6 @@ define "Denominator Membership":
 
 define "Numerator Membership":
   "Initial Population"
-    and "Denominator"
-    and not "Denominator Exclusion"
     and "Numerator"
     and not "Numerator Exclusion"
 
