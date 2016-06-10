@@ -16,6 +16,9 @@ define code "Encounter, Performed": 'Encounter, Performed' from "QDM Data Types"
   ...
 }
 
+define "Encounter, Performed":
+  ["Encounter, Performed": "Inpatient"]
+
 "Not Done" {
   code: Code - "QDM Data Types" { 'Encounter, Performed', 'Medication, Order', ... }
   actionCode: Code, - code of the action being negated
@@ -29,11 +32,29 @@ define "Antithrombotic Not Done":
     where MedicationOrder.negationRationale in "Medical Reason"
       or MedicationOrder.negationRationale in "Patient Refusal"
 
-// Proposed
+// Proposed 1 - Single negation type
 define "Antithrombotic Not Done":
   ["Not Done": "Medication, Order"] NotDone
     where (NotDone.actionCode in "Antithrombotic ingredient specific" or NotDone.actionCode in "Antithrombotic Therapy")
-      and NotDone.negationRationale in "Medical Reason"
+      and (NotDone.negationRationale in "Medical Reason" or NotDone.negationRationale in "Patient Refusal")
+
+// Proposed 2 - Negation type per data type (not per category/datatype combination)
+define "Antithrombotic Not Done":
+  ["Not Ordered": "Medication"] M
+    where (M.code in "Antithrombotic Therapy" or M.code in "Antithrombotic ingredient specific")
+      and (M.negationRationale in "Medical Reason" or M.negationRationale in "Patient Refusal")
+
+// Proposed 3 - Negation type per category/datatype combination
+define "Antithrombotic Not Done":
+  (["Medication, Not Ordered": "Antithrombotic Therapy"]
+    union ["Medication, Not Ordered": "Antithrombotic ingredient specific"]) M
+    where (M.negationRationale in "Medical Reason" or M.negationRationale in "Patient Refusal")
+  
+// Category
+// Data Type
+// Value Set
+// Negated
+  
 
 /*
   Union of:
