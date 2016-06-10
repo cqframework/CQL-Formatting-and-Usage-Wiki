@@ -63,8 +63,6 @@ context Population
 define "Measure Score Numerator":
   Avg(
     ("Initial Population"
-      intersect "Denominator"
-      except "Denominator Exclusion"
       intersect "Numerator"
       except "Numerator Exclusion"
     ) Numerator
