@@ -54,8 +54,6 @@ context Population
 define "Measure Score Numerator":
   Count(
     "Initial Population"
-      intersect "Denominator"
-      except "Denominator Exclusion"
       intersect "Numerator"
       except "Numerator Exclusion"
   )
