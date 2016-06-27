@@ -130,13 +130,13 @@ Stratification=
 */
 
 define "Stratification 1":
-  AgeInYearsAt(start of "Measurement Period") in [12, 18)
+  AgeInYearsAt(start of "Measurement Period") in Interval[12, 18)
 
 define "Stratification 1":
-  AgeInYearsAt(start of "Measurement Period") in [18, 45)
+  AgeInYearsAt(start of "Measurement Period") in Interval[18, 45)
 
 define "Stratification 1":
-  AgeInYearsAt(start of "Measurement Period") in [45, 65)
+  AgeInYearsAt(start of "Measurement Period") in Interval[45, 65)
 
 define "Stratification 1":
   AgeInYearsAt(start of "Measurement Period") >= 65

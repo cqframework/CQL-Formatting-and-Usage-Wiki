@@ -57,7 +57,7 @@ define "Breastfeeding Intention":
 
 define "LDL-c Test In Range":
   ["Laboratory Test, Performed": "LDL-c Test"] LDLCTest
-    where LDLCTest.result < 100 "mg/dL"
+    where LDLCTest.result < 100 'mg/dL'
 
 
 //////////////////////////////////////////////
