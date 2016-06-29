@@ -29,6 +29,9 @@ define "Lipid Panel":
   ["Laboratory Test, Performed": "Lipid Panel"]
 
 define "LDL Result":
-  "Lipid Panel".components Component
-    where Component.code in "LDL Result"
-      and Component.result < 130 'mg/dL'
+  "Lipid Panel" Panel
+    return singleton from (
+      Panel.components Component
+        where Component.code in "LDL Result"
+          and Component.result < 130 'mg/dL'
+    )
