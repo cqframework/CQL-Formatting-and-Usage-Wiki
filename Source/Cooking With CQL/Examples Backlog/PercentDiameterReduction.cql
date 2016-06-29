@@ -1,8 +1,6 @@
 /*
 Diagnostic Imaging Study, Ultrasound, MRI, or CT, with a result of >50% diameter reduction in peripheral artery
-*/
 
-/*
   Assuming the existence of a value set that specifies the method and body site (peripheral arteries)
 
   Pseudo-QDM:
@@ -15,7 +13,7 @@ valueset "Ultrasound of peripheral arteries": 'urn:oid:1.2.3.4.5'
 
 code "% diameter reduction": '397442008' from "SNOMED-CT"
 
-define "Stenosis":
+define "Study Indicating Stenosis":
   ["Diagnostic Study, Performed": "Ultrasound of peripheral arteries"] Study
     where exists (
       Study.components component

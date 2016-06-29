@@ -19,7 +19,9 @@
     }
   }
 
-  For illustration, this example will use the Lipid Panel and LDL Result
+  For illustration, this example will use the Lipid Panel and LDL Result such as the following pseudo-QDM:
+
+    "Laboratory Test, Performed: Lipid Panel (result: LDL, result: <130mg/dL)"
 
 */
 

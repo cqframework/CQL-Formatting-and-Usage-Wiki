@@ -89,9 +89,8 @@ Denominator =
     AND: Initial Population
 */
 
-// TODO: When there is no additional criteria for an epsiode-of-care measure, what to do?
 define "Denominator":
-  "Initial Population" // Need to return something, otherwise calculation formulas will fail
+  "Initial Population"
 
 /*
 Denominator Exclusions =
