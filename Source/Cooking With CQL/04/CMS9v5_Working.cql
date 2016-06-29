@@ -80,9 +80,9 @@ define "Single Live Birth Encounter Without Galactosemia or Parenteral Nutrition
 
 define "Initial Population":
   "Single Live Birth Encounter Without Galactosemia or Parenteral Nutrition" Encounter
-    with ["Physical Exam, Performed": "Estimated Gestational Age at Birth SNOMEDCT Value Set"] Exam
-      such that Exam.authorDateTime during Encounter.relevantPeriod
-        and Exam.result >= 37 weeks
+    with ["Assessment, Performed": "Estimated Gestational Age at Birth SNOMEDCT Value Set"] Assessment
+      such that Assessment.authorDateTime during Encounter.relevantPeriod
+        and Assessment.result >= 37 weeks
 
 /*
 Denominator =

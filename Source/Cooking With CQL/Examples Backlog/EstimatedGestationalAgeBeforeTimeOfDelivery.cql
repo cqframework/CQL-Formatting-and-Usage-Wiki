@@ -8,8 +8,6 @@ Denominator =
 */
 
 define "Denominator":
-  ["Physical Exam, Performed": "Estimated Gestational Age at Delivery"] Exam
-    with ["Physical Exam, Performed": "Time of Delivery"] DeliveryTime
-      such that DeliveryTime.result 1 day or less before start of Exam.relevantPeriod
-
-      
+  ["Assessment, Performed": "Estimated Gestational Age at Delivery"] Assessment
+    with ["Assessment, Performed": "Time of Delivery"] DeliveryTime
+      such that DeliveryTime.result 1 day or less before start of Assessment.relevantPeriod
