@@ -51,19 +51,21 @@ define "Numerator Exclusion": "Valid Encounter" Encounter where false
 // provided here for reference. It is NOT expected that this calculation be
 // included in each measure.
 
+define "Numerator Membership":
+  "Initial Population"
+    intersect "Denominator"
+    except "Denominator Exclusion"
+    intersect "Numerator"
+    except "Numerator Exclusion"
+    
+define "Denominator Membership":
+  "Initial Population"
+    intersect "Denominator"
+    except "Denominator Exclusion"
+    except ("Denominator Exception" except "Numerator")
+
 context Population
 
 define "Measure Score":
-  Count(
-    "Initial Population"
-      intersect "Denominator"
-      except "Denominator Exclusion"
-      intersect "Numerator"
-      except "Numerator Exclusion"
-  ) /
-    Count(
-      "Initial Population"
-        intersect "Denominator"
-        except "Denominator Exclusion"
-        except ("Denominator Exception" except "Numerator")
-    )
+  Count("Numerator Membership") /
+    Count("Denominator Membership")
