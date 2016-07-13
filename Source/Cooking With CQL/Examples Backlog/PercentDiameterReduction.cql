@@ -14,9 +14,10 @@ valueset "Ultrasound of peripheral arteries": 'urn:oid:1.2.3.4.5'
 code "% diameter reduction": '397442008' from "SNOMED-CT"
 
 define "Study Indicating Stenosis":
-  ["Diagnostic Study, Performed": "Ultrasound of peripheral arteries"] Study
+  ["Diagnostic Study, Performed": "Ultrasound"] Study
     where exists (
       Study.components component
         where component.code = "% diameter reduction"
+          and component.bodySite in "Peripheral Artery BodySite Value Set"
           and component.result > 50 '%'
     )

@@ -18,7 +18,7 @@ valueset "Payer SOP Value Set": 'urn:oid:2.16.840.1.114222.4.11.3591'
 valueset "Race CDCREC Value Set": 'urn:oid:2.16.840.1.114222.4.11.836'
 valueset "ONC Administrative Sex AdministrativeGender Value Set": 'urn:oid:2.16.840.1.113762.1.4.1'
 
-parameter "Measurement Period": Interval<DateTime>
+parameter "Measurement Period" Interval<DateTime>
 
 /*
   $EncounterInpatient =
@@ -30,7 +30,7 @@ parameter "Measurement Period": Interval<DateTime>
 define "Encounter Inpatient":
   ["Encounter, Performed": "Encounter Inpatient SNOMEDCT Value Set"] Encounter
     where Encounter.lengthOfStay <= 120 days
-      and Encounter.dischargeDateTime during "Measurement Period"
+      and Encounter.relevantPeriod ends during "Measurement Period"
 
 /*
 Initial Population =

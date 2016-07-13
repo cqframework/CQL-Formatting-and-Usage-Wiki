@@ -1,166 +1,156 @@
-library CMS9 version '5'
+library CMS9 version '5.1.000'
 
-using QDM //version '4.2'
+using QDM version '5.0'
 
-valueset "Galactosemia": '2.16.840.1.113883.3.117.1.7.1.35'
-valueset "Single Live Birth": '2.16.840.1.113883.3.117.1.7.1.25)'
-valueset "Single Live Born Newborn Born in Hospital": '2.16.840.1.113883.3.117.1.7.1.26'
-valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307'
-valueset "Estimated Gestational Age at Birth": '2.16.840.1.113762.1.4.1045.47'
-valueset "Parenteral Nutrition": '2.16.840.1.113883.3.117.1.7.1.38'
-valueset "Breast Milk": '2.16.840.1.113883.3.117.1.7.1.30'
-valueset "Dietary Intake Other than Breast Milk": '2.16.840.1.113883.3.117.1.7.1.27'
-valueset "Neonatal Intensive Care Unit (NICU)": '2.16.840.1.113883.3.117.1.7.1.75'
-valueset "Patient Expired": '2.16.840.1.113883.3.117.1.7.1.309'
-valueset "Discharge To Acute Care Facility": '2.16.840.1.113883.3.117.1.7.1.87'
-
-valueset "Ethnicity CDCREC": '2.16.840.1.114222.4.11.837'
-valueset "Payer SOP": '2.16.840.1.114222.4.11.3591'
-valueset "Race CDCREC": '2.16.840.1.114222.4.11.836'
-valueset "ONC Administrative Sex AdministrativeGender": '2.16.840.1.113762.1.4.1'
+valueset "Galactosemia Grouping Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.35'
+valueset "Single Live Birth SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.25'
+valueset "Single Live Born Newborn Born in Hospital Grouping Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.26'
+valueset "Encounter Inpatient SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.666.5.307'
+valueset "Estimated Gestational Age at Birth SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113762.1.4.1045.47'
+valueset "Parenteral Nutrition Grouping Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.38'
+valueset "Breast Milk SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.30'
+valueset "Dietary Intake Other than Breast Milk SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.27'
+valueset "Neonatal Intensive Care Unit (NICU) SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.75'
+valueset "Patient Expired SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.309'
+valueset "Discharge To Acute Care Facility SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.87'
+valueset "Ethnicity CDCREC Value Set": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Payer SOP Value Set": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Race CDCREC Value Set": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "ONC Administrative Sex AdministrativeGender Value Set": 'urn:oid:2.16.840.1.113762.1.4.1'
 
 parameter "Measurement Period" Interval<DateTime>
 
-// NOTE: The patient here is the infant, not the mother
-context Patient
+/*
+  $EncounterInpatient =
+      "Encounter, Performed: Encounter Inpatient" satisfies all:
+          (length of stay <= 120 day(s))
+          ends during "Measurement Period"
+*/
 
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where days between Encounter.admissionDatetime and Encounter.dischargeDatetime <= 120
-      and Encounter.dischargeDatetime in "Measurement Period"
-      and Encounter.negationRationale is null
+define "Encounter Inpatient":
+  ["Encounter, Performed": "Encounter Inpatient SNOMEDCT Value Set"] Encounter
+    where Encounter.lengthOfStay <= 120 days
+      and Encounter.relevantPeriod ends during "Measurement Period"
 
-List<Code> { 92550, 92551, 92552, ... }
+/*
+Initial Population =
+    AND: "Physical Exam, Performed: Estimated Gestational Age at Birth (result >= 37 week(s))" starts during Occurrence A of $EncounterInpatient
+    AND:
+        OR: Intersection of:
+            Occurrence A of $EncounterInpatient
+            "Encounter, Performed: Encounter Inpatient" satisfies any:
+                (diagnosis: Single Live Birth)
+                (diagnosis: Single Live Born Newborn Born in Hospital)
+        OR: Union of:
+            "Diagnosis: Single Live Birth"
+            "Diagnosis: Single Live Born Newborn Born in Hospital"
+            starts during Occurrence A of $EncounterInpatient
+    AND NOT: Union of:
+        "Diagnosis: Galactosemia" starts during Occurrence A of $EncounterInpatient
+        Intersection of:
+            Occurrence A of $EncounterInpatient
+            "Encounter, Performed: Encounter Inpatient (diagnosis: Galactosemia)"
+    AND NOT: "Procedure, Performed: Parenteral Nutrition" starts during Occurrence A of $EncounterInpatient
+*/
 
-define "All Encounters":
-  ["Encounter, Performed"]
+define "Single Live Birth Diagnosis":
+  ["Diagnosis": "Single Live Birth SNOMEDCT Value Set"]
+    union ["Diagnosis": "Single Live Born Newborn Born in Hospital Grouping Value Set"]
 
-Encounter { typeCode: 92550, admissionDateTime: @2015-06-01, ... }
-Encounter { typeCode: 92551, ... }
-Encounter { typeCode: 92552, ... }
-Encounter { typeCode: 89982, ... }
+define "Single Live Birth Encounter":
+  distinct
+    "Encounter Inpatient" Encounter
+      where Encounter.diagnosis in "Single Live Birth SNOMEDCT Value Set"
+        or Encounter.diagnosis in "Single Live Born Newborn Born in Hospital Grouping Value Set"
+    union
+      "Encounter Inpatient" Encounter
+        with "Single Live Birth Diagnosis" Diagnosis
+          such that Diagnosis.onsetDateTime during Encounter.relevantPeriod
 
-define "Specific Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] Encounter
-    where Encounter.typeCode = Code 92550
+define "Single Live Birth Encounter Without Galactosemia":
+  "Single Live Birth Encounter" Encounter
+    without ["Diagnosis": "Galactosemia Grouping Value Set"] Diagnosis
+      such that Diagnosis.onsetDateTime during Encounter.relevantPeriod
+    where not (Encounter.diagnosis in "Galactosemia Grouping Value Set")
 
-  Encounter { typeCode: 92550, ... }
-  Encounter { typeCode: 92551, ... }
-  Encounter { typeCode: 92552, ... }
-
-
-
-define "Live Birth Diagnosis":
-  ["Diagnosis": "Single Live Birth"]
-    union ["Diagnosis": "Single Live Born Newborn Born in Hospital"]
-
-define "Live Birth Encounter":
-  "Inpatient Encounter" Encounter
-    where Encounter.diagnosis in "Single Live Birth"
-      or Encounter.diagnosis in "Single Live Born Newborn Born in Hospital"
-      or exists (
-        "Live Birth Diagnosis" Diagnosis
-          where Diagnosis.onsetDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
-      )
-
-// NOTE: There are two options for calculating Gestational Age at Birth
-// First as documentation of Gestational Age specifically:
-define "Documented Gestational Age at Birth":
-  ["Physical Exam, Performed": "Gestational Age At Birth"] Exam
-    where Exam.negationRationale is null
-    return Exam.result as Quantity
-
-// Second as calculated based on the most recently documented Estimated Due Date:
-define "Calculated Gestational Age at Birth":
-  Floor(
-    (280 - duration in days
-      between Last(["Patient Characterstic Estimated Due Date": "Estimated Due Date"])
-        and ["Patient Characteristic Birthdate": "Birthdate"]
-    ) / 7
-  )
-
-define "Gestational Age at Birth >= 37 weeks":
-  "Documentated Gestational Age at Birth" >= 37 weeks
-    or "Calculated Gestational Age at Birth" >= 37
-
-define "Galactosemia Diagnosis":
-  ["Diagnosis": "Galactosemia"]
-
-define "Parenteral Nutrition Procedure":
-  ["Procedure, Performed": "Parenteral Nutrition"] Nutrition
-    where Nutrition.negationRationale is null
-
-define "Live Birth Infants without Parenteral Nutrition":
-  "Live Birth Encounter" Encounter
-    with "Gestational Age at Birth <= 37 weeks" GestationalAge
-      such that GestationalAge.startDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
-    without "Galactosemia Diagnosis" Galactosemia
-      such that Galactosemia.onsetDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
-    without "Parenteral Nutrition Procedure" Nutrition
-      such that Nutrition.startDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
-    where not ( Encounter.diagnosis in "Galactosemia" )
-
-// Region: Initial Population
+define "Single Live Birth Encounter Without Galactosemia or Parenteral Nutrition":
+  "Single Live Birth Encounter Without Galactosemia" Encounter
+    without ["Procedure, Performed": "Parenteral Nutrition Grouping Value Set"] Procedure
+      such that Procedure.relevantPeriod starts during Encounter.relevantPeriod
 
 define "Initial Population":
-  "Live Birth Infants without Parenteral Nutrition"
+  "Single Live Birth Encounter Without Galactosemia or Parenteral Nutrition" Encounter
+    with ["Assessment, Performed": "Estimated Gestational Age at Birth SNOMEDCT Value Set"] Assessment
+      such that Assessment.authorDateTime during Encounter.relevantPeriod
+        and Assessment.result >= 37 weeks
 
-// EndRegion: Initial Population
+/*
+Denominator =
+    AND: Initial Population
+*/
 
-// Region: Denominator
-
-// TODO: This should be discussed, it goes against the "criteria are not additive convention"
 define "Denominator":
   "Initial Population"
 
-// EndRegion: Denominator
-
-// Region: Denominator Exclusions
+/*
+Denominator Exclusions =
+    OR: Intersection of:
+        Occurrence A of $EncounterInpatient
+        "Encounter, Performed: Encounter Inpatient" satisfies any:
+            (facility location: Neonatal Intensive Care Unit (NICU))
+            (discharge status: Patient Expired)
+            (discharge status: Discharge To Acute Care Facility)
+*/
 
 define "Denominator Exclusions":
-  "Live Birth Encounter" Encounter
-    where Encounter.facilityLocation in "Neonatal Intensive Care Unit (NICU)"
-      or Encounter.dischargeStatus in "Patient Expired"
-      or Encounter.dischargeStatus in "Discharge To Acute Care Facility"
+  "Initial Population" Encounter
+    where Encounter.facilityLocation in "Neonatal Intensive Care Unit (NICU) SNOMEDCT Value Set"
+      or Encounter.dischargeDisposition in "Patient Expired SNOMEDCT Value Set"
+      or Encounter.dischargeDisposition in "Discharge To Acute Care Facility SNOMEDCT Value Set"
 
-// EndRegion: Denominator Exclusions
-
-// Region: Numerator
-
-define "Breast Milk Feeding":
-  ["Substance, Administered": "Breast Milk"] Feeding
-    where Feeding.negationRationale is null
-
-define "Other Than Breast Milk Feeding":
-  ["Substance, Administered": "Dietary Intake Other than Breast Milk"] OtherFeeding
-    where OtherFeeding.negationRationale is null
+/*
+Numerator =
+    AND: "Substance, Administered: Breast Milk" starts during Occurrence A of $EncounterInpatient
+    AND NOT: "Substance, Administered: Dietary Intake Other than Breast Milk" starts during Occurrence A of $EncounterInpatient
+*/
 
 define "Numerator":
-  "Live Birth Encounter" Encounter
-    with "Breast Milk Feeding" Feeding
-      such that Feeding.startDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
-    without "Other Than Breast Milk Feeding" OtherFeeding
-      such that OtherFeeding.startDatetime between Encounter.admissionDatetime and Encounter.dischargeDatetime
+  "Initial Population" Encounter
+    with ["Substance, Administered": "Breast Milk SNOMEDCT Value Set"] Substance
+      such that Substance.relevantPeriod starts during Encounter.relevantPeriod
+    without ["Substance, Administered": "Dietary Intake Other than Breast Milk SNOMEDCT Value Set"] Substance
+      such that Substance.relevantPeriod starts during Encounter.relevantPeriod
 
-// EndRegion: Numerator
+/*
+Numerator Exclusions =
+    None
+*/
 
-// Region: Numerator Exclusions
-// NONE
-// End Region: Numerator Exclusions
+/*
+Denominator Exceptions =
+    None
+*/
 
-// Region: Denominator Exceptions
-// NONE
-// End Region: Denominator Exceptions
+/*
+Stratification =
+    None
+*/
 
-// Region: Stratification
-// NONE
-// End Region: Stratification
+/*
+Supplemental Data Elements
 
-// Region: Supplemental Data
+    "Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)"
+    "Patient Characteristic Payer: Payer" using "Payer SOP Value Set (2.16.840.1.114222.4.11.3591)"
+    "Patient Characteristic Race: Race" using "Race CDCREC Value Set (2.16.840.1.114222.4.11.836)"
+    "Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)"
+*/
 
-define "Ethnicity": ["Patient Characteristic Ethnicity": "Ethnicity CDCREC"]
-define "Payer": ["Patient Characteristic Payer": "Payer SOP"]
-define "Race": ["Patient Characteristic Race": "Race CDCREC"]
-define "Sex": ["Patient Characteristic Sex": "ONC Administrative Sex AdministrativeGender"]
+define "SDE Patient Ethnicity": ["Patient Characteristic Ethnicity": "Ethnicity CDCREC Value Set"]
+define "SDE Patient Payer": ["Patient Characteristic Payer": "Payer SOP Value Set"]
+define "SDE Patient Race": ["Patient Characteristic Race": "Race CDCREC Value Set"]
+define "SDE Patient Sex": ["Patient Characteristic Sex": "ONC Administrative Sex AdministrativeGender Value Set"
 
-// End Region: Supplemental Data
+/*
+Risk Adjustment Variables
+    None
+*/

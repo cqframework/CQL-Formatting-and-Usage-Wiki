@@ -26,7 +26,7 @@
 */
 
 define "Lipid Panel":
-  ["Laboratory Test, Performed": "Lipid Panel"]
+  ["Laboratory Test, Performed": "Lipid Panel Value Set"]
 
 define "LDL Result":
   "Lipid Panel" Panel

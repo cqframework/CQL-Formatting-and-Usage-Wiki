@@ -11,3 +11,4 @@ define "Denominator":
   ["Assessment, Performed": "Estimated Gestational Age at Delivery"] Assessment
     with ["Assessment, Performed": "Time of Delivery"] DeliveryTime
       such that DeliveryTime.result 1 day or less before start of Assessment.relevantPeriod
+    where Assessment.result in Interval[37 weeks, 39 weeks)
