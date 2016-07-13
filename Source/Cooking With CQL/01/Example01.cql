@@ -124,7 +124,7 @@ define "Stratification 1":
 define "Stratification 2":
   AgeInYearsAt(start of "Measurement Period") in Interval[18, 45)
 
-define "Stratfication 3":
+define "Stratification 3":
   AgeInYearsAt(start of "Measurement Period") in Interval[45, 65)
 
 define "Stratification 4":
