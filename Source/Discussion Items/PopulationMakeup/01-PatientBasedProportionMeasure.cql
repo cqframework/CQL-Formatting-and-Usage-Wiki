@@ -18,18 +18,20 @@ context Patient
 
 define "Initial Population": AgeAt(start of "Measurement Period") >= 18
 define "Denominator":
-  exists (
-    ["Encounter, Performed": "Inpatient"] Encounter
-      where Encounter.startDateTime during "Measurement Period"
-  )
+  "Initial Population"
+    and exists (
+      ["Encounter, Performed": "Inpatient"] Encounter
+        where Encounter.startDateTime during "Measurement Period"
+    )
 
 define "Denominator Exclusion": false
 define "Denominator Exception": false
 define "Numerator":
-  exists (
-    ["Procedure, Performed": "Depression Assessment"] Procedure
-      where Procedure.startDateTime during "Measurement Period"
-  )
+  "Denominator"
+    and exists (
+      ["Procedure, Performed": "Depression Assessment"] Procedure
+        where Procedure.startDateTime during "Measurement Period"
+    )
 
 define "Numerator Exclusion": false
 
