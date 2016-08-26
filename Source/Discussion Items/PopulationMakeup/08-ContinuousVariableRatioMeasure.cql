@@ -1,4 +1,4 @@
-library EpisodeOfCareBasedRatioMeasure version '1'
+library ContinuousVariableRatioMeasure version '1'
 
 using QDM
 
@@ -28,7 +28,7 @@ define "Valid Encounter":
 
 define "Initial Population":
   "Valid Encounter" Encounter
-    where AgeAt(Encounter.startDateTime) >= 18
+    where AgeInYearsAt(Encounter.startDateTime) >= 18
 
 define "Denominator":
   "Valid Encounter" Encounter
@@ -58,22 +58,20 @@ define "Numerator Exclusion": "Valid Encounter" Encounter where false
 define function "Measure Observation"(Encounter "Encounter, Performed")
 	return minutes between Encounter.facilityLocationArrivalDatetime and Encounter.facilityLocationDepartureDatetime
 
+define "Numerator Membership":
+    "Initial Population"
+      intersect "Numerator"
+      except "Numerator Exclusion"
+
+define "Denominator Membership":
+    "Initial Population"
+      intersect "Denominator"
+      except "Denominator Exclusion"
+
 context Population
 
 define "Measure Score Numerator":
-  Avg(
-    ("Initial Population"
-      intersect "Numerator"
-      except "Numerator Exclusion"
-    ) Numerator
-      return "Measure Observation"(Numerator)
-  )
+  Avg("Numerator Membership" Numerator return "Measure Observation"(Numerator))
 
 define "Measure Score Denominator":
-  Avg(
-    ("Initial Population"
-      intersect "Denominator"
-      except "Denominator Exclusion"
-    ) Denominator
-      return "Measure Observation"(Denominator)
-  )
+  Avg("Denominator Membership" Denominator return "Measure Observation"(Denominator)

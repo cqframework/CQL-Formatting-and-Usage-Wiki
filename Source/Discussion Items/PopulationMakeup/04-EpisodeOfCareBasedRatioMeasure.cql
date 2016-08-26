@@ -25,7 +25,7 @@ define "Valid Encounter":
 
 define "Initial Population":
   "Valid Encounter" Encounter
-    where AgeAt(Encounter.startDateTime) >= 18
+    where AgeInYearsAt(Encounter.startDateTime) >= 18
 
 define "Denominator":
   "Valid Encounter" Encounter
@@ -66,4 +66,3 @@ define "Measure Score Numerator":
 
 define "Measure Score Denominator":
   Count("Denominator Membership")
-  

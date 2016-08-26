@@ -1,4 +1,4 @@
-library ContinuousVariableMeasure.cql version '1'
+library ContinuousVariableMeasure version '1'
 
 using QDM
 

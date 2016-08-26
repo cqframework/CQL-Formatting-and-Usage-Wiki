@@ -12,4 +12,4 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define "Initial Population":
-  AgeAt(start of "Measurement Period") >= 18
+  AgeInYearsAt(start of "Measurement Period") >= 18

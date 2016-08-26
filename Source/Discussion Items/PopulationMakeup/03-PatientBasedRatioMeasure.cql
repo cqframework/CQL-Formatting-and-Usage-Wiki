@@ -17,7 +17,7 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
-define "Initial Population": AgeAt(start of "Measurement Period") >= 18
+define "Initial Population": AgeInYearsAt(start of "Measurement Period") >= 18
 define "Denominator":
   exists (
     ["Encounter, Performed": "Inpatient"] Encounter

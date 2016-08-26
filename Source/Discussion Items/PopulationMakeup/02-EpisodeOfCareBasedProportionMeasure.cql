@@ -25,7 +25,7 @@ define "Valid Encounter":
 
 define "Initial Population":
   "Valid Encounter" Encounter
-    where AgeAt(Encounter.startDateTime) >= 18
+    where AgeInYearsAt(Encounter.startDateTime) >= 18
 
 define "Denominator":
   "Valid Encounter" Encounter
@@ -57,7 +57,7 @@ define "Numerator Membership":
     except "Denominator Exclusion"
     intersect "Numerator"
     except "Numerator Exclusion"
-    
+
 define "Denominator Membership":
   "Initial Population"
     intersect "Denominator"

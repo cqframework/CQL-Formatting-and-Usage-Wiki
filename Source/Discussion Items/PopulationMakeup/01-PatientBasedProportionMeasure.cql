@@ -16,22 +16,22 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
-define "Initial Population": AgeAt(start of "Measurement Period") >= 18
+define "Initial Population":
+  AgeInYearsAt(start of "Measurement Period") >= 18
+
 define "Denominator":
-  "Initial Population"
-    and exists (
-      ["Encounter, Performed": "Inpatient"] Encounter
-        where Encounter.startDateTime during "Measurement Period"
-    )
+  exists (
+    ["Encounter, Performed": "Inpatient"] Encounter
+      where Encounter.startDateTime during "Measurement Period"
+  )
 
 define "Denominator Exclusion": false
 define "Denominator Exception": false
 define "Numerator":
-  "Denominator"
-    and exists (
-      ["Procedure, Performed": "Depression Assessment"] Procedure
-        where Procedure.startDateTime during "Measurement Period"
-    )
+  exists (
+    ["Procedure, Performed": "Depression Assessment"] Procedure
+      where Procedure.startDateTime during "Measurement Period"
+  )
 
 define "Numerator Exclusion": false
 
