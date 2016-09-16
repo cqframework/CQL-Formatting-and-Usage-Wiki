@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS102"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Rehabilitation Assessment" id="Rehabilitation Assessment" accessLevel="Public"/>
+      <def name="Rehabilitation Therapy" id="Rehabilitation Therapy" accessLevel="Public"/>
+      <def name="Patient Refusal" id="Patient Refusal" accessLevel="Public"/>
+      <def name="Medical Reason" id="Medical Reason" accessLevel="Public"/>
+      <def name="Non-Elective Inpatient Encounter" id="Non-Elective Inpatient Encounter" accessLevel="Public"/>
+      <def name="Discharged to Rehabilitation Facility" id="Discharged to Rehabilitation Facility" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Encounter Inpatient Non Elective" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Non-Elective Inpatient Encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="LessOrEqual">
+                  <operand path="lengthOfStay" scope="Encounter" xsi:type="Property"/>
+                  <operand value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Rehabilitation Assessment Or Not" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:ProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Rehabilitation Assessment" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:ProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Rehabilitation Therapy" xsi:type="ValueSetRef"/>
+                  </operand>
+               </operand>
+               <operand xsi:type="Query">
+                  <source alias="Procedure">
+                     <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:ProcedurePerformed" templateId="NegativeProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Rehabilitation Assessment" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where xsi:type="Or">
+                     <operand xsi:type="InValueSet">
+                        <code path="negationRationale" scope="Procedure" xsi:type="Property"/>
+                        <valueset name="Patient Refusal"/>
+                     </operand>
+                     <operand xsi:type="InValueSet">
+                        <code path="negationRationale" scope="Procedure" xsi:type="Property"/>
+                        <valueset name="Medical Reason"/>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xsi:type="Query">
+                  <source alias="Encounter">
+                     <expression name="Encounter Inpatient Non Elective" xsi:type="ExpressionRef"/>
+                  </source>
+                  <relationship alias="Assessment" xsi:type="With">
+                     <expression name="Rehabilitation Assessment Or Not" xsi:type="ExpressionRef"/>
+                     <suchThat xsi:type="In">
+                        <operand xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Assessment" xsi:type="Property"/>
+                        </operand>
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </suchThat>
+                  </relationship>
+               </operand>
+               <operand xsi:type="Query">
+                  <source alias="Encounter">
+                     <expression name="Encounter Inpatient Non Elective" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where xsi:type="InValueSet">
+                     <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                     <valueset name="Discharged to Rehabilitation Facility"/>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

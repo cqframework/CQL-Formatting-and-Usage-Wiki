@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS165"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Adult Outpatient Visit" id="Adult Outpatient Visit" accessLevel="Public"/>
+      <def name="Essential Hypertension" id="Essential Hypertension" accessLevel="Public"/>
+      <def name="Diastolic Blood Pressure" id="Diastolic Blood Pressure" accessLevel="Public"/>
+      <def name="Systolic Blood Pressure" id="Systolic Blood Pressure" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Outpatient Visit" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Adult Outpatient Visit" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Diagnosis" xsi:type="With">
+               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:Diagnosis" xsi:type="Retrieve">
+                  <codes name="Essential Hypertension" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="Overlaps">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+            <relationship alias="Diastolic" xsi:type="With">
+               <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Diastolic Blood Pressure" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="And">
+                  <operand xsi:type="Overlaps">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="Not">
+                     <operand xsi:type="IsNull">
+                        <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <relationship alias="Systolic" xsi:type="With">
+               <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Systolic Blood Pressure" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="And">
+                  <operand xsi:type="Overlaps">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="Not">
+                     <operand xsi:type="IsNull">
+                        <operand path="result" scope="Systolic" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Most Recent Outpatient Visit" context="Patient" accessLevel="Public">
+         <expression xsi:type="First">
+            <source xsi:type="Query">
+               <source alias="Visit">
+                  <expression name="Outpatient Visit" xsi:type="ExpressionRef"/>
+               </source>
+               <sort>
+                  <by direction="desc" xsi:type="ByExpression">
+                     <expression xsi:type="End">
+                        <operand name="relevantPeriod" xsi:type="IdentifierRef"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Visit">
+               <expression name="Most Recent Outpatient Visit" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="Less">
+                  <operand asType="t:Quantity" xsi:type="As">
+                     <operand path="result" xsi:type="Property">
+                        <source xsi:type="First">
+                           <source xsi:type="Query">
+                              <source alias="Diastolic">
+                                 <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Diastolic Blood Pressure" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="IncludedIn">
+                                 <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                                 <operand path="relevantPeriod" scope="Visit" xsi:type="Property"/>
+                              </where>
+                              <sort>
+                                 <by direction="desc" xsi:type="ByExpression">
+                                    <expression xsi:type="End">
+                                       <operand name="relevantPeriod" xsi:type="IdentifierRef"/>
+                                    </expression>
+                                 </by>
+                              </sort>
+                           </source>
+                        </source>
+                     </operand>
+                     <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+                  <operand value="90" unit="mmHg" xsi:type="Quantity"/>
+               </operand>
+               <operand xsi:type="Less">
+                  <operand asType="t:Quantity" xsi:type="As">
+                     <operand path="result" xsi:type="Property">
+                        <source xsi:type="First">
+                           <source xsi:type="Query">
+                              <source alias="Systolic">
+                                 <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" dataType="ns5:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Systolic Blood Pressure" xsi:type="ValueSetRef"/>
+                                 </expression>
+                              </source>
+                              <where xsi:type="IncludedIn">
+                                 <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                                 <operand path="relevantPeriod" scope="Visit" xsi:type="Property"/>
+                              </where>
+                              <sort>
+                                 <by direction="desc" xsi:type="ByExpression">
+                                    <expression xsi:type="End">
+                                       <operand name="relevantPeriod" xsi:type="IdentifierRef"/>
+                                    </expression>
+                                 </by>
+                              </sort>
+                           </source>
+                        </source>
+                     </operand>
+                     <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+                  <operand value="140" unit="mmHg" xsi:type="Quantity"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

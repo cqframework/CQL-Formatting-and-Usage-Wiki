@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS143"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Cup to Disc Ratio" id="Cup to Disc Ratio" accessLevel="Public"/>
+      <def name="Optic Disc Exam for Structural Abnormalities" id="Optic Disc Exam for Structural Abnormalities" accessLevel="Public"/>
+      <def name="Ophthalmological Services" id="Ophthalmological Services" accessLevel="Public"/>
+      <def name="Care Services in Long-Term Residential Facility" id="Care Services in Long-Term Residential Facility" accessLevel="Public"/>
+      <def name="Nursing Facility Visit" id="Nursing Facility Visit" accessLevel="Public"/>
+      <def name="Office Visit" id="Office Visit" accessLevel="Public"/>
+      <def name="Outpatient Consultation" id="Outpatient Consultation" accessLevel="Public"/>
+      <def name="Face-to-Face Interaction" id="Face-to-Face Interaction" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Cup to Disc Ratio Study" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Study">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Cup to Disc Ratio" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Not">
+               <operand xsi:type="IsNull">
+                  <operand path="result" scope="Study" xsi:type="Property"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Optic Disc Exam for Structural Abnormalities Study" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Study">
+               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Optic Disc Exam for Structural Abnormalities" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Not">
+               <operand xsi:type="IsNull">
+                  <operand path="result" scope="Study" xsi:type="Property"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Eye Care Encounters" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Query">
+               <source alias="Encounter">
+                  <expression xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Union">
+                              <operand xsi:type="Union">
+                                 <operand xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Ophthalmological Services" xsi:type="ValueSetRef"/>
+                                 </operand>
+                                 <operand xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Care Services in Long-Term Residential Facility" xsi:type="ValueSetRef"/>
+                                 </operand>
+                              </operand>
+                              <operand xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes name="Nursing Facility Visit" xsi:type="ValueSetRef"/>
+                              </operand>
+                           </operand>
+                           <operand xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" dataType="ns5:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="Office Visit" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </operand>
+                        <operand xmlns:ns6="urn:healthit-gov:qdm:v5_0_draft" dataType="ns6:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Outpatient Consultation" xsi:type="ValueSetRef"/>
+                        </operand>
+                     </operand>
+                     <operand xmlns:ns7="urn:healthit-gov:qdm:v5_0_draft" dataType="ns7:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Face-to-Face Interaction" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </expression>
+               </source>
+               <where xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Eye Care Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Study" xsi:type="With">
+               <expression name="Cup to Disc Ratio Study" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Study" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+            <relationship alias="Study" xsi:type="With">
+               <expression name="Optic Disc Exam for Structural Abnormalities Study" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Study" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
