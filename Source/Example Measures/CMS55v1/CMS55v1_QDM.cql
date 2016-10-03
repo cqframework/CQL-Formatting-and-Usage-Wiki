@@ -44,7 +44,7 @@ Supplemental Data Elements
 
 */
 
-using QDM
+using QDM version '5.0'
 
 valueset "Inpatient": '2.16.840.1.113883.3.666.5.307'
 valueset "Emergency Department Visit": '2.16.840.1.113883.3.117.1.7.1.293'
@@ -56,21 +56,21 @@ context Patient
 define "Inpatient Encounters":
 	["Encounter, Performed": "Inpatient"] Encounter
 		where Encounter.lengthOfStay <= 120 days
-			and Encounter.dischargeDatetime during "Measurement Period"
+			and Encounter.relevantPeriod ends during "Measurement Period"
 
 define "Emergency Department Encounters":
 	["Encounter, Performed": "Emergency Department Visit"] EmergencyEncounter
 		with "Inpatient Encounters" InpatientEncounter
-			such that EmergencyEncounter.dischargeDatetime 1 hour or less before InpatientEncounter.admissionDatetime
+			such that EmergencyEncounter.relevantPeriod ends 1 hour or less before start of InpatientEncounter.relevantPeriod
 
 define "Measure Population":
 	"Emergency Department Encounters" Encounter
-		where Encounter.admissionDatetime is not null
-			and Encounter.dischargeDatetime is not null
+		where start of Encounter.relevantPeriod is not null
+			and end of Encounter.relevantPeriod is not null
 
 // Measure Observation
-define function EDStayTime(Encounter "Encounter, Performed")
-	return minutes between Encounter.facilityLocationArrivalDatetime and Encounter.facilityLocationDepartureDatetime
+define function EDStayTime(Encounter "Encounter, Performed"):
+	duration in minutes of Encounter.locationPeriod
 
 // NOTE: The calculation method is specified in the HQMF, so will not be specified here
 // The measure calculates the Median of EDStayTime
