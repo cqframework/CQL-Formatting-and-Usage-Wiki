@@ -30,11 +30,11 @@ define "Numerator":
   "DEM Encounters 149" Encounter
     where exists (
         "Cognition Risk Assessment" Assessment
-          where Assessment.authorDatetime 12 months before end of Encounter.relevantPeriod
+          where Assessment.authorDatetime 12 months or less before end of Encounter.relevantPeriod
       )
       or exists (
         "Cognitive Intervention" Intervention
-          where Intervention.relevantPeriod starts 12 months before end of Encounter.relevantPeriod
+          where Intervention.relevantPeriod starts 12 months or less before end of Encounter.relevantPeriod
       )
 
 /*

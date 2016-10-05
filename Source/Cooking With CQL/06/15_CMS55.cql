@@ -21,6 +21,7 @@ Measure Population =
 Measure Population Exclusions =
   OR: "Transfer From: Hospital Settings" <= 6 hour(s)
     ends before or concurrent with start of "Occurrence A of Encounter, Performed: Emergency Department Visit"
+
 Measure Observation =
   Median:
     Datetimediff:

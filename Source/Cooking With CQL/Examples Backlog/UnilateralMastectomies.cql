@@ -1,7 +1,7 @@
 // Two unilateral mastectomies 14 or more days apart
 
 define "Unilateral Mastectomies":
-  ["Procedure": type in "Unilateral Mastectomy"]
+  ["Procedure": code in "Unilateral Mastectomy"]
 
 define "Unilateral Mastectomy Pairs":
   from
