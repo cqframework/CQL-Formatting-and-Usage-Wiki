@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS137_QDM" version="4.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Alcohol and Drug Dependence" id="urn:oid:2.16.840.1.113883.3.464.1003.106.12.1001" accessLevel="Public"/>
+      <def name="Alcohol and Drug Dependence Treatment" id="urn:oid:2.16.840.1.113883.3.464.1003.106.12.1005" accessLevel="Public"/>
+      <def name="Detoxification Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1059" accessLevel="Public"/>
+      <def name="Discharge Services - Hospital Inpatient" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1007" accessLevel="Public"/>
+      <def name="Discharge Services - Hospital Inpatient Same Day Discharge" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1006" accessLevel="Public"/>
+      <def name="Emergency Department Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1010" accessLevel="Public"/>
+      <def name="Face-to-Face Interaction" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1048" accessLevel="Public"/>
+      <def name="Hospital Inpatient Visit - Initial" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1004" accessLevel="Public"/>
+      <def name="Hospital Observation Care - Initial" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1002" accessLevel="Public"/>
+      <def name="Office Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001" accessLevel="Public"/>
+      <def name="Psych Visit - Psychotherapy" id="urn:oid:2.16.840.1.113883.3.526.3.1496" accessLevel="Public"/>
+      <def name="Ethnicity CDCREC" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def name="Payer SOP" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def name="Race CDCREC" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def name="ONC Administrative Sex AdministrativeGender" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="In Demographic" context="Patient" accessLevel="Public">
+         <expression xsi:type="GreaterOrEqual">
+            <operand precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:Integer" value="13" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Valid Encounters" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand xsi:type="Union">
+                     <operand xsi:type="Union">
+                        <operand xsi:type="Union">
+                           <operand xsi:type="Union">
+                              <operand xsi:type="Union">
+                                 <operand xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Office Visit" xsi:type="ValueSetRef"/>
+                                 </operand>
+                                 <operand xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                    <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+                                 </operand>
+                              </operand>
+                              <operand xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes name="Detoxification Visit" xsi:type="ValueSetRef"/>
+                              </operand>
+                           </operand>
+                           <operand xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="Hospital Observation Care - Initial" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </operand>
+                        <operand xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" dataType="ns5:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Hospital Inpatient Visit - Initial" xsi:type="ValueSetRef"/>
+                        </operand>
+                     </operand>
+                     <operand xmlns:ns6="urn:healthit-gov:qdm:v5_0_draft" dataType="ns6:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Discharge Services - Hospital Inpatient Same Day Discharge" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+                  <operand xmlns:ns7="urn:healthit-gov:qdm:v5_0_draft" dataType="ns7:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Discharge Services - Hospital Inpatient" xsi:type="ValueSetRef"/>
+                  </operand>
+               </operand>
+               <operand xmlns:ns8="urn:healthit-gov:qdm:v5_0_draft" dataType="ns8:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Face-to-Face Interaction" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="Encounters During Measurement Period" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Valid Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="IncludedIn">
+               <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Alcohol and Drug Dependence Diagnosis" context="Patient" accessLevel="Public">
+         <expression xmlns:ns9="urn:healthit-gov:qdm:v5_0_draft" dataType="ns9:Diagnosis" xsi:type="Retrieve">
+            <codes name="Alcohol and Drug Dependence" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="First Alcohol Drug Dependence Interval" context="Patient" accessLevel="Public">
+         <expression lowClosed="true" highClosed="true" xsi:type="Interval">
+            <low xsi:type="Start">
+               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            </low>
+            <high xsi:type="Add">
+               <operand xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+               <operand value="10" unit="months" xsi:type="Quantity"/>
+            </high>
+         </expression>
+      </def>
+      <def name="First Alcohol Drug Dependence" context="Patient" accessLevel="Public">
+         <expression xsi:type="List">
+            <element xsi:type="First">
+               <source xsi:type="Query">
+                  <source alias="Diagnosis">
+                     <expression name="Alcohol and Drug Dependence Diagnosis" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand name="First Alcohol Drug Dependence Interval" xsi:type="ExpressionRef"/>
+                  </where>
+                  <sort>
+                     <by direction="asc" xsi:type="ByExpression">
+                        <expression xsi:type="Start">
+                           <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                        </expression>
+                     </by>
+                  </sort>
+               </source>
+            </element>
+         </expression>
+      </def>
+      <def name="First Alcohol Drug Dependence Dx" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Diagnosis">
+               <expression name="First Alcohol Drug Dependence" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Encounter" xsi:type="With">
+               <expression name="Encounters During Measurement Period" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand xsi:type="Start">
+                     <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                  </operand>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Initial Population 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand name="In Demographic" xsi:type="ExpressionRef"/>
+            <operand xsi:type="Exists">
+               <operand name="First Alcohol Drug Dependence Dx" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Denominator 1" context="Patient" accessLevel="Public">
+         <expression name="Initial Population 1" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Drug Dependence Treatment Or Psych Encounters" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xmlns:ns10="urn:healthit-gov:qdm:v5_0_draft" dataType="ns10:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Alcohol and Drug Dependence Treatment" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns11="urn:healthit-gov:qdm:v5_0_draft" dataType="ns11:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Psych Visit - Psychotherapy" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Drug Dependence Treatment Or Psych Visit" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Drug Dependence Treatment Or Psych Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Diagnosis" xsi:type="With">
+               <expression name="First Alcohol Drug Dependence Dx" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="14" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Denominator Exclusions 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Diagnosis">
+               <expression xmlns:ns12="urn:healthit-gov:qdm:v5_0_draft" dataType="ns12:Diagnosis" xsi:type="Retrieve">
+                  <codes name="Alcohol and Drug Dependence" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="FirstDiagnosis" xsi:type="With">
+               <expression name="First Alcohol Drug Dependence Dx" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="FirstDiagnosis" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="60" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Numerator 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand name="Drug Dependence Treatment Or Psych Visit" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Stratification 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand xsi:type="GreaterOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="13" xsi:type="Literal"/>
+            </operand>
+            <operand xsi:type="Less">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Stratification 2" context="Patient" accessLevel="Public">
+         <expression xsi:type="GreaterOrEqual">
+            <operand precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Initial Population 2" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand name="In Demographic" xsi:type="ExpressionRef"/>
+            <operand xsi:type="Exists">
+               <operand name="First Alcohol Drug Dependence Dx" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Denominator 2" context="Patient" accessLevel="Public">
+         <expression name="Initial Population 2" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Denominator Exclusions 2" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Diagnosis">
+               <expression xmlns:ns13="urn:healthit-gov:qdm:v5_0_draft" dataType="ns13:Diagnosis" xsi:type="Retrieve">
+                  <codes name="Alcohol and Drug Dependence" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="FirstDiagnosis" xsi:type="With">
+               <expression name="First Alcohol Drug Dependence Dx" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="FirstDiagnosis" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="60" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Drug Dependence Treatment Encounters A Month After Diagnosis" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Drug Dependence Treatment Or Psych Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Visit" xsi:type="With">
+               <expression name="Drug Dependence Treatment Or Psych Visit" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Visit" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="30" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Numerator 2" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand name="Numerator 1" xsi:type="ExpressionRef"/>
+            <operand xsi:type="GreaterOrEqual">
+               <operand xsi:type="Count">
+                  <source name="Drug Dependence Treatment Encounters A Month After Diagnosis" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns14="urn:healthit-gov:qdm:v5_0_draft" dataType="ns14:PatientCharacteristicEthnicity" xsi:type="Retrieve">
+                  <codes name="Ethnicity CDCREC" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Payer" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns15="urn:healthit-gov:qdm:v5_0_draft" dataType="ns15:PatientCharacteristicPayer" xsi:type="Retrieve">
+                  <codes name="Payer SOP" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Race" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns16="urn:healthit-gov:qdm:v5_0_draft" dataType="ns16:PatientCharacteristicRace" xsi:type="Retrieve">
+                  <codes name="Race CDCREC" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Sex" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns17="urn:healthit-gov:qdm:v5_0_draft" dataType="ns17:PatientCharacteristicSex" xsi:type="Retrieve">
+                  <codes name="ONC Administrative Sex AdministrativeGender" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

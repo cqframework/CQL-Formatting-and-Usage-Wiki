@@ -1,7 +1,11 @@
-library CMS9 version '4'
+library CMS9 version '4.0.0'
 
-// CMS9v4 - Exclusive Breast Milk Feeding
-// Episode-of-Care-Based Proportion Measure with multiple populations
+/*
+  CMS9v4
+  Exclusive Breast Milk Feeding
+
+  Episode-of-Care-Based Proportion Measure with multiple populations
+*/
 
 using QDM version '5.0'
 

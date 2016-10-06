@@ -1,58 +1,10 @@
-library CMS55 version '5'
+library CMS55 version '5.0.0'
 
 /*
 	CMS55v1 NQF0495
 	Median Time from ED Arrival to ED Departure for Admitted ED Patients
 
 	Episode-of-Care-Based Continuous Variable Measure with stratification
-
-	Population Criteria
-
-	    Initial Population =
-	        AND: "Occurrence A of Encounter, Performed: Emergency Department Visit" <= 1 hour(s) ends before or concurrent with start of Occurrence A of $EncounterInpatient
-	    Measure Population =
-	        AND: Initial Population
-	    Measure Population Exclusions =
-	        OR: "Transfer From: Hospital Settings" <= 6 hour(s) ends before or concurrent with start of "Occurrence A of Encounter, Performed: Emergency Department Visit"
-	    Measure Observation =
-	        Median:
-	            Datetimediff:
-	                "Occurrence A of Encounter, Performed: Emergency Department Visit (facility location departure datetime)"
-	                "Occurrence A of Encounter, Performed: Emergency Department Visit (facility location arrival datetime)"
-	    Stratifications =
-	        Stratification 1 =
-	            AND NOT: Intersection of:
-	                Occurrence A of $EncounterInpatient
-	                "Encounter, Performed: Encounter Inpatient (principal diagnosis: Psychiatric/Mental Health Patient)"
-	        Stratification 2 =
-	            AND: Intersection of:
-	                Occurrence A of $EncounterInpatient
-	                "Encounter, Performed: Encounter Inpatient (principal diagnosis: Psychiatric/Mental Health Patient)"
-
-	Data Criteria (QDM Variables)
-
-	    $EncounterInpatient =
-	        "Encounter, Performed: Encounter Inpatient" satisfies all:
-	            (length of stay <= 120 day(s))
-	            ends during "Measurement Period"
-
-	Data Criteria (QDM Data Elements)
-
-	    "Encounter, Performed: Emergency Department Visit" using "Emergency Department Visit SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.292)"
-	    "Encounter, Performed: Encounter Inpatient" using "Encounter Inpatient SNOMEDCT Value Set (2.16.840.1.113883.3.666.5.307)"
-	    "Transfer From: Hospital Settings" using "Hospital Settings SNOMEDCT Value Set (2.16.840.1.113762.1.4.1111.126)"
-	    Attribute: "Principal diagnosis: Psychiatric/Mental Health Patient" using "Psychiatric/Mental Health Patient Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.299)"
-
-	Supplemental Data Elements
-
-	    "Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)"
-	    "Patient Characteristic Payer: Payer" using "Payer SOP Value Set (2.16.840.1.114222.4.11.3591)"
-	    "Patient Characteristic Race: Race" using "Race CDCREC Value Set (2.16.840.1.114222.4.11.836)"
-	    "Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)"
-
-	Risk Adjustment Variables
-
-	    None
 */
 
 using QDM version '5.0'
