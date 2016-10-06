@@ -1,41 +1,43 @@
 library CMS9 version '4'
 
-using QDM //version '4.2'
+// CMS9v4 - Exclusive Breast Milk Feeding
+// Episode-of-Care-Based Proportion Measure with multiple populations
 
-valueset "Feeding Intention-Breast": '2.16.840.1.113762.1.4.1045.29'
-valueset "Galactosemia": '2.16.840.1.113883.3.117.1.7.1.35'
-valueset "Single Live Birth": '2.16.840.1.113883.3.117.1.7.1.25)'
-valueset "Single Live Born Newborn Born in Hospital": '2.16.840.1.113883.3.117.1.7.1.26'
-valueset "Encounter Inpatient": '2.16.840.1.113883.3.666.5.307'
-valueset "Estimated Gestational Age at Birth": '2.16.840.1.113762.1.4.1045.47'
-valueset "Parenteral Nutrition": '2.16.840.1.113883.3.117.1.7.1.38'
-valueset "Breast Milk": '2.16.840.1.113883.3.117.1.7.1.30'
-valueset "Dietary Intake Other than Breast Milk": '2.16.840.1.113883.3.117.1.7.1.27'
-valueset "Neonatal Intensive Care Unit (NICU)": '2.16.840.1.113883.3.117.1.7.1.75'
-valueset "Patient Expired": '2.16.840.1.113883.3.117.1.7.1.309'
-valueset "Discharge To Acute Care Facility": '2.16.840.1.113883.3.117.1.7.1.87'
+using QDM version '5.0'
 
-valueset "Ethnicity CDCREC": '2.16.840.1.114222.4.11.837'
-valueset "Payer SOP": '2.16.840.1.114222.4.11.3591'
-valueset "Race CDCREC": '2.16.840.1.114222.4.11.836'
-valueset "ONC Administrative Sex AdministrativeGender": '2.16.840.1.113762.1.4.1'
+valueset "Feeding Intention-Breast": 'urn:oid:2.16.840.1.113762.1.4.1045.29'
+valueset "Galactosemia": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.35'
+valueset "Single Live Birth": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.25)'
+valueset "Single Live Born Newborn Born in Hospital": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.26'
+valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
+valueset "Estimated Gestational Age at Birth": 'urn:oid:2.16.840.1.113762.1.4.1045.47'
+valueset "Parenteral Nutrition": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.38'
+valueset "Breast Milk": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.30'
+valueset "Dietary Intake Other than Breast Milk": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.27'
+valueset "Neonatal Intensive Care Unit (NICU)": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.75'
+valueset "Patient Expired": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.309'
+valueset "Discharge To Acute Care Facility": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.87'
 
-parameter MeasurementPeriod Interval<DateTime>
+valueset "Ethnicity CDCREC": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Payer SOP": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Race CDCREC": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "ONC Administrative Sex AdministrativeGender": 'urn:oid:2.16.840.1.113762.1.4.1'
+
+parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
-define "Encounter Inpatient":
+define "Inpatient Encounter":
   ["Encounter, Performed": "Encounter Inpatient"] E
-    where days between E.admissionDatetime and E.dischargeDatetime <= 120
-      and E.dischargeDatetime in MeasurementPeriod
+    where duration in days of E.relevantPeriod <= 120
+      and end of E.relevantPeriod in "Measurement Period"
 
 define "Gestational Age at Birth <= 37 weeks":
-  ["Physical Exam, Performed": "Gestational Age At Birth"] O
-    where O.quantitativeResult >= 259 days // 37 weeks
-    // NOTE: Had to add quantitativeResult to QDM to get proper type resolution here
+  ["Physical Exam, Performed": "Estimated Gestational Age at Birth"] O
+    where (O.result as Quantity) >= 259 days // 37 weeks
 
 define "Live Birth":
-  ["Diagnosis": "Single Live Birth"] // NOTE: QDM 4.2 only has Diagnosis, not Diagnosis, Active
+  ["Diagnosis": "Single Live Birth"]
     union ["Diagnosis": "Single Live Born Newborn Born in Hospital"]
 
 define "Galactosemia Diagnosis":
@@ -45,15 +47,15 @@ define "Parenteral Nutrition Procedure":
   ["Procedure, Performed": "Parenteral Nutrition"]
 
 define "Live Birth Infants without Parenteral Nutrition":
-  "Encounter Inpatient" E
+  "Inpatient Encounter" E
     with "Gestational Age at Birth <= 37 weeks" G
-      such that G.startDatetime between E.admissionDatetime and E.dischargeDatetime
+      such that G.relevantPeriod starts during E.relevantPeriod
     with "Live Birth" B
-      such that B.onsetDatetime between E.admissionDatetime and E.dischargeDatetime
+      such that B.prevalencePeriod starts during E.relevantPeriod
     without "Galactosemia Diagnosis" D
-      such that D.onsetDatetime between E.admissionDatetime and E.dischargeDatetime
+      such that D.prevalencePeriod starts during E.relevantPeriod
     without "Parenteral Nutrition Procedure" P
-      such that P.startDatetime between E.admissionDatetime and E.dischargeDatetime
+      such that P.relevantPeriod starts during E.relevantPeriod
 
 // Region: Initial Population 1
 
@@ -72,10 +74,10 @@ define "Denominator 1":
 // Region: Denominator Exclusions 1
 
 define "Denominator Exclusions 1":
-  "Encounter Inpatient" E
-    where E.facilityLocation in Neonatal Intensive Care Unit (NICU)
-      or E.dischargeStatus in Patient Expired
-      or E.dischargeStatus in Discharge To Acute Care Facility
+  "Inpatient Encounter" E
+    where E.facilityLocation in "Neonatal Intensive Care Unit (NICU)"
+      or E.dischargeDisposition in "Patient Expired"
+      or E.dischargeDisposition in "Discharge To Acute Care Facility"
 
 // EndRegion: Denominator Exclusions 1
 
@@ -88,9 +90,9 @@ define "Other Than Breast Milk Feeding":
   ["Substance, Administered": "Dietary Intake Other than Breast Milk"]
 
 define "Numerator 1":
-  "Encounter Inpatient" E
-    with "Breast Milk Feeding" F such that F.startDatetime between E.admissionDatetime and E.dischargeDatetime
-    without "Other Than Breast Milk Feeding" O such that O.startDatetime between E.admissionDatetime and E.dischargeDatetime
+  "Inpatient Encounter" E
+    with "Breast Milk Feeding" F such that F.relevantPeriod starts during E.relevantPeriod
+    without "Other Than Breast Milk Feeding" O such that O.relevantPeriod starts during E.relevantPeriod
 
 // EndRegion: Numerator 1
 
@@ -121,14 +123,14 @@ define "Initial Population 2":
 
 // TODO: How do we indicate that this is the infant's birth date, not the mother's?
 define "Infant Birth Date":
-  (singleton from (["Patient Characteristic": "Birthdate"])).startDatetime
+  (singleton from (["Patient Characteristic Birthdate"])).birthDatetime
 
 // TODO: In the QDM, this is expressed as the "absence of an intention to breast feed",
 // but this is not the same as the intended "presence of intention not to breast feed"
 define "Intention Not To Breast Feed":
-  "Encounter Inpatient" E
-    without ["Communication: From Patient to Provider": "Feeding Intention-Breast"] C
-      such that C.startDatetime <= "Infant Birth Date" + 1 hour // NOTE: Would be nice to be able to say 1 hour after "Infant Birth Date"...
+  "Inpatient Encounter" E
+    without ["Communication: From Patient To Provider": "Feeding Intention-Breast"] C
+      such that C.authorDatetime 1 hour or less after "Infant Birth Date" // + 1 hour // NOTE: Would be nice to be able to say 1 hour after "Infant Birth Date"...
 
 define "Denominator Exclusions 2":
   "Denominator Exclusions 1"
@@ -155,14 +157,22 @@ define "Numerator 2":
 // NONE
 // End Region: Stratification 2
 
+// Region: Supplemental Data Elements
 
-/*
-// TODO: How do we represent Supplemental Data Elements in the CQL?
-Supplemental Data Elements
+define "SDE Ethnicity":
+  ["Patient Characteristic Ethnicity": "Ethnicity CDCREC"] Characteristic
+    return Characteristic.code
 
-    "Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)"
-    "Patient Characteristic Payer: Payer" using "Payer SOP Value Set (2.16.840.1.114222.4.11.3591)"
-    "Patient Characteristic Race: Race" using "Race CDCREC Value Set (2.16.840.1.114222.4.11.836)"
-    "Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)"
+define "SDE Payer":
+  ["Patient Characteristic Payer": "Payer SOP"] Characteristic
+    return Characteristic.code
 
-*/
+define "SDE Race":
+  ["Patient Characteristic Race": "Race CDCREC"] Characteristic
+    return Characteristic.code
+
+define "SDE Sex":
+  ["Patient Characteristic Sex": "ONC Administrative Sex AdministrativeGender"] Characteristic
+    return Characteristic.code
+
+// End Region: Supplemental Data Elements

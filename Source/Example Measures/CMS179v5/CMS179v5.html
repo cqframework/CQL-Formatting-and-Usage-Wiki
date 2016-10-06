@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+ <head>
+  <title>ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</title>
+  <style type="text/css"> 
+ body { 
+ color: rgb(26, 26, 26); 
+ background-color: rgb(255,255,255); 
+ font-family: Verdana, Tahoma, sans-serif; 
+ font-size: 11px; 
+ } 
+ a { 
+ color: rgb(0, 0, 255); 
+ background-color: rgb(255,255,255); 
+ } 
+ h1 { 
+ font-size: 12pt; 
+ font-weight: bold; 
+ } 
+ h2 { 
+ font-size: 11pt; 
+ font-weight: bold; 
+ } 
+ h3 { 
+ font-size: 10pt; 
+ font-weight: bold; 
+ } 
+ h4 { 
+ font-size: 8pt; 
+ font-weight: bold; 
+ } 
+ div { 
+ width: 80%; 
+ } 
+ table { 
+ line-height: 10pt; 
+ width: 80%; 
+ font-size: 11px; 
+ } 
+ .inner_table { 
+ width: 100%; 
+ } 
+ .inner_table td {
+border-color:#ffffff;
+border-style:solid;
+border-width:1px;
+border-top: 0;
+border-left: 0;
+border-right: 0;
+}
+.inner_table tbody > tr:last-child > td  {
+border-bottom-style:none;
+}
+.ver { 
+ padding: 0px 5px} 
+ tr { 
+ background-color: rgb(224,224,224); 
+ } 
+ td { 
+ padding: 0.1cm 0.2cm; 
+ vertical-align: top; 
+ } 
+ .h1center { 
+ font-size: 12pt; 
+ font-weight: bold; 
+ text-align: center; 
+ width: 80%;} 
+ .header_table{ 
+ border: 1pt inset rgb(0,0,0);} 
+ .narr_table { 
+ width: 100%; 
+ } 
+ .narr_tr { 
+ background-color: rgb(225,225,225); 
+ } 
+ pre { 
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */ 
+ white-space: pre-wrap; /* css-3 */ 
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */ 
+ white-space: -pre-wrap; /* Opera 4-6 */ 
+ white-space: -o-pre-wrap; /* Opera 7 */ 
+ word-wrap: break-word; /* Internet Explorer 5.5+ */ 
+ font-family: Verdana, Tahoma, sans-serif; 
+ font-size: 11px; 
+ text-align:left; 
+ margin: 0px 0px 0px 0px; 
+ padding:0px 0px 0px 0px; 
+ } 
+ .narr_th { 
+ background-color: rgb(201,201,201); 
+ } 
+ .td_label{ 
+ font-weight: bold; 
+ color: white; 
+ }</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">179</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Version number</span></td>
+     <td style="width:30%">5.0.000</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">Not Applicable</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>a5e96a45-8132-4e72-bf4f-e8c81db9e641</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">Centers for Medicare &amp; Medicaid Services (CMS)</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">National Committee for Quality Assurance</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">None</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Average percentage of time in which patients aged 18 and older with atrial fibrillation who are on chronic warfarin therapy have International Normalized Ratio (INR) test results within the therapeutic range (i.e., TTR) during the measurement period.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.
+ 
+CPT(R) contained in the Measure specifications is copyright 2004-2015 American Medical Association. LOINC(R) copyright 2004-2015 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2015 International Health Terminology Standards Development Organisation. ICD-10 copyright 2015 World Health Organization. All Rights Reserved.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.
+
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Continuous Variable</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Outcome</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Millions of patients in the United States use warfarin to prevent strokes or to prevent or treat venous thromboembolism. Warfarin is highly effective, and has been in clinical use for over 50 years. However, warfarin is difficult to manage because it has many possible interactions with diet, other drugs, and comorbid conditions that may destabilize anticoagulation control. The possible consequences of insufficient or excessive anticoagulation are extremely serious and often fatal, making it imperative to pursue good control.
+
+The international normalized ratio (INR) test is the laboratory test used to determine the degree to which the patient's coagulation has been successfully suppressed by the vitamin K antagonist (VKA). For most patients, the goal is to keep the INR between 2 and 3, which roughly corresponds to the blood taking 2 to 3 times as long to clot as would a normal person's blood. This level of anticoagulation has been shown to maximize benefit (i.e., protect patients from blood clots) while minimizing risk (i.e., risk of hemorrhage attributable to excessive anticoagulation). Therapeutic INR range (TTR) is a way of summarizing INR control over time.
+
+TTR has been followed before, mostly in the setting of clinical trials where it is used to evaluate the effectiveness of warfarin therapy, particularly when warfarin is being compared to some other strategy. However, TTR has not previously been used as a quality measure - in fact, there has been a general lack of quality measurement in oral anticoagulation. There is much evidence that better anticoagulation control (i.e., higher TTR) can protect patients from severe or even fatal adverse events.
+
+We are using a well-established guideline for the expected frequency of warfarin monitoring.  The American College of Chest Physicians (ACCP) clinical practice guidelines for the management of antithrombotic agents published in 2008 recommends that laboratory monitoring of warfarin in patients on stable doses of warfarin occur at an interval of no longer than 4 weeks. There is fairly strong support for extending this interval from 28 to 42 days with patients who have achieved stable control.  For example, researchers at the VA who used the TTR as an outcome reported that the maximum follow-up interval can be safely extended from 28 days to 42 days after the patient has recorded three in-range INR values, without adversely impacting TTR.  
+
+In 2012, the ACCP anticoagulation guidelines were updated to recommend that patients with very stable INRs can be tested every 12 weeks (or 84 days). The new guideline significantly increases the interval for which testing should occur in a subset of patients that are &quot;very stable&quot; - defined as a warfarin dose that has not changed in 6 months. Because the measurement period is set to only one year, it would be impossible to fully implement criteria for identifying patients whose dose has not changed in 6 months.  Also, because dose information is not consistently found in EHRs, building measure logic that is dependent on the availability of dose and dose adjustments was determined to be not currently feasible. Therefore, we have chosen not to allow an 84-day follow-up interval, given its current level of evidentiary support and implementation challenges.  
+
+Because the target therapeutic range for patients with atrial flutter is the same as that for atrial fibrillation without valvular heart disease, patients with atrial flutter are also included in the denominator of this measure.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>&quot;In patients with atrial fibrillation (AF), including those with paroxysmal AF, who have had a prior ischemic stroke, transient ischemic attack, or systemic embolism, we recommend long-term anticoagulation with an oral [vitamin K antagonist] VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the high risk of future ischemic stroke faced by this set of patients (Grade 1A).&quot;
+
+&quot;In patients with AF, including those with paroxysmal AF, who have two or more of the following risk factors for future ischemic stroke, we recommend long-term anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the increased risk of future ischemic stroke faced by this set of patients (Grade 1A). Two or more of the following risk factors apply: (1) age&gt; 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.&quot;
+
+&quot;In patients with AF, including those with paroxysmal AF, with only one of the risk factors listed below, we recommend long-term antithrombotic therapy (Grade 1A), either as anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) [Grade 1A], or as aspirin, at a dose of 75 to 325 mg/d (Grade 1B). For these patients at intermediate risk of ischemic stroke, we suggest a VKA rather than aspirin (Grade 2A). This set of patients with AF is defined by having one of the following risk factors: (1) age &gt; 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.&quot;
+
+&quot;For patients with atrial flutter, we recommend that antithrombotic therapy decisions follow the same risk-based recommendations as for AF (Grade 1C).&quot;
+
+&quot;For patients who are receiving a stable dose of oral anticoagulants, we suggest monitoring at an interval of no longer than every 4 weeks.&quot;</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>A higher score indicates higher quality</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Connolly SJ, Pogue J, Eikelboom J, Flaker G, Commerford P, Franzosi MG, Healey JS, Yusuf S, ACTIVE W Investigators. Benefit of oral anticoagulant over antiplatelet therapy in atrial fibrillation depends on the quality of international normalized ratio control achieved by centers and countries as measured by time in therapeutic range. Circulation 2008 Nov 11;118(20):2029-37. [21 references] PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Rose A. Staff physician, Bedford VA Medical Center. Investigator, VA Center for Health Quality, Outcomes, and Economic Research at the Bedford VA. Assistant Professor, Boston University School of Medicine. Percent time in therapeutic INR range (TTR). 2010 Oct 7. 8 p.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Rose AJ, Berlowitz DR, Frayne SM, Hylek EM. Measuring quality of oral anticoagulation care: extending quality measurement to a new field. Jt Comm J Qual Patient Saf 2009 Mar;35(3):146-55. [115 references] PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Rosendaal FR, Cannegieter SC, van der Meer FJ, Briet E. A method to determine the optimal intensity of oral anticoagulant therapy. Thromb Haemost 1993 Mar 1;69(3):236-9. PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Van Leeuwen Y, Rosendaal FR, Cannegieter SC. Prediction of hemorrhagic and thrombotic events in patients with mechanical heart valve prostheses treated with oral anticoagulants. J Thromb Haemost 2008 Mar;6(3):451-6. PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Van Walraven C, Jennings A, Oake N, Fergusson D, Forster AJ. Effect of study setting on anticoagulation control: a systematic review and metaregression. Chest 2006 May;129(5):1155-66. [97 references] PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Veeger NJ, Piersma-Wichers M, Tijssen JG, Hillege HL, van der Meer J. Individual time within target range in patients treated with vitamin K antagonists: main determinant of quality of anticoagulation and predictor of clinical outcome. A retrospective study of 2300 consecutive patients with venous thromboembolism. Br J Haematol 2005 Feb;128(4):513-9. PubMed</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>White HD, Gruber M, Feyzi J, Kaatz S, Tse HF, Husted S, Albers GW. Comparison of outcomes among patients randomized to warfarin therapy according to anticoagulant control: results from SPORTIF III and V. Arch Intern Med 2007 Feb 12;167(3):239-45.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Hirsh J, Guyatt G, Albers GW, Harrington R, Schunemann HJ. Antithrombotic and Thrombolytic Therapy: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). CHEST 2008; 133(6_suppl);110S-112S.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Ansell J, Hirsh J, Hylek E, Jacobson A, Crowther M, Palareti G. Pharmacology and management of the vitamin K antagonists: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). Chest. 2008; 133: 160S-98S.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Holbrook A, Schulman S, Witt DM, Vandvik PO, Fish J, Kovacs MJ, Svensson PJ, Veenstra DL, Crowther M, Guyatt GH. Evidence-Based Management of Anticoagulant Therapy: Antithrombotic Therapy and Prevention of Thrombosis, 9th ed: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines. Chest. 2012; 141: e152S-e84S.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Rose AJ, Ozonoff A, Berlowitz DR, Ash AS, Reisman JI, Hylek EM. Reexamining the recommended follow-up interval after obtaining an in-range international normalized ratio value: results from the Veterans Affairs study to improve anticoagulation. Chest. 2011; 140: 359-65. chest.10-2738 [pii]. 10.1378/chest.10-2738.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Schulman S, Parpia S, Stewart C, Rudd-Scott L, Julian JA, Levine M. Warfarin dose assessment every 4 weeks versus every 12 weeks in patients with stable international normalized ratios: a randomized trial. Ann Intern Med. 2011; 155: 653-9. 155/10/653 [pii]. 10.1059/0003-4819-155-10-201111150-00003.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>CUMULATIVE MEDICATION DURATION is the total number of calendar days that an individual has active medications that contain the same drug ingredient of interest. In this measure, the active drug ingredient is warfarin. The number of active days of an occurrence of a medication (eg, a medication order or an entry in a patient's medication list) is calculated by taking the difference (in calendar days) between the date that the medication became active and the date that the medication stopped being active. The cumulative medication duration is calculated as the sum of the number of active calendar days for each occurrence of a medication that contains the same active ingredient over a set period of time, excluding any gaps during which a medication was not active. All of the entries in the value set for warfarin (OID: 2.16.840.1.113883.3.117.1.7.1.232) must be included in determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named &quot;CMS179v2_Supplemental_SQL_Logic_Reference.pdf&quot; for this logic.
+
+A VALID INR INTERVAL is two INR values separated by 56 days or less. INR values must be obtained in outpatient care settings; INR values while the patient is admitted to a hospital for more than 23 hours should not be included.
+
+THERAPEUTIC RANGE: for patients with atrial fibrillation and no valvular involvement, the target INR result = 2.0 - 3.0.
+
+PERCENT OF TIME IN THERAPEUTIC RANGE (TTR) is the percentage of time during which the interpolated INR values lie between 2.0 and 3.0. This can be from 0% to 100%. TTR percentage should be calculated for each patient that meets the criteria for the Measure Population. The average of these values is reported as the Measure Observation. The calculation for TTR is provided in the supplemental file named &quot;CMS179v2 _Supplemental_SQL_Logic_Reference.pdf&quot;.
+
+INTERPOLATED INR VALUES are obtained through the use of linear interpolation to assign an INR value to each day between successive observed INR values. The Rosendaal linear interpolation methodology used in this measure assumes a linear relationship between two INR values and allows the assignment of a specific INR to each day for each patient.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Please note that the logic expressions in the body section of the HQMF of this measure should *not* be used to calculate this clinical quality measure. They are only provided to represent the data elements needed for the calculation. In order to calculate this clinical quality measure correctly, only use the narrative specifications contained in the header section of the HQMF and the annotated database query found in the supplemental file named &quot;CMS179v4_Supplemental_SQL_Logic_Reference.pdf&quot;. 
+
+The calculation of TTR should include all available INR values for a given patient during the measurement period. When generating a QRDA-1 document for this measure, all available INR values during the measurement period should be included.
+
+The following filters are applied to each patient's INRs in order to calculate a patient-level TTR. INR values must be at least 0.8. Values less than 0.8 may represent aberrant results. INR values greater than 10 (i.e., outliers) must be replaced with a value of 10. An INR of 10 represents an abnormally high INR and would skew the results of the calculated TTR less than extreme values would (i.e., INR &gt; 10). The INR value closest to &quot;2.5&quot; is used to calculate TTR, when there are more than one INR result on a single date.
+
+In this measure, the active drug ingredient of primary interest is warfarin. CUMULATIVE MEDICATION DURATION should be calculated for all active warfarin-containing medications. All of the entries in the value set for warfarin must be included when determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named &quot;CMS179v4 _Supplemental_SQL_Logic_Reference.pdf&quot; for this logic.
+
+To be excluded from the initial patient population, patients must have an active diagnosis of valvular heart disease during the measurement period.
+
+To determine the proportion of patients with atrial fibrillation who are on chronic warfarin therapy and have sufficient INR monitoring to calculate a TTR, the reporting provider can divide the Measure Population by the Initial Patient Population.
+
+The calculation for TTR is provided in the supplemental file named &quot;CMS179v4 _Supplemental_SQL_Logic_Reference.pdf&quot;.
+
+The Measure Observation is the average of all patients' percent TTR, which can be calculated by dividing the sum of all patients' percent TTR by the number of patients in the Measure Population.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients aged 18 and older with atrial fibrillation without valvular heart disease who had been on chronic warfarin therapy for at least 180 days before the start of and during the measurement period. Patient should have at least one outpatient visit during the measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Equals all in Initial Population with sufficient international normalized ratio (INR) results to calculate a warfarin time in therapeutic range (TTR)</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Observations</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Average percentage of time that patients in the measure population have INR results within the therapeutic range (i.e., TTR)</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul>
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e539">Data Criteria (QDM Variables)</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div>
+   <ul>
+    <li><b>Initial Population =</b>
+     <ul>
+      <li> AND: Age&gt;= 18 year(s) at: &quot;Measurement Period&quot; </li>
+      <li>AND: Union of: 
+       <ul>
+        <li>&quot;Encounter, Performed: Face-to-Face Interaction&quot; </li>
+        <li>&quot;Encounter, Performed: Office Visit&quot; </li>
+        <li>during &quot;Measurement Period&quot; </li>
+       </ul></li>
+      <li> AND: &quot;Diagnosis: Atrial Fibrillation/Flutter&quot;  satisfies all:
+       <ul>
+        <li>starts before start of &quot;Measurement Period&quot; </li>
+        <li>overlaps &quot;Measurement Period&quot; </li>
+       </ul></li>
+      <li>AND NOT: &quot;Diagnosis: Valvular Heart Disease&quot; overlaps &quot;Measurement Period&quot; </li>
+      <li> AND: Sum&gt;= 180 day(s): &quot;Medication, Active: Warfarin (cumulative medication duration)&quot; starts before start of &quot;Measurement Period&quot; </li>
+      <li>AND: &quot;Medication, Active: Warfarin&quot; overlaps &quot;Measurement Period&quot; </li>
+     </ul></li>
+    <li><b>Measure Population =</b>
+     <ul>
+      <li>AND: Initial Population</li>
+     </ul>
+     <ul>
+      <li> AND: Count&gt;= 3 : &quot;Laboratory Test, Performed: INR (result)&quot; during &quot;Measurement Period&quot; </li>
+     </ul></li>
+    <li><b>Measure Population Exclusions =</b>
+     <ul>
+      <li>None</li>
+     </ul></li>
+    <li><b>Measure Observation =</b>
+     <ul>
+      <li>Avg: &quot;Laboratory Test, Performed: INR (result: Computed Value INR percent TTR)&quot; during &quot;Measurement Period&quot; </li>
+     </ul></li>
+    <li><b>Stratification =</b>
+     <ul>
+      <li>None</li>
+     </ul></li>
+   </ul>
+  </div>
+  <h3><a name="d1e539" href="#toc">Data Criteria (QDM Variables)</a></h3>
+  <div>
+   <ul>
+    <li>None</li>
+   </ul>
+  </div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Diagnosis: Atrial Fibrillation/Flutter&quot; using &quot;Atrial Fibrillation/Flutter Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.202)&quot;</li>
+    <li>&quot;Diagnosis: Valvular Heart Disease&quot; using &quot;Valvular Heart Disease Grouping Value Set (2.16.840.1.113883.3.464.1003.104.12.1017)&quot;</li>
+    <li>&quot;Encounter, Performed: Face-to-Face Interaction&quot; using &quot;Face-to-Face Interaction Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1048)&quot;</li>
+    <li>&quot;Encounter, Performed: Office Visit&quot; using &quot;Office Visit Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1001)&quot;</li>
+    <li>&quot;Laboratory Test, Performed: INR&quot; using &quot;INR LOINC Value Set (2.16.840.1.113883.3.117.1.7.1.213)&quot;</li>
+    <li>&quot;Medication, Active: Warfarin&quot; using &quot;Warfarin RXNORM Value Set (2.16.840.1.113883.3.117.1.7.1.232)&quot;</li>
+    <li> Attribute: &quot;Result: Computed Value INR percent TTR&quot; using &quot;Computed Value INR percent TTR Grouping Value Set (2.16.840.1.113883.3.464.1003.104.12.1018)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Patient Characteristic Ethnicity: Ethnicity&quot; using &quot;Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)&quot;</li>
+    <li>&quot;Patient Characteristic Payer: Payer&quot; using &quot;Payer SOP Value Set (2.16.840.1.114222.4.11.3591)&quot;</li>
+    <li>&quot;Patient Characteristic Race: Race&quot; using &quot;Race CDCREC Value Set (2.16.840.1.114222.4.11.836)&quot;</li>
+    <li>&quot;Patient Characteristic Sex: ONC Administrative Sex&quot; using &quot;ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul>
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
