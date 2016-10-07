@@ -136,6 +136,21 @@ define "Intention Not To Breast Feed":
     without ["Communication: From Patient To Provider": "Feeding Intention-Breast"] C
       such that C.authorDatetime 1 hour or less after "Infant Birth Date"
 
+// NOTE: There is a LOINC concept for an Obstetrics Admission Note.  We could potentially
+// request an addition (with support from the American College of Obstetrics and Gynecology - ACOG)
+// to the required assessment questions such as "Intent to breast feed" with normative answers of "yes" or "no"
+// Then we could address the question posed in the measure with the following define:
+// 78718-4 	Obstetrics and Gynecology Admission history and physical note
+/*
+define "Intention Not To Breast Feed":
+  ["Assessment": "Obstetrics and Gynecology Admission"] Assessment
+    where exists (
+      Assessment.component Question
+        where Question.code in "Intent to breast feed"
+          and Question.result in "Normative No"
+    )
+*/
+
 define "Denominator Exclusions 2":
   "Denominator Exclusions 1"
     union "Intention Not To Breast Feed"
