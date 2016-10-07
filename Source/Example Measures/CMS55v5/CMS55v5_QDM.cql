@@ -39,8 +39,6 @@ define "Measure Population":
 define "Measure Population Exclusions":
 	"Emergency Department Encounters" Encounter
 		where Encounter.admissionSource in "Hospital Settings"
-		// NOTE: QDM 5.0 removed the Transfer From, so we cannot express the requirement
-		//  that the transfer was less than 6 hours before the ED encounter
 
 // Measure Observation
 define function EDStayTime(Encounter "Encounter, Performed"):

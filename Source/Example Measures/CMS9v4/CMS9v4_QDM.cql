@@ -129,12 +129,12 @@ define "Initial Population 2":
 define "Infant Birth Date":
   (singleton from (["Patient Characteristic Birthdate"])).birthDatetime
 
-// TODO: In the QDM, this is expressed as the "absence of an intention to breast feed",
+// TODO: In the source measure, this is expressed as the "absence of an intention to breast feed",
 // but this is not the same as the intended "presence of intention not to breast feed"
 define "Intention Not To Breast Feed":
   "Inpatient Encounter" E
     without ["Communication: From Patient To Provider": "Feeding Intention-Breast"] C
-      such that C.authorDatetime 1 hour or less after "Infant Birth Date" // + 1 hour // NOTE: Would be nice to be able to say 1 hour after "Infant Birth Date"...
+      such that C.authorDatetime 1 hour or less after "Infant Birth Date"
 
 define "Denominator Exclusions 2":
   "Denominator Exclusions 1"
