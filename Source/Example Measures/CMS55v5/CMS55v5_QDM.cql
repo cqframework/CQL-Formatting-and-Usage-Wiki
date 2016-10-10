@@ -34,7 +34,7 @@ define "Emergency Department Encounters":
 			such that EmergencyEncounter.relevantPeriod ends 1 hour or less before start of InpatientEncounter.relevantPeriod
 
 define "Measure Population":
-	"Emergency Department Encounters" Encounter
+	"Emergency Department Encounters"
 
 define "Measure Population Exclusions":
 	"Emergency Department Encounters" Encounter
