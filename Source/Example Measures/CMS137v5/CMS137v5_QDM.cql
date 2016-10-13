@@ -92,11 +92,11 @@ define "Denominator Exclusions 1":
 define "Numerator 1":
   exists ("Drug Dependence Treatment Or Psych Visit")
 
-define "Stratification 1":
+define "Stratification 1_1":
   AgeInYearsAt(start of "Measurement Period") >= 13
     and AgeInYearsAt(start of "Measurement Period") < 18
 
-define "Stratification 2":
+define "Stratification 1_2":
   AgeInYearsAt(start of "Measurement Period") >= 18
 
 define "Initial Population 2":
@@ -119,6 +119,13 @@ define "Drug Dependence Treatment Encounters A Month After Diagnosis":
 define "Numerator 2":
   "Numerator 1"
     and Count("Drug Dependence Treatment Encounters A Month After Diagnosis") >= 2
+
+define "Stratification 2_1":
+  AgeInYearsAt(start of "Measurement Period") >= 13
+    and AgeInYearsAt(start of "Measurement Period") < 18
+
+define "Stratification 2_2":
+  AgeInYearsAt(start of "Measurement Period") >= 18
 
 define "SDE Ethnicity":
   ["Patient Characteristic Ethnicity": "Ethnicity CDCREC"] Characteristic

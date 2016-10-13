@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
-   <identifier id="CMS55" version="5"/>
+   <identifier id="CMS55" version="5.0.0"/>
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
@@ -31,7 +31,7 @@
       </def>
    </parameters>
    <valueSets>
-      <def name="Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
       <def name="Emergency Department Visit" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.293" accessLevel="Public"/>
       <def name="Hospital Settings" id="urn:oid:2.16.840.1.113762.1.4.1111.126" accessLevel="Public"/>
       <def name="Psychiatric/Mental Health Patient" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.299" accessLevel="Public"/>
@@ -50,7 +50,7 @@
          <expression xsi:type="Query">
             <source alias="Encounter">
                <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
-                  <codes name="Inpatient" xsi:type="ValueSetRef"/>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
                </expression>
             </source>
             <where xsi:type="And">
@@ -94,11 +94,7 @@
          </expression>
       </def>
       <def name="Measure Population" context="Patient" accessLevel="Public">
-         <expression xsi:type="Query">
-            <source alias="Encounter">
-               <expression name="Emergency Department Encounters" xsi:type="ExpressionRef"/>
-            </source>
-         </expression>
+         <expression name="Emergency Department Encounters" xsi:type="ExpressionRef"/>
       </def>
       <def name="Measure Population Exclusions" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">

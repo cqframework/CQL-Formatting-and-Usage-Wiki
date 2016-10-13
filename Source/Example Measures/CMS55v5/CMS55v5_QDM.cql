@@ -9,7 +9,7 @@ library CMS55 version '5.0.0'
 
 using QDM version '5.0'
 
-valueset "Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
+valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307'
 valueset "Emergency Department Visit": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.293'
 valueset "Hospital Settings": 'urn:oid:2.16.840.1.113762.1.4.1111.126'
 valueset "Psychiatric/Mental Health Patient": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.299'
@@ -24,7 +24,7 @@ parameter "Measurement Period" default Interval[@2014-01-01T00:00:00.0, @2015-01
 context Patient
 
 define "Inpatient Encounters":
-	["Encounter, Performed": "Inpatient"] Encounter
+	["Encounter, Performed": "Encounter Inpatient"] Encounter
 		where Encounter.lengthOfStay <= 120 days
 			and Encounter.relevantPeriod ends during "Measurement Period"
 
@@ -41,7 +41,7 @@ define "Measure Population Exclusions":
 		where Encounter.admissionSource in "Hospital Settings"
 
 // Measure Observation
-define function EDStayTime(Encounter "Encounter, Performed"):
+define function "EDStayTime"(Encounter "Encounter, Performed"):
 	duration in minutes of Encounter.locationPeriod
 
 // NOTE: The calculation method is specified in the HQMF, so will not be specified here

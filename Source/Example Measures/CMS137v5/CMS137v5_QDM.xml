@@ -240,7 +240,7 @@
             <operand name="Drug Dependence Treatment Or Psych Visit" xsi:type="ExpressionRef"/>
          </expression>
       </def>
-      <def name="Stratification 1" context="Patient" accessLevel="Public">
+      <def name="Stratification 1_1" context="Patient" accessLevel="Public">
          <expression xsi:type="And">
             <operand xsi:type="GreaterOrEqual">
                <operand precision="Year" xsi:type="CalculateAgeAt">
@@ -266,7 +266,7 @@
             </operand>
          </expression>
       </def>
-      <def name="Stratification 2" context="Patient" accessLevel="Public">
+      <def name="Stratification 1_2" context="Patient" accessLevel="Public">
          <expression xsi:type="GreaterOrEqual">
             <operand precision="Year" xsi:type="CalculateAgeAt">
                <operand path="birthDatetime" xsi:type="Property">
@@ -353,6 +353,45 @@
                </operand>
                <operand valueType="t:Integer" value="2" xsi:type="Literal"/>
             </operand>
+         </expression>
+      </def>
+      <def name="Stratification 2_1" context="Patient" accessLevel="Public">
+         <expression xsi:type="And">
+            <operand xsi:type="GreaterOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="13" xsi:type="Literal"/>
+            </operand>
+            <operand xsi:type="Less">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Stratification 2_2" context="Patient" accessLevel="Public">
+         <expression xsi:type="GreaterOrEqual">
+            <operand precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
          </expression>
       </def>
       <def name="SDE Ethnicity" context="Patient" accessLevel="Public">

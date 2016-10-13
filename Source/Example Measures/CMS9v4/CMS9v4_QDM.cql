@@ -5,6 +5,9 @@ library CMS9 version '4.0.0'
   Exclusive Breast Milk Feeding
 
   Episode-of-Care-Based Proportion Measure with multiple populations
+
+  NOTE: This example is purposefully based on version 4 of the measure to allow
+  for exploration of the expression of the "intention to breastfeed" concept.
 */
 
 using QDM version '5.0'
@@ -32,17 +35,19 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] E
-    where duration in days of E.relevantPeriod <= 120
-      and end of E.relevantPeriod in "Measurement Period"
+  ["Encounter, Performed": "Encounter Inpatient"] Encounter
+    where duration in days of Encounter.relevantPeriod <= 120
+      and end of Encounter.relevantPeriod in "Measurement Period"
 
 define "Gestational Age at Birth <= 37 weeks":
-  ["Physical Exam, Performed": "Estimated Gestational Age at Birth"] O
-    where (O.result as Quantity) >= 259 days // 37 weeks
+  ["Physical Exam, Performed": "Estimated Gestational Age at Birth"] Age
+    where (Age.result as Quantity) >= 259 days // 37 weeks
 
 define "Live Birth":
-  ["Diagnosis": "Single Live Birth"]
-    union ["Diagnosis": "Single Live Born Newborn Born in Hospital"]
+  distinct (
+    ["Diagnosis": "Single Live Birth"]
+      union ["Diagnosis": "Single Live Born Newborn Born in Hospital"]
+  )
 
 define "Galactosemia Diagnosis":
   ["Diagnosis": "Galactosemia"]
@@ -51,15 +56,15 @@ define "Parenteral Nutrition Procedure":
   ["Procedure, Performed": "Parenteral Nutrition"]
 
 define "Live Birth Infants without Parenteral Nutrition":
-  "Inpatient Encounter" E
-    with "Gestational Age at Birth <= 37 weeks" G
-      such that G.relevantPeriod starts during E.relevantPeriod
-    with "Live Birth" B
-      such that B.prevalencePeriod starts during E.relevantPeriod
-    without "Galactosemia Diagnosis" D
-      such that D.prevalencePeriod starts during E.relevantPeriod
-    without "Parenteral Nutrition Procedure" P
-      such that P.relevantPeriod starts during E.relevantPeriod
+  "Inpatient Encounter" Encounter
+    with "Gestational Age at Birth <= 37 weeks" Age
+      such that Age.relevantPeriod starts during Encounter.relevantPeriod
+    with "Live Birth" Birth
+      such that Birth.prevalencePeriod starts during Encounter.relevantPeriod
+    without "Galactosemia Diagnosis" Diagnosis
+      such that Diagnosis.prevalencePeriod starts during Encounter.relevantPeriod
+    without "Parenteral Nutrition Procedure" Procedure
+      such that Procedure.relevantPeriod starts during Encounter.relevantPeriod
 
 // Region: Initial Population 1
 
@@ -78,10 +83,10 @@ define "Denominator 1":
 // Region: Denominator Exclusions 1
 
 define "Denominator Exclusions 1":
-  "Inpatient Encounter" E
-    where E.facilityLocation in "Neonatal Intensive Care Unit (NICU)"
-      or E.dischargeDisposition in "Patient Expired"
-      or E.dischargeDisposition in "Discharge To Acute Care Facility"
+  "Inpatient Encounter" Encounter
+    where Encounter.facilityLocation in "Neonatal Intensive Care Unit (NICU)"
+      or Encounter.dischargeDisposition in "Patient Expired"
+      or Encounter.dischargeDisposition in "Discharge To Acute Care Facility"
 
 // EndRegion: Denominator Exclusions 1
 
@@ -94,9 +99,11 @@ define "Other Than Breast Milk Feeding":
   ["Substance, Administered": "Dietary Intake Other than Breast Milk"]
 
 define "Numerator 1":
-  "Inpatient Encounter" E
-    with "Breast Milk Feeding" F such that F.relevantPeriod starts during E.relevantPeriod
-    without "Other Than Breast Milk Feeding" O such that O.relevantPeriod starts during E.relevantPeriod
+  "Inpatient Encounter" Encounter
+    with "Breast Milk Feeding" Feeding
+      such that Feeding.relevantPeriod starts during Encounter.relevantPeriod
+    without "Other Than Breast Milk Feeding" OtherFeeding
+      such that OtherFeeding.relevantPeriod starts during Encounter.relevantPeriod
 
 // EndRegion: Numerator 1
 
@@ -132,11 +139,11 @@ define "Infant Birth Date":
 // TODO: In the source measure, this is expressed as the "absence of an intention to breast feed",
 // but this is not the same as the intended "presence of intention not to breast feed"
 define "Intention Not To Breast Feed":
-  "Inpatient Encounter" E
-    without ["Communication: From Patient To Provider": "Feeding Intention-Breast"] C
-      such that C.authorDatetime 1 hour or less after "Infant Birth Date"
+  "Inpatient Encounter" Encounter
+    without ["Communication: From Patient To Provider": "Feeding Intention-Breast"] Communication
+      such that Communication.authorDatetime 1 hour or less after "Infant Birth Date"
 
-// NOTE: There is a LOINC concept for an Obstetrics Admission Note.  We could potentially
+// NOTE: There is a LOINC concept for an Obstetrics Admission Note. We could potentially
 // request an addition (with support from the American College of Obstetrics and Gynecology - ACOG)
 // to the required assessment questions such as "Intent to breast feed" with normative answers of "yes" or "no"
 // Then we could address the question posed in the measure with the following define:
