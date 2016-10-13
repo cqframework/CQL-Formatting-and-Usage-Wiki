@@ -43,6 +43,20 @@ define "Gestational Age at Birth <= 37 weeks":
   ["Physical Exam, Performed": "Estimated Gestational Age at Birth"] Age
     where (Age.result as Quantity) >= 259 days // 37 weeks
 
+// NOTE: Gestational age may be calculated using the ACOG ReVITALize guidelines with
+// Estimated Due Date (EDD)
+// Needs to be the most recent exam associated with this pregnancy
+/*
+define "Estimated Due Date":
+  Last(
+    ["Physical Exam, Performed": "Estimated Due Date"] Exam
+      sort by start of relevantPeriod
+  ).result as DateTime
+
+define "Gestational Age in Days at Birth":
+  (280 - (duration in days between "Estimated Due Date" and "Birth Date")) div 7
+*/
+
 define "Live Birth":
   distinct (
     ["Diagnosis": "Single Live Birth"]
