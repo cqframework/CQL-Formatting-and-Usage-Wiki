@@ -11,8 +11,6 @@ valueset "Encephalopathy due to Childhood Vaccination": 'Encephalopathy due to C
 
 parameter "Measurement Period" Interval<DateTime>
 
-
-
 /*
 Numerator =
   AND: Union of:

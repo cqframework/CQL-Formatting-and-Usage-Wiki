@@ -14,10 +14,10 @@ valueset "Emergency Department Visit": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.29
 valueset "Hospital Settings": 'urn:oid:2.16.840.1.113762.1.4.1111.126'
 valueset "Psychiatric/Mental Health Patient": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.299'
 
-valueset "Ethnicity CDCREC": 'urn:oid:2.16.840.1.114222.4.11.837'
-valueset "Payer SOP": 'urn:oid:2.16.840.1.114222.4.11.3591'
-valueset "Race CDCREC": 'urn:oid:2.16.840.1.114222.4.11.836'
-valueset "ONC Administrative Sex AdministrativeGender": 'urn:oid:2.16.840.1.113762.1.4.1'
+valueset "Ethnicity": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
 
 parameter "Measurement Period" default Interval[@2014-01-01T00:00:00.0, @2015-01-01T00:00:00.0)
 
@@ -70,19 +70,19 @@ define "Stratification 3":
 // Region: Supplemental Data Elements
 
 define "SDE Ethnicity":
-  ["Patient Characteristic Ethnicity": "Ethnicity CDCREC"] Characteristic
+  ["Patient Characteristic Ethnicity": "Ethnicity"] Characteristic
     return Characteristic.code
 
 define "SDE Payer":
-  ["Patient Characteristic Payer": "Payer SOP"] Characteristic
+  ["Patient Characteristic Payer": "Payer"] Characteristic
     return Characteristic.code
 
 define "SDE Race":
-  ["Patient Characteristic Race": "Race CDCREC"] Characteristic
+  ["Patient Characteristic Race": "Race"] Characteristic
     return Characteristic.code
 
 define "SDE Sex":
-  ["Patient Characteristic Sex": "ONC Administrative Sex AdministrativeGender"] Characteristic
+  ["Patient Characteristic Sex": "ONC Administrative Sex"] Characteristic
     return Characteristic.code
 
 // End Region: Supplemental Data Elements

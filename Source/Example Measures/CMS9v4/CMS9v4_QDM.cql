@@ -25,10 +25,10 @@ valueset "Neonatal Intensive Care Unit (NICU)": 'urn:oid:2.16.840.1.113883.3.117
 valueset "Patient Expired": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.309'
 valueset "Discharge To Acute Care Facility": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.87'
 
-valueset "Ethnicity CDCREC": 'urn:oid:2.16.840.1.114222.4.11.837'
-valueset "Payer SOP": 'urn:oid:2.16.840.1.114222.4.11.3591'
-valueset "Race CDCREC": 'urn:oid:2.16.840.1.114222.4.11.836'
-valueset "ONC Administrative Sex AdministrativeGender": 'urn:oid:2.16.840.1.113762.1.4.1'
+valueset "Ethnicity": 'urn:oid:2.16.840.1.114222.4.11.837'
+valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
+valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
+valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
 
 parameter "Measurement Period" Interval<DateTime>
 
@@ -200,19 +200,19 @@ define "Numerator 2":
 // Region: Supplemental Data Elements
 
 define "SDE Ethnicity":
-  ["Patient Characteristic Ethnicity": "Ethnicity CDCREC"] Characteristic
+  ["Patient Characteristic Ethnicity": "Ethnicity"] Characteristic
     return Characteristic.code
 
 define "SDE Payer":
-  ["Patient Characteristic Payer": "Payer SOP"] Characteristic
+  ["Patient Characteristic Payer": "Payer"] Characteristic
     return Characteristic.code
 
 define "SDE Race":
-  ["Patient Characteristic Race": "Race CDCREC"] Characteristic
+  ["Patient Characteristic Race": "Race"] Characteristic
     return Characteristic.code
 
 define "SDE Sex":
-  ["Patient Characteristic Sex": "ONC Administrative Sex AdministrativeGender"] Characteristic
+  ["Patient Characteristic Sex": "ONC Administrative Sex"] Characteristic
     return Characteristic.code
 
 // End Region: Supplemental Data Elements
