@@ -1,0 +1,1194 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:hl7-org:v3">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+      <title>ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</title><style type="text/css">
+body {
+	color: rgb(26, 26, 26);
+	background-color: rgb(255,255,255);
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 11px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+
+
+h1 {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+
+
+
+
+tr {
+	background-color: rgb(224,224,224);
+}
+
+td {
+	padding: 0.1cm 0.2cm;
+	vertical-align: top;
+}
+
+/*Begin Joshua Clingo's changes*/
+
+a {
+	/*color: rgb(0, 0, 255);
+	background-color: rgb(255,255,255);*/
+}
+
+table {
+	line-height: 10pt;
+}
+
+/*div {
+	width: 80%;
+}*/
+
+.list-unstyled {
+    list-style-type: none;
+}
+
+.list-unstyled li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.list-header {
+    font-size: 12px;
+    color: rgb(0, 0, 238);
+}
+
+.list-header:hover {
+    text-decoration: underline;
+}
+
+.code {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    color:black;
+    background-color:rgb(250,250,250);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 10px;
+    line-height: 1.5em;
+    font-size: 13px;
+    overflow: auto;
+}
+
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.section {
+    font-size: 10pt;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cql-class, .cql-object {
+    color: rgb(25, 127, 157);
+}
+
+.cql-function {
+    color: rgb(25, 127, 157);
+}
+
+.cql-keyword {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.cql-variable, .cql-property {
+    color: rgb(128, 0, 0);
+}
+
+.cql-interface {
+    color: rgb(43, 170, 175);
+}
+
+.cql-literal, .cql-operator {
+    color: rgb(64,64,64);
+}
+
+.cql-reserved {
+    color: rgb(0,0,0);
+}
+
+.cql-string {
+    color: rgb(163, 21, 21);
+}
+
+.cql-comment {
+    color: rgb(0, 128, 0);
+}
+
+.treeview {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.treeview:hover input ~ label:before,
+.treeview.hover input ~ label:before {
+  opacity: 1.0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.treeview ul {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  list-style: none;
+  padding-left: 1em;
+}
+.treeview ul li span {
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -ms-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+.treeview input {
+  display: none;
+}
+.treeview input:checked ~ ul {
+  display: none;
+}
+.treeview input ~ label {
+  cursor: pointer;
+}
+.treeview input ~ label:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  border-width: 4px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: rgb(0, 0, 238);
+  border-bottom-color: rgb(0, 0, 238);
+  border-left-color: transparent;
+  opacity: 0.0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.treeview input:checked ~ label:before {
+  margin-left: -0.8em;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(0, 0, 238);
+}
+
+
+/*End Joshua Clingo's changes*/
+
+.h1center {
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+	width: 80%;
+}
+
+.header_table{
+	border: 1pt inset rgb(0,0,0);
+}
+
+.narr_table {
+	width: 100%;
+}
+
+.narr_tr {
+	background-color: rgb(225,225,225);
+}
+
+pre {
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-family: Verdana, Tahoma, sans-serif;
+ font-size: 11px;
+ text-align:left;
+ margin: 0px 0px 0px 0px;
+ padding:0px 0px 0px 0px;
+}
+.narr_th {
+	background-color: rgb(201,201,201);
+}
+
+.td_label{
+	font-weight: bold;
+	color: white;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#nn-text
+{
+    text-align: center;
+    text-align: center;
+    color:lightgrey;
+    font-size:40px;
+}
+
+	</style></head>
+   <body>
+      <table class="header_table">
+         <tbody>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Title</span></td>
+               <td width="80%" colspan="3">ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Identifier<br>(Measure Authoring Tool)</span></td>
+               <td width="30%">179</td>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">eMeasure Version number</span></td>
+               <td width="30%">3</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">NQF Number</span></td>
+               <td width="30%">NA</td>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">GUID</span></td>
+               <td> a5e96a45-8132-4e72-bf4f-e8c81db9e641</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measurement Period</span></td>
+               <td width="80%" colspan="3">January 1, 20xx  through December 31, 20xx </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Steward</span></td>
+               <td width="80%" colspan="3">Centers for Medicare &amp; Medicaid Services</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Developer</span></td>
+               <td width="80%" colspan="3">National Committee for Quality Assurance</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Endorsed By</span></td>
+               <td width="80%" colspan="3">None</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Description</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Average percentage of time in which patients aged 18 and older with atrial fibrillation who are on chronic warfarin therapy have International Normalized Ratio (INR) test results within the therapeutic range (i.e., TTR) during the measurement period.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Copyright</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.  &#xD;
+&#xD;
+CPT(R) contained in the Measure specifications is copyright 2004-2013 American Medical Association. LOINC(R) copyright 2004-2013 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2013 International Health Terminology Standards Development Organisation. ICD-10 copyright 2013 World Health Organization. All Rights Reserved.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Disclaimer</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.&#xD;
+&#xD;
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED &#8220;AS IS&#8221; WITHOUT WARRANTY OF ANY KIND.&#xD;
+&#xD;
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Scoring</span></td>
+               <td width="80%" colspan="3">Continuous Variable</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Type</span></td>
+               <td width="80%" colspan="3">Outcome</td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Stratification</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Risk Adjustment</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Rate Aggregation</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Rationale</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Millions of patients in the United States use warfarin to prevent strokes or to prevent or treat venous thromboembolism. Warfarin is highly effective, and has been in clinical use for over 50 years. However, warfarin is difficult to manage because it has many possible interactions with diet, other drugs, and comorbid conditions that may destabilize anticoagulation control. The possible consequences of insufficient or excessive anticoagulation are extremely serious and often fatal, making it imperative to pursue good control.&#xD;
+&#xD;
+The international normalized ratio (INR) test is the laboratory test used to determine the degree to which the patient's coagulation has been successfully suppressed by the vitamin K antagonist (VKA). For most patients, the goal is to keep the INR between 2 and 3, which roughly corresponds to the blood taking 2 to 3 times as long to clot as would a normal person's blood. This level of anticoagulation has been shown to maximize benefit (i.e., protect patients from blood clots) while minimizing risk (i.e., risk of hemorrhage attributable to excessive anticoagulation). Therapeutic INR range (TTR) is a way of summarizing INR control over time.&#xD;
+&#xD;
+TTR has been followed before, mostly in the setting of clinical trials where it is used to evaluate the effectiveness of warfarin therapy, particularly when warfarin is being compared to some other strategy. However, TTR has not previously been used as a quality measure &#8211; in fact, there has been a general lack of quality measurement in oral anticoagulation. There is much evidence that better anticoagulation control (i.e., higher TTR) can protect patients from severe or even fatal adverse events.&#xD;
+&#xD;
+We are using a well-established guideline for the expected frequency of warfarin monitoring.  The ACCP clinical practice guidelines for the management of antithrombotic agents published in 2008 recommends that laboratory monitoring of warfarin in patients on stable doses of warfarin occur at an interval of no longer than 4 weeks. There is fairly strong support for extending this interval from 28 to 42 days with patients who have achieved stable control.  For example, researchers at the VA who used the TTR as an outcome reported that the maximum follow-up interval can be safely extended from 28 days to 42 days after the patient has recorded three in-range INR values, without adversely impacting TTR.  &#xD;
+&#xD;
+In 2012, the ACCP anticoagulation guidelines were updated to recommend that patients with very stable INRs can be tested every 12 weeks (or 84 days). The new guideline significantly increases the interval for which testing should occur in a subset of patients that are &#8220;very stable&#8221; &#8211; defined as a warfarin dose that has not changed in 6 months. Because the measurement period is set to only one year, it would be impossible to fully implement criteria for identifying patients whose dose has not changed in 6 months.  Also, because dose information is not consistently found in EHRs, building measure logic that is dependent on the availability of dose and dose adjustments was determined to be not currently feasible. Therefore, we have chosen not to allow an 84-day  follow-up interval, given its current level of evidentiary support and implementation challenges.  &#xD;
+&#xD;
+Because the target therapeutic range for patients with atrial flutter is the same as that for atrial fibrillation without valvular heart disease, patients with atrial flutter are also included in the denominator of this measure.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Clinical Recommendation Statement</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>&#8220;In patients with atrial fibrillation (AF), including those with paroxysmal AF, who have had a prior ischemic stroke, transient ischemic attack, or systemic embolism, we recommend long-term anticoagulation with an oral [vitamin K antagonist] VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the high risk of future ischemic stroke faced by this set of patients (Grade 1A).&#8221;&#xD;
+&#xD;
+&#8220;In patients with AF, including those with paroxysmal AF, who have two or more of the following risk factors for future ischemic stroke, we recommend long-term anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) because of the increased risk of future ischemic stroke faced by this set of patients (Grade 1A). Two or more of the following risk factors apply: (1) age&gt; 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure.&#8221;&#xD;
+&#xD;
+&#8220;In patients with AF, including those with paroxysmal AF, with only one of the risk factors listed below, we recommend long-term antithrombotic therapy (Grade 1A), either as anticoagulation with an oral VKA, such as warfarin, targeted at an INR of 2.5 (range, 2.0 to 3.0) [Grade 1A], or as aspirin, at a dose of 75 to 325 mg/d (Grade 1B). For these patients at intermediate risk of ischemic stroke, we suggest a VKA rather than aspirin (Grade 2A). This set of patients with AF is defined by having one of the following risk factors: (1) age &gt; 75 years, (2) history of hypertension, (3) diabetes mellitus, and (4) moderately or severely impaired left ventricular systolic function and/or heart failure."&#xD;
+&#xD;
+&#8220;For patients with atrial flutter, we recommend that antithrombotic therapy decisions follow the same risk-based recommendations as for AF (Grade 1C).&#8221;&#xD;
+&#xD;
+&#8220;For patients who are receiving a stable dose of oral anticoagulants, we suggest monitoring at an interval of no longer than every 4 weeks.&#8221;</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Improvement Notation</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>A higher score indicates higher quality</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Connolly SJ, Pogue J, Eikelboom J, Flaker G, Commerford P, Franzosi MG, Healey JS, Yusuf S, ACTIVE W Investigators. Benefit of oral anticoagulant over antiplatelet therapy in atrial fibrillation depends on the quality of international normalized ratio control achieved by centers and countries as measured by time in therapeutic range. Circulation 2008 Nov 11;118(20):2029-37. [21 references] PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Rose A. Staff physician, Bedford VA Medical Center. Investigator, VA Center for Health Quality, Outcomes, and Economic Research at the Bedford VA. Assistant Professor, Boston University School of Medicine. Percent time in therapeutic INR range (TTR). 2010 Oct 7. 8 p.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Rose AJ, Berlowitz DR, Frayne SM, Hylek EM. Measuring quality of oral anticoagulation care: extending quality measurement to a new field. Jt Comm J Qual Patient Saf 2009 Mar;35(3):146-55. [115 references] PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Rosendaal FR, Cannegieter SC, van der Meer FJ, Briet E. A method to determine the optimal intensity of oral anticoagulant therapy. Thromb Haemost 1993 Mar 1;69(3):236-9. PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Van Leeuwen Y, Rosendaal FR, Cannegieter SC. Prediction of hemorrhagic and thrombotic events in patients with mechanical heart valve prostheses treated with oral anticoagulants. J Thromb Haemost 2008 Mar;6(3):451-6. PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Van Walraven C, Jennings A, Oake N, Fergusson D, Forster AJ. Effect of study setting on anticoagulation control: a systematic review and metaregression. Chest 2006 May;129(5):1155-66. [97 references] PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Veeger NJ, Piersma-Wichers M, Tijssen JG, Hillege HL, van der Meer J. Individual time within target range in patients treated with vitamin K antagonists: main determinant of quality of anticoagulation and predictor of clinical outcome. A retrospective study of 2300 consecutive patients with venous thromboembolism. Br J Haematol 2005 Feb;128(4):513-9. PubMed</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>White HD, Gruber M, Feyzi J, Kaatz S, Tse HF, Husted S, Albers GW. Comparison of outcomes among patients randomized to warfarin therapy according to anticoagulant control: results from SPORTIF III and V. Arch Intern Med 2007 Feb 12;167(3):239-45.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Hirsh J, Guyatt G, Albers GW, Harrington R, Schunemann HJ. Antithrombotic and Thrombolytic Therapy: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). CHEST 2008; 133(6_suppl);110S-112S.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Ansell J, Hirsh J, Hylek E, Jacobson A, Crowther M, Palareti G. Pharmacology and management of the vitamin K antagonists: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines (8th Edition). Chest. 2008; 133: 160S-98S.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Holbrook A, Schulman S, Witt DM, Vandvik PO, Fish J, Kovacs MJ, Svensson PJ, Veenstra DL, Crowther M, Guyatt GH. Evidence-Based Management of Anticoagulant Therapy: Antithrombotic Therapy and Prevention of Thrombosis, 9th ed: American College of Chest Physicians Evidence-Based Clinical Practice Guidelines. Chest. 2012; 141: e152S-e84S.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Rose AJ, Ozonoff A, Berlowitz DR, Ash AS, Reisman JI, Hylek EM. Reexamining the recommended follow-up interval after obtaining an in-range international normalized ratio value: results from the Veterans Affairs study to improve anticoagulation. Chest. 2011; 140: 359-65. chest.10-2738 [pii]. 10.1378/chest.10-2738.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Reference</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Schulman S, Parpia S, Stewart C, Rudd-Scott L, Julian JA, Levine M. Warfarin dose assessment every 4 weeks versus every 12 weeks in patients with stable international normalized ratios: a randomized trial. Ann Intern Med. 2011; 155: 653-9. 155/10/653 [pii]. 10.1059/0003-4819-155-10-201111150-00003.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Definition</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>CUMULATIVE MEDICATION DURATION is the total number of calendar days that an individual has active medications that contain the same drug ingredient of interest. In this measure, the active drug ingredient is warfarin. The number of active days of an occurrence of a medication (e.g., a medication order or an entry in a patient's medication list) is calculated by taking the difference (in calendar days) between the date that the medication became active and the date that the medication stopped being active. The cumulative medication duration is calculated as the sum of the number of active calendar days for each occurrence of a medication that contains the same active ingredient over a set period of time, excluding any gaps during which a medication was not active. All of the entries in the value set for warfarin (OID: 2.16.840.1.113883.3.117.1.7.1.232) must be included in determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named &#8220;CMS179v2_Supplemental_SQL_Logic_Reference.pdf&#8221; for this logic.&#xD;
+&#xD;
+A VALID INR INTERVAL is two INR values separated by 56 days or less. INR values must be obtained in outpatient care settings; INR values while the patient is admitted to a hospital for more than 23 hours should not be included.&#xD;
+&#xD;
+THERAPEUTIC RANGE: for patients with atrial fibrillation and no valvular involvement, the target INR result = 2.0 &#8211; 3.0.&#xD;
+&#xD;
+PERCENT OF TIME IN THERAPEUTIC RANGE (TTR) is the percentage of time during which the interpolated INR values lie between 2.0 and 3.0. This can be from 0% to 100%. TTR percentage should be calculated for each patient that meets the criteria for the Measure Population. The average of these values is reported as the Measure Observation. The calculation for TTR is provided in the supplemental file named &#8220;CMS179v2 _Supplemental_SQL_Logic_Reference.pdf&#8221;.&#xD;
+&#xD;
+INTERPOLATED INR VALUES are obtained through the use of linear interpolation to assign an INR value to each day between successive observed INR values. The Rosendaal linear interpolation methodology used in this measure assumes a linear relationship between two INR values and allows the assignment of a specific INR to each day for each patient.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Guidance</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Please note that the logic expressions in the body section of the HQMF of this measure should *not* be used to calculate this clinical quality measure. They are only provided to represent the data elements needed for the calculation. In order to calculate this clinical quality measure correctly, only use the narrative specifications contained in the header section of the HQMF and the annotated database query found in the supplemental file named &#8220;CMS179v2_Supplemental_SQL_Logic_Reference.pdf&#8221;. &#xD;
+&#xD;
+The calculation of TTR should include all available INR values for a given patient during the measurement period. When generating a QRDA-1 document for this measure, all available INR values during the measurement period should be included.&#xD;
+&#xD;
+The following filters are applied to each patient&#8217;s INRs in order to calculate a patient-level TTR. INR values must be at least 0.8. Values less than 0.8 may represent aberrant results. INR values greater than 10 (i.e., outliers) must be replaced with a value of 10. An INR of 10 represents an abnormally high INR and would skew the results of the calculated TTR less than extreme values would (i.e., INR &gt; 10). The INR value closest to "2.5" is used to calculate TTR, when there are more than one INR result on a single date.&#xD;
+&#xD;
+In this measure, the active drug ingredient of primary interest is warfarin. CUMULATIVE MEDICATION DURATION should be calculated for all active warfarin-containing medications. All of the entries in the value set for warfarin must be included when determining the cumulative medication duration. All medication occurrences considered for the calculation of cumulative medication duration for this measure must be active within 200 days immediately prior to the measurement period. This lookback period of 200 days is based on the original warfarin TTR measure used by the Veterans Affairs health care system. Please refer to the supplemental file named &#8220;CMS179v2 _Supplemental_SQL_Logic_Reference.pdf&#8221; for this logic.&#xD;
+&#xD;
+To be excluded from the initial patient population, patients must have an active diagnosis of valvular heart disease during the measurement period.&#xD;
+&#xD;
+To determine the proportion of patients with atrial fibrillation who are on chronic warfarin therapy and have sufficient INR monitoring to calculate a TTR, the reporting provider can divide the Measure Population by the Initial Patient Population.&#xD;
+&#xD;
+The calculation for TTR is provided in the supplemental file named &#8220;CMS179v2 _Supplemental_SQL_Logic_Reference.pdf&#8221;.&#xD;
+&#xD;
+The Measure Observation is the average of all patients&#8217; percent TTR, which can be calculated by dividing the sum of all patients&#8217; percent TTR by the number of patients in the Measure Population.</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Transmission Format</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>None</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Initial Patient Population</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Patients aged 18 and older with atrial fibrillation without valvular heart disease who had been on chronic warfarin therapy for at least 180 days before the start of and during the measurement period. Patient should have at least one outpatient visit during the measurement period</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator Exclusions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Numerator</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Numerator Exclusions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Denominator Exceptions</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Not Applicable</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Population</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Equals All in Initial Patient Population with sufficient international normalized ratio (INR) results to calculate a warfarin time in therapeutic range (TTR)</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Observations</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>Average percentage of time that patients in the measure population have INR results within the therapeutic range (i.e., TTR)</pre></div>
+               </td>
+            </tr>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Supplemental Data Elements</span></td>
+               <td width="80%" colspan="3">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto"><pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex.</pre></div>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2><a name="toc">Table of Contents</a></h2>
+      <ul>
+         <li><a href="#d1e620">Population criteria</a></li>
+         <li><a href="#d1e1359">Measure observations</a></li>
+         <li><a href="#d1e1438">Data criteria (QDM Data Elements)</a></li>
+         <li><a href="#d1e1808">Reporting Stratification</a></li>
+         <li><a href="#d1e1829">Supplemental Data Elements</a></li>
+      </ul>
+      <hr align="left" color="teal" size="2" width="80%">
+      <h3><a name="d1e620" href="#toc">Population criteria</a></h3>
+      <div class="treeview hover p-l-10">
+          <ul class="list-unstyled">
+              <li class="list-unstyled">
+                  <input type="checkbox" id="cb-initial-population" checked>
+                  <label for="cb-initial-population" class="list-header">
+                      <strong>Initial Patient Population</strong> (click to expand)
+                  </label>
+
+                  <ul class="code">
+                      <li>
+                          <div>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="InitialPopulation">InitialPopulation</span><!--
+                              --><span class="cql-generic">: </span>
+                              <br>
+                              <div class="p-l-10"><a class="cql-interface" href="#InDemographic">InDemographic</a>
+                                    <div class="p-l-10">
+                                        <span class="cql-keyword">and exists </span><span class="cql-generic">(</span><a class="cql-interface" href="#InpatientEncounters">InpatientEncounters</a><span class="cql-generic">)</span>
+                                        <br>
+                                        <span class="cql-keyword">and exists </span><span class="cql-generic">(</span><a class="cql-interface" href="#ActiveFlutterDiagnoses">ActiveFlutterDiagnoses</a><span class="cql-generic">)</span>
+                                        <br>
+                                        <span class="cql-keyword">and </span></span><a class="cql-interface" href="#WarfarinUsage">WarfarinUsage </a><span class="cql-operator">&gt;= </span><span class="cql-literal">180</span>
+                                        <br>
+                                        <span class="cql-keyword">and not exists </span><span class="cql-generic">(</span><a class="cql-interface" href="#ActiveValvularHeartDiseaseDiagnoses">ActiveValvularHeartDiseaseDiagnoses</a><span class="cql-generic">)</span>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="InDemographic">InDemographic</span><span class="cql-generic">: </span>
+                                        <div class="p-l-10">
+                                          <span class="cql-function">AgeInYearsAt</span><span class="cql-generic">(</span><span class="cql-keyword">start </span><!--
+                                          --><span class="cql-keyword">of </span><span class="cql-class">MeasurementPeriod</span><span class="cql-generic">) </span><span class="cql-operator">&gt;= </span><span class="cql-literal">18</span>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="InpatientEncounters">InpatientEncounters</span><span class="cql-generic">: </span>
+                                        <div class="p-l-10">
+                                          <a class="cql-interface" href="#FaceToFaceEncounters">FaceToFaceEncounters</a><span class="cql-keyword"> union </span><a class="cql-interface" href="#OfficeVisitEncounters">OfficeVisitEncounters</a>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="ActiveFlutterDiagnoses">ActiveFlutterDiagnoses</span><span class="cql-generic">: </span>
+                                        <div class="p-l-10">
+                                          <a class="cql-interface" href="#FlutterDiagnoses">FlutterDiagnoses</a><span class="cql-object"> F</span><span class="cql-keyword"> where</span><!--
+                                          --><span class="cql-keyword"> Interval</span><span class="cql-generic">[</span><span class="cql-object">F</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                          --><span class="cql-object">F</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                          --><span class="cql-generic">]</span><span class="cql-keyword"> overlaps before</span><span class="cql-class"> MeasurementPeriod</span>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="LookbackInterval">LookbackInterval</span><!--
+                                        --><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                          <span class="cql-keyword"> Interval</span><span class="cql-generic">[</span><span class="cql-keyword">start of </span><!--
+                                          --><span class="cql-class">MeasurementPeriod</span><span class="cql-literal"> - 200 days, </span><span class="cql-keyword">start of </span><!--
+                                          --><span class="cql-class">MeasurementPeriod</span><span class="cql-literal">]</span>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="ActiveWarfarinDuringLookback">ActiveWarfarinDuringLookback</span><!--
+                                        --><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                          <a class="cql-interface" href="#WarfarinMedications">WarfarinMedications</a><span class="cql-object"> M </span><span class="cql-keyword">where Interval</span><!--
+                                          --><span class="cql-literal">[</span><span class="cql-object">M</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                          --><span class="cql-object">M</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                          --><span class="cql-generic">]</span><span class="cql-keyword"> overlaps </span><a class="cql-interface" href="#LookbackInterval">LookbackInterval</a>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="WarfarinUsageIntervals">WarfarinUsageIntervals</span><!--
+                                        --><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                          <span class="cql-keyword">collapse</span>
+                                          <div class="p-l-10">
+                                            <a class="cql-interface" href="#ActiveWarfarinDuringLookback">ActiveWarfarinDuringLookback</a><span class="cql-object"> M</span>
+                                            <div class="p-l-10">
+                                              <span class="cql-keyword">return</span><span class="cql-keyword"> Interval</span><span class="cql-generic">[</span><span class="cql-object">M</span><!--
+                                              --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                              --><span class="cql-object">M</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                              --><span class="cql-generic">]</span><span class="cql-keyword"> intersect </span><a class="cql-interface" href="#LookbackInterval">LookbackInterval</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="WarfarinUsage">WarfarinUsage</span><!--
+                                        --><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                          <span class="cql-keyword">Sum</span><span class="cql-generic">(</span><a class="cql-interface" href="#WarfarinUsageIntervals">WarfarinUsageIntervals</a><!--
+                                          --><span class="cql-object"> I </span><span class="cql-keyword">return </span><span class="cql-class">duration</span><span class="cql-keyword"> in</span><!--
+                                          --><span class="cql-literal"> days</span><span class="cql-keyword"> of</span><span class="cql-object"> I</span><span class="cql-generic">)</span>
+                                        </div>
+                                        <br>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="ActiveValvularHeartDiseaseDiagnoses">ActiveValvularHeartDiseaseDiagnoses</span><!--
+                                        --><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                          <a class="cql-interface" href="#ValvularHeartDiseaseDiagnoses">ValvularHeartDiseaseDiagnoses</a><span class="cql-object"> D</span><!--
+                                          --><span class="cql-keyword"> where</span><span class="cql-keyword"> Interval</span><span class="cql-generic">[</span><span class="cql-object">D</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                          --><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                          --><span class="cql-generic">]</span><span class="cql-keyword"> overlaps before</span><span class="cql-class"> MeasurementPeriod</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="FaceToFaceEncounters">FaceToFaceEncounters</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Encounter&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Performed: Face-to-Face Interaction&quot;</span><span class="cql-generic">]
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="OfficeVisitEncounters">OfficeVisitEncounters</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Encounter&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Performed: Office Visit&quot;</span><span class="cql-generic">]
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="FlutterDiagnoses">FlutterDiagnoses</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Diagnosis, Active&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Atrial Fibrillation/Flutter&quot;</span><span class="cql-generic">]
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="WarfarinMedications">WarfarinMedications</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Medication&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Active: Warfarin&quot;</span><span class="cql-generic">]
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <span class="cql-keyword">define </span><span class="cql-class" id="ValvularHeartDiseaseDiagnoses">ValvularHeartDiseaseDiagnoses</span><span class="cql-generic">:</span>
+                                        <div class="p-l-10">
+                                            <span class="cql-generic">[</span><span class="cql-string">&quot;Diagnosis&quot;</span><span class="cql-generic">: </span><!--
+                                            --><span class="cql-string">&quot;Active: Valvular Heart Disease&quot;</span><span class="cql-generic">]
+                                        </div>
+                                    </div>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </li>
+            </li>
+         </ul>
+      </div>
+      <div class="treeview hover p-l-10">
+          <ul class="list-unstyled">
+              <li class="list-unstyled">
+                  <input type="checkbox" id="cb-measure-observation" checked>
+                  <label for="cb-measure-observation" class="list-header">
+                      <strong>Measure Observation</strong> (click to expand)
+                  </label>
+
+                  <ul class="code">
+                      <li>
+                          <div>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="MeasureObservation">MeasureObservation</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <a class="cql-interface" href="#TherapeuticTimeInRange">TherapeuticTimeInRange</a>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="TherapeuticTimeInRange">TherapeuticTimeInRange</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                  <span class="cql-keyword">Round</span><span class="cql-generic">( 100 * (</span><span class="cql-keyword">Sum</span><!--
+                                  --><span class="cql-generic">(</span><a class="cql-interface" href="#TherapeuticDays">TherapeuticDays</a><span class="cql-object"> X </span><!--
+                                  --><span class="cql-keyword">return </span><span class="cql-object">X</span><span class="cql-generic">.</span><!--
+                                  --><span class="cql-literal">daysInRange</span><span class="cql-generic">) / </span><span class="cql-keyword">Sum</span><!--
+                                  --><span class="cql-generic">(</span><a class="cql-interface" href="#TherapeuticDays">TherapeuticDays</a><span class="cql-object"> X </span><!--
+                                  --><span class="cql-keyword">return </span><span class="cql-object">X</span><span class="cql-generic">.</span><!--
+                                  --><span class="cql-literal">resultDays</span><span class="cql-generic">)))</span>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="TherapeuticDays">TherapeuticDays</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <a class="cql-interface" href="#INRIntervals">INRIntervals</a><span class="cql-object"> I</span>
+                                <div class="p-l-10">
+                                  <span class="cql-keyword">return</span>
+                                  <div class="p-l-10">
+                                    <span class="cql-keyword">Tuple</span>
+                                    <div class="p-l-10">
+                                      <span class="cql-generic">{</span>
+                                        <div class="p-l-10">
+                                          <span class="cql-variable">startDate</span><span class="cql-generic"> : </span><span class="cql-object">I</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">startDate</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">endDate</span><span class="cql-generic"> : </span><span class="cql-object">I</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">endDate</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">isValid</span><span class="cql-generic"> : </span><span class="cql-object">I</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">isValid</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">resultDays</span><span class="cql-generic"> : </span><span class="cql-object">I</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">resultDays</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">daysInRange</span><span class="cql-generic"> : </span>
+                                          <br>
+                                          <div class="p-l-10">
+                                            <span class="cql-keyword">if </span><span class="cql-object">I</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-literal">resultsWithinBounds</span>
+                                            <div class="p-l-10">
+                                              <span class="cql-keyword">then</span><span class="cql-object"> I</span><span class="cql-generic">.</span><!--
+                                              --><span class="cql-literal">resultDays</span>
+                                              <br>
+                                              <span class="cql-keyword">else Coalesce</span><span class="cql-generic">(</span><span class="cql-object">I</span><!--
+                                              --><span class="cql-generic">.</span><span class="cql-literal">resultDays</span><span class="cql-generic"> * </span><!--
+                                              --><span class="cql-keyword">Abs</span><span class="cql-generic">(</span><span class="cql-object">I</span><!--
+                                              --><span class="cql-generic">.</span><span class="cql-literal">boundedDifference</span><span class="cql-generic"> / (</span><!--
+                                              --><span class="cql-keyword">if </span><span class="cql-object">I</span><span class="cql-generic">.</span><!--
+                                              --><span class="cql-literal">resultDays</span><span class="cql-generic"> = 0 </span><span class="cql-keyword">then null else</span><!--
+                                              --><span class="cql-object"> I</span><span class="cql-generic">.</span><span class="cql-literal">resultDays</span><!--
+                                              --><span class="cql-generic">)), </span><span class="cql-literal">0</span><span class="cql-generic">)</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <span class="cql-generic">}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="INRIntervals">INRIntervals</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <span class="cql-generic">(</span><a class="cql-interface" href="#INRResultsPerDay">INRResultsPerDay</a><span class="cql-object"> S</span><!--
+                                --><span class="cql-keyword"> return Tuple </span><span class="cql-generic">{ </span><span class="cql-variable">startResult</span><!--
+                                --><span class="cql-generic">: </span><span class="cql-object">S</span><span class="cql-generic">, </span><!--
+                                --><span class="cql-variable">endResult</span><span class="cql-generic">:</span><span class="cql-keyword"> First</span><!--
+                                --><span class="cql-generic">(</span><a class="cql-interface" href="#INRResultsPerDay">INRResultsPerDay</a><!--
+                                --><span class="cql-object"> E</span><span class="cql-keyword"> where</span><span class="cql-object"> S</span><!--
+                                --><span class="cql-generic">.</span><span class="cql-literal">resultDate</span><span class="cql-generic"> > </span><!--
+                                --><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-literal">resultDate</span><!--
+                                --><span class="cql-generic">) }) </span><span class="cql-object">X</span>
+                                <div class="p-l-10">
+                                  <span class="cql-keyword">return</span>
+                                  <div class="p-l-10">
+                                    <span class="cql-keyword">Tuple</span>
+                                    <div class="p-l-10">
+                                      <span class="cql-generic">{</span>
+                                        <div class="p-l-10">
+                                          <span class="cql-variable">startDate</span><span class="cql-generic">: </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">resultDate</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">endDate</span><span class="cql-generic">: </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">resultDate</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">resultDays</span><span class="cql-generic">: </span><span class="cql-literal">days</span><!--
+                                          --><span class="cql-keyword"> between </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">resultDate</span><span class="cql-keyword"> and </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">resultDate</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">resultDifference</span><span class="cql-generic">: </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">result</span><span class="cql-operator"> - </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">result</span><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">resultsWithinBounds</span><span class="cql-generic">: </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">result</span><span class="cql-keyword"> in </span><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><!--
+                                          --><span class="cql-keyword"> and </span><span class="cql-object">X</span><!--
+                                          --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                          --><span class="cql-literal">result</span><span class="cql-keyword"> in </span><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><!--
+                                          --><span class="cql-generic">,</span>
+                                          <br>
+                                          <span class="cql-variable">boundedDifference</span><span class="cql-generic">:</span>
+                                          <div class="p-l-10">
+                                            <span class="cql-keyword">if </span><span class="cql-object">X</span><!--
+                                            --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-literal">result</span><span class="cql-generic"> &gt;= </span><span class="cql-object">X</span><!--
+                                            --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-literal">result</span>
+                                            <div class="p-l-10">
+                                              <span class="cql-keyword">then</span>
+                                              <br>
+                                              <span class="cql-generic">(</span>
+                                              <div class="p-l-10">
+                                                <span class="cql-keyword">if </span><span class="cql-object">X</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                                --><span class="cql-literal">result</span><span class="cql-generic"> &gt; </span><span class="cql-keyword">end of </span><!--
+                                                --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-keyword"> or</span><span class="cql-object"> X</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                                --><span class="cql-literal">result</span><span class="cql-generic"> &lt; </span><span class="cql-keyword">start of </span><!--
+                                                --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a>
+                                                <div class="p-l-10">
+                                                  <span class="cql-keyword">then null</span>
+                                                  <br>
+                                                  <span class="cql-keyword">else Min</span><span class="cql-generic">({</span><span class="cql-object">X</span><!--
+                                                  --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                                  --><span class="cql-literal">result</span><span class="cql-generic">, </span><span class="cql-keyword">end of </span><!--
+                                                  --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-generic">)} - </span>
+                                                  <span class="cql-keyword">Max</span><span class="cql-generic">({</span><span class="cql-object">X</span><!--
+                                                  --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                                  --><span class="cql-literal">result</span><span class="cql-generic">, </span><span class="cql-keyword">start of </span><!--
+                                                  --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-generic">)}</span>
+                                                </div>
+                                              </div>
+                                              <span class="cql-generic">)</span>
+                                              <br>
+                                              <span class="cql-keyword">else</span>
+                                              <br>
+                                              <span class="cql-generic">(</span>
+                                              <div class="p-l-10">
+                                                <span class="cql-keyword">if </span><span class="cql-object">X</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                                --><span class="cql-literal">result</span><span class="cql-generic"> &gt; </span><span class="cql-keyword">end of </span><!--
+                                                --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-keyword"> or</span><span class="cql-object"> X</span><!--
+                                                --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                                --><span class="cql-literal">result</span><span class="cql-generic"> &lt; </span><span class="cql-keyword">start of </span><!--
+                                                --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a>
+                                                <div class="p-l-10">
+                                                  <span class="cql-keyword">then null</span>
+                                                  <br>
+                                                  <span class="cql-keyword">else Min</span><span class="cql-generic">({</span><span class="cql-object">X</span><!--
+                                                  --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                                  --><span class="cql-literal">result</span><span class="cql-generic">, </span><span class="cql-keyword">end of </span><!--
+                                                  --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-generic">)} - </span>
+                                                  <span class="cql-keyword">Max</span><span class="cql-generic">({</span><span class="cql-object">X</span><!--
+                                                  --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                                  --><span class="cql-literal">result</span><span class="cql-generic">, </span><span class="cql-keyword">start of </span><!--
+                                                  --><a class="cql-interface" href="#TherapeuticRange">TherapeuticRange</a><span class="cql-generic">)}</span>
+                                                </div>
+                                              </div>
+                                              <span class="cql-generic">),</span>
+                                            </div>
+                                            <span class="cql-variable">isValid</span><span class="cql-generic">: </span><span class="cql-literal">days </span><!--
+                                            --><span class="cql-keyword">between </span><span class="cql-object">X</span><!--
+                                            --><span class="cql-generic">.</span><span class="cql-literal">startResult</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-literal">resultDate</span><span class="cql-keyword"> and </span><span class="cql-object">X</span><!--
+                                            --><span class="cql-generic">.</span><span class="cql-literal">endResult</span><span class="cql-generic">.</span><!--
+                                            --><span class="cql-literal">resultDate</span><span class="cql-generic"> &lt;= </span><span class="cql-literal">56</span>
+                                          </div>
+                                          <span class="cql-generic">}</span>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="INRResultsPerDay">INRResultsPerDay</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <span class="cql-generic">(</span>
+                                <div class="p-l-10">
+                                  <span class="cql-generic">(</span><span class="cql-keyword">distinct </span><a class="cql-interface" href="#INRResultsByDay">INRResultsByDay</a><!--
+                                  --><span class="cql-object"> X</span><span class="cql-keyword"> return </span><span class="cql-object">X</span><!--
+                                  --><span class="cql-generic">.</span><span class="cql-literal">resultDate</span><span class="cql-generic">)</span><span class="cql-object"> D</span>
+                                  <div class="p-l-10">
+                                    <span class="cql-keyword">return First</span><span class="cql-generic">(</span><a class="cql-interface" href="#INRResultsByDay">INRResultsByDay</a><!--
+                                    --><span class="cql-object"> R</span><span class="cql-keyword"> where </span><span class="cql-object"> R</span><span class="cql-generic">.</span><!--
+                                    --><span class="cql-literal">resultDate</span><span class="cql-generic"> = </span><span class="cql-object">D </span><span class="cql-keyword">sort by</span><!--
+                                    --><span class="cql-object"> R</span><span class="cql-generic">.</span><span class="cql-literal">distanceFromMidpoint</span><span class="cql-generic">)</span>
+                                  </div>
+                                </div>
+                                <span class="cql-generic">) </span><span class="cql-variable">X</span>
+                                <br>
+                                <span class="cql-keyword">sort by </span><span class="cql-object">X</span><span class="cql-generic">.</span><span class="cql-literal">resultDate</span>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="TherapeuticRange">TherapeuticRange</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <span class="cql-keyword">Interval</span><span class="cql-generic">[</span><span class="cql-literal">2.0</span><!--
+                                --><span class="cql-generic">, </span><span class="cql-literal">3.0</span><span class="cql-generic">]</span>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="INRResultsByDay">INRResultsByDay</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <a class="cql-interface" href="#INROutpatientLabResult">INROutpatientLabResult</a><span class="cql-object"> L</span>
+                                <div class="p-l-10">
+                                  <span class="cql-keyword">where </span><span class="cql-object">L</span><span class="cql-generic">.</span><!--
+                                  --><span class="cql-string">&quot;quantity&quot;</span><span class="cql-generic"> &gt; </span><!--
+                                  --><span class="cql-literal">0.8</span>
+                                  <br>
+                                  <span class="cql-keyword">return</span>
+                                  <div class="p-l-10">
+                                    <span class="cql-keyword">Tuple</span>
+                                    <br>
+                                    <span class="cql-generic">{</span>
+                                    <div class="">
+                                      <span class="cql-variable">resultDate</span><span class="cql-generic">: </span><span class="cql-class">date </span><!--
+                                      --><span class="cql-keyword">from Interval</span><span class="cql-generic">[</span><span class="cql-object">L</span><!--
+                                      --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                      --><span class="cql-object">L</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><!--
+                                      --><span class="cql-generic">]</span><span class="cql-generic">,</span>
+                                      <br>
+                                      <span class="cql-variable">result</span><span class="cql-generic">:</span><span class="cql-keyword"> if</span><!--
+                                      --><span class="cql-object"> L</span><span class="cql-generic">.</span><span class="cql-string">&quot;quantity&quot;</span><!--
+                                      --><span class="cql-generic"> &gt; </span><span class="cql-literal">10.0</span><span class="cql-keyword"> then</span><!--
+                                      --><span class="cql-literal"> 10.0 </span><span class="cql-keyword">else </span><span class="cql-object">L</span><span class="cql-generic">.</span><!--
+                                      --><span class="cql-string">&quot;quantity&quot;</span><span class="cql-generic">,</span>
+                                      <br>
+                                      <span class="cql-variable">distanceFromMidpoint</span><span class="cql-generic">: </span><span class="cql-keyword">Abs</span><!--
+                                      --><span class="cql-generic">(</span><span class="cql-literal">2.5</span><span class="cql-generic"> - </span><!--
+                                      --><span class="cql-object">L</span><span class="cql-generic">.</span><span class="cql-string">&quot;quantity&quot;</span><span class="cql-generic">)</span>
+                                    </div>
+                                    <span class="cql-generic">}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="INROutpatientLabResult">INROutpatientLabResult</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <a class="cql-interface" href="#INRLabResults">INRLabResults</a><span class="cql-object"> R</span>
+                                <div class="p-l-10">
+                                  <span class="cql-keyword">where not exists </span><span class="cql-generic">(</span><a class="cql-interface" href="#InpatientEncounters">InpatientEncounters</a><!--
+                                  --><span class="cql-object">E </span><span class="cql-keyword">where </span><span class="cql-class">duration </span><span class="cql-keyword">in </span><!--
+                                  --><span class="cql-literal">hours </span><span class="cql-keyword">of Interval</span><span class="cql-generic">[</span><span class="cql-object">E</span><!--
+                                  --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                  --><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><span class="cql-generic">]</span><!--
+                                  --><span class="cql-generic"> &gt; </span><span class="cql-literal">23 </span>
+                                  <br>
+                                  <span class="cql-keyword">and Interval</span></span><span class="cql-generic">[</span><span class="cql-object">R</span><!--
+                                  --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                  --><span class="cql-object">R</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><span class="cql-generic">]</span><!--
+                                  --><span class="cql-keyword">occurs during Interval</span><span class="cql-generic">[</span><span class="cql-object">E</span><!--
+                                  --><span class="cql-generic">.</span><span class="cql-string">&quot;start datetime&quot;</span><span class="cql-generic">, </span><!--
+                                  --><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">&quot;stop datetime&quot;</span><span class="cql-generic">])</span>
+                                </div>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="InpatientEncounters">InpatientEncounters</span><!--
+                              --><span class="cql-generic">: </span>
+                              <div class="p-l-10">
+                                <a class="cql-interface" href="#FaceToFaceEncounters2">FaceToFaceEncounters</a><span class="cql-keyword"> union </span><a class="cql-interface" href="#OfficeVisitEncounters2">OfficeVisitEncounters</a>
+                              </div>
+                              <br>
+                              <span class="cql-keyword">define </span><span class="cql-class" id="INRLabResults">INRLabResults</span><span class="cql-generic">:</span>
+                              <div class="p-l-10">
+                                  <span class="cql-generic">[</span><span class="cql-string">&quot;Laboratory Test&quot;</span><span class="cql-generic">: </span><!--
+                                  --><span class="cql-string">&quot;Result: INR&quot;</span><span class="cql-generic">]
+                              </div>
+                              <br>
+                              <div>
+                                  <span class="cql-keyword">define </span><span class="cql-class" id="FaceToFaceEncounters2">FaceToFaceEncounters</span><span class="cql-generic">:</span>
+                                  <div class="p-l-10">
+                                      <span class="cql-generic">[</span><span class="cql-string">&quot;Encounter&quot;</span><span class="cql-generic">: </span><!--
+                                      --><span class="cql-string">&quot;Performed: Face-to-Face Interaction&quot;</span><span class="cql-generic">]
+                                  </div>
+                              </div>
+                              <br>
+                              <div>
+                                  <span class="cql-keyword">define </span><span class="cql-class" id="OfficeVisitEncounters2">OfficeVisitEncounters</span><span class="cql-generic">:</span>
+                                  <div class="p-l-10">
+                                      <span class="cql-generic">[</span><span class="cql-string">&quot;Encounter&quot;</span><span class="cql-generic">: </span><!--
+                                      --><span class="cql-string">&quot;Performed: Office Visit&quot;</span><span class="cql-generic">]
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+
+
+
+
+
+
+
+      <h3><a name="d1e1359" href="#toc">Measure observations</a></h3>
+      <div>
+
+         <ul>
+            <li>Average of:"Laboratory Test, Result: Computed Value INR percent TTR" during "Measurement Period"</li>
+         </ul>
+
+      </div>
+      <h3><a name="d1e1438" href="#toc">Data criteria (QDM Data Elements)</a></h3>
+      <div>
+
+         <ul>
+            <li>
+               "Diagnosis, Active: Atrial Fibrillation/Flutter" using "Atrial Fibrillation/Flutter Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.202)"
+            </li>
+            <li>
+               "Diagnosis, Active: Valvular Heart Disease" using "Valvular Heart Disease Grouping Value Set (2.16.840.1.113883.3.464.1003.104.12.1017)"
+            </li>
+            <li>
+               "Encounter, Performed: Face-to-Face Interaction" using "Face-to-Face Interaction Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1048)"
+            </li>
+            <li>
+               "Encounter, Performed: Office Visit" using "Office Visit Grouping Value Set (2.16.840.1.113883.3.464.1003.101.12.1001)"
+            </li>
+            <li>
+               "Laboratory Test, Result: Computed Value INR percent TTR" using "Computed Value INR percent TTR Grouping Value Set (2.16.840.1.113883.3.464.1003.104.12.1018)"
+            </li>
+            <li>
+               "Laboratory Test, Result: INR" using "INR LOINC Value Set (2.16.840.1.113883.3.117.1.7.1.213)"
+            </li>
+            <li>
+               "Medication, Active: Warfarin" using "Warfarin RXNORM Value Set (2.16.840.1.113883.3.117.1.7.1.232)"
+            </li>
+            <li>
+               "Patient Characteristic Birthdate: birth date" using "birth date LOINC Value Set (2.16.840.1.113883.3.560.100.4)"
+            </li>
+         </ul>
+
+      </div>
+      <h3><a name="d1e1808" href="#toc">Reporting Stratification</a></h3>
+      <div>
+
+         <ul>
+            <li>None</li>
+         </ul>
+
+      </div>
+      <h3><a name="d1e1829" href="#toc">Supplemental Data Elements</a></h3>
+      <div>
+
+         <ul>
+            <li>
+               "Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)"
+            </li>
+            <li>
+               "Patient Characteristic Payer: Payer" using "Payer SOP Value Set (2.16.840.1.114222.4.11.3591)"
+            </li>
+            <li>
+               "Patient Characteristic Race: Race" using "Race CDCREC Value Set (2.16.840.1.114222.4.11.836)"
+            </li>
+            <li>
+               "Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex AdministrativeSex Value Set (2.16.840.1.113762.1.4.1)"
+            </li>
+         </ul>
+
+      </div><br><hr align="left" color="teal" size="2" width="80%"><br><table class="header_table">
+         <tbody>
+            <tr>
+               <td width="20%" bgcolor="#656565" style="background-color:#656565"><span class="td_label">Measure Set</span></td>
+               <td colspan="3" width="80%">
+                  <div style="width:660px;overflow-x:hidden;overflow-y:auto;word-wrap:break-word">None</div>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>

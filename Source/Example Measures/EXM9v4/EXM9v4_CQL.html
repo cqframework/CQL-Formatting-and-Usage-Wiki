@@ -1,0 +1,1410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+ <head>
+  <title>Exclusive Breast Milk Feeding</title>
+  <style type="text/css">
+  body {
+  	color: rgb(26, 26, 26);
+  	background-color: rgb(255,255,255);
+  	font-family: Verdana, Tahoma, sans-serif;
+  	font-size: 11px;
+      width: 100%;
+      overflow-y: auto;
+  }
+
+
+
+  h1 {
+  	font-size: 12pt;
+  	font-weight: bold;
+  }
+
+  h2 {
+  	font-size: 11pt;
+  	font-weight: bold;
+  }
+
+  h3 {
+  	font-size: 10pt;
+  	font-weight: bold;
+  }
+
+  h4 {
+  	font-size: 8pt;
+  	font-weight: bold;
+  }
+
+
+
+
+
+  tr {
+  	background-color: rgb(224,224,224);
+  }
+
+  td {
+  	padding: 0.1cm 0.2cm;
+  	vertical-align: top;
+  }
+
+  /*Begin Joshua Clingo's changes*/
+
+  a {
+  	/*color: rgb(0, 0, 255);
+  	background-color: rgb(255,255,255);*/
+  }
+
+  table {
+  	line-height: 10pt;
+  }
+
+  /*div {
+  	width: 80%;
+  }*/
+
+  .list-unstyled {
+      list-style-type: none;
+  }
+
+  .list-unstyled li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+
+  .list-header {
+      font-size: 12px;
+      color: rgb(0, 0, 238);
+  }
+
+  .list-header:hover {
+      text-decoration: underline;
+  }
+
+  .code {
+      font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+      color:black;
+      background-color:rgb(250,250,250);
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding: 10px;
+      line-height: 1.5em;
+      font-size: 13px;
+      overflow: auto;
+  }
+
+  .p-l-10 {
+      padding-left: 10px;
+  }
+
+  .section {
+      font-size: 10pt;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      margin-right: 0.5em;
+      font-weight: 700;
+      display: inline-block;
+  }
+
+  .cql-class, .cql-object {
+      color: rgb(25, 127, 157);
+  }
+
+  .cql-function {
+      color: rgb(25, 127, 157);
+  }
+
+  .cql-keyword {
+      color: rgb(0, 0, 255);
+      font-weight: 700;
+  }
+
+  .cql-variable, .cql-property {
+      color: rgb(128, 0, 0);
+  }
+
+  .cql-interface {
+      color: rgb(43, 170, 175);
+  }
+
+  .cql-literal, .cql-operator {
+      color: rgb(64,64,64);
+  }
+
+  .cql-reserved {
+      color: rgb(0,0,0);
+  }
+
+  .cql-string {
+      color: rgb(163, 21, 21);
+  }
+
+  .cql-comment {
+      color: rgb(0, 128, 0);
+  }
+
+  .treeview {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  .treeview:hover input ~ label:before,
+  .treeview.hover input ~ label:before {
+    opacity: 1.0;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  .treeview ul {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    list-style: none;
+    padding-left: 1em;
+  }
+  .treeview ul li span {
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    -ms-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+  }
+
+  .treeview input {
+    display: none;
+  }
+  .treeview input:checked ~ ul {
+    display: none;
+  }
+  .treeview input ~ label {
+    cursor: pointer;
+  }
+  .treeview input ~ label:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    margin-left: -1em;
+    margin-top: 0.25em;
+    border-width: 4px;
+    border-style: solid;
+    border-top-color: transparent;
+    border-right-color: rgb(0, 0, 238);
+    border-bottom-color: rgb(0, 0, 238);
+    border-left-color: transparent;
+    opacity: 0.0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -ms-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+  }
+  .treeview input:checked ~ label:before {
+    margin-left: -0.8em;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: rgb(0, 0, 238);
+  }
+
+
+  /*End Joshua Clingo's changes*/
+
+  .h1center {
+  	font-size: 12pt;
+  	font-weight: bold;
+  	text-align: center;
+  	width: 80%;
+  }
+
+  .header_table{
+  	border: 1pt inset rgb(0,0,0);
+  }
+
+  .narr_table {
+  	width: 100%;
+  }
+
+  .narr_tr {
+  	background-color: rgb(225,225,225);
+  }
+
+  pre {
+   overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+   white-space: pre-wrap; /* css-3 */
+   white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+   white-space: -pre-wrap; /* Opera 4-6 */
+   white-space: -o-pre-wrap; /* Opera 7 */
+   word-wrap: break-word; /* Internet Explorer 5.5+ */
+   font-family: Verdana, Tahoma, sans-serif;
+   font-size: 11px;
+   text-align:left;
+   margin: 0px 0px 0px 0px;
+   padding:0px 0px 0px 0px;
+  }
+  .narr_th {
+  	background-color: rgb(201,201,201);
+  }
+
+  .td_label{
+  	font-weight: bold;
+  	color: white;
+  }
+
+  .hll { background-color: #ffffcc }
+  .c { color: #408080; font-style: italic } /* Comment */
+  .err { border: 1px solid #FF0000 } /* Error */
+  .k { color: #008000; font-weight: bold } /* Keyword */
+  .o { color: #666666 } /* Operator */
+  .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+  .cp { color: #BC7A00 } /* Comment.Preproc */
+  .c1 { color: #408080; font-style: italic } /* Comment.Single */
+  .cs { color: #408080; font-style: italic } /* Comment.Special */
+  .gd { color: #A00000 } /* Generic.Deleted */
+  .ge { font-style: italic } /* Generic.Emph */
+  .gr { color: #FF0000 } /* Generic.Error */
+  .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+  .gi { color: #00A000 } /* Generic.Inserted */
+  .go { color: #888888 } /* Generic.Output */
+  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+  .gs { font-weight: bold } /* Generic.Strong */
+  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+  .gt { color: #0044DD } /* Generic.Traceback */
+  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+  .kp { color: #008000 } /* Keyword.Pseudo */
+  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+  .kt { color: #B00040 } /* Keyword.Type */
+  .m { color: #666666 } /* Literal.Number */
+  .s { color: #BA2121 } /* Literal.String */
+  .na { color: #7D9029 } /* Name.Attribute */
+  .nb { color: #008000 } /* Name.Builtin */
+  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+  .no { color: #880000 } /* Name.Constant */
+  .nd { color: #AA22FF } /* Name.Decorator */
+  .ni { color: #999999; font-weight: bold } /* Name.Entity */
+  .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+  .nf { color: #0000FF } /* Name.Function */
+  .nl { color: #A0A000 } /* Name.Label */
+  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+  .nt { color: #008000; font-weight: bold } /* Name.Tag */
+  .nv { color: #19177C } /* Name.Variable */
+  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+  .w { color: #bbbbbb } /* Text.Whitespace */
+  .mf { color: #666666 } /* Literal.Number.Float */
+  .mh { color: #666666 } /* Literal.Number.Hex */
+  .mi { color: #666666 } /* Literal.Number.Integer */
+  .mo { color: #666666 } /* Literal.Number.Oct */
+  .sb { color: #BA2121 } /* Literal.String.Backtick */
+  .sc { color: #BA2121 } /* Literal.String.Char */
+  .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+  .s2 { color: #BA2121 } /* Literal.String.Double */
+  .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+  .sh { color: #BA2121 } /* Literal.String.Heredoc */
+  .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+  .sx { color: #008000 } /* Literal.String.Other */
+  .sr { color: #BB6688 } /* Literal.String.Regex */
+  .s1 { color: #BA2121 } /* Literal.String.Single */
+  .ss { color: #19177C } /* Literal.String.Symbol */
+  .bp { color: #008000 } /* Name.Builtin.Pseudo */
+  .vc { color: #19177C } /* Name.Variable.Class */
+  .vg { color: #19177C } /* Name.Variable.Global */
+  .vi { color: #19177C } /* Name.Variable.Instance */
+  .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+  #nn-text
+  {
+      text-align: center;
+      text-align: center;
+      color:lightgrey;
+      font-size:40px;
+  }</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">Exclusive Breast Milk Feeding</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">9</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eMeasure Version number</span></td>
+     <td style="width:30%">4.1.000</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">0480</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>7d374c6a-3821-4333-a1bc-4531005d77b8</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">The Joint Commission</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">The Joint Commission</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">National Quality Forum</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>PC-05 Exclusive breast milk feeding during the newborn's entire hospitalization.
+
+PC-05a Exclusive breast milk feeding during the newborn's entire hospitalization considering mother's choice.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>LOINC(R) is a registered trademark of the Regenstrief Institute.
+
+This material contains SNOMED Clinical Terms (R) (SNOMED CT[C]) copyright 2004-2014 International Health Terminology Standards Development Organization. All rights reserved.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Proportion</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Process</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Item Count</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Encounter, Performed: Encounter Inpatient</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Exclusive breast milk feeding for the first 6 months of neonatal life has long been the expressed goal of World Health Organization (WHO), Department of Health and Human Services (DHHS), American Academy of Pediatrics (AAP) and American College of Obstetricians and Gynecologists (ACOG). ACOG has recently reiterated its position (ACOG, 2007). A recent Cochrane review substantiates the benefits (Kramer et al., 2002). Much evidence has now focused on the prenatal and intrapartum period as critical for the success of exclusive (or any) BF (Centers for Disease Control and Prevention [CDC], 2007; Petrova et al., 2007; Shealy et al., 2005; Taveras et al., 2004). Exclusive breast milk feeding rate during birth hospital stay has been calculated by the California Department of Public Health for the last several years using newborn genetic disease testing data. Healthy People 2010 and the CDC have also been active in promoting this goal.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Exclusive breast milk feeding for the first 6 months of neonatal life can result in numerous long-term health benefits for both mother and newborn and is recommended by a number of national and international organizations. Evidence suggests that the prenatal and intrapartum period is critical for the success of exclusive (or any) breast feeding. Therefore, it is recommended that newborns are fed breast milk only from birth to discharge.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Improvement noted as an increase in the rate</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>American Academy of Pediatrics. (2005). Section on Breastfeeding. Policy Statement:
+Breastfeeding and the Use of Human Milk. Pediatrics.115:496-506.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>American College of Obstetricians and Gynecologists. (Feb. 2007). Committee on Obstetric Practice and Committee on Health Care for Underserved  Women.Breastfeeding: Maternal and Infant Aspects. ACOG Committee Opinion 361.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>California Department of Public Health. (2006). Genetic Disease Branch. California In-
+Hospital Breastfeeding as Indicated on the Newborn Screening Test Form, Statewide, County and Hospital of Occurrence: Available at: http://www.cdph.ca.gov/data/statistics/Pages/BreastfeedingStatistics.aspx.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. (Aug 3, 2007). Breastfeeding trends and
+updated national health objectives for exclusive breastfeeding--United States birth years 2000-2004. MMWR - Morbidity &amp; Mortality Weekly Report. 56(30):760-3.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. (2014). Division of Nutrition, Physical Activity and Obesity. Breastfeeding Report Card. Available at: http://www.cdc.gov/breastfeeding/pdf/2014breastfeedingreportcard.pdf</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Ip, S., Chung, M., Raman, G., et al. (2007). Breastfeeding and maternal and infant health outcomes in developed countries. Rockville, MD: US Department of Health and Human Services. Available at: http://www.ahrq.gov/downloads/pub/evidence/pdf/brfout/brfout.pdf</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Kramer, M.S. &amp; Kakuma, R. (2002).Optimal duration of exclusive breastfeeding. [107 refs] Cochrane Database of Systematic Reviews. (1):CD003517.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Petrova, A., Hegyi, T., &amp; Mehta, R. (2007). Maternal race/ethnicity and one-month exclusive breastfeeding in association with the in-hospital feeding modality. Breastfeeding Medicine. 2(2):92-8.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Shealy, K.R., Li, R., Benton-Davis, S., &amp; Grummer-Strawn, L.M. (2005).The CDC guide to breastfeeding interventions. Atlanta, GA: US Department of Health and Human Services, CDC. Available at: http://www.cdc.gov/breastfeeding/pdf/breastfeeding_interventions.pdf.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Taveras, E.M., Li, R., Grummer-Strawn, L., Richardson, M., Marshall, R., Rego, V.H.,
+Miroshnik, I., &amp; Lieu, T.A. (2004). Opinions and practices of clinicians associated with
+continuation of exclusive breastfeeding. Pediatrics. 113(4):e283-90.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>US Department of Health and Human Services. (2007). Healthy People 2010 Midcourse Review. Washington, DC: US Department of Health and Human Services. Available at: http://www.healthypeople.gov/2010/data/midcourse/?visit=1.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>World Health Organization. (1991). Indicators for assessing breastfeeding practices. Geneva, Switzerland: World Health Organization. Available at: http://whqlibdoc.who.int/hq/1991/WHO_CDD_SER_91.14.pdf?ua=1.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>A discharge to a designated cancer center or children's hospital should be captured as a discharge to an acute care facility.
+
+The unit of measurement for this measure is an inpatient episode of care. Each distinct hospitalization should be reported, regardless of whether the same patient is admitted for inpatient care more than once during the measurement period. In addition, the eMeasure logic intends to represent events within or surrounding a single occurrence of an inpatient hospitalization.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>TBD</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Single term newborns born in the hospital who did not have a diagnosis of galactosemia, were not subject to parenteral nutrition, and had a length of stay less than or equal to 120 days.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>PC-05 Single term newborns discharged from the hospital.
+PC-05a Single term newborns discharged from the hospital.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>PC-05 Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to an acute care facility, or who expired during the hospitalization.
+PC-05a Newborns who were admitted to the Neonatal Intensive Care Unit (NICU), who were transferred to an acute care facility, who expired during the hospitalization, or whose mothers chose not to exclusively breast feed.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>PC-05 Newborns who were fed breast milk only since birth.
+PC-05a Newborns who were fed breast milk only since birth.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exceptions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Population Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Observations</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex.</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul>
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e539">Data Criteria (QDM Variables)</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div>
+    <h3>Population Criteria 1:</h3>
+  </div>
+  <div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-initial population"checked>
+			<label for="cb-initial population" class="list-header">
+				<strong>Initial Population</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPopulation1">InitialPopulation1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants without </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants without </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class" id="EncounterInpatient">EncounterInpatient </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"> <= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-object"> G</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">G</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-object"> B</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">B</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-object"> D</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-object"> P</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"> <= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Physical </span><span class="cql-string">Exam </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">At </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">O</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-literal">quantitativeResult</span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">259</span><span class="cql-class"> days </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Born </span><span class="cql-string">Newborn </span><span class="cql-string">Born </span><span class="cql-string">Hospital </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Procedure </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-denominator"checked>
+			<label for="cb-denominator" class="list-header">
+				<strong>Denominator</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Denominator1">Denominator1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#InitialPopulation1">InitialPopulation1</a><span  class="cql-generic"> </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPopulation1">InitialPopulation1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"> <= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-object"> G</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">G</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-object"> B</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">B</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-object"> D</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-object"> P</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at</span><span class="cql-string">Birth </span><span class="cql-string"><= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Physical </span><span class="cql-string">Exam </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">At </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">O</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-literal">quantitativeResult</span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">259</span><span class="cql-class"> days </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Born </span><span class="cql-string">Newborn </span><span class="cql-string">Born </span><span class="cql-string">Hospital </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Procedure </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-denominator exclusion"checked>
+			<label for="cb-denominator exclusion" class="list-header">
+				<strong>Denominator Exclusion</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="DenominatorExclusions1">DenominatorExclusions1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#EncounterInpatient">EncounterInpatient</a><span  class="cql-generic"> </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">facilityLocation</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Neonatal </span><span class="cql-string">Intensive </span><span class="cql-string">Care </span><span class="cql-string">Unit </span><span class="cql-string">NICU </span><span class="cql-string">"</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> or </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeStatus</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Patient </span><span class="cql-string">Expired </span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> or </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeStatus</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Discharge </span><span class="cql-string">To </span><span class="cql-string">Acute </span><span class="cql-string">Care </span><span class="cql-string">Facility </span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator"checked>
+			<label for="cb-numerator" class="list-header">
+				<strong>Numerator</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Numerator1">Numerator1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#EncounterInpatient">EncounterInpatient</a><span  class="cql-generic"> </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-object">F</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">F</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Other </span><span class="cql-string">Than </span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-object">O</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Substance </span><span class="cql-string">Administered </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Other </span><span class="cql-string">Than </span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Substance </span><span class="cql-string">Administered </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Dietary </span><span class="cql-string">Intake </span><span class="cql-string">Other </span><span class="cql-string">than</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator exclusion"checked>
+			<label for="cb-numerator exclusion" class="list-header">
+				<strong>Numerator Exclusions</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+            <span class="cql-comment">// none</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <div class="treeview hover p-l-10">
+  	<ul class="list-unstyled">
+  		<input type="checkbox" id="cb-denominator exceptions"checked>
+  			<label for="cb-denominator exceptions" class="list-header">
+  				<strong>Denominator Exceptions</strong>
+  			</label>
+  			<ul class="code">
+  				<li>
+  					<div>
+              <span class="cql-comment">// none</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <div class="treeview hover p-l-10">
+    	<ul class="list-unstyled">
+    		<input type="checkbox" id="cb-stratification"checked>
+    			<label for="cb-stratification" class="list-header">
+    				<strong>Stratification</strong>
+    			</label>
+    			<ul class="code">
+    				<li>
+    					<div>
+                <span class="cql-comment">// none</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div>
+  <h3>Population Criteria 2:</h3>
+</div>
+<div class="treeview hover p-l-10">
+<ul class="list-unstyled">
+  <input type="checkbox" id="cb-initial population 2"checked>
+    <label for="cb-initial population 2" class="list-header">
+      <strong>Initial Population 2</strong>
+    </label>
+    <ul class="code">
+      <li>
+        <div>
+          <span class="cql-keyword"> define </span><span class="cql-class" id="InitialPopulation1">InitialPopulation1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class" id="EncounterInpatient">EncounterInpatient </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"> <= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-object"> G</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">G</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-object">B</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">B</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-object"> D</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-object"> P</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"> <= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Physical </span><span class="cql-string">Exam </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">At </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">O</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-literal">quantitativeResult</span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">259</span><span class="cql-class"> days </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Born </span><span class="cql-string">Newborn </span><span class="cql-string">Born </span><span class="cql-string">Hospital </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Procedure </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+<ul class="list-unstyled">
+  <input type="checkbox" id="cb-denominator2"checked>
+    <label for="cb-denominator2" class="list-header">
+      <strong>Denominator 2</strong>
+    </label>
+    <ul class="code">
+      <li>
+        <div>
+          <span class="cql-keyword"> define </span><span class="cql-class" id="Denominator1">Denominator1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#InitialPopulation1">InitialPopulation1</a><span  class="cql-generic"> </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="InitialPopulation1">InitialPopulation1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">Infants </span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"><= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-object"> G</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">G</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-object"> B</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">B</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-object"> D</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">D</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">onsetDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-object"> P</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">P</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">at </span><span class="cql-string">Birth </span><span class="cql-string"><= 37 </span><span class="cql-string">weeks</span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Physical </span><span class="cql-string">Exam </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Gestational </span><span class="cql-string">Age </span><span class="cql-string">At </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">O</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-literal">quantitativeResult</span><span class="cql-generic"> > </span><span class="cql-generic"> = </span><span class="cql-literal">259</span><span class="cql-class"> days </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Birth </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Single </span><span class="cql-string">Live </span><span class="cql-string">Born </span><span class="cql-string">Newborn </span><span class="cql-string">Born </span><span class="cql-string">Hospital </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Diagnosis </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Galactosemia </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">Procedure </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Procedure </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Parenteral </span><span class="cql-string">Nutrition </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-denominator exclusion 2"checked>
+			<label for="cb-denominator exclusion 2" class="list-header">
+				<strong>Denominator Exclusion 2</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="DenominatorExclusions2">DenominatorExclusions2</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#DenominatorExclusions1">DenominatorExclusions1</a><span  class="cql-generic"> </span>
+<div class="p-l-10">
+<span class="cql-keyword"> union </span><span class="cql-string">"</span><span class="cql-string">Intention </span><span class="cql-string">Not </span><span class="cql-string">To </span><span class="cql-string">Breast </span><span class="cql-string">Feed </span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="DenominatorExclusions1">DenominatorExclusions1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#EncounterInpatient">EncounterInpatient</a><span  class="cql-generic"> </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">facilityLocation</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Neonatal </span><span class="cql-string">Intensive </span><span class="cql-string">Care </span><span class="cql-string">Unit </span><span class="cql-string">NICU </span><span class="cql-string">"</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> or </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeStatus</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Patient </span><span class="cql-string">Expired </span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> or </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeStatus</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-string">"</span><span class="cql-string">Discharge </span><span class="cql-string">To </span><span class="cql-string">Acute </span><span class="cql-string">Care </span><span class="cql-string">Facility </span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Intention </span><span class="cql-string">Not </span><span class="cql-string">To </span><span class="cql-string">Breast </span><span class="cql-string">Feed </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> without </span><span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Communication </span><span class="cql-string"> : </span><span class="cql-string">From </span><span class="cql-string">Patient </span><span class="cql-string">to</span><span class="cql-string">Provider </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Feeding </span><span class="cql-string">Intention </span><span class="cql-string">Breast </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">C</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">C</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-string">"</span><span class="cql-string">Infant </span><span class="cql-string">Birth </span><span class="cql-string">Date </span><span class="cql-string">"</span><span class="cql-generic"> + </span><span class="cql-literal">1</span><span class="cql-literal">hour</span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator 2"checked>
+			<label for="cb-numerator 2" class="list-header">
+				<strong>Numerator 2</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+						<span class="cql-keyword"> define </span><span class="cql-class" id="Numerator2">Numerator2</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#Numerator1">Numerator1</a><span  class="cql-generic"> </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="Numerator1">Numerator1</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<a class="cql-interface" href="#EncounterInpatient">EncounterInpatient</a><span  class="cql-generic"> </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> with </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-object">F</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">F</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+<span class="cql-keyword"> without </span><span class="cql-string">"</span><span class="cql-string">Other </span><span class="cql-string">Than </span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-object">O</span><span class="cql-keyword"> such </span><span class="cql-keyword"> that </span><span class="cql-object">O</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">startDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span>
+<br>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-class" id="EncounterInpatient">EncounterInpatient</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Performed </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Encounter </span><span class="cql-string">Inpatient </span><span class="cql-string">"</span><span class="cql-generic"> ] </span><span class="cql-object">E</span>
+<div class="p-l-10">
+<span class="cql-keyword"> where </span><span class="cql-class"> days </span><span class="cql-keyword"> between </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">admissionDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-generic"> < </span><span class="cql-generic"> = </span><span class="cql-literal">120</span>
+<br>
+
+<div class="p-l-10">
+<span class="cql-keyword"> and </span><span class="cql-object">E</span><span class="cql-generic">.</span><span class="cql-string">"</span><span class="cql-string">dischargeDatetime</span><span class="cql-string">"</span><span class="cql-keyword"> in </span><span class="cql-class"> MeasurementPeriod </span>
+<br>
+
+</div>
+
+</div>
+
+</div>
+<br>
+
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Substance </span><span class="cql-string">Administered </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">"</span><span class="cql-generic"> ] </span>
+</div>
+<br>
+<span class="cql-keyword"> define </span><span class="cql-string">"</span><span class="cql-string">Other </span><span class="cql-string">Than </span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">Feeding </span><span class="cql-string">"</span><span class="cql-generic"> : </span>
+<div class="p-l-10">
+<span class="cql-generic"> [ </span><span class="cql-string">"</span><span class="cql-string">Substance </span><span class="cql-string">Administered </span><span class="cql-string">"</span><span class="cql-generic"> : </span><span class="cql-string">"</span><span class="cql-string">Dietary </span><span class="cql-string">Intake </span><span class="cql-string">Other </span><span class="cql-string">than</span><span class="cql-string">Breast </span><span class="cql-string">Milk </span><span class="cql-string">"</span><span class="cql-generic"> ] </span></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="treeview hover p-l-10">
+	<ul class="list-unstyled">
+		<input type="checkbox" id="cb-numerator exclusion 2"checked>
+			<label for="cb-numerator exclusion 2" class="list-header">
+				<strong>Numerator Exclusions 2</strong>
+			</label>
+			<ul class="code">
+				<li>
+					<div>
+            <span class="cql-comment">// none</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <div class="treeview hover p-l-10">
+  	<ul class="list-unstyled">
+  		<input type="checkbox" id="cb-denominator exceptions 2"checked>
+  			<label for="cb-denominator exceptions 2" class="list-header">
+  				<strong>Denominator Exceptions 2</strong>
+  			</label>
+  			<ul class="code">
+  				<li>
+  					<div>
+              <span class="cql-comment">// none</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    <div class="treeview hover p-l-10">
+    	<ul class="list-unstyled">
+    		<input type="checkbox" id="cb-stratification 2"checked>
+    			<label for="cb-stratification 2" class="list-header">
+    				<strong>Stratification 2</strong>
+    			</label>
+    			<ul class="code">
+    				<li>
+    					<div>
+                <span class="cql-comment">// none</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+</li>
+</ul>
+</div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Communication: From Patient to Provider: Feeding Intention-Breast&quot; using &quot;Feeding Intention-Breast SNOMEDCT Value Set (2.16.840.1.113762.1.4.1045.29)&quot;</li>
+    <li>&quot;Diagnosis, Active: Galactosemia&quot; using &quot;Galactosemia Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.35)&quot;</li>
+    <li>&quot;Diagnosis, Active: Single Live Birth&quot; using &quot;Single Live Birth SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.25)&quot;</li>
+    <li>&quot;Diagnosis, Active: Single Live Born Newborn Born in Hospital&quot; using &quot;Single Live Born Newborn Born in Hospital Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.26)&quot;</li>
+    <li>&quot;Encounter, Performed: Encounter Inpatient&quot; using &quot;Encounter Inpatient SNOMEDCT Value Set (2.16.840.1.113883.3.666.5.307)&quot;</li>
+    <li>&quot;Physical Exam, Performed: Estimated Gestational Age at Birth&quot; using &quot;Estimated Gestational Age at Birth SNOMEDCT Value Set (2.16.840.1.113762.1.4.1045.47)&quot;</li>
+    <li>&quot;Procedure, Performed: Parenteral Nutrition&quot; using &quot;Parenteral Nutrition Grouping Value Set (2.16.840.1.113883.3.117.1.7.1.38)&quot;</li>
+    <li>&quot;Substance, Administered: Breast Milk&quot; using &quot;Breast Milk SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.30)&quot;</li>
+    <li>&quot;Substance, Administered: Dietary Intake Other than Breast Milk&quot; using &quot;Dietary Intake Other than Breast Milk SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.27)&quot;</li>
+    <li> Attribute: &quot;Facility location: Neonatal Intensive Care Unit (NICU)&quot; using &quot;Neonatal Intensive Care Unit (NICU) SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.75)&quot;</li>
+    <li> Attribute: &quot;Discharge status: Patient Expired&quot; using &quot;Patient Expired SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.309)&quot;</li>
+    <li> Attribute: &quot;Discharge status: Discharge To Acute Care Facility&quot; using &quot;Discharge To Acute Care Facility SNOMEDCT Value Set (2.16.840.1.113883.3.117.1.7.1.87)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul>
+    <li>&quot;Patient Characteristic Ethnicity: Ethnicity&quot; using &quot;Ethnicity CDCREC Value Set (2.16.840.1.114222.4.11.837)&quot;</li>
+    <li>&quot;Patient Characteristic Payer: Payer&quot; using &quot;Payer SOP Value Set (2.16.840.1.114222.4.11.3591)&quot;</li>
+    <li>&quot;Patient Characteristic Race: Race&quot; using &quot;Race CDCREC Value Set (2.16.840.1.114222.4.11.836)&quot;</li>
+    <li>&quot;Patient Characteristic Sex: ONC Administrative Sex&quot; using &quot;ONC Administrative Sex AdministrativeGender Value Set (2.16.840.1.113762.1.4.1)&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul>
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>eMeasure Perinatal Care (ePC)</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
