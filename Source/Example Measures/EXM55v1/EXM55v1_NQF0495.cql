@@ -1,8 +1,13 @@
 library EXM55 version '1'
 
 /*
-	CMS55v1 NQF0495
+	Based on CMS55v1/NQF0495
 	Median Time from ED Arrival to ED Departure for Admitted ED Patients
+
+	This example is a work in progress and should not be considered a final specification
+	or recommendation for guidance. This example will help guide and direct the process
+	of finding conventions and usage patterns that meet the needs of the various stakeholders
+	in the measure development community.
 
 Population criteria
 

@@ -2,6 +2,13 @@ library EXM179_QDM version '2'
 
 // Warfarin time in therapeutic range
 
+/*
+This example is a work in progress and should not be considered a final specification
+or recommendation for guidance. This example will help guide and direct the process
+of finding conventions and usage patterns that meet the needs of the various stakeholders
+in the measure development community.
+*/
+
 using QDM //version '4.1.2'
 
 valueset "Atrial Fibrillation/Flutter": '2.16.840.1.113883.3.117.1.7.1.202'

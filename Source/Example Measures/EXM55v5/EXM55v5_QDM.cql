@@ -1,10 +1,15 @@
 library EXM55 version '5.0.0'
 
 /*
-	CMS55v1 NQF0495
+	Based on CMS55v5/NQF0495
 	Median Time from ED Arrival to ED Departure for Admitted ED Patients
 
 	Episode-of-Care-Based Continuous Variable Measure with stratification
+
+	This example is a work in progress and should not be considered a final specification
+	or recommendation for guidance. This example will help guide and direct the process
+	of finding conventions and usage patterns that meet the needs of the various stakeholders
+	in the measure development community.
 */
 
 using QDM version '5.0'

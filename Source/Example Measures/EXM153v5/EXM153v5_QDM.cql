@@ -1,10 +1,15 @@
-library CMS153 version '5'
+library EXM153 version '5'
 
 /*
-CMS 153v5
+Based on CMS 153v5
 Chlamydia Screening for Women
 
 Patient-based Proportion Measure with Stratification
+
+This example is a work in progress and should not be considered a final specification
+or recommendation for guidance. This example will help guide and direct the process
+of finding conventions and usage patterns that meet the needs of the various stakeholders
+in the measure development community.
 
 Population Criteria
 

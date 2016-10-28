@@ -1,4 +1,11 @@
-library CMS146_QDM version '2'
+library EXM146_QDM version '2'
+
+/*
+This example is a work in progress and should not be considered a final specification
+or recommendation for guidance. This example will help guide and direct the process
+of finding conventions and usage patterns that meet the needs of the various stakeholders
+in the measure development community.
+*/
 
 /*
  * This take differs from the original in that it uses a function for the
