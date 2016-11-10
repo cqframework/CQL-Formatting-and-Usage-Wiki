@@ -1,4 +1,4 @@
-library EXM146 version '3'
+library EXM146 version '4'
 
 /*
 This example is a work in progress and should not be considered a final specification
@@ -7,44 +7,46 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QDM version '4.2'
+using QDM version '5.0.1'
 
 include Common version '1' called Common
 
-valueset "Acute Pharyngitis": '2.16.840.1.113883.3.464.1003.102.12.1011'
-valueset "Acute Tonsillitis": '2.16.840.1.113883.3.464.1003.102.12.1012'
-valueset "Ambulatory/ED Visit": '2.16.840.1.113883.3.464.1003.101.12.1061'
-valueset "Antibiotic Medications": '2.16.840.1.113883.3.464.1003.196.12.1001'
-valueset "Group A Streptococcus Test": '2.16.840.1.113883.3.464.1003.198.12.1012'
+valueset "Acute Pharyngitis": 'urn:oid:2.16.840.1.113883.3.464.1003.102.12.1011'
+valueset "Acute Tonsillitis": 'urn:oid:2.16.840.1.113883.3.464.1003.102.12.1012'
+valueset "Ambulatory/ED Visit": 'urn:oid:2.16.840.1.113883.3.464.1003.101.12.1061'
+valueset "Antibiotic Medications": 'urn:oid:2.16.840.1.113883.3.464.1003.196.12.1001'
+valueset "Group A Streptococcus Test": 'urn:oid:2.16.840.1.113883.3.464.1003.198.12.1012'
 
-parameter MeasurementPeriod Interval<DateTime>
+parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
 // Region: Initial Population
 
-define InDemographic:
-  AgeInYearsAt(start of MeasurementPeriod) >= 2
-    and AgeInYearsAt(start of MeasurementPeriod) < 18
+define "In Demographic":
+  AgeInYearsAt(start of "Measurement Period") >= 2
+    and AgeInYearsAt(start of "Measurement Period") < 18
 
-define Antibiotics:
+define "Antibiotics":
   ["Medication, Order": "Antibiotic Medications"]
 
-define Pharyngitis:
-  ["Diagnosis, Active": "Acute Pharyngitis"] union ["Diagnosis, Active": "Acute Tonsillitis"]
+define "Pharyngitis":
+  ["Diagnosis": "Acute Pharyngitis"] union ["Diagnosis": "Acute Tonsillitis"]
 
-define MeasurementPeriodEncounters:
-  ["Encounter, Performed": "Ambulatory/ED Visit"] E
-    where Interval[E."start datetime", E."stop datetime"] during MeasurementPeriod
-      and InDemographic
+define "Measurement Period Encounters":
+  ["Encounter, Performed": "Ambulatory/ED Visit"] Encounter
+    where Encounter.relevantPeriod during "Measurement Period"
+      and "In Demographic"
 
-define PharyngitisEncountersWithAntibiotics:
-  MeasurementPeriodEncounters E
-    with Pharyngitis P such that Common.includesOrStartsDuring(P, E)
-    with Antibiotics A such that A."signed datetime" 3 days or less after E."start datetime"
+define "Pharyngitis Encounters With Antibiotics":
+  "Measurement Period Encounters" Encounter
+    with "Pharyngitis" Pharyngitis
+      such that Common."Includes Or Starts During"(Pharyngitis, Encounter)
+    with "Antibiotics" Antibiotics
+      such that Antibiotics.authorDatetime 3 days or less after start of Encounter.relevantPeriod
 
-define InitialPopulation:
-  PharyngitisEncountersWithAntibiotics
+define "Initial Population":
+  "Pharyngitis Encounters With Antibiotics"
 
 // EndRegion: Initial Population
 
@@ -56,16 +58,18 @@ define InitialPopulation:
 
 // Region: Denominator Exclusions
 
-define PharyngitisWithPriorAntibiotics:
-  Pharyngitis P
-    with Antibiotics A such that A."signed datetime" 30 days or less before P."start datetime"
+define "Pharyngitis With Prior Antibiotics":
+  "Pharyngitis" Pharyngitis
+    with "Antibiotics" Antibiotics
+      such that Antibiotics.authorDatetime 30 days or less before start of Pharyngitis.prevalencePeriod
 
-define ExcludedEncounters:
-  PharyngitisEncountersWithAntibiotics E
-    with PharyngitisWithPriorAntibiotics P such that Common.includesOrStartsDuring(P, E)
+define "Excluded Encounters":
+  "Pharyngitis Encounters With Antibiotics" Encounters
+    with "Pharyngitis With Prior Antibiotics" Pharyngitis
+      such that Common."Includes Or Starts During"(Pharyngitis, Encounters)
 
-define DenominatorExclusions:
-  ExcludedEncounters
+define "Denominator Exclusions":
+  "Excluded Encounters"
 
 // EndRegion: Denominator Exclusions
 
@@ -77,14 +81,14 @@ define DenominatorExclusions:
 
 // Region: Numerator
 
-define StrepTestEncounters:
-  PharyngitisEncountersWithAntibiotics E
-    with ["Laboratory Test, Performed": "Group A Streptococcus Test"] T
-      such that T.result is not null
-        and T."start datetime" in Interval[E."start datetime" - 3 days, E."stop datetime" + 3 days]
+define "Strep Test Encounters":
+  "Pharyngitis Encounters With Antibiotics" Encounters
+    with ["Laboratory Test, Performed": "Group A Streptococcus Test"] Test
+      such that Test.result is not null
+        and Test.relevantPeriod starts during Interval[start of Encounters.relevantPeriod - 3 days, end of Encounters.relevantPeriod + 3 days]
 
-define Numerator:
-  StrepTestEncounters
+define "Numerator":
+   "Strep Test Encounters"
 
 // EndRegion: Numerator
 

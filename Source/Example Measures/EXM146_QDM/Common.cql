@@ -7,10 +7,10 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QDM
+using QDM version '5.0.1'
 
 context Patient
 
-define function includesOrStartsDuring(P "Diagnosis, Active", E "Encounter, Performed"):
-  Interval[P."start datetime", P."stop datetime"] includes Interval[E."start datetime", E."stop datetime"]
-    or P."start datetime" in Interval[E."start datetime", E."stop datetime"]
+define function "Includes Or Starts During"(P "Diagnosis", E "Encounter, Performed"):
+  P.prevalencePeriod includes E.relevantPeriod
+    or P.prevalencePeriod starts during E.relevantPeriod

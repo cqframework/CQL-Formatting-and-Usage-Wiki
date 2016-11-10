@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Common" version="1"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.1"/>
+   </usings>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Includes Or Starts During" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="Or">
+            <operand xsi:type="Includes">
+               <operand path="prevalencePeriod" xsi:type="Property">
+                  <source name="P" xsi:type="OperandRef"/>
+               </operand>
+               <operand path="relevantPeriod" xsi:type="Property">
+                  <source name="E" xsi:type="OperandRef"/>
+               </operand>
+            </operand>
+            <operand xsi:type="In">
+               <operand xsi:type="Start">
+                  <operand path="prevalencePeriod" xsi:type="Property">
+                     <source name="P" xsi:type="OperandRef"/>
+                  </operand>
+               </operand>
+               <operand path="relevantPeriod" xsi:type="Property">
+                  <source name="E" xsi:type="OperandRef"/>
+               </operand>
+            </operand>
+         </expression>
+         <operand name="P">
+            <operandTypeSpecifier xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" name="ns1:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="E">
+            <operandTypeSpecifier xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" name="ns2:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+   </statements>
+</library>
+
+
