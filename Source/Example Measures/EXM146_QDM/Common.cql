@@ -7,7 +7,7 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QDM version '5.0.1'
+using QDM version '5.0.2'
 
 context Patient
 

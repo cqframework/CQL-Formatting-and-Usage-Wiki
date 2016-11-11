@@ -7,7 +7,7 @@ of finding conventions and usage patterns that meet the needs of the various sta
 in the measure development community.
 */
 
-using QDM version '5.0'
+using QDM version '5.0.2'
 
 valueset "Galactosemia Grouping Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.35'
 valueset "Single Live Birth SNOMEDCT Value Set": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.25'

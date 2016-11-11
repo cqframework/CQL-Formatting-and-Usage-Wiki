@@ -4,7 +4,7 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
    </usings>
    <parameters>
       <def name="Measurement Period" accessLevel="Public">
@@ -34,7 +34,7 @@
       <def name="Encounter Inpatient" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Encounter">
-               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Encounter Inpatient SNOMEDCT Value Set" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -54,10 +54,10 @@
       </def>
       <def name="Single Live Birth Diagnosis" context="Patient" accessLevel="Public">
          <expression xsi:type="Union">
-            <operand xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:Diagnosis" xsi:type="Retrieve">
+            <operand xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:Diagnosis" xsi:type="Retrieve">
                <codes name="Single Live Birth SNOMEDCT Value Set" xsi:type="ValueSetRef"/>
             </operand>
-            <operand xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:Diagnosis" xsi:type="Retrieve">
+            <operand xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns2:Diagnosis" xsi:type="Retrieve">
                <codes name="Single Live Born Newborn Born in Hospital Grouping Value Set" xsi:type="ValueSetRef"/>
             </operand>
          </expression>
@@ -105,7 +105,7 @@
                <expression name="Single Live Birth Encounter" xsi:type="ExpressionRef"/>
             </source>
             <relationship alias="Diagnosis" xsi:type="Without">
-               <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:Diagnosis" xsi:type="Retrieve">
+               <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns3:Diagnosis" xsi:type="Retrieve">
                   <codes name="Galactosemia Grouping Value Set" xsi:type="ValueSetRef"/>
                </expression>
                <suchThat xsi:type="In">
@@ -129,7 +129,7 @@
                <expression name="Single Live Birth Encounter Without Galactosemia" xsi:type="ExpressionRef"/>
             </source>
             <relationship alias="Procedure" xsi:type="Without">
-               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:ProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns4:ProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Parenteral Nutrition Grouping Value Set" xsi:type="ValueSetRef"/>
                </expression>
                <suchThat xsi:type="In">
@@ -147,7 +147,7 @@
                <expression name="Single Live Birth Encounter Without Galactosemia or Parenteral Nutrition" xsi:type="ExpressionRef"/>
             </source>
             <relationship alias="Assessment" xsi:type="With">
-               <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" dataType="ns5:AssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:AssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Estimated Gestational Age at Birth SNOMEDCT Value Set" xsi:type="ValueSetRef"/>
                </expression>
                <suchThat xsi:type="And">
@@ -198,7 +198,7 @@
                <expression name="Initial Population" xsi:type="ExpressionRef"/>
             </source>
             <relationship alias="Substance" xsi:type="With">
-               <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_draft" dataType="ns6:SubstanceAdministered" templateId="PositiveSubstanceAdministered" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns6:SubstanceAdministered" templateId="PositiveSubstanceAdministered" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Breast Milk SNOMEDCT Value Set" xsi:type="ValueSetRef"/>
                </expression>
                <suchThat xsi:type="In">
@@ -209,7 +209,7 @@
                </suchThat>
             </relationship>
             <relationship alias="Substance" xsi:type="Without">
-               <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_draft" dataType="ns7:SubstanceAdministered" templateId="PositiveSubstanceAdministered" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns7:SubstanceAdministered" templateId="PositiveSubstanceAdministered" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Dietary Intake Other than Breast Milk SNOMEDCT Value Set" xsi:type="ValueSetRef"/>
                </expression>
                <suchThat xsi:type="In">
@@ -222,22 +222,22 @@
          </expression>
       </def>
       <def name="SDE Patient Ethnicity" context="Patient" accessLevel="Public">
-         <expression xmlns:ns8="urn:healthit-gov:qdm:v5_0_draft" dataType="ns8:PatientCharacteristicEthnicity" xsi:type="Retrieve">
+         <expression xmlns:ns8="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns8:PatientCharacteristicEthnicity" xsi:type="Retrieve">
             <codes name="Ethnicity CDCREC Value Set" xsi:type="ValueSetRef"/>
          </expression>
       </def>
       <def name="SDE Patient Payer" context="Patient" accessLevel="Public">
-         <expression xmlns:ns9="urn:healthit-gov:qdm:v5_0_draft" dataType="ns9:PatientCharacteristicPayer" xsi:type="Retrieve">
+         <expression xmlns:ns9="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns9:PatientCharacteristicPayer" xsi:type="Retrieve">
             <codes name="Payer SOP Value Set" xsi:type="ValueSetRef"/>
          </expression>
       </def>
       <def name="SDE Patient Race" context="Patient" accessLevel="Public">
-         <expression xmlns:ns10="urn:healthit-gov:qdm:v5_0_draft" dataType="ns10:PatientCharacteristicRace" xsi:type="Retrieve">
+         <expression xmlns:ns10="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns10:PatientCharacteristicRace" xsi:type="Retrieve">
             <codes name="Race CDCREC Value Set" xsi:type="ValueSetRef"/>
          </expression>
       </def>
       <def name="SDE Patient Sex" context="Patient" accessLevel="Public">
-         <expression xmlns:ns11="urn:healthit-gov:qdm:v5_0_draft" dataType="ns11:PatientCharacteristicSex" xsi:type="Retrieve">
+         <expression xmlns:ns11="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns11:PatientCharacteristicSex" xsi:type="Retrieve">
             <codes name="ONC Administrative Sex AdministrativeGender Value Set" xsi:type="ValueSetRef"/>
          </expression>
       </def>

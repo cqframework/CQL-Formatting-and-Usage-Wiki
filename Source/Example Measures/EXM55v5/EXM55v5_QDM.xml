@@ -4,7 +4,7 @@
    <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
    <usings>
       <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
-      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
    </usings>
    <parameters>
       <def name="Measurement Period" accessLevel="Public">
@@ -43,13 +43,13 @@
    <statements>
       <def name="Patient" context="Patient">
          <expression xsi:type="SingletonFrom">
-            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
          </expression>
       </def>
       <def name="Inpatient Encounters" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Encounter">
-               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -70,7 +70,7 @@
       <def name="Emergency Department Encounters" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="EmergencyEncounter">
-               <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+               <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns2:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
                   <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -121,7 +121,7 @@
             </operand>
          </expression>
          <operand name="Encounter">
-            <operandTypeSpecifier xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" name="ns3:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            <operandTypeSpecifier xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" name="ns3:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
          </operand>
       </def>
       <def name="Stratification 1" context="Patient" accessLevel="Public">
@@ -161,7 +161,7 @@
       <def name="SDE Ethnicity" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Characteristic">
-               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:PatientCharacteristicEthnicity" xsi:type="Retrieve">
+               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns4:PatientCharacteristicEthnicity" xsi:type="Retrieve">
                   <codes name="Ethnicity" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -173,7 +173,7 @@
       <def name="SDE Payer" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Characteristic">
-               <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" dataType="ns5:PatientCharacteristicPayer" xsi:type="Retrieve">
+               <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:PatientCharacteristicPayer" xsi:type="Retrieve">
                   <codes name="Payer" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -185,7 +185,7 @@
       <def name="SDE Race" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Characteristic">
-               <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_draft" dataType="ns6:PatientCharacteristicRace" xsi:type="Retrieve">
+               <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns6:PatientCharacteristicRace" xsi:type="Retrieve">
                   <codes name="Race" xsi:type="ValueSetRef"/>
                </expression>
             </source>
@@ -197,7 +197,7 @@
       <def name="SDE Sex" context="Patient" accessLevel="Public">
          <expression xsi:type="Query">
             <source alias="Characteristic">
-               <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_draft" dataType="ns7:PatientCharacteristicSex" xsi:type="Retrieve">
+               <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns7:PatientCharacteristicSex" xsi:type="Retrieve">
                   <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
                </expression>
             </source>

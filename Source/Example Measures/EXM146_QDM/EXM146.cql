@@ -12,7 +12,7 @@ library EXM146 version '4'
   in the measure development community.
 */
 
-using QDM version '5.0.1'
+using QDM version '5.0.2'
 
 include Common version '1' called Common
 

@@ -12,7 +12,7 @@ library EXM137_QDM version '5.0.0'
   in the measure development community.
 */
 
-using QDM version '5.0'
+using QDM version '5.0.2'
 
 valueset "Alcohol and Drug Dependence": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1001'
 valueset "Alcohol and Drug Dependence Treatment": 'urn:oid:2.16.840.1.113883.3.464.1003.106.12.1005'
