@@ -72,10 +72,36 @@ define "Intervention Comfort Measures":
       )
   )
 
+
+define "Intervention Comfort Measures":
+  ["Intervention, Order": "Comfort Measures"]
+    union ["Intervention, Performed": "Comfort Measures"]
+
+//List<Any>
+//List<Choice<"Intervention, Order", "Intervention, Performed">>
+
 define "Encounters with Comfort Measures":
   "Non-Elective Inpatient Encounter" Encounter
     with "Intervention Comfort Measures" ComfortMeasure
       such that ComfortMeasure.authorDatetime during Encounter.relevantPeriod
+
+define "Encounters with Comfort Measures":
+  "Non-Elective Inpatient Encounter" Encounter
+    with "Intervention Comfort Measures" ComfortMeasure
+      such that ComfortMeasure.authorDatetime during Encounter.relevantPeriod
+        or ComfortMeasure.relevantPeriod starts during Encounter.relevantPeriod
+
+define "Encounters with Comfort Measures":
+  "Non-Elective Inpatient Encounter" Encounter
+    with "Intervention Comfort Measures" ComfortMeasure
+      such that if ComfortMeasure is "Intervention, Order" then
+        ComfortMeasure.authorDatetime during Encounter.relevantPeriod
+      else
+        ComfortMeasure.relevantPeriod starts during Encounter.relevantPeriod
+
+define "Comfort Measure Orders":
+  "Intervention Comfort Measures" Intervention
+    where Intervention is "Intervention, Order"
 
 define "Denominator Exclusions":
   distinct ((

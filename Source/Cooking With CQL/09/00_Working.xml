@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="SameDayBloodPressure"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="HTN 2 SYSTOLIC_CODE" id="HTN 2 SYSTOLIC_CODE" accessLevel="Public"/>
+      <def name="HTN 2 DIASTOLIC_CODE" id="HTN 2 DIASTOLIC_CODE" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="HtnBpSystolic" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Systolic">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="HTN 2 SYSTOLIC_CODE" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+               <operand xsi:type="LessOrEqual">
+                  <operand strict="false" xsi:type="As">
+                     <operand path="result" scope="Systolic" xsi:type="Property"/>
+                     <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+                  <operand value="140" unit="mmHg" xsi:type="Quantity"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Most Recent Systolic By Date" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Systolic">
+                  <expression name="HtnBpSystolic" xsi:type="ExpressionRef"/>
+               </source>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Most Recent Systolics On Same Day" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Systolic">
+               <expression name="HtnBpSystolic" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="MostRecentSystolic" xsi:type="With">
+               <expression name="Most Recent Systolic By Date" xsi:type="ExpressionRef"/>
+               <suchThat precision="Day" xsi:type="SameAs">
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="MostRecentSystolic" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Lowest Most Recent Systolic" context="Patient" accessLevel="Public">
+         <expression xsi:type="First">
+            <source xsi:type="Query">
+               <source alias="Systolic">
+                  <expression name="Most Recent Systolics On Same Day" xsi:type="ExpressionRef"/>
+               </source>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression strict="false" xsi:type="As">
+                        <operand path="result" scope="Systolic" xsi:type="Property"/>
+                        <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="HtnBpDiastolic" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Diastolic">
+               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="HTN 2 DIASTOLIC_CODE" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+               <operand xsi:type="LessOrEqual">
+                  <operand strict="false" xsi:type="As">
+                     <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                     <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+                  <operand value="90" unit="mmHg" xsi:type="Quantity"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Most Recent Diastolic By Date" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Diastolic">
+                  <expression name="HtnBpDiastolic" xsi:type="ExpressionRef"/>
+               </source>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Most Recent Diastolics On Same Day" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Diastolic">
+               <expression name="HtnBpDiastolic" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="MostRecentDiastolic" xsi:type="With">
+               <expression name="Most Recent Diastolic By Date" xsi:type="ExpressionRef"/>
+               <suchThat precision="Day" xsi:type="SameAs">
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="MostRecentDiastolic" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Lowest Most Recent Diastolic" context="Patient" accessLevel="Public">
+         <expression xsi:type="First">
+            <source xsi:type="Query">
+               <source alias="Diastolic">
+                  <expression name="Most Recent Diastolics On Same Day" xsi:type="ExpressionRef"/>
+               </source>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression strict="false" xsi:type="As">
+                        <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                        <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
