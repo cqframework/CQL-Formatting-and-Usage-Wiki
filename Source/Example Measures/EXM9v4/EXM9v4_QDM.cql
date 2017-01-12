@@ -36,6 +36,8 @@ valueset "Payer": 'urn:oid:2.16.840.1.114222.4.11.3591'
 valueset "Race": 'urn:oid:2.16.840.1.114222.4.11.836'
 valueset "ONC Administrative Sex": 'urn:oid:2.16.840.1.113762.1.4.1'
 
+code "Normative No": 'No' from "SNOMED-CT"
+
 parameter "Measurement Period" Interval<DateTime>
 
 context Patient
@@ -51,6 +53,7 @@ define "Gestational Age at Birth <= 37 weeks":
 
 // NOTE: Gestational age may be calculated using the ACOG ReVITALize guidelines with
 // Estimated Due Date (EDD)
+// http://www.acog.org/about_acog/acog_departments/patient_safety_and_quality_improvement/~/media/departments/patient%20safety%20and%20quality%20improvement/201213issuesandrationale-gestationalageterm.pdf
 // Needs to be the most recent exam associated with this pregnancy
 /*
 define "Estimated Due Date":

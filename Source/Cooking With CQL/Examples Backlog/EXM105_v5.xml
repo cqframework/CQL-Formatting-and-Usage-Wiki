@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="EXM105" version="5.2.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <default lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low xsi:type="DateTime">
+               <year valueType="t:Integer" value="2015" xsi:type="Literal"/>
+               <month valueType="t:Integer" value="1" xsi:type="Literal"/>
+               <day valueType="t:Integer" value="1" xsi:type="Literal"/>
+               <hour valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <minute valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            </low>
+            <high xsi:type="DateTime">
+               <year valueType="t:Integer" value="2016" xsi:type="Literal"/>
+               <month valueType="t:Integer" value="1" xsi:type="Literal"/>
+               <day valueType="t:Integer" value="1" xsi:type="Literal"/>
+               <hour valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <minute valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            </high>
+         </default>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Emergency Department Visit" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.292" accessLevel="Public"/>
+      <def name="Non-Elective Inpatient Encounter" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.424" accessLevel="Public"/>
+      <def name="Comfort Measures" id="urn:oid:1.3.6.1.4.1.33895.1.3.0.45" accessLevel="Public"/>
+      <def name="LDL-c" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.215" accessLevel="Public"/>
+      <def name="Statin Allergen" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.423" accessLevel="Public"/>
+      <def name="Statin Grouper" id="urn:oid:2.16.840.1.113762.1.4.1110.19" accessLevel="Public"/>
+      <def name="Statin ingredient specific" id="urn:oid:2.16.840.1.113762.1.4.1021.7" accessLevel="Public"/>
+      <def name="Medical Reason" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.473" accessLevel="Public"/>
+      <def name="Patient Refusal" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.93" accessLevel="Public"/>
+      <def name="Patient Expired" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.309" accessLevel="Public"/>
+      <def name="Left Against Medical Advice" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.308" accessLevel="Public"/>
+      <def name="Discharged to Health Care Facility for Hospice Care" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.207" accessLevel="Public"/>
+      <def name="Ischemic Stroke" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.247" accessLevel="Public"/>
+      <def name="Discharge To Acute Care Facility" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.87" accessLevel="Public"/>
+      <def name="Discharged to Home for Hospice Care" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.209" accessLevel="Public"/>
+      <def name="Hemorrhagic Stroke" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.212" accessLevel="Public"/>
+      <def name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Non-Elective Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Non-Elective Inpatient Encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="LessOrEqual">
+                  <operand path="lengthOfStay" scope="NonElectiveEncounter" xsi:type="Property"/>
+                  <operand value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Encounter with Principal Diagnosis of Hemorrhagic or Ischemic Stroke" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="Or">
+               <operand xsi:type="InValueSet">
+                  <code path="principalDiagnosis" scope="NonElectiveEncounter" xsi:type="Property"/>
+                  <valueset name="Hemorrhagic Stroke"/>
+               </operand>
+               <operand xsi:type="InValueSet">
+                  <code path="principalDiagnosis" scope="NonElectiveEncounter" xsi:type="Property"/>
+                  <valueset name="Ischemic Stroke"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Initial Population" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Encounter with Principal Diagnosis of Hemorrhagic or Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="GreaterOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Encounter with Principal Diagnosis of Ischemic Stroke" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="InValueSet">
+               <code path="principalDiagnosis" scope="Encounter" xsi:type="Property"/>
+               <valueset name="Ischemic Stroke"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Denominator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Intersect">
+            <operand name="Initial Population" xsi:type="ExpressionRef"/>
+            <operand name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="LDL-c &lt; 70 mg/dL" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Ldl" xsi:type="With">
+               <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:LaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="LDL-c" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="And">
+                  <operand xsi:type="Less">
+                     <operand asType="t:Quantity" xsi:type="As">
+                        <operand path="result" scope="Ldl" xsi:type="Property"/>
+                        <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                     <operand value="70" unit="mg/dL" xsi:type="Quantity"/>
+                  </operand>
+                  <operand xsi:type="Or">
+                     <operand xsi:type="In">
+                        <operand precision="Day" xsi:type="DurationBetween">
+                           <operand path="resultDatetime" scope="Ldl" xsi:type="Property"/>
+                           <operand xsi:type="Start">
+                              <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           <high valueType="t:Integer" value="30" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="In">
+                        <operand path="resultDatetime" scope="Ldl" xsi:type="Property"/>
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Intervention Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:InterventionOrder" templateId="PositiveInterventionOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand xsi:type="Query">
+                  <source alias="Intervention">
+                     <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:InterventionPerformed" templateId="PositiveInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <return>
+                     <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" classType="ns5:PositiveInterventionOrder" xsi:type="Instance">
+                        <element name="authorDatetime">
+                           <value xsi:type="Start">
+                              <operand path="relevantPeriod" scope="Intervention" xsi:type="Property"/>
+                           </value>
+                        </element>
+                        <element name="reason">
+                           <value path="reason" scope="Intervention" xsi:type="Property"/>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="ComfortMeasure" xsi:type="With">
+               <expression name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand path="authorDatetime" scope="ComfortMeasure" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="ED Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="EDEncounter">
+               <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_draft" dataType="ns6:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="ComfortMeasure" xsi:type="With">
+               <expression name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand path="authorDatetime" scope="ComfortMeasure" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="EDEncounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Encounters with Prior ED Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="EDEncounter" xsi:type="With">
+               <expression name="ED Encounters with Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Hour" xsi:type="DurationBetween">
+                     <operand xsi:type="End">
+                        <operand path="relevantPeriod" scope="EDEncounter" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                     <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand xsi:type="Union">
+                     <operand xsi:type="Query">
+                        <source alias="Encounter">
+                           <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where xsi:type="Or">
+                           <operand xsi:type="Or">
+                              <operand xsi:type="Or">
+                                 <operand xsi:type="Or">
+                                    <operand xsi:type="InValueSet">
+                                       <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                                       <valueset name="Discharge To Acute Care Facility"/>
+                                    </operand>
+                                    <operand xsi:type="InValueSet">
+                                       <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                                       <valueset name="Left Against Medical Advice"/>
+                                    </operand>
+                                 </operand>
+                                 <operand xsi:type="InValueSet">
+                                    <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                                    <valueset name="Patient Expired"/>
+                                 </operand>
+                              </operand>
+                              <operand xsi:type="InValueSet">
+                                 <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                                 <valueset name="Discharged to Home for Hospice Care"/>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="InValueSet">
+                              <code path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+                              <valueset name="Discharged to Health Care Facility for Hospice Care"/>
+                           </operand>
+                        </where>
+                     </operand>
+                     <operand name="Encounters with Comfort Measures" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand name="LDL-c &lt; 70 mg/dL" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand name="Encounters with Prior ED Encounters with Comfort Measures" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Statin at Discharge" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Statin">
+               <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_draft" dataType="ns7:MedicationDischarge" templateId="PositiveMedicationDischarge" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Statin Grouper" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="Statin" xsi:type="With">
+               <expression name="Statin at Discharge" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand path="authorDatetime" scope="Statin" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Statin Allergy" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Allergy">
+               <expression xmlns:ns8="urn:healthit-gov:qdm:v5_0_draft" dataType="ns8:AllergyIntolerance" xsi:type="Retrieve">
+                  <codes name="Statin Allergen" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+         </expression>
+      </def>
+      <def name="Statin Not Given at Discharge" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="StatinDischarge">
+               <expression xmlns:ns9="urn:healthit-gov:qdm:v5_0_draft" dataType="ns9:MedicationDischarge" templateId="NegativeMedicationDischarge" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Statin ingredient specific" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Or">
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="StatinDischarge" xsi:type="Property"/>
+                  <valueset name="Medical Reason"/>
+               </operand>
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="StatinDischarge" xsi:type="Property"/>
+                  <valueset name="Patient Refusal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Denominator Exceptions" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand xsi:type="Query">
+                  <source alias="Encounter">
+                     <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <relationship alias="StatinDischarge" xsi:type="With">
+                     <expression name="Statin Not Given at Discharge" xsi:type="ExpressionRef"/>
+                     <suchThat xsi:type="In">
+                        <operand path="authorDatetime" scope="StatinDischarge" xsi:type="Property"/>
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </suchThat>
+                  </relationship>
+               </operand>
+               <operand xsi:type="Query">
+                  <source alias="Encounter">
+                     <expression name="Non-Elective Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <relationship alias="Allergy" xsi:type="With">
+                     <expression name="Statin Allergy" xsi:type="ExpressionRef"/>
+                     <suchThat xsi:type="SameOrBefore">
+                        <operand xsi:type="Start">
+                           <operand path="prevalencePeriod" scope="Allergy" xsi:type="Property"/>
+                        </operand>
+                        <operand xsi:type="End">
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                        </operand>
+                     </suchThat>
+                  </relationship>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns10="urn:healthit-gov:qdm:v5_0_draft" dataType="ns10:PatientCharacteristicEthnicity" xsi:type="Retrieve">
+                  <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Payer" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns11="urn:healthit-gov:qdm:v5_0_draft" dataType="ns11:PatientCharacteristicPayer" xsi:type="Retrieve">
+                  <codes name="Payer" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Race" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns12="urn:healthit-gov:qdm:v5_0_draft" dataType="ns12:PatientCharacteristicRace" xsi:type="Retrieve">
+                  <codes name="Race" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def name="SDE Sex" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Characteristic">
+               <expression xmlns:ns13="urn:healthit-gov:qdm:v5_0_draft" dataType="ns13:PatientCharacteristicSex" xsi:type="Retrieve">
+                  <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return>
+               <expression path="code" scope="Characteristic" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
