@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="RelatedToGestationalAge"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Inpatient Encounter Codes" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def name="Estimated Due Date Codes" id="TBD" accessLevel="Public"/>
+      <def name="Time of Delivery Codes" id="TBD" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Inpatient Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Inpatient Encounter Codes" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="LessOrEqual">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="End">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand valueType="t:Integer" value="120" xsi:type="Literal"/>
+               </operand>
+               <operand xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Time of Delivery Assessment" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Assessment">
+                  <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:AssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Time of Delivery Codes" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship alias="Encounter" xsi:type="With">
+                  <expression name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+                  <suchThat xsi:type="In">
+                     <operand path="authorDatetime" scope="Assessment" xsi:type="Property"/>
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </suchThat>
+               </relationship>
+               <sort>
+                  <by direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Time of Delivery" context="Patient" accessLevel="Public">
+         <expression strict="false" xsi:type="As">
+            <operand path="result" xsi:type="Property">
+               <source name="Time of Delivery Assessment" xsi:type="ExpressionRef"/>
+            </operand>
+            <asTypeSpecifier name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </expression>
+      </def>
+      <def name="Estimated Due Date" context="Patient" accessLevel="Public">
+         <expression strict="false" xsi:type="As">
+            <operand path="result" xsi:type="Property">
+               <source xsi:type="Last">
+                  <source xsi:type="Query">
+                     <source alias="Exam">
+                        <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Estimated Due Date Codes" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <relationship alias="Assessment" xsi:type="With">
+                        <expression name="Time of Delivery Assessment" xsi:type="ExpressionRef"/>
+                        <suchThat xsi:type="In">
+                           <operand precision="Day" xsi:type="DurationBetween">
+                              <operand xsi:type="Start">
+                                 <operand path="relevantPeriod" scope="Exam" xsi:type="Property"/>
+                              </operand>
+                              <operand path="authorDatetime" scope="Assessment" xsi:type="Property"/>
+                           </operand>
+                           <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                              <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                              <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                           </operand>
+                        </suchThat>
+                     </relationship>
+                     <sort>
+                        <by direction="asc" xsi:type="ByExpression">
+                           <expression xsi:type="Start">
+                              <operand name="relevantPeriod" xsi:type="IdentifierRef"/>
+                           </expression>
+                        </by>
+                     </sort>
+                  </source>
+               </source>
+            </operand>
+            <asTypeSpecifier name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </expression>
+      </def>
+      <def name="Gestational Age at Birth" context="Patient" accessLevel="Public">
+         <expression xsi:type="TruncatedDivide">
+            <operand xsi:type="Subtract">
+               <operand valueType="t:Integer" value="280" xsi:type="Literal"/>
+               <operand precision="Day" xsi:type="DurationBetween">
+                  <operand name="Estimated Due Date" xsi:type="ExpressionRef"/>
+                  <operand name="Time of Delivery" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand valueType="t:Integer" value="7" xsi:type="Literal"/>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

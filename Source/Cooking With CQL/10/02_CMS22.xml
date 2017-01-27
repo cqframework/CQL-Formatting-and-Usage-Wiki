@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS22"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="BP Screening Encounter Codes" id="BP Screening Encounter Codes" accessLevel="Public"/>
+      <def name="Diastolic Blood Pressure" id="Diastolic Blood Pressure" accessLevel="Public"/>
+      <def name="Systolic Blood Pressure" id="Systolic Blood Pressure" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Most Recent BP Screening Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Encounter">
+                  <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="BP Screening Encounter Codes" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship alias="Diastolic" xsi:type="With">
+                  <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Diastolic Blood Pressure" xsi:type="ValueSetRef"/>
+                  </expression>
+                  <suchThat xsi:type="And">
+                     <operand xsi:type="Overlaps">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                        <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                           <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </suchThat>
+               </relationship>
+               <relationship alias="Systolic" xsi:type="With">
+                  <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Systolic Blood Pressure" xsi:type="ValueSetRef"/>
+                  </expression>
+                  <suchThat xsi:type="And">
+                     <operand xsi:type="Overlaps">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                        <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Not">
+                        <operand xsi:type="IsNull">
+                           <operand path="result" scope="Systolic" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </suchThat>
+               </relationship>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Most Recent Systolic Reading During Most Recent Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Systolic">
+                  <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Systolic Blood Pressure" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship alias="Encounter" xsi:type="With">
+                  <expression name="Most Recent BP Screening Encounter" xsi:type="ExpressionRef"/>
+                  <suchThat xsi:type="IncludedIn">
+                     <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </suchThat>
+               </relationship>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Systolic" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Most Recent Diastolic Reading During Most Recent Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Last">
+            <source xsi:type="Query">
+               <source alias="Diastolic">
+                  <expression xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" dataType="ns4:PhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Diastolic Blood Pressure" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship alias="Encounter" xsi:type="With">
+                  <expression name="Most Recent BP Screening Encounter" xsi:type="ExpressionRef"/>
+                  <suchThat xsi:type="IncludedIn">
+                     <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </suchThat>
+               </relationship>
+               <sort>
+                  <by direction="asc" xsi:type="ByExpression">
+                     <expression xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Diastolic" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression xsi:type="Exists">
+            <operand xsi:type="List">
+               <element xsi:type="Query">
+                  <source alias="Systolic">
+                     <expression name="Most Recent Systolic Reading During Most Recent Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <source alias="Diastolic">
+                     <expression name="Most Recent Diastolic Reading During Most Recent Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where xsi:type="Or">
+                     <operand xsi:type="Or">
+                        <operand xsi:type="And">
+                           <operand xsi:type="Less">
+                              <operand asType="t:Quantity" xsi:type="As">
+                                 <operand path="result" scope="Systolic" xsi:type="Property"/>
+                                 <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </operand>
+                              <operand value="120" unit="mm[Hg]" xsi:type="Quantity"/>
+                           </operand>
+                           <operand xsi:type="Less">
+                              <operand asType="t:Quantity" xsi:type="As">
+                                 <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                                 <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </operand>
+                              <operand value="80" unit="mm[Hg]" xsi:type="Quantity"/>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="And">
+                           <operand xsi:type="And">
+                              <operand xsi:type="GreaterOrEqual">
+                                 <operand asType="t:Quantity" xsi:type="As">
+                                    <operand path="result" scope="Systolic" xsi:type="Property"/>
+                                    <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 </operand>
+                                 <operand value="120" unit="mm[Hg]" xsi:type="Quantity"/>
+                              </operand>
+                              <operand xsi:type="Less">
+                                 <operand asType="t:Quantity" xsi:type="As">
+                                    <operand path="result" scope="Systolic" xsi:type="Property"/>
+                                    <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 </operand>
+                                 <operand value="140" unit="mm[Hg]" xsi:type="Quantity"/>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="Less">
+                              <operand asType="t:Quantity" xsi:type="As">
+                                 <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                                 <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </operand>
+                              <operand value="90" unit="mm[Hg]" xsi:type="Quantity"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="And">
+                        <operand xsi:type="And">
+                           <operand xsi:type="Less">
+                              <operand asType="t:Quantity" xsi:type="As">
+                                 <operand path="result" scope="Systolic" xsi:type="Property"/>
+                                 <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </operand>
+                              <operand value="140" unit="mm[Hg]" xsi:type="Quantity"/>
+                           </operand>
+                           <operand xsi:type="GreaterOrEqual">
+                              <operand asType="t:Quantity" xsi:type="As">
+                                 <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                                 <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </operand>
+                              <operand value="80" unit="mm[Hg]" xsi:type="Quantity"/>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Less">
+                           <operand asType="t:Quantity" xsi:type="As">
+                              <operand path="result" scope="Diastolic" xsi:type="Property"/>
+                              <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                           <operand value="90" unit="mm[Hg]" xsi:type="Quantity"/>
+                        </operand>
+                     </operand>
+                  </where>
+                  <return distinct="true">
+                     <expression xsi:type="Tuple">
+                        <element name="Systolic">
+                           <value name="Systolic" xsi:type="AliasRef"/>
+                        </element>
+                        <element name="Diastolic">
+                           <value name="Diastolic" xsi:type="AliasRef"/>
+                        </element>
+                     </expression>
+                  </return>
+               </element>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
