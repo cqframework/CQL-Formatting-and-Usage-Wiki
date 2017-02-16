@@ -186,10 +186,13 @@ Initial Population =
         "Encounter, Performed: Encounter Inpatient (principal diagnosis: Acute Myocardial Infarction (AMI))"
 */
 
-define "Initial Population":
+define "AMI Encounter":
   "Encounter Inpatient" Encounter
     where AgeInYearsAt(start of Encounter.relevantPeriod) >= 18
-      and Encounter.principalDiagnosis in "Actue Myocardial Infarction (AMI) Grouping Value Set"
+      and Encounter.principalDiagnosis in "Acute Myocardial Infarction (AMI) Grouping Value Set"
+
+define "Initial Population":
+  "AMI Encounter"
 
 /*
 Denominator =
@@ -218,6 +221,59 @@ Denominator =
             AND: First: "Occurrence A of Procedure, Performed: PCI" <= 1440 minute(s) starts after start of "Occurrence A of Encounter, Performed: Emergency Department Visit"
             AND NOT: "Occurrence A of Procedure, Performed: PCI" starts after start of ("Medication, Administered: Fibrinolytic Therapy" starts after start of "Occurrence A of Encounter, Performed: Emergency Department Visit" )
 */
+
+// After hospital arrival (as defined by the start of the Inpatient Encounter, or the start of an immediately preceding ED visit)
+  // Most recent ECG starts 1 hour or less before hospital arrival, or first ECG starts during the hospitalization
+  // The ECG has a result of Acute or Evolving MI and does not have a result of STEMI Exclusion
+  // The First PCI procedure starts 1440 minutes or less after hospital arrival and not after the start Fibrinolytic Therapy that started after hospitalization
+
+define "Electrocardiogram Diagnostic":
+  ["Diagnostic Study, Performed": "Electrocardiogram (ECG) Grouping Value Set"] Diagnostic
+
+define "PCI Procedure":
+  ["Procedure, Performed": "PCI Grouping Value Set"] Procedure
+
+define "Fibrinolytic Therapy":
+  ["Medication, Administered": "Fibrinolytic Therapy RXNORM Value Set"]
+
+// This function returns the interval of hospitalization centered around the given encounter
+define function "Hospitalization"(Encounter "Encounter, Performed"):
+  (
+    singleton from (
+      ["Encounter, Performed": "Emergency Department Visit SNOMEDCT Value Set"] EDVisit
+        where EDVisit.relevantPeriod ends 1 hour or less before start of Encounter.relevantPeriod
+    )
+  ) X
+    return if X is null then Encounter.relevantPeriod
+      else Interval[start of X.relevantPeriod, end of Encounter.relevantPeriod]
+
+define "Denominator":
+  "AMI Encounter" Encounter
+    let
+      ECG: Coalesce(
+        Last("Electrocardiogram Diagnostic" ECG
+          where ECG.relevantPeriod starts 1 hour or less before Hospitalization(Encounter)
+          sort by start of ECG.relevantPeriod
+        ),
+        First("Electrocardiogram Diagnostic" ECG
+          where ECG.relevantPeriod starts during Hospitalization(Encounter)
+            sort by start of ECG.relevantPeriod
+        )
+      ),
+      PCI: First("PCI Procedure" PCI
+        where PCI.relevantPeriod starts after start of Hospitalization(Encounter)
+        sort by start of PCI.relevantPeriod
+      ),
+      FT: First("Fibrinolytic Therapy" FT
+        where FT.relevantPeriod starts after start of Hospitalization(Encounter)
+        sort by start of FT.relevantPeriod
+      )
+
+    // Aren't these ECG conditions contradictory?
+    where ECG.result as Code in "Acute or Evolving MI Grouping Value Set"
+      and not (ECG.result as Code in "STEMI Exclusions Grouping Value Set")
+      and PCI.relevantPeriod starts 1440 minutes or less after Hospitalization(Encounter)
+      and not (PCI.relevantPeriod starts after start of FT.relevantPeriod)
 
 /*
 Denominator Exclusions =

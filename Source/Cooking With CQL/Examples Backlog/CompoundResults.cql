@@ -35,3 +35,19 @@ define "LDL Result":
         where Component.code in "LDL Result"
           and Component.result < 130 'mg/dL'
     )
+
+define "Macular Exam With Expected Results":
+  ["Diagnostic Study, Performed": "Macular Exam"] Exam
+    where exists (
+      Exam.component Component
+        where Component.code = "Severity of Retinopathy"
+          and Component.result is not null
+    )
+    and exists (
+      Exam.component Component
+        where Component.code = "Macular Edema"
+          and (
+            Component.result in "Macular Edema Presence"
+              or Component.result in "Macular Edema Absence"
+          )
+    )
