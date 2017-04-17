@@ -1,4 +1,4 @@
-#CQL-Formatting-and-Usage-Wiki
+# CQL-Formatting-and-Usage-Wiki
 
 Welcome to the CQL Formatting and Usage Wiki!
 
