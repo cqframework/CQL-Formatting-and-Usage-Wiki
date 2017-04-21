@@ -10,6 +10,8 @@ valueset "Psychiatric/Mental Health Patient": 'Psychiatric/Mental Health Patient
 
 parameter "Measurement Period" Interval<DateTime>
 
+context Patient
+
 /*
 Initial Population =
   AND: "Occurrence A of Encounter, Performed: Emergency Department Visit"

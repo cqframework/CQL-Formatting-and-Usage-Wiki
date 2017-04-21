@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CMS55"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_draft" version="5.0"/>
+   </usings>
+   <parameters>
+      <def localId="8" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="7" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="6" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" name="Encounter Inpatient" id="Encounter Inpatient" accessLevel="Public"/>
+      <def localId="3" name="Emergency Department Visit" id="Emergency Department Visit" accessLevel="Public"/>
+      <def localId="4" name="Hospital Settings" id="2.16.840.1.113762.1.4.1111.126" accessLevel="Public"/>
+      <def localId="5" name="Psychiatric/Mental Health Patient" id="Psychiatric/Mental Health Patient" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def localId="104" name="Inpatient Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Inpatient Encounter&quot;:&#xd;
+  [&quot;Encounter, Performed&quot;] E&#xd;
+    where E.lengthOfStay &lt;= 120 days&#xd;
+      and E.relevantPeriod ends during &quot;Measurement Period&quot;</a:s>
+         </annotation>
+         <expression localId="20" xsi:type="Query">
+            <source localId="10" alias="E">
+               <expression localId="9" xmlns:ns0="urn:healthit-gov:qdm:v5_0_draft" dataType="ns0:EncounterPerformed" templateId="PositiveEncounterPerformed" xsi:type="Retrieve"/>
+            </source>
+            <where localId="19" xsi:type="And">
+               <operand localId="14" xsi:type="LessOrEqual">
+                  <operand localId="12" path="lengthOfStay" scope="E" xsi:type="Property"/>
+                  <operand localId="13" value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand localId="18" xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand localId="16" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="17" name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="34" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Initial Population&quot;:&#xd;
+  &quot;Inpatient Encounter&quot; E&#xd;
+    with [&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] ED&#xd;
+      such that ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod</a:s>
+         </annotation>
+         <expression localId="33" xsi:type="Query">
+            <source localId="22" alias="E">
+               <expression localId="21" name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="32" alias="ED" xsi:type="With">
+               <expression localId="23" xmlns:ns1="urn:healthit-gov:qdm:v5_0_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="31" xsi:type="In">
+                  <operand precision="Hour" xsi:type="DurationBetween">
+                     <operand xsi:type="End">
+                        <operand localId="26" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="29" xsi:type="Start">
+                        <operand localId="28" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                     <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="36" name="Measure Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Measure Population&quot;:&#xd;
+  &quot;Initial Population&quot;</a:s>
+         </annotation>
+         <expression localId="35" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="55" name="Measure Population Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Measure Population Exclusions&quot;:&#xd;
+  &quot;Inpatient Encounter&quot; E&#xd;
+    with [&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] ED&#xd;
+      such that ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod&#xd;
+        and ED.admissionSource in &quot;Hospital Settings&quot;</a:s>
+         </annotation>
+         <expression localId="54" xsi:type="Query">
+            <source localId="38" alias="E">
+               <expression localId="37" name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="53" alias="ED" xsi:type="With">
+               <expression localId="39" xmlns:ns2="urn:healthit-gov:qdm:v5_0_draft" dataType="ns2:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="52" xsi:type="And">
+                  <operand localId="47" xsi:type="In">
+                     <operand precision="Hour" xsi:type="DurationBetween">
+                        <operand xsi:type="End">
+                           <operand localId="42" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="45" xsi:type="Start">
+                           <operand localId="44" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                        <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="51" xsi:type="InValueSet">
+                     <code localId="49" path="admissionSource" scope="ED" xsi:type="Property"/>
+                     <valueset localId="50" name="Hospital Settings"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="73" name="Related ED Visit" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define function &quot;Related ED Visit&quot;(Encounter &quot;Encounter, Performed&quot;):&#xd;
+  Last(&#xd;
+    [&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] ED&#xd;
+      where ED.relevantPeriod ends 1 hour or less before start of Encounter.relevantPeriod&#xd;
+      sort by start of ED.relevantPeriod&#xd;
+  )</a:s>
+         </annotation>
+         <expression localId="72" xsi:type="Last">
+            <source localId="71" xsi:type="Query">
+               <source localId="58" alias="ED">
+                  <expression localId="57" xmlns:ns3="urn:healthit-gov:qdm:v5_0_draft" dataType="ns3:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where localId="65" xsi:type="In">
+                  <operand precision="Hour" xsi:type="DurationBetween">
+                     <operand xsi:type="End">
+                        <operand localId="60" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="63" xsi:type="Start">
+                        <operand localId="62" path="relevantPeriod" xsi:type="Property">
+                           <source localId="61" name="Encounter" xsi:type="OperandRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                     <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                  </operand>
+               </where>
+               <sort localId="70">
+                  <by localId="69" direction="asc" xsi:type="ByExpression">
+                     <expression localId="68" xsi:type="Start">
+                        <operand localId="67" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                     </expression>
+                  </by>
+               </sort>
+            </source>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier localId="56" xmlns:ns4="urn:healthit-gov:qdm:v5_0_draft" name="ns4:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="79" name="Measure Observation" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define function &quot;Measure Observation&quot;(Encounter &quot;Encounter, Performed&quot;):&#xd;
+  duration in minutes of &quot;Related ED Visit&quot;(Encounter).locationPeriod</a:s>
+         </annotation>
+         <expression localId="78" precision="Minute" xsi:type="DurationBetween">
+            <operand xsi:type="Start">
+               <operand localId="77" path="locationPeriod" xsi:type="Property">
+                  <source localId="76" name="Related ED Visit" xsi:type="FunctionRef">
+                     <operand localId="75" name="Encounter" xsi:type="OperandRef"/>
+                  </source>
+               </operand>
+            </operand>
+            <operand xsi:type="End">
+               <operand localId="77" path="locationPeriod" xsi:type="Property">
+                  <source localId="76" name="Related ED Visit" xsi:type="FunctionRef">
+                     <operand localId="75" name="Encounter" xsi:type="OperandRef"/>
+                  </source>
+               </operand>
+            </operand>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier localId="74" xmlns:ns5="urn:healthit-gov:qdm:v5_0_draft" name="ns5:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="88" name="Stratification 1" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Stratification 1&quot;:&#xd;
+  &quot;Inpatient Encounter&quot; E&#xd;
+    where not (E.principalDiagnosis in &quot;Psychiatric/Mental Health Patient&quot;)</a:s>
+         </annotation>
+         <expression localId="87" xsi:type="Query">
+            <source localId="81" alias="E">
+               <expression localId="80" name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="86" xsi:type="Not">
+               <operand localId="85" xsi:type="InValueSet">
+                  <code localId="83" path="principalDiagnosis" scope="E" xsi:type="Property"/>
+                  <valueset localId="84" name="Psychiatric/Mental Health Patient"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="96" name="Stratification 2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Stratification 2&quot;:&#xd;
+  &quot;Inpatient Encounter&quot; E&#xd;
+    where E.principalDiagnosis in &quot;Psychiatric/Mental Health Patient&quot;</a:s>
+         </annotation>
+         <expression localId="95" xsi:type="Query">
+            <source localId="90" alias="E">
+               <expression localId="89" name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="94" xsi:type="InValueSet">
+               <code localId="92" path="principalDiagnosis" scope="E" xsi:type="Property"/>
+               <valueset localId="93" name="Psychiatric/Mental Health Patient"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="103" name="Stratification 3" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s>define &quot;Stratification 3&quot;:&#xd;
+  &quot;Inpatient Encounter&quot; E&#xd;
+    where E.principalDiagnosis is null</a:s>
+         </annotation>
+         <expression localId="102" xsi:type="Query">
+            <source localId="98" alias="E">
+               <expression localId="97" name="Inpatient Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="101" xsi:type="IsNull">
+               <operand localId="100" path="principalDiagnosis" scope="E" xsi:type="Property"/>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
