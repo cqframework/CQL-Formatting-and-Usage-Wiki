@@ -55,6 +55,16 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
+define function "Hospitalization"("Encounter" "Encounter, Performed"): 
+  (
+    singleton from (
+      ["Encounter, Performed": "Emergency Department Visit"] EDVisit
+        where EDVisit.relevantPeriod ends 1 hour or less before start of Encounter.relevantPeriod // TODO: Should be "before or on"
+    )
+  ) X
+    return if X is null then Encounter.relevantPeriod
+      else Interval[start of X.relevantPeriod, end of Encounter.relevantPeriod]
+
 /*
 Data Criteria (QDM Variables)
 */
@@ -131,7 +141,7 @@ define "Encounter With Ischemic Stroke":
 
 define "Denominator":
   "Encounter With Ischemic Stroke"
-  
+
 /*
   Denominator Exclusions =
       OR:
@@ -166,17 +176,10 @@ define "Denominator":
 define "ED Visit":
   ["Encounter, Performed": "Emergency Department Visit"]
   
-define "Encounter Less Than Two Days Without ED Visit":
+define "Encounter Less Than Two Days":
   "Encounter With Ischemic Stroke" E
-    without "ED Visit" ED
-      such that ED.relevantPeriod ends 1 hour before start of E.relevantPeriod // TODO: Should be "before or on"
-    where E.lengthOfStay < 2 days
-
-define "Encounter With ED Visit Less Than Two Days":
-  "Encounter With Ischemic Stroke" E
-    with "ED Visit" ED
-      such that ED.relevantPeriod ends 1 hour before start of E.relevantPeriod // TODO: Should be "before or on"
-        and ED.relevantPeriod starts 2 days or less before end of E.relevantPeriod // TODO: Should be "less than 2 days"
+    let H: Hospitalization(E)
+    where difference in days between start of H and end of H < 2
 
 define "Thrombolytic Medication":
   ["Medication, Administered": "Thrombolytic (t-PA) Therapy"]
@@ -195,58 +198,26 @@ define "Thrombolytic Therapy Medication Or Procedures":
           relevantPeriod: P.relevantPeriod
         }
     )
-
-define "Encounter With ED Visit With Thrombolytic Therapy":
-  from
-    "Encounter With Ischemic Stroke" E,
-    "ED Visit" ED,
-    "Thrombolytic Therapy Medication Or Procedures" T
-  where ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
-    and T.relevantPeriod starts 24 hours or less before start of ED.relevantPeriod 
-  return E
-  
-define "Encounter With ED Visit With Thrombolytic Medication":
-  from
-    "Encounter With Ischemic Stroke" E,
-    "ED Visit" ED,
-    "Thrombolytic Medication" M
-  where ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
-    and M.relevantPeriod starts after start of ED.relevantPeriod
-    and M.relevantPeriod starts before end of E.relevantPeriod
-  return E
-  
+    
 define "Encounter With Thrombolytic Therapy":
   "Encounter With Ischemic Stroke" E
-    with "Thrombolytic Therapy Medication Or Procedures" P
-      such that P.relevantPeriod starts 24 hours or less before start of E.relevantPeriod
+    with "Thrombolytic Therapy Medication Or Procedures" T
+      such that T.relevantPeriod starts 24 hours or less before start of Hospitalization(E)
       
 define "Encounter With Thrombolytic Medication":
   "Encounter With Ischemic Stroke" E
     with "Thrombolytic Medication" M
-      such that M.relevantPeriod starts during E.relevantPeriod
-      
-define "Encounter With ED Visit With Comfort Measures":
-  from
-    "Encounter With Ischemic Stroke" E,
-    "ED Visit" ED,
-    "Intervention Comfort Measures" M
-  where ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
-    and M.authorDatetime 1 day or less after start of ED.relevantPeriod
-  return E
-    
+      such that M.relevantPeriod starts during Hospitalization(E)
+
 define "Encounter With Comfort Measures":
   "Encounter With Ischemic Stroke" E
     with "Intervention Comfort Measures" M
-      such that M.authorDatetime 1 day or less after start of E.relevantPeriod
-
+      such that M.authorDatetime 1 day or less after start of Hospitalization(E)
+      
 define "Denominator Exclusions":
-  "Encounter Less Than Two Days Without ED Visit"
-    union "Encounter With ED Visit Less Than Two Days"
-    union "Encounter With ED Visit With Thrombolytic Therapy"
-    union "Encounter With ED Visit With Thrombolytic Medication"
+  "Encounter Less Than Two Days"
     union "Encounter With Thrombolytic Therapy"
     union "Encounter With Thrombolytic Medication"
-    union "Encounter With ED Visit With Comfort Measures"
     union "Encounter With Comfort Measures"
 
 /*
@@ -261,22 +232,10 @@ define "Denominator Exclusions":
 define "Encounter With Antithrombotic Therapy":
   "Encounter With Ischemic Stroke" E
     with ["Medication, Administered": "Antithrombotic Therapy"] M
-      such that M.relevantPeriod starts 1 day or less after start of E.relevantPeriod
+      such that M.relevantPeriod starts 1 day or less after start of Hospitalization(E)
       
-define "Encounter With ED Visit With Antithrombotic Therapy":
-  from
-    "Encounter With Ischemic Stroke" E,
-    "ED Visit" ED
-  where ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
-    and exists (
-      ["Medication, Administered": "Antithrombotic Therapy"] M 
-        where M.relevantPeriod starts 1 day or less before start of ED.relevantPeriod
-    )
-  return E
-
 define "Numerator":
   "Encounter With Antithrombotic Therapy"
-    union "Encounter With ED Visit With Antithrombotic Therapy"
 
 /*
     Numerator Exclusions =
@@ -328,25 +287,15 @@ define "Antithrombotic Medication Not Ordered Or Administered":
             }
       )
   )
-
-define "Encounter Without ED Visit With Antithrombotic Negated":
+  
+define "Encounter With Antithrombotic Negated":
   "Encounter With Ischemic Stroke" E
-    without "ED Visit" ED
-      such that ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
     with "Antithrombotic Medication Not Ordered Or Administered" M
-      such that M.authorDatetime 1 day or less after start of E.relevantPeriod
+      such that M.authorDatetime 1 day or less after start of Hospitalization(E)
       
-define "Encounter With ED Visit With Antithrombotic Negated":
-  from
-    "Encounter With Ischemic Stroke" E,
-    "ED Visit" ED
-  where ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
-    and exists (
-      "Antithrombotic Medication Not Ordered Or Administered" M 
-        where M.authorDatetime 1 day or less after start of ED.relevantPeriod
-    )
-  return E
-      
+define "Denominator Exceptions":
+  "Encounter With Antithrombotic Negated"
+
 /*
     Stratification =
         None
