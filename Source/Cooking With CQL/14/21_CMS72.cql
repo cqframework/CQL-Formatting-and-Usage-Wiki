@@ -169,13 +169,13 @@ define "ED Visit":
 define "Encounter Less Than Two Days Without ED Visit":
   "Encounter With Ischemic Stroke" E
     without "ED Visit" ED
-      such that ED.relevantPeriod ends 1 hour before start of E.relevantPeriod // TODO: Should be "before or on"
+      such that ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
     where E.lengthOfStay < 2 days
 
 define "Encounter With ED Visit Less Than Two Days":
   "Encounter With Ischemic Stroke" E
     with "ED Visit" ED
-      such that ED.relevantPeriod ends 1 hour before start of E.relevantPeriod // TODO: Should be "before or on"
+      such that ED.relevantPeriod ends 1 hour or less before start of E.relevantPeriod // TODO: Should be "before or on"
         and ED.relevantPeriod starts 2 days or less before end of E.relevantPeriod // TODO: Should be "less than 2 days"
 
 define "Thrombolytic Medication":
