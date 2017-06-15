@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="TestCMS72"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="SNOMED-CT" id="" accessLevel="Public"/>
+      <def name="RXNORM" id="" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def name="Emergency Department Visit" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.292" accessLevel="Public"/>
+      <def name="Non-Elective Inpatient Encounter" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.424" accessLevel="Public"/>
+      <def name="Comfort Measures" id="urn:oid:1.3.6.1.4.1.33895.1.3.0.45" accessLevel="Public"/>
+      <def name="Antithrombotic Therapy" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.201" accessLevel="Public"/>
+      <def name="Thrombolytic (t-PA) Therapy" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.226" accessLevel="Public"/>
+      <def name="Medical Reason" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.473" accessLevel="Public"/>
+      <def name="Patient Refusal" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.93" accessLevel="Public"/>
+      <def name="Antithrombotic ingredient specific" id="urn:oid:2.16.840.1.113762.1.4.1021.8" accessLevel="Public"/>
+      <def name="Intravenous or Intra-arterial Thrombolytic (t-PA) Therapy" id="urn:oid:2.16.840.1.113762.1.4.1045.21" accessLevel="Public"/>
+      <def name="Ischemic Stroke" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.247" accessLevel="Public"/>
+      <def name="Hemorrhagic Stroke" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.212" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Hospitalization" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="Query">
+            <source alias="X">
+               <expression xsi:type="SingletonFrom">
+                  <operand xsi:type="Query">
+                     <source alias="EDVisit">
+                        <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where xsi:type="In">
+                        <operand precision="Hour" xsi:type="DurationBetween">
+                           <operand xsi:type="End">
+                              <operand path="relevantPeriod" scope="EDVisit" xsi:type="Property"/>
+                           </operand>
+                           <operand xsi:type="Start">
+                              <operand path="relevantPeriod" xsi:type="Property">
+                                 <source name="Encounter" xsi:type="OperandRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           <high valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        </operand>
+                     </where>
+                  </operand>
+               </expression>
+            </source>
+            <return>
+               <expression xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand xsi:type="IsNull">
+                        <operand name="X" xsi:type="AliasRef"/>
+                     </operand>
+                     <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                  </condition>
+                  <then path="relevantPeriod" xsi:type="Property">
+                     <source name="Encounter" xsi:type="OperandRef"/>
+                  </then>
+                  <else lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low xsi:type="Start">
+                        <operand path="relevantPeriod" scope="X" xsi:type="Property"/>
+                     </low>
+                     <high xsi:type="End">
+                        <operand path="relevantPeriod" xsi:type="Property">
+                           <source name="Encounter" xsi:type="OperandRef"/>
+                        </operand>
+                     </high>
+                  </else>
+               </expression>
+            </return>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" name="ns2:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="Encounter Inpatient Non Elective" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns3:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Non-Elective Inpatient Encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="And">
+               <operand xsi:type="LessOrEqual">
+                  <operand path="lengthOfStay" scope="E" xsi:type="Property"/>
+                  <operand value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="E" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Intervention Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns4:InterventionOrder" templateId="PositiveInterventionOrder" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xsi:type="Query">
+               <source alias="P">
+                  <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:InterventionPerformed" templateId="PositiveInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <return>
+                  <expression xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" classType="ns6:PositiveInterventionOrder" xsi:type="Instance">
+                     <element name="id">
+                        <value path="id" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="code">
+                        <value path="code" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="patientId">
+                        <value path="patientId" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="reporter">
+                        <value path="reporter" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="recorder">
+                        <value path="recorder" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="authorDatetime">
+                        <value xsi:type="Coalesce">
+                           <operand xsi:type="Start">
+                              <operand path="relevantPeriod" scope="P" xsi:type="Property"/>
+                           </operand>
+                           <operand path="authorDatetime" scope="P" xsi:type="Property"/>
+                        </value>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Valid Encounter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter Inpatient Non Elective" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="GreaterOrEqual">
+               <operand precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="E" xsi:type="Property"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="18" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Initial Population" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Valid Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="Or">
+               <operand xsi:type="InValueSet">
+                  <code path="principalDiagnosis" scope="E" xsi:type="Property"/>
+                  <valueset name="Ischemic Stroke"/>
+               </operand>
+               <operand xsi:type="InValueSet">
+                  <code path="principalDiagnosis" scope="E" xsi:type="Property"/>
+                  <valueset name="Hemorrhagic Stroke"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Encounter With Ischemic Stroke" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Valid Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="InValueSet">
+               <code path="principalDiagnosis" scope="E" xsi:type="Property"/>
+               <valueset name="Ischemic Stroke"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Denominator" context="Patient" accessLevel="Public">
+         <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="ED Visit" context="Patient" accessLevel="Public">
+         <expression xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns7:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Encounter Less Than Two Days" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <let identifier="H">
+               <expression name="Hospitalization" xsi:type="FunctionRef">
+                  <operand xmlns:ns8="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns8:PositiveEncounterPerformed" xsi:type="As">
+                     <operand name="E" xsi:type="AliasRef"/>
+                     <asTypeSpecifier xmlns:ns9="urn:healthit-gov:qdm:v5_0_1_draft" name="ns9:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+               </expression>
+            </let>
+            <where xsi:type="Less">
+               <operand precision="Day" xsi:type="DifferenceBetween">
+                  <operand xsi:type="Start">
+                     <operand name="H" xsi:type="QueryLetRef"/>
+                  </operand>
+                  <operand xsi:type="End">
+                     <operand name="H" xsi:type="QueryLetRef"/>
+                  </operand>
+               </operand>
+               <operand valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Thrombolytic Medication" context="Patient" accessLevel="Public">
+         <expression xmlns:ns10="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns10:MedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Thrombolytic (t-PA) Therapy" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Thrombolytic Therapy Medication Or Procedures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand name="Thrombolytic Medication" xsi:type="ExpressionRef"/>
+            <operand xsi:type="Query">
+               <source alias="P">
+                  <expression xmlns:ns11="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns11:ProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Intravenous or Intra-arterial Thrombolytic (t-PA) Therapy" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <return>
+                  <expression xmlns:ns12="urn:healthit-gov:qdm:v5_0_1_draft" classType="ns12:PositiveMedicationAdministered" xsi:type="Instance">
+                     <element name="id">
+                        <value path="id" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="code">
+                        <value path="code" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="patientId">
+                        <value path="patientId" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="reporter">
+                        <value path="reporter" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="recorder">
+                        <value path="recorder" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="authorDatetime">
+                        <value path="authorDatetime" scope="P" xsi:type="Property"/>
+                     </element>
+                     <element name="relevantPeriod">
+                        <value path="relevantPeriod" scope="P" xsi:type="Property"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Encounter With Thrombolytic Therapy" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="T" xsi:type="With">
+               <expression name="Thrombolytic Therapy Medication Or Procedures" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Hour" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="T" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand name="Hospitalization" xsi:type="FunctionRef">
+                           <operand xmlns:ns13="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns13:PositiveEncounterPerformed" xsi:type="As">
+                              <operand name="E" xsi:type="AliasRef"/>
+                              <asTypeSpecifier xmlns:ns14="urn:healthit-gov:qdm:v5_0_1_draft" name="ns14:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                     <low valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <high valueType="t:Integer" value="24" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Encounter With Thrombolytic Medication" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="M" xsi:type="With">
+               <expression name="Thrombolytic Medication" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand xsi:type="Start">
+                     <operand path="relevantPeriod" scope="M" xsi:type="Property"/>
+                  </operand>
+                  <operand name="Hospitalization" xsi:type="FunctionRef">
+                     <operand xmlns:ns15="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns15:PositiveEncounterPerformed" xsi:type="As">
+                        <operand name="E" xsi:type="AliasRef"/>
+                        <asTypeSpecifier xmlns:ns16="urn:healthit-gov:qdm:v5_0_1_draft" name="ns16:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Encounter With Comfort Measures" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="M" xsi:type="With">
+               <expression name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand path="authorDatetime" scope="M" xsi:type="Property"/>
+                     <operand xsi:type="Start">
+                        <operand name="Hospitalization" xsi:type="FunctionRef">
+                           <operand xmlns:ns17="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns17:PositiveEncounterPerformed" xsi:type="As">
+                              <operand name="E" xsi:type="AliasRef"/>
+                              <asTypeSpecifier xmlns:ns18="urn:healthit-gov:qdm:v5_0_1_draft" name="ns18:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="1" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <expression xsi:type="Union">
+            <operand xsi:type="Union">
+               <operand xsi:type="Union">
+                  <operand name="Encounter Less Than Two Days" xsi:type="ExpressionRef"/>
+                  <operand name="Encounter With Thrombolytic Therapy" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand name="Encounter With Thrombolytic Medication" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand name="Encounter With Comfort Measures" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def name="Encounter With Antithrombotic Therapy" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="M" xsi:type="With">
+               <expression xmlns:ns19="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns19:MedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Antithrombotic Therapy" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="M" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="Start">
+                        <operand name="Hospitalization" xsi:type="FunctionRef">
+                           <operand xmlns:ns20="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns20:PositiveEncounterPerformed" xsi:type="As">
+                              <operand name="E" xsi:type="AliasRef"/>
+                              <asTypeSpecifier xmlns:ns21="urn:healthit-gov:qdm:v5_0_1_draft" name="ns21:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="1" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <expression name="Encounter With Antithrombotic Therapy" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Antithrombotic Medication Not Ordered" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="O">
+               <expression xmlns:ns22="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns22:MedicationOrder" templateId="NegativeMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Antithrombotic ingredient specific" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Or">
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="O" xsi:type="Property"/>
+                  <valueset name="Medical Reason"/>
+               </operand>
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="O" xsi:type="Property"/>
+                  <valueset name="Patient Refusal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Antithrombotic Medication Not Administered" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="M">
+               <expression xmlns:ns23="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns23:MedicationAdministered" templateId="NegativeMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Antithrombotic Therapy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="Or">
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="M" xsi:type="Property"/>
+                  <valueset name="Medical Reason"/>
+               </operand>
+               <operand xsi:type="InValueSet">
+                  <code path="negationRationale" scope="M" xsi:type="Property"/>
+                  <valueset name="Patient Refusal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Antithrombotic Medication Not Ordered Or Administered" context="Patient" accessLevel="Public">
+         <expression xsi:type="Distinct">
+            <operand xsi:type="Union">
+               <operand name="Antithrombotic Medication Not Ordered" xsi:type="ExpressionRef"/>
+               <operand xsi:type="Query">
+                  <source alias="M">
+                     <expression name="Antithrombotic Medication Not Administered" xsi:type="ExpressionRef"/>
+                  </source>
+                  <return>
+                     <expression xmlns:ns24="urn:healthit-gov:qdm:v5_0_1_draft" classType="ns24:NegativeMedicationOrder" xsi:type="Instance">
+                        <element name="id">
+                           <value path="id" scope="M" xsi:type="Property"/>
+                        </element>
+                        <element name="code">
+                           <value path="code" scope="M" xsi:type="Property"/>
+                        </element>
+                        <element name="patientId">
+                           <value path="patientId" scope="M" xsi:type="Property"/>
+                        </element>
+                        <element name="reporter">
+                           <value path="reporter" scope="M" xsi:type="Property"/>
+                        </element>
+                        <element name="recorder">
+                           <value path="recorder" scope="M" xsi:type="Property"/>
+                        </element>
+                        <element name="authorDatetime">
+                           <value xsi:type="Start">
+                              <operand path="relevantPeriod" scope="M" xsi:type="Property"/>
+                           </value>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="Encounter With Antithrombotic Negated" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="E">
+               <expression name="Encounter With Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship alias="M" xsi:type="With">
+               <expression name="Antithrombotic Medication Not Ordered Or Administered" xsi:type="ExpressionRef"/>
+               <suchThat xsi:type="In">
+                  <operand precision="Day" xsi:type="DurationBetween">
+                     <operand path="authorDatetime" scope="M" xsi:type="Property"/>
+                     <operand xsi:type="Start">
+                        <operand name="Hospitalization" xsi:type="FunctionRef">
+                           <operand xmlns:ns25="urn:healthit-gov:qdm:v5_0_1_draft" asType="ns25:PositiveEncounterPerformed" xsi:type="As">
+                              <operand name="E" xsi:type="AliasRef"/>
+                              <asTypeSpecifier xmlns:ns26="urn:healthit-gov:qdm:v5_0_1_draft" name="ns26:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Negate">
+                        <operand valueType="t:Integer" value="1" xsi:type="Literal"/>
+                     </low>
+                     <high valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Denominator Exceptions" context="Patient" accessLevel="Public">
+         <expression name="Encounter With Antithrombotic Negated" xsi:type="ExpressionRef"/>
+      </def>
+   </statements>
+</library>
+
+

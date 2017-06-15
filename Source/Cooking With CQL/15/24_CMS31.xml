@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <annotation startLine="39" startChar="25" endLine="39" endChar="73" message="Retrieve has a terminology target but does not specify a code path and the type of the retrieve does not have a primary code path defined." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="39" startChar="25" endLine="39" endChar="73" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="41" startChar="21" endLine="41" endChar="61" message="Retrieve has a terminology target but does not specify a code path and the type of the retrieve does not have a primary code path defined." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="41" startChar="21" endLine="41" endChar="61" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="43" startChar="20" endLine="43" endChar="58" message="Retrieve has a terminology target but does not specify a code path and the type of the retrieve does not have a primary code path defined." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="43" startChar="20" endLine="43" endChar="58" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="45" startChar="19" endLine="45" endChar="74" message="Retrieve has a terminology target but does not specify a code path and the type of the retrieve does not have a primary code path defined." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <annotation startLine="45" startChar="19" endLine="45" endChar="74" message="Could not resolve membership operator for terminology target of the retrieve." errorType="semantic" errorSeverity="warning" xsi:type="a:CqlToElmError"/>
+   <identifier id="Test31" version="0.0.009"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="LOINC:2.46" id="urn:oid:2.16.840.1.113883.6.1" version="urn:hl7:version:2.46" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="SNOMEDCT:2016-03" id="urn:oid:2.16.840.1.113883.6.96" version="urn:hl7:version:2016-03" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Live Birth Newborn Born in Hospital" id="urn:oid:2.16.840.1.113762.1.4.1046.6" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Newborn Hearing Screen Left" id="urn:oid:2.16.840.1.114222.4.1.214079.1.1.3" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Newborn Hearing Screen Right" id="urn:oid:2.16.840.1.114222.4.1.214079.1.1.4" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Medical Reasons" id="urn:oid:2.16.840.1.114222.4.1.214079.1.1.7" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Patient Expired" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.309" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Pass Or Refer" id="urn:oid:2.16.840.1.114222.4.1.214079.1.1.6" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def resultTypeName="t:Code" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem name="LOINC:2.46">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def resultTypeName="t:Code" name="Dead" id="419099009" display="Dead" accessLevel="Public">
+         <codeSystem name="SNOMEDCT:2016-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" name="ns1:PatientCharacteristicEthnicity" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns2:PatientCharacteristicEthnicity" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" name="ns3:PatientCharacteristicEthnicity" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Payer" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" name="ns4:PatientCharacteristicPayer" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:PatientCharacteristicPayer" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" name="ns6:PatientCharacteristicPayer" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Race" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" name="ns7:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xmlns:ns8="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns8:PatientCharacteristicRace" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_0_1_draft" name="ns9:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Sex" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_0_1_draft" name="ns10:PatientCharacteristicSex" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xmlns:ns11="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns11:PatientCharacteristicSex" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns12="urn:healthit-gov:qdm:v5_0_1_draft" name="ns12:PatientCharacteristicSex" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Inpatient Encounters" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns13="urn:healthit-gov:qdm:v5_0_1_draft" name="ns13:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns14="urn:healthit-gov:qdm:v5_0_1_draft" name="ns14:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns15="urn:healthit-gov:qdm:v5_0_1_draft" name="ns15:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns16="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns16:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns17="urn:healthit-gov:qdm:v5_0_1_draft" name="ns17:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+                  <operand resultTypeName="t:Quantity" path="lengthOfStay" scope="Encounter" xsi:type="Property"/>
+                  <operand resultTypeName="t:Quantity" value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Encounter with Diagnosis of Live Birth" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns18="urn:healthit-gov:qdm:v5_0_1_draft" name="ns18:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Intersect">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns19="urn:healthit-gov:qdm:v5_0_1_draft" name="ns19:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns20="urn:healthit-gov:qdm:v5_0_1_draft" name="ns20:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Inpatient">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns21="urn:healthit-gov:qdm:v5_0_1_draft" name="ns21:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Inpatient Encounters" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns22="urn:healthit-gov:qdm:v5_0_1_draft" name="ns22:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns23="urn:healthit-gov:qdm:v5_0_1_draft" name="ns23:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns24="urn:healthit-gov:qdm:v5_0_1_draft" name="ns24:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns25="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns25:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns26="urn:healthit-gov:qdm:v5_0_1_draft" name="ns26:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+                  <code resultTypeName="t:Code" path="diagnosis" scope="Encounter" xsi:type="Property"/>
+                  <valueset name="Live Birth Newborn Born in Hospital">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </valueset>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="DX LiveBirthNewbornBornInHospital" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns27="urn:healthit-gov:qdm:v5_0_1_draft" name="ns27:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns28="urn:healthit-gov:qdm:v5_0_1_draft" name="ns28:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Diagnosis">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns29="urn:healthit-gov:qdm:v5_0_1_draft" name="ns29:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns30="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns30:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns31="urn:healthit-gov:qdm:v5_0_1_draft" name="ns31:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Live Birth Newborn Born in Hospital" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Inpatient" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns32="urn:healthit-gov:qdm:v5_0_1_draft" name="ns32:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Inpatient Encounters" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns33="urn:healthit-gov:qdm:v5_0_1_draft" name="ns33:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                  <operand xsi:type="Start">
+                     <operand path="prevalencePeriod" scope="Diagnosis" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand path="relevantPeriod" scope="Inpatient" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Initial Population" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Or">
+            <operand resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand name="Encounter with Diagnosis of Live Birth" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns34="urn:healthit-gov:qdm:v5_0_1_draft" name="ns34:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+            <operand resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand name="DX LiveBirthNewbornBornInHospital" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns35="urn:healthit-gov:qdm:v5_0_1_draft" name="ns35:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Denominator" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Newborn Hearing Screening Left" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns36="urn:healthit-gov:qdm:v5_0_1_draft" name="ns36:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns37="urn:healthit-gov:qdm:v5_0_1_draft" name="ns37:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Screenleft">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns38="urn:healthit-gov:qdm:v5_0_1_draft" name="ns38:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns39="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns39:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns40="urn:healthit-gov:qdm:v5_0_1_draft" name="ns40:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Left" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                  <code resultTypeName="t:Code" strict="false" xsi:type="As">
+                     <operand resultTypeName="t:Any" path="result" scope="Screenleft" xsi:type="Property"/>
+                     <asTypeSpecifier resultTypeName="t:Code" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </code>
+                  <valueset name="Pass Or Refer">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </valueset>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Not">
+                  <operand resultTypeName="t:Boolean" xsi:type="IsNull">
+                     <operand resultTypeName="t:Any" path="result" scope="Screenleft" xsi:type="Property"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Newborn Hearing Screening Right" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns41="urn:healthit-gov:qdm:v5_0_1_draft" name="ns41:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns42="urn:healthit-gov:qdm:v5_0_1_draft" name="ns42:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Screenright">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns43="urn:healthit-gov:qdm:v5_0_1_draft" name="ns43:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns44="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns44:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns45="urn:healthit-gov:qdm:v5_0_1_draft" name="ns45:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Right" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                  <code resultTypeName="t:Code" strict="false" xsi:type="As">
+                     <operand resultTypeName="t:Any" path="result" scope="Screenright" xsi:type="Property"/>
+                     <asTypeSpecifier resultTypeName="t:Code" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </code>
+                  <valueset name="Pass Or Refer">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </valueset>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Not">
+                  <operand resultTypeName="t:Boolean" xsi:type="IsNull">
+                     <operand resultTypeName="t:Any" path="result" scope="Screenright" xsi:type="Property"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns46="urn:healthit-gov:qdm:v5_0_1_draft" name="ns46:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns47="urn:healthit-gov:qdm:v5_0_1_draft" name="ns47:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns48="urn:healthit-gov:qdm:v5_0_1_draft" name="ns48:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns49="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns49:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns50="urn:healthit-gov:qdm:v5_0_1_draft" name="ns50:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Left" xsi:type="Without">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns51="urn:healthit-gov:qdm:v5_0_1_draft" name="ns51:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns52="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns52:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns53="urn:healthit-gov:qdm:v5_0_1_draft" name="ns53:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Left" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Left" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <relationship alias="Right" xsi:type="Without">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns54="urn:healthit-gov:qdm:v5_0_1_draft" name="ns54:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns55="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns55:DiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns56="urn:healthit-gov:qdm:v5_0_1_draft" name="ns56:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Right" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="Right" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+               <code resultTypeName="t:Code" path="dischargeDisposition" scope="Encounter" xsi:type="Property"/>
+               <valueset name="Patient Expired">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </valueset>
+            </where>
+         </expression>
+      </def>
+      <def name="Medical Reason Left" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns57="urn:healthit-gov:qdm:v5_0_1_draft" name="ns57:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns58="urn:healthit-gov:qdm:v5_0_1_draft" name="ns58:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Screen">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns59="urn:healthit-gov:qdm:v5_0_1_draft" name="ns59:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns60="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns60:DiagnosticStudyPerformed" templateId="NegativeDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns61="urn:healthit-gov:qdm:v5_0_1_draft" name="ns61:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Left" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+               <code resultTypeName="t:Code" path="negationRationale" scope="Screen" xsi:type="Property"/>
+               <valueset name="Medical Reasons">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </valueset>
+            </where>
+         </expression>
+      </def>
+      <def name="Medical Reason Right" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns62="urn:healthit-gov:qdm:v5_0_1_draft" name="ns62:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns63="urn:healthit-gov:qdm:v5_0_1_draft" name="ns63:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Screen">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns64="urn:healthit-gov:qdm:v5_0_1_draft" name="ns64:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns65="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns65:DiagnosticStudyPerformed" templateId="NegativeDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns66="urn:healthit-gov:qdm:v5_0_1_draft" name="ns66:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hearing Screen Right" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+               <code resultTypeName="t:Code" path="negationRationale" scope="Screen" xsi:type="Property"/>
+               <valueset name="Medical Reasons">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </valueset>
+            </where>
+         </expression>
+      </def>
+      <def name="Left Screen or Medical Reason" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="E">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns67="urn:healthit-gov:qdm:v5_0_1_draft" name="ns67:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+               <element name="ScreenLeft">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns68="urn:healthit-gov:qdm:v5_0_1_draft" name="ns68:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+               <element name="MedicalLeft">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns69="urn:healthit-gov:qdm:v5_0_1_draft" name="ns69:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="E">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns70="urn:healthit-gov:qdm:v5_0_1_draft" name="ns70:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+                  <element name="ScreenLeft">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns71="urn:healthit-gov:qdm:v5_0_1_draft" name="ns71:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+                  <element name="MedicalLeft">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns72="urn:healthit-gov:qdm:v5_0_1_draft" name="ns72:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source alias="E">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns73="urn:healthit-gov:qdm:v5_0_1_draft" name="ns73:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns74="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns74:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns75="urn:healthit-gov:qdm:v5_0_1_draft" name="ns75:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="ScreenLeft">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns76="urn:healthit-gov:qdm:v5_0_1_draft" name="ns76:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Newborn Hearing Screening Left" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns77="urn:healthit-gov:qdm:v5_0_1_draft" name="ns77:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source alias="MedicalLeft">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns78="urn:healthit-gov:qdm:v5_0_1_draft" name="ns78:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Medical Reason Left" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns79="urn:healthit-gov:qdm:v5_0_1_draft" name="ns79:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Or">
+               <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="ScreenLeft" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="E" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="MedicalLeft" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="E" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+            <return distinct="true">
+               <expression xsi:type="Tuple">
+                  <element name="E">
+                     <value name="E" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="ScreenLeft">
+                     <value name="ScreenLeft" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="MedicalLeft">
+                     <value name="MedicalLeft" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Right Screen or Medical Reason" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="E">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns80="urn:healthit-gov:qdm:v5_0_1_draft" name="ns80:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+               <element name="ScreenRight">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns81="urn:healthit-gov:qdm:v5_0_1_draft" name="ns81:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+               <element name="MedicalRight">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns82="urn:healthit-gov:qdm:v5_0_1_draft" name="ns82:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="E">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns83="urn:healthit-gov:qdm:v5_0_1_draft" name="ns83:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+                  <element name="ScreenRight">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns84="urn:healthit-gov:qdm:v5_0_1_draft" name="ns84:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+                  <element name="MedicalRight">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns85="urn:healthit-gov:qdm:v5_0_1_draft" name="ns85:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source alias="E">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns86="urn:healthit-gov:qdm:v5_0_1_draft" name="ns86:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns87="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns87:EncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns88="urn:healthit-gov:qdm:v5_0_1_draft" name="ns88:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="ScreenRight">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns89="urn:healthit-gov:qdm:v5_0_1_draft" name="ns89:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Newborn Hearing Screening Right" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns90="urn:healthit-gov:qdm:v5_0_1_draft" name="ns90:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source alias="MedicalRight">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns91="urn:healthit-gov:qdm:v5_0_1_draft" name="ns91:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Medical Reason Right" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns92="urn:healthit-gov:qdm:v5_0_1_draft" name="ns92:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Or">
+               <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="ScreenRight" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="E" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="MedicalRight" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="E" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+            <return distinct="true">
+               <expression xsi:type="Tuple">
+                  <element name="E">
+                     <value name="E" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="ScreenRight">
+                     <value name="ScreenRight" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="MedicalRight">
+                     <value name="MedicalRight" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Numerator" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Encounter Inpatient" xsi:type="ValueSetRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand name="Left Screen or Medical Reason" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="TupleTypeSpecifier">
+                           <element name="E">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns93="urn:healthit-gov:qdm:v5_0_1_draft" name="ns93:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                           <element name="ScreenLeft">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns94="urn:healthit-gov:qdm:v5_0_1_draft" name="ns94:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                           <element name="MedicalLeft">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns95="urn:healthit-gov:qdm:v5_0_1_draft" name="ns95:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                        </elementType>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand name="Right Screen or Medical Reason" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="TupleTypeSpecifier">
+                           <element name="E">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns96="urn:healthit-gov:qdm:v5_0_1_draft" name="ns96:EncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                           <element name="ScreenRight">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns97="urn:healthit-gov:qdm:v5_0_1_draft" name="ns97:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                           <element name="MedicalRight">
+                              <type xsi:type="ListTypeSpecifier">
+                                 <elementType xmlns:ns98="urn:healthit-gov:qdm:v5_0_1_draft" name="ns98:DiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </type>
+                           </element>
+                        </elementType>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

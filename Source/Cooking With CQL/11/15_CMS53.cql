@@ -172,11 +172,9 @@ define "Diagnosis Reason for No PCI":
   ["Diagnosis": "Cardiopulmonary arrest Grouping Value Set"]
 
 define "Procedure Reason for No PCI":
-  distinct (
-    ["Procedure, Performed": "Endotracheal Intubation Grouping Value Set"]
-      union ["Procedure, Performed": "Aortic balloon pump insertion SNOMEDCT Value Set"]
-      union ["Procedure, Performed": "Ventricular Assist Device placement Grouping Value Set"]
-  )
+  ["Procedure, Performed": "Endotracheal Intubation Grouping Value Set"]
+    union ["Procedure, Performed": "Aortic balloon pump insertion SNOMEDCT Value Set"]
+    union ["Procedure, Performed": "Ventricular Assist Device placement Grouping Value Set"]
 
 /*
 Initial Population =

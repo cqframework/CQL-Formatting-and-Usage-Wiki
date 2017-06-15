@@ -85,13 +85,26 @@ define "Intervention Comfort Measures":
         return "Intervention, Order" { 
           id: P.id,
           code: P.code,
-          patientId: P.patientId,
-          reporter: P.reporter,
-          recorder: P.recorder,
           authorDatetime: Coalesce(start of P.relevantPeriod, P.authorDatetime)
         }
     )
+    
+define "Intervention Comfort Measures":
+  ["Intervention, Order": "Comfort Measures"]
+    union ["Intervention, Performed": "Comfort Measures"]
 
+define "Intervention Comfort Measures During Measurement Period":
+  "Intervention Comfort Measures" I
+    where I.relevantPeriod during "Measurement Period"
+    
+define "Intervention Comfort Measures During Measurement Period":
+  "Intervention Comfort Measures" I
+    where I.authorDatetime during "Measurement Period"
+    
+define "Intervention Comfort Measures During Measurement Period":
+  "Intervention Comfort Measures" I
+    where Coalesce(start of I.relevantPeriod, I.authorDatetime) during "Measurement Period"
+    
 /*
 Population Criteria
 */
@@ -110,6 +123,8 @@ Population Criteria
 
 define "Valid Encounter":
   "Encounter Inpatient Non Elective" E
+    where E.principalDiagnosis in "Ischemic Stroke"
+      or E.principalDiagnosis in "Hemorrhagic Stroke"
     where AgeInYearsAt(start of E.relevantPeriod) >= 18
 
 define "Initial Population":

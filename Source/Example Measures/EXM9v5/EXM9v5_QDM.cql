@@ -40,6 +40,11 @@ define "Gestational Age at Birth >= 37 weeks":
         // 1) How will the system return the data?
         // 2) Will the implementation support time-based quantity conversion? CQL spec does not require that conversions be supported, only that they be respected.
 
+define "Gestational Age at Birth >= 37 weeks":
+  ["Assessment, Performed": "Estimated Gestational Age at Birth"] Gestational
+    where Gestational.result >= 259 days
+    
+
 // NOTE: Gestational age may be calculated using the ACOG ReVITALize guidelines with
 // Estimated Due Date (EDD)
 // Needs to be the most recent exam associated with this pregnancy

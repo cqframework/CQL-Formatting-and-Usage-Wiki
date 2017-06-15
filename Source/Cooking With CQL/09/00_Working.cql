@@ -57,6 +57,11 @@ define HtnBpDiastolic:
     where Diastolic.relevantPeriod during "Measurement Period"
       and Diastolic.result as Quantity <= 90 'mmHg'
 
+define HtnBpDiastolic:
+  ["Physical Exam, Performed": "HTN 2 DIASTOLIC_CODE"] Diastolic
+    where Diastolic.relevantPeriod during "Measurement Period"
+      and Diastolic.result <= 90 'mmHg'
+
 define "Most Recent Diastolic By Date":
   Last(HtnBpDiastolic Diastolic sort by start of Diastolic.relevantPeriod)
 

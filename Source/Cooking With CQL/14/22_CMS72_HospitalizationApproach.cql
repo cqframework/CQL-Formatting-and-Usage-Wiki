@@ -59,7 +59,7 @@ define function "Hospitalization"("Encounter" "Encounter, Performed"):
   (
     singleton from (
       ["Encounter, Performed": "Emergency Department Visit"] EDVisit
-        where EDVisit.relevantPeriod ends 1 hour or less before start of Encounter.relevantPeriod // TODO: Should be "before or on"
+        where EDVisit.relevantPeriod ends 1 hour or less on or before start of Encounter.relevantPeriod
     )
   ) X
     return if X is null then Encounter.relevantPeriod

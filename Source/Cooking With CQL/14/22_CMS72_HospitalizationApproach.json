@@ -1,0 +1,2947 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "TestCMS72"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "11:1-11:25",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_0_1_draft",
+            "version" : "5.0.2"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "17",
+            "locator" : "54:1-54:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "parameterTypeSpecifier" : {
+               "localId" : "16",
+               "locator" : "54:32-54:49",
+               "type" : "IntervalTypeSpecifier",
+               "resultTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "pointType" : {
+                  "localId" : "15",
+                  "locator" : "54:41-54:48",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "39:1-39:26",
+            "name" : "SNOMED-CT",
+            "id" : "",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "3",
+            "locator" : "40:1-40:23",
+            "name" : "RXNORM",
+            "id" : "",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "42:1-42:82",
+            "name" : "Emergency Department Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.292",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "5",
+            "locator" : "43:1-43:88",
+            "name" : "Non-Elective Inpatient Encounter",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.424",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "6",
+            "locator" : "44:1-44:65",
+            "name" : "Comfort Measures",
+            "id" : "urn:oid:1.3.6.1.4.1.33895.1.3.0.45",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "7",
+            "locator" : "45:1-45:78",
+            "name" : "Antithrombotic Therapy",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.201",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "8",
+            "locator" : "46:1-46:83",
+            "name" : "Thrombolytic (t-PA) Therapy",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.226",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "9",
+            "locator" : "47:1-47:70",
+            "name" : "Medical Reason",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.473",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "10",
+            "locator" : "48:1-48:70",
+            "name" : "Patient Refusal",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.93",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "11",
+            "locator" : "49:1-49:85",
+            "name" : "Antithrombotic ingredient specific",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1021.8",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "12",
+            "locator" : "50:1-50:109",
+            "name" : "Intravenous or Intra-arterial Thrombolytic (t-PA) Therapy",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1045.21",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "13",
+            "locator" : "51:1-51:71",
+            "name" : "Ischemic Stroke",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.247",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         }, {
+            "localId" : "14",
+            "locator" : "52:1-52:74",
+            "name" : "Hemorrhagic Stroke",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.212",
+            "accessLevel" : "Public",
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}Code",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "45",
+            "locator" : "58:1-66:79",
+            "name" : "Hospitalization",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define function \"Hospitalization\"(\"Encounter\" \"Encounter, Performed\"): \r\n  (\r\n    singleton from (\r\n      [\"Encounter, Performed\": \"Emergency Department Visit\"] EDVisit\r\n        where EDVisit.relevantPeriod ends 1 hour or less before start of Encounter.relevantPeriod // TODO: Should be \"before or on\"\r\n    )\r\n  ) X\r\n    return if X is null then Encounter.relevantPeriod\r\n      else Interval[start of X.relevantPeriod, end of Encounter.relevantPeriod]" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "44",
+               "locator" : "59:3-66:79",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "30",
+                  "locator" : "59:3-64:5",
+                  "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "alias" : "X",
+                  "expression" : {
+                     "localId" : "29",
+                     "locator" : "59:3-64:3",
+                     "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "SingletonFrom",
+                     "operand" : {
+                        "localId" : "28",
+                        "locator" : "60:20-63:5",
+                        "type" : "Query",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "source" : [ {
+                           "localId" : "20",
+                           "locator" : "61:7-61:68",
+                           "alias" : "EDVisit",
+                           "resultTypeSpecifier" : {
+                              "type" : "ListTypeSpecifier",
+                              "elementType" : {
+                                 "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           },
+                           "expression" : {
+                              "localId" : "19",
+                              "locator" : "61:7-61:60",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "resultTypeSpecifier" : {
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "codes" : {
+                                 "name" : "Emergency Department Visit",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "27",
+                           "locator" : "62:9-62:97",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "In",
+                           "operand" : [ {
+                              "precision" : "Hour",
+                              "type" : "DurationBetween",
+                              "operand" : [ {
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "22",
+                                    "locator" : "62:15-62:36",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "EDVisit",
+                                    "type" : "Property",
+                                    "resultTypeSpecifier" : {
+                                       "type" : "IntervalTypeSpecifier",
+                                       "pointType" : {
+                                          "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }
+                              }, {
+                                 "localId" : "25",
+                                 "locator" : "62:65-62:97",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "24",
+                                    "locator" : "62:74-62:97",
+                                    "path" : "relevantPeriod",
+                                    "type" : "Property",
+                                    "resultTypeSpecifier" : {
+                                       "type" : "IntervalTypeSpecifier",
+                                       "pointType" : {
+                                          "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    },
+                                    "source" : {
+                                       "localId" : "23",
+                                       "locator" : "62:74-62:82",
+                                       "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                       "name" : "Encounter",
+                                       "type" : "OperandRef"
+                                    }
+                                 }
+                              } ]
+                           }, {
+                              "lowClosed" : false,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "0",
+                                 "type" : "Literal"
+                              },
+                              "high" : {
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "43",
+                  "locator" : "65:5-66:79",
+                  "resultTypeSpecifier" : {
+                     "type" : "IntervalTypeSpecifier",
+                     "pointType" : {
+                        "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "42",
+                     "locator" : "65:12-66:79",
+                     "type" : "If",
+                     "resultTypeSpecifier" : {
+                        "type" : "IntervalTypeSpecifier",
+                        "pointType" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "32",
+                           "locator" : "65:15-65:23",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "IsNull",
+                           "operand" : {
+                              "localId" : "31",
+                              "locator" : "65:15",
+                              "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "name" : "X",
+                              "type" : "AliasRef"
+                           }
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "then" : {
+                        "localId" : "34",
+                        "locator" : "65:30-65:53",
+                        "path" : "relevantPeriod",
+                        "type" : "Property",
+                        "resultTypeSpecifier" : {
+                           "type" : "IntervalTypeSpecifier",
+                           "pointType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "source" : {
+                           "localId" : "33",
+                           "locator" : "65:30-65:38",
+                           "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                           "name" : "Encounter",
+                           "type" : "OperandRef"
+                        }
+                     },
+                     "else" : {
+                        "localId" : "41",
+                        "locator" : "66:12-66:79",
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "resultTypeSpecifier" : {
+                           "type" : "IntervalTypeSpecifier",
+                           "pointType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "low" : {
+                           "localId" : "37",
+                           "locator" : "66:21-66:45",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "36",
+                              "locator" : "66:30-66:45",
+                              "path" : "relevantPeriod",
+                              "scope" : "X",
+                              "type" : "Property",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }
+                        },
+                        "high" : {
+                           "localId" : "40",
+                           "locator" : "66:48-66:78",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "39",
+                              "locator" : "66:55-66:78",
+                              "path" : "relevantPeriod",
+                              "type" : "Property",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "source" : {
+                                 "localId" : "38",
+                                 "locator" : "66:55-66:63",
+                                 "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "18",
+                  "locator" : "58:47-58:68",
+                  "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "58",
+            "locator" : "79:1-82:59",
+            "name" : "Encounter Inpatient Non Elective",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter Inpatient Non Elective\":\r\n  [\"Encounter, Performed\": \"Non-Elective Inpatient Encounter\"] E\r\n    where E.lengthOfStay <= 120 days\r\n      and E.relevantPeriod ends during \"Measurement Period\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "57",
+               "locator" : "80:3-82:59",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "47",
+                  "locator" : "80:3-80:64",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "46",
+                     "locator" : "80:3-80:62",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "templateId" : "PositiveEncounterPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "codes" : {
+                        "name" : "Non-Elective Inpatient Encounter",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "56",
+                  "locator" : "81:5-82:59",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "51",
+                     "locator" : "81:11-81:36",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "LessOrEqual",
+                     "operand" : [ {
+                        "localId" : "49",
+                        "locator" : "81:11-81:24",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Quantity",
+                        "path" : "lengthOfStay",
+                        "scope" : "E",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "50",
+                        "locator" : "81:29-81:36",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Quantity",
+                        "value" : 120,
+                        "unit" : "days",
+                        "type" : "Quantity"
+                     } ]
+                  }, {
+                     "localId" : "55",
+                     "locator" : "82:11-82:59",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "53",
+                           "locator" : "82:11-82:26",
+                           "path" : "relevantPeriod",
+                           "scope" : "E",
+                           "type" : "Property",
+                           "resultTypeSpecifier" : {
+                              "type" : "IntervalTypeSpecifier",
+                              "pointType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     }, {
+                        "localId" : "54",
+                        "locator" : "82:40-82:59",
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef",
+                        "resultTypeSpecifier" : {
+                           "type" : "IntervalTypeSpecifier",
+                           "pointType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "82",
+            "locator" : "91:1-103:5",
+            "name" : "Intervention Comfort Measures",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Intervention Comfort Measures\":\r\n  [\"Intervention, Order\": \"Comfort Measures\"]\r\n    union (\r\n      [\"Intervention, Performed\": \"Comfort Measures\"] P\r\n        return \"Intervention, Order\" { \r\n          id: P.id,\r\n          code: P.code,\r\n          patientId: P.patientId,\r\n          reporter: P.reporter,\r\n          recorder: P.recorder,\r\n          authorDatetime: Coalesce(start of P.relevantPeriod, P.authorDatetime)\r\n        }\r\n    )" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "81",
+               "locator" : "92:3-103:5",
+               "type" : "Union",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "operand" : [ {
+                  "localId" : "59",
+                  "locator" : "92:3-92:45",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                  "templateId" : "PositiveInterventionOrder",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "codes" : {
+                     "name" : "Comfort Measures",
+                     "type" : "ValueSetRef"
+                  }
+               }, {
+                  "localId" : "80",
+                  "locator" : "93:11-103:5",
+                  "type" : "Query",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveInterventionOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "source" : [ {
+                     "localId" : "61",
+                     "locator" : "94:7-94:55",
+                     "alias" : "P",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "expression" : {
+                        "localId" : "60",
+                        "locator" : "94:7-94:53",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionPerformed",
+                        "templateId" : "PositiveInterventionPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionPerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "codes" : {
+                           "name" : "Comfort Measures",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "localId" : "79",
+                     "locator" : "95:9-102:9",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveInterventionOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "expression" : {
+                        "localId" : "78",
+                        "locator" : "95:16-102:9",
+                        "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveInterventionOrder",
+                        "classType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveInterventionOrder",
+                        "type" : "Instance",
+                        "element" : [ {
+                           "name" : "id",
+                           "value" : {
+                              "localId" : "63",
+                              "locator" : "96:15-96:18",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "id",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "code",
+                           "value" : {
+                              "localId" : "65",
+                              "locator" : "97:17-97:22",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "code",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "patientId",
+                           "value" : {
+                              "localId" : "67",
+                              "locator" : "98:22-98:32",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "patientId",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "reporter",
+                           "value" : {
+                              "localId" : "69",
+                              "locator" : "99:21-99:30",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "reporter",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "recorder",
+                           "value" : {
+                              "localId" : "71",
+                              "locator" : "100:21-100:30",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "recorder",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "authorDatetime",
+                           "value" : {
+                              "localId" : "77",
+                              "locator" : "101:27-101:79",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "type" : "Coalesce",
+                              "operand" : [ {
+                                 "localId" : "74",
+                                 "locator" : "101:36-101:60",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "73",
+                                    "locator" : "101:45-101:60",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "P",
+                                    "type" : "Property",
+                                    "resultTypeSpecifier" : {
+                                       "type" : "IntervalTypeSpecifier",
+                                       "pointType" : {
+                                          "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }
+                              }, {
+                                 "localId" : "76",
+                                 "locator" : "101:63-101:78",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "path" : "authorDatetime",
+                                 "scope" : "P",
+                                 "type" : "Property"
+                              } ]
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "92",
+            "locator" : "121:1-123:55",
+            "name" : "Valid Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Valid Encounter\":\r\n  \"Encounter Inpatient Non Elective\" E\r\n    where AgeInYearsAt(start of E.relevantPeriod) >= 18" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "91",
+               "locator" : "122:3-123:55",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "84",
+                  "locator" : "122:3-122:38",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "83",
+                     "locator" : "122:3-122:36",
+                     "name" : "Encounter Inpatient Non Elective",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "90",
+                  "locator" : "123:5-123:55",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "localId" : "88",
+                     "locator" : "123:11-123:49",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "path" : "birthDatetime",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "87",
+                        "locator" : "123:24-123:48",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "86",
+                           "locator" : "123:33-123:48",
+                           "path" : "relevantPeriod",
+                           "scope" : "E",
+                           "type" : "Property",
+                           "resultTypeSpecifier" : {
+                              "type" : "IntervalTypeSpecifier",
+                              "pointType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     } ]
+                  }, {
+                     "localId" : "89",
+                     "locator" : "123:54-123:55",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "18",
+                     "type" : "Literal"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "105",
+            "locator" : "125:1-128:53",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Initial Population\":\r\n  \"Valid Encounter\" E\r\n    where E.principalDiagnosis in \"Ischemic Stroke\"\r\n      or E.principalDiagnosis in \"Hemorrhagic Stroke\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "104",
+               "locator" : "126:3-128:53",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "94",
+                  "locator" : "126:3-126:21",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "93",
+                     "locator" : "126:3-126:19",
+                     "name" : "Valid Encounter",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "103",
+                  "locator" : "127:5-128:53",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "98",
+                     "locator" : "127:11-127:51",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "96",
+                        "locator" : "127:11-127:30",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "principalDiagnosis",
+                        "scope" : "E",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "97",
+                        "locator" : "127:35-127:51",
+                        "name" : "Ischemic Stroke",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "102",
+                     "locator" : "128:10-128:53",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "100",
+                        "locator" : "128:10-128:29",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "principalDiagnosis",
+                        "scope" : "E",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "101",
+                        "locator" : "128:34-128:53",
+                        "name" : "Hemorrhagic Stroke",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "113",
+            "locator" : "138:1-140:51",
+            "name" : "Encounter With Ischemic Stroke",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Ischemic Stroke\":\r\n  \"Valid Encounter\" E\r\n    where E.principalDiagnosis in \"Ischemic Stroke\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "112",
+               "locator" : "139:3-140:51",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "107",
+                  "locator" : "139:3-139:21",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "106",
+                     "locator" : "139:3-139:19",
+                     "name" : "Valid Encounter",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "111",
+                  "locator" : "140:5-140:51",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "InValueSet",
+                  "code" : {
+                     "localId" : "109",
+                     "locator" : "140:11-140:30",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                     "path" : "principalDiagnosis",
+                     "scope" : "E",
+                     "type" : "Property"
+                  },
+                  "valueset" : {
+                     "localId" : "110",
+                     "locator" : "140:35-140:51",
+                     "name" : "Ischemic Stroke",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "115",
+            "locator" : "142:1-143:34",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Denominator\":\r\n  \"Encounter With Ischemic Stroke\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "114",
+               "locator" : "143:3-143:34",
+               "name" : "Encounter With Ischemic Stroke",
+               "type" : "ExpressionRef",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }
+         }, {
+            "localId" : "117",
+            "locator" : "176:1-177:56",
+            "name" : "ED Visit",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"ED Visit\":\r\n  [\"Encounter, Performed\": \"Emergency Department Visit\"]" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "116",
+               "locator" : "177:3-177:56",
+               "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+               "templateId" : "PositiveEncounterPerformed",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "codes" : {
+                  "name" : "Emergency Department Visit",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "131",
+            "locator" : "179:1-182:64",
+            "name" : "Encounter Less Than Two Days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter Less Than Two Days\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    let H: Hospitalization(E)\r\n    where difference in days between start of H and end of H < 2" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "130",
+               "locator" : "180:3-182:64",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "119",
+                  "locator" : "180:3-180:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "118",
+                     "locator" : "180:3-180:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "let" : [ {
+                  "localId" : "122",
+                  "locator" : "181:9-181:29",
+                  "identifier" : "H",
+                  "resultTypeSpecifier" : {
+                     "type" : "IntervalTypeSpecifier",
+                     "pointType" : {
+                        "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "121",
+                     "locator" : "181:12-181:29",
+                     "name" : "Hospitalization",
+                     "type" : "FunctionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "IntervalTypeSpecifier",
+                        "pointType" : {
+                           "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "operand" : [ {
+                        "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "120",
+                           "locator" : "181:28",
+                           "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "name" : "E",
+                           "type" : "AliasRef"
+                        },
+                        "asTypeSpecifier" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "129",
+                  "locator" : "182:5-182:64",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "Less",
+                  "operand" : [ {
+                     "localId" : "127",
+                     "locator" : "182:11-182:60",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "precision" : "Day",
+                     "type" : "DifferenceBetween",
+                     "operand" : [ {
+                        "localId" : "124",
+                        "locator" : "182:38-182:47",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "123",
+                           "locator" : "182:47",
+                           "name" : "H",
+                           "type" : "QueryLetRef",
+                           "resultTypeSpecifier" : {
+                              "type" : "IntervalTypeSpecifier",
+                              "pointType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     }, {
+                        "localId" : "126",
+                        "locator" : "182:53-182:60",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "125",
+                           "locator" : "182:60",
+                           "name" : "H",
+                           "type" : "QueryLetRef",
+                           "resultTypeSpecifier" : {
+                              "type" : "IntervalTypeSpecifier",
+                              "pointType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     } ]
+                  }, {
+                     "localId" : "128",
+                     "locator" : "182:64",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2",
+                     "type" : "Literal"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "133",
+            "locator" : "184:1-185:61",
+            "name" : "Thrombolytic Medication",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Thrombolytic Medication\":\r\n  [\"Medication, Administered\": \"Thrombolytic (t-PA) Therapy\"]" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "132",
+               "locator" : "185:3-185:61",
+               "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+               "templateId" : "PositiveMedicationAdministered",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "codes" : {
+                  "name" : "Thrombolytic (t-PA) Therapy",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "155",
+            "locator" : "187:1-200:5",
+            "name" : "Thrombolytic Therapy Medication Or Procedures",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Thrombolytic Therapy Medication Or Procedures\":\r\n  \"Thrombolytic Medication\"\r\n    union (\r\n      [\"Procedure, Performed\": \"Intravenous or Intra-arterial Thrombolytic (t-PA) Therapy\"] P\r\n        return \"Medication, Administered\" {\r\n          id: P.id,\r\n          code: P.code,\r\n          patientId: P.patientId,\r\n          reporter: P.reporter,\r\n          recorder: P.recorder,\r\n          authorDatetime: P.authorDatetime,\r\n          relevantPeriod: P.relevantPeriod\r\n        }\r\n    )" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "154",
+               "locator" : "188:3-200:5",
+               "type" : "Union",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "operand" : [ {
+                  "localId" : "134",
+                  "locator" : "188:3-188:27",
+                  "name" : "Thrombolytic Medication",
+                  "type" : "ExpressionRef",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  }
+               }, {
+                  "localId" : "153",
+                  "locator" : "189:11-200:5",
+                  "type" : "Query",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveMedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "source" : [ {
+                     "localId" : "136",
+                     "locator" : "190:7-190:93",
+                     "alias" : "P",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}ProcedurePerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "expression" : {
+                        "localId" : "135",
+                        "locator" : "190:7-190:91",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}ProcedurePerformed",
+                        "templateId" : "PositiveProcedurePerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}ProcedurePerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "codes" : {
+                           "name" : "Intravenous or Intra-arterial Thrombolytic (t-PA) Therapy",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "localId" : "152",
+                     "locator" : "191:9-199:9",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveMedicationAdministered",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "expression" : {
+                        "localId" : "151",
+                        "locator" : "191:16-199:9",
+                        "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveMedicationAdministered",
+                        "classType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveMedicationAdministered",
+                        "type" : "Instance",
+                        "element" : [ {
+                           "name" : "id",
+                           "value" : {
+                              "localId" : "138",
+                              "locator" : "192:15-192:18",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "id",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "code",
+                           "value" : {
+                              "localId" : "140",
+                              "locator" : "193:17-193:22",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "code",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "patientId",
+                           "value" : {
+                              "localId" : "142",
+                              "locator" : "194:22-194:32",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "patientId",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "reporter",
+                           "value" : {
+                              "localId" : "144",
+                              "locator" : "195:21-195:30",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "reporter",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "recorder",
+                           "value" : {
+                              "localId" : "146",
+                              "locator" : "196:21-196:30",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                              "path" : "recorder",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "authorDatetime",
+                           "value" : {
+                              "localId" : "148",
+                              "locator" : "197:27-197:42",
+                              "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "path" : "authorDatetime",
+                              "scope" : "P",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "name" : "relevantPeriod",
+                           "value" : {
+                              "localId" : "150",
+                              "locator" : "198:27-198:42",
+                              "path" : "relevantPeriod",
+                              "scope" : "P",
+                              "type" : "Property",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "169",
+            "locator" : "202:1-205:91",
+            "name" : "Encounter With Thrombolytic Therapy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Thrombolytic Therapy\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    with \"Thrombolytic Therapy Medication Or Procedures\" T\r\n      such that T.relevantPeriod starts 24 hours or less before start of Hospitalization(E)" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "168",
+               "locator" : "203:3-205:91",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "157",
+                  "locator" : "203:3-203:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "156",
+                     "locator" : "203:3-203:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "167",
+                  "locator" : "204:5-205:91",
+                  "alias" : "T",
+                  "type" : "With",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "158",
+                     "locator" : "204:10-204:56",
+                     "name" : "Thrombolytic Therapy Medication Or Procedures",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "166",
+                     "locator" : "205:17-205:91",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "precision" : "Hour",
+                        "type" : "DurationBetween",
+                        "operand" : [ {
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "161",
+                              "locator" : "205:17-205:32",
+                              "path" : "relevantPeriod",
+                              "scope" : "T",
+                              "type" : "Property",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }
+                        }, {
+                           "localId" : "164",
+                           "locator" : "205:65-205:91",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "163",
+                              "locator" : "205:74-205:91",
+                              "name" : "Hospitalization",
+                              "type" : "FunctionRef",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "operand" : [ {
+                                 "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "localId" : "162",
+                                    "locator" : "205:90",
+                                    "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                    "name" : "E",
+                                    "type" : "AliasRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "lowClosed" : false,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "0",
+                           "type" : "Literal"
+                        },
+                        "high" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "24",
+                           "type" : "Literal"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "181",
+            "locator" : "207:1-210:65",
+            "name" : "Encounter With Thrombolytic Medication",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Thrombolytic Medication\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    with \"Thrombolytic Medication\" M\r\n      such that M.relevantPeriod starts during Hospitalization(E)" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "180",
+               "locator" : "208:3-210:65",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "171",
+                  "locator" : "208:3-208:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "170",
+                     "locator" : "208:3-208:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "179",
+                  "locator" : "209:5-210:65",
+                  "alias" : "M",
+                  "type" : "With",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "172",
+                     "locator" : "209:10-209:34",
+                     "name" : "Thrombolytic Medication",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "178",
+                     "locator" : "210:17-210:65",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "175",
+                           "locator" : "210:17-210:32",
+                           "path" : "relevantPeriod",
+                           "scope" : "M",
+                           "type" : "Property",
+                           "resultTypeSpecifier" : {
+                              "type" : "IntervalTypeSpecifier",
+                              "pointType" : {
+                                 "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     }, {
+                        "localId" : "177",
+                        "locator" : "210:48-210:65",
+                        "name" : "Hospitalization",
+                        "type" : "FunctionRef",
+                        "resultTypeSpecifier" : {
+                           "type" : "IntervalTypeSpecifier",
+                           "pointType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "operand" : [ {
+                           "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                           "type" : "As",
+                           "operand" : {
+                              "localId" : "176",
+                              "locator" : "210:64",
+                              "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "name" : "E",
+                              "type" : "AliasRef"
+                           },
+                           "asTypeSpecifier" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "195",
+            "locator" : "212:1-215:80",
+            "name" : "Encounter With Comfort Measures",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Comfort Measures\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    with \"Intervention Comfort Measures\" M\r\n      such that M.authorDatetime 1 day or less after start of Hospitalization(E)" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "194",
+               "locator" : "213:3-215:80",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "183",
+                  "locator" : "213:3-213:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "182",
+                     "locator" : "213:3-213:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "193",
+                  "locator" : "214:5-215:80",
+                  "alias" : "M",
+                  "type" : "With",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "184",
+                     "locator" : "214:10-214:40",
+                     "name" : "Intervention Comfort Measures",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}InterventionOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "192",
+                     "locator" : "215:17-215:80",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "precision" : "Day",
+                        "type" : "DurationBetween",
+                        "operand" : [ {
+                           "localId" : "187",
+                           "locator" : "215:17-215:32",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "path" : "authorDatetime",
+                           "scope" : "M",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "190",
+                           "locator" : "215:54-215:80",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "189",
+                              "locator" : "215:63-215:80",
+                              "name" : "Hospitalization",
+                              "type" : "FunctionRef",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "operand" : [ {
+                                 "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "localId" : "188",
+                                    "locator" : "215:79",
+                                    "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                    "name" : "E",
+                                    "type" : "AliasRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "lowClosed" : true,
+                        "highClosed" : false,
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "Negate",
+                           "operand" : {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "1",
+                              "type" : "Literal"
+                           }
+                        },
+                        "high" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "0",
+                           "type" : "Literal"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "203",
+            "locator" : "217:1-221:43",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Denominator Exclusions\":\r\n  \"Encounter Less Than Two Days\"\r\n    union \"Encounter With Thrombolytic Therapy\"\r\n    union \"Encounter With Thrombolytic Medication\"\r\n    union \"Encounter With Comfort Measures\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "202",
+               "locator" : "218:3-221:43",
+               "type" : "Union",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "operand" : [ {
+                  "localId" : "200",
+                  "locator" : "218:3-220:50",
+                  "type" : "Union",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "operand" : [ {
+                     "localId" : "198",
+                     "locator" : "218:3-219:47",
+                     "type" : "Union",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "operand" : [ {
+                        "localId" : "196",
+                        "locator" : "218:3-218:32",
+                        "name" : "Encounter Less Than Two Days",
+                        "type" : "ExpressionRef",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }, {
+                        "localId" : "197",
+                        "locator" : "219:11-219:47",
+                        "name" : "Encounter With Thrombolytic Therapy",
+                        "type" : "ExpressionRef",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     } ]
+                  }, {
+                     "localId" : "199",
+                     "locator" : "220:11-220:50",
+                     "name" : "Encounter With Thrombolytic Medication",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "201",
+                  "locator" : "221:11-221:43",
+                  "name" : "Encounter With Comfort Measures",
+                  "type" : "ExpressionRef",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "217",
+            "locator" : "232:1-235:87",
+            "name" : "Encounter With Antithrombotic Therapy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Antithrombotic Therapy\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    with [\"Medication, Administered\": \"Antithrombotic Therapy\"] M\r\n      such that M.relevantPeriod starts 1 day or less after start of Hospitalization(E)" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "216",
+               "locator" : "233:3-235:87",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "205",
+                  "locator" : "233:3-233:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "204",
+                     "locator" : "233:3-233:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "215",
+                  "locator" : "234:5-235:87",
+                  "alias" : "M",
+                  "type" : "With",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "206",
+                     "locator" : "234:10-234:63",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                     "templateId" : "PositiveMedicationAdministered",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "codes" : {
+                        "name" : "Antithrombotic Therapy",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "214",
+                     "locator" : "235:17-235:87",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "precision" : "Day",
+                        "type" : "DurationBetween",
+                        "operand" : [ {
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "209",
+                              "locator" : "235:17-235:32",
+                              "path" : "relevantPeriod",
+                              "scope" : "M",
+                              "type" : "Property",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }
+                        }, {
+                           "localId" : "212",
+                           "locator" : "235:61-235:87",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "211",
+                              "locator" : "235:70-235:87",
+                              "name" : "Hospitalization",
+                              "type" : "FunctionRef",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "operand" : [ {
+                                 "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "localId" : "210",
+                                    "locator" : "235:86",
+                                    "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                    "name" : "E",
+                                    "type" : "AliasRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "lowClosed" : true,
+                        "highClosed" : false,
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "Negate",
+                           "operand" : {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "1",
+                              "type" : "Literal"
+                           }
+                        },
+                        "high" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "0",
+                           "type" : "Literal"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "219",
+            "locator" : "237:1-238:41",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Numerator\":\r\n  \"Encounter With Antithrombotic Therapy\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "218",
+               "locator" : "238:3-238:41",
+               "name" : "Encounter With Antithrombotic Therapy",
+               "type" : "ExpressionRef",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }
+         }, {
+            "localId" : "232",
+            "locator" : "265:1-268:49",
+            "name" : "Antithrombotic Medication Not Ordered",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Antithrombotic Medication Not Ordered\":\r\n  [\"Medication, Not Ordered\": \"Antithrombotic ingredient specific\"] O\r\n    where O.negationRationale in \"Medical Reason\"\r\n      or O.negationRationale in \"Patient Refusal\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "231",
+               "locator" : "266:3-268:49",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "221",
+                  "locator" : "266:3-266:69",
+                  "alias" : "O",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "220",
+                     "locator" : "266:3-266:67",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                     "templateId" : "NegativeMedicationOrder",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "codes" : {
+                        "name" : "Antithrombotic ingredient specific",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "230",
+                  "locator" : "267:5-268:49",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "225",
+                     "locator" : "267:11-267:49",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "223",
+                        "locator" : "267:11-267:29",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "negationRationale",
+                        "scope" : "O",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "224",
+                        "locator" : "267:34-267:49",
+                        "name" : "Medical Reason",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "229",
+                     "locator" : "268:10-268:49",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "227",
+                        "locator" : "268:10-268:28",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "negationRationale",
+                        "scope" : "O",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "228",
+                        "locator" : "268:33-268:49",
+                        "name" : "Patient Refusal",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "245",
+            "locator" : "270:1-273:49",
+            "name" : "Antithrombotic Medication Not Administered",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Antithrombotic Medication Not Administered\":\r\n  [\"Medication, Not Administered\": \"Antithrombotic Therapy\"] M\r\n    where M.negationRationale in \"Medical Reason\"\r\n      or M.negationRationale in \"Patient Refusal\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "244",
+               "locator" : "271:3-273:49",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "234",
+                  "locator" : "271:3-271:62",
+                  "alias" : "M",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "233",
+                     "locator" : "271:3-271:60",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                     "templateId" : "NegativeMedicationAdministered",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "codes" : {
+                        "name" : "Antithrombotic Therapy",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "243",
+                  "locator" : "272:5-273:49",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "238",
+                     "locator" : "272:11-272:49",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "236",
+                        "locator" : "272:11-272:29",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "negationRationale",
+                        "scope" : "M",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "237",
+                        "locator" : "272:34-272:49",
+                        "name" : "Medical Reason",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "242",
+                     "locator" : "273:10-273:49",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "240",
+                        "locator" : "273:10-273:28",
+                        "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                        "path" : "negationRationale",
+                        "scope" : "M",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "241",
+                        "locator" : "273:33-273:49",
+                        "name" : "Patient Refusal",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "267",
+            "locator" : "275:1-289:3",
+            "name" : "Antithrombotic Medication Not Ordered Or Administered",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Antithrombotic Medication Not Ordered Or Administered\":\r\n  distinct (\r\n    \"Antithrombotic Medication Not Ordered\"\r\n      union (\r\n          \"Antithrombotic Medication Not Administered\" M\r\n            return \"Medication, Not Ordered\" {\r\n              id: M.id,\r\n              code: M.code,\r\n              patientId: M.patientId,\r\n              reporter: M.reporter,\r\n              recorder: M.recorder,\r\n              authorDatetime: start of M.relevantPeriod\r\n            }\r\n      )\r\n  )" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "266",
+               "locator" : "276:3-289:3",
+               "type" : "Distinct",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "operand" : {
+                  "localId" : "265",
+                  "locator" : "277:5-288:7",
+                  "type" : "Union",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "operand" : [ {
+                     "localId" : "246",
+                     "locator" : "277:5-277:43",
+                     "name" : "Antithrombotic Medication Not Ordered",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }, {
+                     "localId" : "264",
+                     "locator" : "278:13-288:7",
+                     "type" : "Query",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}NegativeMedicationOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     },
+                     "source" : [ {
+                        "localId" : "248",
+                        "locator" : "279:11-279:56",
+                        "alias" : "M",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "expression" : {
+                           "localId" : "247",
+                           "locator" : "279:11-279:54",
+                           "name" : "Antithrombotic Medication Not Administered",
+                           "type" : "ExpressionRef",
+                           "resultTypeSpecifier" : {
+                              "type" : "ListTypeSpecifier",
+                              "elementType" : {
+                                 "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationAdministered",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "return" : {
+                        "localId" : "263",
+                        "locator" : "280:13-287:13",
+                        "resultTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}NegativeMedicationOrder",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        },
+                        "expression" : {
+                           "localId" : "262",
+                           "locator" : "280:20-287:13",
+                           "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}NegativeMedicationOrder",
+                           "classType" : "{urn:healthit-gov:qdm:v5_0_1_draft}NegativeMedicationOrder",
+                           "type" : "Instance",
+                           "element" : [ {
+                              "name" : "id",
+                              "value" : {
+                                 "localId" : "250",
+                                 "locator" : "281:19-281:22",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "path" : "id",
+                                 "scope" : "M",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "name" : "code",
+                              "value" : {
+                                 "localId" : "252",
+                                 "locator" : "282:21-282:26",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "path" : "code",
+                                 "scope" : "M",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "name" : "patientId",
+                              "value" : {
+                                 "localId" : "254",
+                                 "locator" : "283:26-283:36",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "path" : "patientId",
+                                 "scope" : "M",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "name" : "reporter",
+                              "value" : {
+                                 "localId" : "256",
+                                 "locator" : "284:25-284:34",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "path" : "reporter",
+                                 "scope" : "M",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "name" : "recorder",
+                              "value" : {
+                                 "localId" : "258",
+                                 "locator" : "285:25-285:34",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "path" : "recorder",
+                                 "scope" : "M",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "name" : "authorDatetime",
+                              "value" : {
+                                 "localId" : "261",
+                                 "locator" : "286:31-286:55",
+                                 "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "260",
+                                    "locator" : "286:40-286:55",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "M",
+                                    "type" : "Property",
+                                    "resultTypeSpecifier" : {
+                                       "type" : "IntervalTypeSpecifier",
+                                       "pointType" : {
+                                          "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "281",
+            "locator" : "291:1-294:80",
+            "name" : "Encounter With Antithrombotic Negated",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Encounter With Antithrombotic Negated\":\r\n  \"Encounter With Ischemic Stroke\" E\r\n    with \"Antithrombotic Medication Not Ordered Or Administered\" M\r\n      such that M.authorDatetime 1 day or less after start of Hospitalization(E)" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "280",
+               "locator" : "292:3-294:80",
+               "type" : "Query",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               },
+               "source" : [ {
+                  "localId" : "269",
+                  "locator" : "292:3-292:36",
+                  "alias" : "E",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "268",
+                     "locator" : "292:3-292:34",
+                     "name" : "Encounter With Ischemic Stroke",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "279",
+                  "locator" : "293:5-294:80",
+                  "alias" : "M",
+                  "type" : "With",
+                  "resultTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  },
+                  "expression" : {
+                     "localId" : "270",
+                     "locator" : "293:10-293:64",
+                     "name" : "Antithrombotic Medication Not Ordered Or Administered",
+                     "type" : "ExpressionRef",
+                     "resultTypeSpecifier" : {
+                        "type" : "ListTypeSpecifier",
+                        "elementType" : {
+                           "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}MedicationOrder",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "278",
+                     "locator" : "294:17-294:80",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "In",
+                     "operand" : [ {
+                        "precision" : "Day",
+                        "type" : "DurationBetween",
+                        "operand" : [ {
+                           "localId" : "273",
+                           "locator" : "294:17-294:32",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "path" : "authorDatetime",
+                           "scope" : "M",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "276",
+                           "locator" : "294:54-294:80",
+                           "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "275",
+                              "locator" : "294:63-294:80",
+                              "name" : "Hospitalization",
+                              "type" : "FunctionRef",
+                              "resultTypeSpecifier" : {
+                                 "type" : "IntervalTypeSpecifier",
+                                 "pointType" : {
+                                    "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              },
+                              "operand" : [ {
+                                 "asType" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                 "type" : "As",
+                                 "operand" : {
+                                    "localId" : "274",
+                                    "locator" : "294:79",
+                                    "resultTypeName" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                                    "name" : "E",
+                                    "type" : "AliasRef"
+                                 },
+                                 "asTypeSpecifier" : {
+                                    "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}PositiveEncounterPerformed",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }, {
+                        "lowClosed" : true,
+                        "highClosed" : false,
+                        "type" : "Interval",
+                        "low" : {
+                           "type" : "Negate",
+                           "operand" : {
+                              "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                              "value" : "1",
+                              "type" : "Literal"
+                           }
+                        },
+                        "high" : {
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "0",
+                           "type" : "Literal"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "283",
+            "locator" : "296:1-297:41",
+            "name" : "Denominator Exceptions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "value" : [ "define \"Denominator Exceptions\":\r\n  \"Encounter With Antithrombotic Negated\"" ]
+               }
+            } ],
+            "resultTypeSpecifier" : {
+               "type" : "ListTypeSpecifier",
+               "elementType" : {
+                  "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            },
+            "expression" : {
+               "localId" : "282",
+               "locator" : "297:3-297:41",
+               "name" : "Encounter With Antithrombotic Negated",
+               "type" : "ExpressionRef",
+               "resultTypeSpecifier" : {
+                  "type" : "ListTypeSpecifier",
+                  "elementType" : {
+                     "name" : "{urn:healthit-gov:qdm:v5_0_1_draft}EncounterPerformed",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}
+
