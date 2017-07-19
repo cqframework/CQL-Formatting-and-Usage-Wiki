@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="AllergyToEggs"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def localId="5" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="4" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="3" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" name="Allergy to Eggs" id="X.Y.Z" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def localId="28" name="Allergy to Eggs Diagnosis (1)" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="28">
+               <a:s>define &quot;Allergy to Eggs Diagnosis (1)&quot;: </a:s>
+               <a:s r="27">
+                  <a:s>
+                     <a:s r="7">
+                        <a:s r="6">
+                           <a:s r="6">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Allergy to Eggs&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Dx</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="26">
+                     <a:s>where </a:s>
+                     <a:s r="26">
+                        <a:s r="11">
+                           <a:s r="9">
+                              <a:s r="8">
+                                 <a:s>Dx</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="9">
+                                 <a:s>prevalencePeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> overlaps </a:s>
+                           <a:s r="10">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+        and </a:s>
+                        <a:s r="25">
+                           <a:s>not </a:s>
+                           <a:s r="24">
+                              <a:s>(</a:s>
+                              <a:s r="24">
+                                 <a:s r="17">
+                                    <a:s r="13">
+                                       <a:s r="12">
+                                          <a:s>Dx</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="13">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="17">
+                                       <a:s>starts </a:s>
+                                       <a:s r="16">
+                                          <a:s>90 days</a:s>
+                                       </a:s>
+                                       <a:s> or more after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="15">
+                                       <a:s>start of </a:s>
+                                       <a:s r="14">
+                                          <a:s>&quot;Measurement Period&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> &#xd;
+          and </a:s>
+                                 <a:s r="23">
+                                    <a:s r="19">
+                                       <a:s r="18">
+                                          <a:s>Dx</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="19">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="23">
+                                       <a:s>ends </a:s>
+                                       <a:s r="22">
+                                          <a:s>89 days</a:s>
+                                       </a:s>
+                                       <a:s> or less after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="21">
+                                       <a:s>start of </a:s>
+                                       <a:s r="20">
+                                          <a:s>&quot;Measurement Period&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="27" xsi:type="Query">
+            <source localId="7" alias="Dx">
+               <expression localId="6" xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Allergy to Eggs" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="26" xsi:type="And">
+               <operand localId="11" xsi:type="Overlaps">
+                  <operand localId="9" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                  <operand localId="10" name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+               <operand localId="25" xsi:type="Not">
+                  <operand localId="24" xsi:type="And">
+                     <operand localId="17" xsi:type="SameOrAfter">
+                        <operand xsi:type="Start">
+                           <operand localId="13" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                        </operand>
+                        <operand xsi:type="Add">
+                           <operand localId="15" xsi:type="Start">
+                              <operand localId="14" name="Measurement Period" xsi:type="ParameterRef"/>
+                           </operand>
+                           <operand localId="16" value="90" unit="days" xsi:type="Quantity"/>
+                        </operand>
+                     </operand>
+                     <operand localId="23" xsi:type="In">
+                        <operand xsi:type="End">
+                           <operand localId="19" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <low localId="21" xsi:type="Start">
+                              <operand localId="20" name="Measurement Period" xsi:type="ParameterRef"/>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand localId="21" xsi:type="Start">
+                                 <operand localId="20" name="Measurement Period" xsi:type="ParameterRef"/>
+                              </operand>
+                              <operand localId="22" value="89" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="52" name="Allergy to Eggs Diagnosis (3)" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="52">
+               <a:s>define &quot;Allergy to Eggs Diagnosis (3)&quot;:&#xd;
+  </a:s>
+               <a:s r="51">
+                  <a:s>
+                     <a:s r="30">
+                        <a:s r="29">
+                           <a:s r="29">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Allergy to Eggs&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Dx</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="50">
+                     <a:s>where </a:s>
+                     <a:s r="50">
+                        <a:s r="42">
+                           <a:s r="34">
+                              <a:s r="32">
+                                 <a:s r="31">
+                                    <a:s>Dx</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="32">
+                                    <a:s>prevalencePeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> overlaps </a:s>
+                              <a:s r="33">
+                                 <a:s>&quot;Measurement Period&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+      and </a:s>
+                           <a:s r="41">
+                              <a:s>not </a:s>
+                              <a:s r="40">
+                                 <a:s>(</a:s>
+                                 <a:s r="40">
+                                    <a:s r="36">
+                                       <a:s r="35">
+                                          <a:s>Dx</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="36">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="40">
+                                       <a:s>starts more than </a:s>
+                                       <a:s r="39">
+                                          <a:s>89 days</a:s>
+                                       </a:s>
+                                       <a:s> after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="38">
+                                       <a:s>start of </a:s>
+                                       <a:s r="37">
+                                          <a:s>&quot;Measurement Period&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+      and </a:s>
+                        <a:s r="49">
+                           <a:s>not </a:s>
+                           <a:s r="48">
+                              <a:s>(</a:s>
+                              <a:s r="48">
+                                 <a:s r="44">
+                                    <a:s r="43">
+                                       <a:s>Dx</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="44">
+                                       <a:s>prevalencePeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="48">
+                                    <a:s>ends </a:s>
+                                    <a:s r="47">
+                                       <a:s>89 days</a:s>
+                                    </a:s>
+                                    <a:s> or less after</a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="46">
+                                    <a:s>start of </a:s>
+                                    <a:s r="45">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="51" xsi:type="Query">
+            <source localId="30" alias="Dx">
+               <expression localId="29" xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Allergy to Eggs" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="50" xsi:type="And">
+               <operand localId="42" xsi:type="And">
+                  <operand localId="34" xsi:type="Overlaps">
+                     <operand localId="32" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                     <operand localId="33" name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+                  <operand localId="41" xsi:type="Not">
+                     <operand localId="40" xsi:type="After">
+                        <operand xsi:type="Start">
+                           <operand localId="36" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                        </operand>
+                        <operand xsi:type="Add">
+                           <operand localId="38" xsi:type="Start">
+                              <operand localId="37" name="Measurement Period" xsi:type="ParameterRef"/>
+                           </operand>
+                           <operand localId="39" value="89" unit="days" xsi:type="Quantity"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="49" xsi:type="Not">
+                  <operand localId="48" xsi:type="In">
+                     <operand xsi:type="End">
+                        <operand localId="44" path="prevalencePeriod" scope="Dx" xsi:type="Property"/>
+                     </operand>
+                     <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <low localId="46" xsi:type="Start">
+                           <operand localId="45" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </low>
+                        <high xsi:type="Add">
+                           <operand localId="46" xsi:type="Start">
+                              <operand localId="45" name="Measurement Period" xsi:type="ParameterRef"/>
+                           </operand>
+                           <operand localId="47" value="89" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

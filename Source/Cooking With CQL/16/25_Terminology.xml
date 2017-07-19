@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <valueSets>
+      <def localId="2" name="Atrial Fibrillation/Flutter" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.202" version="urn:hl7:profile:Most%20Recent%20Code%20System%20Versions%20in%20VSAC" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def localId="4" name="Encounter with Principle Diagnosis of Ischemic Stroke" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="4">
+               <a:s>define &quot;Encounter with Principle Diagnosis of Ischemic Stroke&quot;:&#xd;
+  </a:s>
+               <a:s r="3">
+                  <a:s>[&quot;Encounter, Performed&quot;]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="3" xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" xsi:type="Retrieve"/>
+      </def>
+      <def localId="14" name="Current Diagnosis Atrial FibrillationFlutter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="14">
+               <a:s>define &quot;Current Diagnosis Atrial FibrillationFlutter&quot;: &#xd;
+  </a:s>
+               <a:s r="13">
+                  <a:s>
+                     <a:s r="6">
+                        <a:s r="5">
+                           <a:s>
+                              <a:s>&quot;Encounter with Principle Diagnosis of Ischemic Stroke&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonElectiveEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+  </a:s>
+                  <a:s r="12">
+                     <a:s>where </a:s>
+                     <a:s r="12">
+                        <a:s r="8">
+                           <a:s r="7">
+                              <a:s>NonElectiveEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="8">
+                              <a:s>diagnosis</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="11">
+                           <a:s>
+                              <a:s r="10">
+                                 <a:s r="9">
+                                    <a:s>
+                                       <a:s>&quot;Atrial Fibrillation/Flutter&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> CurrentAtrialFibrillationFlutter</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="13" xsi:type="Query">
+            <source localId="6" alias="NonElectiveEncounter">
+               <expression localId="5" name="Encounter with Principle Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="12" xsi:type="In">
+               <operand localId="8" path="diagnosis" scope="NonElectiveEncounter" xsi:type="Property"/>
+               <operand localId="11" xsi:type="Query">
+                  <source localId="10" alias="CurrentAtrialFibrillationFlutter">
+                     <expression localId="9" name="Atrial Fibrillation/Flutter" xsi:type="ValueSetRef"/>
+                  </source>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

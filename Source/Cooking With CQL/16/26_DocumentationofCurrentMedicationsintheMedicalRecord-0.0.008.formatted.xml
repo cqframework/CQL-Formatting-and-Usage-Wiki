@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="DocumentationofCurrentMedicationsintheMedicalRecord" version="0.0.008"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def localId="11" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="10" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="9" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="3" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="4" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="5" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def localId="6" name="Medications Encounter Code Set" id="urn:oid:2.16.840.1.113883.3.600.1.1834" accessLevel="Public"/>
+      <def localId="7" name="Current Medications Documented SNMD" id="urn:oid:2.16.840.1.113883.3.600.1.462" accessLevel="Public"/>
+      <def localId="8" name="Medical or Other reason not done" id="urn:oid:2.16.840.1.113883.3.600.1.1502" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="13" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="13">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+	</a:s>
+               <a:s r="12">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="12" xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="15" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="15">
+               <a:s>define &quot;SDE Payer&quot;:
+	</a:s>
+               <a:s r="14">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="14" xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns2:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="17" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="17">
+               <a:s>define &quot;SDE Race&quot;:
+	</a:s>
+               <a:s r="16">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="16" xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns3:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="19" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="19">
+               <a:s>define &quot;SDE Sex&quot;:
+	</a:s>
+               <a:s r="18">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="18" xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns4:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="25" name="In Demographic" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="25">
+               <a:s>define &quot;In Demographic&quot;:
+	</a:s>
+               <a:s r="24">
+                  <a:s r="22">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="21">
+                        <a:s>start of </a:s>
+                        <a:s r="20">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>>= 18</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="24" xsi:type="GreaterOrEqual">
+            <operand localId="22" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="21" xsi:type="Start">
+                  <operand localId="20" name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </operand>
+            <operand localId="23" valueType="t:Integer" value="18" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="27" name="Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="27">
+               <a:s>define &quot;Encounter&quot;:
+	</a:s>
+               <a:s r="26">
+                  <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Medications Encounter Code Set&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="26" xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Medications Encounter Code Set" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="35" name="Encounters during MP" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="35">
+               <a:s>define &quot;Encounters during MP&quot;:
+	</a:s>
+               <a:s r="34">
+                  <a:s>
+                     <a:s r="29">
+                        <a:s r="28">
+                           <a:s>
+                              <a:s>&quot;Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="33">
+                     <a:s>where </a:s>
+                     <a:s r="33">
+                        <a:s r="31">
+                           <a:s r="30">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="31">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="32">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="34" xsi:type="Query">
+            <source localId="29" alias="Encounter">
+               <expression localId="28" name="Encounter" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="33" xsi:type="IncludedIn">
+               <operand localId="31" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               <operand localId="32" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="40" name="IPP" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="40">
+               <a:s>define &quot;IPP&quot;:
+	</a:s>
+               <a:s r="39">
+                  <a:s r="36">
+                     <a:s>&quot;In Demographic&quot;</a:s>
+                  </a:s>
+                  <a:s>
+		and </a:s>
+                  <a:s r="38">
+                     <a:s>exists </a:s>
+                     <a:s r="37">
+                        <a:s>&quot;Encounters during MP&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="39" xsi:type="And">
+            <operand localId="36" name="In Demographic" xsi:type="ExpressionRef"/>
+            <operand localId="38" xsi:type="Exists">
+               <operand localId="37" name="Encounters during MP" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="52" name="Medications Documented" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="52">
+               <a:s>define &quot;Medications Documented&quot;:
+	</a:s>
+               <a:s r="51">
+                  <a:s>
+                     <a:s r="42">
+                        <a:s r="41">
+                           <a:s r="41">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Current Medications Documented SNMD&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Procedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="50">
+                     <a:s>with </a:s>
+                     <a:s r="44">
+                        <a:s r="43">
+                           <a:s>
+                              <a:s>&quot;Encounters during MP&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                     <a:s>
+			such that </a:s>
+                     <a:s r="49">
+                        <a:s r="46">
+                           <a:s r="45">
+                              <a:s>Procedure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="46">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="48">
+                           <a:s r="47">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="48">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="51" xsi:type="Query">
+            <source localId="42" alias="Procedure">
+               <expression localId="41" xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns6:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Current Medications Documented SNMD" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="50" alias="Encounter" xsi:type="With">
+               <expression localId="43" name="Encounters during MP" xsi:type="ExpressionRef"/>
+               <suchThat localId="49" xsi:type="IncludedIn">
+                  <operand localId="46" path="relevantPeriod" scope="Procedure" xsi:type="Property"/>
+                  <operand localId="48" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="54" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="54">
+               <a:s>define &quot;Numerator&quot;:
+	</a:s>
+               <a:s r="53">
+                  <a:s>&quot;Medications Documented&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="53" name="Medications Documented" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="56" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="56">
+               <a:s>define &quot;Denominator&quot;:
+	</a:s>
+               <a:s r="55">
+                  <a:s>&quot;IPP&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="55" name="IPP" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="64" name="Meds Not Documented Medical Reason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="64">
+               <a:s>define &quot;Meds Not Documented Medical Reason&quot;:
+	</a:s>
+               <a:s r="63">
+                  <a:s>
+                     <a:s r="58">
+                        <a:s r="57">
+                           <a:s r="57">
+                              <a:s>[&quot;Procedure, Not Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Current Medications Documented SNMD&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NotPerformed</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="62">
+                     <a:s>where </a:s>
+                     <a:s r="62">
+                        <a:s r="60">
+                           <a:s r="59">
+                              <a:s>NotPerformed</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="60">
+                              <a:s>negationRationale</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="61">
+                           <a:s>&quot;Medical or Other reason not done&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="63" xsi:type="Query">
+            <source localId="58" alias="NotPerformed">
+               <expression localId="57" xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns7:NegativeProcedurePerformed" templateId="NegativeProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Current Medications Documented SNMD" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="62" xsi:type="InValueSet">
+               <code localId="60" path="negationRationale" scope="NotPerformed" xsi:type="Property"/>
+               <valueset localId="61" name="Medical or Other reason not done"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="76" name="DenException" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="76">
+               <a:s>define &quot;DenException&quot;:
+	</a:s>
+               <a:s r="75">
+                  <a:s>
+                     <a:s r="66">
+                        <a:s r="65">
+                           <a:s>
+                              <a:s>&quot;Encounters during MP&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Enc</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="74">
+                     <a:s>with </a:s>
+                     <a:s r="68">
+                        <a:s r="67">
+                           <a:s>
+                              <a:s>&quot;Meds Not Documented Medical Reason&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Meds</a:s>
+                     </a:s>
+                     <a:s>
+			such that </a:s>
+                     <a:s r="73">
+                        <a:s r="70">
+                           <a:s r="69">
+                              <a:s>Meds</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="70">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="72">
+                           <a:s r="71">
+                              <a:s>Enc</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="72">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="75" xsi:type="Query">
+            <source localId="66" alias="Enc">
+               <expression localId="65" name="Encounters during MP" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="74" alias="Meds" xsi:type="With">
+               <expression localId="67" name="Meds Not Documented Medical Reason" xsi:type="ExpressionRef"/>
+               <suchThat localId="73" xsi:type="In">
+                  <operand localId="70" path="authorDatetime" scope="Meds" xsi:type="Property"/>
+                  <operand localId="72" path="relevantPeriod" scope="Enc" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

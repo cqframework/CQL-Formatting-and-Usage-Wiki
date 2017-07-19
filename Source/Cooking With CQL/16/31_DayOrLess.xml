@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="DayOrLess"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <statements>
+      <def localId="3" name="Encounter with Principal Diagnosis of Ischemic Stroke" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="3">
+               <a:s>define &quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;:&#xd;
+  </a:s>
+               <a:s r="2">
+                  <a:s>[&quot;Encounter, Performed&quot;]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="2" xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" xsi:type="Retrieve"/>
+      </def>
+      <def localId="5" name="Intervention Comfort Measures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="5">
+               <a:s>define &quot;Intervention Comfort Measures&quot;:&#xd;
+  </a:s>
+               <a:s r="4">
+                  <a:s>[&quot;Intervention, Performed&quot;]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="4" xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PositiveInterventionPerformed" templateId="PositiveInterventionPerformed" xsi:type="Retrieve"/>
+      </def>
+      <def localId="19" name="Comfort Measures in Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="19">
+               <a:s>define &quot;Comfort Measures in Encounter&quot;: &#xd;
+  </a:s>
+               <a:s r="18">
+                  <a:s>
+                     <a:s r="7">
+                        <a:s r="6">
+                           <a:s>
+                              <a:s>&quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonElectiveEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> &#xd;
+    </a:s>
+                  <a:s r="17">
+                     <a:s>with </a:s>
+                     <a:s r="9">
+                        <a:s r="8">
+                           <a:s>
+                              <a:s>&quot;Intervention Comfort Measures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ComfortMeasure</a:s>
+                     </a:s>
+                     <a:s> &#xd;
+      such that </a:s>
+                     <a:s r="16">
+                        <a:s r="11">
+                           <a:s r="10">
+                              <a:s>ComfortMeasure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="11">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="16">
+                           <a:s r="15">
+                              <a:s>1 day</a:s>
+                           </a:s>
+                           <a:s> or less on or after day of</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="14">
+                           <a:s>start of </a:s>
+                           <a:s r="13">
+                              <a:s r="12">
+                                 <a:s>NonElectiveEncounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="13">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="18" xsi:type="Query">
+            <source localId="7" alias="NonElectiveEncounter">
+               <expression localId="6" name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="17" alias="ComfortMeasure" xsi:type="With">
+               <expression localId="8" name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat localId="16" precision="Day" xsi:type="In">
+                  <operand localId="11" path="authorDatetime" scope="ComfortMeasure" xsi:type="Property"/>
+                  <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="14" xsi:type="Start">
+                        <operand localId="13" path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                     </low>
+                     <high xsi:type="Add">
+                        <operand localId="14" xsi:type="Start">
+                           <operand localId="13" path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="15" value="1" unit="day" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="21" name="E1" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="21">
+               <a:s>define E1: @2012-10-10T06:16:00Z</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="20" xsi:type="DateTime">
+            <year valueType="t:Integer" value="2012" xsi:type="Literal"/>
+            <month valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <day valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <hour valueType="t:Integer" value="6" xsi:type="Literal"/>
+            <minute valueType="t:Integer" value="16" xsi:type="Literal"/>
+            <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset valueType="t:Decimal" value="0.0" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="23" name="A1" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="23">
+               <a:s>define A1: @2012-10-11T11:59:00Z</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="22" xsi:type="DateTime">
+            <year valueType="t:Integer" value="2012" xsi:type="Literal"/>
+            <month valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <day valueType="t:Integer" value="11" xsi:type="Literal"/>
+            <hour valueType="t:Integer" value="11" xsi:type="Literal"/>
+            <minute valueType="t:Integer" value="59" xsi:type="Literal"/>
+            <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset valueType="t:Decimal" value="0.0" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="33" name="Test1" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="33">
+               <a:s>define Test1: </a:s>
+               <a:s r="32">
+                  <a:s r="26">
+                     <a:s r="24">
+                        <a:s>A1</a:s>
+                     </a:s>
+                     <a:s> same day or after </a:s>
+                     <a:s r="25">
+                        <a:s>E1</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="31">
+                     <a:s r="27">
+                        <a:s>A1</a:s>
+                     </a:s>
+                     <a:s> same day or before </a:s>
+                     <a:s r="30">
+                        <a:s>(</a:s>
+                        <a:s r="30">
+                           <a:s r="28">
+                              <a:s>E1</a:s>
+                           </a:s>
+                           <a:s> + </a:s>
+                           <a:s r="29">
+                              <a:s>1 day</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="32" xsi:type="And">
+            <operand localId="26" precision="Day" xsi:type="SameOrAfter">
+               <operand localId="24" name="A1" xsi:type="ExpressionRef"/>
+               <operand localId="25" name="E1" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="31" precision="Day" xsi:type="SameOrBefore">
+               <operand localId="27" name="A1" xsi:type="ExpressionRef"/>
+               <operand localId="30" xsi:type="Add">
+                  <operand localId="28" name="E1" xsi:type="ExpressionRef"/>
+                  <operand localId="29" value="1" unit="day" xsi:type="Quantity"/>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="35" name="E2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="35">
+               <a:s>define E2: @2012-10-10T06:16:00Z</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="34" xsi:type="DateTime">
+            <year valueType="t:Integer" value="2012" xsi:type="Literal"/>
+            <month valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <day valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <hour valueType="t:Integer" value="6" xsi:type="Literal"/>
+            <minute valueType="t:Integer" value="16" xsi:type="Literal"/>
+            <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset valueType="t:Decimal" value="0.0" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="37" name="A2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="37">
+               <a:s>define A2: @2012-10-10T11:59:00Z</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="36" xsi:type="DateTime">
+            <year valueType="t:Integer" value="2012" xsi:type="Literal"/>
+            <month valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <day valueType="t:Integer" value="10" xsi:type="Literal"/>
+            <hour valueType="t:Integer" value="11" xsi:type="Literal"/>
+            <minute valueType="t:Integer" value="59" xsi:type="Literal"/>
+            <second valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset valueType="t:Decimal" value="0.0" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="47" name="Test2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="47">
+               <a:s>define Test2: </a:s>
+               <a:s r="46">
+                  <a:s r="40">
+                     <a:s r="38">
+                        <a:s>A2</a:s>
+                     </a:s>
+                     <a:s> same day or after </a:s>
+                     <a:s r="39">
+                        <a:s>E2</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="45">
+                     <a:s r="41">
+                        <a:s>A2</a:s>
+                     </a:s>
+                     <a:s> same day or before </a:s>
+                     <a:s r="44">
+                        <a:s>(</a:s>
+                        <a:s r="44">
+                           <a:s r="42">
+                              <a:s>E2</a:s>
+                           </a:s>
+                           <a:s> + </a:s>
+                           <a:s r="43">
+                              <a:s>1 day</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="46" xsi:type="And">
+            <operand localId="40" precision="Day" xsi:type="SameOrAfter">
+               <operand localId="38" name="A2" xsi:type="ExpressionRef"/>
+               <operand localId="39" name="E2" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="45" precision="Day" xsi:type="SameOrBefore">
+               <operand localId="41" name="A2" xsi:type="ExpressionRef"/>
+               <operand localId="44" xsi:type="Add">
+                  <operand localId="42" name="E2" xsi:type="ExpressionRef"/>
+                  <operand localId="43" value="1" unit="day" xsi:type="Quantity"/>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

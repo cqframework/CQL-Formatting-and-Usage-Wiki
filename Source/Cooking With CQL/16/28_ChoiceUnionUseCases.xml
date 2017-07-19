@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ChoiceUnionUseCases"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <codeSystems>
+      <def localId="2" name="SNOMED-CT" id="X.Y.Z" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="3" name="Comfort Measures" id="TBD" accessLevel="Public"/>
+      <def localId="4" name="Inpatient" id="TBD" accessLevel="Public"/>
+      <def localId="5" name="Emergency Department Visit" id="TBD" accessLevel="Public"/>
+      <def localId="6" name="Antithrombotic Therapy" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="7" name="Medical Reason" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="8" name="Patient Refusal" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="9" name="Unfractionated Heparin" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="10" name="Intravenous route" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="11" name="Direct Thrombin Inhibitor" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="12" name="Glycoprotein IIb/IIIa Inhibitors" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="13" name="VTE Risk Assessment" id="X.Y.Z" accessLevel="Public"/>
+      <def localId="14" name="INR" id="X.Y.Z" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="16" name="Low Risk" id="XYZ" accessLevel="Public">
+         <codeSystem localId="15" name="SNOMED-CT"/>
+      </def>
+   </codes>
+   <statements>
+      <def localId="20" name="Intervention Comfort Measures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="20">
+               <a:s>define &quot;Intervention Comfort Measures&quot;:&#xd;
+  </a:s>
+               <a:s r="19">
+                  <a:s r="17">
+                     <a:s>[&quot;Intervention, Order&quot;: </a:s>
+                     <a:s>
+                        <a:s>&quot;Comfort Measures&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    union </a:s>
+                  <a:s r="18">
+                     <a:s>[&quot;Intervention, Performed&quot;: </a:s>
+                     <a:s>
+                        <a:s>&quot;Comfort Measures&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="19" xsi:type="Union">
+            <operand xsi:type="As">
+               <operand localId="17" xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:PositiveInterventionOrder" templateId="PositiveInterventionOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" name="ns1:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" name="ns2:PositiveInterventionOrder" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand xsi:type="As">
+               <operand localId="18" xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns3:PositiveInterventionPerformed" templateId="PositiveInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Comfort Measures" xsi:type="ValueSetRef"/>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" name="ns4:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" name="ns5:PositiveInterventionOrder" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="22" name="Encounter with Principal Diagnosis of Ischemic Stroke" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="22">
+               <a:s>define &quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;:&#xd;
+  </a:s>
+               <a:s r="21">
+                  <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Inpatient&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="21" xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns6:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Inpatient" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="38" name="Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="38">
+               <a:s>define &quot;Encounters with Comfort Measures&quot;:&#xd;
+	</a:s>
+               <a:s r="37">
+                  <a:s>
+                     <a:s r="24">
+                        <a:s r="23">
+                           <a:s>
+                              <a:s>&quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonElectiveEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="36">
+                     <a:s>with </a:s>
+                     <a:s r="26">
+                        <a:s r="25">
+                           <a:s>
+                              <a:s>&quot;Intervention Comfort Measures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ComfortMeasure</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="35">
+                        <a:s r="32">
+                           <a:s>Coalesce(</a:s>
+                           <a:s r="29">
+                              <a:s>start of </a:s>
+                              <a:s r="28">
+                                 <a:s r="27">
+                                    <a:s>ComfortMeasure</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="28">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="31">
+                              <a:s r="30">
+                                 <a:s>ComfortMeasure</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="31">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="34">
+                           <a:s r="33">
+                              <a:s>NonElectiveEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="34">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="37" xsi:type="Query">
+            <source localId="24" alias="NonElectiveEncounter">
+               <expression localId="23" name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="36" alias="ComfortMeasure" xsi:type="With">
+               <expression localId="25" name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat localId="35" xsi:type="In">
+                  <operand localId="32" xsi:type="Coalesce">
+                     <operand localId="29" xsi:type="Start">
+                        <operand localId="28" path="relevantPeriod" scope="ComfortMeasure" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="31" path="authorDatetime" scope="ComfortMeasure" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="34" path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="54" name="ED Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="54">
+               <a:s>define &quot;ED Encounters with Comfort Measures&quot;:&#xd;
+	</a:s>
+               <a:s r="53">
+                  <a:s>
+                     <a:s r="40">
+                        <a:s r="39">
+                           <a:s r="39">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Emergency Department Visit&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EDEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="52">
+                     <a:s>with </a:s>
+                     <a:s r="42">
+                        <a:s r="41">
+                           <a:s>
+                              <a:s>&quot;Intervention Comfort Measures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ComfortMeasure</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="51">
+                        <a:s r="48">
+                           <a:s>Coalesce(</a:s>
+                           <a:s r="45">
+                              <a:s>start of </a:s>
+                              <a:s r="44">
+                                 <a:s r="43">
+                                    <a:s>ComfortMeasure</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="44">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="47">
+                              <a:s r="46">
+                                 <a:s>ComfortMeasure</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="47">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="50">
+                           <a:s r="49">
+                              <a:s>EDEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="50">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="53" xsi:type="Query">
+            <source localId="40" alias="EDEncounter">
+               <expression localId="39" xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns7:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="52" alias="ComfortMeasure" xsi:type="With">
+               <expression localId="41" name="Intervention Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat localId="51" xsi:type="In">
+                  <operand localId="48" xsi:type="Coalesce">
+                     <operand localId="45" xsi:type="Start">
+                        <operand localId="44" path="relevantPeriod" scope="ComfortMeasure" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="47" path="authorDatetime" scope="ComfortMeasure" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="50" path="relevantPeriod" scope="EDEncounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="68" name="Encounters with Prior ED Encounters with Comfort Measures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="68">
+               <a:s>define &quot;Encounters with Prior ED Encounters with Comfort Measures&quot;:&#xd;
+	</a:s>
+               <a:s r="67">
+                  <a:s>
+                     <a:s r="56">
+                        <a:s r="55">
+                           <a:s>
+                              <a:s>&quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonElectiveEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="66">
+                     <a:s>with </a:s>
+                     <a:s r="58">
+                        <a:s r="57">
+                           <a:s>
+                              <a:s>&quot;ED Encounters with Comfort Measures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EDEncounter</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="65">
+                        <a:s r="60">
+                           <a:s r="59">
+                              <a:s>EDEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="60">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="65">
+                           <a:s>ends </a:s>
+                           <a:s r="64">
+                              <a:s>1 hour</a:s>
+                           </a:s>
+                           <a:s> or less before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="63">
+                           <a:s>start of </a:s>
+                           <a:s r="62">
+                              <a:s r="61">
+                                 <a:s>NonElectiveEncounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="62">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="67" xsi:type="Query">
+            <source localId="56" alias="NonElectiveEncounter">
+               <expression localId="55" name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="66" alias="EDEncounter" xsi:type="With">
+               <expression localId="57" name="ED Encounters with Comfort Measures" xsi:type="ExpressionRef"/>
+               <suchThat localId="65" xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand localId="60" path="relevantPeriod" scope="EDEncounter" xsi:type="Property"/>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Subtract">
+                        <operand localId="63" xsi:type="Start">
+                           <operand localId="62" path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="64" value="1" unit="hour" xsi:type="Quantity"/>
+                     </low>
+                     <high localId="63" xsi:type="Start">
+                        <operand localId="62" path="relevantPeriod" scope="NonElectiveEncounter" xsi:type="Property"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="81" name="Antithrombotic Not Ordered" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="81">
+               <a:s>define &quot;Antithrombotic Not Ordered&quot;:&#xd;
+	</a:s>
+               <a:s r="80">
+                  <a:s>
+                     <a:s r="70">
+                        <a:s r="69">
+                           <a:s r="69">
+                              <a:s>[&quot;Medication, Not Ordered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Antithrombotic Therapy&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Medication</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="79">
+                     <a:s>where </a:s>
+                     <a:s r="79">
+                        <a:s r="74">
+                           <a:s r="72">
+                              <a:s r="71">
+                                 <a:s>Medication</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="72">
+                                 <a:s>negationRationale</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="73">
+                              <a:s>&quot;Medical Reason&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			or </a:s>
+                        <a:s r="78">
+                           <a:s r="76">
+                              <a:s r="75">
+                                 <a:s>Medication</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="76">
+                                 <a:s>negationRationale</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="77">
+                              <a:s>&quot;Patient Refusal&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="80" xsi:type="Query">
+            <source localId="70" alias="Medication">
+               <expression localId="69" xmlns:ns8="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns8:NegativeMedicationOrder" templateId="NegativeMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Antithrombotic Therapy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="79" xsi:type="Or">
+               <operand localId="74" xsi:type="InValueSet">
+                  <code localId="72" path="negationRationale" scope="Medication" xsi:type="Property"/>
+                  <valueset localId="73" name="Medical Reason"/>
+               </operand>
+               <operand localId="78" xsi:type="InValueSet">
+                  <code localId="76" path="negationRationale" scope="Medication" xsi:type="Property"/>
+                  <valueset localId="77" name="Patient Refusal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="94" name="Antithrombotic Not Administered" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="94">
+               <a:s>define &quot;Antithrombotic Not Administered&quot;:&#xd;
+	</a:s>
+               <a:s r="93">
+                  <a:s>
+                     <a:s r="83">
+                        <a:s r="82">
+                           <a:s r="82">
+                              <a:s>[&quot;Medication, Not Administered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Antithrombotic Therapy&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Medication</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="92">
+                     <a:s>where </a:s>
+                     <a:s r="92">
+                        <a:s r="87">
+                           <a:s r="85">
+                              <a:s r="84">
+                                 <a:s>Medication</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="85">
+                                 <a:s>negationRationale</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="86">
+                              <a:s>&quot;Medical Reason&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			or </a:s>
+                        <a:s r="91">
+                           <a:s r="89">
+                              <a:s r="88">
+                                 <a:s>Medication</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="89">
+                                 <a:s>negationRationale</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="90">
+                              <a:s>&quot;Patient Refusal&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="93" xsi:type="Query">
+            <source localId="83" alias="Medication">
+               <expression localId="82" xmlns:ns9="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns9:NegativeMedicationAdministered" templateId="NegativeMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Antithrombotic Therapy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="92" xsi:type="Or">
+               <operand localId="87" xsi:type="InValueSet">
+                  <code localId="85" path="negationRationale" scope="Medication" xsi:type="Property"/>
+                  <valueset localId="86" name="Medical Reason"/>
+               </operand>
+               <operand localId="91" xsi:type="InValueSet">
+                  <code localId="89" path="negationRationale" scope="Medication" xsi:type="Property"/>
+                  <valueset localId="90" name="Patient Refusal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="98" name="Antithrombotic Not Done" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="98">
+               <a:s>define &quot;Antithrombotic Not Done&quot;:&#xd;
+  </a:s>
+               <a:s r="97">
+                  <a:s r="95">
+                     <a:s>&quot;Antithrombotic Not Ordered&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    union </a:s>
+                  <a:s r="96">
+                     <a:s>&quot;Antithrombotic Not Administered&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="97" xsi:type="Union">
+            <operand xsi:type="As">
+               <operand localId="95" name="Antithrombotic Not Ordered" xsi:type="ExpressionRef"/>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns10="urn:healthit-gov:qdm:v5_0_1_draft" name="ns10:NegativeMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns11="urn:healthit-gov:qdm:v5_0_1_draft" name="ns11:NegativeMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand xsi:type="As">
+               <operand localId="96" name="Antithrombotic Not Administered" xsi:type="ExpressionRef"/>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns12="urn:healthit-gov:qdm:v5_0_1_draft" name="ns12:NegativeMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns13="urn:healthit-gov:qdm:v5_0_1_draft" name="ns13:NegativeMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="102" name="ED Visit" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="102">
+               <a:s>define &quot;ED Visit&quot;:&#xd;
+  </a:s>
+               <a:s r="101">
+                  <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Emergency Department Visit&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="101" xmlns:ns14="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns14:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="127" name="Antithrombotic Not Done During ED" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="127">
+               <a:s>define &quot;Antithrombotic Not Done During ED&quot;:&#xd;
+	</a:s>
+               <a:s r="126">
+                  <a:s>
+                     <a:s>from&#xd;
+		</a:s>
+                     <a:s r="100">
+                        <a:s r="99">
+                           <a:s>
+                              <a:s>&quot;Encounter with Principal Diagnosis of Ischemic Stroke&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+		</a:s>
+                     <a:s r="104">
+                        <a:s r="103">
+                           <a:s>
+                              <a:s>&quot;ED Visit&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ED</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="123">
+                     <a:s>where </a:s>
+                     <a:s r="123">
+                        <a:s r="111">
+                           <a:s r="106">
+                              <a:s r="105">
+                                 <a:s>ED</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="106">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="111">
+                              <a:s>ends </a:s>
+                              <a:s r="110">
+                                 <a:s>1 hour</a:s>
+                              </a:s>
+                              <a:s> or less before</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="109">
+                              <a:s>start of </a:s>
+                              <a:s r="108">
+                                 <a:s r="107">
+                                    <a:s>E</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="108">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="122">
+                           <a:s>exists </a:s>
+                           <a:s r="121">
+                              <a:s>( </a:s>
+                              <a:s r="121">
+                                 <a:s>
+                                    <a:s r="113">
+                                       <a:s r="112">
+                                          <a:s>
+                                             <a:s>&quot;Antithrombotic Not Done&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> M</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+					</a:s>
+                                 <a:s r="120">
+                                    <a:s>where </a:s>
+                                    <a:s r="120">
+                                       <a:s r="115">
+                                          <a:s r="114">
+                                             <a:s>M</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="115">
+                                             <a:s>authorDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="120">
+                                          <a:s r="119">
+                                             <a:s>1 day</a:s>
+                                          </a:s>
+                                          <a:s> or less after</a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="118">
+                                          <a:s>start of </a:s>
+                                          <a:s r="117">
+                                             <a:s r="116">
+                                                <a:s>ED</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="117">
+                                                <a:s>relevantPeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="125">
+                     <a:s>return </a:s>
+                     <a:s r="124">
+                        <a:s>E</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="126" xsi:type="Query">
+            <source localId="100" alias="E">
+               <expression localId="99" name="Encounter with Principal Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="104" alias="ED">
+               <expression localId="103" name="ED Visit" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="123" xsi:type="And">
+               <operand localId="111" xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand localId="106" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                  </operand>
+                  <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                     <low xsi:type="Subtract">
+                        <operand localId="109" xsi:type="Start">
+                           <operand localId="108" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="110" value="1" unit="hour" xsi:type="Quantity"/>
+                     </low>
+                     <high localId="109" xsi:type="Start">
+                        <operand localId="108" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                     </high>
+                  </operand>
+               </operand>
+               <operand localId="122" xsi:type="Exists">
+                  <operand localId="121" xsi:type="Query">
+                     <source localId="113" alias="M">
+                        <expression localId="112" name="Antithrombotic Not Done" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="120" xsi:type="In">
+                        <operand localId="115" path="authorDatetime" scope="M" xsi:type="Property"/>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <low localId="118" xsi:type="Start">
+                              <operand localId="117" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand localId="118" xsi:type="Start">
+                                 <operand localId="117" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+                              </operand>
+                              <operand localId="119" value="1" unit="day" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </where>
+                  </operand>
+               </operand>
+            </where>
+            <return localId="125">
+               <expression localId="124" name="E" xsi:type="AliasRef"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="139" name="Reasons of Med" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="139">
+               <a:s>define &quot;Reasons of Med&quot;:&#xd;
+	</a:s>
+               <a:s r="138">
+                  <a:s r="136">
+                     <a:s r="134">
+                        <a:s>( </a:s>
+                        <a:s r="134">
+                           <a:s>
+                              <a:s r="129">
+                                 <a:s r="128">
+                                    <a:s r="128">
+                                       <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Unfractionated Heparin&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> U</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="133">
+                              <a:s>where </a:s>
+                              <a:s r="133">
+                                 <a:s r="131">
+                                    <a:s r="130">
+                                       <a:s>U</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="131">
+                                       <a:s>route</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="132">
+                                    <a:s>&quot;Intravenous route&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		union </a:s>
+                     <a:s r="135">
+                        <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                        <a:s>
+                           <a:s>&quot;Direct Thrombin Inhibitor&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="137">
+                     <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                     <a:s>
+                        <a:s>&quot;Glycoprotein IIb/IIIa Inhibitors&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="138" xsi:type="Union">
+            <operand localId="136" xsi:type="Union">
+               <operand localId="134" xsi:type="Query">
+                  <source localId="129" alias="U">
+                     <expression localId="128" xmlns:ns15="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns15:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Unfractionated Heparin" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where localId="133" xsi:type="InValueSet">
+                     <code localId="131" path="route" scope="U" xsi:type="Property"/>
+                     <valueset localId="132" name="Intravenous route"/>
+                  </where>
+               </operand>
+               <operand localId="135" xmlns:ns16="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns16:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Direct Thrombin Inhibitor" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="137" xmlns:ns17="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns17:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Glycoprotein IIb/IIIa Inhibitors" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="159" name="Reasons of Assessment_Lab_Med" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="159">
+               <a:s>define &quot;Reasons of Assessment_Lab_Med&quot;:&#xd;
+  </a:s>
+               <a:s r="158">
+                  <a:s r="154">
+                     <a:s r="146">
+                        <a:s>(</a:s>
+                        <a:s r="146">
+                           <a:s>
+                              <a:s r="141">
+                                 <a:s r="140">
+                                    <a:s r="140">
+                                       <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;VTE Risk Assessment&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> A</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+    </a:s>
+                           <a:s r="145">
+                              <a:s>where </a:s>
+                              <a:s r="145">
+                                 <a:s r="143">
+                                    <a:s r="142">
+                                       <a:s>A</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="143">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> = </a:s>
+                                 <a:s r="144">
+                                    <a:s>&quot;Low Risk&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+  )</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+  union </a:s>
+                     <a:s r="153">
+                        <a:s>(&#xd;
+    </a:s>
+                        <a:s r="153">
+                           <a:s>
+                              <a:s r="148">
+                                 <a:s r="147">
+                                    <a:s r="147">
+                                       <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;INR&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> L</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+      </a:s>
+                           <a:s r="152">
+                              <a:s>where </a:s>
+                              <a:s r="152">
+                                 <a:s r="150">
+                                    <a:s r="149">
+                                       <a:s>L</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="150">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> > 3.0</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+  )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+  union </a:s>
+                  <a:s r="157">
+                     <a:s>
+                        <a:s r="156">
+                           <a:s r="155">
+                              <a:s>
+                                 <a:s>&quot;Reasons of Med&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> M</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="158" xsi:type="Union">
+            <operand xsi:type="As">
+               <operand localId="154" xsi:type="Union">
+                  <operand xsi:type="As">
+                     <operand localId="146" xsi:type="Query">
+                        <source localId="141" alias="A">
+                           <expression localId="140" xmlns:ns18="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns18:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="VTE Risk Assessment" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where localId="145" xsi:type="Equal">
+                           <operand localId="143" path="result" scope="A" xsi:type="Property"/>
+                           <operand localId="144" name="Low Risk" xsi:type="CodeRef"/>
+                        </where>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <type xmlns:ns19="urn:healthit-gov:qdm:v5_0_1_draft" name="ns19:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <type xmlns:ns20="urn:healthit-gov:qdm:v5_0_1_draft" name="ns20:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+                  <operand xsi:type="As">
+                     <operand localId="153" xsi:type="Query">
+                        <source localId="148" alias="L">
+                           <expression localId="147" xmlns:ns21="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns21:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="INR" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where localId="152" xsi:type="Greater">
+                           <operand asType="t:Decimal" xsi:type="As">
+                              <operand localId="150" path="result" scope="L" xsi:type="Property"/>
+                              <asTypeSpecifier name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                           <operand localId="151" valueType="t:Decimal" value="3.0" xsi:type="Literal"/>
+                        </where>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <type xmlns:ns22="urn:healthit-gov:qdm:v5_0_1_draft" name="ns22:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <type xmlns:ns23="urn:healthit-gov:qdm:v5_0_1_draft" name="ns23:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns24="urn:healthit-gov:qdm:v5_0_1_draft" name="ns24:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns25="urn:healthit-gov:qdm:v5_0_1_draft" name="ns25:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns26="urn:healthit-gov:qdm:v5_0_1_draft" name="ns26:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand xsi:type="As">
+               <operand localId="157" xsi:type="Query">
+                  <source localId="156" alias="M">
+                     <expression localId="155" name="Reasons of Med" xsi:type="ExpressionRef"/>
+                  </source>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xmlns:ns27="urn:healthit-gov:qdm:v5_0_1_draft" name="ns27:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns28="urn:healthit-gov:qdm:v5_0_1_draft" name="ns28:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type xmlns:ns29="urn:healthit-gov:qdm:v5_0_1_draft" name="ns29:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="161" name="Encounter with ED" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="161">
+               <a:s>define &quot;Encounter with ED&quot;:&#xd;
+  </a:s>
+               <a:s r="160">
+                  <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Inpatient&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="160" xmlns:ns30="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns30:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Inpatient" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="179" name="Reasons of Assessment_Lab_Med in ED" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="179">
+               <a:s>define &quot;Reasons of Assessment_Lab_Med in ED&quot;:&#xd;
+	</a:s>
+               <a:s r="178">
+                  <a:s>
+                     <a:s r="163">
+                        <a:s r="162">
+                           <a:s>
+                              <a:s>&quot;Encounter with ED&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ED</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="177">
+                     <a:s>with </a:s>
+                     <a:s r="165">
+                        <a:s r="164">
+                           <a:s>
+                              <a:s>&quot;Reasons of Assessment_Lab_Med&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+      such that </a:s>
+                     <a:s r="176">
+                        <a:s r="173">
+                           <a:s>Coalesce(</a:s>
+                           <a:s r="168">
+                              <a:s>start of </a:s>
+                              <a:s r="167">
+                                 <a:s r="166">
+                                    <a:s>R</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="167">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="170">
+                              <a:s r="169">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="170">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="172">
+                              <a:s r="171">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="172">
+                                 <a:s>resultDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="175">
+                           <a:s r="174">
+                              <a:s>ED</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="175">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="178" xsi:type="Query">
+            <source localId="163" alias="ED">
+               <expression localId="162" name="Encounter with ED" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="177" alias="R" xsi:type="With">
+               <expression localId="164" name="Reasons of Assessment_Lab_Med" xsi:type="ExpressionRef"/>
+               <suchThat localId="176" xsi:type="In">
+                  <operand localId="173" xsi:type="Coalesce">
+                     <operand localId="168" xsi:type="Start">
+                        <operand localId="167" path="relevantPeriod" scope="R" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="170" path="authorDatetime" scope="R" xsi:type="Property"/>
+                     <operand localId="172" path="resultDatetime" scope="R" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="175" path="relevantPeriod" scope="ED" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="199" name="Reasons of Assessment_Lab_Med in Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="199">
+               <a:s>define &quot;Reasons of Assessment_Lab_Med in Encounter&quot;:&#xd;
+	</a:s>
+               <a:s r="198">
+                  <a:s>
+                     <a:s r="181">
+                        <a:s r="180">
+                           <a:s r="180">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="197">
+                     <a:s>with </a:s>
+                     <a:s r="183">
+                        <a:s r="182">
+                           <a:s>
+                              <a:s>&quot;Reasons of Assessment_Lab_Med&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="196">
+                        <a:s r="191">
+                           <a:s>Coalesce(</a:s>
+                           <a:s r="186">
+                              <a:s>start of </a:s>
+                              <a:s r="185">
+                                 <a:s r="184">
+                                    <a:s>R</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="185">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="188">
+                              <a:s r="187">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="188">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="190">
+                              <a:s r="189">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="190">
+                                 <a:s>resultDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="196">
+                           <a:s r="195">
+                              <a:s>1 day</a:s>
+                           </a:s>
+                           <a:s> or less after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="194">
+                           <a:s>start of </a:s>
+                           <a:s r="193">
+                              <a:s r="192">
+                                 <a:s>E</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="193">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="198" xsi:type="Query">
+            <source localId="181" alias="E">
+               <expression localId="180" xmlns:ns31="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns31:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="197" alias="R" xsi:type="With">
+               <expression localId="182" name="Reasons of Assessment_Lab_Med" xsi:type="ExpressionRef"/>
+               <suchThat localId="196" xsi:type="In">
+                  <operand localId="191" xsi:type="Coalesce">
+                     <operand localId="186" xsi:type="Start">
+                        <operand localId="185" path="relevantPeriod" scope="R" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="188" path="authorDatetime" scope="R" xsi:type="Property"/>
+                     <operand localId="190" path="resultDatetime" scope="R" xsi:type="Property"/>
+                  </operand>
+                  <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                     <low localId="194" xsi:type="Start">
+                        <operand localId="193" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                     </low>
+                     <high xsi:type="Add">
+                        <operand localId="194" xsi:type="Start">
+                           <operand localId="193" path="relevantPeriod" scope="E" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="195" value="1" unit="day" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

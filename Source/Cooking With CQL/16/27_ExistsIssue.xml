@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ExistsIssue"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <parameters>
+      <def localId="10" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="9" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="8" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" name="Prostate Cancer" id="urn:oid:2.16.840.1.113883.3.526.3.319" accessLevel="Public"/>
+      <def localId="3" name="Patient Reason Refused" id="urn:oid:2.16.840.1.113883.3.600.1.1503" accessLevel="Public"/>
+      <def localId="4" name="Androgen deprivation therapy for Urology Care" id="urn:oid:2.16.840.1.113762.1.4.1151.48" accessLevel="Public"/>
+      <def localId="5" name="Male" id="urn:oid:2.16.840.1.113883.3.560.100.1" accessLevel="Public"/>
+      <def localId="6" name="Injection Leuprolide Acetate" id="urn:oid:2.16.840.1.113762.1.4.1151.16" accessLevel="Public"/>
+      <def localId="7" name="Office Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="18" name="Office Visit Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="18">
+               <a:s>define &quot;Office Visit Encounter&quot;: &#xd;
+  </a:s>
+               <a:s r="17">
+                  <a:s>
+                     <a:s r="12">
+                        <a:s r="11">
+                           <a:s r="11">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Office Visit&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="16">
+                     <a:s>where </a:s>
+                     <a:s r="16">
+                        <a:s r="14">
+                           <a:s r="13">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="14">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="15">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="17" xsi:type="Query">
+            <source localId="12" alias="Encounter">
+               <expression localId="11" xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Office Visit" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="16" xsi:type="IncludedIn">
+               <operand localId="14" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               <operand localId="15" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="20" name="Male Patient" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="20">
+               <a:s>define &quot;Male Patient&quot;: &#xd;
+  </a:s>
+               <a:s r="19">
+                  <a:s>[&quot;Patient Characteristic&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Male&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="19" xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns2:PatientCharacteristic" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Male" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="28" name="Prostate Cancer Diagnosis" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="28">
+               <a:s>define &quot;Prostate Cancer Diagnosis&quot;: &#xd;
+  </a:s>
+               <a:s r="27">
+                  <a:s>
+                     <a:s r="22">
+                        <a:s r="21">
+                           <a:s r="21">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Prostate Cancer&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ProstateCancerDx</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="26">
+                     <a:s>where </a:s>
+                     <a:s r="26">
+                        <a:s r="24">
+                           <a:s r="23">
+                              <a:s>ProstateCancerDx</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="24">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts on or before end </a:s>
+                        <a:s r="25">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="27" xsi:type="Query">
+            <source localId="22" alias="ProstateCancerDx">
+               <expression localId="21" xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns3:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Prostate Cancer" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="26" xsi:type="SameOrBefore">
+               <operand xsi:type="Start">
+                  <operand localId="24" path="prevalencePeriod" scope="ProstateCancerDx" xsi:type="Property"/>
+               </operand>
+               <operand xsi:type="End">
+                  <operand localId="25" name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="48" name="Active Medications for Androgen deprivation therapy for Urology Care" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="48">
+               <a:s>define &quot;Active Medications for Androgen deprivation therapy for Urology Care&quot;:&#xd;
+  </a:s>
+               <a:s r="47">
+                  <a:s>
+                     <a:s r="30">
+                        <a:s r="29">
+                           <a:s r="29">
+                              <a:s>[&quot;Medication, Active&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Androgen deprivation therapy for Urology Care&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ADT</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="38">
+                     <a:s>with </a:s>
+                     <a:s r="32">
+                        <a:s r="31">
+                           <a:s>
+                              <a:s>&quot;Prostate Cancer Diagnosis&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ProstateCancerDx</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+      such that </a:s>
+                     <a:s r="37">
+                        <a:s r="34">
+                           <a:s r="33">
+                              <a:s>ADT</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="34">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts on or after start </a:s>
+                        <a:s r="36">
+                           <a:s r="35">
+                              <a:s>ProstateCancerDx</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="36">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> &#xd;
+    </a:s>
+                  <a:s r="46">
+                     <a:s>with </a:s>
+                     <a:s r="40">
+                        <a:s r="39">
+                           <a:s r="39">
+                              <a:s>[&quot;Procedure, Order&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Injection Leuprolide Acetate&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ADTOrder</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+      such that </a:s>
+                     <a:s r="45">
+                        <a:s r="42">
+                           <a:s r="41">
+                              <a:s>ADT</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="42">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> includes </a:s>
+                        <a:s r="44">
+                           <a:s r="43">
+                              <a:s>ADTOrder</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="44">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="47" xsi:type="Query">
+            <source localId="30" alias="ADT">
+               <expression localId="29" xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns4:MedicationActive" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Androgen deprivation therapy for Urology Care" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="38" alias="ProstateCancerDx" xsi:type="With">
+               <expression localId="31" name="Prostate Cancer Diagnosis" xsi:type="ExpressionRef"/>
+               <suchThat localId="37" xsi:type="SameOrAfter">
+                  <operand xsi:type="Start">
+                     <operand localId="34" path="relevantPeriod" scope="ADT" xsi:type="Property"/>
+                  </operand>
+                  <operand xsi:type="Start">
+                     <operand localId="36" path="prevalencePeriod" scope="ProstateCancerDx" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <relationship localId="46" alias="ADTOrder" xsi:type="With">
+               <expression localId="39" xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns5:PositiveProcedureOrder" templateId="PositiveProcedureOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Injection Leuprolide Acetate" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="45" xsi:type="Contains">
+                  <operand localId="42" path="relevantPeriod" scope="ADT" xsi:type="Property"/>
+                  <operand localId="44" path="authorDatetime" scope="ADTOrder" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="58" name="Androgen Deprivation Therapy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="58">
+               <a:s>define &quot;Androgen Deprivation Therapy&quot;: &#xd;
+  </a:s>
+               <a:s r="57">
+                  <a:s>{ &#xd;
+    </a:s>
+                  <a:s r="56">
+                     <a:s>First(</a:s>
+                     <a:s r="55">
+                        <a:s>
+                           <a:s r="50">
+                              <a:s r="49">
+                                 <a:s>
+                                    <a:s>&quot;Active Medications for Androgen deprivation therapy for Urology Care&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> ADT</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+        </a:s>
+                        <a:s r="54">
+                           <a:s>sort by </a:s>
+                           <a:s r="53">
+                              <a:s r="52">
+                                 <a:s>start of </a:s>
+                                 <a:s r="51">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+    )</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+  }</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="57" xsi:type="List">
+            <element localId="56" xsi:type="First">
+               <source localId="55" xsi:type="Query">
+                  <source localId="50" alias="ADT">
+                     <expression localId="49" name="Active Medications for Androgen deprivation therapy for Urology Care" xsi:type="ExpressionRef"/>
+                  </source>
+                  <sort localId="54">
+                     <by localId="53" direction="asc" xsi:type="ByExpression">
+                        <expression localId="52" xsi:type="Start">
+                           <operand localId="51" name="relevantPeriod" xsi:type="IdentifierRef"/>
+                        </expression>
+                     </by>
+                  </sort>
+               </source>
+            </element>
+         </expression>
+      </def>
+      <def localId="67" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="67">
+               <a:s>define &quot;Initial Population&quot;: &#xd;
+  </a:s>
+               <a:s r="66">
+                  <a:s r="63">
+                     <a:s r="60">
+                        <a:s>exists </a:s>
+                        <a:s r="59">
+                           <a:s>&quot;Androgen Deprivation Therapy&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+    and </a:s>
+                     <a:s r="62">
+                        <a:s>exists </a:s>
+                        <a:s r="61">
+                           <a:s>&quot;Male Patient&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    and </a:s>
+                  <a:s r="65">
+                     <a:s>exists </a:s>
+                     <a:s r="64">
+                        <a:s>&quot;Office Visit Encounter&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="66" xsi:type="And">
+            <operand localId="63" xsi:type="And">
+               <operand localId="60" xsi:type="Exists">
+                  <operand localId="59" name="Androgen Deprivation Therapy" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="62" xsi:type="Exists">
+                  <operand localId="61" name="Male Patient" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="65" xsi:type="Exists">
+               <operand localId="64" name="Office Visit Encounter" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="71" name="Result" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="71">
+               <a:s>define Result: </a:s>
+               <a:s r="70">
+                  <a:s>exists </a:s>
+                  <a:s r="69">
+                     <a:s>(</a:s>
+                     <a:s r="69">
+                        <a:s>{ null }</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="70" xsi:type="Exists">
+            <operand localId="69" xsi:type="List">
+               <element localId="68" xsi:type="Null"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
