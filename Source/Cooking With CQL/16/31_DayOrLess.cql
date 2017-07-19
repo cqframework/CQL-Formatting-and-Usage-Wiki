@@ -42,3 +42,9 @@ define Test2: A2 same day or after E2 and A2 same day or before (E2 + 1 day)
 // Note that because we're performing the comparisons at the day precision, a comfort measure
 // that occurred _before_ the encounter would also pass. That's not likely to occur in 
 // practice for this case, but it's something to keep in mind for this timing pattern.
+
+// Note also the use of "on or after" in the timing phrase. When performing the comparison
+// with time values, this is less likely to impact the result, because it's unlikely for
+// a comfort measure to have _exactly_ the same time as the start of the encounter. But
+// when the comparison is performed at the day precision, it becomes much more significant
+// because without it, measures performed on the same day wouldn't count.
