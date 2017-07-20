@@ -32,16 +32,16 @@ define "In Demographic":
 define "Encounter":
 	["Encounter, Performed": "Medications Encounter Code Set"]
 	
-define "Encounters during MP":
+define "Encounters during Measurement Period":
 	"Encounter" Encounter
 		where Encounter.relevantPeriod during "Measurement Period"
 
 // NOTE: This is an encounter-based measure, so this IPP should be returning a list of encounters, not a yes/no
 // NOTE: The use of "IPP" here goes against QDM-conventions, which state that the name of the population should be used
-define "IPP":
-	"In Demographic"
-		and exists "Encounters during MP"
-
+define "Initial Population":
+  "Encounters during MP" Encounter
+	  where AgeInYearsAt(start of "Measurement Period")>= 18
+		
 define "Numerator":
 	"Medications Documented"
 
@@ -50,19 +50,19 @@ define "Denominator":
 
 // NOTE: This would need to be updated to return a list of encounters, not procedures
 define "Medications Documented":
-	["Procedure, Performed": "Current Medications Documented SNMD"] Procedure
-		with "Encounters during MP" Encounter
+	"Encounters during MP" Encounter
+		with ["Procedure, Performed": "Current Medications Documented SNMD"] Procedure
 			such that Procedure.relevantPeriod during Encounter.relevantPeriod
 
 // NOTE: The use of abbreviations can impact the readability of the resulting human-readable
 // Consider using the complete word, "Medications" here, rather than "Meds"
-define "Meds Not Documented Medical Reason":
+define "Medications Not Documented for Medical Reason":
 	["Procedure, Not Performed": "Current Medications Documented SNMD"] NotPerformed
 		where NotPerformed.negationRationale in "Medical or Other reason not done"
 
 // NOTE: Again, the use of "MP", rather than "Measurement Period" can have an impact
 // on the human-readable
-define "DenException":
+define "Denominator Exception":
 	"Encounters during MP" Enc
 		with "Meds Not Documented Medical Reason" Meds
 			such that Meds.authorDatetime during Enc.relevantPeriod
