@@ -209,7 +209,7 @@ define "Reasons of Assessment_Lab_Med in ED":
 define "Reasons of Assessment_Lab_Med in Encounter":
 	["Encounter, Performed": "Inpatient"] E
 		with "Reasons of Assessment_Lab_Med" R
-			such that Coalesce(start of R.relevantPeriod, R.authorDatetime, R.resultDatetime) 1 day or less after start of E.relevantPeriod
+			such that Coalesce(start of R.relevantPeriod, R.resultDatetime, R.authorDatetime) 1 day or less after start of E.relevantPeriod
 
 /*
   Secondary definitions, for illustration only
