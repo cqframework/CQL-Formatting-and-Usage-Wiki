@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <valueSets>
+      <def name="Atrial Fibrillation/Flutter" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.202" version="urn:hl7:profile:Most%20Recent%20Code%20System%20Versions%20in%20VSAC" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Encounter with Principle Diagnosis of Ischemic Stroke" context="Patient" accessLevel="Public">
+         <expression xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" xsi:type="Retrieve"/>
+      </def>
+      <def name="Current Diagnosis Atrial FibrillationFlutter" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Encounter with Principle Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <where xsi:type="InValueSet">
+               <code path="diagnosis" scope="NonElectiveEncounter" xsi:type="Property"/>
+               <valueset name="Atrial Fibrillation/Flutter"/>
+            </where>
+         </expression>
+      </def>
+      <def name="Encounter Has Diagnosis" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <expression xsi:type="In">
+            <operand path="diagnosis" xsi:type="Property">
+               <source name="Encounter" xsi:type="OperandRef"/>
+            </operand>
+            <operand name="ValueSet" xsi:type="OperandRef"/>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" name="ns1:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="ValueSet">
+            <operandTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def name="Current Diagnosis Atrial FibrillationFlutter (QDM 5.3)" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="NonElectiveEncounter">
+               <expression name="Encounter with Principle Diagnosis of Ischemic Stroke" xsi:type="ExpressionRef"/>
+            </source>
+            <where name="Encounter Has Diagnosis" xsi:type="FunctionRef">
+               <operand name="NonElectiveEncounter" xsi:type="AliasRef"/>
+               <operand name="Atrial Fibrillation/Flutter" xsi:type="ValueSetRef"/>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

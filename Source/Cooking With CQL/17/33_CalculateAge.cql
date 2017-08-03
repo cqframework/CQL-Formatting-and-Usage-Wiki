@@ -21,6 +21,22 @@ using QDM version '5.0.2'
 parameter "Measurement Period" Interval<DateTime>
 
 define "In Demographic":
-  CalculateAgeInYearsAt(date from Patient.birthDatetime, start of "Measurement Period")
+  CalculateAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period")
+  
+  AgeInYearsAt(start of "Measurement Period")
+  
+  Common.CalculateAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period")
+
+define function ToDate(dateTime DateTime):
+  DateTime(year from dateTime, month from dateTime, day from dateTime, 0, 0, 0, 0, timezone from dateTime)
+  
+define function CalendarAgeInYearsAt(birthDateTime DateTime, asOf DateTime):
+  years between ToDate(birthDateTime) and ToDate(asOf)
+  
+define function CalendarAgeInMonthsAt(birthDateTime DateTime, asOf DateTime):
+  months between ToDate(birthDateTime) and ToDate(asOf)
+
+define function CalendarAgeInDaysAt(birthDateTime DateTime, asOf DateTime):
+  days between ToDate(birthDateTime) and ToDate(asOf)
   
   
