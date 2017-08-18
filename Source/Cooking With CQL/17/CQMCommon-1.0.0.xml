@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CQMCommon" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <valueSets>
+      <def localId="2" name="Emergency Department Visit" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.292" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="17" name="ToDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="17">
+               <a:s>define function ToDate(Value </a:s>
+               <a:s r="3">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="16">
+                  <a:s r="16">
+                     <a:s>DateTime(</a:s>
+                     <a:s r="5">
+                        <a:s>year from </a:s>
+                        <a:s r="4">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="7">
+                        <a:s>month from </a:s>
+                        <a:s r="6">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="9">
+                        <a:s>day from </a:s>
+                        <a:s r="8">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 0, 0, 0, 0, </a:s>
+                     <a:s r="15">
+                        <a:s>timezone from </a:s>
+                        <a:s r="14">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="16" xsi:type="DateTime">
+            <year localId="5" precision="Year" xsi:type="DateTimeComponentFrom">
+               <operand localId="4" name="Value" xsi:type="OperandRef"/>
+            </year>
+            <month localId="7" precision="Month" xsi:type="DateTimeComponentFrom">
+               <operand localId="6" name="Value" xsi:type="OperandRef"/>
+            </month>
+            <day localId="9" precision="Day" xsi:type="DateTimeComponentFrom">
+               <operand localId="8" name="Value" xsi:type="OperandRef"/>
+            </day>
+            <hour localId="10" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <minute localId="11" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <second localId="12" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <millisecond localId="13" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset localId="15" xsi:type="TimezoneFrom">
+               <operand localId="14" name="Value" xsi:type="OperandRef"/>
+            </timezoneOffset>
+         </expression>
+         <operand name="Value">
+            <operandTypeSpecifier localId="3" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="25" name="CalendarAgeInYearsAt" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="25">
+               <a:s>define function CalendarAgeInYearsAt(BirthDateTime </a:s>
+               <a:s r="18">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>, AsOf </a:s>
+               <a:s r="19">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="24">
+                  <a:s r="24">
+                     <a:s>years between </a:s>
+                     <a:s r="21">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="20">
+                           <a:s>BirthDateTime</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s> and </a:s>
+                     <a:s r="23">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="22">
+                           <a:s>AsOf</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="24" precision="Year" xsi:type="DurationBetween">
+            <operand localId="21" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="20" name="BirthDateTime" xsi:type="OperandRef"/>
+            </operand>
+            <operand localId="23" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="22" name="AsOf" xsi:type="OperandRef"/>
+            </operand>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="18" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="AsOf">
+            <operandTypeSpecifier localId="19" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="33" name="CalendarAgeInMonthsAt" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="33">
+               <a:s>define function CalendarAgeInMonthsAt(BirthDateTime </a:s>
+               <a:s r="26">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>, AsOf </a:s>
+               <a:s r="27">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="32">
+                  <a:s r="32">
+                     <a:s>months between </a:s>
+                     <a:s r="29">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="28">
+                           <a:s>BirthDateTime</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s> and </a:s>
+                     <a:s r="31">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="30">
+                           <a:s>AsOf</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="32" precision="Month" xsi:type="DurationBetween">
+            <operand localId="29" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="28" name="BirthDateTime" xsi:type="OperandRef"/>
+            </operand>
+            <operand localId="31" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="30" name="AsOf" xsi:type="OperandRef"/>
+            </operand>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="26" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="AsOf">
+            <operandTypeSpecifier localId="27" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="41" name="CalendarAgeInDaysAt" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="41">
+               <a:s>define function CalendarAgeInDaysAt(BirthDateTime </a:s>
+               <a:s r="34">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>, AsOf </a:s>
+               <a:s r="35">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="40">
+                  <a:s r="40">
+                     <a:s>days between </a:s>
+                     <a:s r="37">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="36">
+                           <a:s>BirthDateTime</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s> and </a:s>
+                     <a:s r="39">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="38">
+                           <a:s>AsOf</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="40" precision="Day" xsi:type="DurationBetween">
+            <operand localId="37" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="36" name="BirthDateTime" xsi:type="OperandRef"/>
+            </operand>
+            <operand localId="39" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="38" name="AsOf" xsi:type="OperandRef"/>
+            </operand>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="34" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="AsOf">
+            <operandTypeSpecifier localId="35" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="46" name="CalendarAgeInYears" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="46">
+               <a:s>define function CalendarAgeInYears(BirthDateTime </a:s>
+               <a:s r="42">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="45">
+                  <a:s r="45">
+                     <a:s>CalendarAgeInYearsAt(</a:s>
+                     <a:s r="43">
+                        <a:s>BirthDateTime</a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="44">
+                        <a:s>Today()</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="45" name="CalendarAgeInYearsAt" xsi:type="FunctionRef">
+            <operand localId="43" name="BirthDateTime" xsi:type="OperandRef"/>
+            <operand localId="44" xsi:type="Today"/>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="42" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="51" name="CalendarAgeInMonths" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="51">
+               <a:s>define function CalendarAgeInMonths(BirthDateTime </a:s>
+               <a:s r="47">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="50">
+                  <a:s r="50">
+                     <a:s>CalendarAgeInMonthsAt(</a:s>
+                     <a:s r="48">
+                        <a:s>BirthDateTime</a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="49">
+                        <a:s>Today()</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="50" name="CalendarAgeInMonthsAt" xsi:type="FunctionRef">
+            <operand localId="48" name="BirthDateTime" xsi:type="OperandRef"/>
+            <operand localId="49" xsi:type="Today"/>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="47" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="56" name="CalendarAgeInDays" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="56">
+               <a:s>define function CalendarAgeInDays(BirthDateTime </a:s>
+               <a:s r="52">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="55">
+                  <a:s r="55">
+                     <a:s>CalendarAgeInDaysAt(</a:s>
+                     <a:s r="53">
+                        <a:s>BirthDateTime</a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="54">
+                        <a:s>Today()</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="55" name="CalendarAgeInDaysAt" xsi:type="FunctionRef">
+            <operand localId="53" name="BirthDateTime" xsi:type="OperandRef"/>
+            <operand localId="54" xsi:type="Today"/>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="52" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="64" name="LengthInDays" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="64">
+               <a:s>define function LengthInDays(Value </a:s>
+               <a:s r="58">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="57">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="63">
+                  <a:s r="63">
+                     <a:s>difference in days between </a:s>
+                     <a:s r="60">
+                        <a:s>start of </a:s>
+                        <a:s r="59">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> and </a:s>
+                     <a:s r="62">
+                        <a:s>end of </a:s>
+                        <a:s r="61">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="63" precision="Day" xsi:type="DifferenceBetween">
+            <operand localId="60" xsi:type="Start">
+               <operand localId="59" name="Value" xsi:type="OperandRef"/>
+            </operand>
+            <operand localId="62" xsi:type="End">
+               <operand localId="61" name="Value" xsi:type="OperandRef"/>
+            </operand>
+         </expression>
+         <operand name="Value">
+            <operandTypeSpecifier localId="58" xsi:type="IntervalTypeSpecifier">
+               <pointType localId="57" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="92" name="Hospitalization" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="92">
+               <a:s>define function Hospitalization(Encounter </a:s>
+               <a:s r="65">
+                  <a:s>&quot;Encounter, Performed&quot;</a:s>
+               </a:s>
+               <a:s>): &#xd;
+  </a:s>
+               <a:s r="91">
+                  <a:s r="91">
+                     <a:s>
+                        <a:s r="77">
+                           <a:s r="76">
+                              <a:s>(&#xd;
+    </a:s>
+                              <a:s r="76">
+                                 <a:s>singleton from </a:s>
+                                 <a:s r="75">
+                                    <a:s>(&#xd;
+      </a:s>
+                                    <a:s r="75">
+                                       <a:s>
+                                          <a:s r="67">
+                                             <a:s r="66">
+                                                <a:s r="66">
+                                                   <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                                   <a:s>
+                                                      <a:s>&quot;Emergency Department Visit&quot;</a:s>
+                                                   </a:s>
+                                                   <a:s>]</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> EDVisit</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+        </a:s>
+                                       <a:s r="74">
+                                          <a:s>where </a:s>
+                                          <a:s r="74">
+                                             <a:s r="69">
+                                                <a:s r="68">
+                                                   <a:s>EDVisit</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="69">
+                                                   <a:s>relevantPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="74">
+                                                <a:s>ends </a:s>
+                                                <a:s r="73">
+                                                   <a:s>1 hour</a:s>
+                                                </a:s>
+                                                <a:s> or less on or before</a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="72">
+                                                <a:s>start of </a:s>
+                                                <a:s r="71">
+                                                   <a:s r="70">
+                                                      <a:s>Encounter</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="71">
+                                                      <a:s>relevantPeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+    )</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+  )</a:s>
+                           </a:s>
+                           <a:s> X</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+    </a:s>
+                     <a:s r="90">
+                        <a:s>return </a:s>
+                        <a:s r="89">
+                           <a:s>if </a:s>
+                           <a:s r="79">
+                              <a:s r="78">
+                                 <a:s>X</a:s>
+                              </a:s>
+                              <a:s> is null</a:s>
+                           </a:s>
+                           <a:s> then </a:s>
+                           <a:s r="81">
+                              <a:s r="80">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="81">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+      else </a:s>
+                           <a:s r="88">
+                              <a:s>Interval[</a:s>
+                              <a:s r="84">
+                                 <a:s>start of </a:s>
+                                 <a:s r="83">
+                                    <a:s r="82">
+                                       <a:s>X</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="83">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="87">
+                                 <a:s>end of </a:s>
+                                 <a:s r="86">
+                                    <a:s r="85">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="86">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="91" xsi:type="Query">
+            <source localId="77" alias="X">
+               <expression localId="76" xsi:type="SingletonFrom">
+                  <operand localId="75" xsi:type="Query">
+                     <source localId="67" alias="EDVisit">
+                        <expression localId="66" xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Emergency Department Visit" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where localId="74" xsi:type="In">
+                        <operand xsi:type="End">
+                           <operand localId="69" path="relevantPeriod" scope="EDVisit" xsi:type="Property"/>
+                        </operand>
+                        <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                           <low xsi:type="Subtract">
+                              <operand localId="72" xsi:type="Start">
+                                 <operand localId="71" path="relevantPeriod" xsi:type="Property">
+                                    <source localId="70" name="Encounter" xsi:type="OperandRef"/>
+                                 </operand>
+                              </operand>
+                              <operand localId="73" value="1" unit="hour" xsi:type="Quantity"/>
+                           </low>
+                           <high localId="72" xsi:type="Start">
+                              <operand localId="71" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="70" name="Encounter" xsi:type="OperandRef"/>
+                              </operand>
+                           </high>
+                        </operand>
+                     </where>
+                  </operand>
+               </expression>
+            </source>
+            <return localId="90">
+               <expression localId="89" xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand localId="79" xsi:type="IsNull">
+                        <operand localId="78" name="X" xsi:type="AliasRef"/>
+                     </operand>
+                     <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                  </condition>
+                  <then localId="81" path="relevantPeriod" xsi:type="Property">
+                     <source localId="80" name="Encounter" xsi:type="OperandRef"/>
+                  </then>
+                  <else localId="88" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="84" xsi:type="Start">
+                        <operand localId="83" path="relevantPeriod" scope="X" xsi:type="Property"/>
+                     </low>
+                     <high localId="87" xsi:type="End">
+                        <operand localId="86" path="relevantPeriod" xsi:type="Property">
+                           <source localId="85" name="Encounter" xsi:type="OperandRef"/>
+                        </operand>
+                     </high>
+                  </else>
+               </expression>
+            </return>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier localId="65" xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" name="ns2:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+   </statements>
+</library>
+
+

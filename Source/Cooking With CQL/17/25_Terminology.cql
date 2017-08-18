@@ -10,9 +10,11 @@ define "Encounter with Principle Diagnosis of Ischemic Stroke":
 define "Current Diagnosis Atrial FibrillationFlutter": 
   "Encounter with Principle Diagnosis of Ischemic Stroke" NonElectiveEncounter
   where NonElectiveEncounter.diagnosis in "Atrial Fibrillation/Flutter" CurrentAtrialFibrillationFlutter
-  
-//  where exists (NonElectiveEncounter.diagnosis D where D in "Atrial Fibrillation/Flutter")
 
+  // With 5.3 and searching for an encounter with BOTH diagnoses:
+  where exists (NonElectiveEncounter.diagnoses D where D in "Atrial Fibrillation/Flutter")
+    and exists (NonElectiveEncounter.diagnoses D where D in "Ischemic")
+  
 // This trailing alias sets up a new query, but because there are no additional clauses, it just
 // returns the same set of codes as the reference to the value set would.
 // Conceptually, this is valid CQL, but there are potential implementation issues

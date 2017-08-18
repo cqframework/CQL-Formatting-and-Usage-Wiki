@@ -40,17 +40,17 @@ define "Encounters during Measurement Period":
 // NOTE: The use of "IPP" here goes against QDM-conventions, which state that the name of the population should be used
 define "Initial Population":
   "Encounters during MP" Encounter
-	  where AgeInYearsAt(start of "Measurement Period")>= 18
+	  where "In Demographic"
 		
 define "Numerator":
 	"Medications Documented"
 
 define "Denominator":
-	"IPP"
+	"Initial Population"
 
 // NOTE: This would need to be updated to return a list of encounters, not procedures
 define "Medications Documented":
-	"Encounters during MP" Encounter
+	"Encounters during Measurement Period" Encounter
 		with ["Procedure, Performed": "Current Medications Documented SNMD"] Procedure
 			such that Procedure.relevantPeriod during Encounter.relevantPeriod
 
