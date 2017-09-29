@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="LocationPeriod"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <valueSets>
+      <def name="Inpatient Encounter" id="1.2.3" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="ED" id="4.5.6" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="ICU" id="7.8.9" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Arrival And Departure Time" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression lowClosed="true" highClosed="true" xsi:type="Interval">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <low resultTypeName="t:DateTime" xsi:type="First">
+               <source xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Location">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns0="urn:healthit-gov:qdm:v5_3" name="ns0:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression path="facilityLocations" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_3" name="ns1:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source name="Encounter" xsi:type="OperandRef"/>
+                     </expression>
+                  </source>
+                  <return>
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand path="locationPeriod" scope="Location" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                  </return>
+                  <sort>
+                     <by direction="asc" xsi:type="ByDirection"/>
+                  </sort>
+               </source>
+            </low>
+            <high resultTypeName="t:DateTime" xsi:type="Last">
+               <source xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Location">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_3" name="ns2:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression path="facilityLocations" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_3" name="ns3:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source name="Encounter" xsi:type="OperandRef"/>
+                     </expression>
+                  </source>
+                  <return>
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression resultTypeName="t:DateTime" xsi:type="End">
+                        <operand path="locationPeriod" scope="Location" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                  </return>
+                  <sort>
+                     <by direction="asc" xsi:type="ByDirection"/>
+                  </sort>
+               </source>
+            </high>
+         </expression>
+         <operand name="Encounter">
+            <operandTypeSpecifier xmlns:ns4="urn:healthit-gov:qdm:v5_3" resultTypeName="ns4:PositiveEncounterPerformed" xmlns:ns5="urn:healthit-gov:qdm:v5_3" name="ns5:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def name="Encounters with ICU over 2 days" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_3" name="ns8:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns9="urn:healthit-gov:qdm:v5_3" dataType="ns9:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_3" name="ns10:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Inpatient Encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Location">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns12="urn:healthit-gov:qdm:v5_3" name="ns12:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression path="facilityLocations" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns13="urn:healthit-gov:qdm:v5_3" name="ns13:FacilityLocation" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <where resultTypeName="t:Boolean" xsi:type="And">
+                     <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code resultTypeName="t:Code" path="code" scope="Location" xsi:type="Property"/>
+                        <valueset name="ICU">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </operand>
+                     <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                        <operand resultTypeName="t:Integer" precision="Day" xsi:type="DurationBetween">
+                           <operand xsi:type="Start">
+                              <operand path="locationPeriod" scope="Location" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="End">
+                              <operand path="locationPeriod" scope="Location" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+                     </operand>
+                  </where>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

@@ -104,7 +104,7 @@ define function CMD(Medication "Medication, Discharge"):
   interval in the result of a collapse:
 */
 define function CumulativeDuration(Intervals List<Interval<DateTime>>):
-  Sum((collapse Intervals) X return difference in days between start of X and end of X)
+  Sum((collapse Intervals) X return all difference in days between start of X and end of X)
 
 define function CMD(Medications List<"Medication, Administered">):
   CumulativeDuration(Medications M return M.relevantPeriod)

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="StudyComponents"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Macular Exam" id="1.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Retinopathy Severity Finding" id="2.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Level of Severity of Retinopathy Findings" id="3.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Macular Edema Finding" id="2.2" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Macular Edema Findings Absent" id="3.2" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Macular Edema Findings Present" id="3.3" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Appropriate Macular Exam" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_3" name="ns1:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_3" name="ns2:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Study">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_3" name="ns3:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_3" dataType="ns4:PositiveDiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns5="urn:healthit-gov:qdm:v5_3" name="ns5:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Macular Exam" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:Component" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="component1">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:Component" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression path="components" scope="Study" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_3" name="ns8:Component" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="And">
+                        <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                           <code resultTypeName="t:Code" path="code" scope="component1" xsi:type="Property"/>
+                           <valueset name="Retinopathy Severity Finding">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </valueset>
+                        </operand>
+                        <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                           <code asType="t:Code" xsi:type="As">
+                              <operand path="result" scope="component1" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                    <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    <type xmlns:ns9="urn:healthit-gov:qdm:v5_3" name="ns9:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="t:Time" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <asTypeSpecifier name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </code>
+                           <valueset name="Level of Severity of Retinopathy Findings">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </valueset>
+                        </operand>
+                     </where>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_3" name="ns10:Component" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="component2">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:Component" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression path="components" scope="Study" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns12="urn:healthit-gov:qdm:v5_3" name="ns12:Component" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="And">
+                        <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                           <code resultTypeName="t:Code" path="code" scope="component2" xsi:type="Property"/>
+                           <valueset name="Macular Edema Finding">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </valueset>
+                        </operand>
+                        <operand resultTypeName="t:Boolean" xsi:type="Or">
+                           <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                              <code asType="t:Code" xsi:type="As">
+                                 <operand path="result" scope="component2" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                       <type xmlns:ns13="urn:healthit-gov:qdm:v5_3" name="ns13:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Time" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                                 <asTypeSpecifier name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </code>
+                              <valueset name="Macular Edema Findings Absent">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </valueset>
+                           </operand>
+                           <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                              <code asType="t:Code" xsi:type="As">
+                                 <operand path="result" scope="component2" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                       <type xmlns:ns14="urn:healthit-gov:qdm:v5_3" name="ns14:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Time" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                                 <asTypeSpecifier name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </code>
+                              <valueset name="Macular Edema Findings Present">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </valueset>
+                           </operand>
+                        </operand>
+                     </where>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

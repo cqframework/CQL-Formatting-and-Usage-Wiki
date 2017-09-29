@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Diagnoses"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Single Live Birth" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.25" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Single Live Born Newborn Born in Hospital" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.26" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Gestational Diabetes" id="1.2.3" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Inpatient-Encounter" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_3" name="ns1:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_3" name="ns2:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_3" name="ns3:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns4="urn:healthit-gov:qdm:v5_3" dataType="ns4:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns5="urn:healthit-gov:qdm:v5_3" name="ns5:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+                  <operand resultTypeName="t:Quantity" path="lengthOfStay" scope="Encounter" xsi:type="Property"/>
+                  <operand resultTypeName="t:Quantity" value="120" unit="days" xsi:type="Quantity"/>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="In">
+                  <operand xsi:type="End">
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Single-Live-Birth-Diagnosis" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns8="urn:healthit-gov:qdm:v5_3" dataType="ns8:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_3" name="ns9:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="Single Live Birth" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns10="urn:healthit-gov:qdm:v5_3" dataType="ns10:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="Single Live Born Newborn Born in Hospital" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Single-Live-Birth-Encounter" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns12="urn:healthit-gov:qdm:v5_3" name="ns12:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns13="urn:healthit-gov:qdm:v5_3" name="ns13:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns14="urn:healthit-gov:qdm:v5_3" name="ns14:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns15="urn:healthit-gov:qdm:v5_3" name="ns15:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Inpatient-Encounter" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns16="urn:healthit-gov:qdm:v5_3" name="ns16:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <where resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="Diagnosis">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression path="diagnoses" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="Or">
+                        <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                           <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                           <valueset name="Single Live Birth">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </valueset>
+                        </operand>
+                        <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                           <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                           <valueset name="Single Live Born Newborn Born in Hospital">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </valueset>
+                        </operand>
+                     </where>
+                  </operand>
+               </where>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns17="urn:healthit-gov:qdm:v5_3" name="ns17:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns18="urn:healthit-gov:qdm:v5_3" name="ns18:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Inpatient-Encounter" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns19="urn:healthit-gov:qdm:v5_3" name="ns19:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="D" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns20="urn:healthit-gov:qdm:v5_3" name="ns20:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Single-Live-Birth-Diagnosis" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns21="urn:healthit-gov:qdm:v5_3" name="ns21:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="prevalencePeriod" scope="D" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def name="Single Live Birth Encounter Or Gestational Diabetes" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns22="urn:healthit-gov:qdm:v5_3" name="ns22:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns23="urn:healthit-gov:qdm:v5_3" name="ns23:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns24="urn:healthit-gov:qdm:v5_3" name="ns24:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Inpatient-Encounter" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns25="urn:healthit-gov:qdm:v5_3" name="ns25:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Diagnosis">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression path="diagnoses" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <where resultTypeName="t:Boolean" xsi:type="Or">
+                     <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                        <valueset name="Single Live Birth">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </operand>
+                     <operand resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                        <valueset name="Gestational Diabetes">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </operand>
+                  </where>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Single Live Birth Encounter And Gestational Diabetes" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns26="urn:healthit-gov:qdm:v5_3" name="ns26:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns27="urn:healthit-gov:qdm:v5_3" name="ns27:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns28="urn:healthit-gov:qdm:v5_3" name="ns28:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Inpatient-Encounter" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns29="urn:healthit-gov:qdm:v5_3" name="ns29:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="Diagnosis">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression path="diagnoses" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                        <valueset name="Single Live Birth">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </where>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="Diagnosis">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression path="diagnoses" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code resultTypeName="t:Code" name="Diagnosis" xsi:type="AliasRef"/>
+                        <valueset name="Gestational Diabetes">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </where>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
