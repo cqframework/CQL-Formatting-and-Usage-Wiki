@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="AMM128" version="0.0.011"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Antidepressant Medication" id="urn:oid:2.16.840.1.113883.3.464.1003.196.12.1213" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Major Depression" id="urn:oid:2.16.840.1.113883.3.464.1003.105.12.1007" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def xmlns:ns1="urn:healthit-gov:qdm:v5_3" resultTypeName="ns1:PositiveMedicationDispensed" name="Medication Dispensed 270 days before or 90 days after Start of Measurement Period" context="Patient" accessLevel="Public">
+         <expression xmlns:ns2="urn:healthit-gov:qdm:v5_3" resultTypeName="ns2:PositiveMedicationDispensed" xsi:type="First">
+            <source xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_3" name="ns3:PositiveMedicationDispensed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="DepMedDisp">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns4="urn:healthit-gov:qdm:v5_3" name="ns4:PositiveMedicationDispensed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns5="urn:healthit-gov:qdm:v5_3" dataType="ns5:PositiveMedicationDispensed" templateId="PositiveMedicationDispensed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:PositiveMedicationDispensed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Antidepressant Medication" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where resultTypeName="t:Boolean" xsi:type="Or">
+                  <operand resultTypeName="t:Boolean" xsi:type="Or">
+                     <operand resultTypeName="t:Boolean" xsi:type="In">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="DepMedDisp" xsi:type="Property"/>
+                        <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low xsi:type="Subtract">
+                              <operand resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand name="Measurement Period" xsi:type="ParameterRef">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="270" unit="days" xsi:type="Quantity"/>
+                           </low>
+                           <high resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand name="Measurement Period" xsi:type="ParameterRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </high>
+                        </operand>
+                     </operand>
+                     <operand resultTypeName="t:Boolean" xsi:type="In">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="DepMedDisp" xsi:type="Property"/>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand name="Measurement Period" xsi:type="ParameterRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand name="Measurement Period" xsi:type="ParameterRef">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="90" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="SameAs">
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="DepMedDisp" xsi:type="Property"/>
+                     <operand resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </operand>
+               </where>
+               <sort>
+                  <by resultTypeName="t:DateTime" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Initial Major Depression Diagnosis" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Not">
+            <operand resultTypeName="t:Boolean" xsi:type="IsNull">
+               <operand xmlns:ns7="urn:healthit-gov:qdm:v5_3" resultTypeName="ns7:Diagnosis" xsi:type="First">
+                  <source xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_3" name="ns8:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="Dx">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_3" name="ns9:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression xmlns:ns10="urn:healthit-gov:qdm:v5_3" dataType="ns10:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Major Depression" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <relationship xmlns:ns12="urn:healthit-gov:qdm:v5_3" resultTypeName="ns12:PositiveMedicationDispensed" alias="Med" xsi:type="With">
+                        <expression xmlns:ns13="urn:healthit-gov:qdm:v5_3" resultTypeName="ns13:PositiveMedicationDispensed" name="Medication Dispensed 270 days before or 90 days after Start of Measurement Period" xsi:type="ExpressionRef"/>
+                        <suchThat resultTypeName="t:Boolean" xsi:type="Or">
+                           <operand resultTypeName="t:Boolean" xsi:type="In">
+                              <operand xsi:type="Start">
+                                 <operand path="prevalencePeriod" scope="Dx" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <low xsi:type="Subtract">
+                                    <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Med" xsi:type="Property"/>
+                                    <operand resultTypeName="t:Quantity" value="60" unit="days" xsi:type="Quantity"/>
+                                 </low>
+                                 <high resultTypeName="t:DateTime" path="authorDatetime" scope="Med" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand resultTypeName="t:Boolean" xsi:type="In">
+                              <operand xsi:type="Start">
+                                 <operand path="prevalencePeriod" scope="Dx" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <low resultTypeName="t:DateTime" path="authorDatetime" scope="Med" xsi:type="Property"/>
+                                 <high xsi:type="Add">
+                                    <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Med" xsi:type="Property"/>
+                                    <operand resultTypeName="t:Quantity" value="60" unit="days" xsi:type="Quantity"/>
+                                 </high>
+                              </operand>
+                           </operand>
+                        </suchThat>
+                     </relationship>
+                     <sort>
+                        <by resultTypeName="t:DateTime" direction="asc" xsi:type="ByExpression">
+                           <expression resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand name="prevalencePeriod" xsi:type="IdentifierRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </expression>
+                        </by>
+                     </sort>
+                  </source>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

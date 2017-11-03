@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ChildhoodImmunizationStatusCIS" version="0.0.013"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def name="LOINC:2.46" id="urn:oid:2.16.840.1.113883.6.1" version="urn:hl7:version:2.46" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="SNOMEDCT:2016-03" id="urn:oid:2.16.840.1.113883.6.96" version="urn:hl7:version:2016-03" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def name="Hepatitis B Vaccine Administered" id="urn:oid:2.16.840.1.113883.3.464.1003.110.12.1042" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Hepatitis B Vaccine" id="urn:oid:2.16.840.1.113883.3.464.1003.196.12.1216" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Hepatitis B Antigen Test" id="urn:oid:2.16.840.1.113883.3.464.1003.198.12.1031" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Hepatitis B" id="urn:oid:2.16.840.1.113883.3.464.1003.110.12.1025" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Anaphylactic Reaction to Hepatitis B Vaccine" id="urn:oid:2.16.840.1.113883.3.464.1003.199.12.1029" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Anti Hepatitis B Virus Surface Ab" id="urn:oid:2.16.840.1.113883.3.464.1003.198.12.1073" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Hepatitis B Antigen Test Positive" id="urn:oid:2.16.840.1.113762.1.4.1116.11" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Newborn Hepatitis Vaccine Administered" id="urn:oid:2.16.840.1.113883.3.464.1004.1397" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def resultTypeName="t:Code" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem name="LOINC:2.46">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def resultTypeName="t:Code" name="Dead" id="419099009" display="Dead" accessLevel="Public">
+         <codeSystem name="SNOMEDCT:2016-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Hepatitis B Immunizations or Procedures" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_3" name="ns1:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_3" name="ns2:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="HepBVaccination">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_3" name="ns3:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xsi:type="Union">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns4="urn:healthit-gov:qdm:v5_3" name="ns4:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand xmlns:ns5="urn:healthit-gov:qdm:v5_3" dataType="ns5:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Hepatitis B Vaccine" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="Procedure">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_3" name="ns8:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression xmlns:ns9="urn:healthit-gov:qdm:v5_3" dataType="ns9:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_3" name="ns10:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Hepatitis B Vaccine Administered" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <return>
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression xmlns:ns12="urn:healthit-gov:qdm:v5_3" resultTypeName="ns12:PositiveImmunizationAdministered" xmlns:ns13="urn:healthit-gov:qdm:v5_3" classType="ns13:PositiveImmunizationAdministered" xsi:type="Instance">
+                           <element name="authorDatetime">
+                              <value resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand path="relevantPeriod" scope="Procedure" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </value>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand resultTypeName="t:Integer" precision="Day" xsi:type="CalculateAgeAt">
+                     <operand path="birthDatetime" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="HepBVaccination" xsi:type="Property"/>
+                  </operand>
+                  <operand resultTypeName="t:Integer" valueType="t:Integer" value="1" xsi:type="Literal"/>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+                  <operand resultTypeName="t:Integer" precision="Day" xsi:type="CalculateAgeAt">
+                     <operand path="birthDatetime" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="HepBVaccination" xsi:type="Property"/>
+                  </operand>
+                  <operand resultTypeName="t:Integer" valueType="t:Integer" value="730" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Hepatitis B Vaccinations" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="Vaccination1">
+                  <type xmlns:ns14="urn:healthit-gov:qdm:v5_3" name="ns14:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="Vaccination2">
+                  <type xmlns:ns15="urn:healthit-gov:qdm:v5_3" name="ns15:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="Vaccination3">
+                  <type xmlns:ns16="urn:healthit-gov:qdm:v5_3" name="ns16:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="Vaccination1">
+                     <type xmlns:ns17="urn:healthit-gov:qdm:v5_3" name="ns17:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="Vaccination2">
+                     <type xmlns:ns18="urn:healthit-gov:qdm:v5_3" name="ns18:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="Vaccination3">
+                     <type xmlns:ns19="urn:healthit-gov:qdm:v5_3" name="ns19:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source alias="Vaccination1">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns20="urn:healthit-gov:qdm:v5_3" name="ns20:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Hepatitis B Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns21="urn:healthit-gov:qdm:v5_3" name="ns21:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source alias="Vaccination2">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns22="urn:healthit-gov:qdm:v5_3" name="ns22:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Hepatitis B Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns23="urn:healthit-gov:qdm:v5_3" name="ns23:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source alias="Vaccination3">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns24="urn:healthit-gov:qdm:v5_3" name="ns24:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Hepatitis B Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns25="urn:healthit-gov:qdm:v5_3" name="ns25:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="SameOrAfter">
+                  <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Vaccination2" xsi:type="Property"/>
+                  <operand xsi:type="Add">
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Vaccination1" xsi:type="Property"/>
+                     <operand resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="SameOrAfter">
+                  <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Vaccination3" xsi:type="Property"/>
+                  <operand xsi:type="Add">
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Vaccination2" xsi:type="Property"/>
+                     <operand resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                  </operand>
+               </operand>
+            </where>
+            <return distinct="true">
+               <expression xsi:type="Tuple">
+                  <element name="Vaccination1">
+                     <value name="Vaccination1" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Vaccination2">
+                     <value name="Vaccination2" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Vaccination3">
+                     <value name="Vaccination3" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Hepatitis B Vaccination for Newborn" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns26="urn:healthit-gov:qdm:v5_3" name="ns26:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns27="urn:healthit-gov:qdm:v5_3" name="ns27:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Procedure">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns28="urn:healthit-gov:qdm:v5_3" name="ns28:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns29="urn:healthit-gov:qdm:v5_3" dataType="ns29:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns30="urn:healthit-gov:qdm:v5_3" name="ns30:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Newborn Hepatitis Vaccine Administered" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Birthdate" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns31="urn:healthit-gov:qdm:v5_3" name="ns31:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns32="urn:healthit-gov:qdm:v5_3" dataType="ns32:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns33="urn:healthit-gov:qdm:v5_3" name="ns33:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes xsi:type="ToList">
+                     <operand name="Birthdate" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="And">
+                  <operand resultTypeName="t:Boolean" xsi:type="SameOrAfter">
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Procedure" xsi:type="Property"/>
+                     <operand xsi:type="Add">
+                        <operand resultTypeName="t:DateTime" path="birthDatetime" scope="Birthdate" xsi:type="Property"/>
+                        <operand resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                     </operand>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="In">
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Procedure" xsi:type="Property"/>
+                     <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low resultTypeName="t:DateTime" path="birthDatetime" scope="Birthdate" xsi:type="Property"/>
+                        <high xsi:type="Add">
+                           <operand resultTypeName="t:DateTime" path="birthDatetime" scope="Birthdate" xsi:type="Property"/>
+                           <operand resultTypeName="t:Quantity" value="8" unit="day" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Test169" version="0.0.040"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="BH Antidepressant Medication" id="urn:oid:2.16.840.1.113883.3.1257.1.972" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Assessment for Alcohol or Other Drugs" id="urn:oid:2.16.840.1.113883.3.1257.1.1604" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Condition Involving Bipolar Disorder" id="urn:oid:2.16.840.1.113883.3.1257.1.1504" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Condition Involving Unipolar Depression" id="urn:oid:2.16.840.1.113883.3.1257.1.1505" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Counseling for Depression" id="urn:oid:2.16.840.1.113883.3.1257.1.1616" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Electroconvulsive Therapy" id="urn:oid:2.16.840.1.113883.3.1257.1.1533" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Mood Stabilizer Medication" id="urn:oid:2.16.840.1.113883.3.1257.1.950" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Outpatient encounter" id="urn:oid:2.16.840.1.113883.3.464.1.49" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="BH Outpatient Psychotherapy" id="urn:oid:2.16.840.1.113883.3.1257.1.973" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Bipolar Disorder Or Unipolar Depression" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_3" name="ns1:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_3" name="ns2:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns3="urn:healthit-gov:qdm:v5_3" dataType="ns3:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns4="urn:healthit-gov:qdm:v5_3" name="ns4:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Condition Involving Bipolar Disorder" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns5="urn:healthit-gov:qdm:v5_3" dataType="ns5:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns6="urn:healthit-gov:qdm:v5_3" name="ns6:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Condition Involving Unipolar Depression" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Diagnoses Start During Encounters" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_3" name="ns8:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Diagnoses">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_3" name="ns9:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Bipolar Disorder Or Unipolar Depression" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_3" name="ns10:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <relationship alias="Encounters" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_3" name="ns11:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xsi:type="Union">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns12="urn:healthit-gov:qdm:v5_3" name="ns12:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand xmlns:ns13="urn:healthit-gov:qdm:v5_3" dataType="ns13:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns14="urn:healthit-gov:qdm:v5_3" name="ns14:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="BH Outpatient encounter" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand xmlns:ns15="urn:healthit-gov:qdm:v5_3" dataType="ns15:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns16="urn:healthit-gov:qdm:v5_3" name="ns16:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="BH Outpatient Psychotherapy" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                  <operand xsi:type="Start">
+                     <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand path="relevantPeriod" scope="Encounters" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Index Behavioral Health Outpatient Encounter" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns17="urn:healthit-gov:qdm:v5_3" name="ns17:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns18="urn:healthit-gov:qdm:v5_3" name="ns18:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns19="urn:healthit-gov:qdm:v5_3" name="ns19:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns20="urn:healthit-gov:qdm:v5_3" dataType="ns20:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns21="urn:healthit-gov:qdm:v5_3" name="ns21:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="BH Outpatient encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Diagnoses" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns22="urn:healthit-gov:qdm:v5_3" name="ns22:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Bipolar Disorder Or Unipolar Depression" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns23="urn:healthit-gov:qdm:v5_3" name="ns23:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="OverlapsBefore">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where resultTypeName="t:Boolean" xsi:type="In">
+               <operand xsi:type="Start">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <low resultTypeName="t:DateTime" xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </low>
+                  <high resultTypeName="t:DateTime" xsi:type="Add">
+                     <operand resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand resultTypeName="t:Quantity" value="323" unit="days" xsi:type="Quantity"/>
+                  </high>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Index Behavioral Health Outpatient Psychotherapy" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns24="urn:healthit-gov:qdm:v5_3" name="ns24:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns25="urn:healthit-gov:qdm:v5_3" name="ns25:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns26="urn:healthit-gov:qdm:v5_3" name="ns26:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns27="urn:healthit-gov:qdm:v5_3" dataType="ns27:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns28="urn:healthit-gov:qdm:v5_3" name="ns28:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="BH Outpatient Psychotherapy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Diagnoses" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns29="urn:healthit-gov:qdm:v5_3" name="ns29:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Bipolar Disorder Or Unipolar Depression" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns30="urn:healthit-gov:qdm:v5_3" name="ns30:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="OverlapsBefore">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where resultTypeName="t:Boolean" xsi:type="In">
+               <operand xsi:type="Start">
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <low resultTypeName="t:DateTime" xsi:type="Start">
+                     <operand name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </low>
+                  <high resultTypeName="t:DateTime" xsi:type="Add">
+                     <operand resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand resultTypeName="t:Quantity" value="323" unit="days" xsi:type="Quantity"/>
+                  </high>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Procedures Ordered" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns31="urn:healthit-gov:qdm:v5_3" name="ns31:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns32="urn:healthit-gov:qdm:v5_3" name="ns32:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns33="urn:healthit-gov:qdm:v5_3" dataType="ns33:PositiveProcedureOrder" templateId="PositiveProcedureOrder" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns34="urn:healthit-gov:qdm:v5_3" name="ns34:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Electroconvulsive Therapy" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns35="urn:healthit-gov:qdm:v5_3" dataType="ns35:PositiveProcedureOrder" templateId="PositiveProcedureOrder" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns36="urn:healthit-gov:qdm:v5_3" name="ns36:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Counseling for Depression" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Procedures Performed" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns37="urn:healthit-gov:qdm:v5_3" name="ns37:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns38="urn:healthit-gov:qdm:v5_3" name="ns38:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns39="urn:healthit-gov:qdm:v5_3" dataType="ns39:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns40="urn:healthit-gov:qdm:v5_3" name="ns40:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Electroconvulsive Therapy" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns41="urn:healthit-gov:qdm:v5_3" dataType="ns41:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns42="urn:healthit-gov:qdm:v5_3" name="ns42:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Counseling for Depression" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Medications Ordered" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns43="urn:healthit-gov:qdm:v5_3" name="ns43:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns44="urn:healthit-gov:qdm:v5_3" name="ns44:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns45="urn:healthit-gov:qdm:v5_3" dataType="ns45:PositiveMedicationOrder" templateId="PositiveMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns46="urn:healthit-gov:qdm:v5_3" name="ns46:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Antidepressant Medication" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns47="urn:healthit-gov:qdm:v5_3" dataType="ns47:PositiveMedicationOrder" templateId="PositiveMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns48="urn:healthit-gov:qdm:v5_3" name="ns48:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Mood Stabilizer Medication" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Treatments" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns49="urn:healthit-gov:qdm:v5_3" name="ns49:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns50="urn:healthit-gov:qdm:v5_3" name="ns50:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Union">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns51="urn:healthit-gov:qdm:v5_3" name="ns51:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns52="urn:healthit-gov:qdm:v5_3" name="ns52:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="ProcedureOrdered">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns53="urn:healthit-gov:qdm:v5_3" name="ns53:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Procedures Ordered" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns54="urn:healthit-gov:qdm:v5_3" name="ns54:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+               </operand>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns55="urn:healthit-gov:qdm:v5_3" name="ns55:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="ProceduresPerformed">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns56="urn:healthit-gov:qdm:v5_3" name="ns56:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Procedures Performed" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns57="urn:healthit-gov:qdm:v5_3" name="ns57:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <return>
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns58="urn:healthit-gov:qdm:v5_3" name="ns58:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression xmlns:ns59="urn:healthit-gov:qdm:v5_3" resultTypeName="ns59:PositiveProcedureOrder" xmlns:ns60="urn:healthit-gov:qdm:v5_3" classType="ns60:PositiveProcedureOrder" xsi:type="Instance">
+                        <element name="authorDatetime">
+                           <value resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="ProceduresPerformed" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </value>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns61="urn:healthit-gov:qdm:v5_3" name="ns61:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="MedicationsOrdered">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns62="urn:healthit-gov:qdm:v5_3" name="ns62:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Medications Ordered" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns63="urn:healthit-gov:qdm:v5_3" name="ns63:PositiveMedicationOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <return>
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns64="urn:healthit-gov:qdm:v5_3" name="ns64:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns65="urn:healthit-gov:qdm:v5_3" resultTypeName="ns65:PositiveProcedureOrder" xmlns:ns66="urn:healthit-gov:qdm:v5_3" classType="ns66:PositiveProcedureOrder" xsi:type="Instance">
+                     <element name="authorDatetime">
+                        <value resultTypeName="t:DateTime" path="authorDatetime" scope="MedicationsOrdered" xsi:type="Property"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Index Outpatient Encounter Before Treatment or Psychotherapy" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns67="urn:healthit-gov:qdm:v5_3" name="ns67:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns68="urn:healthit-gov:qdm:v5_3" name="ns68:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns69="urn:healthit-gov:qdm:v5_3" name="ns69:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns70="urn:healthit-gov:qdm:v5_3" name="ns70:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Encounter" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns71="urn:healthit-gov:qdm:v5_3" name="ns71:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="Psychotherapy" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns72="urn:healthit-gov:qdm:v5_3" name="ns72:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns73="urn:healthit-gov:qdm:v5_3" dataType="ns73:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns74="urn:healthit-gov:qdm:v5_3" name="ns74:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="BH Outpatient Psychotherapy" xsi:type="ValueSetRef"/>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low xsi:type="Subtract">
+                           <operand resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="Psychotherapy" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <operand resultTypeName="t:Quantity" value="42" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Psychotherapy" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </high>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns75="urn:healthit-gov:qdm:v5_3" name="ns75:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns76="urn:healthit-gov:qdm:v5_3" name="ns76:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Encounter" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns77="urn:healthit-gov:qdm:v5_3" name="ns77:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="Treatment" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns78="urn:healthit-gov:qdm:v5_3" name="ns78:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Treatments" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns79="urn:healthit-gov:qdm:v5_3" name="ns79:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low xsi:type="Subtract">
+                           <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                           <operand resultTypeName="t:Quantity" value="42" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def name="Index Behavioral Health Outpatient Psychotherapy Before Treatment or Psychotherapy" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns80="urn:healthit-gov:qdm:v5_3" name="ns80:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns81="urn:healthit-gov:qdm:v5_3" name="ns81:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns82="urn:healthit-gov:qdm:v5_3" name="ns82:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns83="urn:healthit-gov:qdm:v5_3" name="ns83:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Psychotherapy" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns84="urn:healthit-gov:qdm:v5_3" name="ns84:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="OutpatientPsychotherapy" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns85="urn:healthit-gov:qdm:v5_3" name="ns85:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns86="urn:healthit-gov:qdm:v5_3" dataType="ns86:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns87="urn:healthit-gov:qdm:v5_3" name="ns87:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="BH Outpatient Psychotherapy" xsi:type="ValueSetRef"/>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low xsi:type="Subtract">
+                           <operand resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="OutpatientPsychotherapy" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <operand resultTypeName="t:Quantity" value="42" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand path="relevantPeriod" scope="OutpatientPsychotherapy" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </high>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns88="urn:healthit-gov:qdm:v5_3" name="ns88:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="IndexOutpatientPsychotherapyEncounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns89="urn:healthit-gov:qdm:v5_3" name="ns89:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Psychotherapy" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns90="urn:healthit-gov:qdm:v5_3" name="ns90:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="Treatment" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns91="urn:healthit-gov:qdm:v5_3" name="ns91:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Treatments" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns92="urn:healthit-gov:qdm:v5_3" name="ns92:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="IndexOutpatientPsychotherapyEncounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="true" highClosed="false" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low xsi:type="Subtract">
+                           <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                           <operand resultTypeName="t:Quantity" value="42" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def name="Medications Active" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns93="urn:healthit-gov:qdm:v5_3" name="ns93:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns94="urn:healthit-gov:qdm:v5_3" name="ns94:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xmlns:ns95="urn:healthit-gov:qdm:v5_3" dataType="ns95:MedicationActive" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns96="urn:healthit-gov:qdm:v5_3" name="ns96:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Antidepressant Medication" xsi:type="ValueSetRef"/>
+            </operand>
+            <operand xmlns:ns97="urn:healthit-gov:qdm:v5_3" dataType="ns97:MedicationActive" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns98="urn:healthit-gov:qdm:v5_3" name="ns98:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="BH Mood Stabilizer Medication" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def name="Medication Active Or Diagnoses" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns99="urn:healthit-gov:qdm:v5_3" name="ns99:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns100="urn:healthit-gov:qdm:v5_3" name="ns100:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns101="urn:healthit-gov:qdm:v5_3" name="ns101:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="MedicationActive">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns102="urn:healthit-gov:qdm:v5_3" name="ns102:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Medications Active" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns103="urn:healthit-gov:qdm:v5_3" name="ns103:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns104="urn:healthit-gov:qdm:v5_3" name="ns104:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Diagnoses">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns105="urn:healthit-gov:qdm:v5_3" name="ns105:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Bipolar Disorder Or Unipolar Depression" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns106="urn:healthit-gov:qdm:v5_3" name="ns106:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <return>
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns107="urn:healthit-gov:qdm:v5_3" name="ns107:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression xmlns:ns108="urn:healthit-gov:qdm:v5_3" resultTypeName="ns108:MedicationActive" xmlns:ns109="urn:healthit-gov:qdm:v5_3" classType="ns109:MedicationActive" xsi:type="Instance">
+                     <element name="relevantPeriod">
+                        <value path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </value>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def name="Outpatient Encounter During Diagnosis or Medication Active" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns110="urn:healthit-gov:qdm:v5_3" name="ns110:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns111="urn:healthit-gov:qdm:v5_3" name="ns111:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="OutpatientEncounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns112="urn:healthit-gov:qdm:v5_3" name="ns112:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns113="urn:healthit-gov:qdm:v5_3" dataType="ns113:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns114="urn:healthit-gov:qdm:v5_3" name="ns114:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="BH Outpatient encounter" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="MedicationDiagnosis" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns115="urn:healthit-gov:qdm:v5_3" name="ns115:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Medication Active Or Diagnoses" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns116="urn:healthit-gov:qdm:v5_3" name="ns116:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="OutpatientEncounter" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="relevantPeriod" scope="MedicationDiagnosis" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Outpatient Psychotherapy During Diagnoses" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns117="urn:healthit-gov:qdm:v5_3" name="ns117:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns118="urn:healthit-gov:qdm:v5_3" name="ns118:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="OutpatientPsychotherapy">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns119="urn:healthit-gov:qdm:v5_3" name="ns119:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns120="urn:healthit-gov:qdm:v5_3" dataType="ns120:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns121="urn:healthit-gov:qdm:v5_3" name="ns121:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="BH Outpatient Psychotherapy" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Diagnoses" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns122="urn:healthit-gov:qdm:v5_3" name="ns122:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Bipolar Disorder Or Unipolar Depression" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns123="urn:healthit-gov:qdm:v5_3" name="ns123:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                  <operand path="relevantPeriod" scope="OutpatientPsychotherapy" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Outpatient Encounter 180 days after Encounter Diagnosis Treatment" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns124="urn:healthit-gov:qdm:v5_3" name="ns124:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns125="urn:healthit-gov:qdm:v5_3" name="ns125:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Union">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns126="urn:healthit-gov:qdm:v5_3" name="ns126:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns127="urn:healthit-gov:qdm:v5_3" name="ns127:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Encounter">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns128="urn:healthit-gov:qdm:v5_3" name="ns128:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Index Behavioral Health Outpatient Encounter" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns129="urn:healthit-gov:qdm:v5_3" name="ns129:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <relationship alias="PriorEncounter" xsi:type="With">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns130="urn:healthit-gov:qdm:v5_3" name="ns130:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression xsi:type="Union">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns131="urn:healthit-gov:qdm:v5_3" name="ns131:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand name="Outpatient Encounter During Diagnosis or Medication Active" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns132="urn:healthit-gov:qdm:v5_3" name="ns132:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                        <operand name="Outpatient Psychotherapy During Diagnoses" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns133="urn:healthit-gov:qdm:v5_3" name="ns133:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                     <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                        <operand xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="PriorEncounter" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand path="relevantPeriod" scope="PriorEncounter" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </suchThat>
+                  </relationship>
+               </operand>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns134="urn:healthit-gov:qdm:v5_3" name="ns134:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Encounter">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns135="urn:healthit-gov:qdm:v5_3" name="ns135:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Index Behavioral Health Outpatient Encounter" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns136="urn:healthit-gov:qdm:v5_3" name="ns136:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <relationship alias="Diagnoses" xsi:type="With">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns137="urn:healthit-gov:qdm:v5_3" name="ns137:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Diagnoses Start During Encounters" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns138="urn:healthit-gov:qdm:v5_3" name="ns138:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                     <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                        <operand xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low xsi:type="End">
+                              <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand xsi:type="End">
+                                 <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </suchThat>
+                  </relationship>
+               </operand>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns139="urn:healthit-gov:qdm:v5_3" name="ns139:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns140="urn:healthit-gov:qdm:v5_3" name="ns140:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Encounter" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns141="urn:healthit-gov:qdm:v5_3" name="ns141:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="Treatment" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns142="urn:healthit-gov:qdm:v5_3" name="ns142:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Treatments" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns143="urn:healthit-gov:qdm:v5_3" name="ns143:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                        <high xsi:type="Add">
+                           <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                           <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def name="Outpatient Psychotherapy 180 days after Encounter Diagnosis Treatment" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns144="urn:healthit-gov:qdm:v5_3" name="ns144:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns145="urn:healthit-gov:qdm:v5_3" name="ns145:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Union">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns146="urn:healthit-gov:qdm:v5_3" name="ns146:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns147="urn:healthit-gov:qdm:v5_3" name="ns147:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Encounter">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns148="urn:healthit-gov:qdm:v5_3" name="ns148:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Index Behavioral Health Outpatient Psychotherapy Before Treatment or Psychotherapy" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns149="urn:healthit-gov:qdm:v5_3" name="ns149:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <relationship alias="PriorEncounter" xsi:type="With">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns150="urn:healthit-gov:qdm:v5_3" name="ns150:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression xsi:type="Union">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns151="urn:healthit-gov:qdm:v5_3" name="ns151:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand name="Outpatient Encounter During Diagnosis or Medication Active" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns152="urn:healthit-gov:qdm:v5_3" name="ns152:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                        <operand name="Outpatient Psychotherapy During Diagnoses" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns153="urn:healthit-gov:qdm:v5_3" name="ns153:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                     <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                        <operand xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="PriorEncounter" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand path="relevantPeriod" scope="PriorEncounter" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </suchThat>
+                  </relationship>
+               </operand>
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns154="urn:healthit-gov:qdm:v5_3" name="ns154:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="Encounter">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns155="urn:healthit-gov:qdm:v5_3" name="ns155:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Index Behavioral Health Outpatient Psychotherapy Before Treatment or Psychotherapy" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns156="urn:healthit-gov:qdm:v5_3" name="ns156:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                  </source>
+                  <relationship alias="Diagnoses" xsi:type="With">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns157="urn:healthit-gov:qdm:v5_3" name="ns157:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression name="Diagnoses Start During Encounters" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns158="urn:healthit-gov:qdm:v5_3" name="ns158:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </expression>
+                     <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                        <operand xsi:type="Start">
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <low xsi:type="End">
+                              <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </low>
+                           <high xsi:type="Add">
+                              <operand xsi:type="End">
+                                 <operand path="prevalencePeriod" scope="Diagnoses" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </suchThat>
+                  </relationship>
+               </operand>
+            </operand>
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns159="urn:healthit-gov:qdm:v5_3" name="ns159:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="Encounter">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns160="urn:healthit-gov:qdm:v5_3" name="ns160:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Index Behavioral Health Outpatient Psychotherapy Before Treatment or Psychotherapy" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns161="urn:healthit-gov:qdm:v5_3" name="ns161:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <relationship alias="Treatment" xsi:type="With">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns162="urn:healthit-gov:qdm:v5_3" name="ns162:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Treatments" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns163="urn:healthit-gov:qdm:v5_3" name="ns163:PositiveProcedureOrder" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+                  <suchThat resultTypeName="t:Boolean" xsi:type="In">
+                     <operand xsi:type="Start">
+                        <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                        <high xsi:type="Add">
+                           <operand resultTypeName="t:DateTime" path="authorDatetime" scope="Treatment" xsi:type="Property"/>
+                           <operand resultTypeName="t:Quantity" value="180" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def name="Qualifying.Encounters" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns164="urn:healthit-gov:qdm:v5_3" name="ns164:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns165="urn:healthit-gov:qdm:v5_3" name="ns165:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand xsi:type="Except">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns166="urn:healthit-gov:qdm:v5_3" name="ns166:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand name="Index Outpatient Encounter Before Treatment or Psychotherapy" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns167="urn:healthit-gov:qdm:v5_3" name="ns167:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Outpatient Encounter 180 days after Encounter Diagnosis Treatment" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns168="urn:healthit-gov:qdm:v5_3" name="ns168:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+            <operand xsi:type="Except">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns169="urn:healthit-gov:qdm:v5_3" name="ns169:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand name="Index Behavioral Health Outpatient Psychotherapy Before Treatment or Psychotherapy" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns170="urn:healthit-gov:qdm:v5_3" name="ns170:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Outpatient Psychotherapy 180 days after Encounter Diagnosis Treatment" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns171="urn:healthit-gov:qdm:v5_3" name="ns171:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
