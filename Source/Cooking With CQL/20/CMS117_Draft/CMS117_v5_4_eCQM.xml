@@ -1,0 +1,2058 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/EMeasure_N1.xsd urn:hhs-cql:hqmf-n1-extensions:v1 ../schemas/hhs-cql-hqmfn1-ext-v1.xsd">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280582-5c27-8179-015c-5a9a42c90a7c"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="Test CMS 117"/>
+   <text
+         value="Percentage of children 2 years of age who had four diphtheria, tetanus and acellular pertussis (DTaP); three polio (IPV), one measles, mumps and rubella (MMR); three H influenza type B (HiB); three hepatitis B (Hep B); one chicken pox (VZV); four pneumococcal conjugate (PCV); one hepatitis A (Hep A); two or three rotavirus (RV); and two influenza (flu) vaccines by their second birthday"/>
+   <statusCode code="COMPLETED"/>
+   <setId root="b2802b7a-3580-4be8-9458-921aea62b78c"/>
+   <versionNumber value="5.1.021"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <verifier>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.560"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Quality Forum"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </verifier>
+   <!--Face-to-Face Interaction-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1048"/>
+         <title value="Face-to-Face Interaction"/>
+      </valueSet>
+   </definition>
+   <!--DTaP Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1214"/>
+         <title value="DTaP Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Rotavirus Vaccine (2 dose schedule)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1222"/>
+         <title value="Rotavirus Vaccine (2 dose schedule)"/>
+      </valueSet>
+   </definition>
+   <!--Pneumococcal Conjugate Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1221"/>
+         <title value="Pneumococcal Conjugate Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Intussusception-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1056"/>
+         <title value="Intussusception"/>
+      </valueSet>
+   </definition>
+   <!--Varicella Zoster-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1039"/>
+         <title value="Varicella Zoster"/>
+      </valueSet>
+   </definition>
+   <!--Malignant Neoplasm of Lymphatic and Hematopoietic Tissue-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.108.12.1009"/>
+         <title value="Malignant Neoplasm of Lymphatic and Hematopoietic Tissue"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Hepatitis A Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1026"/>
+         <title value="Anaphylactic Reaction to Hepatitis A Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Inactivated Polio Vaccine (IPV)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1023"/>
+         <title value="Anaphylactic Reaction to Inactivated Polio Vaccine (IPV)"/>
+      </valueSet>
+   </definition>
+   <!--Mumps-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1032"/>
+         <title value="Mumps"/>
+      </valueSet>
+   </definition>
+   <!--Rubella Antibody Test (IgG Antibody Titer)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1063"/>
+         <title value="Rubella Antibody Test (IgG Antibody Titer)"/>
+      </valueSet>
+   </definition>
+   <!--Disorders of the Immune System-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.120.12.1001"/>
+         <title value="Disorders of the Immune System"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Rotavirus Vaccine (3 dose schedule) Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1047"/>
+         <title value="Rotavirus Vaccine (3 dose schedule) Administered"/>
+      </valueSet>
+   </definition>
+   <!--Preventive Care Services, Initial Office Visit, 0 to 17-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1022"/>
+         <title value="Preventive Care Services, Initial Office Visit, 0 to 17"/>
+      </valueSet>
+   </definition>
+   <!--Measles Antibody Test (IgG Antibody Titer)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1059"/>
+         <title value="Measles Antibody Test (IgG Antibody Titer)"/>
+      </valueSet>
+   </definition>
+   <!--Inactivated Polio Vaccine (IPV)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1219"/>
+         <title value="Inactivated Polio Vaccine (IPV)"/>
+      </valueSet>
+   </definition>
+   <!--Influenza Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1044"/>
+         <title value="Influenza Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Common Baker's Yeast-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1032"/>
+         <title value="Anaphylactic Reaction to Common Baker's Yeast"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis B Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1216"/>
+         <title value="Hepatitis B Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Rubella Antibody Test (IgG Antibody presence)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1064"/>
+         <title value="Rubella Antibody Test (IgG Antibody presence)"/>
+      </valueSet>
+   </definition>
+   <!--Inactivated Polio Vaccine (IPV) Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1045"/>
+         <title value="Inactivated Polio Vaccine (IPV) Administered"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1030"/>
+         <title value="Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Anti Hepatitis A IgG Antigen Test-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1033"/>
+         <title value="Anti Hepatitis A IgG Antigen Test"/>
+      </valueSet>
+   </definition>
+   <!--Mumps Antibody Test (IgG Antibody presence)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1062"/>
+         <title value="Mumps Antibody Test (IgG Antibody presence)"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Influenza Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1022"/>
+         <title value="Anaphylactic Reaction to Influenza Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to DTaP Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1031"/>
+         <title value="Anaphylactic Reaction to DTaP Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Rubella-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1037"/>
+         <title value="Rubella"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--DTaP Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1022"/>
+         <title value="DTaP Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Measles, Mumps and Rubella (MMR) Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1224"/>
+         <title value="Measles, Mumps and Rubella (MMR) Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Haemophilus Influenzae Type B (HiB) Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1217"/>
+         <title value="Haemophilus Influenzae Type B (HiB) Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Neomycin-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1024"/>
+         <title value="Anaphylactic Reaction to Neomycin"/>
+      </valueSet>
+   </definition>
+   <!--Varicella Zoster Antibody Test (IgG Antibody Titer)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1066"/>
+         <title value="Varicella Zoster Antibody Test (IgG Antibody Titer)"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis A Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1041"/>
+         <title value="Hepatitis A Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Measles Antibody Test (IgG Antibody presence)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1060"/>
+         <title value="Measles Antibody Test (IgG Antibody presence)"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Polymyxin-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1025"/>
+         <title value="Anaphylactic Reaction to Polymyxin"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis A Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1215"/>
+         <title value="Hepatitis A Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis B Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1042"/>
+         <title value="Hepatitis B Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Home Healthcare Services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+         <title value="Home Healthcare Services"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Rotavirus Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1021"/>
+         <title value="Anaphylactic Reaction to Rotavirus Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Measles-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1053"/>
+         <title value="Measles"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Varicella Zoster Vaccine (VZV)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1170"/>
+         <title value="Varicella Zoster Vaccine (VZV)"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Hepatitis B Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1029"/>
+         <title value="Anaphylactic Reaction to Hepatitis B Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Pneumococcal Conjugate Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1027"/>
+         <title value="Anaphylactic Reaction to Pneumococcal Conjugate Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Office Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+         <title value="Office Visit"/>
+      </valueSet>
+   </definition>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Anaphylactic Reaction to Streptomycin-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.199.12.1028"/>
+         <title value="Anaphylactic Reaction to Streptomycin"/>
+      </valueSet>
+   </definition>
+   <!--Influenza Vaccine-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1218"/>
+         <title value="Influenza Vaccine"/>
+      </valueSet>
+   </definition>
+   <!--Encephalopathy due to Childhood Vaccination-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.114.12.1007"/>
+         <title value="Encephalopathy due to Childhood Vaccination"/>
+      </valueSet>
+   </definition>
+   <!--Preventive Care, Established Office Visit, 0 to 17-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1024"/>
+         <title value="Preventive Care, Established Office Visit, 0 to 17"/>
+      </valueSet>
+   </definition>
+   <!--Mumps Antibody Test (IgG Antibody Titer)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1061"/>
+         <title value="Mumps Antibody Test (IgG Antibody Titer)"/>
+      </valueSet>
+   </definition>
+   <!--Hospice care ambulatory-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1108.15"/>
+         <title value="Hospice care ambulatory"/>
+      </valueSet>
+   </definition>
+   <!--Anti Hepatitis B Virus Surface Ab-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1073"/>
+         <title value="Anti Hepatitis B Virus Surface Ab"/>
+      </valueSet>
+   </definition>
+   <!--Pneumococcal Conjugate Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1046"/>
+         <title value="Pneumococcal Conjugate Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Varicella Zoster Antibody Test (IgG Antibody Presence)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1067"/>
+         <title value="Varicella Zoster Antibody Test (IgG Antibody Presence)"/>
+      </valueSet>
+   </definition>
+   <!--Rotavirus Vaccine (2 dose schedule) Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1048"/>
+         <title value="Rotavirus Vaccine (2 dose schedule) Administered"/>
+      </valueSet>
+   </definition>
+   <!--Varicella Zoster Vaccine (VZV) Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1040"/>
+         <title value="Varicella Zoster Vaccine (VZV) Administered"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Haemophilus Influenzae Type B (HiB) Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1043"/>
+         <title value="Haemophilus Influenzae Type B (HiB) Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--HIV-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.120.12.1003"/>
+         <title value="HIV"/>
+      </valueSet>
+   </definition>
+   <!--Rotavirus Vaccine (3 dose schedule)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.196.12.1223"/>
+         <title value="Rotavirus Vaccine (3 dose schedule)"/>
+      </valueSet>
+   </definition>
+   <!--Severe Combined Immunodeficiency-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.120.12.1007"/>
+         <title value="Severe Combined Immunodeficiency"/>
+      </valueSet>
+   </definition>
+   <!--Measles, Mumps and Rubella (MMR) Vaccine Administered-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1031"/>
+         <title value="Measles, Mumps and Rubella (MMR) Vaccine Administered"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis A-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1024"/>
+         <title value="Hepatitis A"/>
+      </valueSet>
+   </definition>
+   <!--Hepatitis B-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.110.12.1025"/>
+         <title value="Hepatitis B"/>
+      </valueSet>
+   </definition>
+   <!--Positive Finding-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.121.12.1016"/>
+         <title value="Positive Finding"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Home for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.209"/>
+         <title value="Discharged to Home for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Health Care Facility for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.207"/>
+         <title value="Discharged to Health Care Facility for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+         <text mediaType="text/cql">
+            <reference value="TestCMS117-5.1.021.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="TestCMS117-5.1.021.xml"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="e564e183-51c5-4232-b028-315d8e4e0a7e"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20170101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="117" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="0038" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="This Physician Performance Measure (Measure) and related data specifications was were  developed by the National Committee for Quality Assurance (NCQA). The Measure is copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices) without obtaining approval from NCQA. Commercial use is defined as the sale, licensing, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain. All commercial uses must be approved by NCQA and are subject to a license at the discretion of NCQA. NCQA is not responsible for any use of the Measure. NCQA makes no representations, warranties, or endorsement about the quality of any organization or physician that uses or reports performance measures and NCQA has no liability to anyone who relies on such measures or specifications. (C) 2012-2017 National Committee for Quality Assurance. All Rights Reserved. &#xA;&#xA;Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.&#xA;&#xA;CPT(R) contained in the Measure specifications is copyright 2004-2016 American Medical Association. LOINC(R) copyright 2004-2016 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2016 International Health Terminology Standards Development Organisation. ICD-10 copyright 2016 World Health Organization. All Rights Reserved.&#xA;&#xA;The American Hospital Association  holds a copyright to the National Uniform Billing Committee (NUBC) codes contained in the measure specifications. The NUBC codes in the specifications are included with the permission of the AHA. The NUBC codes contained in the specifications may be used by health plans and other health care delivery organizations for the purpose of calculating and reporting Measure results or using Measure results for their internal quality improvement purposes. All other uses of the NUBC codes require a license from the AHA. Anyone desiring to use the NUBC codes in a commercial product to generate Measure results, or for any other commercial use, must obtain a commercial use license directly from the AHA. To inquire about licensing, contact ub04@healthforum.com."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.&#xA;&#xA;THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA;&#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Infants and toddlers are particularly vulnerable to infectious diseases because their immune systems have not built up the necessary defenses to fight infection (Centers for Disease Control and Prevention 2011). Most childhood vaccines are between 90 and 99 percent effective in preventing diseases (HealthyChildren 2011). Immunization is a critical aspect of preventive care for children. Lack of proper immunization leads to an increase in illness, doctor visits and hospitalizations, all of which translate into higher costs. (Tatzlandrew, Brown, and Halpern). Vaccination of each U.S. birth cohort with the current childhood immunization schedule prevents approximately 42,000 deaths and 20 million cases of disease, and saves nearly $14 billion in direct costs and $69 billion in societal costs each year (Zhou 2011; Centers for Disease Control and Prevention 2011b). &#xA;&#xA;Immunizing a child not only protects that child's health but also the health of the community, especially for those who are not immunized or are unable to be immunized due to other health complications (Centers for Disease Control and Prevention 2009). When the majority of the community is immunized against a disease, other members of the community are also protected because herd immunity shields them. (National Institute of Allergy and Infectious Diseases 2010)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Summary of Recommendations for Child/Teen Immunization (Ages birth through 18 years) (Immunization Action Coalition) based on recommendations of the Advisory Committee on Immunization Practices (ACIP, 2012)&#xA;&#xA;Hepatitis B (HepB)&#xA;- Vaccinate all children age 0 through 18 years&#xA;- Vaccinate all newborns with monovalent vaccine prior to hospital discharge. Give dose #2 at age 1-2 months and the final dose at age 6-18 months (the last dose in the infant series should not be given earlier than age 24 weeks). After the birth dose, the series may be completed using 2 doses of single-antigen vaccine or up to 3 doses of Comvax(r) (ages 2 months, 4 months 12-15 months) or Pediatrix(r) (ages 2 months, 4 months, 6 months), which may result in giving a total of 4 doses of hepatitis B vaccine.&#xA;- If mother is HBsAg-positive: give the newborn HBIG + dose #1 within 12 hours of birth; complete series at age 6 months or, if using Comvax(r), at age 12-15 months. &#xA;- If mother is HBsAg status is unknown: given the newborn dose #1 within 12 hours of birth. If low birth weight (less than 2000 grams), also give HBIG within 12 hours. For infants weighing 2000 grams or more whose mother is subsequently found to be HBsAg positive, give the infant HBIG ASAP (no later than 7 days of birth) and follow HepB immunization schedule for infants born to HBsAg-positive mothers.&#xA;&#xA;4 Diptheria, tetanus, acellular pertussis vaccinations (DTap, DT)&#xA;- Give to children at ages 2 months, 4 months, 6 months, 15-18 months, 4-6 years.- May give dose #1 as early as age 6 weeks. &#xA;- May give #4 as early as age 12 months if 6 months have elapsed since #3. &#xA;- Do not give DTaP/DT to children age 7 years and older. &#xA;- If possible, use the same DTaP product for all doses. &#xA;&#xA;Hib (Haemophilus influenzae type b)&#xA;- ActHib(r) (PRP-T): give at age 2 months, 4 months, 6 months, 12-15 months (booster dose). &#xA;- PedvaxHIB(r) or Comvax(r) (containing PRP-OMP): give at age 2 months, 4 months, 12-15 months (booster dose). &#xA;- Dose #1 of Hib vaccine should not be given earlier than age 6 weeks. &#xA;- Give final dose (booster dose) no earlier than age 12 months and a minimum of 8 weeks after the previous dose. &#xA;- Hib vaccines are interchangeable; however, if different brands of Hib vaccines are administered for dose #1 and dose #2, a total of 3 doses is necessary to complete the primary series in infants. &#xA;- Any Hib vaccine may be used for the booster dose. &#xA;- Hib is not routinely given to children age 5 years and older. &#xA;- Hiberix(r) is approved ONLY for the booster dose at age 12 months through 4 years.&#xA;&#xA;Polio (IPV) &#xA;- Give to children at ages 2 months, 4 months, 6-18 months, 4-6 years.&#xA;- May give dose #1 as early as age 6 weeks.&#xA;- Not routinely recommended for U.S. residents age 18 years and older (except certain travelers).&#xA;&#xA;Measles, mumps, rubella (MMR)&#xA;- Give dose #1 at age 12-15 months. &#xA;- Give MMR at age 6 through 11 months if traveling internationally; then revaccinate at age 12 months (and at least 4 weeks from previous dose). The dose given at younger than 12 months does not count toward the 2-dose series. &#xA;- Give dose #2 at age 4-6 years. Dose #2 may be given earlier if at least 4 weeks since dose #1. For MMRV: dose #2 may be given earlier if at least 3 months since dose #1. &#xA;- Give a 2nd dose to all older children and teens with history of only 1 dose. &#xA;&#xA;MMRV may be used in children age 12 months through 12 years. For the first dose of MMR and varicella given at age 12-47 months, either MMR and Varicella (Var) or MMRV may be used. Unless the parent or caregiver expresses a preference for MMRV, CDC recommends that MMR and Var should be given for the first dose in this age group.&#xA;&#xA;Pneumococcal conjugate (PCV13)&#xA;- Give at ages 2 months, 4 months, 6 months, 12-15 months.&#xA;- Dose #1 may be given as early as age 6 weeks. &#xA;- When children are behind on PCV schedule, minimum interval for doses given to children younger than age 12 months is 4 weeks; for doses given at 12 months and older, it is 8 weeks. &#xA;- Give 1 dose to unvaccinated healthy children age 24-59 months. &#xA;- For high-risk children ages 24-71 months: give 2 doses at least 8 weeks apart if they previously received fewer than 3 doses; give 1 dose at least 8 weeks after the most recent dose if they previously received 3 doses. (High risk: those with sickle cell disease; anatomic or functional asplenia; chronic cardiac, pulmonary, or renal disease; diabetes; cerebrospinal fluid leaks; HIV infection; immunosuppression; diseases associated with immunosuppressive and/or radiation therapy; or who have or will have a cochlear implant.)&#xA;- PCV13 is not routinely given to healthy children age 5 years and older. &#xA;&#xA;Varicella (Var) &#xA;- Give dose #1 at age 12-15 months.&#xA;- Give dose #2 at age 4-6 years. Dose #2 of Var or MMRV may be given earlier if at least 3 months since dose #1. &#xA;- Give a 2nd dose to all older children/teens with history of only 1 dose. &#xA;- MMRV may be used in children age 12 months through 12 years. For the first dose of MMR and varicella given at age 12-47 months, either MMR and Var or MMRV may be used. Unless the parent or caregiver expresses a preference for MMRV, CDC recommends that MMR and Var should be given for the first dose in this age group. &#xA;&#xA;Hepatitis A (HepA)&#xA;- Give 2 doses spaced 6 to 18 months apart to all children at age 1 year (12-23 months). &#xA;&#xA;Rotavirus (RV) &#xA;- Rotarix(r) (RV1): give at age 2 months, 4 months.&#xA;- RotaTeq(r) (RV5): give at age 2 months, 4 months, 6 months. &#xA;- May give dose #1 as early as age 6 weeks. &#xA;- Give final dose no later than age 8 months 0 days.&#xA;&#xA;Influenza (trivalent inactivated influenza (TIV), live attenuated influenza vaccine (LAIV)) &#xA;- Vaccinate all children and teens age 6 months through 18 years. &#xA;- LAIV may be given to healthy, non-pregnant people age 2-49 years.&#xA;- Give 2 doses, spaced 4 weeks apart, to children age 6 months through 8 years who 1) are first-time vaccines or 2) failed to receive at least 1 dose of the 2010-2011 vaccine. &#xA;- For TIV, give 0.25 mL dose to children age 6-35 months and 0.5 mL dose if age 3 years and older. &#xA;- If LAIV and either MMR, Var, and/or yellow fever vaccine are not given on the same day, space them at least 28 days apart.&#xA;&#xA;Technical content reviewed by the Centers for Disease Control and Prevention, January 2012."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Higher score equals better quality" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Disease Control and Prevention. 2011a. &quot;Vaccines &amp; Immunizations: Infants and Toddlers.&quot; http://www.cdc.gov/vaccines/parents/infants-toddlers.html"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="HealthyChildren. 2011. &quot;Safety &amp; Prevention: Why Immunize Your Child.&quot; https://www.healthychildren.org/english/safety-prevention/immunizations/Pages/Why-Immunize-Your-Child.aspx?nfstatus=401&amp;nftoken=00000000-0000-0000-0000-000000000000&amp;nfstatusdescription=ERROR%3a+No+local+token"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Tatzlandrew, E.J., R.E. Brown, and M.T. Halpern. 1994. &quot;A cost-benefit analysis of the measles-mumps-rubella (MMR) vaccine.&quot; Arlington: Batelle Medical Technology Assessment and Policy Research Program."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Zhou, F. 2011. &quot;Updated economic evaluation of the routine childhood immunization schedule in the United States.&quot; Presented at the 45th National Immunization Conference. Washington, DC; March 28-31."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Disease Control and Prevention. 2011b. &quot;Ten Great Public Health Achievements --- United States, 2001-2010.&quot; MMWR 60(19):619-623."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Disease Control and Prevention. 2009. &quot;Vaccines &amp; Immunizations: How Vaccines Prevent Disease.&quot; http://www.cdc.gov/vaccines/vac-gen/howvpd.htm"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Institute of Allergy and Infectious Diseases. 2010. &quot;Community Immunity (&quot;Herd&quot; Immunity).&quot; https://www.vaccines.gov/basics/protection/index.html"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Disease Control and Prevention. 2012. &quot;Recommended Immunization Schedule for Persons Aged 0 Through 6 years - United States, 2012.&quot; MMWR 61(05):1-4."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Immunization Action Coalition. 2012. &quot;Summary of Recommendations for Child/Teen Immunization (Ages birth through 18 years).&quot; http://www.immunize.org/catg.d/p2010.pdf"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Recommended vaccines: Vaccines and the schedule of vaccines as recommended by the Advisory Committee in Immunization Practices (ACIP) for children two years of age. The measure may differ slightly from the ACIP recommendations because the measure focuses on immunizations that are appropriate by age 2. Also, there may be small differences when there are shortages for a particular vaccine."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For the MMR, hepatitis B, VZV and hepatitis A vaccines, numerator inclusion criteria include: evidence of receipt of the recommended vaccine; documented history of the illness; or, a seropositive test result for the antigen. For the DTaP, IPV, HiB, pneumococcal conjugate, rotavirus, and influenza vaccines, numerator inclusion criteria include only evidence of receipt of the recommended vaccine. Patients may be included in the numerator for a particular antigen if they had an anaphylactic reaction to the vaccine. Patients may be included in the numerator for the DTaP vaccine if they have encephalopathy. Patients may be included in the numerator for the IPV vaccine if they have had an anaphylactic reaction to streptomycin, polymyxin B, or neomycin. Patients may be included in the numerator for the influenza, MMR, or VZV vaccines if they have cancer of lymphoreticular or histiocytic tissue, multiple myeloma, leukemia, have had an anaphylactic reaction to neomycin, have Immunodefiency, or have HIV. Patients may be included in the numerator for the hepatitis B vaccine if they have had an anaphylactic reaction to common baker's yeast.&#xA;&#xA;The measure allows a grace period by measuring compliance with these recommendations between birth and age two."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Children who turn 2 years of age during the measurement period and who have a visit during the measurement period"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Exclude patients who were in hospice care during the measurement year"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Children who have evidence showing they received recommended vaccines, had documented history of the illness, had a seropositive test result, or had an allergic reaction to the vaccine by their second birthday"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="4979555d-2be7-46d8-8f8f-23bc4b92c642"/>
+         <title value="None"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Face-to-FaceInteraction_EncounterPerformed_CwCaJ"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="Face-to-FaceInteraction_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf265f"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1048"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DTaPVaccine_ImmunizationAdministered_9efhK"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="DTaPVaccine_ImmunizationAdministered"
+                   root="a0a28b0b-1c29-4070-b120-6d737a6972b9"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1214"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RotavirusVaccine(2doseschedule)_ImmunizationAdministered_a2FUe"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="RotavirusVaccine(2doseschedule)_ImmunizationAdministered"
+                   root="202e7a86-5cc0-4fe8-8972-3ebb68415d8a"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1222"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PneumococcalConjugateVaccine_ImmunizationAdministered_ZUVoi"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="PneumococcalConjugateVaccine_ImmunizationAdministered"
+                   root="d8656780-61b9-4cc9-b366-ac61a4844c89"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1221"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Intussusception_Diagnosis_xEbNn"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Intussusception_Diagnosis"
+                   root="d2c4392c-61f8-4047-a429-a11168349abf"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1056" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VaricellaZoster_Diagnosis_Tk3Bw"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="VaricellaZoster_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cd2634"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1039" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MalignantNeoplasmofLymphaticandHematopoieticTissue_Diagnosis_Gy14D"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="MalignantNeoplasmofLymphaticandHematopoieticTissue_Diagnosis"
+                   root="536e0100-8a5f-49b1-8c33-d4d8fe53464e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.108.12.1009" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoHepatitisAVaccine_Diagnosis_HIGMY"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoHepatitisAVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2ce2645"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1026" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoInactivatedPolioVaccine(IPV)_Diagnosis_SBrHW"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoInactivatedPolioVaccine(IPV)_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cb260d"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1023" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Mumps_Diagnosis_lVx6N"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Mumps_Diagnosis" root="40280381-3d61-56a7-013e-6224e2cc2616"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1032" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RubellaAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed_XTLa9"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="RubellaAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed"
+                   root="169f351c-aa38-44a6-962b-059bb2a00a4b"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1063"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DisordersoftheImmuneSystem_Diagnosis_AWMMY"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="DisordersoftheImmuneSystem_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cc261d"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.120.12.1001" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_1zVjI"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="61c8e41e-a315-4eec-9de2-cd432c9ac421"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RotavirusVaccine(3doseschedule)Administered_ProcedurePerformed_gp2na"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="RotavirusVaccine(3doseschedule)Administered_ProcedurePerformed"
+                   root="bd71678f-5608-47f5-ad3e-9e7448f44db4"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1047"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PreventiveCareServicesInitialOfficeVisit0to17_EncounterPerformed_6X5UO"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PreventiveCareServicesInitialOfficeVisit0to17_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf2662"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1022"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MeaslesAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed_vNmMz"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="MeaslesAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed"
+                   root="a2df8106-dd47-43b7-a7b7-6b171ae2b7db"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1059"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="InactivatedPolioVaccine(IPV)_ImmunizationAdministered_m0n0i"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="InactivatedPolioVaccine(IPV)_ImmunizationAdministered"
+                   root="4c62d166-550f-435f-b375-52b8e748d4f3"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1219"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="InfluenzaVaccineAdministered_ProcedurePerformed_sjV5A"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="InfluenzaVaccineAdministered_ProcedurePerformed"
+                   root="6f8cc55f-ac46-44f1-950f-c19cdfda07f1"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1044"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoCommonBakersYeast_Diagnosis_VNvds"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoCommonBakersYeast_Diagnosis"
+                   root="62ffa5fc-a773-417d-b46b-4ec468dd6cb1"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1032" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisBVaccine_ImmunizationAdministered_zMiWP"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="HepatitisBVaccine_ImmunizationAdministered"
+                   root="3233e46f-a9bf-4adc-b85a-34ee2f31236b"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1216"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RubellaAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed_HaAXu"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="RubellaAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed"
+                   root="e6441378-2f6d-4a58-bff9-e9eecf62453c"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1064"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="InactivatedPolioVaccine(IPV)Administered_ProcedurePerformed_hJMN2"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="InactivatedPolioVaccine(IPV)Administered_ProcedurePerformed"
+                   root="f51b4776-33e1-45c0-a2c4-1b01209cd128"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1045"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoHemophilusInfluenzaB(HiB)Vaccine_Diagnosis_SjjiM"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoHemophilusInfluenzaB(HiB)Vaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cc2620"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1030" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AntiHepatitisAIgGAntigenTest_LaboratoryTestPerformed_ynfq8"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="AntiHepatitisAIgGAntigenTest_LaboratoryTestPerformed"
+                   root="03b6ae75-b90d-449d-a4bc-3f2def94d2d7"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1033"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MumpsAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed_Wyt0G"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="MumpsAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed"
+                   root="c66b27ef-c715-4154-a26e-2e17cf3fd670"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1062"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoInfluenzaVaccine_Diagnosis_JqnXh"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoInfluenzaVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2ce2658"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1022" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoDTaPVaccine_Diagnosis_iedCH"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoDTaPVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cb2604"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1031" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Rubella_Diagnosis_8WR53"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Rubella_Diagnosis" root="40280381-3d61-56a7-013e-6224e2cc2619"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1037" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_ZnsDg"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="5e9013a0-a3a9-467b-b66c-5d4d9c2d7ceb"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DTaPVaccineAdministered_ProcedurePerformed_H8Pam"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="DTaPVaccineAdministered_ProcedurePerformed"
+                   root="e40376e4-0b34-499a-a6e8-4aa287b2df87"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1022"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MeaslesMumpsandRubella(MMR)Vaccine_ImmunizationAdministered_5MmCO"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="MeaslesMumpsandRubella(MMR)Vaccine_ImmunizationAdministered"
+                   root="40280381-3d61-56a7-013e-6224e2cc2611"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1224"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HaemophilusInfluenzaeTypeB(HiB)Vaccine_ImmunizationAdministered_WqG0t"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="HaemophilusInfluenzaeTypeB(HiB)Vaccine_ImmunizationAdministered"
+                   root="d595e9b6-4e21-4cc6-b3b8-8d64125c9d1b"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1217"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoNeomycin_Diagnosis_M0Afy"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoNeomycin_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cc2610"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1024" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VaricellaZosterAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed_w514O"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="VaricellaZosterAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed"
+                   root="70eca092-0d96-4867-94a7-92e33811f20c"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1066"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisAVaccineAdministered_ProcedurePerformed_2AXk5"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="HepatitisAVaccineAdministered_ProcedurePerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf265d"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1041"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MeaslesAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed_KMKd0"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="MeaslesAntibodyTest(IgGAntibodypresence)_LaboratoryTestPerformed"
+                   root="8dab62a0-7b42-487c-b69a-d0446f474c3d"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1060"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoPolymyxin_Diagnosis_HWkb8"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoPolymyxin_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cc260f"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1025" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisAVaccine_ImmunizationAdministered_aURyP"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="HepatitisAVaccine_ImmunizationAdministered"
+                   root="40280381-3d61-56a7-013e-6224e2cf265c"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1215"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisBVaccineAdministered_ProcedurePerformed_ge7Sc"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="HepatitisBVaccineAdministered_ProcedurePerformed"
+                   root="d0fa549e-13d9-4d2f-8a2c-907160873757"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1042"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HomeHealthcareServices_EncounterPerformed_UcEjU"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HomeHealthcareServices_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf2660"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoRotavirusVaccine_Diagnosis_sS6VP"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoRotavirusVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2ce2653"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1021" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Measles_Diagnosis_zk134"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Measles_Diagnosis" root="40280381-3d61-56a7-013e-6224e2cc2613"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1053" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_pTU5d"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="85cd8e86-bab5-40ed-ac66-e82e5ba1fdc7"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VaricellaZosterVaccine(VZV)_ImmunizationAdministered_2wVGe"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="VaricellaZosterVaccine(VZV)_ImmunizationAdministered"
+                   root="40280381-3d61-56a7-013e-6224e2cd2632"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1170"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoHepatitisBVaccine_Diagnosis_hHqQc"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoHepatitisBVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cd262e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1029" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoPneumococcalConjugateVaccine_Diagnosis_6klW2"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoPneumococcalConjugateVaccine_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cd2638"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1027" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OfficeVisit_EncounterPerformed_uOJ4j"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OfficeVisit_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf265e"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_eD6fg"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="886da608-b93b-4a8f-83ef-7e015608f448"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnaphylacticReactiontoStreptomycin_Diagnosis_aC7Kb"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AnaphylacticReactiontoStreptomycin_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cb260e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.199.12.1028" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="InfluenzaVaccine_ImmunizationAdministered_O6iXM"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="InfluenzaVaccine_ImmunizationAdministered"
+                   root="da04c8fa-b709-49f0-9b70-fcddea3452b3"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1218"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncephalopathyduetoChildhoodVaccination_Diagnosis_OjELD"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="EncephalopathyduetoChildhoodVaccination_Diagnosis"
+                   root="40280381-3d61-56a7-013e-6224e2cb2605"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.114.12.1007" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PreventiveCareEstablishedOfficeVisit0to17_EncounterPerformed_4CMGZ"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PreventiveCareEstablishedOfficeVisit0to17_EncounterPerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cf2661"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1024"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MumpsAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed_ld2Dm"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="MumpsAntibodyTest(IgGAntibodyTiter)_LaboratoryTestPerformed"
+                   root="a7090489-dfe5-414a-b999-1da914777ce1"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1061"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionOrder_pBJaZ"/>
+            <actCriteria classCode="ACT" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.35"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionOrder"
+                   root="1fdf9543-6eb4-47e6-bcfd-14f12b666724"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Order"/>
+               <statusCode code="ACTIVE"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospicecareambulatory_InterventionPerformed_5sP9g"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="Hospicecareambulatory_InterventionPerformed"
+                   root="1fdf9543-6eb4-47e6-bcfd-14f12b666724"/>
+               <code valueSet="2.16.840.1.113762.1.4.1108.15"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AntiHepatitisBVirusSurfaceAb_LaboratoryTestPerformed_oYuTd"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="AntiHepatitisBVirusSurfaceAb_LaboratoryTestPerformed"
+                   root="2d6c466c-f6e4-45a9-af1f-b68c3c51cc73"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1073"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PneumococcalConjugateVaccineAdministered_ProcedurePerformed_VRYQo"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="PneumococcalConjugateVaccineAdministered_ProcedurePerformed"
+                   root="e8794586-ac11-439d-9cea-71f833e8df12"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1046"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VaricellaZosterAntibodyTest(IgGAntibodyPresence)_LaboratoryTestPerformed_Zen1F"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="VaricellaZosterAntibodyTest(IgGAntibodyPresence)_LaboratoryTestPerformed"
+                   root="ef6a70f8-3674-42ec-aa2e-bb6671026646"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1067"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RotavirusVaccine(2doseschedule)Administered_ProcedurePerformed_RaJng"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="RotavirusVaccine(2doseschedule)Administered_ProcedurePerformed"
+                   root="52becf54-7bb9-450f-92ee-b9ca8da9416d"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1048"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VaricellaZosterVaccine(VZV)Administered_ProcedurePerformed_Q8Qzy"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="VaricellaZosterVaccine(VZV)Administered_ProcedurePerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cd2633"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1040"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_ZWAC1"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="96c36e1e-aaf5-43c0-8404-999cfe41f9ce"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HaemophilusInfluenzaeTypeB(HiB)VaccineAdministered_ProcedurePerformed_Rz4gz"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="HaemophilusInfluenzaeTypeB(HiB)VaccineAdministered_ProcedurePerformed"
+                   root="930df836-234e-4b1c-834f-51259a3bf52a"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1043"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HIV_Diagnosis_UO8r3"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="HIV_Diagnosis" root="40280381-3d61-56a7-013e-6224e2cc261e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.120.12.1003" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="RotavirusVaccine(3doseschedule)_ImmunizationAdministered_TaApA"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.112"/>
+               </templateId>
+               <id extension="RotavirusVaccine(3doseschedule)_ImmunizationAdministered"
+                   root="71e109f9-1d56-4a80-b553-c4d513007a76"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96">
+                  <displayName value="Administration"/>
+               </code>
+               <title value="Immunization, Administered"/>
+               <statusCode code="COMPLETED"/>
+               <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.464.1003.196.12.1223"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+            </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="SevereCombinedImmunodeficiency_Diagnosis_dyeKA"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="SevereCombinedImmunodeficiency_Diagnosis"
+                   root="d93f3885-daf4-4fbb-8221-b6961c8f2b66"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.120.12.1007" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MeaslesMumpsandRubella(MMR)VaccineAdministered_ProcedurePerformed_5E6Ei"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="MeaslesMumpsandRubella(MMR)VaccineAdministered_ProcedurePerformed"
+                   root="40280381-3d61-56a7-013e-6224e2cc2612"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.110.12.1031"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisA_Diagnosis_dqlVm"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="HepatitisA_Diagnosis" root="40280381-3d61-56a7-013e-6224e2ce2646"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1024" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HepatitisB_Diagnosis_UfPae"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="HepatitisB_Diagnosis" root="40280381-3d61-56a7-013e-6224e2cd262f"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.110.12.1025" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="F43C1D98-E906-4AC6-896E-CD29EAB73232"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="6E7C27DB-47C6-4235-A595-581D359E9786"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;Initial Population&quot;"
+                         root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="71878E8F-E362-4A6C-A6A8-72BDA50F3634"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;Denominator&quot;"
+                         root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="0F980805-107D-4B55-8936-35552E504DD1"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;Denominator Exclusions&quot;"
+                         root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="723B0176-AD62-43E1-95AD-5DE7796B9920"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;Numerator&quot;" root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="2580D627-9DE6-4EDE-93C0-FA859637C4FD"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;SDE Ethnicity&quot;"
+                         root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="C59612AF-D4D3-4436-AD38-60A5FE7FBABF"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;SDE Payer&quot;" root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="C801DC29-D7EC-4ABB-80A3-3BD70E4DD050"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;SDE Race&quot;" root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="893D0680-8C40-4408-AFFA-A88511AD59C4"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="TestCMS117.&quot;SDE Sex&quot;" root="D5EC85C2-EC78-4E31-AE73-02D7A0F43F44"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

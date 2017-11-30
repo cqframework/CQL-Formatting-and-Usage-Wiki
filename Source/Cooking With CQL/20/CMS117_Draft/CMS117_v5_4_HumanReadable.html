@@ -1,0 +1,2165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+ <head>
+  <title>Test CMS 117</title>
+  <style type="text/css">
+body {
+	color: rgb(26, 26, 26);
+	background-color: rgb(255,255,255);
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 11px;
+    overflow-y: auto;
+}
+
+
+
+h1 {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+
+
+
+
+tr {
+	background-color: rgb(224,224,224);
+}
+
+td {
+	padding: 0.1cm 0.2cm;
+	vertical-align: top;
+}
+
+
+
+a {
+	/*color: rgb(0, 0, 255);
+	background-color: rgb(255,255,255);*/
+}
+
+table { 
+ line-height: 10pt; 
+ width: 80%; 
+ font-size: 11px; 
+ }
+
+/*div {
+	width: 80%;
+}*/
+
+.list-unstyled {
+    list-style-type: none;
+}
+
+.list-unstyled li {
+    padding-top: 5px;
+}
+
+.list-header {
+    font-size: 12px;
+    color: rgb(0, 0, 238);
+}
+
+.list-header:hover {
+    text-decoration: underline;
+}
+
+.code {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    color:black;
+    font-size: 12px;
+}
+
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.section {
+    font-size: 10pt;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cql-keyword-new {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.cql-class, .cql-object {
+    color: rgb(25, 127, 157);
+}
+
+.cql_keyword {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_function {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_attribute {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_string {
+    color: rgb(42, 0, 255);
+}
+.cql_identifier .cql_function {
+    color: rgb(60, 76, 114);
+}
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+
+.treeview:hover input ~ label:before,
+.treeview.hover input ~ label:before {
+  opacity: 1.0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.treeview ul {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  list-style: none;
+  padding-left: 1em;
+}
+.treeview ul li span {
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -ms-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  
+}
+
+.treeview input {
+  display: none;
+}
+
+.treeview input[type=checkbox]:checked ~ ul {
+  display: none;  
+}
+
+.treeview input[type=checkbox] ~ ul {
+  max-height: 100%;
+  margin-right: 20%;
+  opacity: 1;  
+}
+
+.treeview input ~ label {
+  cursor: pointer;
+}
+.treeview input ~ label:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  border-width: 4px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: rgb(0, 0, 238);
+  border-bottom-color: rgb(0, 0, 238);
+  border-left-color: transparent;
+  opacity: 0.0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.treeview input:checked ~ label:before {
+  margin-left: -0.8em;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(0, 0, 238);
+}
+
+
+
+
+.h1center {
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+	width: 80%;
+}
+
+.header_table{
+	border: 1pt inset rgb(0,0,0);
+}
+
+.narr_table {
+	width: 100%;
+}
+
+.narr_tr {
+	background-color: rgb(225,225,225);
+}
+
+pre {
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-family: Verdana, Tahoma, sans-serif;
+ font-size: 11px;
+ text-align:left;
+ margin: 0px 0px 0px 0px;
+ padding:0px 0px 0px 0px;
+}
+.narr_th {
+	background-color: rgb(201,201,201);
+}
+
+.td_label{
+	font-weight: bold;
+	color: white;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#nn-text
+{
+    text-align: center;
+    text-align: center;
+    color:lightgrey;
+    font-size:40px;
+}
+
+.cql-definition-body {
+	width:950px;
+	display: block;
+	word-wrap: break-word;
+}li {  padding-left: 15px;}	</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">Test CMS 117</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">117</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Version number</span></td>
+     <td style="width:30%">5.1.021</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">0038</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>b2802b7a-3580-4be8-9458-921aea62b78c</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">National Committee for Quality Assurance</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">National Committee for Quality Assurance</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">National Quality Forum</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Percentage of children 2 years of age who had four diphtheria, tetanus and acellular pertussis (DTaP); three polio (IPV), one measles, mumps and rubella (MMR); three H influenza type B (HiB); three hepatitis B (Hep B); one chicken pox (VZV); four pneumococcal conjugate (PCV); one hepatitis A (Hep A); two or three rotavirus (RV); and two influenza (flu) vaccines by their second birthday</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>This Physician Performance Measure (Measure) and related data specifications was were  developed by the National Committee for Quality Assurance (NCQA). The Measure is copyrighted but can be reproduced and distributed, without modification, for noncommercial purposes (eg, use by healthcare providers in connection with their practices) without obtaining approval from NCQA. Commercial use is defined as the sale, licensing, or distribution of the Measure for commercial gain, or incorporation of the Measure into a product or service that is sold, licensed or distributed for commercial gain. All commercial uses must be approved by NCQA and are subject to a license at the discretion of NCQA. NCQA is not responsible for any use of the Measure. NCQA makes no representations, warranties, or endorsement about the quality of any organization or physician that uses or reports performance measures and NCQA has no liability to anyone who relies on such measures or specifications. (C) 2012-2017 National Committee for Quality Assurance. All Rights Reserved. 
+
+Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any CPT or other codes contained in the specifications.
+
+CPT(R) contained in the Measure specifications is copyright 2004-2016 American Medical Association. LOINC(R) copyright 2004-2016 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2016 International Health Terminology Standards Development Organisation. ICD-10 copyright 2016 World Health Organization. All Rights Reserved.
+
+The American Hospital Association  holds a copyright to the National Uniform Billing Committee (NUBC) codes contained in the measure specifications. The NUBC codes in the specifications are included with the permission of the AHA. The NUBC codes contained in the specifications may be used by health plans and other health care delivery organizations for the purpose of calculating and reporting Measure results or using Measure results for their internal quality improvement purposes. All other uses of the NUBC codes require a license from the AHA. Anyone desiring to use the NUBC codes in a commercial product to generate Measure results, or for any other commercial use, must obtain a commercial use license directly from the AHA. To inquire about licensing, contact ub04@healthforum.com.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>These performance Measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications.
+
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Proportion</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Process</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Infants and toddlers are particularly vulnerable to infectious diseases because their immune systems have not built up the necessary defenses to fight infection (Centers for Disease Control and Prevention 2011). Most childhood vaccines are between 90 and 99 percent effective in preventing diseases (HealthyChildren 2011). Immunization is a critical aspect of preventive care for children. Lack of proper immunization leads to an increase in illness, doctor visits and hospitalizations, all of which translate into higher costs. (Tatzlandrew, Brown, and Halpern). Vaccination of each U.S. birth cohort with the current childhood immunization schedule prevents approximately 42,000 deaths and 20 million cases of disease, and saves nearly $14 billion in direct costs and $69 billion in societal costs each year (Zhou 2011; Centers for Disease Control and Prevention 2011b). 
+
+Immunizing a child not only protects that child's health but also the health of the community, especially for those who are not immunized or are unable to be immunized due to other health complications (Centers for Disease Control and Prevention 2009). When the majority of the community is immunized against a disease, other members of the community are also protected because herd immunity shields them. (National Institute of Allergy and Infectious Diseases 2010).</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Summary of Recommendations for Child/Teen Immunization (Ages birth through 18 years) (Immunization Action Coalition) based on recommendations of the Advisory Committee on Immunization Practices (ACIP, 2012)
+
+Hepatitis B (HepB)
+- Vaccinate all children age 0 through 18 years
+- Vaccinate all newborns with monovalent vaccine prior to hospital discharge. Give dose #2 at age 1-2 months and the final dose at age 6-18 months (the last dose in the infant series should not be given earlier than age 24 weeks). After the birth dose, the series may be completed using 2 doses of single-antigen vaccine or up to 3 doses of Comvax(r) (ages 2 months, 4 months 12-15 months) or Pediatrix(r) (ages 2 months, 4 months, 6 months), which may result in giving a total of 4 doses of hepatitis B vaccine.
+- If mother is HBsAg-positive: give the newborn HBIG + dose #1 within 12 hours of birth; complete series at age 6 months or, if using Comvax(r), at age 12-15 months. 
+- If mother is HBsAg status is unknown: given the newborn dose #1 within 12 hours of birth. If low birth weight (less than 2000 grams), also give HBIG within 12 hours. For infants weighing 2000 grams or more whose mother is subsequently found to be HBsAg positive, give the infant HBIG ASAP (no later than 7 days of birth) and follow HepB immunization schedule for infants born to HBsAg-positive mothers.
+
+4 Diptheria, tetanus, acellular pertussis vaccinations (DTap, DT)
+- Give to children at ages 2 months, 4 months, 6 months, 15-18 months, 4-6 years.- May give dose #1 as early as age 6 weeks. 
+- May give #4 as early as age 12 months if 6 months have elapsed since #3. 
+- Do not give DTaP/DT to children age 7 years and older. 
+- If possible, use the same DTaP product for all doses. 
+
+Hib (Haemophilus influenzae type b)
+- ActHib(r) (PRP-T): give at age 2 months, 4 months, 6 months, 12-15 months (booster dose). 
+- PedvaxHIB(r) or Comvax(r) (containing PRP-OMP): give at age 2 months, 4 months, 12-15 months (booster dose). 
+- Dose #1 of Hib vaccine should not be given earlier than age 6 weeks. 
+- Give final dose (booster dose) no earlier than age 12 months and a minimum of 8 weeks after the previous dose. 
+- Hib vaccines are interchangeable; however, if different brands of Hib vaccines are administered for dose #1 and dose #2, a total of 3 doses is necessary to complete the primary series in infants. 
+- Any Hib vaccine may be used for the booster dose. 
+- Hib is not routinely given to children age 5 years and older. 
+- Hiberix(r) is approved ONLY for the booster dose at age 12 months through 4 years.
+
+Polio (IPV) 
+- Give to children at ages 2 months, 4 months, 6-18 months, 4-6 years.
+- May give dose #1 as early as age 6 weeks.
+- Not routinely recommended for U.S. residents age 18 years and older (except certain travelers).
+
+Measles, mumps, rubella (MMR)
+- Give dose #1 at age 12-15 months. 
+- Give MMR at age 6 through 11 months if traveling internationally; then revaccinate at age 12 months (and at least 4 weeks from previous dose). The dose given at younger than 12 months does not count toward the 2-dose series. 
+- Give dose #2 at age 4-6 years. Dose #2 may be given earlier if at least 4 weeks since dose #1. For MMRV: dose #2 may be given earlier if at least 3 months since dose #1. 
+- Give a 2nd dose to all older children and teens with history of only 1 dose. 
+
+MMRV may be used in children age 12 months through 12 years. For the first dose of MMR and varicella given at age 12-47 months, either MMR and Varicella (Var) or MMRV may be used. Unless the parent or caregiver expresses a preference for MMRV, CDC recommends that MMR and Var should be given for the first dose in this age group.
+
+Pneumococcal conjugate (PCV13)
+- Give at ages 2 months, 4 months, 6 months, 12-15 months.
+- Dose #1 may be given as early as age 6 weeks. 
+- When children are behind on PCV schedule, minimum interval for doses given to children younger than age 12 months is 4 weeks; for doses given at 12 months and older, it is 8 weeks. 
+- Give 1 dose to unvaccinated healthy children age 24-59 months. 
+- For high-risk children ages 24-71 months: give 2 doses at least 8 weeks apart if they previously received fewer than 3 doses; give 1 dose at least 8 weeks after the most recent dose if they previously received 3 doses. (High risk: those with sickle cell disease; anatomic or functional asplenia; chronic cardiac, pulmonary, or renal disease; diabetes; cerebrospinal fluid leaks; HIV infection; immunosuppression; diseases associated with immunosuppressive and/or radiation therapy; or who have or will have a cochlear implant.)
+- PCV13 is not routinely given to healthy children age 5 years and older. 
+
+Varicella (Var) 
+- Give dose #1 at age 12-15 months.
+- Give dose #2 at age 4-6 years. Dose #2 of Var or MMRV may be given earlier if at least 3 months since dose #1. 
+- Give a 2nd dose to all older children/teens with history of only 1 dose. 
+- MMRV may be used in children age 12 months through 12 years. For the first dose of MMR and varicella given at age 12-47 months, either MMR and Var or MMRV may be used. Unless the parent or caregiver expresses a preference for MMRV, CDC recommends that MMR and Var should be given for the first dose in this age group. 
+
+Hepatitis A (HepA)
+- Give 2 doses spaced 6 to 18 months apart to all children at age 1 year (12-23 months). 
+
+Rotavirus (RV) 
+- Rotarix(r) (RV1): give at age 2 months, 4 months.
+- RotaTeq(r) (RV5): give at age 2 months, 4 months, 6 months. 
+- May give dose #1 as early as age 6 weeks. 
+- Give final dose no later than age 8 months 0 days.
+
+Influenza (trivalent inactivated influenza (TIV), live attenuated influenza vaccine (LAIV)) 
+- Vaccinate all children and teens age 6 months through 18 years. 
+- LAIV may be given to healthy, non-pregnant people age 2-49 years.
+- Give 2 doses, spaced 4 weeks apart, to children age 6 months through 8 years who 1) are first-time vaccines or 2) failed to receive at least 1 dose of the 2010-2011 vaccine. 
+- For TIV, give 0.25 mL dose to children age 6-35 months and 0.5 mL dose if age 3 years and older. 
+- If LAIV and either MMR, Var, and/or yellow fever vaccine are not given on the same day, space them at least 28 days apart.
+
+Technical content reviewed by the Centers for Disease Control and Prevention, January 2012.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Higher score equals better quality</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. 2011a. &quot;Vaccines &amp; Immunizations: Infants and Toddlers.&quot; http://www.cdc.gov/vaccines/parents/infants-toddlers.html </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>HealthyChildren. 2011. &quot;Safety &amp; Prevention: Why Immunize Your Child.&quot; https://www.healthychildren.org/english/safety-prevention/immunizations/Pages/Why-Immunize-Your-Child.aspx?nfstatus=401&amp;nftoken=00000000-0000-0000-0000-000000000000&amp;nfstatusdescription=ERROR%3a+No+local+token </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Tatzlandrew, E.J., R.E. Brown, and M.T. Halpern. 1994. &quot;A cost-benefit analysis of the measles-mumps-rubella (MMR) vaccine.&quot; Arlington: Batelle Medical Technology Assessment and Policy Research Program.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Zhou, F. 2011. &quot;Updated economic evaluation of the routine childhood immunization schedule in the United States.&quot; Presented at the 45th National Immunization Conference. Washington, DC; March 28-31.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. 2011b. &quot;Ten Great Public Health Achievements --- United States, 2001-2010.&quot; MMWR 60(19):619-623.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. 2009. &quot;Vaccines &amp; Immunizations: How Vaccines Prevent Disease.&quot; http://www.cdc.gov/vaccines/vac-gen/howvpd.htm </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Institute of Allergy and Infectious Diseases. 2010. &quot;Community Immunity (&quot;Herd&quot; Immunity).&quot; https://www.vaccines.gov/basics/protection/index.html</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Disease Control and Prevention. 2012. &quot;Recommended Immunization Schedule for Persons Aged 0 Through 6 years - United States, 2012.&quot; MMWR 61(05):1-4.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Immunization Action Coalition. 2012. &quot;Summary of Recommendations for Child/Teen Immunization (Ages birth through 18 years).&quot; http://www.immunize.org/catg.d/p2010.pdf </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Recommended vaccines: Vaccines and the schedule of vaccines as recommended by the Advisory Committee in Immunization Practices (ACIP) for children two years of age. The measure may differ slightly from the ACIP recommendations because the measure focuses on immunizations that are appropriate by age 2. Also, there may be small differences when there are shortages for a particular vaccine.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For the MMR, hepatitis B, VZV and hepatitis A vaccines, numerator inclusion criteria include: evidence of receipt of the recommended vaccine; documented history of the illness; or, a seropositive test result for the antigen. For the DTaP, IPV, HiB, pneumococcal conjugate, rotavirus, and influenza vaccines, numerator inclusion criteria include only evidence of receipt of the recommended vaccine. Patients may be included in the numerator for a particular antigen if they had an anaphylactic reaction to the vaccine. Patients may be included in the numerator for the DTaP vaccine if they have encephalopathy. Patients may be included in the numerator for the IPV vaccine if they have had an anaphylactic reaction to streptomycin, polymyxin B, or neomycin. Patients may be included in the numerator for the influenza, MMR, or VZV vaccines if they have cancer of lymphoreticular or histiocytic tissue, multiple myeloma, leukemia, have had an anaphylactic reaction to neomycin, have Immunodefiency, or have HIV. Patients may be included in the numerator for the hepatitis B vaccine if they have had an anaphylactic reaction to common baker's yeast.
+
+The measure allows a grace period by measuring compliance with these recommendations between birth and age two.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>TBD</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Children who turn 2 years of age during the measurement period and who have a visit during the measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Equals Initial Population</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Exclude patients who were in hospice care during the measurement year</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Children who have evidence showing they received recommended vaccines, had documented history of the illness, had a seropositive test result, or had an allergic reaction to the vaccine by their second birthday</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exceptions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul style="padding-left: 50px;">
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e649">Definitions</a></li>
+   <li><a href="#d1e650">Functions</a></li>
+   <li><a href="#d1e555">Terminology</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left:10px;">
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-initialPopulation_137" /><label for="test-initialPopulation_137" class="list-header"><strong>Initial Population</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <input type="checkbox" id="test-Initial Population_824" />
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">exists ( &quot;Qualifying Encounter&quot; )
+	and AgeInYearsAt(start of &quot;Measurement Period&quot;)&gt;= 1
+	and AgeInYearsAt(end of &quot;Measurement Period&quot;)= 2</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominator_662" /><label for="test-denominator_662" class="list-header"><strong>Denominator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <input type="checkbox" id="test-Denominator_946" />
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">&quot;Initial Population&quot;</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExclusions_340" /><label for="test-denominatorExclusions_340" class="list-header"><strong>Denominator Exclusions</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <input type="checkbox" id="test-Denominator Exclusions_241" />
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">exists ( [&quot;Encounter, Performed&quot;: &quot;Encounter Inpatient&quot;] DischargeHospice
+		where ( ( DischargeHospice.dischargeDisposition in &quot;Discharged to Home for Hospice Care&quot;
+					or DischargeHospice.dischargeDisposition in &quot;Discharged to Health Care Facility for Hospice Care&quot;
+			)
+				and DischargeHospice.relevantPeriod ends during &quot;Measurement Period&quot;
+		)
+)
+	or exists ( [&quot;Intervention, Order&quot;: &quot;Hospice care ambulatory&quot;] HospiceOrder
+			where HospiceOrder.authorDatetime during &quot;Measurement Period&quot;
+	)
+	or exists ( [&quot;Intervention, Performed&quot;: &quot;Hospice care ambulatory&quot;] HospicePerformed
+			where HospicePerformed.relevantPeriod overlaps &quot;Measurement Period&quot;
+	)</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numerator_610" /><label for="test-numerator_610" class="list-header"><strong>Numerator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <input type="checkbox" id="test-Numerator_341" />
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">( exists ( &quot;DTaP Vaccinations&quot; )
+		or exists ( &quot;Numerator Compliant DTaP Conditions&quot; )
+)
+	and ( exists ( &quot;IVP Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant IVP Conditions&quot; )
+	)
+	and ( exists ( &quot;MMR Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant MMR Conditions&quot; )
+			or ( exists ( &quot;Measles Indicators&quot; )
+					and exists ( &quot;Mumps Indicators&quot; )
+					and exists ( &quot;Rubella Indicators&quot; )
+			)
+	)
+	and ( exists ( &quot;HIB Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant HIB Conditions&quot; )
+	)
+	and ( exists ( &quot;Hepatitis B Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Hepatitis B Conditions&quot; )
+	)
+	and ( exists ( &quot;VZV Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Varicella Zoster Conditions&quot; )
+	)
+	and ( exists ( &quot;Pneumococcal Conjugate Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Pneumococcal Conjugate Conditions&quot; )
+	)
+	and ( exists ( &quot;Hepatitis A Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Hepatitis A Conditions&quot; )
+	)
+	and ( exists ( &quot;Rotavirus 2 Dose Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Rotavirus Conditions&quot; )
+			or exists ( &quot;Rotavirus 2 or 3 Dose Vaccinations&quot; )
+			or exists ( &quot;Rotavirus 3 Dose Vaccinations&quot; )
+	)
+	and ( exists ( &quot;Influenza Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Influenza Conditions&quot; )
+	)</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numeratorExclusions_510" /><label for="test-numeratorExclusions_510" class="list-header"><strong>Numerator Exclusions</strong></label>
+        <ul class="code">
+         <li>
+          <div>
+           <label for="test-None_168"><strong class="cql-class">None</strong></label>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExceptions_610" /><label for="test-denominatorExceptions_610" class="list-header"><strong>Denominator Exceptions</strong></label>
+        <ul class="code">
+         <li>
+          <div>
+           <label for="test-None_954"><strong class="cql-class">None</strong></label>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-stratum_76" /><label for="test-stratum_76" class="list-header"><strong>Stratification</strong></label>
+        <ul class="code">
+         <li>
+          <div>
+           <label for="test-None_388"><strong class="cql-class">None</strong></label>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e649" href="#toc">Definitions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator_307" />
+         <label for="test-Denominator_307" class="list-header"><strong> Denominator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">&quot;Initial Population&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator Exclusions_832" />
+         <label for="test-Denominator Exclusions_832" class="list-header"><strong> Denominator Exclusions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">exists ( [&quot;Encounter, Performed&quot;: &quot;Encounter Inpatient&quot;] DischargeHospice
+		where ( ( DischargeHospice.dischargeDisposition in &quot;Discharged to Home for Hospice Care&quot;
+					or DischargeHospice.dischargeDisposition in &quot;Discharged to Health Care Facility for Hospice Care&quot;
+			)
+				and DischargeHospice.relevantPeriod ends during &quot;Measurement Period&quot;
+		)
+)
+	or exists ( [&quot;Intervention, Order&quot;: &quot;Hospice care ambulatory&quot;] HospiceOrder
+			where HospiceOrder.authorDatetime during &quot;Measurement Period&quot;
+	)
+	or exists ( [&quot;Intervention, Performed&quot;: &quot;Hospice care ambulatory&quot;] HospicePerformed
+			where HospicePerformed.relevantPeriod overlaps &quot;Measurement Period&quot;
+	)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-DTaP Immunizations or Procedures_109" />
+         <label for="test-DTaP Immunizations or Procedures_109" class="list-header"><strong> DTaP Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;DTaP Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;DTaP Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) DTaPVaccination
+	where AgeInDaysAt(DTaPVaccination.authorDatetime)&gt;= 42
+		and AgeInDaysAt(DTaPVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-DTaP Vaccinations_744" />
+         <label for="test-DTaP Vaccinations_744" class="list-header"><strong> DTaP Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;DTaP Immunizations or Procedures&quot; Vaccination1,
+	&quot;DTaP Immunizations or Procedures&quot; Vaccination2,
+	&quot;DTaP Immunizations or Procedures&quot; Vaccination3,
+	&quot;DTaP Immunizations or Procedures&quot; Vaccination4
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+		and Vaccination4.authorDatetime 1 day or more after Vaccination3.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Hepatitis A Vaccinations_514" />
+         <label for="test-Hepatitis A Vaccinations_514" class="list-header"><strong> Hepatitis A Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Hepatitis A Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Hepatitis A Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) HepAVaccination
+	where AgeInDaysAt(HepAVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Hepatitis B Immunizations or Procedures_877" />
+         <label for="test-Hepatitis B Immunizations or Procedures_877" class="list-header"><strong> Hepatitis B Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Hepatitis B Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Hepatitis B Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) HepBVaccination
+	where AgeInDaysAt(HepBVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Hepatitis B Vaccinations_657" />
+         <label for="test-Hepatitis B Vaccinations_657" class="list-header"><strong> Hepatitis B Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Hepatitis B Immunizations or Procedures&quot; Vaccination1,
+	&quot;Hepatitis B Immunizations or Procedures&quot; Vaccination2,
+	&quot;Hepatitis B Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-HIB Immunizations or Procedures_624" />
+         <label for="test-HIB Immunizations or Procedures_624" class="list-header"><strong> HIB Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Haemophilus Influenzae Type B (HiB) Vaccine&quot;] Vaccine
+	union ( [&quot;Procedure, Performed&quot;: &quot;Haemophilus Influenzae Type B (HiB) Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) HiBVaccination
+	where AgeInDaysAt(HiBVaccination.authorDatetime)&gt;= 42
+		and AgeInDaysAt(HiBVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-HIB Vaccinations_395" />
+         <label for="test-HIB Vaccinations_395" class="list-header"><strong> HIB Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;HIB Immunizations or Procedures&quot; Vaccination1,
+	&quot;HIB Immunizations or Procedures&quot; Vaccination2,
+	&quot;HIB Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Influenza Immunizations or Procedures_949" />
+         <label for="test-Influenza Immunizations or Procedures_949" class="list-header"><strong> Influenza Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Influenza Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Influenza Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) FluVaccination
+	where AgeInDaysAt(FluVaccination.authorDatetime)&gt;= 180
+		and AgeInDaysAt(FluVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Influenza Vaccinations_627" />
+         <label for="test-Influenza Vaccinations_627" class="list-header"><strong> Influenza Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Influenza Immunizations or Procedures&quot; Vaccination1,
+	&quot;Influenza Immunizations or Procedures&quot; Vaccination2
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Initial Population_573" />
+         <label for="test-Initial Population_573" class="list-header"><strong> Initial Population</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">exists ( &quot;Qualifying Encounter&quot; )
+	and AgeInYearsAt(start of &quot;Measurement Period&quot;)&gt;= 1
+	and AgeInYearsAt(end of &quot;Measurement Period&quot;)= 2</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-IVP Immunizations or Procedures_366" />
+         <label for="test-IVP Immunizations or Procedures_366" class="list-header"><strong> IVP Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Inactivated Polio Vaccine (IPV)&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Inactivated Polio Vaccine (IPV) Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) IVPVaccination
+	where AgeInDaysAt(IVPVaccination.authorDatetime)&gt;= 42
+		and AgeInDaysAt(IVPVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-IVP Vaccinations_651" />
+         <label for="test-IVP Vaccinations_651" class="list-header"><strong> IVP Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;IVP Immunizations or Procedures&quot; Vaccination1,
+	&quot;IVP Immunizations or Procedures&quot; Vaccination2,
+	&quot;IVP Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Measles Indicators_161" />
+         <label for="test-Measles Indicators_161" class="list-header"><strong> Measles Indicators</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Measles Antibody Test (IgG Antibody Titer)&quot;] Titer
+		where Titer.result &gt;= 1.10
+)
+	union ( [&quot;Laboratory Test, Performed&quot;: &quot;Measles Antibody Test (IgG Antibody presence)&quot;] IgGPresence
+			where IgGPresence.result as Code in &quot;Positive Finding&quot;
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Measles&quot;] MeaslesDiagnosis
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of MeaslesDiagnosis.prevalencePeriod }
+	) ) Measles
+	where AgeInDaysAt(Measles.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-MMR Vaccinations_796" />
+         <label for="test-MMR Vaccinations_796" class="list-header"><strong> MMR Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Measles, Mumps and Rubella (MMR) Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Measles, Mumps and Rubella (MMR) Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) MMRVaccination
+	where AgeInDaysAt(MMRVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Mumps Indicators_234" />
+         <label for="test-Mumps Indicators_234" class="list-header"><strong> Mumps Indicators</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Mumps Antibody Test (IgG Antibody Titer)&quot;] Titer
+		where Titer.result &gt;= 1.10
+)
+	union ( [&quot;Laboratory Test, Performed&quot;: &quot;Mumps Antibody Test (IgG Antibody presence)&quot;] IgGPresence
+			where IgGPresence.result as Code in &quot;Positive Finding&quot;
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Mumps&quot;] MumpsDiagnosis
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of MumpsDiagnosis.prevalencePeriod }
+	) ) Mumps
+	where AgeInDaysAt(Mumps.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator_374" />
+         <label for="test-Numerator_374" class="list-header"><strong> Numerator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( exists ( &quot;DTaP Vaccinations&quot; )
+		or exists ( &quot;Numerator Compliant DTaP Conditions&quot; )
+)
+	and ( exists ( &quot;IVP Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant IVP Conditions&quot; )
+	)
+	and ( exists ( &quot;MMR Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant MMR Conditions&quot; )
+			or ( exists ( &quot;Measles Indicators&quot; )
+					and exists ( &quot;Mumps Indicators&quot; )
+					and exists ( &quot;Rubella Indicators&quot; )
+			)
+	)
+	and ( exists ( &quot;HIB Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant HIB Conditions&quot; )
+	)
+	and ( exists ( &quot;Hepatitis B Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Hepatitis B Conditions&quot; )
+	)
+	and ( exists ( &quot;VZV Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Varicella Zoster Conditions&quot; )
+	)
+	and ( exists ( &quot;Pneumococcal Conjugate Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Pneumococcal Conjugate Conditions&quot; )
+	)
+	and ( exists ( &quot;Hepatitis A Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Hepatitis A Conditions&quot; )
+	)
+	and ( exists ( &quot;Rotavirus 2 Dose Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Rotavirus Conditions&quot; )
+			or exists ( &quot;Rotavirus 2 or 3 Dose Vaccinations&quot; )
+			or exists ( &quot;Rotavirus 3 Dose Vaccinations&quot; )
+	)
+	and ( exists ( &quot;Influenza Vaccinations&quot; )
+			or exists ( &quot;Numerator Compliant Influenza Conditions&quot; )
+	)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant DTaP Conditions_891" />
+         <label for="test-Numerator Compliant DTaP Conditions_891" class="list-header"><strong> Numerator Compliant DTaP Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to DTaP Vaccine&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Encephalopathy due to Childhood Vaccination&quot;] ) DPaTConditions
+	where AgeInDaysAt(start of DPaTConditions.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Hepatitis A Conditions_41" />
+         <label for="test-Numerator Compliant Hepatitis A Conditions_41" class="list-header"><strong> Numerator Compliant Hepatitis A Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Anti Hepatitis A IgG Antigen Test&quot;] HepAAntigenTest
+		where HepAAntigenTest.result as Code in &quot;Positive Finding&quot;
+)
+	union ( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Hepatitis A Vaccine&quot;] HepAReaction
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of HepAReaction.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Hepatitis A&quot;] HepADiagnosis
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of HepADiagnosis.prevalencePeriod }
+	) ) HepAConditions
+	where AgeInDaysAt(HepAConditions.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Hepatitis B Conditions_219" />
+         <label for="test-Numerator Compliant Hepatitis B Conditions_219" class="list-header"><strong> Numerator Compliant Hepatitis B Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Anti Hepatitis B Virus Surface Ab&quot;] HepBAntigenTest
+		where HepBAntigenTest.result as Code in &quot;Positive Finding&quot;
+)
+	union ( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Hepatitis B Vaccine&quot;] HepBReaction
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of HepBReaction.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Common Baker's Yeast&quot;] YeastReaction
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of YeastReaction.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Hepatitis B&quot;] HepBDiagnosis
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of HepBDiagnosis.prevalencePeriod }
+	) ) HepBConditions
+	where AgeInDaysAt(HepBConditions.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant HIB Conditions_218" />
+         <label for="test-Numerator Compliant HIB Conditions_218" class="list-header"><strong> Numerator Compliant HIB Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine&quot;] HIBReaction
+	where AgeInDaysAt(start of HIBReaction.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Influenza Conditions_443" />
+         <label for="test-Numerator Compliant Influenza Conditions_443" class="list-header"><strong> Numerator Compliant Influenza Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Influenza Vaccine&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Malignant Neoplasm of Lymphatic and Hematopoietic Tissue&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Neomycin&quot;]
+	union [&quot;Diagnosis&quot;: &quot;HIV&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Disorders of the Immune System&quot;] ) InfluenzaConditions
+	where AgeInDaysAt(start of InfluenzaConditions.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant IVP Conditions_876" />
+         <label for="test-Numerator Compliant IVP Conditions_876" class="list-header"><strong> Numerator Compliant IVP Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Inactivated Polio Vaccine (IPV)&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Streptomycin&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Polymyxin&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Neomycin&quot;] ) IVPConditions
+	where AgeInDaysAt(start of IVPConditions.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant MMR Conditions_554" />
+         <label for="test-Numerator Compliant MMR Conditions_554" class="list-header"><strong> Numerator Compliant MMR Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Diagnosis&quot;: &quot;Disorders of the Immune System&quot;]
+	union [&quot;Diagnosis&quot;: &quot;HIV&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Malignant Neoplasm of Lymphatic and Hematopoietic Tissue&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Neomycin&quot;] ) MMRConditions
+	where AgeInDaysAt(start of MMRConditions.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Pneumococcal Conjugate Conditions_613" />
+         <label for="test-Numerator Compliant Pneumococcal Conjugate Conditions_613" class="list-header"><strong> Numerator Compliant Pneumococcal Conjugate Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Pneumococcal Conjugate Vaccine&quot;] PCVReaction
+	where AgeInDaysAt(start of PCVReaction.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Rotavirus Conditions_9" />
+         <label for="test-Numerator Compliant Rotavirus Conditions_9" class="list-header"><strong> Numerator Compliant Rotavirus Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Rotavirus Vaccine&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Severe Combined Immunodeficiency&quot;]
+	union [&quot;Diagnosis&quot;: &quot;Intussusception&quot;] ) RotavirusConditions
+	where AgeInDaysAt(start of RotavirusConditions.prevalencePeriod)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator Compliant Varicella Zoster Conditions_620" />
+         <label for="test-Numerator Compliant Varicella Zoster Conditions_620" class="list-header"><strong> Numerator Compliant Varicella Zoster Conditions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Varicella Zoster Antibody Test (IgG Antibody Titer)&quot;] Titer
+		where Titer.result &gt;= 1.10
+)
+	union ( [&quot;Laboratory Test, Performed&quot;: &quot;Varicella Zoster Antibody Test (IgG Antibody Presence)&quot;] IgGPresence
+			where IgGPresence.result as Code in &quot;Positive Finding&quot;
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Disorders of the Immune System&quot;] ImmuneDisorder
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of ImmuneDisorder.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;HIV&quot;] HIV
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of HIV.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Malignant Neoplasm of Lymphatic and Hematopoietic Tissue&quot;] MalignantNeoplasm
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of MalignantNeoplasm.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Anaphylactic Reaction to Neomycin&quot;] NeomycinReaction
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of NeomycinReaction.prevalencePeriod }
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Varicella Zoster&quot;] VaricellaZoster
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of VaricellaZoster.prevalencePeriod }
+	) ) VaricellaZosterConditions
+	where AgeInDaysAt(VaricellaZosterConditions.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Pneumococcal Conjugate Immunizations or Procedures_530" />
+         <label for="test-Pneumococcal Conjugate Immunizations or Procedures_530" class="list-header"><strong> Pneumococcal Conjugate Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Pneumococcal Conjugate Vaccine&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Pneumococcal Conjugate Vaccine Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) PneumococcalVaccination
+	where AgeInDaysAt(PneumococcalVaccination.authorDatetime)&gt;= 42
+		and AgeInDaysAt(PneumococcalVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Pneumococcal Conjugate Vaccinations_51" />
+         <label for="test-Pneumococcal Conjugate Vaccinations_51" class="list-header"><strong> Pneumococcal Conjugate Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Pneumococcal Conjugate Immunizations or Procedures&quot; Vaccination1,
+	&quot;Pneumococcal Conjugate Immunizations or Procedures&quot; Vaccination2,
+	&quot;Pneumococcal Conjugate Immunizations or Procedures&quot; Vaccination3,
+	&quot;Pneumococcal Conjugate Immunizations or Procedures&quot; Vaccination4
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+		and Vaccination4.authorDatetime 1 day or more after Vaccination3.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Qualifying Encounter_878" />
+         <label for="test-Qualifying Encounter_878" class="list-header"><strong> Qualifying Encounter</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Encounter, Performed&quot;: &quot;Office Visit&quot;]
+	union [&quot;Encounter, Performed&quot;: &quot;Face-to-Face Interaction&quot;]
+	union [&quot;Encounter, Performed&quot;: &quot;Home Healthcare Services&quot;]
+	union [&quot;Encounter, Performed&quot;: &quot;Preventive Care, Established Office Visit, 0 to 17&quot;]
+	union [&quot;Encounter, Performed&quot;: &quot;Preventive Care Services, Initial Office Visit, 0 to 17&quot;] ) QualifyingEncounter
+	where QualifyingEncounter.relevantPeriod during &quot;Measurement Period&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 Dose Immunizations or Procedures_269" />
+         <label for="test-Rotavirus 2 Dose Immunizations or Procedures_269" class="list-header"><strong> Rotavirus 2 Dose Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Rotavirus Vaccine (2 dose schedule)&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Rotavirus Vaccine (2 dose schedule) Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) TwoDoseRotavirus
+	where AgeInDaysAt(TwoDoseRotavirus.authorDatetime)&gt;= 42
+		and AgeInDaysAt(TwoDoseRotavirus.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 Dose Vaccinations_998" />
+         <label for="test-Rotavirus 2 Dose Vaccinations_998" class="list-header"><strong> Rotavirus 2 Dose Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Rotavirus 2 Dose Immunizations or Procedures&quot; Vaccination1,
+	&quot;Rotavirus 2 Dose Immunizations or Procedures&quot; Vaccination2
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 or 3 Dose Vaccinations_161" />
+         <label for="test-Rotavirus 2 or 3 Dose Vaccinations_161" class="list-header"><strong> Rotavirus 2 or 3 Dose Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( &quot;Rotavirus 2 or 3 Dose Vaccinations A&quot;
+		union &quot;Rotavirus 2 or 3 Dose Vaccinations B&quot;
+		union &quot;Rotavirus 2 or 3 Dose Vaccinations C&quot;
+)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 or 3 Dose Vaccinations A_346" />
+         <label for="test-Rotavirus 2 or 3 Dose Vaccinations A_346" class="list-header"><strong> Rotavirus 2 or 3 Dose Vaccinations A</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Rotavirus 2 Dose Immunizations or Procedures&quot; Vaccination1,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination2,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 or 3 Dose Vaccinations B_627" />
+         <label for="test-Rotavirus 2 or 3 Dose Vaccinations B_627" class="list-header"><strong> Rotavirus 2 or 3 Dose Vaccinations B</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination1,
+	&quot;Rotavirus 2 Dose Immunizations or Procedures&quot; Vaccination2,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 2 or 3 Dose Vaccinations C_547" />
+         <label for="test-Rotavirus 2 or 3 Dose Vaccinations C_547" class="list-header"><strong> Rotavirus 2 or 3 Dose Vaccinations C</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination1,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination2,
+	&quot;Rotavirus 2 Dose Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 3 Dose Immunizations or Procedures_459" />
+         <label for="test-Rotavirus 3 Dose Immunizations or Procedures_459" class="list-header"><strong> Rotavirus 3 Dose Immunizations or Procedures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Rotavirus Vaccine (3 dose schedule)&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Rotavirus Vaccine (3 dose schedule) Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) ThreeDoseRotavirus
+	where AgeInDaysAt(ThreeDoseRotavirus.authorDatetime)&gt;= 42
+		and AgeInDaysAt(ThreeDoseRotavirus.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rotavirus 3 Dose Vaccinations_501" />
+         <label for="test-Rotavirus 3 Dose Vaccinations_501" class="list-header"><strong> Rotavirus 3 Dose Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">from
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination1,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination2,
+	&quot;Rotavirus 3 Dose Immunizations or Procedures&quot; Vaccination3
+	where Vaccination2.authorDatetime 1 day or more after Vaccination1.authorDatetime
+		and Vaccination3.authorDatetime 1 day or more after Vaccination2.authorDatetime
+	return Vaccination1</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Rubella Indicators_414" />
+         <label for="test-Rubella Indicators_414" class="list-header"><strong> Rubella Indicators</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( [&quot;Laboratory Test, Performed&quot;: &quot;Rubella Antibody Test (IgG Antibody Titer)&quot;] Titer
+		where Titer.result &gt;= 1.10
+)
+	union ( [&quot;Laboratory Test, Performed&quot;: &quot;Rubella Antibody Test (IgG Antibody presence)&quot;] IgGPresence
+			where IgGPresence.result as Code in &quot;Positive Finding&quot;
+	)
+	union ( [&quot;Diagnosis&quot;: &quot;Rubella&quot;] RubellaDiagnosis
+			return &quot;Laboratory Test, Performed&quot; { authorDatetime: start of RubellaDiagnosis.prevalencePeriod }
+	) ) Rubella
+	where AgeInDaysAt(Rubella.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE Ethnicity_796" />
+         <label for="test-SDE Ethnicity_796" class="list-header"><strong> SDE Ethnicity</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Ethnicity&quot;: &quot;Ethnicity&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE Payer_500" />
+         <label for="test-SDE Payer_500" class="list-header"><strong> SDE Payer</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Payer&quot;: &quot;Payer&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE Race_36" />
+         <label for="test-SDE Race_36" class="list-header"><strong> SDE Race</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Race&quot;: &quot;Race&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE Sex_609" />
+         <label for="test-SDE Sex_609" class="list-header"><strong> SDE Sex</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Sex&quot;: &quot;ONC Administrative Sex&quot;] </pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-VZV Vaccinations_500" />
+         <label for="test-VZV Vaccinations_500" class="list-header"><strong> VZV Vaccinations</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( [&quot;Immunization, Administered&quot;: &quot;Varicella Zoster Vaccine (VZV)&quot;]
+	union ( [&quot;Procedure, Performed&quot;: &quot;Varicella Zoster Vaccine (VZV) Administered&quot;] Procedure
+			return &quot;Immunization, Administered&quot; { authorDatetime: start of Procedure.relevantPeriod }
+	) ) VZVVaccination
+	where AgeInDaysAt(VZVVaccination.authorDatetime)&lt;= 730</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e650" href="#toc">Functions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div></div></li>
+    <li>None</li>
+   </ul>
+  </div>
+  <h3><a name="d1e555" href="#toc">Terminology</a></h3>
+  <div>
+   <ul style="padding-left: 50px;">
+    <li>valueset &quot;Anaphylactic Reaction to Common Baker's Yeast&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1032&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to DTaP Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1031&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1030&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Hepatitis A Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1026&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Hepatitis B Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1029&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Inactivated Polio Vaccine (IPV)&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1023&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Influenza Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1022&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Neomycin&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1024&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Pneumococcal Conjugate Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1027&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Polymyxin&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1025&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Rotavirus Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1021&quot;</li>
+    <li>valueset &quot;Anaphylactic Reaction to Streptomycin&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1028&quot;</li>
+    <li>valueset &quot;Anti Hepatitis A IgG Antigen Test&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1033&quot;</li>
+    <li>valueset &quot;Anti Hepatitis B Virus Surface Ab&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1073&quot;</li>
+    <li>valueset &quot;Discharged to Health Care Facility for Hospice Care&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.207&quot;</li>
+    <li>valueset &quot;Discharged to Home for Hospice Care&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.209&quot;</li>
+    <li>valueset &quot;Disorders of the Immune System&quot; using &quot;2.16.840.1.113883.3.464.1003.120.12.1001&quot;</li>
+    <li>valueset &quot;DTaP Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1022&quot;</li>
+    <li>valueset &quot;DTaP Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1214&quot;</li>
+    <li>valueset &quot;Encephalopathy due to Childhood Vaccination&quot; using &quot;2.16.840.1.113883.3.464.1003.114.12.1007&quot;</li>
+    <li>valueset &quot;Encounter Inpatient&quot; using &quot;2.16.840.1.113883.3.666.5.307&quot;</li>
+    <li>valueset &quot;Ethnicity&quot; using &quot;2.16.840.1.114222.4.11.837&quot;</li>
+    <li>valueset &quot;Face-to-Face Interaction&quot; using &quot;2.16.840.1.113883.3.464.1003.101.12.1048&quot;</li>
+    <li>valueset &quot;Haemophilus Influenzae Type B (HiB) Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1043&quot;</li>
+    <li>valueset &quot;Haemophilus Influenzae Type B (HiB) Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1217&quot;</li>
+    <li>valueset &quot;Hepatitis A Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1041&quot;</li>
+    <li>valueset &quot;Hepatitis A Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1215&quot;</li>
+    <li>valueset &quot;Hepatitis A&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1024&quot;</li>
+    <li>valueset &quot;Hepatitis B Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1042&quot;</li>
+    <li>valueset &quot;Hepatitis B Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1216&quot;</li>
+    <li>valueset &quot;Hepatitis B&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1025&quot;</li>
+    <li>valueset &quot;HIV&quot; using &quot;2.16.840.1.113883.3.464.1003.120.12.1003&quot;</li>
+    <li>valueset &quot;Home Healthcare Services&quot; using &quot;2.16.840.1.113883.3.464.1003.101.12.1016&quot;</li>
+    <li>valueset &quot;Hospice care ambulatory&quot; using &quot;2.16.840.1.113762.1.4.1108.15&quot;</li>
+    <li>valueset &quot;Inactivated Polio Vaccine (IPV) Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1045&quot;</li>
+    <li>valueset &quot;Inactivated Polio Vaccine (IPV)&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1219&quot;</li>
+    <li>valueset &quot;Influenza Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1044&quot;</li>
+    <li>valueset &quot;Influenza Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1218&quot;</li>
+    <li>valueset &quot;Intussusception&quot; using &quot;2.16.840.1.113883.3.464.1003.199.12.1056&quot;</li>
+    <li>valueset &quot;Malignant Neoplasm of Lymphatic and Hematopoietic Tissue&quot; using &quot;2.16.840.1.113883.3.464.1003.108.12.1009&quot;</li>
+    <li>valueset &quot;Measles Antibody Test (IgG Antibody presence)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1060&quot;</li>
+    <li>valueset &quot;Measles Antibody Test (IgG Antibody Titer)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1059&quot;</li>
+    <li>valueset &quot;Measles&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1053&quot;</li>
+    <li>valueset &quot;Measles, Mumps and Rubella (MMR) Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1031&quot;</li>
+    <li>valueset &quot;Measles, Mumps and Rubella (MMR) Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1224&quot;</li>
+    <li>valueset &quot;Mumps Antibody Test (IgG Antibody presence)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1062&quot;</li>
+    <li>valueset &quot;Mumps Antibody Test (IgG Antibody Titer)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1061&quot;</li>
+    <li>valueset &quot;Mumps&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1032&quot;</li>
+    <li>valueset &quot;Office Visit&quot; using &quot;2.16.840.1.113883.3.464.1003.101.12.1001&quot;</li>
+    <li>valueset &quot;ONC Administrative Sex&quot; using &quot;2.16.840.1.113762.1.4.1&quot;</li>
+    <li>valueset &quot;Payer&quot; using &quot;2.16.840.1.114222.4.11.3591&quot;</li>
+    <li>valueset &quot;Pneumococcal Conjugate Vaccine Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1046&quot;</li>
+    <li>valueset &quot;Pneumococcal Conjugate Vaccine&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1221&quot;</li>
+    <li>valueset &quot;Positive Finding&quot; using &quot;2.16.840.1.113883.3.464.1003.121.12.1016&quot;</li>
+    <li>valueset &quot;Preventive Care Services, Initial Office Visit, 0 to 17&quot; using &quot;2.16.840.1.113883.3.464.1003.101.12.1022&quot;</li>
+    <li>valueset &quot;Preventive Care, Established Office Visit, 0 to 17&quot; using &quot;2.16.840.1.113883.3.464.1003.101.12.1024&quot;</li>
+    <li>valueset &quot;Race&quot; using &quot;2.16.840.1.114222.4.11.836&quot;</li>
+    <li>valueset &quot;Rotavirus Vaccine (2 dose schedule) Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1048&quot;</li>
+    <li>valueset &quot;Rotavirus Vaccine (2 dose schedule)&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1222&quot;</li>
+    <li>valueset &quot;Rotavirus Vaccine (3 dose schedule) Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1047&quot;</li>
+    <li>valueset &quot;Rotavirus Vaccine (3 dose schedule)&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1223&quot;</li>
+    <li>valueset &quot;Rubella Antibody Test (IgG Antibody presence)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1064&quot;</li>
+    <li>valueset &quot;Rubella Antibody Test (IgG Antibody Titer)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1063&quot;</li>
+    <li>valueset &quot;Rubella&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1037&quot;</li>
+    <li>valueset &quot;Severe Combined Immunodeficiency&quot; using &quot;2.16.840.1.113883.3.464.1003.120.12.1007&quot;</li>
+    <li>valueset &quot;Varicella Zoster Antibody Test (IgG Antibody Presence)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1067&quot;</li>
+    <li>valueset &quot;Varicella Zoster Antibody Test (IgG Antibody Titer)&quot; using &quot;2.16.840.1.113883.3.464.1003.198.12.1066&quot;</li>
+    <li>valueset &quot;Varicella Zoster Vaccine (VZV) Administered&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1040&quot;</li>
+    <li>valueset &quot;Varicella Zoster Vaccine (VZV)&quot; using &quot;2.16.840.1.113883.3.464.1003.196.12.1170&quot;</li>
+    <li>valueset &quot;Varicella Zoster&quot; using &quot;2.16.840.1.113883.3.464.1003.110.12.1039&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <ul style="padding-left: 50px;">
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Common Baker's Yeast&quot; using &quot;Anaphylactic Reaction to Common Baker's Yeast (2.16.840.1.113883.3.464.1003.199.12.1032)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to DTaP Vaccine&quot; using &quot;Anaphylactic Reaction to DTaP Vaccine (2.16.840.1.113883.3.464.1003.199.12.1031)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine&quot; using &quot;Anaphylactic Reaction to Hemophilus Influenza B (HiB) Vaccine (2.16.840.1.113883.3.464.1003.199.12.1030)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Hepatitis A Vaccine&quot; using &quot;Anaphylactic Reaction to Hepatitis A Vaccine (2.16.840.1.113883.3.464.1003.199.12.1026)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Hepatitis B Vaccine&quot; using &quot;Anaphylactic Reaction to Hepatitis B Vaccine (2.16.840.1.113883.3.464.1003.199.12.1029)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Inactivated Polio Vaccine (IPV)&quot; using &quot;Anaphylactic Reaction to Inactivated Polio Vaccine (IPV) (2.16.840.1.113883.3.464.1003.199.12.1023)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Influenza Vaccine&quot; using &quot;Anaphylactic Reaction to Influenza Vaccine (2.16.840.1.113883.3.464.1003.199.12.1022)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Neomycin&quot; using &quot;Anaphylactic Reaction to Neomycin (2.16.840.1.113883.3.464.1003.199.12.1024)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Pneumococcal Conjugate Vaccine&quot; using &quot;Anaphylactic Reaction to Pneumococcal Conjugate Vaccine (2.16.840.1.113883.3.464.1003.199.12.1027)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Polymyxin&quot; using &quot;Anaphylactic Reaction to Polymyxin (2.16.840.1.113883.3.464.1003.199.12.1025)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Rotavirus Vaccine&quot; using &quot;Anaphylactic Reaction to Rotavirus Vaccine (2.16.840.1.113883.3.464.1003.199.12.1021)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Anaphylactic Reaction to Streptomycin&quot; using &quot;Anaphylactic Reaction to Streptomycin (2.16.840.1.113883.3.464.1003.199.12.1028)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Disorders of the Immune System&quot; using &quot;Disorders of the Immune System (2.16.840.1.113883.3.464.1003.120.12.1001)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Encephalopathy due to Childhood Vaccination&quot; using &quot;Encephalopathy due to Childhood Vaccination (2.16.840.1.113883.3.464.1003.114.12.1007)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Hepatitis A&quot; using &quot;Hepatitis A (2.16.840.1.113883.3.464.1003.110.12.1024)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Hepatitis B&quot; using &quot;Hepatitis B (2.16.840.1.113883.3.464.1003.110.12.1025)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: HIV&quot; using &quot;HIV (2.16.840.1.113883.3.464.1003.120.12.1003)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Intussusception&quot; using &quot;Intussusception (2.16.840.1.113883.3.464.1003.199.12.1056)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Malignant Neoplasm of Lymphatic and Hematopoietic Tissue&quot; using &quot;Malignant Neoplasm of Lymphatic and Hematopoietic Tissue (2.16.840.1.113883.3.464.1003.108.12.1009)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Measles&quot; using &quot;Measles (2.16.840.1.113883.3.464.1003.110.12.1053)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Mumps&quot; using &quot;Mumps (2.16.840.1.113883.3.464.1003.110.12.1032)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Rubella&quot; using &quot;Rubella (2.16.840.1.113883.3.464.1003.110.12.1037)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Severe Combined Immunodeficiency&quot; using &quot;Severe Combined Immunodeficiency (2.16.840.1.113883.3.464.1003.120.12.1007)&quot;</li>
+   <li style="width:80%">&quot;Diagnosis: Varicella Zoster&quot; using &quot;Varicella Zoster (2.16.840.1.113883.3.464.1003.110.12.1039)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Encounter Inpatient&quot; using &quot;Encounter Inpatient (2.16.840.1.113883.3.666.5.307)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Face-to-Face Interaction&quot; using &quot;Face-to-Face Interaction (2.16.840.1.113883.3.464.1003.101.12.1048)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Home Healthcare Services&quot; using &quot;Home Healthcare Services (2.16.840.1.113883.3.464.1003.101.12.1016)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Office Visit&quot; using &quot;Office Visit (2.16.840.1.113883.3.464.1003.101.12.1001)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Preventive Care Services, Initial Office Visit, 0 to 17&quot; using &quot;Preventive Care Services, Initial Office Visit, 0 to 17 (2.16.840.1.113883.3.464.1003.101.12.1022)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Preventive Care, Established Office Visit, 0 to 17&quot; using &quot;Preventive Care, Established Office Visit, 0 to 17 (2.16.840.1.113883.3.464.1003.101.12.1024)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: DTaP Vaccine&quot; using &quot;DTaP Vaccine (2.16.840.1.113883.3.464.1003.196.12.1214)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Haemophilus Influenzae Type B (HiB) Vaccine&quot; using &quot;Haemophilus Influenzae Type B (HiB) Vaccine (2.16.840.1.113883.3.464.1003.196.12.1217)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Hepatitis A Vaccine&quot; using &quot;Hepatitis A Vaccine (2.16.840.1.113883.3.464.1003.196.12.1215)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Hepatitis B Vaccine&quot; using &quot;Hepatitis B Vaccine (2.16.840.1.113883.3.464.1003.196.12.1216)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Inactivated Polio Vaccine (IPV)&quot; using &quot;Inactivated Polio Vaccine (IPV) (2.16.840.1.113883.3.464.1003.196.12.1219)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Influenza Vaccine&quot; using &quot;Influenza Vaccine (2.16.840.1.113883.3.464.1003.196.12.1218)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Measles, Mumps and Rubella (MMR) Vaccine&quot; using &quot;Measles, Mumps and Rubella (MMR) Vaccine (2.16.840.1.113883.3.464.1003.196.12.1224)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Pneumococcal Conjugate Vaccine&quot; using &quot;Pneumococcal Conjugate Vaccine (2.16.840.1.113883.3.464.1003.196.12.1221)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Rotavirus Vaccine (2 dose schedule)&quot; using &quot;Rotavirus Vaccine (2 dose schedule) (2.16.840.1.113883.3.464.1003.196.12.1222)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Rotavirus Vaccine (3 dose schedule)&quot; using &quot;Rotavirus Vaccine (3 dose schedule) (2.16.840.1.113883.3.464.1003.196.12.1223)&quot;</li>
+   <li style="width:80%">&quot;Immunization, Administered: Varicella Zoster Vaccine (VZV)&quot; using &quot;Varicella Zoster Vaccine (VZV) (2.16.840.1.113883.3.464.1003.196.12.1170)&quot;</li>
+   <li style="width:80%">&quot;Intervention, Order: Hospice care ambulatory&quot; using &quot;Hospice care ambulatory (2.16.840.1.113762.1.4.1108.15)&quot;</li>
+   <li style="width:80%">&quot;Intervention, Performed: Hospice care ambulatory&quot; using &quot;Hospice care ambulatory (2.16.840.1.113762.1.4.1108.15)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Anti Hepatitis A IgG Antigen Test&quot; using &quot;Anti Hepatitis A IgG Antigen Test (2.16.840.1.113883.3.464.1003.198.12.1033)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Anti Hepatitis B Virus Surface Ab&quot; using &quot;Anti Hepatitis B Virus Surface Ab (2.16.840.1.113883.3.464.1003.198.12.1073)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Measles Antibody Test (IgG Antibody presence)&quot; using &quot;Measles Antibody Test (IgG Antibody presence) (2.16.840.1.113883.3.464.1003.198.12.1060)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Measles Antibody Test (IgG Antibody Titer)&quot; using &quot;Measles Antibody Test (IgG Antibody Titer) (2.16.840.1.113883.3.464.1003.198.12.1059)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Mumps Antibody Test (IgG Antibody presence)&quot; using &quot;Mumps Antibody Test (IgG Antibody presence) (2.16.840.1.113883.3.464.1003.198.12.1062)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Mumps Antibody Test (IgG Antibody Titer)&quot; using &quot;Mumps Antibody Test (IgG Antibody Titer) (2.16.840.1.113883.3.464.1003.198.12.1061)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Rubella Antibody Test (IgG Antibody presence)&quot; using &quot;Rubella Antibody Test (IgG Antibody presence) (2.16.840.1.113883.3.464.1003.198.12.1064)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Rubella Antibody Test (IgG Antibody Titer)&quot; using &quot;Rubella Antibody Test (IgG Antibody Titer) (2.16.840.1.113883.3.464.1003.198.12.1063)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Varicella Zoster Antibody Test (IgG Antibody Presence)&quot; using &quot;Varicella Zoster Antibody Test (IgG Antibody Presence) (2.16.840.1.113883.3.464.1003.198.12.1067)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: Varicella Zoster Antibody Test (IgG Antibody Titer)&quot; using &quot;Varicella Zoster Antibody Test (IgG Antibody Titer) (2.16.840.1.113883.3.464.1003.198.12.1066)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Ethnicity: Ethnicity&quot; using &quot;Ethnicity (2.16.840.1.114222.4.11.837)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Payer: Payer&quot; using &quot;Payer (2.16.840.1.114222.4.11.3591)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Race: Race&quot; using &quot;Race (2.16.840.1.114222.4.11.836)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Sex: ONC Administrative Sex&quot; using &quot;ONC Administrative Sex (2.16.840.1.113762.1.4.1)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: DTaP Vaccine Administered&quot; using &quot;DTaP Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1022)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Haemophilus Influenzae Type B (HiB) Vaccine Administered&quot; using &quot;Haemophilus Influenzae Type B (HiB) Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1043)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Hepatitis A Vaccine Administered&quot; using &quot;Hepatitis A Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1041)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Hepatitis B Vaccine Administered&quot; using &quot;Hepatitis B Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1042)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Inactivated Polio Vaccine (IPV) Administered&quot; using &quot;Inactivated Polio Vaccine (IPV) Administered (2.16.840.1.113883.3.464.1003.110.12.1045)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Influenza Vaccine Administered&quot; using &quot;Influenza Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1044)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Measles, Mumps and Rubella (MMR) Vaccine Administered&quot; using &quot;Measles, Mumps and Rubella (MMR) Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1031)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Pneumococcal Conjugate Vaccine Administered&quot; using &quot;Pneumococcal Conjugate Vaccine Administered (2.16.840.1.113883.3.464.1003.110.12.1046)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Rotavirus Vaccine (2 dose schedule) Administered&quot; using &quot;Rotavirus Vaccine (2 dose schedule) Administered (2.16.840.1.113883.3.464.1003.110.12.1048)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Rotavirus Vaccine (3 dose schedule) Administered&quot; using &quot;Rotavirus Vaccine (3 dose schedule) Administered (2.16.840.1.113883.3.464.1003.110.12.1047)&quot;</li>
+   <li style="width:80%">&quot;Procedure, Performed: Varicella Zoster Vaccine (VZV) Administered&quot; using &quot;Varicella Zoster Vaccine (VZV) Administered (2.16.840.1.113883.3.464.1003.110.12.1040)&quot;</li>
+  </ul>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE Ethnicity_846" />
+      <label for="test-SDE Ethnicity_846" class="list-header"><strong> SDE Ethnicity</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Ethnicity&quot;: &quot;Ethnicity&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE Payer_359" />
+      <label for="test-SDE Payer_359" class="list-header"><strong> SDE Payer</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Payer&quot;: &quot;Payer&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE Race_412" />
+      <label for="test-SDE Race_412" class="list-header"><strong> SDE Race</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Race&quot;: &quot;Race&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE Sex_467" />
+      <label for="test-SDE Sex_467" class="list-header"><strong> SDE Sex</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Sex&quot;: &quot;ONC Administrative Sex&quot;] </pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
