@@ -1,4 +1,4 @@
-library MATGlobalCommonFunctions version '2.1.000'
+library MATGlobalCommonFunctions version '3.0.000'
 
 using QDM version '5.3'
 
@@ -79,18 +79,6 @@ define function "CalendarAgeInDays"(BirthDateTime DateTime):
 	CalendarAgeInDaysAt(BirthDateTime, Today())
 
 /*
-TotalLengthOfStay calculates the difference in calendar days between the
-start and end of the given stay interval.
-
-NOTE: This function is being deprecated in favor of LengthInDays and
-an appropriate hospitalization or location-based period determination
-function.
-*/
-
-define function "TotalLengthOfStay"(Stay Interval<DateTime>):
-	difference in days between start of Stay and end of Stay
-
-/*
 Hospitalization returns the total interval from admission to discharge for
 the given encounter, or from the admission of any immediately prior emergency 
 department visit to the discharge of the given encounter.
@@ -138,7 +126,7 @@ value once it is available.
 
 define function "ToDate"(Value DateTime):
 	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
-
+  
 /*
 LengthInDays returns the difference in calendar days between the start and end
 of the given interval.
@@ -146,6 +134,25 @@ of the given interval.
 
 define function "LengthInDays"(Value Interval<DateTime>):
 	difference in days between start of Value and end of Value
+  
+/*
+CalendarDayStartingAt returns an interval from the given DateTime to the end of
+the day on the given DateTime.
+
+This function is intended to simplify the expression of the following two timing
+phrases:
+    A starts on or after day of start of B
+      and A starts on or after start of B
+
+The above can then be expressed with this function as:
+    start of A during CalendarDayStartingAt(start of B)
+    
+And can be read: "A starts on the same calendar day but after B"      
+*/
+
+define function CalendarDayStartingAt(StartValue DateTime):
+  Interval[StartValue, ToDate(StartValue + 1 day))
+
 
 /*
 Hospitalization Length of Stay returns the length of stay in days (i.e. the
@@ -188,6 +195,7 @@ Note that if the data actually contain multiple encounters within 1 hour
 before the start of the encounter, a run-time error will occur indicating
 the hospitalization cannot be unambiguously determined.
 */
+
 define function "Hospital Arrival Time"(Encounter "Encounter, Performed"):
   start of First(("Hospitalization Locations"(Encounter)) L
       sort by start of locationPeriod
@@ -201,6 +209,7 @@ Note that if the data actually contain multiple encounters within 1 hour
 before the start of the encounter, a run-time error will occur indicating
 the hospitalization cannot be unambiguously determined.
 */
+
 define function "Hospital Departure Time"(Encounter "Encounter, Performed"):
   end of Last(("Hospitalization Locations"(Encounter)) L
       sort by start of locationPeriod
@@ -216,6 +225,7 @@ before the start of the encounter, or multiple emergency department locations
 in the encounters, a run-time error will occur indicating the hospitalization
 or location cannot be unambiguously determined.
 */
+
 define function "Emergency Department Arrival Time"(Encounter "Encounter, Performed"):
   start of (singleton from (("Hospitalization Locations"(Encounter)) L
       where L.code in "Emergency Department"
@@ -231,37 +241,25 @@ before the start of the encounter, or multiple emergency department locations
 in the encounters, a run-time error will occur indicating the hospitalization
 or location cannot be unambiguously determined.
 */
+
 define function "Emergency Department Departure Time"(Encounter "Encounter, Performed"):
   end of (singleton from (("Hospitalization Locations"(Encounter)) L
       where L.code in "Emergency Department"
   )).locationPeriod
 
 /*
-Earliest Intensive Care Unit Arrival Time returns the earliest arrival time in
-an intensive care unit for the given encounter, including any immediately
-prior emergency department visit.
+First Intensive Care Unit returns the first intensive care unit for the given
+encounter, including any immediately prior emergency department visit.
 
 Note that if the data actually contain multiple encounters within 1 hour
 before the start of the encounter, a run-time error will occur indicating
 the hospitalization cannot be unambiguously determined.
 */
-define function "Earliest Intensive Care Unit Arrival Time"(Encounter "Encounter, Performed"):
-  start of First(("Hospitalization Locations"(Encounter)) L
+
+define function "First Intensive Care Unit"(Encounter "Encounter, Performed"):
+  First(("Hospitalization Locations"(Encounter)) L
       where L.code in "Intensive Care Unit"
       sort by start of locationPeriod
-  ).locationPeriod
+  )
+  
 
-/*
-Latest Intensive Care Unit Departure Time returns the latest departure time from
-an intensive care unit for the given encounter, including any immediately
-prior emergency department visit.
-
-Note that if the data actually contain multiple encounters within 1 hour
-before the start of the encounter, a run-time error will occur indicating
-the hospitalization cannot be unambiguously determined.
-*/
-define function "Latest Intensive Care Unit Departure Time"(Encounter "Encounter, Performed"):
-  end of Last(("Hospitalization Locations"(Encounter)) L
-      where L.code in "Intensive Care Unit"
-      sort by start of locationPeriod
-  ).locationPeriod
