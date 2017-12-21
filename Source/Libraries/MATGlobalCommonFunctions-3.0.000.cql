@@ -271,5 +271,5 @@ the hospitalization cannot be unambiguously determined.
 */
 
 define function "Hospitalization Arrival to Discharge"(Encounter "Encounter, Performed"):
-  Interval["Hospital Arrival Time", end of Encounter.relevantPeriod]
+  Interval["Hospital Arrival Time"(Encounter), end of Encounter.relevantPeriod]
 
