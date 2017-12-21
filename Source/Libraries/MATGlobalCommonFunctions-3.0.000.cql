@@ -153,7 +153,6 @@ And can be read: "A starts on the same calendar day but after B"
 define function CalendarDayStartingAt(StartValue DateTime):
   Interval[StartValue, ToDate(StartValue + 1 day))
 
-
 /*
 Hospitalization Length of Stay returns the length of stay in days (i.e. the
 number of days between admission and discharge) for the given
@@ -197,9 +196,7 @@ the hospitalization cannot be unambiguously determined.
 */
 
 define function "Hospital Arrival Time"(Encounter "Encounter, Performed"):
-  start of First(("Hospitalization Locations"(Encounter)) L
-      sort by start of locationPeriod
-  ).locationPeriod
+  Coalesce("Emergency Department Arrival Time"(Encounter), start of Encounter.relevantPeriod)
 
 /*
 Hospital Departure Time returns the latest departure time for the given
@@ -262,4 +259,17 @@ define function "First Intensive Care Unit"(Encounter "Encounter, Performed"):
       sort by start of locationPeriod
   )
   
+/*
+Hospitalization Arrival to Discharge returns the period from arrival in the
+emergency department to discharge from the hospital for the given encounter. If
+there was no emergency department visit or facility, then hospital admission
+time is used as the best approximation for arrival time.
+
+Note that if the data actually contain multiple encounters within 1 hour
+before the start of the encounter, a run-time error will occur indicating 
+the hospitalization cannot be unambiguously determined.
+*/
+
+define function "Hospitalization Arrival to Discharge"(Encounter "Encounter, Performed"):
+  Interval["Hospital Arrival Time", end of Encounter.relevantPeriod]
 
