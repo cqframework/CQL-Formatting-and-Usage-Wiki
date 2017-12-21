@@ -136,22 +136,22 @@ define function "LengthInDays"(Value Interval<DateTime>):
 	difference in days between start of Value and end of Value
   
 /*
-CalendarDayStartingAt returns an interval from the given DateTime to the end of
-the day on the given DateTime.
+CalendarDayOfOrDayAfter returns an interval from the given DateTime to the end of
+the following day of the given DateTime.
 
 This function is intended to simplify the expression of the following two timing
 phrases:
-    A starts on or after day of start of B
+    A starts 1 day or less on or after day of start of B
       and A starts on or after start of B
 
 The above can then be expressed with this function as:
-    start of A during CalendarDayStartingAt(start of B)
+    start of A during CalendarDayOfOrDayAfter(start of B)
     
-And can be read: "A starts on the same calendar day but after B"      
+And can be read: "A starts on the day of or day after but after B"      
 */
 
-define function CalendarDayStartingAt(StartValue DateTime):
-  Interval[StartValue, ToDate(StartValue + 1 day))
+define function CalendarDayOfOrDayAfter(StartValue DateTime):
+  Interval[StartValue, ToDate(StartValue + 2 days))
 
 /*
 Hospitalization Length of Stay returns the length of stay in days (i.e. the
