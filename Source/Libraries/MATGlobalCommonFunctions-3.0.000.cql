@@ -258,6 +258,19 @@ define function "First Intensive Care Unit"(Encounter "Encounter, Performed"):
       where L.code in "Intensive Care Unit"
       sort by start of locationPeriod
   )
+	
+/*
+First Inpatient Intensive Care Unit returns the first intensive care unit for
+the given encounter, without considering any immediately prior emergency
+department visit.
+*/
+
+define function "First Inpatient Intensive Care Unit"(Encounter "Encounter, Performed"):
+  First(Encounter.facilityLocations HospitalLocation
+		where HospitalLocation.code in "Intensive Care Unit"
+		  and HospitalLocation.locationPeriod during Encounter.relevantPeriod
+		sort by start of locationPeriod
+	)
   
 /*
 Hospitalization Arrival to Discharge returns the period from arrival in the
@@ -268,8 +281,11 @@ time is used as the best approximation for arrival time.
 Note that if the data actually contain multiple encounters within 1 hour
 before the start of the encounter, a run-time error will occur indicating 
 the hospitalization cannot be unambiguously determined.
-*/
+
+NOTE: This function is not included in the library due to the need to determine the
+impact of the change on reporting.
 
 define function "Hospitalization Arrival to Discharge"(Encounter "Encounter, Performed"):
   Interval["Hospital Arrival Time"(Encounter), end of Encounter.relevantPeriod]
+*/
 
