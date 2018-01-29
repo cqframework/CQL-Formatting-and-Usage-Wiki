@@ -1,4 +1,4 @@
-library ZZ_AnnualWellnessAssessmentMeasure_LinearCombination
+library ZZ_AnnualWellnessAssessmentMeasure_PatientLinearCombination
 
 using QDM
 
@@ -12,31 +12,38 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
-define "Initial Population":
-  if "Screening For Alcohol Misuse"."Initial Population" then 1 else 0
-    + if "Hypertension Assessment"."Initial Population" then 1 else 0
-    + if "Screening For Breast Cancer"."Initial Population" then 1 else 0
-    + if "Screening For Colorectal Cancer"."Initial Population" then 1 else 0
-    + if "Screening For Depression"."Initial Population" then 1 else 0
+// Modeled as a continuous variable measure where the observation is the proportion
+// of component measures for which the patient is in the numerator
 
-define "Denominator":
+define "Initial Population":
+  // True if any initial population is true
+  "Screening For Alcohol Misuse"."Initial Population"
+    or "Hypertension Assessment"."Initial Population"
+    or "Screening For Breast Cancer"."Initial Population"
+    or "Screening For Colorectal Cancer"."Initial Population"
+    or "Screening For Depression"."Initial Population"
+
+define "Measure Population":
+  // True if any denominator is true
+  "Screening For Alcohol Misuse"."Denominator"
+    or "Hypertension Assessment"."Denominator"
+    or "Screening For Breast Cancer"."Denominator"
+    or "Screening For Colorectal Cancer"."Denominator"
+    or "Screening For Depression"."Denominator"
+    
+define "Denominator Score":
   if "Screening For Alcohol Misuse"."Initial Population" and "Screening For Alcohol Misuse"."Denominator" then 1 else 0
     + if "Hypertension Assessment"."Initial Population" and "Hypertension Assessment"."Denominator" then 1 else 0
     + if "Screening For Breast Cancer"."Initial Population" and "Screening For Breast Cancer"."Denominator" then 1 else 0
     + if "Screening For Colorectal Cancer"."Initial Population" and "Screening For Colorectal Cancer"."Denominator" then 1 else 0
     + if "Screening For Depression"."Initial Population" and "Screening For Depression"."Denominator" then 1 else 0
 
-define "Numerator":
+define "Numerator Score":
   if "Screening For Alcohol Misuse"."Initial Population" and "Screening For Alcohol Misuse"."Denominator" and "Screening For Alcohol Misuse"."Numerator" then 1 else 0
     + if "Hypertension Assessment"."Initial Population" and "Hypertension Assessment"."Denominator" and "Hypertension Assessment"."Numerator" then 1 else 0
     + if "Screening For Breast Cancer"."Initial Population" and "Screening For Breast Cancer"."Denominator" and "Screening For Breast Cancer"."Numerator" then 1 else 0
     + if "Screening For Colorectal Cancer"."Initial Population" and "Screening For Colorectal Cancer"."Denominator" and "Screening For Colorectal Cancer"."Numerator" then 1 else 0
     + if "Screening For Depression"."Initial Population" and "Screening For Depression"."Denominator" and "Screening For Depression"."Numerator" then 1 else 0
 
-define "Patient Score":
-  Sum("Numerator") / Sum("Denominator")
-
-context Population
-
-define "Measure Score":
-  Avg("Patient Score")
+define "Measure Observation"(Patient Patient):
+  "Numerator Score" / "Denominator Score"

@@ -1,4 +1,4 @@
-library ZZ_AnnualWellnessAssessmentMeasure_AllOrNone
+library ZZ_AnnualWellnessAssessmentMeasure_Opportunity
 
 using QDM
 
@@ -29,10 +29,10 @@ define "Denominator":
     or "Screening For Depression"."Denominator"
 
 define "Numerator":
-  // True if and only if all numerators are true
+  // True if any numerator is true
   "Screening For Alcohol Misuse"."Numerator"
-    and "Hypertension Assessment"."Numerator"
-    and "Screening For Breast Cancer"."Numerator"
-    and "Screening For Colorectal Cancer"."Numerator"
-    and "Screening For Depression"."Numerator"
+    or "Hypertension Assessment"."Numerator"
+    or "Screening For Breast Cancer"."Numerator"
+    or "Screening For Colorectal Cancer"."Numerator"
+    or "Screening For Depression"."Numerator"
 
