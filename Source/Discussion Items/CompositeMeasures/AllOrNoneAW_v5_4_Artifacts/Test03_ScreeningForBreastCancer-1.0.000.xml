@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Test03_ScreeningForBreastCancer" version="1.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:51" localIdentifier="AWV" path="AnnualWellness" version="1.0.000"/>
+      <def localId="3" locator="7:1-7:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="2.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="20" locator="24:1-24:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="19" locator="24:32-24:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="18" locator="24:41-24:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="4" locator="9:1-9:87" name="LOINC:2.46" id="urn:oid:2.16.840.1.113883.6.1" version="urn:hl7:version:2.46" accessLevel="Public"/>
+      <def localId="5" locator="10:1-10:97" name="SNOMEDCT:2016-03" id="urn:oid:2.16.840.1.113883.6.96" version="urn:hl7:version:2016-03" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="6" locator="12:1-12:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="7" locator="13:1-13:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="8" locator="14:1-14:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="9" locator="15:1-15:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def localId="10" locator="16:1-16:74" name="Mammography" id="urn:oid:2.16.840.1.113883.3.464.1003.108.12.1018" accessLevel="Public"/>
+      <def localId="11" locator="17:1-17:58" name="Female" id="urn:oid:2.16.840.1.113883.3.560.100.2" accessLevel="Public"/>
+      <def localId="12" locator="18:1-18:83" name="Bilateral Mastectomy" id="urn:oid:2.16.840.1.113883.3.464.1003.198.12.1005" accessLevel="Public"/>
+      <def localId="13" locator="19:1-19:84" name="Unilateral Mastectomy" id="urn:oid:2.16.840.1.113883.3.464.1003.198.12.1020" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="15" locator="21:1-21:66" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem localId="14" locator="21:34-21:45" name="LOINC:2.46"/>
+      </def>
+      <def localId="17" locator="22:1-22:63" name="Dead" id="419099009" display="Dead" accessLevel="Public">
+         <codeSystem localId="16" locator="22:31-22:48" name="SNOMEDCT:2016-03"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="26:1-26:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="26:1-26:15" xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="22" locator="28:1-29:50" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="22">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+	</a:s>
+               <a:s r="21">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="21" locator="29:2-29:50" xmlns:ns1="urn:healthit-gov:qdm:v5_3" dataType="ns1:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="24" locator="31:1-32:42" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="24">
+               <a:s>define &quot;SDE Payer&quot;:
+	</a:s>
+               <a:s r="23">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="23" locator="32:2-32:42" xmlns:ns2="urn:healthit-gov:qdm:v5_3" dataType="ns2:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="26" locator="34:1-35:40" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="26">
+               <a:s>define &quot;SDE Race&quot;:
+	</a:s>
+               <a:s r="25">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="25" locator="35:2-35:40" xmlns:ns3="urn:healthit-gov:qdm:v5_3" dataType="ns3:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="28" locator="37:1-38:57" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="28">
+               <a:s>define &quot;SDE Sex&quot;:
+	</a:s>
+               <a:s r="27">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="27" locator="38:2-38:57" xmlns:ns4="urn:healthit-gov:qdm:v5_3" dataType="ns4:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="32" locator="40:1-41:44" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="32">
+               <a:s>define &quot;Initial Population&quot;:
+	</a:s>
+               <a:s r="31">
+                  <a:s>exists </a:s>
+                  <a:s r="30">
+                     <a:s>( </a:s>
+                     <a:s r="30">
+                        <a:s r="29">
+                           <a:s>AWV</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="30">
+                           <a:s>&quot;Annual Wellness Encounters&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="31" locator="41:2-41:44" xsi:type="Exists">
+            <operand localId="30" locator="41:9-41:44" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="48" locator="43:1-47:2" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="48">
+               <a:s>define &quot;Denominator&quot;:
+	</a:s>
+               <a:s r="47">
+                  <a:s>exists </a:s>
+                  <a:s r="46">
+                     <a:s>( </a:s>
+                     <a:s r="46">
+                        <a:s>
+                           <a:s r="34">
+                              <a:s r="33">
+                                 <a:s r="33">
+                                    <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Birthdate&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> BirthDate</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+			</a:s>
+                        <a:s r="45">
+                           <a:s>where </a:s>
+                           <a:s r="45">
+                              <a:s r="42">
+                                 <a:s r="40">
+                                    <a:s r="35">
+                                       <a:s>Global</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="40">
+                                       <a:s>&quot;CalendarAgeInYearsAt&quot;(</a:s>
+                                       <a:s r="37">
+                                          <a:s r="36">
+                                             <a:s>BirthDate</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="37">
+                                             <a:s>birthDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="39">
+                                          <a:s>start of </a:s>
+                                          <a:s r="38">
+                                             <a:s>&quot;Measurement Period&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&lt; 75</a:s>
+                              </a:s>
+                              <a:s>
+				and </a:s>
+                              <a:s r="44">
+                                 <a:s>exists </a:s>
+                                 <a:s r="43">
+                                    <a:s>( </a:s>
+                                    <a:s r="43">
+                                       <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Female&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                    <a:s> )</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="47" locator="44:2-47:2" xsi:type="Exists">
+            <operand localId="46" locator="44:9-47:2" xsi:type="Query">
+               <source localId="34" locator="44:11-44:69" alias="BirthDate">
+                  <expression localId="33" locator="44:11-44:59" xmlns:ns5="urn:healthit-gov:qdm:v5_3" dataType="ns5:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand name="Birthdate" xsi:type="CodeRef"/>
+                     </codes>
+                  </expression>
+               </source>
+               <where localId="45" locator="45:4-46:59" xsi:type="And">
+                  <operand localId="42" locator="45:10-45:98" xsi:type="Less">
+                     <operand localId="40" locator="45:10-45:94" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="37" locator="45:40-45:62" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="39" locator="45:65-45:93" xsi:type="Start">
+                           <operand localId="38" locator="45:74-45:93" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="41" locator="45:97-45:98" valueType="t:Integer" value="75" xsi:type="Literal"/>
+                  </operand>
+                  <operand localId="44" locator="46:9-46:59" xsi:type="Exists">
+                     <operand localId="43" locator="46:16-46:59" xmlns:ns6="urn:healthit-gov:qdm:v5_3" dataType="ns6:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Female" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="63" locator="49:1-53:2" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="63">
+               <a:s>define &quot;Numerator&quot;:
+	</a:s>
+               <a:s r="62">
+                  <a:s>exists </a:s>
+                  <a:s r="61">
+                     <a:s>( </a:s>
+                     <a:s r="61">
+                        <a:s>
+                           <a:s r="50">
+                              <a:s r="49">
+                                 <a:s r="49">
+                                    <a:s>[&quot;Diagnostic Study, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Mammography&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Mammogram</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+			</a:s>
+                        <a:s r="60">
+                           <a:s>where </a:s>
+                           <a:s r="60">
+                              <a:s r="53">
+                                 <a:s r="52">
+                                    <a:s r="51">
+                                       <a:s>Mammogram</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="52">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> is not null</a:s>
+                              </a:s>
+                              <a:s>
+				and </a:s>
+                              <a:s r="59">
+                                 <a:s r="55">
+                                    <a:s r="54">
+                                       <a:s>Mammogram</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="55">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="59">
+                                    <a:s>ends </a:s>
+                                    <a:s r="58">
+                                       <a:s>26 months</a:s>
+                                    </a:s>
+                                    <a:s> or less on or before</a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="57">
+                                    <a:s>end of </a:s>
+                                    <a:s r="56">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="62" locator="50:2-53:2" xsi:type="Exists">
+            <operand localId="61" locator="50:9-53:2" xsi:type="Query">
+               <source localId="50" locator="50:11-50:66" alias="Mammogram">
+                  <expression localId="49" locator="50:11-50:56" xmlns:ns7="urn:healthit-gov:qdm:v5_3" dataType="ns7:PositiveDiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Mammography" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where localId="60" locator="51:4-52:96" xsi:type="And">
+                  <operand localId="53" locator="51:10-51:37" xsi:type="Not">
+                     <operand locator="51:10-51:37" xsi:type="IsNull">
+                        <operand localId="52" locator="51:10-51:25" path="result" scope="Mammogram" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="59" locator="52:9-52:96" xsi:type="In">
+                     <operand locator="52:34-52:37" xsi:type="End">
+                        <operand localId="55" locator="52:9-52:32" path="relevantPeriod" scope="Mammogram" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="52:39-52:55" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="52:70-52:96" xsi:type="Subtract">
+                           <operand localId="57" locator="52:70-52:96" xsi:type="End">
+                              <operand localId="56" locator="52:77-52:96" name="Measurement Period" xsi:type="ParameterRef"/>
+                           </operand>
+                           <operand localId="58" locator="52:39-52:47" value="26" unit="months" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="57" locator="52:70-52:96" xsi:type="End">
+                           <operand localId="56" locator="52:77-52:96" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </high>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="85" locator="55:1-61:6" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="85">
+               <a:s>define &quot;Denominator Exclusions&quot;:
+	</a:s>
+               <a:s r="84">
+                  <a:s r="72">
+                     <a:s>exists </a:s>
+                     <a:s r="71">
+                        <a:s>( </a:s>
+                        <a:s r="71">
+                           <a:s>
+                              <a:s r="65">
+                                 <a:s r="64">
+                                    <a:s r="64">
+                                       <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Bilateral Mastectomy&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> Bilateral</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+			</a:s>
+                           <a:s r="70">
+                              <a:s>where </a:s>
+                              <a:s r="70">
+                                 <a:s r="67">
+                                    <a:s r="66">
+                                       <a:s>Bilateral</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="67">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> ends on or before </a:s>
+                                 <a:s r="69">
+                                    <a:s>end of </a:s>
+                                    <a:s r="68">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+	)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		or </a:s>
+                  <a:s r="83">
+                     <a:s r="81">
+                        <a:s>Count(</a:s>
+                        <a:s r="80">
+                           <a:s>
+                              <a:s r="74">
+                                 <a:s r="73">
+                                    <a:s r="73">
+                                       <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Unilateral Mastectomy&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> Unilateral</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+				</a:s>
+                           <a:s r="79">
+                              <a:s>where </a:s>
+                              <a:s r="79">
+                                 <a:s r="76">
+                                    <a:s r="75">
+                                       <a:s>Unilateral</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="76">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> ends on or before </a:s>
+                                 <a:s r="78">
+                                    <a:s>end of </a:s>
+                                    <a:s r="77">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+		)</a:s>
+                     </a:s>
+                     <a:s>= 2</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="84" locator="56:2-61:6" xsi:type="Or">
+            <operand localId="72" locator="56:2-58:2" xsi:type="Exists">
+               <operand localId="71" locator="56:9-58:2" xsi:type="Query">
+                  <source localId="65" locator="56:11-56:68" alias="Bilateral">
+                     <expression localId="64" locator="56:11-56:58" xmlns:ns8="urn:healthit-gov:qdm:v5_3" dataType="ns8:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes name="Bilateral Mastectomy" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where localId="70" locator="57:4-57:79" xsi:type="SameOrBefore">
+                     <operand locator="57:35-57:38" xsi:type="End">
+                        <operand localId="67" locator="57:10-57:33" path="relevantPeriod" scope="Bilateral" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="69" locator="57:53-57:79" xsi:type="End">
+                        <operand localId="68" locator="57:60-57:79" name="Measurement Period" xsi:type="ParameterRef"/>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+            <operand localId="83" locator="59:6-61:6" xsi:type="Equal">
+               <operand localId="81" locator="59:6-61:3" xsi:type="Count">
+                  <source localId="80" locator="59:12-60:81" xsi:type="Query">
+                     <source localId="74" locator="59:12-59:71" alias="Unilateral">
+                        <expression localId="73" locator="59:12-59:60" xmlns:ns9="urn:healthit-gov:qdm:v5_3" dataType="ns9:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="Unilateral Mastectomy" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where localId="79" locator="60:5-60:81" xsi:type="SameOrBefore">
+                        <operand locator="60:37-60:40" xsi:type="End">
+                           <operand localId="76" locator="60:11-60:35" path="relevantPeriod" scope="Unilateral" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="78" locator="60:55-60:81" xsi:type="End">
+                           <operand localId="77" locator="60:62-60:81" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </operand>
+                     </where>
+                  </source>
+               </operand>
+               <operand localId="82" locator="61:6" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
