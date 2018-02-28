@@ -34,6 +34,10 @@ define "Consecutive Heart Rates Below 50 bpm":
   where Exam.relevantPeriod during Encounter.relevantPeriod
     and Exam.result < 50 'bpm'
     and PriorExam.result < 50 'bpm'
+    
+//PE { 1, 88 }, { 2, 90 }, { 3, 74 } { 4, 45 } { 5, 46 } // True
+//PE { 1, 88 }, { 2, 36 }, { 3, 74 } { 4, 80 } { 5, 46 } // False
+
 
 // NOTE: For illustration purposes only
 define CADEncounters145:
