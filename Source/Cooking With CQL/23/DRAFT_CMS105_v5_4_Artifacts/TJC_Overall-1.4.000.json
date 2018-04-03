@@ -1,0 +1,1404 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "TJC_Overall",
+         "version" : "1.4.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:64",
+            "localIdentifier" : "Global",
+            "path" : "MATGlobalCommonFunctions",
+            "version" : "2.0.000"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "22",
+            "locator" : "25:1-25:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "21",
+               "locator" : "25:32-25:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "20",
+                  "locator" : "25:41-25:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "3",
+            "locator" : "7:1-7:87",
+            "name" : "LOINC:2.46",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "version" : "urn:hl7:version:2.46",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "8:1-8:97",
+            "name" : "SNOMEDCT:2016-03",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "version" : "urn:hl7:version:2016-03",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "5",
+            "locator" : "10:1-10:71",
+            "name" : "Encounter Inpatient",
+            "id" : "urn:oid:2.16.840.1.113883.3.666.5.307",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "11:1-11:88",
+            "name" : "Non-Elective Inpatient Encounter",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.424",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "12:1-12:71",
+            "name" : "Ischemic Stroke",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.247",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "13:1-13:74",
+            "name" : "Hemorrhagic Stroke",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.212",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "14:1-14:65",
+            "name" : "Comfort Measures",
+            "id" : "urn:oid:1.3.6.1.4.1.33895.1.3.0.45",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "15:1-15:82",
+            "name" : "Emergency Department Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.292",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "16:1-16:83",
+            "name" : "Left Against Medical Advice",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.308",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "17:1-17:107",
+            "name" : "Discharged to Health Care Facility for Hospice Care",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.207",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "13",
+            "locator" : "18:1-18:71",
+            "name" : "Patient Expired",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.309",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "14",
+            "locator" : "19:1-19:87",
+            "name" : "Discharge To Acute Care Facility",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.87",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "15",
+            "locator" : "20:1-20:91",
+            "name" : "Discharged to Home for Hospice Care",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.209",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "17",
+            "locator" : "22:1-22:66",
+            "name" : "Birthdate",
+            "id" : "21112-8",
+            "display" : "Birth date",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "16",
+               "locator" : "22:34-22:45",
+               "name" : "LOINC:2.46"
+            }
+         }, {
+            "localId" : "19",
+            "locator" : "23:1-23:63",
+            "name" : "Dead",
+            "id" : "419099009",
+            "display" : "Dead",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "18",
+               "locator" : "23:31-23:48",
+               "name" : "SNOMEDCT:2016-03"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "27:1-27:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "27:1-27:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "26",
+            "locator" : "29:1-31:55",
+            "name" : "Intervention Comfort Measures",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "26",
+                  "s" : [ {
+                     "value" : [ "define ","\"Intervention Comfort Measures\"",":\n\t" ]
+                  }, {
+                     "r" : "25",
+                     "s" : [ {
+                        "r" : "23",
+                        "s" : [ {
+                           "value" : [ "[","\"Intervention, Order\"",": " ]
+                        }, {
+                           "s" : [ {
+                              "value" : [ "\"Comfort Measures\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "]" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tunion " ]
+                     }, {
+                        "r" : "24",
+                        "s" : [ {
+                           "value" : [ "[","\"Intervention, Performed\"",": " ]
+                        }, {
+                           "s" : [ {
+                              "value" : [ "\"Comfort Measures\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "]" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "25",
+               "locator" : "30:2-31:55",
+               "type" : "Union",
+               "operand" : [ {
+                  "locator" : "30:2-30:44",
+                  "type" : "As",
+                  "operand" : {
+                     "localId" : "23",
+                     "locator" : "30:2-30:44",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionOrder",
+                     "templateId" : "PositiveInterventionOrder",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Comfort Measures",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "type" : "ChoiceTypeSpecifier",
+                        "type" : [ {
+                           "name" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }, {
+                           "name" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionOrder",
+                           "type" : "NamedTypeSpecifier"
+                        } ]
+                     }
+                  }
+               }, {
+                  "locator" : "31:9-31:55",
+                  "type" : "As",
+                  "operand" : {
+                     "localId" : "24",
+                     "locator" : "31:9-31:55",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionPerformed",
+                     "templateId" : "PositiveInterventionPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Comfort Measures",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "asTypeSpecifier" : {
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "type" : "ChoiceTypeSpecifier",
+                        "type" : [ {
+                           "name" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionPerformed",
+                           "type" : "NamedTypeSpecifier"
+                        }, {
+                           "name" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionOrder",
+                           "type" : "NamedTypeSpecifier"
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "41",
+            "locator" : "62:1-65:75",
+            "name" : "Non Elective Inpatient Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "41",
+                  "s" : [ {
+                     "value" : [ "define ","\"Non Elective Inpatient Encounter\"",":\n\t" ]
+                  }, {
+                     "r" : "40",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "28",
+                           "s" : [ {
+                              "r" : "27",
+                              "s" : [ {
+                                 "r" : "27",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Non-Elective Inpatient Encounter\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NonElectiveEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "39",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "39",
+                           "s" : [ {
+                              "r" : "34",
+                              "s" : [ {
+                                 "r" : "32",
+                                 "s" : [ {
+                                    "r" : "29",
+                                    "s" : [ {
+                                       "value" : [ "Global" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "32",
+                                    "s" : [ {
+                                       "value" : [ "\"LengthInDays\"","(" ]
+                                    }, {
+                                       "r" : "31",
+                                       "s" : [ {
+                                          "r" : "30",
+                                          "s" : [ {
+                                             "value" : [ "NonElectiveEncounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "31",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ")" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "<="," ","120" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\tand " ]
+                           }, {
+                              "r" : "38",
+                              "s" : [ {
+                                 "r" : "36",
+                                 "s" : [ {
+                                    "r" : "35",
+                                    "s" : [ {
+                                       "value" : [ "NonElectiveEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "36",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " ","ends during"," " ]
+                              }, {
+                                 "r" : "37",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "40",
+               "locator" : "63:2-65:75",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "28",
+                  "locator" : "63:2-63:82",
+                  "alias" : "NonElectiveEncounter",
+                  "expression" : {
+                     "localId" : "27",
+                     "locator" : "63:2-63:61",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                     "templateId" : "PositiveEncounterPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Non-Elective Inpatient Encounter",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "39",
+                  "locator" : "64:3-65:75",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "34",
+                     "locator" : "64:9-64:72",
+                     "type" : "LessOrEqual",
+                     "operand" : [ {
+                        "localId" : "32",
+                        "locator" : "64:9-64:66",
+                        "name" : "LengthInDays",
+                        "libraryName" : "Global",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "localId" : "31",
+                           "locator" : "64:31-64:65",
+                           "path" : "relevantPeriod",
+                           "scope" : "NonElectiveEncounter",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "localId" : "33",
+                        "locator" : "64:70-64:72",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "120",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "localId" : "38",
+                     "locator" : "65:8-65:75",
+                     "type" : "In",
+                     "operand" : [ {
+                        "locator" : "65:44-65:47",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "36",
+                           "locator" : "65:8-65:42",
+                           "path" : "relevantPeriod",
+                           "scope" : "NonElectiveEncounter",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "localId" : "37",
+                        "locator" : "65:56-65:75",
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "54",
+            "locator" : "33:1-36:66",
+            "name" : "All Stroke Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "54",
+                  "s" : [ {
+                     "value" : [ "define ","\"All Stroke Encounter\"",":\n\t" ]
+                  }, {
+                     "r" : "53",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "43",
+                           "s" : [ {
+                              "r" : "42",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Non Elective Inpatient Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NonElectiveEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "52",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "52",
+                           "s" : [ {
+                              "r" : "47",
+                              "s" : [ {
+                                 "r" : "45",
+                                 "s" : [ {
+                                    "r" : "44",
+                                    "s" : [ {
+                                       "value" : [ "NonElectiveEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "45",
+                                    "s" : [ {
+                                       "value" : [ "principalDiagnosis" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "46",
+                                 "s" : [ {
+                                    "value" : [ "\"Hemorrhagic Stroke\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\tor " ]
+                           }, {
+                              "r" : "51",
+                              "s" : [ {
+                                 "r" : "49",
+                                 "s" : [ {
+                                    "r" : "48",
+                                    "s" : [ {
+                                       "value" : [ "NonElectiveEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "49",
+                                    "s" : [ {
+                                       "value" : [ "principalDiagnosis" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "50",
+                                 "s" : [ {
+                                    "value" : [ "\"Ischemic Stroke\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "53",
+               "locator" : "34:2-36:66",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "43",
+                  "locator" : "34:2-34:56",
+                  "alias" : "NonElectiveEncounter",
+                  "expression" : {
+                     "localId" : "42",
+                     "locator" : "34:2-34:35",
+                     "name" : "Non Elective Inpatient Encounter",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "52",
+                  "locator" : "35:3-36:66",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "47",
+                     "locator" : "35:9-35:71",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "45",
+                        "locator" : "35:9-35:47",
+                        "path" : "principalDiagnosis",
+                        "scope" : "NonElectiveEncounter",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "46",
+                        "locator" : "35:52-35:71",
+                        "name" : "Hemorrhagic Stroke"
+                     }
+                  }, {
+                     "localId" : "51",
+                     "locator" : "36:7-36:66",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "49",
+                        "locator" : "36:7-36:45",
+                        "path" : "principalDiagnosis",
+                        "scope" : "NonElectiveEncounter",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "50",
+                        "locator" : "36:50-36:66",
+                        "name" : "Ischemic Stroke"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "70",
+            "locator" : "57:1-60:116",
+            "name" : "Encounter with Principal Diagnosis and Age",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "70",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with Principal Diagnosis and Age\"",":\n\t" ]
+                  }, {
+                     "r" : "69",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "56",
+                           "s" : [ {
+                              "r" : "55",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"All Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","AllStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "68",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "58",
+                           "s" : [ {
+                              "r" : "57",
+                              "s" : [ {
+                                 "r" : "57",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Patient Characteristic Birthdate\"","]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","BirthDate" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "67",
+                           "s" : [ {
+                              "r" : "65",
+                              "s" : [ {
+                                 "r" : "59",
+                                 "s" : [ {
+                                    "value" : [ "Global" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "65",
+                                 "s" : [ {
+                                    "value" : [ "\"CalendarAgeInYearsAt\"","(" ]
+                                 }, {
+                                    "r" : "61",
+                                    "s" : [ {
+                                       "r" : "60",
+                                       "s" : [ {
+                                          "value" : [ "BirthDate" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "61",
+                                       "s" : [ {
+                                          "value" : [ "birthDatetime" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ", " ]
+                                 }, {
+                                    "r" : "64",
+                                    "s" : [ {
+                                       "value" : [ "start of " ]
+                                    }, {
+                                       "r" : "63",
+                                       "s" : [ {
+                                          "r" : "62",
+                                          "s" : [ {
+                                             "value" : [ "AllStrokeEncounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "63",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ">="," ","18" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "69",
+               "locator" : "58:2-60:116",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "56",
+                  "locator" : "58:2-58:42",
+                  "alias" : "AllStrokeEncounter",
+                  "expression" : {
+                     "localId" : "55",
+                     "locator" : "58:2-58:23",
+                     "name" : "All Stroke Encounter",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "68",
+                  "locator" : "59:3-60:116",
+                  "alias" : "BirthDate",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "57",
+                     "locator" : "59:8-59:43",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicBirthdate",
+                     "type" : "Retrieve"
+                  },
+                  "suchThat" : {
+                     "localId" : "67",
+                     "locator" : "60:14-60:116",
+                     "type" : "GreaterOrEqual",
+                     "operand" : [ {
+                        "localId" : "65",
+                        "locator" : "60:14-60:111",
+                        "name" : "CalendarAgeInYearsAt",
+                        "libraryName" : "Global",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "localId" : "61",
+                           "locator" : "60:44-60:66",
+                           "path" : "birthDatetime",
+                           "scope" : "BirthDate",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "64",
+                           "locator" : "60:69-60:110",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "63",
+                              "locator" : "60:78-60:110",
+                              "path" : "relevantPeriod",
+                              "scope" : "AllStrokeEncounter",
+                              "type" : "Property"
+                           }
+                        } ]
+                     }, {
+                        "localId" : "66",
+                        "locator" : "60:115-60:116",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "18",
+                        "type" : "Literal"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "78",
+            "locator" : "38:1-40:64",
+            "name" : "Ischemic Stroke Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "78",
+                  "s" : [ {
+                     "value" : [ "define ","\"Ischemic Stroke Encounter\"",":\n\t" ]
+                  }, {
+                     "r" : "77",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "72",
+                           "s" : [ {
+                              "r" : "71",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Encounter with Principal Diagnosis and Age\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","EncounterWithAge" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "76",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "76",
+                           "s" : [ {
+                              "r" : "74",
+                              "s" : [ {
+                                 "r" : "73",
+                                 "s" : [ {
+                                    "value" : [ "EncounterWithAge" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "74",
+                                 "s" : [ {
+                                    "value" : [ "principalDiagnosis" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " in " ]
+                           }, {
+                              "r" : "75",
+                              "s" : [ {
+                                 "value" : [ "\"Ischemic Stroke\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "77",
+               "locator" : "39:2-40:64",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "72",
+                  "locator" : "39:2-39:62",
+                  "alias" : "EncounterWithAge",
+                  "expression" : {
+                     "localId" : "71",
+                     "locator" : "39:2-39:45",
+                     "name" : "Encounter with Principal Diagnosis and Age",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "76",
+                  "locator" : "40:3-40:64",
+                  "type" : "InValueSet",
+                  "code" : {
+                     "localId" : "74",
+                     "locator" : "40:9-40:43",
+                     "path" : "principalDiagnosis",
+                     "scope" : "EncounterWithAge",
+                     "type" : "Property"
+                  },
+                  "valueset" : {
+                     "localId" : "75",
+                     "locator" : "40:48-40:64",
+                     "name" : "Ischemic Stroke"
+                  }
+               }
+            }
+         }, {
+            "localId" : "106",
+            "locator" : "42:1-50:2",
+            "name" : "Ischemic Stroke Encounters with Discharge Status",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "106",
+                  "s" : [ {
+                     "value" : [ "define ","\"Ischemic Stroke Encounters with Discharge Status\"",":\n\t" ]
+                  }, {
+                     "r" : "105",
+                     "s" : [ {
+                        "value" : [ "( " ]
+                     }, {
+                        "r" : "105",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "105",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "80",
+                                 "s" : [ {
+                                    "r" : "79",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Ischemic Stroke Encounter\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","IschemicStrokeEncounter" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t\t" ]
+                           }, {
+                              "r" : "104",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "104",
+                                 "s" : [ {
+                                    "r" : "99",
+                                    "s" : [ {
+                                       "r" : "94",
+                                       "s" : [ {
+                                          "r" : "89",
+                                          "s" : [ {
+                                             "r" : "84",
+                                             "s" : [ {
+                                                "r" : "82",
+                                                "s" : [ {
+                                                   "r" : "81",
+                                                   "s" : [ {
+                                                      "value" : [ "IschemicStrokeEncounter" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "82",
+                                                   "s" : [ {
+                                                      "value" : [ "dischargeDisposition" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " in " ]
+                                             }, {
+                                                "r" : "83",
+                                                "s" : [ {
+                                                   "value" : [ "\"Discharge To Acute Care Facility\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\t\t\t\tor " ]
+                                          }, {
+                                             "r" : "88",
+                                             "s" : [ {
+                                                "r" : "86",
+                                                "s" : [ {
+                                                   "r" : "85",
+                                                   "s" : [ {
+                                                      "value" : [ "IschemicStrokeEncounter" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "86",
+                                                   "s" : [ {
+                                                      "value" : [ "dischargeDisposition" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " in " ]
+                                             }, {
+                                                "r" : "87",
+                                                "s" : [ {
+                                                   "value" : [ "\"Left Against Medical Advice\"" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t\t\t\t\tor " ]
+                                       }, {
+                                          "r" : "93",
+                                          "s" : [ {
+                                             "r" : "91",
+                                             "s" : [ {
+                                                "r" : "90",
+                                                "s" : [ {
+                                                   "value" : [ "IschemicStrokeEncounter" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "91",
+                                                "s" : [ {
+                                                   "value" : [ "dischargeDisposition" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " in " ]
+                                          }, {
+                                             "r" : "92",
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Expired\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\t\t\t\tor " ]
+                                    }, {
+                                       "r" : "98",
+                                       "s" : [ {
+                                          "r" : "96",
+                                          "s" : [ {
+                                             "r" : "95",
+                                             "s" : [ {
+                                                "value" : [ "IschemicStrokeEncounter" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "96",
+                                             "s" : [ {
+                                                "value" : [ "dischargeDisposition" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " in " ]
+                                       }, {
+                                          "r" : "97",
+                                          "s" : [ {
+                                             "value" : [ "\"Discharged to Home for Hospice Care\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\t\tor " ]
+                                 }, {
+                                    "r" : "103",
+                                    "s" : [ {
+                                       "r" : "101",
+                                       "s" : [ {
+                                          "r" : "100",
+                                          "s" : [ {
+                                             "value" : [ "IschemicStrokeEncounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "101",
+                                          "s" : [ {
+                                             "value" : [ "dischargeDisposition" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " in " ]
+                                    }, {
+                                       "r" : "102",
+                                       "s" : [ {
+                                          "value" : [ "\"Discharged to Health Care Facility for Hospice Care\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t)" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t)" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "105",
+               "locator" : "43:2-50:2",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "80",
+                  "locator" : "43:6-43:56",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "79",
+                     "locator" : "43:6-43:32",
+                     "name" : "Ischemic Stroke Encounter",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "104",
+                  "locator" : "44:5-48:109",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "99",
+                     "locator" : "44:11-47:93",
+                     "type" : "Or",
+                     "operand" : [ {
+                        "localId" : "94",
+                        "locator" : "44:11-46:73",
+                        "type" : "Or",
+                        "operand" : [ {
+                           "localId" : "89",
+                           "locator" : "44:11-45:85",
+                           "type" : "Or",
+                           "operand" : [ {
+                              "localId" : "84",
+                              "locator" : "44:11-44:92",
+                              "type" : "InValueSet",
+                              "code" : {
+                                 "localId" : "82",
+                                 "locator" : "44:11-44:54",
+                                 "path" : "dischargeDisposition",
+                                 "scope" : "IschemicStrokeEncounter",
+                                 "type" : "Property"
+                              },
+                              "valueset" : {
+                                 "localId" : "83",
+                                 "locator" : "44:59-44:92",
+                                 "name" : "Discharge To Acute Care Facility"
+                              }
+                           }, {
+                              "localId" : "88",
+                              "locator" : "45:9-45:85",
+                              "type" : "InValueSet",
+                              "code" : {
+                                 "localId" : "86",
+                                 "locator" : "45:9-45:52",
+                                 "path" : "dischargeDisposition",
+                                 "scope" : "IschemicStrokeEncounter",
+                                 "type" : "Property"
+                              },
+                              "valueset" : {
+                                 "localId" : "87",
+                                 "locator" : "45:57-45:85",
+                                 "name" : "Left Against Medical Advice"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "93",
+                           "locator" : "46:9-46:73",
+                           "type" : "InValueSet",
+                           "code" : {
+                              "localId" : "91",
+                              "locator" : "46:9-46:52",
+                              "path" : "dischargeDisposition",
+                              "scope" : "IschemicStrokeEncounter",
+                              "type" : "Property"
+                           },
+                           "valueset" : {
+                              "localId" : "92",
+                              "locator" : "46:57-46:73",
+                              "name" : "Patient Expired"
+                           }
+                        } ]
+                     }, {
+                        "localId" : "98",
+                        "locator" : "47:9-47:93",
+                        "type" : "InValueSet",
+                        "code" : {
+                           "localId" : "96",
+                           "locator" : "47:9-47:52",
+                           "path" : "dischargeDisposition",
+                           "scope" : "IschemicStrokeEncounter",
+                           "type" : "Property"
+                        },
+                        "valueset" : {
+                           "localId" : "97",
+                           "locator" : "47:57-47:93",
+                           "name" : "Discharged to Home for Hospice Care"
+                        }
+                     } ]
+                  }, {
+                     "localId" : "103",
+                     "locator" : "48:9-48:109",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "101",
+                        "locator" : "48:9-48:52",
+                        "path" : "dischargeDisposition",
+                        "scope" : "IschemicStrokeEncounter",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "102",
+                        "locator" : "48:57-48:109",
+                        "name" : "Discharged to Health Care Facility for Hospice Care"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "123",
+            "locator" : "52:1-55:148",
+            "name" : "Comfort Measures during Hospitalization",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "123",
+                  "s" : [ {
+                     "value" : [ "define ","\"Comfort Measures during Hospitalization\"",":\n\t" ]
+                  }, {
+                     "r" : "122",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "108",
+                           "s" : [ {
+                              "r" : "107",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "121",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "110",
+                           "s" : [ {
+                              "r" : "109",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Intervention Comfort Measures\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","ComfortMeasure" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "120",
+                           "s" : [ {
+                              "r" : "116",
+                              "s" : [ {
+                                 "value" : [ "Coalesce","(" ]
+                              }, {
+                                 "r" : "113",
+                                 "s" : [ {
+                                    "value" : [ "start of " ]
+                                 }, {
+                                    "r" : "112",
+                                    "s" : [ {
+                                       "r" : "111",
+                                       "s" : [ {
+                                          "value" : [ "ComfortMeasure" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "112",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ", " ]
+                              }, {
+                                 "r" : "115",
+                                 "s" : [ {
+                                    "r" : "114",
+                                    "s" : [ {
+                                       "value" : [ "ComfortMeasure" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "115",
+                                    "s" : [ {
+                                       "value" : [ "authorDatetime" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           }, {
+                              "r" : "120",
+                              "value" : [ "during"," " ]
+                           }, {
+                              "r" : "119",
+                              "s" : [ {
+                                 "r" : "117",
+                                 "s" : [ {
+                                    "value" : [ "Global" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "119",
+                                 "s" : [ {
+                                    "value" : [ "\"Hospitalization\"","(" ]
+                                 }, {
+                                    "r" : "118",
+                                    "s" : [ {
+                                       "value" : [ "IschemicStrokeEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "122",
+               "locator" : "53:2-55:148",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "108",
+                  "locator" : "53:2-53:52",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "107",
+                     "locator" : "53:2-53:28",
+                     "name" : "Ischemic Stroke Encounter",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "121",
+                  "locator" : "54:3-55:148",
+                  "alias" : "ComfortMeasure",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "109",
+                     "locator" : "54:8-54:38",
+                     "name" : "Intervention Comfort Measures",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "120",
+                     "locator" : "55:14-55:148",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "116",
+                        "locator" : "55:14-55:92",
+                        "type" : "Coalesce",
+                        "operand" : [ {
+                           "localId" : "113",
+                           "locator" : "55:23-55:60",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "112",
+                              "locator" : "55:32-55:60",
+                              "path" : "relevantPeriod",
+                              "scope" : "ComfortMeasure",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "localId" : "115",
+                           "locator" : "55:63-55:91",
+                           "path" : "authorDatetime",
+                           "scope" : "ComfortMeasure",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "localId" : "119",
+                        "locator" : "55:100-55:148",
+                        "name" : "Hospitalization",
+                        "libraryName" : "Global",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "localId" : "118",
+                           "locator" : "55:125-55:147",
+                           "name" : "IschemicStrokeEncounter",
+                           "type" : "AliasRef"
+                        } ]
+                     } ]
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}

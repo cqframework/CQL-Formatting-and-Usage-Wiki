@@ -1,0 +1,1462 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "DischargedonStatinMedication",
+         "version" : "6.1.013"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:64",
+            "localIdentifier" : "Global",
+            "path" : "MATGlobalCommonFunctions",
+            "version" : "2.0.000"
+         }, {
+            "localId" : "3",
+            "locator" : "7:1-7:48",
+            "localIdentifier" : "TJC",
+            "path" : "TJC_Overall",
+            "version" : "1.4.000"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "10:1-10:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "11:1-11:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "12:1-12:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "13:1-13:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "14:1-14:61",
+            "name" : "LDL-c",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.215",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "15:1-15:70",
+            "name" : "Medical Reason",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.473",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "16:1-16:70",
+            "name" : "Patient Refusal",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.93",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "17:1-17:71",
+            "name" : "Statin Allergen",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.423",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "18:1-18:66",
+            "name" : "Statin Grouper",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1110.19",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "22:1-22:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "22:1-22:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "14",
+            "locator" : "24:1-25:50",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "14",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\n\t" ]
+                  }, {
+                     "r" : "13",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "13",
+               "locator" : "25:2-25:50",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "16",
+            "locator" : "27:1-28:42",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "16",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\n\t" ]
+                  }, {
+                     "r" : "15",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "15",
+               "locator" : "28:2-28:42",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "18",
+            "locator" : "30:1-31:40",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "18",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\n\t" ]
+                  }, {
+                     "r" : "17",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "17",
+               "locator" : "31:2-31:40",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "20",
+            "locator" : "33:1-34:57",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "20",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\n\t" ]
+                  }, {
+                     "r" : "19",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "19",
+               "locator" : "34:2-34:57",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "22",
+            "locator" : "36:1-37:43",
+            "name" : "Statin Allergy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "22",
+                  "s" : [ {
+                     "value" : [ "define ","\"Statin Allergy\"",":\n\t" ]
+                  }, {
+                     "r" : "21",
+                     "s" : [ {
+                        "value" : [ "[","\"Allergy/Intolerance\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Statin Allergen\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "21",
+               "locator" : "37:2-37:43",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}AllergyIntolerance",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Statin Allergen",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "24",
+            "locator" : "39:1-40:44",
+            "name" : "Statin at Discharge",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "24",
+                  "s" : [ {
+                     "value" : [ "define ","\"Statin at Discharge\"",":\n\t" ]
+                  }, {
+                     "r" : "23",
+                     "s" : [ {
+                        "value" : [ "[","\"Medication, Discharge\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Statin Grouper\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "23",
+               "locator" : "40:2-40:44",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveMedicationDischarge",
+               "templateId" : "PositiveMedicationDischarge",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Statin Grouper",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "37",
+            "locator" : "42:1-45:62",
+            "name" : "Statin Not Given at Discharge",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "37",
+                  "s" : [ {
+                     "value" : [ "define ","\"Statin Not Given at Discharge\"",":\n\t" ]
+                  }, {
+                     "r" : "36",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "26",
+                           "s" : [ {
+                              "r" : "25",
+                              "s" : [ {
+                                 "r" : "25",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Medication, Not Discharged\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Statin Grouper\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NoStatinDischarge" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "35",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "35",
+                           "s" : [ {
+                              "r" : "30",
+                              "s" : [ {
+                                 "r" : "28",
+                                 "s" : [ {
+                                    "r" : "27",
+                                    "s" : [ {
+                                       "value" : [ "NoStatinDischarge" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "28",
+                                    "s" : [ {
+                                       "value" : [ "negationRationale" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "29",
+                                 "s" : [ {
+                                    "value" : [ "\"Medical Reason\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\tor " ]
+                           }, {
+                              "r" : "34",
+                              "s" : [ {
+                                 "r" : "32",
+                                 "s" : [ {
+                                    "r" : "31",
+                                    "s" : [ {
+                                       "value" : [ "NoStatinDischarge" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "32",
+                                    "s" : [ {
+                                       "value" : [ "negationRationale" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "33",
+                                 "s" : [ {
+                                    "value" : [ "\"Patient Refusal\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "36",
+               "locator" : "43:2-45:62",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "26",
+                  "locator" : "43:2-43:67",
+                  "alias" : "NoStatinDischarge",
+                  "expression" : {
+                     "localId" : "25",
+                     "locator" : "43:2-43:49",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}NegativeMedicationDischarge",
+                     "templateId" : "NegativeMedicationDischarge",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Statin Grouper",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "35",
+                  "locator" : "44:3-45:62",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "30",
+                     "locator" : "44:9-44:63",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "28",
+                        "locator" : "44:9-44:43",
+                        "path" : "negationRationale",
+                        "scope" : "NoStatinDischarge",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "29",
+                        "locator" : "44:48-44:63",
+                        "name" : "Medical Reason"
+                     }
+                  }, {
+                     "localId" : "34",
+                     "locator" : "45:7-45:62",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "32",
+                        "locator" : "45:7-45:41",
+                        "path" : "negationRationale",
+                        "scope" : "NoStatinDischarge",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "33",
+                        "locator" : "45:46-45:62",
+                        "name" : "Patient Refusal"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "40",
+            "locator" : "47:1-48:32",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "40",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n\t" ]
+                  }, {
+                     "r" : "39",
+                     "s" : [ {
+                        "r" : "38",
+                        "s" : [ {
+                           "value" : [ "TJC" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "39",
+                        "s" : [ {
+                           "value" : [ "\"Ischemic Stroke Encounter\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "39",
+               "locator" : "48:2-48:32",
+               "name" : "Ischemic Stroke Encounter",
+               "libraryName" : "TJC",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "43",
+            "locator" : "50:1-51:49",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "43",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n\t" ]
+                  }, {
+                     "r" : "42",
+                     "s" : [ {
+                        "r" : "41",
+                        "s" : [ {
+                           "value" : [ "TJC" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "42",
+                        "s" : [ {
+                           "value" : [ "\"Encounter with Principal Diagnosis and Age\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "42",
+               "locator" : "51:2-51:49",
+               "name" : "Encounter with Principal Diagnosis and Age",
+               "libraryName" : "TJC",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "49",
+            "locator" : "53:1-56:2",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "49",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\n\t" ]
+                  }, {
+                     "r" : "48",
+                     "s" : [ {
+                        "value" : [ "( " ]
+                     }, {
+                        "r" : "48",
+                        "s" : [ {
+                           "r" : "45",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "45",
+                              "s" : [ {
+                                 "r" : "44",
+                                 "s" : [ {
+                                    "value" : [ "TJC" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "45",
+                                 "s" : [ {
+                                    "value" : [ "\"Ischemic Stroke Encounters with Discharge Status\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " )" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tunion " ]
+                        }, {
+                           "r" : "47",
+                           "s" : [ {
+                              "r" : "46",
+                              "s" : [ {
+                                 "value" : [ "TJC" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "47",
+                              "s" : [ {
+                                 "value" : [ "\"Comfort Measures during Hospitalization\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t)" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "48",
+               "locator" : "54:2-56:2",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "45",
+                  "locator" : "54:4-54:61",
+                  "name" : "Ischemic Stroke Encounters with Discharge Status",
+                  "libraryName" : "TJC",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "47",
+                  "locator" : "55:10-55:54",
+                  "name" : "Comfort Measures during Hospitalization",
+                  "libraryName" : "TJC",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "61",
+            "locator" : "58:1-61:89",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "61",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n\t" ]
+                  }, {
+                     "r" : "60",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "51",
+                           "s" : [ {
+                              "r" : "50",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "59",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "53",
+                           "s" : [ {
+                              "r" : "52",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Statin at Discharge\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","DischargeStatin" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "58",
+                           "s" : [ {
+                              "r" : "55",
+                              "s" : [ {
+                                 "r" : "54",
+                                 "s" : [ {
+                                    "value" : [ "DischargeStatin" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "55",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "57",
+                              "s" : [ {
+                                 "r" : "56",
+                                 "s" : [ {
+                                    "value" : [ "IschemicStrokeEncounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "57",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "60",
+               "locator" : "59:2-61:89",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "51",
+                  "locator" : "59:2-59:56",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "50",
+                     "locator" : "59:2-59:32",
+                     "name" : "Ischemic Stroke Encounter",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "59",
+                  "locator" : "60:3-61:89",
+                  "alias" : "DischargeStatin",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "52",
+                     "locator" : "60:8-60:28",
+                     "name" : "Statin at Discharge",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "58",
+                     "locator" : "61:14-61:89",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "55",
+                        "locator" : "61:14-61:43",
+                        "path" : "authorDatetime",
+                        "scope" : "DischargeStatin",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "57",
+                        "locator" : "61:52-61:89",
+                        "path" : "relevantPeriod",
+                        "scope" : "IschemicStrokeEncounter",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "114",
+            "locator" : "75:1-80:15",
+            "name" : "Encounter with Max LDL less than 70 mg per dL",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "114",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with Max LDL less than 70 mg per dL\"",":\n\t" ]
+                  }, {
+                     "r" : "113",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "87",
+                           "s" : [ {
+                              "r" : "86",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "112",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "112",
+                           "s" : [ {
+                              "r" : "110",
+                              "s" : [ {
+                                 "value" : [ "Max","(" ]
+                              }, {
+                                 "r" : "109",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "89",
+                                       "s" : [ {
+                                          "r" : "88",
+                                          "s" : [ {
+                                             "r" : "88",
+                                             "s" : [ {
+                                                "value" : [ "[","\"Laboratory Test, Performed\"",": " ]
+                                             }, {
+                                                "s" : [ {
+                                                   "value" : [ "\"LDL-c\"" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "]" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","Ldl" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\t" ]
+                                 }, {
+                                    "r" : "103",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "103",
+                                       "s" : [ {
+                                          "r" : "91",
+                                          "s" : [ {
+                                             "r" : "90",
+                                             "s" : [ {
+                                                "value" : [ "Ldl" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "91",
+                                             "s" : [ {
+                                                "value" : [ "resultDatetime" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","during"," " ]
+                                       }, {
+                                          "r" : "102",
+                                          "s" : [ {
+                                             "value" : [ "Interval[" ]
+                                          }, {
+                                             "r" : "98",
+                                             "s" : [ {
+                                                "r" : "92",
+                                                "s" : [ {
+                                                   "value" : [ "Global" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "98",
+                                                "s" : [ {
+                                                   "value" : [ "\"ToDate\"","(" ]
+                                                }, {
+                                                   "r" : "97",
+                                                   "s" : [ {
+                                                      "r" : "95",
+                                                      "s" : [ {
+                                                         "value" : [ "start of " ]
+                                                      }, {
+                                                         "r" : "94",
+                                                         "s" : [ {
+                                                            "r" : "93",
+                                                            "s" : [ {
+                                                               "value" : [ "IschemicStrokeEncounter" ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ "." ]
+                                                         }, {
+                                                            "r" : "94",
+                                                            "s" : [ {
+                                                               "value" : [ "relevantPeriod" ]
+                                                            } ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " - " ]
+                                                   }, {
+                                                      "r" : "96",
+                                                      "s" : [ {
+                                                         "value" : [ "30 ","days" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ ")" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ", " ]
+                                          }, {
+                                             "r" : "101",
+                                             "s" : [ {
+                                                "value" : [ "end of " ]
+                                             }, {
+                                                "r" : "100",
+                                                "s" : [ {
+                                                   "r" : "99",
+                                                   "s" : [ {
+                                                      "value" : [ "IschemicStrokeEncounter" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "100",
+                                                   "s" : [ {
+                                                      "value" : [ "relevantPeriod" ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\t" ]
+                                 }, {
+                                    "r" : "108",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "107",
+                                       "s" : [ {
+                                          "r" : "105",
+                                          "s" : [ {
+                                             "r" : "104",
+                                             "s" : [ {
+                                                "value" : [ "Ldl" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "105",
+                                             "s" : [ {
+                                                "value" : [ "result" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " as " ]
+                                       }, {
+                                          "r" : "106",
+                                          "s" : [ {
+                                             "value" : [ "Quantity" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t)" ]
+                              } ]
+                           }, {
+                              "value" : [ "<"," " ]
+                           }, {
+                              "r" : "111",
+                              "s" : [ {
+                                 "value" : [ "70 ","'mg/dL'" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "113",
+               "locator" : "76:2-80:15",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "87",
+                  "locator" : "76:2-76:56",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "86",
+                     "locator" : "76:2-76:32",
+                     "name" : "Ischemic Stroke Encounter",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "112",
+                  "locator" : "77:3-80:15",
+                  "type" : "Less",
+                  "operand" : [ {
+                     "localId" : "110",
+                     "locator" : "77:9-80:3",
+                     "type" : "Max",
+                     "source" : {
+                        "localId" : "109",
+                        "locator" : "77:13-79:33",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "89",
+                           "locator" : "77:13-77:55",
+                           "alias" : "Ldl",
+                           "expression" : {
+                              "localId" : "88",
+                              "locator" : "77:13-77:51",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveLaboratoryTestPerformed",
+                              "templateId" : "PositiveLaboratoryTestPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "LDL-c",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "103",
+                           "locator" : "78:5-78:167",
+                           "type" : "In",
+                           "operand" : [ {
+                              "localId" : "91",
+                              "locator" : "78:11-78:28",
+                              "path" : "resultDatetime",
+                              "scope" : "Ldl",
+                              "type" : "Property"
+                           }, {
+                              "localId" : "102",
+                              "locator" : "78:37-78:167",
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "localId" : "98",
+                                 "locator" : "78:46-78:119",
+                                 "name" : "ToDate",
+                                 "libraryName" : "Global",
+                                 "type" : "FunctionRef",
+                                 "operand" : [ {
+                                    "localId" : "97",
+                                    "locator" : "78:62-78:118",
+                                    "type" : "Subtract",
+                                    "operand" : [ {
+                                       "localId" : "95",
+                                       "locator" : "78:62-78:108",
+                                       "type" : "Start",
+                                       "operand" : {
+                                          "localId" : "94",
+                                          "locator" : "78:71-78:108",
+                                          "path" : "relevantPeriod",
+                                          "scope" : "IschemicStrokeEncounter",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "localId" : "96",
+                                       "locator" : "78:112-78:118",
+                                       "value" : 30,
+                                       "unit" : "days",
+                                       "type" : "Quantity"
+                                    } ]
+                                 } ]
+                              },
+                              "high" : {
+                                 "localId" : "101",
+                                 "locator" : "78:122-78:166",
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "100",
+                                    "locator" : "78:129-78:166",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "IschemicStrokeEncounter",
+                                    "type" : "Property"
+                                 }
+                              }
+                           } ]
+                        },
+                        "return" : {
+                           "localId" : "108",
+                           "locator" : "79:5-79:33",
+                           "expression" : {
+                              "localId" : "107",
+                              "locator" : "79:12-79:33",
+                              "strict" : false,
+                              "type" : "As",
+                              "operand" : {
+                                 "localId" : "105",
+                                 "locator" : "79:12-79:21",
+                                 "path" : "result",
+                                 "scope" : "Ldl",
+                                 "type" : "Property"
+                              },
+                              "asTypeSpecifier" : {
+                                 "localId" : "106",
+                                 "locator" : "79:26-79:33",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Quantity",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "111",
+                     "locator" : "80:6-80:15",
+                     "value" : 70,
+                     "unit" : "mg/dL",
+                     "type" : "Quantity"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "117",
+            "locator" : "63:1-73:2",
+            "name" : "Denominator Exceptions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "117",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exceptions\"",":\n\t" ]
+                  }, {
+                     "r" : "116",
+                     "s" : [ {
+                        "value" : [ "( " ]
+                     }, {
+                        "r" : "116",
+                        "s" : [ {
+                           "r" : "85",
+                           "s" : [ {
+                              "r" : "72",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "72",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "63",
+                                       "s" : [ {
+                                          "r" : "62",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","IschemicStrokeEncounter" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\t" ]
+                                 }, {
+                                    "r" : "71",
+                                    "s" : [ {
+                                       "value" : [ "with " ]
+                                    }, {
+                                       "r" : "65",
+                                       "s" : [ {
+                                          "r" : "64",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Statin Not Given at Discharge\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","NoDischargeStatin" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\t\t\t\tsuch that " ]
+                                    }, {
+                                       "r" : "70",
+                                       "s" : [ {
+                                          "r" : "67",
+                                          "s" : [ {
+                                             "r" : "66",
+                                             "s" : [ {
+                                                "value" : [ "NoDischargeStatin" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "67",
+                                             "s" : [ {
+                                                "value" : [ "authorDatetime" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","during"," " ]
+                                       }, {
+                                          "r" : "69",
+                                          "s" : [ {
+                                             "r" : "68",
+                                             "s" : [ {
+                                                "value" : [ "IschemicStrokeEncounter" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "69",
+                                             "s" : [ {
+                                                "value" : [ "relevantPeriod" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t)" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\tunion " ]
+                           }, {
+                              "r" : "84",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "84",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "74",
+                                       "s" : [ {
+                                          "r" : "73",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","IschemicStrokeEncounter" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\t\t" ]
+                                 }, {
+                                    "r" : "83",
+                                    "s" : [ {
+                                       "value" : [ "with " ]
+                                    }, {
+                                       "r" : "76",
+                                       "s" : [ {
+                                          "r" : "75",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Statin Allergy\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","StatinAllergy" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\t\t\t\t\tsuch that " ]
+                                    }, {
+                                       "r" : "82",
+                                       "s" : [ {
+                                          "r" : "78",
+                                          "s" : [ {
+                                             "r" : "77",
+                                             "s" : [ {
+                                                "value" : [ "StatinAllergy" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "78",
+                                             "s" : [ {
+                                                "value" : [ "prevalencePeriod" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","starts on or before"," " ]
+                                       }, {
+                                          "r" : "81",
+                                          "s" : [ {
+                                             "value" : [ "end of " ]
+                                          }, {
+                                             "r" : "80",
+                                             "s" : [ {
+                                                "r" : "79",
+                                                "s" : [ {
+                                                   "value" : [ "IschemicStrokeEncounter" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "80",
+                                                "s" : [ {
+                                                   "value" : [ "relevantPeriod" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t\t)" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tunion " ]
+                        }, {
+                           "r" : "115",
+                           "s" : [ {
+                              "value" : [ "\"Encounter with Max LDL less than 70 mg per dL\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t)" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "116",
+               "locator" : "64:2-73:2",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "85",
+                  "locator" : "64:4-71:4",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "72",
+                     "locator" : "64:4-67:3",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "63",
+                        "locator" : "64:6-64:60",
+                        "alias" : "IschemicStrokeEncounter",
+                        "expression" : {
+                           "localId" : "62",
+                           "locator" : "64:6-64:36",
+                           "name" : "Ischemic Stroke Encounter",
+                           "libraryName" : "TJC",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "localId" : "71",
+                        "locator" : "65:5-66:93",
+                        "alias" : "NoDischargeStatin",
+                        "type" : "With",
+                        "expression" : {
+                           "localId" : "64",
+                           "locator" : "65:10-65:40",
+                           "name" : "Statin Not Given at Discharge",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "localId" : "70",
+                           "locator" : "66:16-66:93",
+                           "type" : "In",
+                           "operand" : [ {
+                              "localId" : "67",
+                              "locator" : "66:16-66:47",
+                              "path" : "authorDatetime",
+                              "scope" : "NoDischargeStatin",
+                              "type" : "Property"
+                           }, {
+                              "localId" : "69",
+                              "locator" : "66:56-66:93",
+                              "path" : "relevantPeriod",
+                              "scope" : "IschemicStrokeEncounter",
+                              "type" : "Property"
+                           } ]
+                        }
+                     } ]
+                  }, {
+                     "localId" : "84",
+                     "locator" : "68:10-71:4",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "74",
+                        "locator" : "68:12-68:66",
+                        "alias" : "IschemicStrokeEncounter",
+                        "expression" : {
+                           "localId" : "73",
+                           "locator" : "68:12-68:42",
+                           "name" : "Ischemic Stroke Encounter",
+                           "libraryName" : "TJC",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "localId" : "83",
+                        "locator" : "69:6-70:112",
+                        "alias" : "StatinAllergy",
+                        "type" : "With",
+                        "expression" : {
+                           "localId" : "75",
+                           "locator" : "69:11-69:26",
+                           "name" : "Statin Allergy",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "localId" : "82",
+                           "locator" : "70:17-70:112",
+                           "type" : "SameOrBefore",
+                           "operand" : [ {
+                              "locator" : "70:48-70:53",
+                              "type" : "Start",
+                              "operand" : {
+                                 "localId" : "78",
+                                 "locator" : "70:17-70:46",
+                                 "path" : "prevalencePeriod",
+                                 "scope" : "StatinAllergy",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "localId" : "81",
+                              "locator" : "70:68-70:112",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "80",
+                                 "locator" : "70:75-70:112",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "IschemicStrokeEncounter",
+                                 "type" : "Property"
+                              }
+                           } ]
+                        }
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "115",
+                  "locator" : "72:10-72:56",
+                  "name" : "Encounter with Max LDL less than 70 mg per dL",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         } ]
+      }
+   }
+}

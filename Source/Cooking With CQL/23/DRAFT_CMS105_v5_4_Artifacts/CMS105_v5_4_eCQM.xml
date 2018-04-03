@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-5fa6-fe85-015f-c5fa60271057"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="Discharged on Statin Medication"/>
+   <text
+         value="Ischemic stroke patients who are prescribed or continuing to take statin medication at hospital discharge"/>
+   <statusCode code="COMPLETED"/>
+   <setId root="1f503318-bb8d-4b91-af63-223ae0a2328e"/>
+   <versionNumber value="7.0.000"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="1.3.6.1.4.1.33895"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="1.3.6.1.4.1.33895"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.292"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Non-Elective Inpatient Encounter-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.424"/>
+         <title value="Non-Elective Inpatient Encounter"/>
+      </valueSet>
+   </definition>
+   <!--LDL-c-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.215"/>
+         <title value="LDL-c"/>
+      </valueSet>
+   </definition>
+   <!--Statin Allergen-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.423"/>
+         <title value="Statin Allergen"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Comfort Measures-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="1.3.6.1.4.1.33895.1.3.0.45"/>
+         <title value="Comfort Measures"/>
+      </valueSet>
+   </definition>
+   <!--Statin Grouper-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1110.19"/>
+         <title value="Statin Grouper"/>
+      </valueSet>
+   </definition>
+   <!--Hemorrhagic Stroke-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.212"/>
+         <title value="Hemorrhagic Stroke"/>
+      </valueSet>
+   </definition>
+   <!--Ischemic Stroke-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.247"/>
+         <title value="Ischemic Stroke"/>
+      </valueSet>
+   </definition>
+   <!--Discharge To Acute Care Facility-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.87"/>
+         <title value="Discharge To Acute Care Facility"/>
+      </valueSet>
+   </definition>
+   <!--Left Against Medical Advice-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.308"/>
+         <title value="Left Against Medical Advice"/>
+      </valueSet>
+   </definition>
+   <!--Patient Expired-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.309"/>
+         <title value="Patient Expired"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Home for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.209"/>
+         <title value="Discharged to Home for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Health Care Facility for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.207"/>
+         <title value="Discharged to Health Care Facility for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <!--Medical Reason-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.473"/>
+         <title value="Medical Reason"/>
+      </valueSet>
+   </definition>
+   <!--Patient Refusal-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.93"/>
+         <title value="Patient Refusal"/>
+      </valueSet>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+         <text mediaType="text/cql">
+            <reference value="DischargedonStatinMedication-6.1.013.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="DischargedonStatinMedication-6.1.013.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="DischargedonStatinMedication-6.1.013.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb1780160e4c3f7052c06"/>
+         <text mediaType="text/cql">
+            <reference value="MATGlobalCommonFunctions-2.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="MATGlobalCommonFunctions-2.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="MATGlobalCommonFunctions-2.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb17801607ab6d97410f6"/>
+         <text mediaType="text/cql">
+            <reference value="TJC_Overall-1.4.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="TJC_Overall-1.4.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="TJC_Overall-1.4.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="d43aacd3-50df-40da-80cf-408498787748"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="105" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Measure specifications are in the Public Domain.&#xA;&#xA;LOINC(R) is a registered trademark of the Regenstrief Institute.&#xA;&#xA;This material contains SNOMED Clinical Terms (R) (SNOMED CT[C]) copyright 2004-2017 International Health Terminology Standards Development Organization. All rights reserved."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="There is an extensive and consistent body of evidence supporting the use of statins for secondary prevention in patients with clinically evident atherosclerotic cardiovascular disease (ASCVD), which includes individuals with ischemic stroke due to large artery atherosclerosis, individuals with ischemic stroke due to intrinsic small vessel disease, and individuals with ischemic stroke not directly due to atherosclerosis but with clinically evident atherosclerotic disease in an uninvolved cerebral or noncerebral bed.  Both women and men with clinical ASCVD are at increased risk for recurrent ASCVD and ASCVD death.  High-intensity statin therapy should be initiated or continued as first-line therapy in women and men less than or equal to 75 years of age who have clinical ASCVD, unless contraindicated. In patients with clinical ASCVD and a contraindication to high-intensity statin therapy, moderate-intensity therapy should be considered as an alternative if it can be tolerated.  In individuals greater than 75 years of age, the potential for ASCVD risk reduction benefits, adverse effects, drug-drug interactions, and patient preferences should be considered, and statin therapy individualized based on these considerations (Stone, 2013)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For patients with stroke of atherosclerotic origin, intensive lipid lowering therapy with statins should be initiated"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Improvement noted as an increase in rate"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Stone NJ, Robinson J, Lichtenstein AH, Noel Bairey Merz C, Blum CB, Eckel RH, Goldberg AC, Gordon D, Levy D, Lloyd-Jones DM, McBride P, Schwartz JS, Shero Jr, ST, Smith SC, Watson K, Wilson PWF. &quot;Guideline on the Treatment of Blood Cholesterol to Reduce Atherosclerotic Cardiovascular Disease in Adults: A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines.&quot; [In eng]. Circulation 11, (Nov 2013): 1-84."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Amarenco, P., J. Bogousslavsky, A. Callahan, 3rd, L. B. Goldstein, M. Hennerici, A. E. Rudolph, H. Sillesen, et al. &quot;High-Dose Atorvastatin after Stroke or Transient Ischemic Attack.&quot; [In eng]. N Engl J Med 355, no. 6 (Aug 10 2006): 549-59"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Feher, A., G. Pusch, K. Koltai, A. Tibold, B. Gasztonyi, L. Szapary, and G. Feher. &quot;Statintherapy in the Primary and the Secondary Prevention of Ischaemic Cerebrovascular Diseases.&quot; [In eng]. Int J Cardiol 148, no. 2 (Apr 14 2011): 131-8."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Kernan, W.N., B. Ovbiagele, H. R. Black, D. M. Bravata, M. I. Chimowitz, M. D. Ezekowitz, M. C. Fang, M. Fisher, K. L. Furie, D. V. Heck, S. C. Johnston, S. E. Kasner, S. J. Kittner, P. H. Mitchell, M. W. Rich, D. Richardson, L. H. Schwamm, J. A. Wilson. &quot;Guidelines for the Prevention of Stroke in Patients with Stroke and Transient Ischemic Attack: A Guideline for Healthcare Professionals from the American Heart Association/American Stroke Association.&quot; [in eng.]  Stroke 45, no. 7 (May 2014): 2160-223"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Cholesterol Education Program Expert Panel on Detection, Evaluation, and Adults Treatment of High Blood Cholesterol in Adults.&quot;Third Report of the National Cholesterol Education Program (Ncep) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel Iii) Final Report.&quot; [In eng]. Circulation 106, no. 25 (Dec 17 2002): 3143-421."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Squizzato, A., E. Romualdi, F. Dentali, and W. Ageno. &quot;Statins for Acute Ischemic Stroke.&quot; [In eng]. Cochrane Database Syst Rev, no. 8 (2011): CD007551."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The &quot;Non-elective Inpatient Encounter&quot; value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the &quot;Inpatient encounter&quot; value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective admissions include emergency, urgent and unplanned admissions.&#xA;&#xA;The &quot;Medication, Discharge&quot; datatype refers to the discharge medication list and is intended to express medications ordered for post-discharge use."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Patients age 18 and older discharged from inpatient care (non-elective admissions) with a principal diagnosis of ischemic or hemorrhagic stroke and a length of stay less than or equal to 120 days that ends during measurement period"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Patients with a principal diagnosis of ischemic stroke"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="*Patients admitted for elective carotid intervention. This exclusion is implicitly modeled by only including non-elective hospitalizations.&#xA;*Patients with comfort measures documented&#xA;*Patients discharged to another hospital&#xA;*Patients who left against medical advice&#xA;*Patients who expired&#xA;*Patients discharged to home for hospice care&#xA;*Patients discharged to a health care facility for hospice care"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Patients prescribed or continuing to take statin medication at hospital discharge"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="*Patients with a reason for not prescribing statin medication at discharge&#xA;*Patients with a maximum LDL-c result of  less than 70 mg/dL &lt;30 days prior to arrival or any time during the hospital stay"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="cecb95e2-0ba5-4077-a491-976847521b0a"/>
+         <title value="eMeasure Stroke (eSTK)"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_wyeso"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="36fd4ba6-82bb-465d-b8fb-6c646c9b6694"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_suSfu"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="380a2a33-241c-4fd8-bd11-bf7e73949fba"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_Kz02R"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="d49cd9e5-9c50-4cd4-902a-72d0853712a8"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_npsyE"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="943fd468-a486-47eb-bcef-69bbc31a73a0"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.292"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Non-ElectiveInpatientEncounter_EncounterPerformed_TsMOp"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="Non-ElectiveInpatientEncounter_EncounterPerformed"
+                   root="f31f4e2b-6cb3-4ed7-bf7e-197bf6453c3f"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.424"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="LDL-c_LaboratoryTestPerformed_0G2JD"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="LDL-c_LaboratoryTestPerformed"
+                   root="bf0a96eb-61ce-4e48-9c74-37cebf6de39c"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.215"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="StatinAllergen_Allergy/Intolerance_ltHGo"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.119"/>
+               </templateId>
+               <id extension="StatinAllergen_Allergy/Intolerance"
+                   root="40280381-3d61-56a7-013d-66d250cf0f3a"/>
+               <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+               <title value="Allergy/Intolerance"/>
+               <statusCode code="COMPLETED"/>
+               <value code="106190000" codeSystem="2.16.840.1.113883.6.96" xsi:type="CD"/>
+	              <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingEntity classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.423"/>
+                     </playingEntity>
+                  </role>
+               </participation>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_2qBGb"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="9abb6b0c-2c3a-4fd4-ae64-2ca0a18f4362"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ComfortMeasures_InterventionOrder_YRFLX"/>
+            <actCriteria classCode="ACT" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.35"/>
+               </templateId>
+               <id extension="ComfortMeasures_InterventionOrder"
+                   root="3637ec90-b43f-409c-81b3-26b19aed477f"/>
+               <code valueSet="1.3.6.1.4.1.33895.1.3.0.45"/>
+               <title value="Intervention, Order"/>
+               <statusCode code="ACTIVE"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ComfortMeasures_InterventionPerformed_mwoDy"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="ComfortMeasures_InterventionPerformed"
+                   root="3637ec90-b43f-409c-81b3-26b19aed477f"/>
+               <code valueSet="1.3.6.1.4.1.33895.1.3.0.45"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="StatinGrouper_MedicationNotDischarged_e31Pl"/>
+            <substanceAdministrationCriteria actionNegationInd="TRUE" classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.48"/>
+               </templateId>
+               <id extension="StatinGrouper_MedicationNotDischarged"
+                   root="5cf13dc0-47ae-4b23-9f86-684b1b1d8e38"/>
+               <code code="10183-2" codeSystem="2.16.840.1.113883.6.1"/>
+               <title value="Medication, Not Discharged"/>
+               <statusCode code="ACTIVE"/>
+	              <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1110.19"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+	           </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="StatinGrouper_MedicationDischarge_CO4af"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.48"/>
+               </templateId>
+               <id extension="StatinGrouper_MedicationDischarge"
+                   root="5cf13dc0-47ae-4b23-9f86-684b1b1d8e38"/>
+               <code code="10183-2" codeSystem="2.16.840.1.113883.6.1"/>
+               <title value="Medication, Discharge"/>
+               <statusCode code="ACTIVE"/>
+	              <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1110.19"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+	           </substanceAdministrationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="63800E29-6178-4DAF-B347-45322F357004"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="741E8D27-EFFA-4292-B380-49FE12C15A6E"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;Initial Population&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="8D8556BA-82DE-4561-BBA1-7C9D2ABF5B34"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;Denominator&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="B96EE225-080A-4FFC-AE37-F5B4B68F2F63"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;Denominator Exclusions&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExceptionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExceptions" root="91D5C68D-ED98-4309-A6A5-B111BCDE066E"/>
+               <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;Denominator Exceptions&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExceptionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="2D3FF596-5C1E-4213-A6D9-6D9E8C89CC8C"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;Numerator&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="314A7001-6C59-43AB-8E02-9F11943C454A"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;SDE Ethnicity&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="57C32EA4-C6F9-40D0-ABDB-8702E75D11E5"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;SDE Payer&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="81DAFB63-B42C-45D5-9BB7-9300019F4B81"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;SDE Race&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="225C63FA-8C44-497F-9DB3-138EC77637C8"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="DischargedonStatinMedication.&quot;SDE Sex&quot;"
+                         root="D4263C38-2C43-47C2-BBAD-75FEA5BD0457"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

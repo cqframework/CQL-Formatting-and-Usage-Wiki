@@ -1,0 +1,1332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+ <head>
+  <title>Discharged on Statin Medication</title>
+  <style type="text/css">
+body {
+	color: rgb(26, 26, 26);
+	background-color: rgb(255,255,255);
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 11px;
+    overflow-y: auto;
+}
+
+
+
+h1 {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+
+
+
+
+tr {
+	background-color: rgb(224,224,224);
+}
+
+td {
+	padding: 0.1cm 0.2cm;
+	vertical-align: top;
+}
+
+
+
+a {
+	/*color: rgb(0, 0, 255);
+	background-color: rgb(255,255,255);*/
+}
+
+table { 
+ line-height: 10pt; 
+ width: 80%; 
+ font-size: 11px; 
+ }
+
+/*div {
+	width: 80%;
+}*/
+
+.list-unstyled {
+    list-style-type: none;
+}
+
+.list-unstyled li {
+    padding-top: 5px;
+}
+
+.list-header {
+    font-size: 12px;
+    color: rgb(0, 0, 238);
+}
+
+.list-header:hover {
+    text-decoration: underline;
+}
+
+.code {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    color:black;
+    font-size: 12px;
+}
+
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.section {
+    font-size: 10pt;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cql-keyword-new {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.cql-class, .cql-object {
+    color: rgb(25, 127, 157);
+}
+
+.cql_keyword {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_function {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_attribute {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_string {
+    color: rgb(42, 0, 255);
+}
+.cql_identifier .cql_function {
+    color: rgb(60, 76, 114);
+}
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+
+.treeview:hover input ~ label:before,
+.treeview.hover input ~ label:before {
+  opacity: 1.0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.treeview ul {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  list-style: none;
+  padding-left: 1em;
+}
+.treeview ul li span {
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -ms-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  
+}
+
+.treeview input {
+  display: none;
+}
+
+.treeview input[type=checkbox]:checked ~ ul {
+  display: none;  
+}
+
+.treeview input[type=checkbox] ~ ul {
+  max-height: 100%;
+  margin-right: 20%;
+  opacity: 1;  
+}
+
+.treeview input ~ label {
+  cursor: pointer;
+}
+.treeview input ~ label:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  border-width: 4px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: rgb(0, 0, 238);
+  border-bottom-color: rgb(0, 0, 238);
+  border-left-color: transparent;
+  opacity: 0.0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.treeview input:checked ~ label:before {
+  margin-left: -0.8em;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(0, 0, 238);
+}
+
+
+
+
+.h1center {
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+	width: 80%;
+}
+
+.header_table{
+	border: 1pt inset rgb(0,0,0);
+}
+
+.narr_table {
+	width: 100%;
+}
+
+.narr_tr {
+	background-color: rgb(225,225,225);
+}
+
+pre {
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-family: Verdana, Tahoma, sans-serif;
+ font-size: 11px;
+ text-align:left;
+ margin: 0px 0px 0px 0px;
+ padding:0px 0px 0px 0px;
+}
+.narr_th {
+	background-color: rgb(201,201,201);
+}
+
+.td_label{
+	font-weight: bold;
+	color: white;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#nn-text
+{
+    text-align: center;
+    text-align: center;
+    color:lightgrey;
+    font-size:40px;
+}
+
+.cql-definition-body {
+	width:950px;
+	display: block;
+	word-wrap: break-word;
+}li {  padding-left: 15px;}	</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">Discharged on Statin Medication</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">105</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Version number</span></td>
+     <td style="width:30%">7.0.000</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">Not Applicable</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>1f503318-bb8d-4b91-af63-223ae0a2328e</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">The Joint Commission</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">The Joint Commission</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">None</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Ischemic stroke patients who are prescribed or continuing to take statin medication at hospital discharge</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Measure specifications are in the Public Domain.
+
+LOINC(R) is a registered trademark of the Regenstrief Institute.
+
+This material contains SNOMED Clinical Terms (R) (SNOMED CT[C]) copyright 2004-2017 International Health Terminology Standards Development Organization. All rights reserved.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Proportion</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Process</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>There is an extensive and consistent body of evidence supporting the use of statins for secondary prevention in patients with clinically evident atherosclerotic cardiovascular disease (ASCVD), which includes individuals with ischemic stroke due to large artery atherosclerosis, individuals with ischemic stroke due to intrinsic small vessel disease, and individuals with ischemic stroke not directly due to atherosclerosis but with clinically evident atherosclerotic disease in an uninvolved cerebral or noncerebral bed.  Both women and men with clinical ASCVD are at increased risk for recurrent ASCVD and ASCVD death.  High-intensity statin therapy should be initiated or continued as first-line therapy in women and men less than or equal to 75 years of age who have clinical ASCVD, unless contraindicated. In patients with clinical ASCVD and a contraindication to high-intensity statin therapy, moderate-intensity therapy should be considered as an alternative if it can be tolerated.  In individuals greater than 75 years of age, the potential for ASCVD risk reduction benefits, adverse effects, drug-drug interactions, and patient preferences should be considered, and statin therapy individualized based on these considerations (Stone, 2013).</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For patients with stroke of atherosclerotic origin, intensive lipid lowering therapy with statins should be initiated</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Improvement noted as an increase in rate</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Stone NJ, Robinson J, Lichtenstein AH, Noel Bairey Merz C, Blum CB, Eckel RH, Goldberg AC, Gordon D, Levy D, Lloyd-Jones DM, McBride P, Schwartz JS, Shero Jr, ST, Smith SC, Watson K, Wilson PWF. &quot;Guideline on the Treatment of Blood Cholesterol to Reduce Atherosclerotic Cardiovascular Disease in Adults: A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines.&quot; [In eng]. Circulation 11, (Nov 2013): 1-84. </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Amarenco, P., J. Bogousslavsky, A. Callahan, 3rd, L. B. Goldstein, M. Hennerici, A. E. Rudolph, H. Sillesen, et al. &quot;High-Dose Atorvastatin after Stroke or Transient Ischemic Attack.&quot; [In eng]. N Engl J Med 355, no. 6 (Aug 10 2006): 549-59</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Feher, A., G. Pusch, K. Koltai, A. Tibold, B. Gasztonyi, L. Szapary, and G. Feher. &quot;Statintherapy in the Primary and the Secondary Prevention of Ischaemic Cerebrovascular Diseases.&quot; [In eng]. Int J Cardiol 148, no. 2 (Apr 14 2011): 131-8.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Kernan, W.N., B. Ovbiagele, H. R. Black, D. M. Bravata, M. I. Chimowitz, M. D. Ezekowitz, M. C. Fang, M. Fisher, K. L. Furie, D. V. Heck, S. C. Johnston, S. E. Kasner, S. J. Kittner, P. H. Mitchell, M. W. Rich, D. Richardson, L. H. Schwamm, J. A. Wilson. &quot;Guidelines for the Prevention of Stroke in Patients with Stroke and Transient Ischemic Attack: A Guideline for Healthcare Professionals from the American Heart Association/American Stroke Association.&quot; [in eng.]  Stroke 45, no. 7 (May 2014): 2160-223</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Cholesterol Education Program Expert Panel on Detection, Evaluation, and Adults Treatment of High Blood Cholesterol in Adults.&quot;Third Report of the National Cholesterol Education Program (Ncep) Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults (Adult Treatment Panel Iii) Final Report.&quot; [In eng]. Circulation 106, no. 25 (Dec 17 2002): 3143-421.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Squizzato, A., E. Romualdi, F. Dentali, and W. Ageno. &quot;Statins for Acute Ischemic Stroke.&quot; [In eng]. Cochrane Database Syst Rev, no. 8 (2011): CD007551.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>The &quot;Non-elective Inpatient Encounter&quot; value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the &quot;Inpatient encounter&quot; value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective admissions include emergency, urgent and unplanned admissions.
+
+The &quot;Medication, Discharge&quot; datatype refers to the discharge medication list and is intended to express medications ordered for post-discharge use.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>TBD</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients age 18 and older discharged from inpatient care (non-elective admissions) with a principal diagnosis of ischemic or hemorrhagic stroke and a length of stay less than or equal to 120 days that ends during measurement period</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients with a principal diagnosis of ischemic stroke</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>*Patients admitted for elective carotid intervention. This exclusion is implicitly modeled by only including non-elective hospitalizations.
+*Patients with comfort measures documented
+*Patients discharged to another hospital
+*Patients who left against medical advice
+*Patients who expired
+*Patients discharged to home for hospice care
+*Patients discharged to a health care facility for hospice care</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Patients prescribed or continuing to take statin medication at hospital discharge</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exceptions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>*Patients with a reason for not prescribing statin medication at discharge
+*Patients with a maximum LDL-c result of  less than 70 mg/dL &lt;30 days prior to arrival or any time during the hospital stay</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure also identify payer, race, ethnicity and sex</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul style="padding-left: 50px;">
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e649">Definitions</a></li>
+   <li><a href="#d1e650">Functions</a></li>
+   <li><a href="#d1e555">Terminology</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left:10px;">
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-initialPopulation_315" /><label for="test-initialPopulation_315" class="list-header"><strong>Initial Population</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">TJC.&quot;Encounter with Principal Diagnosis and Age&quot;</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominator_24" /><label for="test-denominator_24" class="list-header"><strong>Denominator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">TJC.&quot;Ischemic Stroke Encounter&quot;</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExclusions_750" /><label for="test-denominatorExclusions_750" class="list-header"><strong>Denominator Exclusions</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">( ( TJC.&quot;Ischemic Stroke Encounters with Discharge Status&quot; )
+		union TJC.&quot;Comfort Measures during Hospitalization&quot;
+)</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numerator_971" /><label for="test-numerator_971" class="list-header"><strong>Numerator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+	with &quot;Statin at Discharge&quot; DischargeStatin
+		such that DischargeStatin.authorDatetime during IschemicStrokeEncounter.relevantPeriod</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numeratorExclusions_810" /><label for="test-numeratorExclusions_810" class="list-header"><strong>Numerator Exclusions</strong></label>
+        <ul class="code">
+         <li>
+          <div>
+           <label for="test-None_425"><strong class="cql-class">None</strong></label>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExceptions_555" /><label for="test-denominatorExceptions_555" class="list-header"><strong>Denominator Exceptions</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">( ( TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+			with &quot;Statin Not Given at Discharge&quot; NoDischargeStatin
+				such that NoDischargeStatin.authorDatetime during IschemicStrokeEncounter.relevantPeriod
+	)
+		union ( TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+				with &quot;Statin Allergy&quot; StatinAllergy
+					such that StatinAllergy.prevalencePeriod starts on or before end of IschemicStrokeEncounter.relevantPeriod
+		)
+		union &quot;Encounter with Max LDL less than 70 mg per dL&quot;
+)</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-stratum_988" /><label for="test-stratum_988" class="list-header"><strong>Stratification</strong></label>
+        <ul class="code">
+         <li>
+          <div>
+           <label for="test-None_136"><strong class="cql-class">None</strong></label>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e649" href="#toc">Definitions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator_351" />
+         <label for="test-Denominator_351" class="list-header"><strong> Denominator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">TJC.&quot;Ischemic Stroke Encounter&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator_Exceptions_376" />
+         <label for="test-Denominator_Exceptions_376" class="list-header"><strong> Denominator Exceptions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+			with &quot;Statin Not Given at Discharge&quot; NoDischargeStatin
+				such that NoDischargeStatin.authorDatetime during IschemicStrokeEncounter.relevantPeriod
+	)
+		union ( TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+				with &quot;Statin Allergy&quot; StatinAllergy
+					such that StatinAllergy.prevalencePeriod starts on or before end of IschemicStrokeEncounter.relevantPeriod
+		)
+		union &quot;Encounter with Max LDL less than 70 mg per dL&quot;
+)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator_Exclusions_23" />
+         <label for="test-Denominator_Exclusions_23" class="list-header"><strong> Denominator Exclusions</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( TJC.&quot;Ischemic Stroke Encounters with Discharge Status&quot; )
+		union TJC.&quot;Comfort Measures during Hospitalization&quot;
+)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Encounter_with_Max_LDL_less_than_70_mg_per_dL_911" />
+         <label for="test-Encounter_with_Max_LDL_less_than_70_mg_per_dL_911" class="list-header"><strong> Encounter with Max LDL less than 70 mg per dL</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+	where Max([&quot;Laboratory Test, Performed&quot;: &quot;LDL-c&quot;] Ldl
+			where Ldl.resultDatetime during Interval[Global.&quot;ToDate&quot;(start of IschemicStrokeEncounter.relevantPeriod - 30 days), end of IschemicStrokeEncounter.relevantPeriod]
+			return Ldl.result as Quantity
+	)&lt; 70 'mg/dL'</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Initial_Population_187" />
+         <label for="test-Initial_Population_187" class="list-header"><strong> Initial Population</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">TJC.&quot;Encounter with Principal Diagnosis and Age&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator_868" />
+         <label for="test-Numerator_868" class="list-header"><strong> Numerator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">TJC.&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+	with &quot;Statin at Discharge&quot; DischargeStatin
+		such that DischargeStatin.authorDatetime during IschemicStrokeEncounter.relevantPeriod</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Ethnicity_92" />
+         <label for="test-SDE_Ethnicity_92" class="list-header"><strong> SDE Ethnicity</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Ethnicity&quot;: &quot;Ethnicity&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Payer_751" />
+         <label for="test-SDE_Payer_751" class="list-header"><strong> SDE Payer</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Payer&quot;: &quot;Payer&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Race_192" />
+         <label for="test-SDE_Race_192" class="list-header"><strong> SDE Race</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Race&quot;: &quot;Race&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Sex_494" />
+         <label for="test-SDE_Sex_494" class="list-header"><strong> SDE Sex</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Patient Characteristic Sex&quot;: &quot;ONC Administrative Sex&quot;] </pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Statin_Allergy_454" />
+         <label for="test-Statin_Allergy_454" class="list-header"><strong> Statin Allergy</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Allergy/Intolerance&quot;: &quot;Statin Allergen&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Statin_at_Discharge_307" />
+         <label for="test-Statin_at_Discharge_307" class="list-header"><strong> Statin at Discharge</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Medication, Discharge&quot;: &quot;Statin Grouper&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Statin_Not_Given_at_Discharge_276" />
+         <label for="test-Statin_Not_Given_at_Discharge_276" class="list-header"><strong> Statin Not Given at Discharge</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Medication, Not Discharged&quot;: &quot;Statin Grouper&quot;] NoStatinDischarge
+	where NoStatinDischarge.negationRationale in &quot;Medical Reason&quot;
+		or NoStatinDischarge.negationRationale in &quot;Patient Refusal&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.All_Stroke_Encounter_880" />
+         <label for="test-TJC.All_Stroke_Encounter_880" class="list-header"><strong> TJC.All Stroke Encounter</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">&quot;Non Elective Inpatient Encounter&quot; NonElectiveEncounter
+	where NonElectiveEncounter.principalDiagnosis in &quot;Hemorrhagic Stroke&quot;
+		or NonElectiveEncounter.principalDiagnosis in &quot;Ischemic Stroke&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Comfort_Measures_during_Hospitalization_903" />
+         <label for="test-TJC.Comfort_Measures_during_Hospitalization_903" class="list-header"><strong> TJC.Comfort Measures during Hospitalization</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">&quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+	with &quot;Intervention Comfort Measures&quot; ComfortMeasure
+		such that Coalesce(start of ComfortMeasure.relevantPeriod, ComfortMeasure.authorDatetime)during Global.&quot;Hospitalization&quot;(IschemicStrokeEncounter)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Encounter_with_Principal_Diagnosis_and_Age_795" />
+         <label for="test-TJC.Encounter_with_Principal_Diagnosis_and_Age_795" class="list-header"><strong> TJC.Encounter with Principal Diagnosis and Age</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">&quot;All Stroke Encounter&quot; AllStrokeEncounter
+	with [&quot;Patient Characteristic Birthdate&quot;] BirthDate
+		such that Global.&quot;CalendarAgeInYearsAt&quot;(BirthDate.birthDatetime, start of AllStrokeEncounter.relevantPeriod)&gt;= 18</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Intervention_Comfort_Measures_179" />
+         <label for="test-TJC.Intervention_Comfort_Measures_179" class="list-header"><strong> TJC.Intervention Comfort Measures</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Intervention, Order&quot;: &quot;Comfort Measures&quot;]
+	union [&quot;Intervention, Performed&quot;: &quot;Comfort Measures&quot;]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Ischemic_Stroke_Encounter_527" />
+         <label for="test-TJC.Ischemic_Stroke_Encounter_527" class="list-header"><strong> TJC.Ischemic Stroke Encounter</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">&quot;Encounter with Principal Diagnosis and Age&quot; EncounterWithAge
+	where EncounterWithAge.principalDiagnosis in &quot;Ischemic Stroke&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Ischemic_Stroke_Encounters_with_Discharge_Status_626" />
+         <label for="test-TJC.Ischemic_Stroke_Encounters_with_Discharge_Status_626" class="list-header"><strong> TJC.Ischemic Stroke Encounters with Discharge Status</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( ( &quot;Ischemic Stroke Encounter&quot; IschemicStrokeEncounter
+			where IschemicStrokeEncounter.dischargeDisposition in &quot;Discharge To Acute Care Facility&quot;
+				or IschemicStrokeEncounter.dischargeDisposition in &quot;Left Against Medical Advice&quot;
+				or IschemicStrokeEncounter.dischargeDisposition in &quot;Patient Expired&quot;
+				or IschemicStrokeEncounter.dischargeDisposition in &quot;Discharged to Home for Hospice Care&quot;
+				or IschemicStrokeEncounter.dischargeDisposition in &quot;Discharged to Health Care Facility for Hospice Care&quot;
+	)
+)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-TJC.Non_Elective_Inpatient_Encounter_632" />
+         <label for="test-TJC.Non_Elective_Inpatient_Encounter_632" class="list-header"><strong> TJC.Non Elective Inpatient Encounter</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">[&quot;Encounter, Performed&quot;: &quot;Non-Elective Inpatient Encounter&quot;] NonElectiveEncounter
+	where Global.&quot;LengthInDays&quot;(NonElectiveEncounter.relevantPeriod)&lt;= 120
+		and NonElectiveEncounter.relevantPeriod ends during &quot;Measurement Period&quot;</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e650" href="#toc">Functions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Global.CalendarAgeInYearsAt_989" />
+         <label for="test-Global.CalendarAgeInYearsAt_989" class="list-header"><strong> Global.CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime)</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">years between ToDate(BirthDateTime)and ToDate(AsOf)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Global.Hospitalization_364" />
+         <label for="test-Global.Hospitalization_364" class="list-header"><strong> Global.Hospitalization(Encounter &quot;Encounter, Performed&quot;)</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">( singleton from ( [&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] EDVisit
+		where EDVisit.relevantPeriod ends 1 hour or less on or before start of Encounter.relevantPeriod
+) ) X
+	return if X is null then Encounter.relevantPeriod else Interval[start of X.relevantPeriod, end of Encounter.relevantPeriod]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Global.LengthInDays_402" />
+         <label for="test-Global.LengthInDays_402" class="list-header"><strong> Global.LengthInDays(Value Interval&lt;DateTime&gt;)</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">difference in days between start of Value and end of Value</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Global.ToDate_41" />
+         <label for="test-Global.ToDate_41" class="list-header"><strong> Global.ToDate(Value DateTime)</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e555" href="#toc">Terminology</a></h3>
+  <div>
+   <ul style="padding-left: 50px;">
+    <li>valueset &quot;Comfort Measures&quot; using &quot;1.3.6.1.4.1.33895.1.3.0.45&quot;</li>
+    <li>valueset &quot;Discharge To Acute Care Facility&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.87&quot;</li>
+    <li>valueset &quot;Discharged to Health Care Facility for Hospice Care&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.207&quot;</li>
+    <li>valueset &quot;Discharged to Home for Hospice Care&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.209&quot;</li>
+    <li>valueset &quot;Emergency Department Visit&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.292&quot;</li>
+    <li>valueset &quot;Ethnicity&quot; using &quot;2.16.840.1.114222.4.11.837&quot;</li>
+    <li>valueset &quot;Hemorrhagic Stroke&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.212&quot;</li>
+    <li>valueset &quot;Ischemic Stroke&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.247&quot;</li>
+    <li>valueset &quot;LDL-c&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.215&quot;</li>
+    <li>valueset &quot;Left Against Medical Advice&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.308&quot;</li>
+    <li>valueset &quot;Medical Reason&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.473&quot;</li>
+    <li>valueset &quot;Non-Elective Inpatient Encounter&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.424&quot;</li>
+    <li>valueset &quot;ONC Administrative Sex&quot; using &quot;2.16.840.1.113762.1.4.1&quot;</li>
+    <li>valueset &quot;Patient Expired&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.309&quot;</li>
+    <li>valueset &quot;Patient Refusal&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.93&quot;</li>
+    <li>valueset &quot;Payer&quot; using &quot;2.16.840.1.114222.4.11.3591&quot;</li>
+    <li>valueset &quot;Race&quot; using &quot;2.16.840.1.114222.4.11.836&quot;</li>
+    <li>valueset &quot;Statin Allergen&quot; using &quot;2.16.840.1.113883.3.117.1.7.1.423&quot;</li>
+    <li>valueset &quot;Statin Grouper&quot; using &quot;2.16.840.1.113762.1.4.1110.19&quot;</li>
+   </ul>
+  </div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <ul style="padding-left: 50px;">
+   <li style="width:80%">&quot;Allergy/Intolerance: Statin Allergen&quot; using &quot;Statin Allergen (2.16.840.1.113883.3.117.1.7.1.423)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Emergency Department Visit&quot; using &quot;Emergency Department Visit (2.16.840.1.113883.3.117.1.7.1.292)&quot;</li>
+   <li style="width:80%">&quot;Encounter, Performed: Non-Elective Inpatient Encounter&quot; using &quot;Non-Elective Inpatient Encounter (2.16.840.1.113883.3.117.1.7.1.424)&quot;</li>
+   <li style="width:80%">&quot;Intervention, Order: Comfort Measures&quot; using &quot;Comfort Measures (1.3.6.1.4.1.33895.1.3.0.45)&quot;</li>
+   <li style="width:80%">&quot;Intervention, Performed: Comfort Measures&quot; using &quot;Comfort Measures (1.3.6.1.4.1.33895.1.3.0.45)&quot;</li>
+   <li style="width:80%">&quot;Laboratory Test, Performed: LDL-c&quot; using &quot;LDL-c (2.16.840.1.113883.3.117.1.7.1.215)&quot;</li>
+   <li style="width:80%">&quot;Medication, Discharge: Statin Grouper&quot; using &quot;Statin Grouper (2.16.840.1.113762.1.4.1110.19)&quot;</li>
+   <li style="width:80%">&quot;Medication, Not Discharged: Statin Grouper&quot; using &quot;Statin Grouper (2.16.840.1.113762.1.4.1110.19)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Ethnicity: Ethnicity&quot; using &quot;Ethnicity (2.16.840.1.114222.4.11.837)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Payer: Payer&quot; using &quot;Payer (2.16.840.1.114222.4.11.3591)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Race: Race&quot; using &quot;Race (2.16.840.1.114222.4.11.836)&quot;</li>
+   <li style="width:80%">&quot;Patient Characteristic Sex: ONC Administrative Sex&quot; using &quot;ONC Administrative Sex (2.16.840.1.113762.1.4.1)&quot;</li>
+  </ul>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Ethnicity_598" />
+      <label for="test-SDE_Ethnicity_598" class="list-header"><strong> SDE Ethnicity</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Ethnicity&quot;: &quot;Ethnicity&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Payer_467" />
+      <label for="test-SDE_Payer_467" class="list-header"><strong> SDE Payer</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Payer&quot;: &quot;Payer&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Race_185" />
+      <label for="test-SDE_Race_185" class="list-header"><strong> SDE Race</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Race&quot;: &quot;Race&quot;]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Sex_113" />
+      <label for="test-SDE_Sex_113" class="list-header"><strong> SDE Sex</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">[&quot;Patient Characteristic Sex&quot;: &quot;ONC Administrative Sex&quot;] </pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br /></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>eMeasure Stroke (eSTK)</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
