@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ClaimQuery"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="FHIR" uri="http://hl7.org/fhir" version="3.0.0"/>
+   </usings>
+   <includes>
+      <def localIdentifier="FHIRHelpers" path="FHIRHelpers" version="3.0.0"/>
+   </includes>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="Dx Cholesterol Embolism" id="urn:oid:1.2.3.4.5" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="fhir:Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Lookback Interval Total One Year" context="Patient" accessLevel="Public">
+         <expression lowClosed="true" highClosed="false" xsi:type="Interval">
+            <low xsi:type="Subtract">
+               <operand xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+               <operand value="1" unit="year" xsi:type="Quantity"/>
+            </low>
+            <high xsi:type="Start">
+               <operand name="Measurement Period" xsi:type="ParameterRef"/>
+            </high>
+         </expression>
+      </def>
+      <def name="Evidence of Diagnosis 1" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="C">
+               <expression dataType="fhir:Claim" xsi:type="Retrieve"/>
+            </source>
+            <relationship alias="I" xsi:type="With">
+               <expression path="item" scope="C" xsi:type="Property"/>
+               <suchThat xsi:type="And">
+                  <operand xsi:type="In">
+                     <operand name="ToDateTime" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                        <operand asType="fhir:date" xsi:type="As">
+                           <operand path="serviced" scope="I" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                     <operand name="Lookback Interval Total One Year" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="Exists">
+                     <operand xsi:type="Query">
+                        <source alias="D">
+                           <expression path="diagnosis" scope="C" xsi:type="Property"/>
+                        </source>
+                        <where xsi:type="And">
+                           <operand xsi:type="In">
+                              <operand path="sequence" scope="D" xsi:type="Property"/>
+                              <operand path="diagnosisLinkId" scope="I" xsi:type="Property"/>
+                           </operand>
+                           <operand xsi:type="InValueSet">
+                              <code name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <operand asType="fhir:CodeableConcept" xsi:type="As">
+                                    <operand path="diagnosis" scope="D" xsi:type="Property"/>
+                                 </operand>
+                              </code>
+                              <valueset name="Dx Cholesterol Embolism"/>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+
