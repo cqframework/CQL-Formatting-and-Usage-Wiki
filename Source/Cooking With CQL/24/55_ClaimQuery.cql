@@ -38,11 +38,11 @@ Because there are potentially multiple diagnoses linked to each item, this needs
 to be done with an exists:
 */
 
-/* define "Evidence of Diagnosis 1":
+define "Evidence of Diagnosis 1":
   [Claim] C
     with C.item I such that I.serviced during "Lookback Interval Total One Year"
       and exists (
         C.diagnosis D 
           where D.sequence in I.diagnosisLinkId
             and D.diagnosis in "Dx Cholesterol Embolism"
-      ) */
+      )

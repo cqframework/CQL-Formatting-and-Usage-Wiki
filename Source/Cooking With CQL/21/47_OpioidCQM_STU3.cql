@@ -123,7 +123,7 @@ define PrescriptionPeriods:
       mme: P.mme
     }
 
-// { rxNormCode, effectivePeriod, mme }
+// { rxNormCode, periods, mme }
 
 define PrescriptionDays:
   PrescriptionPeriods R
@@ -145,7 +145,7 @@ define MMEDays:
 
 define MMESum:
   MMEDays D
-    return { day: L.day, totalMME: Sum(MMEDays X where X.day = L.day return X.mme) }
+    return { day: D.day, totalMME: Sum(MMEDays X where X.day = D.day return X.mme) }
     
 // { day, mme }
 
@@ -161,6 +161,20 @@ define MMEIntervals:
       return all S.periods P return { period: P,  mme: S.mme }
   )
 
+// Potentially confusing syntax...
+define MMESum:
+  MMEDays D
+    group by { D.day } return { totalMME: Sum(D.mme) }
+    
+define MMEIntervals:
+  PrescriptionsWithMME P
+    using { P.periods }
+    group by { P.periods } add { totalMME: Sum(D.mme) }
+
+// For consistency would need to introduce the using clause to enable temporal queries for all operators
+// Would be a significant burden on the engine and implementations
+// For not a lot of gain
+  
 // Returns the total MME for each period covered by any of the given prescriptions  
 define function GetMMEIntervals(prescriptions Tuple { rxNormCode Code, periods List<Interval<DateTime>>, mme Quantity }):
     

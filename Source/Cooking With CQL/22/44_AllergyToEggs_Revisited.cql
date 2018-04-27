@@ -16,7 +16,7 @@ define "Diagnosis of Allergy to Egg":
 
 define "Diagnosis of Allergy to Egg (using overlaps)":
   ["Diagnosis": "Allergy to Eggs"] Dx
-    where Dx.prevalencePeriod overlaps start of "Measurement Period" + 89 days
+    where Dx.prevalencePeriod overlaps Date(year from "Measurement Period", 3, 31) //start of "Measurement Period" + 89 days
     
 define "Measurement Period": Interval[@2017-01-01, @2018-01-01)
 
