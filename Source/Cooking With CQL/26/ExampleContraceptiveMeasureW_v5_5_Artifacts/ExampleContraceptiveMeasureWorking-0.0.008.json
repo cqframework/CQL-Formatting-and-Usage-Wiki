@@ -1,0 +1,2472 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "ExampleContraceptiveMeasureWorking",
+         "version" : "0.0.008"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "19",
+            "locator" : "23:1-23:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "18",
+               "locator" : "23:32-23:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "17",
+                  "locator" : "23:41-23:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "6:1-6:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "3",
+            "locator" : "7:1-7:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "8:1-8:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "9:1-9:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "10:1-10:83",
+            "name" : "Delivery Live Births",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.111.12.1015",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "11:1-11:58",
+            "name" : "Female",
+            "id" : "urn:oid:2.16.840.1.113883.3.560.100.2",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "12:1-12:87",
+            "name" : "Home Healthcare Services",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1016",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "13:1-13:113",
+            "name" : "Preventive Care, Established Office Visit, 0 to 17",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1024",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "14:1-14:125",
+            "name" : "Preventive Care Services - Established Office Visit, 18 and Up",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1025",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "15:1-15:119",
+            "name" : "Preventive Care Services-Initial Office Visit, 18 and Up",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1023",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "16:1-16:118",
+            "name" : "Preventive Care Services, Initial Office Visit, 0 to 17",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1022",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "13",
+            "locator" : "17:1-17:75",
+            "name" : "Office Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "14",
+            "locator" : "18:1-18:102",
+            "name" : "Most or Moderately Effective Contraceptive Methods",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1166.47",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "15",
+            "locator" : "19:1-19:88",
+            "name" : "Not at risk for unintended pregnancy",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1166.48",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "16",
+            "locator" : "20:1-20:60",
+            "name" : "Pregnancy",
+            "id" : "urn:oid:2.16.840.1.113883.3.600.1622",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "25:1-25:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "25:1-25:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "21",
+            "locator" : "27:1-28:50",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "21",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\n\t" ]
+                  }, {
+                     "r" : "20",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "20",
+               "locator" : "28:2-28:50",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "23",
+            "locator" : "30:1-31:42",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "23",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\n\t" ]
+                  }, {
+                     "r" : "22",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "22",
+               "locator" : "31:2-31:42",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "25",
+            "locator" : "33:1-34:40",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "25",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\n\t" ]
+                  }, {
+                     "r" : "24",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "24",
+               "locator" : "34:2-34:40",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "27",
+            "locator" : "36:1-37:57",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "27",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\n\t" ]
+                  }, {
+                     "r" : "26",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "26",
+               "locator" : "37:2-37:57",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "45",
+            "locator" : "39:1-46:65",
+            "name" : "Encounter During Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "45",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter During Measurement Period\"",":\n\t" ]
+                  }, {
+                     "r" : "44",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "39",
+                           "s" : [ {
+                              "r" : "38",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "38",
+                                 "s" : [ {
+                                    "r" : "36",
+                                    "s" : [ {
+                                       "r" : "34",
+                                       "s" : [ {
+                                          "r" : "32",
+                                          "s" : [ {
+                                             "r" : "30",
+                                             "s" : [ {
+                                                "r" : "28",
+                                                "s" : [ {
+                                                   "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                }, {
+                                                   "s" : [ {
+                                                      "value" : [ "\"Office Visit\"" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "]" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\n\t\tunion " ]
+                                             }, {
+                                                "r" : "29",
+                                                "s" : [ {
+                                                   "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                }, {
+                                                   "s" : [ {
+                                                      "value" : [ "\"Preventive Care Services, Initial Office Visit, 0 to 17\"" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "]" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\tunion " ]
+                                          }, {
+                                             "r" : "31",
+                                             "s" : [ {
+                                                "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                             }, {
+                                                "s" : [ {
+                                                   "value" : [ "\"Preventive Care, Established Office Visit, 0 to 17\"" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "]" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t\tunion " ]
+                                       }, {
+                                          "r" : "33",
+                                          "s" : [ {
+                                             "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "\"Preventive Care Services - Established Office Visit, 18 and Up\"" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\tunion " ]
+                                    }, {
+                                       "r" : "35",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Preventive Care Services-Initial Office Visit, 18 and Up\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\tunion " ]
+                                 }, {
+                                    "r" : "37",
+                                    "s" : [ {
+                                       "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "\"Home Healthcare Services\"" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "]" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " )" ]
+                              } ]
+                           }, {
+                              "value" : [ " ","ValidEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "43",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "43",
+                           "s" : [ {
+                              "r" : "41",
+                              "s" : [ {
+                                 "r" : "40",
+                                 "s" : [ {
+                                    "value" : [ "ValidEncounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "41",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "42",
+                              "s" : [ {
+                                 "value" : [ "\"Measurement Period\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "44",
+               "locator" : "40:2-46:65",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "39",
+                  "locator" : "40:2-45:77",
+                  "alias" : "ValidEncounter",
+                  "expression" : {
+                     "localId" : "38",
+                     "locator" : "40:2-45:62",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "36",
+                        "locator" : "40:4-44:92",
+                        "type" : "Union",
+                        "operand" : [ {
+                           "localId" : "34",
+                           "locator" : "40:4-43:98",
+                           "type" : "Union",
+                           "operand" : [ {
+                              "localId" : "32",
+                              "locator" : "40:4-42:86",
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "localId" : "30",
+                                 "locator" : "40:4-41:91",
+                                 "type" : "Union",
+                                 "operand" : [ {
+                                    "localId" : "28",
+                                    "locator" : "40:4-40:43",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "Office Visit",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }, {
+                                    "localId" : "29",
+                                    "locator" : "41:9-41:91",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "Preventive Care Services, Initial Office Visit, 0 to 17",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 } ]
+                              }, {
+                                 "localId" : "31",
+                                 "locator" : "42:9-42:86",
+                                 "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                                 "templateId" : "PositiveEncounterPerformed",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "name" : "Preventive Care, Established Office Visit, 0 to 17",
+                                    "type" : "ValueSetRef"
+                                 }
+                              } ]
+                           }, {
+                              "localId" : "33",
+                              "locator" : "43:9-43:98",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Preventive Care Services - Established Office Visit, 18 and Up",
+                                 "type" : "ValueSetRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "35",
+                           "locator" : "44:9-44:92",
+                           "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                           "templateId" : "PositiveEncounterPerformed",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Preventive Care Services-Initial Office Visit, 18 and Up",
+                              "type" : "ValueSetRef"
+                           }
+                        } ]
+                     }, {
+                        "localId" : "37",
+                        "locator" : "45:9-45:60",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                        "templateId" : "PositiveEncounterPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Home Healthcare Services",
+                           "type" : "ValueSetRef"
+                        }
+                     } ]
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "43",
+                  "locator" : "46:3-46:65",
+                  "type" : "IncludedIn",
+                  "operand" : [ {
+                     "localId" : "41",
+                     "locator" : "46:9-46:37",
+                     "path" : "relevantPeriod",
+                     "scope" : "ValidEncounter",
+                     "type" : "Property"
+                  }, {
+                     "localId" : "42",
+                     "locator" : "46:46-46:65",
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "49",
+            "locator" : "48:1-49:48",
+            "name" : "Current Pregnancy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "49",
+                  "s" : [ {
+                     "value" : [ "define ","\"Current Pregnancy\"",":\n\t" ]
+                  }, {
+                     "r" : "48",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "47",
+                           "s" : [ {
+                              "r" : "46",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "46",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Pregnancy\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " )" ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Preg" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "48",
+               "locator" : "49:2-49:48",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "47",
+                  "locator" : "49:2-49:48",
+                  "alias" : "Preg",
+                  "expression" : {
+                     "localId" : "46",
+                     "locator" : "49:2-49:43",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                     "templateId" : "PositiveAssessmentPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Pregnancy",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ]
+            }
+         }, {
+            "localId" : "52",
+            "locator" : "51:1-52:48",
+            "name" : "Is Female",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "52",
+                  "s" : [ {
+                     "value" : [ "define ","\"Is Female\"",":\n\t" ]
+                  }, {
+                     "r" : "51",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "50",
+                        "s" : [ {
+                           "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                        }, {
+                           "s" : [ {
+                              "value" : [ "\"Female\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "]" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "51",
+               "locator" : "52:2-52:48",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "50",
+                  "locator" : "52:9-52:48",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+                  "codeProperty" : "code",
+                  "type" : "Retrieve",
+                  "codes" : {
+                     "name" : "Female",
+                     "type" : "ValueSetRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "69",
+            "locator" : "54:1-62:54",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "69",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n\t" ]
+                  }, {
+                     "r" : "68",
+                     "s" : [ {
+                        "r" : "65",
+                        "s" : [ {
+                           "r" : "63",
+                           "s" : [ {
+                              "r" : "57",
+                              "s" : [ {
+                                 "r" : "55",
+                                 "s" : [ {
+                                    "value" : [ "AgeInYearsAt","(\n\t\t" ]
+                                 }, {
+                                    "r" : "54",
+                                    "s" : [ {
+                                       "value" : [ "end of " ]
+                                    }, {
+                                       "r" : "53",
+                                       "s" : [ {
+                                          "value" : [ "\"Measurement Period\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t)" ]
+                                 } ]
+                              }, {
+                                 "value" : [ ">="," ","15" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\tand " ]
+                           }, {
+                              "r" : "62",
+                              "s" : [ {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "value" : [ "AgeInYearsAt","(\n\t\t\t" ]
+                                 }, {
+                                    "r" : "59",
+                                    "s" : [ {
+                                       "value" : [ "end of " ]
+                                    }, {
+                                       "r" : "58",
+                                       "s" : [ {
+                                          "value" : [ "\"Measurement Period\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t)" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "<="," ","44" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\tand " ]
+                        }, {
+                           "r" : "64",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "64",
+                              "s" : [ {
+                                 "value" : [ "\"Is Female\"" ]
+                              } ]
+                           }, {
+                              "value" : [ " )" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "67",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "66",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "66",
+                              "s" : [ {
+                                 "value" : [ "\"Encounter During Measurement Period\"" ]
+                              } ]
+                           }, {
+                              "value" : [ " )" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "68",
+               "locator" : "55:2-62:54",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "65",
+                  "locator" : "55:2-61:21",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "63",
+                     "locator" : "55:2-60:8",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "57",
+                        "locator" : "55:2-57:7",
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "localId" : "55",
+                           "locator" : "55:2-57:2",
+                           "precision" : "Year",
+                           "type" : "CalculateAgeAt",
+                           "operand" : [ {
+                              "path" : "birthDatetime",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }, {
+                              "localId" : "54",
+                              "locator" : "56:3-56:29",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "53",
+                                 "locator" : "56:10-56:29",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "56",
+                           "locator" : "57:6-57:7",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "15",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "localId" : "62",
+                        "locator" : "58:7-60:8",
+                        "type" : "LessOrEqual",
+                        "operand" : [ {
+                           "localId" : "60",
+                           "locator" : "58:7-60:3",
+                           "precision" : "Year",
+                           "type" : "CalculateAgeAt",
+                           "operand" : [ {
+                              "path" : "birthDatetime",
+                              "type" : "Property",
+                              "source" : {
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }, {
+                              "localId" : "59",
+                              "locator" : "59:4-59:30",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "58",
+                                 "locator" : "59:11-59:30",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "61",
+                           "locator" : "60:7-60:8",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "44",
+                           "type" : "Literal"
+                        } ]
+                     } ]
+                  }, {
+                     "localId" : "64",
+                     "locator" : "61:7-61:21",
+                     "name" : "Is Female",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "67",
+                  "locator" : "62:7-62:54",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "66",
+                     "locator" : "62:14-62:54",
+                     "name" : "Encounter During Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "77",
+            "locator" : "64:1-66:67",
+            "name" : "Live Births During Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "77",
+                  "s" : [ {
+                     "value" : [ "define ","\"Live Births During Measurement Period\"",":\n\t" ]
+                  }, {
+                     "r" : "76",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "71",
+                           "s" : [ {
+                              "r" : "70",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "70",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Procedure, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Delivery Live Births\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " )" ]
+                              } ]
+                           }, {
+                              "value" : [ " ","LiveBirth" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "75",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "75",
+                           "s" : [ {
+                              "r" : "73",
+                              "s" : [ {
+                                 "r" : "72",
+                                 "s" : [ {
+                                    "value" : [ "LiveBirth" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "73",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","starts during"," " ]
+                           }, {
+                              "r" : "74",
+                              "s" : [ {
+                                 "value" : [ "\"Measurement Period\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "76",
+               "locator" : "65:2-66:67",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "71",
+                  "locator" : "65:2-65:63",
+                  "alias" : "LiveBirth",
+                  "expression" : {
+                     "localId" : "70",
+                     "locator" : "65:2-65:53",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveProcedurePerformed",
+                     "templateId" : "PositiveProcedurePerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Delivery Live Births",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "75",
+                  "locator" : "66:3-66:67",
+                  "type" : "In",
+                  "operand" : [ {
+                     "locator" : "66:34-66:39",
+                     "type" : "Start",
+                     "operand" : {
+                        "localId" : "73",
+                        "locator" : "66:9-66:32",
+                        "path" : "relevantPeriod",
+                        "scope" : "LiveBirth",
+                        "type" : "Property"
+                     }
+                  }, {
+                     "localId" : "74",
+                     "locator" : "66:48-66:67",
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "82",
+            "locator" : "68:1-70:56",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "82",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n\t" ]
+                  }, {
+                     "r" : "81",
+                     "s" : [ {
+                        "r" : "78",
+                        "s" : [ {
+                           "value" : [ "\"Initial Population\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "80",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "79",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "79",
+                              "s" : [ {
+                                 "value" : [ "\"Live Births During Measurement Period\"" ]
+                              } ]
+                           }, {
+                              "value" : [ " )" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "81",
+               "locator" : "69:2-70:56",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "78",
+                  "locator" : "69:2-69:21",
+                  "name" : "Initial Population",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "80",
+                  "locator" : "70:7-70:56",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "79",
+                     "locator" : "70:14-70:56",
+                     "name" : "Live Births During Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "92",
+            "locator" : "72:1-75:29",
+            "name" : "Live Births During Last 2 Months of Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "92",
+                  "s" : [ {
+                     "value" : [ "define ","\"Live Births During Last 2 Months of Measurement Period\"",":\n\t" ]
+                  }, {
+                     "r" : "91",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "84",
+                           "s" : [ {
+                              "r" : "83",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Live Births During Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","LiveBirth" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "90",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "90",
+                           "s" : [ {
+                              "r" : "86",
+                              "s" : [ {
+                                 "r" : "85",
+                                 "s" : [ {
+                                    "value" : [ "LiveBirth" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "86",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "90",
+                              "s" : [ {
+                                 "value" : [ "starts " ]
+                              }, {
+                                 "r" : "89",
+                                 "s" : [ {
+                                    "value" : [ "2 ","months" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " or less before" ]
+                              } ]
+                           }, {
+                              "value" : [ " \n\t\t" ]
+                           }, {
+                              "r" : "88",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "87",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "91",
+               "locator" : "73:2-75:29",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "84",
+                  "locator" : "73:2-73:50",
+                  "alias" : "LiveBirth",
+                  "expression" : {
+                     "localId" : "83",
+                     "locator" : "73:2-73:40",
+                     "name" : "Live Births During Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "90",
+                  "locator" : "74:3-75:29",
+                  "type" : "In",
+                  "operand" : [ {
+                     "locator" : "74:34-74:39",
+                     "type" : "Start",
+                     "operand" : {
+                        "localId" : "86",
+                        "locator" : "74:9-74:32",
+                        "path" : "relevantPeriod",
+                        "scope" : "LiveBirth",
+                        "type" : "Property"
+                     }
+                  }, {
+                     "locator" : "74:41-74:56",
+                     "lowClosed" : true,
+                     "highClosed" : false,
+                     "type" : "Interval",
+                     "low" : {
+                        "locator" : "75:3-75:29",
+                        "type" : "Subtract",
+                        "operand" : [ {
+                           "localId" : "88",
+                           "locator" : "75:3-75:29",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "87",
+                              "locator" : "75:10-75:29",
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        }, {
+                           "localId" : "89",
+                           "locator" : "74:41-74:48",
+                           "value" : 2,
+                           "unit" : "months",
+                           "type" : "Quantity"
+                        } ]
+                     },
+                     "high" : {
+                        "localId" : "88",
+                        "locator" : "75:3-75:29",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "87",
+                           "locator" : "75:10-75:29",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "101",
+            "locator" : "77:1-80:68",
+            "name" : "Denominator Exclusion",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "101",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusion\"",":\n\t" ]
+                  }, {
+                     "r" : "100",
+                     "s" : [ {
+                        "r" : "97",
+                        "s" : [ {
+                           "r" : "94",
+                           "s" : [ {
+                              "value" : [ "exists " ]
+                           }, {
+                              "r" : "93",
+                              "s" : [ {
+                                 "value" : [ "[","\"Assessment, Performed\"",": " ]
+                              }, {
+                                 "s" : [ {
+                                    "value" : [ "\"Not at risk for unintended pregnancy\"" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "]" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\tor " ]
+                        }, {
+                           "r" : "96",
+                           "s" : [ {
+                              "value" : [ "exists " ]
+                           }, {
+                              "r" : "95",
+                              "s" : [ {
+                                 "value" : [ "\"Current Pregnancy\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tor " ]
+                     }, {
+                        "r" : "99",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "98",
+                           "s" : [ {
+                              "value" : [ "\"Live Births During Last 2 Months of Measurement Period\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "100",
+               "locator" : "78:2-80:68",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "97",
+                  "locator" : "78:2-79:31",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "94",
+                     "locator" : "78:2-78:73",
+                     "type" : "Exists",
+                     "operand" : {
+                        "localId" : "93",
+                        "locator" : "78:9-78:73",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                        "templateId" : "PositiveAssessmentPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Not at risk for unintended pregnancy",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  }, {
+                     "localId" : "96",
+                     "locator" : "79:6-79:31",
+                     "type" : "Exists",
+                     "operand" : {
+                        "localId" : "95",
+                        "locator" : "79:13-79:31",
+                        "name" : "Current Pregnancy",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               }, {
+                  "localId" : "99",
+                  "locator" : "80:6-80:68",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "98",
+                     "locator" : "80:13-80:68",
+                     "name" : "Live Births During Last 2 Months of Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "109",
+            "locator" : "82:1-84:63",
+            "name" : "Most or Moderately Effective Contraception Provided",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "109",
+                  "s" : [ {
+                     "value" : [ "define ","\"Most or Moderately Effective Contraception Provided\"",":\n\t" ]
+                  }, {
+                     "r" : "108",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "103",
+                           "s" : [ {
+                              "r" : "102",
+                              "s" : [ {
+                                 "r" : "102",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Intervention, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Most or Moderately Effective Contraceptive Methods\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Intervention" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "107",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "107",
+                           "s" : [ {
+                              "r" : "105",
+                              "s" : [ {
+                                 "r" : "104",
+                                 "s" : [ {
+                                    "value" : [ "Intervention" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "105",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "106",
+                              "s" : [ {
+                                 "value" : [ "\"Measurement Period\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "108",
+               "locator" : "83:2-84:63",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "103",
+                  "locator" : "83:2-83:95",
+                  "alias" : "Intervention",
+                  "expression" : {
+                     "localId" : "102",
+                     "locator" : "83:2-83:82",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveInterventionPerformed",
+                     "templateId" : "PositiveInterventionPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Most or Moderately Effective Contraceptive Methods",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "107",
+                  "locator" : "84:3-84:63",
+                  "type" : "IncludedIn",
+                  "operand" : [ {
+                     "localId" : "105",
+                     "locator" : "84:9-84:35",
+                     "path" : "relevantPeriod",
+                     "scope" : "Intervention",
+                     "type" : "Property"
+                  }, {
+                     "localId" : "106",
+                     "locator" : "84:44-84:63",
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "123",
+            "locator" : "86:1-90:26",
+            "name" : "Most or Moderately Effective Contraception Provided within 60 days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "123",
+                  "s" : [ {
+                     "value" : [ "define ","\"Most or Moderately Effective Contraception Provided within 60 days\"",":\n\t" ]
+                  }, {
+                     "r" : "122",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "111",
+                           "s" : [ {
+                              "r" : "110",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Most or Moderately Effective Contraception Provided\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","C" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "121",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "113",
+                           "s" : [ {
+                              "r" : "112",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Live Births During Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","B" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "120",
+                           "s" : [ {
+                              "r" : "115",
+                              "s" : [ {
+                                 "r" : "114",
+                                 "s" : [ {
+                                    "value" : [ "C" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "115",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "120",
+                              "s" : [ {
+                                 "r" : "119",
+                                 "s" : [ {
+                                    "value" : [ "60 ","days" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " or less on or after" ]
+                              } ]
+                           }, {
+                              "value" : [ " \n\t\t\t" ]
+                           }, {
+                              "r" : "118",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "117",
+                                 "s" : [ {
+                                    "r" : "116",
+                                    "s" : [ {
+                                       "value" : [ "B" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "117",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "122",
+               "locator" : "87:2-90:26",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "111",
+                  "locator" : "87:2-87:56",
+                  "alias" : "C",
+                  "expression" : {
+                     "localId" : "110",
+                     "locator" : "87:2-87:54",
+                     "name" : "Most or Moderately Effective Contraception Provided",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "121",
+                  "locator" : "88:3-90:26",
+                  "alias" : "B",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "112",
+                     "locator" : "88:8-88:46",
+                     "name" : "Live Births During Measurement Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "120",
+                     "locator" : "89:14-90:26",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "115",
+                        "locator" : "89:14-89:29",
+                        "path" : "authorDatetime",
+                        "scope" : "C",
+                        "type" : "Property"
+                     }, {
+                        "locator" : "89:31-89:45",
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "localId" : "118",
+                           "locator" : "90:4-90:26",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "117",
+                              "locator" : "90:11-90:26",
+                              "path" : "relevantPeriod",
+                              "scope" : "B",
+                              "type" : "Property"
+                           }
+                        },
+                        "high" : {
+                           "locator" : "90:4-90:26",
+                           "type" : "Add",
+                           "operand" : [ {
+                              "localId" : "118",
+                              "locator" : "90:4-90:26",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "117",
+                                 "locator" : "90:11-90:26",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "B",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "localId" : "119",
+                              "locator" : "89:31-89:37",
+                              "value" : 60,
+                              "unit" : "days",
+                              "type" : "Quantity"
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "126",
+            "locator" : "92:1-93:80",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "126",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n\t" ]
+                  }, {
+                     "r" : "125",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "124",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "124",
+                           "s" : [ {
+                              "value" : [ "\"Most or Moderately Effective Contraception Provided within 60 days\"" ]
+                           } ]
+                        }, {
+                           "value" : [ " )" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "125",
+               "locator" : "93:2-93:80",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "124",
+                  "locator" : "93:9-93:80",
+                  "name" : "Most or Moderately Effective Contraception Provided within 60 days",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "140",
+            "locator" : "95:1-99:26",
+            "name" : "Most or Moderately Effective Contraception Provided within 3 days",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "140",
+                  "s" : [ {
+                     "value" : [ "define ","\"Most or Moderately Effective Contraception Provided within 3 days\"",":\n\t" ]
+                  }, {
+                     "r" : "139",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "128",
+                           "s" : [ {
+                              "r" : "127",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Most or Moderately Effective Contraception Provided\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","C" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "138",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "130",
+                           "s" : [ {
+                              "r" : "129",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Live Births During Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","B" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "137",
+                           "s" : [ {
+                              "r" : "132",
+                              "s" : [ {
+                                 "r" : "131",
+                                 "s" : [ {
+                                    "value" : [ "C" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "132",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "137",
+                              "s" : [ {
+                                 "r" : "136",
+                                 "s" : [ {
+                                    "value" : [ "3 ","days" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " or less on or after" ]
+                              } ]
+                           }, {
+                              "value" : [ " \n\t\t\t" ]
+                           }, {
+                              "r" : "135",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "134",
+                                 "s" : [ {
+                                    "r" : "133",
+                                    "s" : [ {
+                                       "value" : [ "B" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "134",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "139",
+               "locator" : "96:2-99:26",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "128",
+                  "locator" : "96:2-96:56",
+                  "alias" : "C",
+                  "expression" : {
+                     "localId" : "127",
+                     "locator" : "96:2-96:54",
+                     "name" : "Most or Moderately Effective Contraception Provided",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "138",
+                  "locator" : "97:3-99:26",
+                  "alias" : "B",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "129",
+                     "locator" : "97:8-97:46",
+                     "name" : "Live Births During Measurement Period",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "137",
+                     "locator" : "98:14-99:26",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "132",
+                        "locator" : "98:14-98:29",
+                        "path" : "authorDatetime",
+                        "scope" : "C",
+                        "type" : "Property"
+                     }, {
+                        "locator" : "98:31-98:44",
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "localId" : "135",
+                           "locator" : "99:4-99:26",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "134",
+                              "locator" : "99:11-99:26",
+                              "path" : "relevantPeriod",
+                              "scope" : "B",
+                              "type" : "Property"
+                           }
+                        },
+                        "high" : {
+                           "locator" : "99:4-99:26",
+                           "type" : "Add",
+                           "operand" : [ {
+                              "localId" : "135",
+                              "locator" : "99:4-99:26",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "134",
+                                 "locator" : "99:11-99:26",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "B",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "localId" : "136",
+                              "locator" : "98:31-98:36",
+                              "value" : 3,
+                              "unit" : "days",
+                              "type" : "Quantity"
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "152",
+            "locator" : "101:1-107:8",
+            "name" : "In Age Stratum 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "152",
+                  "s" : [ {
+                     "value" : [ "define ","\"In Age Stratum 1\"",":\n\t" ]
+                  }, {
+                     "r" : "151",
+                     "s" : [ {
+                        "r" : "145",
+                        "s" : [ {
+                           "r" : "143",
+                           "s" : [ {
+                              "value" : [ "AgeInYearsAt","(\n\t\t" ]
+                           }, {
+                              "r" : "142",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "141",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t)" ]
+                           } ]
+                        }, {
+                           "value" : [ ">="," ","15" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "150",
+                        "s" : [ {
+                           "r" : "148",
+                           "s" : [ {
+                              "value" : [ "AgeInYearsAt","(\n\t\t\t" ]
+                           }, {
+                              "r" : "147",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "146",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t)" ]
+                           } ]
+                        }, {
+                           "value" : [ "<="," ","20" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "151",
+               "locator" : "102:2-107:8",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "145",
+                  "locator" : "102:2-104:7",
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "localId" : "143",
+                     "locator" : "102:2-104:2",
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "path" : "birthDatetime",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "142",
+                        "locator" : "103:3-103:29",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "141",
+                           "locator" : "103:10-103:29",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  }, {
+                     "localId" : "144",
+                     "locator" : "104:6-104:7",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "15",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "localId" : "150",
+                  "locator" : "105:7-107:8",
+                  "type" : "LessOrEqual",
+                  "operand" : [ {
+                     "localId" : "148",
+                     "locator" : "105:7-107:3",
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "path" : "birthDatetime",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "147",
+                        "locator" : "106:4-106:30",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "146",
+                           "locator" : "106:11-106:30",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  }, {
+                     "localId" : "149",
+                     "locator" : "107:7-107:8",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "20",
+                     "type" : "Literal"
+                  } ]
+               } ]
+            }
+         }, {
+            "localId" : "164",
+            "locator" : "109:1-115:8",
+            "name" : "In Age Stratum 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "164",
+                  "s" : [ {
+                     "value" : [ "define ","\"In Age Stratum 2\"",":\n\t" ]
+                  }, {
+                     "r" : "163",
+                     "s" : [ {
+                        "r" : "157",
+                        "s" : [ {
+                           "r" : "155",
+                           "s" : [ {
+                              "value" : [ "AgeInYearsAt","(\n\t\t" ]
+                           }, {
+                              "r" : "154",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "153",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t)" ]
+                           } ]
+                        }, {
+                           "value" : [ ">="," ","21" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "162",
+                        "s" : [ {
+                           "r" : "160",
+                           "s" : [ {
+                              "value" : [ "AgeInYearsAt","(\n\t\t\t" ]
+                           }, {
+                              "r" : "159",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "158",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t)" ]
+                           } ]
+                        }, {
+                           "value" : [ "<="," ","44" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "163",
+               "locator" : "110:2-115:8",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "157",
+                  "locator" : "110:2-112:7",
+                  "type" : "GreaterOrEqual",
+                  "operand" : [ {
+                     "localId" : "155",
+                     "locator" : "110:2-112:2",
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "path" : "birthDatetime",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "154",
+                        "locator" : "111:3-111:29",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "153",
+                           "locator" : "111:10-111:29",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  }, {
+                     "localId" : "156",
+                     "locator" : "112:6-112:7",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "21",
+                     "type" : "Literal"
+                  } ]
+               }, {
+                  "localId" : "162",
+                  "locator" : "113:7-115:8",
+                  "type" : "LessOrEqual",
+                  "operand" : [ {
+                     "localId" : "160",
+                     "locator" : "113:7-115:3",
+                     "precision" : "Year",
+                     "type" : "CalculateAgeAt",
+                     "operand" : [ {
+                        "path" : "birthDatetime",
+                        "type" : "Property",
+                        "source" : {
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "159",
+                        "locator" : "114:4-114:30",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "158",
+                           "locator" : "114:11-114:30",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        }
+                     } ]
+                  }, {
+                     "localId" : "161",
+                     "locator" : "115:7-115:8",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "44",
+                     "type" : "Literal"
+                  } ]
+               } ]
+            }
+         }, {
+            "localId" : "166",
+            "locator" : "117:1-118:19",
+            "name" : "Stratifier 2",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "166",
+                  "s" : [ {
+                     "value" : [ "define ","\"Stratifier 2\"",":\n\t" ]
+                  }, {
+                     "r" : "165",
+                     "s" : [ {
+                        "value" : [ "\"In Age Stratum 1\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "165",
+               "locator" : "118:2-118:19",
+               "name" : "In Age Stratum 1",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "171",
+            "locator" : "120:1-122:80",
+            "name" : "Stratifier 3",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "171",
+                  "s" : [ {
+                     "value" : [ "define ","\"Stratifier 3\"",":\n\t" ]
+                  }, {
+                     "r" : "170",
+                     "s" : [ {
+                        "r" : "167",
+                        "s" : [ {
+                           "value" : [ "\"In Age Stratum 2\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "169",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "168",
+                           "s" : [ {
+                              "value" : [ "\"Most or Moderately Effective Contraception Provided within 3 days\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "170",
+               "locator" : "121:2-122:80",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "167",
+                  "locator" : "121:2-121:19",
+                  "name" : "In Age Stratum 2",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "169",
+                  "locator" : "122:7-122:80",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "168",
+                     "locator" : "122:14-122:80",
+                     "name" : "Most or Moderately Effective Contraception Provided within 3 days",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "173",
+            "locator" : "124:1-125:19",
+            "name" : "Stratifier 4",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "173",
+                  "s" : [ {
+                     "value" : [ "define ","\"Stratifier 4\"",":\n\t" ]
+                  }, {
+                     "r" : "172",
+                     "s" : [ {
+                        "value" : [ "\"In Age Stratum 2\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "172",
+               "locator" : "125:2-125:19",
+               "name" : "In Age Stratum 2",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "178",
+            "locator" : "127:1-129:80",
+            "name" : "Stratifier 1",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "178",
+                  "s" : [ {
+                     "value" : [ "define ","\"Stratifier 1\"",":\n\t" ]
+                  }, {
+                     "r" : "177",
+                     "s" : [ {
+                        "r" : "174",
+                        "s" : [ {
+                           "value" : [ "\"In Age Stratum 1\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "176",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "175",
+                           "s" : [ {
+                              "value" : [ "\"Most or Moderately Effective Contraception Provided within 3 days\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "177",
+               "locator" : "128:2-129:80",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "174",
+                  "locator" : "128:2-128:19",
+                  "name" : "In Age Stratum 1",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "176",
+                  "locator" : "129:7-129:80",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "175",
+                     "locator" : "129:14-129:80",
+                     "name" : "Most or Moderately Effective Contraception Provided within 3 days",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "185",
+            "locator" : "131:1-133:27",
+            "name" : "SDE Contraception Method",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "185",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Contraception Method\"",":\n\t" ]
+                  }, {
+                     "r" : "184",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "180",
+                           "s" : [ {
+                              "r" : "179",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Most or Moderately Effective Contraception Provided\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Contraception" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "183",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "182",
+                           "s" : [ {
+                              "r" : "181",
+                              "s" : [ {
+                                 "value" : [ "Contraception" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "182",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "184",
+               "locator" : "132:2-133:27",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "180",
+                  "locator" : "132:2-132:68",
+                  "alias" : "Contraception",
+                  "expression" : {
+                     "localId" : "179",
+                     "locator" : "132:2-132:54",
+                     "name" : "Most or Moderately Effective Contraception Provided",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "183",
+                  "locator" : "133:3-133:27",
+                  "expression" : {
+                     "localId" : "182",
+                     "locator" : "133:10-133:27",
+                     "path" : "code",
+                     "scope" : "Contraception",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "192",
+            "locator" : "135:1-137:24",
+            "name" : "Unintended Pregnancy Risk Assessment Method",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "192",
+                  "s" : [ {
+                     "value" : [ "define ","\"Unintended Pregnancy Risk Assessment Method\"",":\n\t" ]
+                  }, {
+                     "r" : "191",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "187",
+                           "s" : [ {
+                              "r" : "186",
+                              "s" : [ {
+                                 "r" : "186",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Not at risk for unintended pregnancy\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Assessment" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "190",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "189",
+                           "s" : [ {
+                              "r" : "188",
+                              "s" : [ {
+                                 "value" : [ "Assessment" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "189",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "191",
+               "locator" : "136:2-137:24",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "187",
+                  "locator" : "136:2-136:77",
+                  "alias" : "Assessment",
+                  "expression" : {
+                     "localId" : "186",
+                     "locator" : "136:2-136:66",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                     "templateId" : "PositiveAssessmentPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Not at risk for unintended pregnancy",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "190",
+                  "locator" : "137:3-137:24",
+                  "expression" : {
+                     "localId" : "189",
+                     "locator" : "137:10-137:24",
+                     "path" : "code",
+                     "scope" : "Assessment",
+                     "type" : "Property"
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}
