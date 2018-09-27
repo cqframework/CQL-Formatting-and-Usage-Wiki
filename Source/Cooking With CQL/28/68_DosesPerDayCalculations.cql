@@ -73,10 +73,15 @@ Example usage:
 */
 
 define "Example QDM Doses Per Day":
-  ["Encounter, Order": "Opioid Medications"] O
+  ["Medication, Order": "Opioid Medications"] O
     return {
         dosesPerDay = "DosesPerDay"(O.frequency)
       }
+
+/*
+NOTE: This calculation assumes "scheduled dosing" or "around-the-clock dosing", it does not consider
+cases where PRN or as needed is part of the medication prescription.
+*/
 
 /*
 This calculation method is using frequency directly to determine the number of doses per day

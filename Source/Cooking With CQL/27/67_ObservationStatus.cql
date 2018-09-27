@@ -92,7 +92,9 @@ O4+: There may be other practices.
 
 /*
 As a result, representation within QDM may use different approaches:
+*/
 
+/*
 O) As a different type of Encounter, separate from the Inpatient and Emergency Department encounters:
 */
 
