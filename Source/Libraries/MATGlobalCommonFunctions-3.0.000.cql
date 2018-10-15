@@ -26,10 +26,13 @@ define "Inpatient Encounter":
 
 /*Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.*/
 define function "Hospitalization"(Encounter "Encounter, Performed" ):
-	( singleton from ( ["Encounter, Performed": "Emergency Department Visit"] EDVisit
-			where EDVisit.relevantPeriod ends 1 hour or less on or before start of Encounter.relevantPeriod
-	) ) X
-		return if X is null then Encounter.relevantPeriod else Interval[start of X.relevantPeriod, end of Encounter.relevantPeriod]
+	Encounter E
+		let 
+			EDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] ED
+				where ED.relevantPeriod ends 1 hour or less on or before start of E.relevantPeriod
+				sort by end of relevantPeriod
+			)
+	return Interval[Coalesce(start of EDVisit.relevantPeriod, start of E.relevantPeriod), end of E.relevantPeriod]
 
 /*calculates the difference in calendar days between the start and end of the given interval.*/
 define function "LengthInDays"(Value Interval<DateTime> ):
@@ -37,10 +40,13 @@ define function "LengthInDays"(Value Interval<DateTime> ):
 
 /* returns list of all locations within an encounter, including locations for immediately prior ED visit.  If data contains many encounters within 1 hour before the start of encounter error will occur indicating the hospitalization cannot be determined*/
 define function "Hospitalization Locations"(Encounter "Encounter, Performed" ):
-	( singleton from ( ["Encounter, Performed": "Emergency Department Visit"] EDVisit
-			where EDVisit.relevantPeriod ends 1 hour or less on or before start of Encounter.relevantPeriod
-	) ) EDEncounter
-		return if EDEncounter is null then Encounter.facilityLocations else flatten { EDEncounter.facilityLocations, Encounter.facilityLocations }
+	Encounter E
+		let 
+			EDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] ED
+				where ED.relevantPeriod ends 1 hour or less on or before start of E.relevantPeriod
+				sort by end of relevantPeriod
+			)
+		return if EDVisit is null then E.facilityLocations else flatten { EDVisit.facilityLocations, E.facilityLocations }
 
 /*Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the admission of any immediately prior emergency department visit to the discharge of the encounter*/
 define function "Hospitalization Length of Stay"(Encounter "Encounter, Performed" ):
@@ -58,29 +64,29 @@ define function "Hospital Discharge Time"(Encounter "Encounter, Performed" ):
 /*Returns earliest arrival time for an encounter including any prior ED visit. If the data contain multiple encounters within 1 hour before the start of the encounter, an error will occur indicating it cannot be unambiguously determined
 */
 define function "Hospital Arrival Time"(Encounter "Encounter, Performed" ):
-	start of First(("Hospitalization Locations"(Encounter))HospitalLocation
+	start of First(("Hospitalization Locations"(Encounter)) HospitalLocation
 			sort by start of locationPeriod
 	).locationPeriod
 
 /*Returns the latest departure time for encounter including any prior ED visit. If the data contain multiple encounters within 1 hour before the start of the encounter, an error will occur indicating it cannot be unambiguously determined*/
 define function "Hospital Departure Time"(Encounter "Encounter, Performed" ):
-	end of Last(("Hospitalization Locations"(Encounter))HospitalLocation
+	end of Last(("Hospitalization Locations"(Encounter)) HospitalLocation
 			sort by start of locationPeriod
 	).locationPeriod
 
 /*Returns the arrival time in the ED for the encounter.  If the data contain multiple encounters within 1 hour before the start of the encounter or multiple ED locations an error will occur indicating it cannot be determined
 */
 define function "Emergency Department Arrival Time"(Encounter "Encounter, Performed" ):
-	start of ( singleton from ( ( "Hospitalization Locations"(Encounter)) HospitalLocation
+	start of First(( "Hospitalization Locations"(Encounter)) HospitalLocation
 				where HospitalLocation.code in "Emergency Department Visit"
-		)
+				sort by start of locationPeriod
 	).locationPeriod
 
 /*First Inpatient Intensive Care Unit returns the first intensive care unit for
 the given encounter, without considering any immediately prior emergency
 department visit.*/
 define function "First Inpatient Intensive Care Unit"(Encounter "Encounter, Performed" ):
-	First((Encounter.facilityLocations)HospitalLocation
+	First((Encounter.facilityLocations) HospitalLocation
 			where HospitalLocation.code in "Intensive Care Unit"
 				and HospitalLocation.locationPeriod during Encounter.relevantPeriod
 			sort by start of locationPeriod
