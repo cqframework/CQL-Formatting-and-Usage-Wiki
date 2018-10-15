@@ -2,8 +2,8 @@ library MATGlobalCommonFunctions version '3.0.000'
 
 using QDM version '5.4'
 
-codesystem "LOINC:2.46": 'urn:oid:2.16.840.1.113883.6.1' version 'urn:hl7:version:2.46'
-codesystem "SNOMEDCT:2016-03": 'urn:oid:2.16.840.1.113883.6.96' version 'urn:hl7:version:2016-03'
+codesystem "LOINC": 'urn:oid:2.16.840.1.113883.6.1'
+codesystem "SNOMEDCT": 'urn:oid:2.16.840.1.113883.6.96'
 
 valueset "Emergency Department Visit": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.292' 
 valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' 
@@ -14,8 +14,8 @@ valueset "Intensive Care Unit": 'urn:oid:2.16.840.1.113762.1.4.1110.23'
 valueset "Observation Services": 'urn:oid:2.16.840.1.113762.1.4.1111.143'
 valueset "Outpatient Services": 'TBD' // TODO: Need to define this value set
 
-code "Birthdate": '21112-8' from "LOINC:2.46" display 'Birth date'
-code "Dead": '419099009' from "SNOMEDCT:2016-03" display 'Dead'
+code "Birthdate": '21112-8' from "LOINC" display 'Birth date'
+code "Dead": '419099009' from "SNOMEDCT" display 'Dead'
 
 parameter "Measurement Period" Interval<DateTime>
 
