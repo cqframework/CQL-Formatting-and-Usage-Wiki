@@ -24,10 +24,6 @@ define "Inpatient Encounter":
 		where "LengthInDays"(EncounterInpatient.relevantPeriod)<= 120
 			and EncounterInpatient.relevantPeriod ends during "Measurement Period"
 
-/*ToDate takes a given DateTime value and returns a DateTime with the time components "zeroed", and the timezone of the input value, for example, given the DateTime @2012-01-01T06:30:00.0Z, this function will return @2012-01-01T00:00:00.0Z.*/
-define function "ToDate"(Value DateTime ):
-	DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezone from Value)
-
 /*CalendarAgeInDaysAt calculates the calendar age (meaning the age without considering time components) in days.*/
 define function "CalendarAgeInDaysAt"(BirthDateTime DateTime, AsOf DateTime ):
 	days between ToDate(BirthDateTime)and ToDate(AsOf)
