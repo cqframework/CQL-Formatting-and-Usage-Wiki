@@ -9,6 +9,11 @@ valueset "Emergency Department Visit": 'urn:oid:2.16.840.1.113883.3.117.1.7.1.29
 valueset "Encounter Inpatient": 'urn:oid:2.16.840.1.113883.3.666.5.307' 
 valueset "Intensive Care Unit": 'urn:oid:2.16.840.1.113762.1.4.1110.23' 
 
+// TODO: Review these value sets, they are included to support the new Hospitalization with Observation and Hospitalization with Outpatient functions
+// Further discussion can be found [here](https://github.com/esacinc/CQL-Formatting-and-Usage-Wiki/blob/master/Source/Cooking%20With%20CQL/27/67_ObservationStatus.cql#L188)
+valueset "Observation Services": 'urn:oid:2.16.840.1.113762.1.4.1111.143'
+valueset "Outpatient Services": 'TBD' // TODO: Need to define this value set
+
 code "Birthdate": '21112-8' from "LOINC:2.46" display 'Birth date'
 code "Dead": '419099009' from "SNOMEDCT:2016-03" display 'Dead'
 
@@ -91,3 +96,38 @@ define function "First Inpatient Intensive Care Unit"(Encounter "Encounter, Perf
 				and HospitalLocation.locationPeriod during Encounter.relevantPeriod
 			sort by start of locationPeriod
 	)
+	
+define function "Hospitalization with Observation"(Encounter "Encounter, Performed" ):
+	Encounter E
+		let 
+			ObsVisit: Last(["Encounter, Performed": "Observation Services"] O
+				where O.relevantPeriod ends 1 hour or less on or before start of E.relevantPeriod
+				sort by end of relevantPeriod
+			),
+			VisitStart: Coalesce(start of ObsVisit.relevantPeriod, start of E.relevantPeriod),
+			EDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] ED
+				where ED.relevantPeriod ends 1 hour or less on or before VisitStart
+				sort by end of relevantPeriod
+			)
+		return Interval[Coalesce(start of EDVisit.relevantPeriod, VisitStart), end of E.relevantPeriod]
+	
+define function "Hospitalization with Observation and Outpatient"(Encounter "Encounter, Performed" ):
+	Encounter E
+		let 
+			ObsVisit: Last(["Encounter, Performed": "Observation Services"] O
+				where O.relevantPeriod ends 1 hour or less on or before start of E.relevantPeriod
+				sort by end of relevantPeriod
+			),
+			VisitStart: Coalesce(start of ObsVisit.relevantPeriod, start of E.relevantPeriod),
+			EDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] ED
+				where ED.relevantPeriod ends 1 hour or less on or before VisitStart
+				sort by end of relevantPeriod
+			),
+			VisitStartWithED: Coalesce(start of EDVisit.relevantPeriod, VisitStart),
+			OutpatientVisit: Last(["Encounter, Performed": "Outpatient Services"] O
+				where O.relevantPeriod ends 1 hour or less on or before VisitStartWithED
+				sort by end of relevantPeriod
+			)
+		return Interval[Coalesce(start of OutpatientVisit.relevantPeriod, VisitStartWithED), end of E.relevantPeriod]
+	
+	
