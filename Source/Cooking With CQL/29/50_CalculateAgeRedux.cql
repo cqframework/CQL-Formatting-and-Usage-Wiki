@@ -12,10 +12,10 @@ context Patient
 
 ["Patient Characteristic Birthdate"] BirthDate 
   where Global.CalendarAgeInYearsAt(BirthDate.birthDatetime, start of "Measurement Period") >= 2
-
+	
 // 2) Using the Patient.birthDatetime attribute:
 
-Global.CalendarAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period")
+Global.CalendarAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period") >= 2
 
 // When relating birthdate to another source using a with, Patient Characteristic is reasonable, though still a bit more verbose:
 
@@ -31,10 +31,19 @@ Global.CalendarAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period"
 define "Initial Population":
   exists (
     ["Patient Characteristic Birthdate"] BirthDate
-      where Global.CalendarAgeInYearsAt(BirthDate.birthDatetime, start of "Measurement Period")
+      where Global.CalendarAgeInYearsAt(BirthDate.birthDatetime, start of "Measurement Period") >= 2
   )
   
 // Could be simplified to:
 define "Initial Population":
-  Global.CalendarAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period")
+  Global.CalendarAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period") >= 2
   
+// Note that the reason for the Global.CalendarAgeInYearsAt function is to ensure that time is not considered.
+// As of CQL 1.3, because CQL has a Date type, the AgeInYearsAt function now ignores time if it is present for the patient
+// As a result, patient age calculations can all be simplified:
+
+"Inpatient Encounter" Encounter
+  where AgeInYearsAt(start of Encounter.relevantPeriod) >= 2
+	
+define "Initial Population": AgeInYearsAt(start of Encounter.relevantPeriod) >= 2
+
