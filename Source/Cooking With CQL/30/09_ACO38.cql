@@ -9,14 +9,65 @@
     Count >=2 Encounter, Performed: Outpatient visit (diagnosis: X) during Measurement Period
     Count >=1 Encounter, Performed: Inpatient visit (principal diagnosis or diagnosis: x) during Measurement Period
 
-  Similarly, we were hoping to model a measure that looks for a logical "AND" between elements
-  that you can't do in today's MAT.  Risk adjustment variables cannot currently contain logical operations.
-  So, as our example, we want to create a risk-adjustment variable that identifies whether the patient meets
-  these criteria:
+*/
 
-    <59 years old
-    >=50 years old
-    Female
+/* 
+For counts of diagnoses, we want to count "diagnoses", but we want some flexibility on
+what we consider a "diagnosis", over and above just a QDM diagnosis
+*/
+
+/*
+The simplest case is just a diagnosis that starts before the Measurement Period:
+*/
+
+define "AMI Diagnosis Prior to Measurement Period":
+  ["Diagnosis": "AMI"] D
+    where D.prevalencePeriod starts before start of "Measurement Period"
+    
+/*
+Let's consider the last case next, at least one inpatient visit where the diagnosis 
+is either the principal diagnosis, or among the diagnoses on the encounter:
+*/
+
+define "Inpatient Visits With AMI Diagnosis":
+  ["Encounter, Performed": "Inpatient"] I
+    where I.relevantPeriod during "Measurement Period"
+      and I.principalDiagnosis in "AMI"
+      or exists (I.diagnoses D where D.code in "AMI")
+      
+define "First Inpatient Visit With AMI Diagnosis":
+  "Inpatient Visits With AMI Diagnosis" D
+    where D ~ First("Inpatient Visits With AMI Diagnosis")
+
+/*
+Now let's consider the final case, where we want at least two outpatient encounters
+where the diagnosis is among the diagnoses on the encounter:
+*/
+
+define "Outpatient Visits With AMI Diagnosis":
+  ["Encounter, Performed": "Outpatient"] O
+    where O.relevantPeriod during "Measurement Period"
+      and exists (O.diagnoses D where D.code in "AMI")
+    
+define "First Of At Least Two Outpatient Visits With AMI Diagnosis":
+  "Outpatient Visits With AMI Diagnosis" O
+    where O ~ First("Outpatient Visits With AMI Diagnosis")
+      and Count("Outpatient Visits With AMI Diagnosis") >= 2
+      
+/*
+Now these expressions can be used in a "diagnosis" union to describe "qualifying diagnoses":
+*/
+
+define "Qualifying Diagnoses":
+  "AMI Diagnosis Prior To Measurement Period"
+    union "First Inpatient Visit With AMI Diagnosis"
+    union "First Of At Least Two Outpatient Visits With AMI Diagnosis"
+    
+define "Has At Least 2 Qualifying Diagnoses":
+  Count("Qualifying Diagnoses") >= 2
+
+/*
+Applying these patterns to the below proposed QDM is left as an exercise for the reader:
 */
 
 /*
