@@ -11,7 +11,7 @@
     Female
 */
 
-define "Risk Adjustment Variable":
+define "Some Reasonable Name for a Risk Adjustment Factor":
   Global.CalculateAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period") < 59
     or (
       Global.CalculateAgeInYearsAt(Patient.birthDatetime, start of "Measurement Period") >= 50

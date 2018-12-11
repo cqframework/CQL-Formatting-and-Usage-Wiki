@@ -75,10 +75,27 @@ define "Depression Periods During Measurement Period":
     ["Diagnosis": "Depression"] D
       return D.prevalencePeriod intersect "Measurement Period"
   )
+
+/*  
+|------------------------------------|
+              |-------------------------------------------->
+              |----------------------|
+              
+Interval[@2018-06-01, null]
+*/
   
 define "First Depression Period During Measurement Period":
   "Depression Periods During Measurement Period" P
     where P = First("Depression Periods During Measurement Period")
+    
+// Note that we purposely omit a sort by because we're not interested in which one, only that there is one.
+// This lets the underlying system determine the most effecient way to return the results
+    
+First({ 3, 2, 1 })
+// 3
+
+First(( { 3, 2, 1 }) X sort by X)
+// 1
 
 define "Falls During Measurement Period":
   (
