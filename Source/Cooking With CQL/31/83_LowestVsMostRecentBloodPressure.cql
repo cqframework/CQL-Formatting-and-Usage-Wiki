@@ -2,8 +2,9 @@
 // https://oncprojectracking.healthit.gov/support/browse/CQM-3414
 
 /*
-Guidance says:  If there are multiple blood pressure readings on the same day, use the lowest systolic and the lowest diastolic reading as the most recent blood pressure reading.
-But the logic is using the most recent:
+Guidance says:  If there are multiple blood pressure readings on the same day, 
+use the lowest systolic and the lowest diastolic reading as the most recent blood 
+pressure reading. But the logic is using the most recent:
 */
 
 define "Diastolic Blood Pressure Exam":
