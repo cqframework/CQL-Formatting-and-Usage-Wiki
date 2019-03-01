@@ -23,6 +23,4 @@ define "Qualifying Encounters":
 define "Followup HIV Visit":
 	"Qualifying Encounters" FollowupVisit
 		with "Qualifying Encounters" PriorVisit
-			such that FollowupVisit.authorDatetime 90 days or more on or after day of PriorVisit.authorDatetime
-      
-      
+			such that FollowupVisit.authorDatetime 90 days or more after day of PriorVisit.authorDatetime
