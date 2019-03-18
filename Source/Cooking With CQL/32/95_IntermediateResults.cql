@@ -37,6 +37,14 @@ define "Denominator":
 					where FibrinolyticTherapy.relevantPeriod starts after Global."Hospital Arrival Time"(QualifyingEncounter)
 						and FibrinolyticTherapy.relevantPeriod starts before start of FirstPCI.relevantPeriod
 			)
+
+/*
+NOTE: During the call the question was asked whether the ECG such that criteria 
+that looks for events prior to hospital arrival is correct. We pursued this question 
+with the measure developers and confirmed the measure intent is looking for ECGs that
+may have occurred prior to Hospital Arrival:
+https://oncprojectracking.healthit.gov/support/browse/CQM-3500
+*/
       
 define "Initial Population":
 	"Inpatient Encounters"
