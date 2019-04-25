@@ -32,7 +32,7 @@ same values for each element, using Equal semantics, and since `null = null`
 returns null, comparing a tuple to itself with equality will return null if that
  tuple has any null elements.
 
-Equivalent, on the other hand if defined as the same elements with the same values 
+Equivalent, on the other hand is defined as the same elements with the same values 
 for each element using Equivalent semantics, and since `null = null` returns true, 
 it will return true when used to compare a tuple to itself.
 
