@@ -1,18 +1,5 @@
 library MultiSourceQueries_Redux
 
-// From CMS117v7: Childhood Immunization Status:
-
-define "Four DTaP Vaccinations":
-	from
-		"DTaP Immunizations or Procedures" DTaPVaccination1,
-		"DTaP Immunizations or Procedures" DTaPVaccination2,
-		"DTaP Immunizations or Procedures" DTaPVaccination3,
-		"DTaP Immunizations or Procedures" DTaPVaccination4
-		where DTaPVaccination2.authorDatetime 1 day or more after day of DTaPVaccination1.authorDatetime
-			and DTaPVaccination3.authorDatetime 1 day or more after day of DTaPVaccination2.authorDatetime
-			and DTaPVaccination4.authorDatetime 1 day or more after day of DTaPVaccination3.authorDatetime
-		return DTaPVaccination1
-    
 // From CMS144v7: Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD):
 
 define "Consecutive Heart Rates Less Than 50 Inpatient":
@@ -27,6 +14,41 @@ define "Consecutive Heart Rates Less Than 50 Inpatient":
 		where HeartRate.relevantPeriod during ModerateOrSevereLVSDHFInpatientEncounter.relevantPeriod
 			and HeartRate.result < 50 '{Beats}/min'
 			and PriorHeartRate.result < 50 '{Beats}/min'
+
+// Result Type:
+{
+  { HeartRate: { ... }, ModerateOrSevereLVSDHFInpatientEncounter: { ... } }      
+  { HeartRate: { ... }, ModerateOrSevereLVSDHFInpatientEncounter: { ... } }      
+  { HeartRate: { ... }, ModerateOrSevereLVSDHFInpatientEncounter: { ... } }      
+  { HeartRate: { ... }, ModerateOrSevereLVSDHFInpatientEncounter: { ... } }      
+  { HeartRate: { ... }, ModerateOrSevereLVSDHFInpatientEncounter: { ... } }      
+}
+
+// If this is being used in a denominator exception
+define "Denominator Exception":
+  "Consecutive Heart Rates Less Than 50 Inpatient" CH
+    return CH.ModerateOrSevereLVSDHFInpatientEncounter
+//  exists ( "Consecutive Heart Rates Less Than 50 Inpatient" )
+
+// Typically if the result is used elsewhere, a return would be included:
+define "Consecutive Heart Rates Less Than 50 Inpatient":
+	from
+		["Physical Exam, Performed": "Heart rate"] HeartRate,
+		"Heart Failure Inpatient Encounter with Moderate or Severe LVSD" ModerateOrSevereLVSDHFInpatientEncounter
+		let PriorHeartRate: Last(["Physical Exam, Performed": "Heart rate"] MostRecentPriorHeartRate
+				where MostRecentPriorHeartRate.relevantPeriod during ModerateOrSevereLVSDHFInpatientEncounter.relevantPeriod
+					and MostRecentPriorHeartRate.relevantPeriod starts before start of HeartRate.relevantPeriod
+				sort by start of relevantPeriod
+		)
+		where HeartRate.relevantPeriod during ModerateOrSevereLVSDHFInpatientEncounter.relevantPeriod
+			and HeartRate.result < 50 '{Beats}/min'
+			and PriorHeartRate.result < 50 '{Beats}/min'
+    return HeartRate
+    
+{
+  { id: 123, code: Code { code: 'ABC', },  method: '', ... },
+  { id: 124, code: Code { code: 'ABC', },  method: '', ... }
+}
 
 // From CMS156v7: Use of High-risk Medications in the Elderly
 
@@ -118,4 +140,16 @@ define "Medical Induction Medication Administered While Not In Labor":
 			and InductionMedication.relevantPeriod 24 hours or less before Labor.authorDatetime
 		return DeliveryEncounter
 
+// From CMS117v7: Childhood Immunization Status:
+
+define "Four DTaP Vaccinations":
+	from
+		"DTaP Immunizations or Procedures" DTaPVaccination1,
+		"DTaP Immunizations or Procedures" DTaPVaccination2,
+		"DTaP Immunizations or Procedures" DTaPVaccination3,
+		"DTaP Immunizations or Procedures" DTaPVaccination4
+		where DTaPVaccination2.authorDatetime 1 day or more after day of DTaPVaccination1.authorDatetime
+			and DTaPVaccination3.authorDatetime 1 day or more after day of DTaPVaccination2.authorDatetime
+			and DTaPVaccination4.authorDatetime 1 day or more after day of DTaPVaccination3.authorDatetime
+		return DTaPVaccination1
     
