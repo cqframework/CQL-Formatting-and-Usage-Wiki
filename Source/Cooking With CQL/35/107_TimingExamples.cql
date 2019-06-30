@@ -1,4 +1,8 @@
-library TimingExamples
+library Example.Timing version '0.1.000'
+
+using QDM version '5.5'
+
+context Patient
 
 //****
 // CMS90 – example
