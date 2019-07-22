@@ -101,13 +101,13 @@ define "Has Complete Hearing Screening":
 // In the case of single encounter, there is no possibility for an issue
 // However, in the case of multiple encounters, because "Has Complete Hearing Screening"
 // is not related to LiveBirthEncounter, there is a possibility for the exclusion to be
-// calculated incorrectly.
+// calculated without being associated to a LiveBirthEncounter.
 define "Denominator Exclusions":
 	"Initial Population" LiveBirthEncounter
 		where LiveBirthEncounter.dischargeDisposition ~ "Patient deceased during stay (discharge status = dead) (finding)"
 			and not exists "Has Complete Hearing Screening"
 
-// A potential correction is to use an except to say that live birth encounters with a complete hearing screening
+// To account for this possibility, we could use an except to say that live birth encounters with a complete hearing screening
 // should not be considered for exclusion
 define "Encounter-Restricted Denominator Exclusions":
   ("Initial Population" 
