@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Joins"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <valueSets>
+      <def name="Outpatient" id="TBD" accessLevel="Public"/>
+      <def name="Streptococcus Test" id="TBD" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="Semi-join Example" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Test" xsi:type="With">
+               <expression dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="In">
+                  <operand path="resultDatetime" scope="Test" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Semi-minus Example" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship alias="Test" xsi:type="Without">
+               <expression dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat xsi:type="In">
+                  <operand path="resultDatetime" scope="Test" xsi:type="Property"/>
+                  <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Join Example" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="Test">
+               <expression dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="In">
+               <operand path="resultDatetime" scope="Test" xsi:type="Property"/>
+               <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+            </where>
+            <return>
+               <expression xsi:type="Tuple">
+                  <element name="Encounter">
+                     <value name="Encounter" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Test">
+                     <value name="Test" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Join Example with Select" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="Test">
+               <expression dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where xsi:type="In">
+               <operand path="resultDatetime" scope="Test" xsi:type="Property"/>
+               <operand path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+            </where>
+            <return>
+               <expression xsi:type="Tuple">
+                  <element name="encounterId">
+                     <value path="id" scope="Encounter" xsi:type="Property"/>
+                  </element>
+                  <element name="encounterCode">
+                     <value path="code" scope="Encounter" xsi:type="Property"/>
+                  </element>
+                  <element name="encounterRelevantPeriod">
+                     <value path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </element>
+                  <element name="testId">
+                     <value path="id" scope="Test" xsi:type="Property"/>
+                  </element>
+                  <element name="testCode">
+                     <value path="code" scope="Test" xsi:type="Property"/>
+                  </element>
+                  <element name="testResultDatetime">
+                     <value path="resultDatetime" scope="Test" xsi:type="Property"/>
+                  </element>
+                  <element name="testResult">
+                     <value path="result" scope="Test" xsi:type="Property"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Cartesian-product Example" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="Test">
+               <expression dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <return distinct="true">
+               <expression xsi:type="Tuple">
+                  <element name="Encounter">
+                     <value name="Encounter" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Test">
+                     <value name="Test" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def name="Left-outer-join Example" context="Patient" accessLevel="Public">
+         <expression xsi:type="Query">
+            <source alias="Encounter">
+               <expression dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Outpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <let identifier="Test">
+               <expression xsi:type="SingletonFrom">
+                  <operand dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Streptococcus Test" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </let>
+            <return>
+               <expression xsi:type="Tuple">
+                  <element name="Encounter">
+                     <value name="Encounter" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Test">
+                     <value name="Test" xsi:type="QueryLetRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

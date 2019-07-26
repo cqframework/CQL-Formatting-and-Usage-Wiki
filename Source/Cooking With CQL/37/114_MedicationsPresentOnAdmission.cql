@@ -39,5 +39,9 @@ period that includes the start date of the encounter.
 Note also that this is only addressing the simplest case of an inpatient admission. It may need to
 be expanded to account for an immediately preceding emergency department visit, depending on
 measure intent.
+
+Also note that the QDM model specifies relevant period start for a Medication, Active as the
+time when the patient is first known to have been taking the medication. Whether this is captured
+by the EHRs is a question for investigation.
 */
 
