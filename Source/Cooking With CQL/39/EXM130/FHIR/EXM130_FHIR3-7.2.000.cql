@@ -47,8 +47,9 @@ define "SDE Race":
 define "SDE Sex":
   SDE."SDE Sex"
 
+// NOTE: The interval here was closed, versus the open in the QDM expression
 define "Initial Population":
-	Global."CalendarAgeInYearsAt"(FHIRHelpers.ToDate(Patient.birthDate), start of "Measurement Period") in Interval[50, 75]
+	Global."CalendarAgeInYearsAt"(FHIRHelpers.ToDate(Patient.birthDate), start of "Measurement Period") in Interval[50, 75)
 			and exists AdultOutpatientEncounters."Qualifying Encounters"("Measurement Period")
 
 define "Denominator":

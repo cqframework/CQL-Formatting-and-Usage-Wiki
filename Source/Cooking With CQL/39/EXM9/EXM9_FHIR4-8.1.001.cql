@@ -25,6 +25,7 @@ valueset "Breast Milk": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.
 valueset "Dietary Intake Other than Breast Milk": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.27'
 valueset "Discharge To Acute Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+valueset "Enteral Feeding": 'TBD'
 valueset "Galactosemia": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.35'
 valueset "Neonatal Intensive Care Unit (NICU)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.205'
 valueset "Other Health Care Facility": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.67'
@@ -62,10 +63,12 @@ define "Single Live Birth Encounter With Gestational Age 37 Weeks or More":
 
 // NOTE: MedicationAdministration is replacing "procedure" in FHIR since TPN is documented on medication administraion record
 // NOTE: The use of Global.EncounterDiagnosis here is actually returning a list of diagnoses, should be a not exists here:
+// NOTE: MedicationAdministration needs a status
 define "Single Live Birth Encounter Without Galactosemia and Parenteral Nutrition":
   "Single Live Birth Encounter" SingleLiveBirthEncounter
     without ["MedicationAdministration": "Parenteral Nutrition"] ParenteralNutrition
     	such that ParenteralNutrition.effective as Period starts during SingleLiveBirthEncounter.period
+			  and ParenteralNutrition.status in { 'in-progress', 'on-hold', 'completed', 'stopped' }
     //where not (Global.EncounterDiagnosis(SingleLiveBirthEncounter).code in "Galactosemia")
 		where not exists (
 			(Global.EncounterDiagnosis(SingleLiveBirthEncounter)) EncounterDiagnosis
@@ -105,9 +108,17 @@ define "Numerator":
 //NOTE: Will this procedure be recorded for the mother, or the infant?
 define "Single Live Birth Encounter With Newborn Fed Breast Milk Only Since Birth":
   "Single Live Birth Encounter With Gestational Age 37 Weeks or More" QualifyingEncounter
-    with ["Procedure": usedCode in "Breast Milk"] BreastMilkFeeding
-	    such that BreastMilkFeeding.status = 'complete'
+	  with ["Procedure": "Enteral Feeding"] BreastMilkFeeding
+		  such that BreastMilkFeeding.status in { 'complete', 'in-progress' }
         and BreastMilkFeeding.performed as Period starts during QualifyingEncounter.period
-    without ["Procedure": usedCode in "Dietary Intake Other than Breast Milk"] OtherFeeding
+				and BreastMilkFeeding.usedCode in "Breast Milk"
+    //with ["Procedure": usedCode in "Breast Milk"] BreastMilkFeeding
+	  //  such that BreastMilkFeeding.status = 'complete'
+    //    and BreastMilkFeeding.performed as Period starts during QualifyingEncounter.period
+    without ["Procedure": "Enteral Feeding"] OtherFeeding
       such that OtherFeeding.status in {'complete', 'in progress'}
         and OtherFeeding.performed as Period starts during QualifyingEncounter.period
+				and not (OtherFeeding.usedCode in "Breast Milk")
+    //without ["Procedure": usedCode in "Dietary Intake Other than Breast Milk"] OtherFeeding
+    //  such that OtherFeeding.status in {'complete', 'in progress'}
+    //    and OtherFeeding.performed as Period starts during QualifyingEncounter.period
