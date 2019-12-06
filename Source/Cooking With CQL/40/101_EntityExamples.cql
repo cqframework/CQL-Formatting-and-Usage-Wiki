@@ -21,8 +21,8 @@ define "Eye Exam Complete":
       // This would become
       and EyeExam.performer.organizationId = (Encounter.participant as Organization).id
       and EyeExam.performer.specialty in "Ophthalmology"
-      
-      
+
+
 // The issue with making the attributes 0..* is that it would complicate the CQL.
 // Specifically, instead of being able to say:
 
@@ -35,5 +35,5 @@ define "Qualifying Encounters":
 define "Qualifying Encounters":
   ["Encounter, Performed": "Inpatient"] Encounter
     where exists (Encounter.participant P where P is "Organization")
-    
+
 // And without knowing that we need it, it seems like we shouldn't introduce that level of complexity

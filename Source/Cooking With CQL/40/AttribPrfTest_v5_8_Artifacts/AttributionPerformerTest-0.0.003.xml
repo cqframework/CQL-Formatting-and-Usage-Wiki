@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="AttributionPerformerTest" version="0.0.003"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="5:1-5:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_5" version="5.5"/>
+   </usings>
+   <parameters>
+      <def localId="21" locator="25:1-25:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="20" locator="25:32-25:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="19" locator="25:41-25:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" locator="7:1-7:85" name="Behavioral/Neuropsych Assessment" id="urn:oid:2.16.840.1.113883.3.526.3.1023" accessLevel="Public"/>
+      <def localId="3" locator="8:1-8:110" name="Care Services in Long-Term Residential Facility" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1014" accessLevel="Public"/>
+      <def localId="4" locator="9:1-9:73" name="Cognitive Assessment" id="urn:oid:2.16.840.1.113883.3.526.3.1332" accessLevel="Public"/>
+      <def localId="5" locator="10:1-10:84" name="Dementia &amp; Mental Degenerations" id="urn:oid:2.16.840.1.113883.3.526.3.1005" accessLevel="Public"/>
+      <def localId="6" locator="11:1-11:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="7" locator="12:1-12:87" name="Home Healthcare Services" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1016" accessLevel="Public"/>
+      <def localId="8" locator="13:1-13:85" name="Nursing Facility Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1012" accessLevel="Public"/>
+      <def localId="9" locator="14:1-14:84" name="Occupational Therapy Evaluation" id="urn:oid:2.16.840.1.113883.3.526.3.1011" accessLevel="Public"/>
+      <def localId="10" locator="15:1-15:75" name="Office Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001" accessLevel="Public"/>
+      <def localId="11" locator="16:1-16:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="12" locator="17:1-17:86" name="Outpatient Consultation" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1008" accessLevel="Public"/>
+      <def localId="13" locator="18:1-18:67" name="Patient Reason" id="urn:oid:2.16.840.1.113883.3.526.3.1008" accessLevel="Public"/>
+      <def localId="14" locator="19:1-19:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def localId="15" locator="20:1-20:88" name="Psych Visit - Diagnostic Evaluation" id="urn:oid:2.16.840.1.113883.3.526.3.1492" accessLevel="Public"/>
+      <def localId="16" locator="21:1-21:80" name="Psych Visit - Psychotherapy" id="urn:oid:2.16.840.1.113883.3.526.3.1496" accessLevel="Public"/>
+      <def localId="17" locator="22:1-22:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="18" locator="23:1-23:99" name="Standardized Tools for Assessment of Cognition" id="urn:oid:2.16.840.1.113883.3.526.3.1006" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def locator="27:1-27:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="27:1-27:15" xmlns:ns0="urn:healthit-gov:qdm:v5_5" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="23" locator="29:1-30:51" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="23">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+  </a:s>
+               <a:s r="22">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="22" locator="30:3-30:51" xmlns:ns1="urn:healthit-gov:qdm:v5_5" dataType="ns1:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="30:40-30:50" name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="25" locator="32:1-33:43" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="25">
+               <a:s>define &quot;SDE Payer&quot;:
+  </a:s>
+               <a:s r="24">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="24" locator="33:3-33:43" xmlns:ns2="urn:healthit-gov:qdm:v5_5" dataType="ns2:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="33:36-33:42" name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="27" locator="35:1-36:41" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="27">
+               <a:s>define &quot;SDE Race&quot;:
+  </a:s>
+               <a:s r="26">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="26" locator="36:3-36:41" xmlns:ns3="urn:healthit-gov:qdm:v5_5" dataType="ns3:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="36:35-36:40" name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="29" locator="38:1-39:58" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="29">
+               <a:s>define &quot;SDE Sex&quot;:
+  </a:s>
+               <a:s r="28">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="28" locator="39:3-39:58" xmlns:ns4="urn:healthit-gov:qdm:v5_5" dataType="ns4:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="39:34-39:57" name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="53" locator="76:1-86:72" name="Face to Face Encounter During Measurement Period" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="53">
+               <a:s>define &quot;Face to Face Encounter During Measurement Period&quot;:
+  </a:s>
+               <a:s r="52">
+                  <a:s>
+                     <a:s r="47">
+                        <a:s r="46">
+                           <a:s>( </a:s>
+                           <a:s r="46">
+                              <a:s r="44">
+                                 <a:s r="42">
+                                    <a:s r="40">
+                                       <a:s r="38">
+                                          <a:s r="36">
+                                             <a:s r="34">
+                                                <a:s r="32">
+                                                   <a:s r="30">
+                                                      <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                                      <a:s>
+                                                         <a:s>&quot;Psych Visit - Diagnostic Evaluation&quot;</a:s>
+                                                      </a:s>
+                                                      <a:s>]</a:s>
+                                                   </a:s>
+                                                   <a:s>
+    union </a:s>
+                                                   <a:s r="31">
+                                                      <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                                      <a:s>
+                                                         <a:s>&quot;Nursing Facility Visit&quot;</a:s>
+                                                      </a:s>
+                                                      <a:s>]</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+    union </a:s>
+                                                <a:s r="33">
+                                                   <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                                   <a:s>
+                                                      <a:s>&quot;Care Services in Long-Term Residential Facility&quot;</a:s>
+                                                   </a:s>
+                                                   <a:s>]</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+    union </a:s>
+                                             <a:s r="35">
+                                                <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                                <a:s>
+                                                   <a:s>&quot;Home Healthcare Services&quot;</a:s>
+                                                </a:s>
+                                                <a:s>]</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+    union </a:s>
+                                          <a:s r="37">
+                                             <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Psych Visit - Psychotherapy&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+    union </a:s>
+                                       <a:s r="39">
+                                          <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;Behavioral/Neuropsych Assessment&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+    union </a:s>
+                                    <a:s r="41">
+                                       <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Occupational Therapy Evaluation&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+    union </a:s>
+                                 <a:s r="43">
+                                    <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Office Visit&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="45">
+                                 <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Outpatient Consultation&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> FaceToFaceEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="51">
+                     <a:s>where </a:s>
+                     <a:s r="51">
+                        <a:s r="49">
+                           <a:s r="48">
+                              <a:s>FaceToFaceEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="49">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="51"> during </a:s>
+                        <a:s r="50">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="52" locator="77:3-86:72" xsi:type="Query">
+            <source localId="47" locator="77:3-85:83" alias="FaceToFaceEncounter">
+               <expression localId="46" locator="77:3-85:63" xsi:type="Union">
+                  <operand localId="44" locator="77:5-84:50" xsi:type="Union">
+                     <operand localId="40" locator="77:5-82:70" xsi:type="Union">
+                        <operand localId="36" locator="77:5-80:62" xsi:type="Union">
+                           <operand localId="32" locator="77:5-78:60" xsi:type="Union">
+                              <operand localId="30" locator="77:5-77:67" xmlns:ns5="urn:healthit-gov:qdm:v5_5" dataType="ns5:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes locator="77:30-77:66" name="Psych Visit - Diagnostic Evaluation" xsi:type="ValueSetRef"/>
+                              </operand>
+                              <operand localId="31" locator="78:11-78:60" xmlns:ns6="urn:healthit-gov:qdm:v5_5" dataType="ns6:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes locator="78:36-78:59" name="Nursing Facility Visit" xsi:type="ValueSetRef"/>
+                              </operand>
+                           </operand>
+                           <operand xsi:type="Union">
+                              <operand localId="33" locator="79:11-79:85" xmlns:ns7="urn:healthit-gov:qdm:v5_5" dataType="ns7:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes locator="79:36-79:84" name="Care Services in Long-Term Residential Facility" xsi:type="ValueSetRef"/>
+                              </operand>
+                              <operand localId="35" locator="80:11-80:62" xmlns:ns8="urn:healthit-gov:qdm:v5_5" dataType="ns8:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <codes locator="80:36-80:61" name="Home Healthcare Services" xsi:type="ValueSetRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand xsi:type="Union">
+                           <operand localId="37" locator="81:11-81:65" xmlns:ns9="urn:healthit-gov:qdm:v5_5" dataType="ns9:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes locator="81:36-81:64" name="Psych Visit - Psychotherapy" xsi:type="ValueSetRef"/>
+                           </operand>
+                           <operand localId="39" locator="82:11-82:70" xmlns:ns10="urn:healthit-gov:qdm:v5_5" dataType="ns10:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <codes locator="82:36-82:69" name="Behavioral/Neuropsych Assessment" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Union">
+                        <operand localId="41" locator="83:11-83:69" xmlns:ns11="urn:healthit-gov:qdm:v5_5" dataType="ns11:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes locator="83:36-83:68" name="Occupational Therapy Evaluation" xsi:type="ValueSetRef"/>
+                        </operand>
+                        <operand localId="43" locator="84:11-84:50" xmlns:ns12="urn:healthit-gov:qdm:v5_5" dataType="ns12:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes locator="84:36-84:49" name="Office Visit" xsi:type="ValueSetRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="45" locator="85:11-85:61" xmlns:ns13="urn:healthit-gov:qdm:v5_5" dataType="ns13:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="85:36-85:60" name="Outpatient Consultation" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <where localId="51" locator="86:5-86:72" xsi:type="IncludedIn">
+               <operand localId="49" locator="86:11-86:44" path="relevantPeriod" scope="FaceToFaceEncounter" xsi:type="Property"/>
+               <operand localId="50" locator="86:53-86:72" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="65" locator="41:1-44:90" name="Dementia Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="65">
+               <a:s>define &quot;Dementia Encounter&quot;:
+  </a:s>
+               <a:s r="64">
+                  <a:s>
+                     <a:s r="55">
+                        <a:s r="54">
+                           <a:s>
+                              <a:s>&quot;Face to Face Encounter During Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ValidFaceToFaceEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="63">
+                     <a:s>with </a:s>
+                     <a:s r="57">
+                        <a:s r="56">
+                           <a:s r="56">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Dementia &amp; Mental Degenerations&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Dementia</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="62">
+                        <a:s r="59">
+                           <a:s r="58">
+                              <a:s>Dementia</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="59">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="62"> overlaps </a:s>
+                        <a:s r="61">
+                           <a:s r="60">
+                              <a:s>ValidFaceToFaceEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="61">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="64" locator="42:3-44:90" xsi:type="Query">
+            <source localId="55" locator="42:3-42:77" alias="ValidFaceToFaceEncounter">
+               <expression localId="54" locator="42:3-42:52" name="Face to Face Encounter During Measurement Period" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="63" locator="43:5-44:90" alias="Dementia" xsi:type="With">
+               <expression localId="56" locator="43:10-43:57" xmlns:ns14="urn:healthit-gov:qdm:v5_5" dataType="ns14:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="43:24-43:56" name="Dementia &amp; Mental Degenerations" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="62" locator="44:17-44:90" xsi:type="Overlaps">
+                  <operand localId="59" locator="44:17-44:41" path="prevalencePeriod" scope="Dementia" xsi:type="Property"/>
+                  <operand localId="61" locator="44:52-44:90" path="relevantPeriod" scope="ValidFaceToFaceEncounter" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="107" locator="88:1-101:3" name="My Qualifying Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="107">
+               <a:s>define &quot;My Qualifying Encounters&quot;:
+  </a:s>
+               <a:s r="106">
+                  <a:s>( </a:s>
+                  <a:s r="106">
+                     <a:s>distinct </a:s>
+                     <a:s r="105">
+                        <a:s>( </a:s>
+                        <a:s r="105">
+                           <a:s>flatten </a:s>
+                           <a:s r="104">
+                              <a:s>( </a:s>
+                              <a:s r="104">
+                                 <a:s>
+                                    <a:s>from
+          </a:s>
+                                    <a:s r="67">
+                                       <a:s r="66">
+                                          <a:s>
+                                             <a:s>&quot;Dementia Encounter&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> Enc1</a:s>
+                                    </a:s>
+                                    <a:s>,
+          </a:s>
+                                    <a:s r="69">
+                                       <a:s r="68">
+                                          <a:s>
+                                             <a:s>&quot;Dementia Encounter&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> Enc2</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+          </a:s>
+                                 <a:s>
+                                    <a:s>let </a:s>
+                                    <a:s r="74">
+                                       <a:s>Org1: </a:s>
+                                       <a:s r="73">
+                                          <a:s>( </a:s>
+                                          <a:s r="73">
+                                             <a:s r="71">
+                                                <a:s r="70">
+                                                   <a:s>Enc1</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="71">
+                                                   <a:s>participant</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> as </a:s>
+                                             <a:s r="72">
+                                                <a:s>&quot;Organization&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> )</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>,
+          </a:s>
+                                    <a:s r="79">
+                                       <a:s>Org2: </a:s>
+                                       <a:s r="78">
+                                          <a:s>( </a:s>
+                                          <a:s r="78">
+                                             <a:s r="76">
+                                                <a:s r="75">
+                                                   <a:s>Enc2</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="76">
+                                                   <a:s>participant</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> as </a:s>
+                                             <a:s r="77">
+                                                <a:s>&quot;Organization&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> )</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+          </a:s>
+                                 <a:s r="99">
+                                    <a:s>where </a:s>
+                                    <a:s r="99">
+                                       <a:s r="93">
+                                          <a:s r="84">
+                                             <a:s r="81">
+                                                <a:s r="80">
+                                                   <a:s>Org1</a:s>
+                                                </a:s>
+                                                <a:s> is not null</a:s>
+                                             </a:s>
+                                             <a:s>
+            and </a:s>
+                                             <a:s r="83">
+                                                <a:s r="82">
+                                                   <a:s>Org2</a:s>
+                                                </a:s>
+                                                <a:s> is not null</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+            and </a:s>
+                                          <a:s r="92">
+                                             <a:s r="87">
+                                                <a:s>start of </a:s>
+                                                <a:s r="86">
+                                                   <a:s r="85">
+                                                      <a:s>Enc2</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="86">
+                                                      <a:s>relevantPeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="92">
+                                                <a:s r="91">
+                                                   <a:s>1 day</a:s>
+                                                </a:s>
+                                                <a:s> or more after</a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="90">
+                                                <a:s>start of </a:s>
+                                                <a:s r="89">
+                                                   <a:s r="88">
+                                                      <a:s>Enc1</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="89">
+                                                      <a:s>relevantPeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+            and </a:s>
+                                       <a:s r="98">
+                                          <a:s r="95">
+                                             <a:s r="94">
+                                                <a:s>Org1</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="95">
+                                                <a:s>identifier</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> ~ </a:s>
+                                          <a:s r="97">
+                                             <a:s r="96">
+                                                <a:s>Org2</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="97">
+                                                <a:s>identifier</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+          </a:s>
+                                 <a:s r="103">
+                                    <a:s>return all </a:s>
+                                    <a:s r="102">
+                                       <a:s>{ </a:s>
+                                       <a:s r="100">
+                                          <a:s>Enc1</a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="101">
+                                          <a:s>Enc2</a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  )</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="106" locator="89:3-101:3" xsi:type="Distinct">
+            <operand localId="105" locator="89:14-100:5" xsi:type="Flatten">
+               <operand localId="104" locator="89:24-99:7" xsi:type="Query">
+                  <source localId="67" locator="90:11-90:35" alias="Enc1">
+                     <expression localId="66" locator="90:11-90:30" name="Dementia Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <source localId="69" locator="91:11-91:35" alias="Enc2">
+                     <expression localId="68" locator="91:11-91:30" name="Dementia Encounter" xsi:type="ExpressionRef"/>
+                  </source>
+                  <let localId="74" locator="92:15-92:58" identifier="Org1">
+                     <expression localId="73" locator="92:21-92:58" strict="false" xsi:type="As">
+                        <operand localId="71" locator="92:23-92:38" path="participant" scope="Enc1" xsi:type="Property"/>
+                        <asTypeSpecifier localId="72" locator="92:43-92:56" xmlns:ns15="urn:healthit-gov:qdm:v5_5" name="ns15:Organization" xsi:type="NamedTypeSpecifier"/>
+                     </expression>
+                  </let>
+                  <let localId="79" locator="93:11-93:54" identifier="Org2">
+                     <expression localId="78" locator="93:17-93:54" strict="false" xsi:type="As">
+                        <operand localId="76" locator="93:19-93:34" path="participant" scope="Enc2" xsi:type="Property"/>
+                        <asTypeSpecifier localId="77" locator="93:39-93:52" xmlns:ns16="urn:healthit-gov:qdm:v5_5" name="ns16:Organization" xsi:type="NamedTypeSpecifier"/>
+                     </expression>
+                  </let>
+                  <where localId="99" locator="94:11-97:49" xsi:type="And">
+                     <operand localId="93" locator="94:17-96:93" xsi:type="And">
+                        <operand localId="84" locator="94:17-95:32" xsi:type="And">
+                           <operand localId="81" locator="94:17-94:32" xsi:type="Not">
+                              <operand locator="94:17-94:32" xsi:type="IsNull">
+                                 <operand localId="80" locator="94:17-94:20" name="Org1" xsi:type="QueryLetRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="83" locator="95:17-95:32" xsi:type="Not">
+                              <operand locator="95:17-95:32" xsi:type="IsNull">
+                                 <operand localId="82" locator="95:17-95:20" name="Org2" xsi:type="QueryLetRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="92" locator="96:17-96:93" xsi:type="SameOrAfter">
+                           <operand localId="87" locator="96:17-96:44" xsi:type="Start">
+                              <operand localId="86" locator="96:26-96:44" path="relevantPeriod" scope="Enc2" xsi:type="Property"/>
+                           </operand>
+                           <operand locator="96:66-96:93" xsi:type="Add">
+                              <operand localId="90" locator="96:66-96:93" xsi:type="Start">
+                                 <operand localId="89" locator="96:75-96:93" path="relevantPeriod" scope="Enc1" xsi:type="Property"/>
+                              </operand>
+                              <operand localId="91" locator="96:46-96:50" value="1" unit="day" xsi:type="Quantity"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="98" locator="97:17-97:49" xsi:type="Equivalent">
+                        <operand localId="95" locator="97:17-97:31" path="identifier" xsi:type="Property">
+                           <source localId="94" locator="97:17-97:20" name="Org1" xsi:type="QueryLetRef"/>
+                        </operand>
+                        <operand localId="97" locator="97:35-97:49" path="identifier" xsi:type="Property">
+                           <source localId="96" locator="97:35-97:38" name="Org2" xsi:type="QueryLetRef"/>
+                        </operand>
+                     </operand>
+                  </where>
+                  <return localId="103" locator="98:11-98:35" distinct="false">
+                     <expression localId="102" locator="98:22-98:35" xsi:type="List">
+                        <element localId="100" locator="98:24-98:27" name="Enc1" xsi:type="AliasRef"/>
+                        <element localId="101" locator="98:30-98:33" name="Enc2" xsi:type="AliasRef"/>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="112" locator="106:1-107:39" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="112">
+               <a:s>define &quot;Initial Population&quot;:
+  </a:s>
+               <a:s r="111">
+                  <a:s r="109">
+                     <a:s>Count(</a:s>
+                     <a:s r="108">
+                        <a:s>&quot;My Qualifying Encounters&quot;</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s r="110">>= 2</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="111" locator="107:3-107:39" xsi:type="GreaterOrEqual">
+            <operand localId="109" locator="107:3-107:35" xsi:type="Count">
+               <source localId="108" locator="107:9-107:34" name="My Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="110" locator="107:39" valueType="t:Integer" value="2" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="114" locator="46:1-47:22" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="114">
+               <a:s>define &quot;Denominator&quot;:
+  </a:s>
+               <a:s r="113">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="113" locator="47:3-47:22" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="130" locator="53:1-57:79" name="Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="130">
+               <a:s>define &quot;Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools&quot;:
+  </a:s>
+               <a:s r="129">
+                  <a:s>
+                     <a:s r="116">
+                        <a:s r="115">
+                           <a:s r="115">
+                              <a:s>[&quot;Assessment, Not Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Standardized Tools for Assessment of Cognition&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NoCognitiveAssessmentUsingTools</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="124">
+                     <a:s>with </a:s>
+                     <a:s r="118">
+                        <a:s r="117">
+                           <a:s>
+                              <a:s>&quot;Dementia Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EncounterDementia</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="123">
+                        <a:s r="120">
+                           <a:s r="119">
+                              <a:s>NoCognitiveAssessmentUsingTools</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="120">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="123"> during </a:s>
+                        <a:s r="122">
+                           <a:s r="121">
+                              <a:s>EncounterDementia</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="122">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="128">
+                     <a:s>where </a:s>
+                     <a:s r="128">
+                        <a:s r="126">
+                           <a:s r="125">
+                              <a:s>NoCognitiveAssessmentUsingTools</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="126">
+                              <a:s>negationRationale</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="127">
+                           <a:s>&quot;Patient Reason&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="129" locator="54:3-57:79" xsi:type="Query">
+            <source localId="116" locator="54:3-54:113" alias="NoCognitiveAssessmentUsingTools">
+               <expression localId="115" locator="54:3-54:81" xmlns:ns17="urn:healthit-gov:qdm:v5_5" dataType="ns17:NegativeAssessmentPerformed" templateId="NegativeAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="54:33-54:80" name="Standardized Tools for Assessment of Cognition" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="124" locator="55:5-56:102" alias="EncounterDementia" xsi:type="With">
+               <expression localId="117" locator="55:10-55:29" name="Dementia Encounter" xsi:type="ExpressionRef"/>
+               <suchThat localId="123" locator="56:17-56:102" xsi:type="In">
+                  <operand localId="120" locator="56:17-56:62" path="authorDatetime" scope="NoCognitiveAssessmentUsingTools" xsi:type="Property"/>
+                  <operand localId="122" locator="56:71-56:102" path="relevantPeriod" scope="EncounterDementia" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+            <where localId="128" locator="57:5-57:79" xsi:type="InValueSet">
+               <code localId="126" locator="57:11-57:59" path="negationRationale" scope="NoCognitiveAssessmentUsingTools" xsi:type="Property"/>
+               <valueset localId="127" locator="57:64-57:79" name="Patient Reason"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="148" locator="59:1-63:90" name="Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="148">
+               <a:s>define &quot;Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods&quot;:
+  </a:s>
+               <a:s r="147">
+                  <a:s>
+                     <a:s r="134">
+                        <a:s r="133">
+                           <a:s r="133">
+                              <a:s>[&quot;Intervention, Not Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Cognitive Assessment&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NoCognitiveAssessmentUsingAlternateMethods</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="142">
+                     <a:s>with </a:s>
+                     <a:s r="136">
+                        <a:s r="135">
+                           <a:s>
+                              <a:s>&quot;Dementia Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EncounterDementia</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="141">
+                        <a:s r="138">
+                           <a:s r="137">
+                              <a:s>NoCognitiveAssessmentUsingAlternateMethods</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="138">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="141"> during </a:s>
+                        <a:s r="140">
+                           <a:s r="139">
+                              <a:s>EncounterDementia</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="140">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="146">
+                     <a:s>where </a:s>
+                     <a:s r="146">
+                        <a:s r="144">
+                           <a:s r="143">
+                              <a:s>NoCognitiveAssessmentUsingAlternateMethods</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="144">
+                              <a:s>negationRationale</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="145">
+                           <a:s>&quot;Patient Reason&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="147" locator="60:3-63:90" xsi:type="Query">
+            <source localId="134" locator="60:3-60:100" alias="NoCognitiveAssessmentUsingAlternateMethods">
+               <expression localId="133" locator="60:3-60:57" xmlns:ns18="urn:healthit-gov:qdm:v5_5" dataType="ns18:NegativeInterventionPerformed" templateId="NegativeInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="60:35-60:56" name="Cognitive Assessment" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="142" locator="61:5-62:113" alias="EncounterDementia" xsi:type="With">
+               <expression localId="135" locator="61:10-61:29" name="Dementia Encounter" xsi:type="ExpressionRef"/>
+               <suchThat localId="141" locator="62:17-62:113" xsi:type="In">
+                  <operand localId="138" locator="62:17-62:73" path="authorDatetime" scope="NoCognitiveAssessmentUsingAlternateMethods" xsi:type="Property"/>
+                  <operand localId="140" locator="62:82-62:113" path="relevantPeriod" scope="EncounterDementia" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+            <where localId="146" locator="63:5-63:90" xsi:type="InValueSet">
+               <code localId="144" locator="63:11-63:70" path="negationRationale" scope="NoCognitiveAssessmentUsingAlternateMethods" xsi:type="Property"/>
+               <valueset localId="145" locator="63:75-63:90" name="Patient Reason"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="152" locator="49:1-51:94" name="Denominator Exceptions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="152">
+               <a:s>define &quot;Denominator Exceptions&quot;:
+  </a:s>
+               <a:s r="151">
+                  <a:s r="132">
+                     <a:s>exists </a:s>
+                     <a:s r="131">
+                        <a:s>&quot;Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    or </a:s>
+                  <a:s r="150">
+                     <a:s>exists </a:s>
+                     <a:s r="149">
+                        <a:s>&quot;Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="151" locator="50:3-51:94" xsi:type="Or">
+            <operand localId="132" locator="50:3-50:93" xsi:type="Exists">
+               <operand localId="131" locator="50:10-50:93" name="Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="150" locator="51:8-51:94" xsi:type="Exists">
+               <operand localId="149" locator="51:15-51:94" name="Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="171" locator="65:1-71:58" name="Assessment of Cognition Using Standardized Tools or Alternate Methods" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="171">
+               <a:s>define &quot;Assessment of Cognition Using Standardized Tools or Alternate Methods&quot;:
+  </a:s>
+               <a:s r="170">
+                  <a:s>
+                     <a:s r="156">
+                        <a:s r="155">
+                           <a:s>( </a:s>
+                           <a:s r="155">
+                              <a:s r="153">
+                                 <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Standardized Tools for Assessment of Cognition&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="154">
+                                 <a:s>[&quot;Intervention, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Cognitive Assessment&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> CognitiveAssessmentUsingTools</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="166">
+                     <a:s>with </a:s>
+                     <a:s r="158">
+                        <a:s r="157">
+                           <a:s>
+                              <a:s>&quot;Dementia Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EncounterDementia</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="165">
+                        <a:s r="160">
+                           <a:s r="159">
+                              <a:s>CognitiveAssessmentUsingTools</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="160">
+                              <a:s>relevantDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="165">
+                           <a:s r="164">
+                              <a:s>12 months</a:s>
+                           </a:s>
+                           <a:s> or less on or before day of</a:s>
+                        </a:s>
+                        <a:s> 
+      </a:s>
+                        <a:s r="163">
+                           <a:s>end of </a:s>
+                           <a:s r="162">
+                              <a:s r="161">
+                                 <a:s>EncounterDementia</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="162">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="169">
+                     <a:s>where </a:s>
+                     <a:s r="169">
+                        <a:s r="168">
+                           <a:s r="167">
+                              <a:s>CognitiveAssessmentUsingTools</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="168">
+                              <a:s>result</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is not null</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="170" locator="66:3-71:58" xsi:type="Query">
+            <source localId="156" locator="66:3-67:93" alias="CognitiveAssessmentUsingTools">
+               <expression localId="155" locator="66:3-67:63" xsi:type="Union">
+                  <operand xsi:type="As">
+                     <operand localId="153" locator="66:5-66:79" xmlns:ns19="urn:healthit-gov:qdm:v5_5" dataType="ns19:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes locator="66:31-66:78" name="Standardized Tools for Assessment of Cognition" xsi:type="ValueSetRef"/>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <choice xmlns:ns20="urn:healthit-gov:qdm:v5_5" name="ns20:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <choice xmlns:ns21="urn:healthit-gov:qdm:v5_5" name="ns21:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+                  <operand xsi:type="As">
+                     <operand localId="154" locator="67:11-67:61" xmlns:ns22="urn:healthit-gov:qdm:v5_5" dataType="ns22:PositiveInterventionPerformed" templateId="PositiveInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <codes locator="67:39-67:60" name="Cognitive Assessment" xsi:type="ValueSetRef"/>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <choice xmlns:ns23="urn:healthit-gov:qdm:v5_5" name="ns23:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <choice xmlns:ns24="urn:healthit-gov:qdm:v5_5" name="ns24:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+               </expression>
+            </source>
+            <relationship localId="166" locator="68:5-70:45" alias="EncounterDementia" xsi:type="With">
+               <expression localId="157" locator="68:10-68:29" name="Dementia Encounter" xsi:type="ExpressionRef"/>
+               <suchThat localId="165" locator="69:17-70:45" xsi:type="And">
+                  <operand locator="69:64-69:80" precision="Day" xsi:type="In">
+                     <operand localId="160" locator="69:17-69:62" path="relevantDatetime" scope="CognitiveAssessmentUsingTools" xsi:type="Property"/>
+                     <operand locator="69:64-69:80" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="70:7-70:45" xsi:type="Subtract">
+                           <operand localId="163" locator="70:7-70:45" xsi:type="End">
+                              <operand localId="162" locator="70:14-70:45" path="relevantPeriod" scope="EncounterDementia" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="164" locator="69:64-69:72" value="12" unit="months" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="163" locator="70:7-70:45" xsi:type="End">
+                           <operand localId="162" locator="70:14-70:45" path="relevantPeriod" scope="EncounterDementia" xsi:type="Property"/>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="69:64-69:80" xsi:type="Not">
+                     <operand locator="69:64-69:80" xsi:type="IsNull">
+                        <operand localId="163" locator="70:7-70:45" xsi:type="End">
+                           <operand localId="162" locator="70:14-70:45" path="relevantPeriod" scope="EncounterDementia" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where localId="169" locator="71:5-71:58" xsi:type="Not">
+               <operand locator="71:11-71:58" xsi:type="IsNull">
+                  <operand localId="168" locator="71:11-71:46" path="result" scope="CognitiveAssessmentUsingTools" xsi:type="Property"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="174" locator="73:1-74:80" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="174">
+               <a:s>define &quot;Numerator&quot;:
+  </a:s>
+               <a:s r="173">
+                  <a:s>exists </a:s>
+                  <a:s r="172">
+                     <a:s>&quot;Assessment of Cognition Using Standardized Tools or Alternate Methods&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="173" locator="74:3-74:80" xsi:type="Exists">
+            <operand localId="172" locator="74:10-74:80" name="Assessment of Cognition Using Standardized Tools or Alternate Methods" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+   </statements>
+</library>

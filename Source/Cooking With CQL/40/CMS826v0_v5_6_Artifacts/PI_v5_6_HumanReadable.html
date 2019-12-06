@@ -1,0 +1,1093 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Hospital Harm – Pressure Injury</title>
+  <style type="text/css">
+body {
+	color: rgb(26, 26, 26);
+	background-color: rgb(255,255,255);
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 11px;
+    overflow-y: auto;
+}
+
+
+
+h1 {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+
+
+
+
+tr {
+	background-color: rgb(224,224,224);
+}
+
+td {
+	padding: 0.1cm 0.2cm;
+	vertical-align: top;
+}
+
+
+
+a {
+	/*color: rgb(0, 0, 255);
+	background-color: rgb(255,255,255);*/
+}
+
+table { 
+ line-height: 10pt; 
+ width: 80%; 
+ font-size: 11px; 
+ }
+
+/*div {
+	width: 80%;
+}*/
+
+.list-unstyled {
+    list-style-type: none;
+}
+
+.list-unstyled li {
+    padding-top: 5px;
+}
+
+.list-header {
+    font-size: 12px;
+    color: rgb(0, 0, 238);
+}
+
+.list-header:hover {
+    text-decoration: underline;
+}
+
+.code {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    color:black;
+    font-size: 12px;
+}
+
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.section {
+    font-size: 10pt;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0.5em;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.cql-keyword-new {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.cql-class, .cql-object {
+    color: rgb(25, 127, 157);
+}
+
+.cql_keyword {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_function {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_attribute {
+    color: rgb(127, 0, 85);
+    font-weight: 700;
+}
+.cql_string {
+    color: rgb(42, 0, 255);
+}
+.cql_identifier .cql_function {
+    color: rgb(60, 76, 114);
+}
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+
+.treeview:hover input ~ label:before,
+.treeview.hover input ~ label:before {
+  opacity: 1.0;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.treeview ul {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -ms-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  list-style: none;
+  padding-left: 1em;
+}
+.treeview ul li span {
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -ms-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+  
+}
+
+.treeview input {
+  display: none;
+}
+
+.treeview input[type=checkbox]:checked ~ ul {
+  display: none;  
+}
+
+.treeview input[type=checkbox] ~ ul {
+  max-height: 100%;
+  margin-right: 20%;
+  opacity: 1;  
+}
+
+.treeview input ~ label {
+  cursor: pointer;
+}
+.treeview input ~ label:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: -1em;
+  margin-top: 0.25em;
+  border-width: 4px;
+  border-style: solid;
+  border-top-color: transparent;
+  border-right-color: rgb(0, 0, 238);
+  border-bottom-color: rgb(0, 0, 238);
+  border-left-color: transparent;
+  opacity: 0.0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -ms-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.treeview input:checked ~ label:before {
+  margin-left: -0.8em;
+  border-width: 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(0, 0, 238);
+}
+
+
+
+
+.h1center {
+	font-size: 12pt;
+	font-weight: bold;
+	text-align: center;
+	width: 80%;
+}
+
+.header_table{
+	border: 1pt inset rgb(0,0,0);
+}
+
+.narr_table {
+	width: 100%;
+}
+
+.narr_tr {
+	background-color: rgb(225,225,225);
+}
+
+pre {
+ overflow: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+ font-family: Verdana, Tahoma, sans-serif;
+ font-size: 11px;
+ text-align:left;
+ margin: 0px 0px 0px 0px;
+ padding:0px 0px 0px 0px;
+}
+.narr_th {
+	background-color: rgb(201,201,201);
+}
+
+.td_label{
+	font-weight: bold;
+	color: white;
+}
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+#nn-text
+{
+    text-align: center;
+    text-align: center;
+    color:lightgrey;
+    font-size:40px;
+}
+
+.cql-definition-body {
+	width:950px;
+	display: block;
+	word-wrap: break-word;
+}li {  padding-left: 15px;}	</style>
+ </head>
+ <body>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Title</span></td>
+     <td style="width:80%" colspan="3"><h1 style="font-size:10px">Hospital Harm – Pressure Injury</h1></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Identifier (Measure Authoring Tool)</span></td>
+     <td style="width:30%">826</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">eCQM Version number</span></td>
+     <td style="width:30%">0.0.029</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">NQF Number</span></td>
+     <td style="width:30%">Not Applicable</td>
+     <td style="background-color:#656565; width:20%"><span class="td_label">GUID</span></td>
+     <td>ca46e41b-f560-417f-a5ba-0c89019ed711</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measurement Period</span></td>
+     <td style="width:80%" colspan="3">January 1, 20XX through December 31, 20XX</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Steward</span></td>
+     <td style="width:80%" colspan="3">Centers for Medicare &amp; Medicaid Services (CMS)</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">Mathematica Policy Research</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Developer</span></td>
+     <td style="width:80%" colspan="3">Yale New Haven Health Service Corporation/ Center for Outcomes Research and Evaluation</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Endorsed By</span></td>
+     <td style="width:80%" colspan="3">None</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Description</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>This measure assesses the proportion of inpatient encounters of patients 18 years of age or older at admission, who suffer the harm of developing a new stage 2, stage 3, stage 4 pressure injury, deep tissue pressure injury, or unstageable pressure injury. The measure defines a new pressure injury as not present on arrival to the hospital or not documented within the first 24 hours after hospital arrival. Only one harm (new qualifying pressure injury) is counted per encounter.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Copyright</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.
+
+CPT(R) contained in the Measure specifications is copyright 2004-2016 American Medical Association. LOINC(R) copyright 2004-2016 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2016 International Health Terminology Standards Development Organisation. ICD-10 copyright 2016 World Health Organization. All Rights Reserved.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Disclaimer</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>This measure and specifications are subject to further revisions. 
+
+This performance measure is not a clinical guideline, does not establish a standard of medical care, and has not been tested for all potential applications.
+
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+
+Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Scoring</span></td>
+     <td style="width:80%" colspan="3">Proportion</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Type</span></td>
+     <td style="width:80%" colspan="3">Outcome</td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Stratification</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Risk Adjustment</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rate Aggregation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Rationale</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Pressure injury is a serious event and one of the most common patient harms. Pressure injuries commonly lead to local infection, osteomyelitis, anemia, and sepsis (Brem, et al., 2010), in addition to causing significant depression, pain, and discomfort to patients (Gunningberg et al., 2011). The rate of pressure injuries varies across hospitals, suggesting opportunity for further improvement. 
+
+A pressure injury (stage 3 or stage 4) is considered a serious reportable event by the National Quality Forum (NQF) (Centers for Medicare and Medicaid Services, 2015). CMS established non-payment for pressure injury (National Quality Forum, 2016), and the rate of pressure injuries is considered an indicator of the quality of nursing care a hospital provides (National Quality Forum, 2005). It is widely accepted that the risk of developing a pressure injury can be reduced through best practices such as frequent repositioning, proper skin care, and specialized cushions or beds (Berlowitz, et al., 2012). While several pressure injury measures are currently in use, there are no electronic health record (EHR)-based measures intended for use in acute care hospitals. This measure identifies pressure injuries using direct extraction of structured data from the EHR to provide hospitals with reliable and timely measurement of their pressure injury rates (Gunningberg, et al., 2011).</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Clinical Recommendation Statement</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>The National Pressure Ulcer Advisory Panel (National Perssure Ulcer Advisory Panel, et al., 2014) provides guidance for categorizing pressure injuries.
+
+The National Pressure Ulcer Advisory Panel (National Pressure Ulcer Advisory Panel, et al., 2014) also provides recommendations for structured skin and risk assessment:
+
+Conduct a structured risk assessment as soon as possible (but within a maximum of eight hours after admission) to identify individuals at risk of developing pressure ulcers. 
+
+Repeat the risk assessment as often as required by the individual’s acuity.
+
+The Joint Commission (The Joint Commission, 2016) and NPUAP (National Pressure Ulcer Advisory Panel, 2016) also identify guidelines for pressure injury prevention: 
+
+Protecting and monitoring the condition of the patient’s skin is important for preventing pressure injury and identifying Stage 1 injuries early so they can be treated before they worsen. 
+- 	Inspect the skin upon admission and at least daily for signs of pressure injuries. 
+- 	Assess pressure points, temperature and the skin beneath medical devices.
+- 	Clean the skin promptly after episodes of incontinence, use skin cleansers that are pH balanced for the skin, and use skin moisturizers. 
+- 	Avoid positioning the patient on an area of pressure injury.
+
+Immobility can be a big factor in causing pressure injuries. Immobility can be due to several factors, such as age, general poor health condition, sedation, paralysis and coma. 
+- 	Turn and reposition at-risk patients, if not contraindicated. 
+- 	Plan a scheduled frequency of turning and repositioning the patient.
+- 	Consider using pressure-relieving devices when placing patients on any support surface. 
+
+Consider the patient’s body size, level of immobility, exposure to shear, skin moisture, and perfusion when choosing a support surface.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Improvement Notation</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>A lower proportion indicates better quality.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Berlowitz, D. VanDeusen Lukas, C.; Parker, V.; Niederhauser, A.;, &amp; Silver, J. L., C.; Ayello, E.; Zulkowski, K. (2012). Preventing Pressure Ulcers in Hospitals - A Toolkit for Improving Quality of Care.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Brem H, M. J., Nierman D, et al. (2010). High Cost of Stage IV Pressure Ulcers. doi:10.1016/j.amjsurg.2009.12.021. American Journal of Surgery, 200(4), 473-477. </pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Centers for Medicare &amp; Medicaid Services. (2015). Hospital-Acquired Conditions. Retrieved January 13, 2017, from https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Hospital-Acquired_Conditions.html</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Gunningberg, L., Donaldson, N., Aydin, C., Idvall, E. ( 2011). Exploring variation in pressure ulcer prevalence in Sweden and the USA: Benchmarking in action. 18. 10.1111/j.1365-2753.2011.01702.x. Journal of evaluation in clinical practice., 904-910.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>The Joint Commission. (2016). Preventing Pressure Injuries Quick Safety.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Pressure Ulcer Advisory Panel, European Pressure Ulcer Advisory Panel, &amp; Pan Pacific Pressure Injury Alliance. (2009). Prevention and Treatment of Pressure Ulcers: Quick Reference Guide.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Pressure Ulcer Advisory Panel. (2016). Pressure Injury Prevention Points.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Quality Forum. (2005). National Voluntary Consensus Standards for Nursing-Sensitive Care: An Initial Performance Measure Set. Retrieved January 13, 2017, from http://www.qualityforum.org/Publications/2004/10/National_Voluntary_Consensus_Standards_for_Nursing-Sensitive_Care__An_Initial_Performance_Measure_Set.aspx.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Reference</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>National Quality Forum. (2016). List of SREs. Retrieved January 13, 2017, from http://www.qualityforum.org/Topics/SREs/List_of_SREs.aspx#sre4</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Definition</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>This measure defines a pressure injury (harm) as a stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury, which was not documented within the first 24 hours after hospital arrival.
+
+This measure does not count pre-existing pressure injuries documented within the first 24 hours after hospital arrival, even if they advance to a qualifying status after these first 24 hours. However, if a patient with a documented pre-existing pressure injury develops another pressure injury after 24 hours of their hospitalization, this new pressure injury is considered a harm. Patients with pre-existing pressure injuries are not excluded from the measure.
+
+Only one harm (new qualifying pressure injury) is counted per encounter.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Guidance</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>To calculate the hospital-level measure result, divide the total numerator events by the total number of eligible encounters (denominator).
+
+For each encounter, qualifying encounters (denominator) include all patients 18 years of age or older at the start of the encounter. 
+
+To create the numerator, include any qualifying encounters which include a new (not documented within first 24 hours after hospital arrival) stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury.
+
+Only one harm (new qualifying pressure injury) is counted per encounter.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Transmission Format</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>TBD</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Initial Population</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>All patient encounters where the patient is 18 years of age or older at the start of the encounter. 
+
+Measure includes inpatient admissions who were initially seen in the emergency department or in observation status and then were admitted to the hospital.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Equals Initial Population</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>All encounters which include a new (not documented within first 24 hours after hospital arrival) stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury.
+
+Only one harm (new qualifying pressure injury) is counted per encounter.</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Numerator Exclusions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>Not Applicable</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Denominator Exceptions</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>None</pre>
+      </div></td>
+    </tr>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Supplemental Data Elements</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre>For every patient evaluated by this measure, also identify payer, race, ethnicity, and gender.</pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+  <h2><a name="toc">Table of Contents</a></h2>
+  <ul style="padding-left: 50px;">
+   <li><a href="#d1e405">Population Criteria</a></li>
+   <li><a href="#d1e649">Definitions</a></li>
+   <li><a href="#d1e650">Functions</a></li>
+   <li><a href="#d1e555">Terminology</a></li>
+   <li><a href="#d1e647">Data Criteria (QDM Data Elements)</a></li>
+   <li><a href="#d1e767">Supplemental Data Elements</a></li>
+   <li><a href="#d1e879">Risk Adjustment Variables</a></li>
+  </ul>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br></pre>
+  <h3><a name="d1e405" href="#toc">Population Criteria</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left:10px;">
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-initialPopulation_960"><label for="test-initialPopulation_960" class="list-header"><strong>Initial Population</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">"Qualifying Inpatient Encounter" QualifyingEncounter
+	where AgeInYearsAt(start of "Hospitalization, Potentially Starting in Emergency Department and or with Observation"(QualifyingEncounter))&gt;= 18</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominator_4"><label for="test-denominator_4" class="list-header"><strong>Denominator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">"Initial Population"</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExclusions_879"><label for="test-denominatorExclusions_879" class="list-header"><strong>Denominator Exclusions</strong></label>
+        <ul class="code">
+         <li>
+          <div id="test-None_104">
+           <strong class="cql-class">None</strong>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numerator_328"><label for="test-numerator_328" class="list-header"><strong>Numerator</strong></label>
+        <ul class="code">
+         <li class="list-unstyled">
+          <div class="treeview hover p-l-10">
+           <ul>
+            <li style="padding-left: 0px;">
+             <div>
+              <pre class="cql-definition-body">"Denominator"
+	intersect "New Pressure Injury Stage 2, Stage 3, Stage 4, Nonstageable, or Deep Tissue Injury"</pre>
+             </div></li>
+           </ul>&nbsp;
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-numeratorExclusions_525"><label for="test-numeratorExclusions_525" class="list-header"><strong>Numerator Exclusions</strong></label>
+        <ul class="code">
+         <li>
+          <div id="test-None_415">
+           <strong class="cql-class">None</strong>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-denominatorExceptions_547"><label for="test-denominatorExceptions_547" class="list-header"><strong>Denominator Exceptions</strong></label>
+        <ul class="code">
+         <li>
+          <div id="test-None_42">
+           <strong class="cql-class">None</strong>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled" style="list-style:none;padding-left:0px;">
+     <div class="treeview hover p-l-10">
+      <ul class="list-unstyled">
+       <li class="list-unstyled"><input type="checkbox" id="test-stratum_925"><label for="test-stratum_925" class="list-header"><strong>Stratification</strong></label>
+        <ul class="code">
+         <li>
+          <div id="test-None_743">
+           <strong class="cql-class">None</strong>
+          </div></li>
+        </ul></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e649" href="#toc">Definitions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Denominator_252">
+         <label for="test-Denominator_252" class="list-header"><strong> Denominator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">"Initial Population"</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Initial_Population_425">
+         <label for="test-Initial_Population_425" class="list-header"><strong> Initial Population</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">"Qualifying Inpatient Encounter" QualifyingEncounter
+	where AgeInYearsAt(start of "Hospitalization, Potentially Starting in Emergency Department and or with Observation"(QualifyingEncounter))&gt;= 18</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-New_Pressure_Injury_Stage_2,_Stage_3,_Stage_4,_Nonstageable,_or_Deep_Tissue_Injury_10">
+         <label for="test-New_Pressure_Injury_Stage_2,_Stage_3,_Stage_4,_Nonstageable,_or_Deep_Tissue_Injury_10" class="list-header"><strong> New Pressure Injury Stage 2, Stage 3, Stage 4, Nonstageable, or Deep Tissue Injury</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">"Denominator" EncounterWithQualifyingAge
+	with ["Diagnosis": "Pressure Ulcer Stage"] PressureInjuryStage
+		such that ( PressureInjuryStage.code ~ "Pressure ulcer stage 2 (disorder)"
+				or PressureInjuryStage.code ~ "Pressure ulcer stage 3 (disorder)"
+				or PressureInjuryStage.code ~ "Pressure ulcer stage 4 (disorder)"
+				or PressureInjuryStage.code ~ "Nonstageable pressure ulcer (disorder)"
+				or PressureInjuryStage.code ~ "Pressure injury of deep tissue (disorder)"
+		)
+			and PressureInjuryStage.prevalencePeriod starts more than 24 hours after start of "Hospitalization, Potentially Starting in Emergency Department and or with Observation"(EncounterWithQualifyingAge)
+			and PressureInjuryStage.prevalencePeriod during "Hospitalization, Potentially Starting in Emergency Department and or with Observation"(EncounterWithQualifyingAge)</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Numerator_722">
+         <label for="test-Numerator_722" class="list-header"><strong> Numerator</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">"Denominator"
+	intersect "New Pressure Injury Stage 2, Stage 3, Stage 4, Nonstageable, or Deep Tissue Injury"</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Qualifying_Inpatient_Encounter_652">
+         <label for="test-Qualifying_Inpatient_Encounter_652" class="list-header"><strong> Qualifying Inpatient Encounter</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">["Encounter, Performed": "Encounter Inpatient"] InpatientEncounter
+	where InpatientEncounter.relevantPeriod during "Measurement Period"</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Ethnicity_180">
+         <label for="test-SDE_Ethnicity_180" class="list-header"><strong> SDE Ethnicity</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">["Patient Characteristic Ethnicity": "Ethnicity"]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Payer_677">
+         <label for="test-SDE_Payer_677" class="list-header"><strong> SDE Payer</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">["Patient Characteristic Payer": "Payer"]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Race_110">
+         <label for="test-SDE_Race_110" class="list-header"><strong> SDE Race</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">["Patient Characteristic Race": "Race"]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-SDE_Sex_849">
+         <label for="test-SDE_Sex_849" class="list-header"><strong> SDE Sex</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">["Patient Characteristic Sex": "ONC Administrative Sex"] </pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e650" href="#toc">Functions</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 10px;">
+    <li class="list-unstyled" style="list-style:none;">
+     <div>
+      <ul class="list-unstyled" style="list-style:none;padding-left:0;">
+       <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+         <input type="checkbox" id="test-Hospitalization,_Potentially_Starting_in_Emergency_Department_and_or_with_Observation_382">
+         <label for="test-Hospitalization,_Potentially_Starting_in_Emergency_Department_and_or_with_Observation_382" class="list-header"><strong> Hospitalization, Potentially Starting in Emergency Department and or with Observation(Inpatient_Encounter "Encounter, Performed")</strong></label>
+         <ul class="code" style="margin-right: 20%; opacity: 1;">
+          <li class="list-unstyled">
+           <div>
+            <ul style="padding-left: 0px;">
+             <li style="padding-left: 0px;" class="list-unstyled">
+              <div>
+               <pre class="cql-definition-body">Inpatient_Encounter QualifyingInpatientEncounter
+	let LastObservationVisit: Last(["Encounter, Performed": "Observation Services"] ObservationVisit
+			where ObservationVisit.relevantPeriod ends 1 hour or less on or before start of QualifyingInpatientEncounter.relevantPeriod
+			sort by 
+			end of relevantPeriod
+	),
+	HospitalVisitStart: Coalesce(start of LastObservationVisit.relevantPeriod, start of QualifyingInpatientEncounter.relevantPeriod),
+	LastEDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] EDVisit
+			where EDVisit.relevantPeriod ends 1 hour or less on or before HospitalVisitStart
+			sort by 
+			end of relevantPeriod
+	)
+	return Interval[Coalesce(start of LastEDVisit.relevantPeriod, HospitalVisitStart), 
+	end of QualifyingInpatientEncounter.relevantPeriod]</pre>
+              </div></li>
+            </ul>&nbsp;
+           </div></li>
+         </ul>
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e555" href="#toc">Terminology</a></h3>
+  <div>
+   <ul style="padding-left: 50px;">
+    <li style="width:80%">code "Nonstageable pressure ulcer (disorder)" ("SNOMEDCT version 2017-09 Code (421594008)")</li>
+    <li style="width:80%">code "Pressure injury of deep tissue (disorder)" ("SNOMEDCT version 2017-09 Code (723071003)")</li>
+    <li style="width:80%">code "Pressure ulcer stage 2 (disorder)" ("SNOMEDCT version 2017-09 Code (420324007)")</li>
+    <li style="width:80%">code "Pressure ulcer stage 3 (disorder)" ("SNOMEDCT version 2017-09 Code (421927004)")</li>
+    <li style="width:80%">code "Pressure ulcer stage 4 (disorder)" ("SNOMEDCT version 2017-09 Code (420597008)")</li>
+    <li>valueset "Emergency Department Visit" (2.16.840.1.113883.3.117.1.7.1.292)</li>
+    <li>valueset "Encounter Inpatient" (2.16.840.1.113883.3.666.5.307)</li>
+    <li>valueset "Ethnicity" (2.16.840.1.114222.4.11.837)</li>
+    <li>valueset "Observation Services" (2.16.840.1.113762.1.4.1111.143)</li>
+    <li>valueset "ONC Administrative Sex" (2.16.840.1.113762.1.4.1)</li>
+    <li>valueset "Payer" (2.16.840.1.114222.4.11.3591)</li>
+    <li>valueset "Pressure Ulcer Stage" (2.16.840.1.113883.11.20.9.35)</li>
+    <li>valueset "Race" (2.16.840.1.114222.4.11.836)</li>
+   </ul>
+  </div>
+  <h3><a name="d1e647" href="#toc">Data Criteria (QDM Data Elements)</a></h3>
+  <ul style="padding-left: 50px;">
+   <li style="width:80%">"Diagnosis: Pressure Ulcer Stage" using "Pressure Ulcer Stage (2.16.840.1.113883.11.20.9.35)"</li>
+   <li style="width:80%">"Encounter, Performed: Emergency Department Visit" using "Emergency Department Visit (2.16.840.1.113883.3.117.1.7.1.292)"</li>
+   <li style="width:80%">"Encounter, Performed: Encounter Inpatient" using "Encounter Inpatient (2.16.840.1.113883.3.666.5.307)"</li>
+   <li style="width:80%">"Encounter, Performed: Observation Services" using "Observation Services (2.16.840.1.113762.1.4.1111.143)"</li>
+   <li style="width:80%">"Patient Characteristic Ethnicity: Ethnicity" using "Ethnicity (2.16.840.1.114222.4.11.837)"</li>
+   <li style="width:80%">"Patient Characteristic Payer: Payer" using "Payer (2.16.840.1.114222.4.11.3591)"</li>
+   <li style="width:80%">"Patient Characteristic Race: Race" using "Race (2.16.840.1.114222.4.11.836)"</li>
+   <li style="width:80%">"Patient Characteristic Sex: ONC Administrative Sex" using "ONC Administrative Sex (2.16.840.1.113762.1.4.1)"</li>
+  </ul>
+  <h3><a name="d1e767" href="#toc">Supplemental Data Elements</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Ethnicity_59">
+      <label for="test-SDE_Ethnicity_59" class="list-header"><strong> SDE Ethnicity</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">["Patient Characteristic Ethnicity": "Ethnicity"]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Payer_772">
+      <label for="test-SDE_Payer_772" class="list-header"><strong> SDE Payer</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">["Patient Characteristic Payer": "Payer"]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Race_370">
+      <label for="test-SDE_Race_370" class="list-header"><strong> SDE Race</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">["Patient Characteristic Race": "Race"]</pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+    <li class="list-unstyled">
+     <div class="treeview hover p-l-10">
+      <input type="checkbox" id="test-SDE_Sex_288">
+      <label for="test-SDE_Sex_288" class="list-header"><strong> SDE Sex</strong></label>
+      <ul class="code" style="margin-right: 20%; opacity: 1;">
+       <li class="list-unstyled">
+        <div>
+         <ul style="padding-left: 0px;">
+          <li style="padding-left: 0px;" class="list-unstyled">
+           <div>
+            <pre class="cql-definition-body">["Patient Characteristic Sex": "ONC Administrative Sex"] </pre>
+           </div></li>
+         </ul>&nbsp;
+        </div></li>
+      </ul>
+     </div></li>
+   </ul>
+  </div>
+  <h3><a name="d1e879" href="#toc">Risk Adjustment Variables</a></h3>
+  <div>
+   <ul style="list-style:none;padding-left: 25px;">
+    <li>None</li>
+   </ul>
+  </div>
+  <div style="float:left; background:teal; height:3px; width:80%"></div>
+  <pre><br></pre>
+  <table class="header_table">
+   <tbody>
+    <tr>
+     <td style="background-color:#656565; width:20%"><span class="td_label">Measure Set</span></td>
+     <td style="width:80%" colspan="3">
+      <div style="width:660px;overflow-x:hidden;overflow-y:auto">
+       <pre> </pre>
+      </div></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

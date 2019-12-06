@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+			**************************************************************
+			Measure Details Section
+			**************************************************************
+		-->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-610b-e7a4-0161-2895741e086d"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="Hospital Harm – Pressure Injury"/>
+   <text
+         value="This measure assesses the proportion of inpatient encounters of patients 18 years of age or older at admission, who suffer the harm of developing a new stage 2, stage 3, stage 4 pressure injury, deep tissue pressure injury, or unstageable pressure injury. The measure defines a new pressure injury as not present on arrival to the hospital or not documented within the first 24 hours after hospital arrival. Only one harm (new qualifying pressure injury) is counted per encounter."/>
+   <statusCode code="COMPLETED"/>
+   <setId root="ca46e41b-f560-417f-a5ba-0c89019ed711"/>
+   <versionNumber value="0.0.029"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.1240"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Mathematica Policy Research"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="88a7ab8e-b92d-11e4-a71e-12e3f512a338"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Yale New Haven Health Service Corporation/ Center for Outcomes Research and Evaluation"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="9048cd4c-b61b-11e4-a71e-12e3f512a338"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Centers for Medicare &amp; Medicaid Services (CMS)"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Pressure Ulcer Stage-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.11.20.9.35"/>
+         <title value="Pressure Ulcer Stage"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Observation Services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1111.143"/>
+         <title value="Observation Services"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.292"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Pressure ulcer stage 3 (disorder)-CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/421927004/Info-->
+      <definition>
+      <cql-ext:code code="421927004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Pressure ulcer stage 3 (disorder)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Pressure ulcer stage 2 (disorder)-CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/420324007/Info-->
+      <definition>
+      <cql-ext:code code="420324007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Pressure ulcer stage 2 (disorder)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Pressure ulcer stage 4 (disorder)-CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/420597008/Info-->
+      <definition>
+      <cql-ext:code code="420597008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Pressure ulcer stage 4 (disorder)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Pressure injury of deep tissue (disorder)-CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/723071003/Info-->
+      <definition>
+      <cql-ext:code code="723071003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Pressure injury of deep tissue (disorder)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Nonstageable pressure ulcer (disorder)-CODE:/CodeSystem/SNOMEDCT/Version/2017-09/Code/421594008/Info-->
+      <definition>
+      <cql-ext:code code="421594008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"
+                    codeSystemVersion="2017-09">
+         <displayName value="Nonstageable pressure ulcer (disorder)"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/ca46e41b-f560-417f-a5ba-0c89019ed711/HospitalHarmPressureInjury-0.0.029.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/ca46e41b-f560-417f-a5ba-0c89019ed711/HospitalHarmPressureInjury-0.0.029.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/ca46e41b-f560-417f-a5ba-0c89019ed711/HospitalHarmPressureInjury-0.0.029.json"/>
+            </translation>
+         </text>
+         <setId extension="ca46e41b-f560-417f-a5ba-0c89019ed711"
+                identifierName="HospitalHarmPressureInjury"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="0.0.029"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="c058adc4-0a9d-47cd-89e7-0ddb375d1512"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="826" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.&#xA;&#xA;CPT(R) contained in the Measure specifications is copyright 2004-2016 American Medical Association. LOINC(R) copyright 2004-2016 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2016 International Health Terminology Standards Development Organisation. ICD-10 copyright 2016 World Health Organization. All Rights Reserved."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="This measure and specifications are subject to further revisions. &#xA;&#xA;This performance measure is not a clinical guideline, does not establish a standard of medical care, and has not been tested for all potential applications.&#xA;&#xA;THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA;&#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="OUTCOME" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="OUTCOME"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Pressure injury is a serious event and one of the most common patient harms. Pressure injuries commonly lead to local infection, osteomyelitis, anemia, and sepsis (Brem, et al., 2010), in addition to causing significant depression, pain, and discomfort to patients (Gunningberg et al., 2011). The rate of pressure injuries varies across hospitals, suggesting opportunity for further improvement. &#xA;&#xA;A pressure injury (stage 3 or stage 4) is considered a serious reportable event by the National Quality Forum (NQF) (Centers for Medicare and Medicaid Services, 2015). CMS established non-payment for pressure injury (National Quality Forum, 2016), and the rate of pressure injuries is considered an indicator of the quality of nursing care a hospital provides (National Quality Forum, 2005). It is widely accepted that the risk of developing a pressure injury can be reduced through best practices such as frequent repositioning, proper skin care, and specialized cushions or beds (Berlowitz, et al., 2012). While several pressure injury measures are currently in use, there are no electronic health record (EHR)-based measures intended for use in acute care hospitals. This measure identifies pressure injuries using direct extraction of structured data from the EHR to provide hospitals with reliable and timely measurement of their pressure injury rates (Gunningberg, et al., 2011)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The National Pressure Ulcer Advisory Panel (National Perssure Ulcer Advisory Panel, et al., 2014) provides guidance for categorizing pressure injuries.&#xA;&#xA;The National Pressure Ulcer Advisory Panel (National Pressure Ulcer Advisory Panel, et al., 2014) also provides recommendations for structured skin and risk assessment:&#xA;&#xA;Conduct a structured risk assessment as soon as possible (but within a maximum of eight hours after admission) to identify individuals at risk of developing pressure ulcers. &#xA;&#xA;Repeat the risk assessment as often as required by the individual’s acuity.&#xA;&#xA;The Joint Commission (The Joint Commission, 2016) and NPUAP (National Pressure Ulcer Advisory Panel, 2016) also identify guidelines for pressure injury prevention: &#xA;&#xA;Protecting and monitoring the condition of the patient’s skin is important for preventing pressure injury and identifying Stage 1 injuries early so they can be treated before they worsen. &#xA;- &#x9;Inspect the skin upon admission and at least daily for signs of pressure injuries. &#xA;- &#x9;Assess pressure points, temperature and the skin beneath medical devices.&#xA;- &#x9;Clean the skin promptly after episodes of incontinence, use skin cleansers that are pH balanced for the skin, and use skin moisturizers. &#xA;- &#x9;Avoid positioning the patient on an area of pressure injury.&#xA;&#xA;Immobility can be a big factor in causing pressure injuries. Immobility can be due to several factors, such as age, general poor health condition, sedation, paralysis and coma. &#xA;- &#x9;Turn and reposition at-risk patients, if not contraindicated. &#xA;- &#x9;Plan a scheduled frequency of turning and repositioning the patient.&#xA;- &#x9;Consider using pressure-relieving devices when placing patients on any support surface. &#xA;&#xA;Consider the patient’s body size, level of immobility, exposure to shear, skin moisture, and perfusion when choosing a support surface."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="A lower proportion indicates better quality."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Berlowitz, D. VanDeusen Lukas, C.; Parker, V.; Niederhauser, A.;, &amp; Silver, J. L., C.; Ayello, E.; Zulkowski, K. (2012). Preventing Pressure Ulcers in Hospitals - A Toolkit for Improving Quality of Care."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Brem H, M. J., Nierman D, et al. (2010). High Cost of Stage IV Pressure Ulcers. doi:10.1016/j.amjsurg.2009.12.021. American Journal of Surgery, 200(4), 473-477."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Medicare &amp; Medicaid Services. (2015). Hospital-Acquired Conditions. Retrieved January 13, 2017, from https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Hospital-Acquired_Conditions.html"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Gunningberg, L., Donaldson, N., Aydin, C., Idvall, E. ( 2011). Exploring variation in pressure ulcer prevalence in Sweden and the USA: Benchmarking in action. 18. 10.1111/j.1365-2753.2011.01702.x. Journal of evaluation in clinical practice., 904-910."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The Joint Commission. (2016). Preventing Pressure Injuries Quick Safety."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Pressure Ulcer Advisory Panel, European Pressure Ulcer Advisory Panel, &amp; Pan Pacific Pressure Injury Alliance. (2009). Prevention and Treatment of Pressure Ulcers: Quick Reference Guide."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Pressure Ulcer Advisory Panel. (2016). Pressure Injury Prevention Points."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Quality Forum. (2005). National Voluntary Consensus Standards for Nursing-Sensitive Care: An Initial Performance Measure Set. Retrieved January 13, 2017, from http://www.qualityforum.org/Publications/2004/10/National_Voluntary_Consensus_Standards_for_Nursing-Sensitive_Care__An_Initial_Performance_Measure_Set.aspx."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Quality Forum. (2016). List of SREs. Retrieved January 13, 2017, from http://www.qualityforum.org/Topics/SREs/List_of_SREs.aspx#sre4"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain"
+                value="This measure defines a pressure injury (harm) as a stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury, which was not documented within the first 24 hours after hospital arrival.&#xA;&#xA;This measure does not count pre-existing pressure injuries documented within the first 24 hours after hospital arrival, even if they advance to a qualifying status after these first 24 hours. However, if a patient with a documented pre-existing pressure injury develops another pressure injury after 24 hours of their hospitalization, this new pressure injury is considered a harm. Patients with pre-existing pressure injuries are not excluded from the measure.&#xA;&#xA;Only one harm (new qualifying pressure injury) is counted per encounter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="To calculate the hospital-level measure result, divide the total numerator events by the total number of eligible encounters (denominator).&#xA;&#xA;For each encounter, qualifying encounters (denominator) include all patients 18 years of age or older at the start of the encounter. &#xA;&#xA;To create the numerator, include any qualifying encounters which include a new (not documented within first 24 hours after hospital arrival) stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury.&#xA;&#xA;Only one harm (new qualifying pressure injury) is counted per encounter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="All patient encounters where the patient is 18 years of age or older at the start of the encounter. &#xA;&#xA;Measure includes inpatient admissions who were initially seen in the emergency department or in observation status and then were admitted to the hospital."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="All encounters which include a new (not documented within first 24 hours after hospital arrival) stage 2, stage 3, stage 4, deep tissue pressure injury, or unstageable pressure injury.&#xA;&#xA;Only one harm (new qualifying pressure injury) is counted per encounter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure, also identify payer, race, ethnicity, and gender."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root=""/>
+         <title value=""/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_OtmVb"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="51e57152-d481-418a-9d6f-1370a51379f8"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_mEWNZ"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="65de0d96-22ce-4d91-bc81-3aa442f6f565"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_COv3Y"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="103697a4-d287-47de-b0a5-3907381434d3"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_XiiRo"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="65013432-2594-4d52-af7c-ef1217e04891"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PressureUlcerStage_Diagnosis_rDiP8"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="PressureUlcerStage_Diagnosis"
+                   root="f5ff7a57-6ba6-4928-b3df-ccaf7e46191e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.11.20.9.35" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_R2XP8"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="e94c2963-593c-47a9-97c8-43066b076061"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ObservationServices_EncounterPerformed_YHc45"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="ObservationServices_EncounterPerformed"
+                   root="6f4134b6-be76-4c18-be41-fbfb3f993b7d"/>
+               <code valueSet="2.16.840.1.113762.1.4.1111.143"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_owSjb"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="824f34e7-ea30-4fae-8a07-386b73c8a11b"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.292"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="E011A09F-BA1B-43F4-8C7C-9E6C593A1A33"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="597DCB29-A8C7-4A5F-939E-2C895C9E68D3"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;Initial Population&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="91E02B9B-9093-48A2-8C4A-0531DE2BAD47"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;Denominator&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="252D7A99-0148-40C9-8680-F8442C672B8B"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;Numerator&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="15E65F27-687B-4C5D-84E9-F85ED89AD798"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;SDE Ethnicity&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="287DF1F0-5C1D-4457-BB87-1E113BC4DCD0"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;SDE Payer&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="DCDF4C5C-CB12-48C6-9E96-1FC891D82352"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;SDE Race&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="9DEBB4CB-AB8B-4306-AAB1-2DC4BE23D3D8"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmPressureInjury.&quot;SDE Sex&quot;"
+                         root="16CECAB6-4189-4A95-A6DB-946562BA5FF6"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

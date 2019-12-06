@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+			**************************************************************
+			Measure Details Section
+			**************************************************************
+		-->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="402803826dbdbe7d016e41d3b4fc177e"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="AttributionPerformerTest"/>
+   <text value=""/>
+   <statusCode code="COMPLETED"/>
+   <setId root="1dd7520c-d3c5-4bba-9d0a-e96443ae546b"/>
+   <versionNumber value="0.0.003"/>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root=""/>
+            </id>
+            <name>
+               <item>
+                  <part value=""/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Behavioral/Neuropsych Assessment-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1023"/>
+         <title value="Behavioral/Neuropsych Assessment"/>
+      </valueSet>
+   </definition>
+   <!--Outpatient Consultation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1008"/>
+         <title value="Outpatient Consultation"/>
+      </valueSet>
+   </definition>
+   <!--Standardized Tools for Assessment of Cognition-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1006"/>
+         <title value="Standardized Tools for Assessment of Cognition"/>
+      </valueSet>
+   </definition>
+   <!--Dementia & Mental Degenerations-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1005"/>
+         <title value="Dementia &amp; Mental Degenerations"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Diagnostic Evaluation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1492"/>
+         <title value="Psych Visit - Diagnostic Evaluation"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Psychotherapy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1496"/>
+         <title value="Psych Visit - Psychotherapy"/>
+      </valueSet>
+   </definition>
+   <!--Care Services in Long-Term Residential Facility-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1014"/>
+         <title value="Care Services in Long-Term Residential Facility"/>
+      </valueSet>
+   </definition>
+   <!--Cognitive Assessment-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1332"/>
+         <title value="Cognitive Assessment"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Occupational Therapy Evaluation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1011"/>
+         <title value="Occupational Therapy Evaluation"/>
+      </valueSet>
+   </definition>
+   <!--Home Healthcare Services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+         <title value="Home Healthcare Services"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Nursing Facility Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1012"/>
+         <title value="Nursing Facility Visit"/>
+      </valueSet>
+   </definition>
+   <!--Office Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+         <title value="Office Visit"/>
+      </valueSet>
+   </definition>
+   <!--Patient Reason-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1008"/>
+         <title value="Patient Reason"/>
+      </valueSet>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/1dd7520c-d3c5-4bba-9d0a-e96443ae546b/AttributionPerformerTest-0.0.003.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/1dd7520c-d3c5-4bba-9d0a-e96443ae546b/AttributionPerformerTest-0.0.003.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/1dd7520c-d3c5-4bba-9d0a-e96443ae546b/AttributionPerformerTest-0.0.003.json"/>
+            </translation>
+         </text>
+         <setId extension="1dd7520c-d3c5-4bba-9d0a-e96443ae546b"
+                identifierName="AttributionPerformerTest"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="0.0.003"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="2c51423e-2578-4a32-b748-6367ec796bac"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20190101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="980" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root=""/>
+         <title value=""/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_waza7"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="31085a8a-08f5-46aa-9253-9eeb2dc41920"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_UMtr2"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="b9819f97-4907-4a2c-8800-b456ae456ac1"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Behavioral/NeuropsychAssessment_EncounterPerformed_yh0Ia"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="Behavioral/NeuropsychAssessment_EncounterPerformed"
+                   root="7feb13db-5b28-42f0-80aa-bc7e76e3c051"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1023"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OutpatientConsultation_EncounterPerformed_D729I"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OutpatientConsultation_EncounterPerformed"
+                   root="7c54e862-b2ad-461b-87cf-d60dd272469e"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1008"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="StandardizedToolsforAssessmentofCognition_AssessmentPerformed_SIyPf"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="StandardizedToolsforAssessmentofCognition_AssessmentPerformed"
+                   root="c7e23933-20c6-4055-8b15-799f72744b77"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1006"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="StandardizedToolsforAssessmentofCognition_AssessmentNotPerformed_wxnPJ"/>
+            <observationCriteria actionNegationInd="TRUE" classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="StandardizedToolsforAssessmentofCognition_AssessmentNotPerformed"
+                   root="c7e23933-20c6-4055-8b15-799f72744b77"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1006"/>
+               <title value="Assessment, Not Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Dementia&amp;MentalDegenerations_Diagnosis_qQFy2"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Dementia&amp;MentalDegenerations_Diagnosis"
+                   root="259b6704-dd85-4b3c-9ab4-270a8f7d8f1c"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.526.3.1005" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-DiagnosticEvaluation_EncounterPerformed_wwLr4"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PsychVisit-DiagnosticEvaluation_EncounterPerformed"
+                   root="9e9b2238-8ad0-4ab1-bffd-974c4e6595ea"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1492"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-Psychotherapy_EncounterPerformed_QJKaE"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="PsychVisit-Psychotherapy_EncounterPerformed"
+                   root="dcb40e8d-33b3-41ea-bc01-2dc3b2c415f0"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1496"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="CareServicesinLong-TermResidentialFacility_EncounterPerformed_WT8D7"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="CareServicesinLong-TermResidentialFacility_EncounterPerformed"
+                   root="e8795dae-dae6-41be-a6e8-ae3e65949b95"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1014"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="CognitiveAssessment_InterventionPerformed_edZYq"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="CognitiveAssessment_InterventionPerformed"
+                   root="82ede2ba-0807-4bf1-af65-012674ffc29c"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1332"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="CognitiveAssessment_InterventionNotPerformed_CN8wN"/>
+            <actCriteria actionNegationInd="TRUE" classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="CognitiveAssessment_InterventionNotPerformed"
+                   root="82ede2ba-0807-4bf1-af65-012674ffc29c"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1332"/>
+               <title value="Intervention, Not Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_GiyCN"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="23071e84-bd43-42c7-a0b3-f63526abb06e"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OccupationalTherapyEvaluation_EncounterPerformed_kUAvA"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OccupationalTherapyEvaluation_EncounterPerformed"
+                   root="b6e59cb7-3e13-45ea-90e2-af30b5420c1f"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1011"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HomeHealthcareServices_EncounterPerformed_A0dwC"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HomeHealthcareServices_EncounterPerformed"
+                   root="c52bda92-9e45-4c3d-95aa-c70723b91795"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1016"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_LiG90"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="0222e6af-2eeb-4d53-9538-ae2f0a4075d5"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="NursingFacilityVisit_EncounterPerformed_ZLbt2"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="NursingFacilityVisit_EncounterPerformed"
+                   root="4acb4e72-ff7a-4d24-9689-d13b2dc45cce"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1012"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="OfficeVisit_EncounterPerformed_6dBTH"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="OfficeVisit_EncounterPerformed"
+                   root="5dd7650f-4e73-4162-b783-bac430122bec"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1001"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="FF37D239-18FF-4A2A-94A9-EF9CA7483B2F"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="DFA135F9-C99B-41DE-9B6F-02681391C46A"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;Initial Population&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="116B9857-E8AD-471D-A7B3-D5FBDD63D572"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;Denominator&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExceptionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExceptions" root="2C6742E2-4D4C-42E2-BB36-26ACDF147DA0"/>
+               <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;Denominator Exceptions&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExceptionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="8F5C8D31-B6B6-417B-9A40-A913BF52A886"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;Numerator&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="D932FE56-DFF8-42CD-956E-9CBE14538A5E"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;SDE Ethnicity&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="995EB086-854F-4A40-BA20-DE036203C1E3"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;SDE Payer&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="C1CF2721-E7B5-48D3-A981-34D29E54101D"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;SDE Race&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="9D4D0A6F-5037-4519-9D4C-3DF7554BB81A"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AttributionPerformerTest.&quot;SDE Sex&quot;"
+                         root="F23A87E3-5B86-4F93-90DC-B316372C257D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

@@ -1,0 +1,2286 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "AttributionPerformerTest",
+         "version" : "0.0.003"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "5:1-5:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_5",
+            "version" : "5.5"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "21",
+            "locator" : "25:1-25:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "20",
+               "locator" : "25:32-25:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "19",
+                  "locator" : "25:41-25:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "7:1-7:85",
+            "name" : "Behavioral/Neuropsych Assessment",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1023",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "3",
+            "locator" : "8:1-8:110",
+            "name" : "Care Services in Long-Term Residential Facility",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1014",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "9:1-9:73",
+            "name" : "Cognitive Assessment",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1332",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "10:1-10:84",
+            "name" : "Dementia & Mental Degenerations",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1005",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "11:1-11:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "12:1-12:87",
+            "name" : "Home Healthcare Services",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1016",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "13:1-13:85",
+            "name" : "Nursing Facility Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1012",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "14:1-14:84",
+            "name" : "Occupational Therapy Evaluation",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1011",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "15:1-15:75",
+            "name" : "Office Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "16:1-16:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "17:1-17:86",
+            "name" : "Outpatient Consultation",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1008",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "13",
+            "locator" : "18:1-18:67",
+            "name" : "Patient Reason",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1008",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "14",
+            "locator" : "19:1-19:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "15",
+            "locator" : "20:1-20:88",
+            "name" : "Psych Visit - Diagnostic Evaluation",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1492",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "16",
+            "locator" : "21:1-21:80",
+            "name" : "Psych Visit - Psychotherapy",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1496",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "17",
+            "locator" : "22:1-22:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "18",
+            "locator" : "23:1-23:99",
+            "name" : "Standardized Tools for Assessment of Cognition",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1006",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "27:1-27:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "27:1-27:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_5}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "23",
+            "locator" : "29:1-30:51",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "23",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\n  " ]
+                  }, {
+                     "r" : "22",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "22",
+               "locator" : "30:3-30:51",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "30:40-30:50",
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "25",
+            "locator" : "32:1-33:43",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "25",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\n  " ]
+                  }, {
+                     "r" : "24",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "24",
+               "locator" : "33:3-33:43",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "33:36-33:42",
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "27",
+            "locator" : "35:1-36:41",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "27",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\n  " ]
+                  }, {
+                     "r" : "26",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "26",
+               "locator" : "36:3-36:41",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "36:35-36:40",
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "29",
+            "locator" : "38:1-39:58",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "29",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\n  " ]
+                  }, {
+                     "r" : "28",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "28",
+               "locator" : "39:3-39:58",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "39:34-39:57",
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "53",
+            "locator" : "76:1-86:72",
+            "name" : "Face to Face Encounter During Measurement Period",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "53",
+                  "s" : [ {
+                     "value" : [ "define ","\"Face to Face Encounter During Measurement Period\"",":\n  " ]
+                  }, {
+                     "r" : "52",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "47",
+                           "s" : [ {
+                              "r" : "46",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "46",
+                                 "s" : [ {
+                                    "r" : "44",
+                                    "s" : [ {
+                                       "r" : "42",
+                                       "s" : [ {
+                                          "r" : "40",
+                                          "s" : [ {
+                                             "r" : "38",
+                                             "s" : [ {
+                                                "r" : "36",
+                                                "s" : [ {
+                                                   "r" : "34",
+                                                   "s" : [ {
+                                                      "r" : "32",
+                                                      "s" : [ {
+                                                         "r" : "30",
+                                                         "s" : [ {
+                                                            "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                         }, {
+                                                            "s" : [ {
+                                                               "value" : [ "\"Psych Visit - Diagnostic Evaluation\"" ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ "]" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "\n    union " ]
+                                                      }, {
+                                                         "r" : "31",
+                                                         "s" : [ {
+                                                            "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                         }, {
+                                                            "s" : [ {
+                                                               "value" : [ "\"Nursing Facility Visit\"" ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ "]" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "\n    union " ]
+                                                   }, {
+                                                      "r" : "33",
+                                                      "s" : [ {
+                                                         "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                      }, {
+                                                         "s" : [ {
+                                                            "value" : [ "\"Care Services in Long-Term Residential Facility\"" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "]" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\n    union " ]
+                                                }, {
+                                                   "r" : "35",
+                                                   "s" : [ {
+                                                      "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                   }, {
+                                                      "s" : [ {
+                                                         "value" : [ "\"Home Healthcare Services\"" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "]" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\n    union " ]
+                                             }, {
+                                                "r" : "37",
+                                                "s" : [ {
+                                                   "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                }, {
+                                                   "s" : [ {
+                                                      "value" : [ "\"Psych Visit - Psychotherapy\"" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "]" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n    union " ]
+                                          }, {
+                                             "r" : "39",
+                                             "s" : [ {
+                                                "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                             }, {
+                                                "s" : [ {
+                                                   "value" : [ "\"Behavioral/Neuropsych Assessment\"" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "]" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n    union " ]
+                                       }, {
+                                          "r" : "41",
+                                          "s" : [ {
+                                             "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "\"Occupational Therapy Evaluation\"" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n    union " ]
+                                    }, {
+                                       "r" : "43",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Office Visit\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n    union " ]
+                                 }, {
+                                    "r" : "45",
+                                    "s" : [ {
+                                       "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "\"Outpatient Consultation\"" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "]" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " )" ]
+                              } ]
+                           }, {
+                              "value" : [ " ","FaceToFaceEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "51",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "51",
+                           "s" : [ {
+                              "r" : "49",
+                              "s" : [ {
+                                 "r" : "48",
+                                 "s" : [ {
+                                    "value" : [ "FaceToFaceEncounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "49",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "51",
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "50",
+                              "s" : [ {
+                                 "value" : [ "\"Measurement Period\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "52",
+               "locator" : "77:3-86:72",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "47",
+                  "locator" : "77:3-85:83",
+                  "alias" : "FaceToFaceEncounter",
+                  "expression" : {
+                     "localId" : "46",
+                     "locator" : "77:3-85:63",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "44",
+                        "locator" : "77:5-84:50",
+                        "type" : "Union",
+                        "operand" : [ {
+                           "localId" : "40",
+                           "locator" : "77:5-82:70",
+                           "type" : "Union",
+                           "operand" : [ {
+                              "localId" : "36",
+                              "locator" : "77:5-80:62",
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "localId" : "32",
+                                 "locator" : "77:5-78:60",
+                                 "type" : "Union",
+                                 "operand" : [ {
+                                    "localId" : "30",
+                                    "locator" : "77:5-77:67",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "locator" : "77:30-77:66",
+                                       "name" : "Psych Visit - Diagnostic Evaluation",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }, {
+                                    "localId" : "31",
+                                    "locator" : "78:11-78:60",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "locator" : "78:36-78:59",
+                                       "name" : "Nursing Facility Visit",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 } ]
+                              }, {
+                                 "type" : "Union",
+                                 "operand" : [ {
+                                    "localId" : "33",
+                                    "locator" : "79:11-79:85",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "locator" : "79:36-79:84",
+                                       "name" : "Care Services in Long-Term Residential Facility",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }, {
+                                    "localId" : "35",
+                                    "locator" : "80:11-80:62",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                    "templateId" : "PositiveEncounterPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "locator" : "80:36-80:61",
+                                       "name" : "Home Healthcare Services",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 } ]
+                              } ]
+                           }, {
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "localId" : "37",
+                                 "locator" : "81:11-81:65",
+                                 "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                 "templateId" : "PositiveEncounterPerformed",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "locator" : "81:36-81:64",
+                                    "name" : "Psych Visit - Psychotherapy",
+                                    "type" : "ValueSetRef"
+                                 }
+                              }, {
+                                 "localId" : "39",
+                                 "locator" : "82:11-82:70",
+                                 "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                                 "templateId" : "PositiveEncounterPerformed",
+                                 "codeProperty" : "code",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "locator" : "82:36-82:69",
+                                    "name" : "Behavioral/Neuropsych Assessment",
+                                    "type" : "ValueSetRef"
+                                 }
+                              } ]
+                           } ]
+                        }, {
+                           "type" : "Union",
+                           "operand" : [ {
+                              "localId" : "41",
+                              "locator" : "83:11-83:69",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "locator" : "83:36-83:68",
+                                 "name" : "Occupational Therapy Evaluation",
+                                 "type" : "ValueSetRef"
+                              }
+                           }, {
+                              "localId" : "43",
+                              "locator" : "84:11-84:50",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "locator" : "84:36-84:49",
+                                 "name" : "Office Visit",
+                                 "type" : "ValueSetRef"
+                              }
+                           } ]
+                        } ]
+                     }, {
+                        "localId" : "45",
+                        "locator" : "85:11-85:61",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveEncounterPerformed",
+                        "templateId" : "PositiveEncounterPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "locator" : "85:36-85:60",
+                           "name" : "Outpatient Consultation",
+                           "type" : "ValueSetRef"
+                        }
+                     } ]
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "51",
+                  "locator" : "86:5-86:72",
+                  "type" : "IncludedIn",
+                  "operand" : [ {
+                     "localId" : "49",
+                     "locator" : "86:11-86:44",
+                     "path" : "relevantPeriod",
+                     "scope" : "FaceToFaceEncounter",
+                     "type" : "Property"
+                  }, {
+                     "localId" : "50",
+                     "locator" : "86:53-86:72",
+                     "name" : "Measurement Period",
+                     "type" : "ParameterRef"
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "65",
+            "locator" : "41:1-44:90",
+            "name" : "Dementia Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "65",
+                  "s" : [ {
+                     "value" : [ "define ","\"Dementia Encounter\"",":\n  " ]
+                  }, {
+                     "r" : "64",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "55",
+                           "s" : [ {
+                              "r" : "54",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Face to Face Encounter During Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","ValidFaceToFaceEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "63",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "57",
+                           "s" : [ {
+                              "r" : "56",
+                              "s" : [ {
+                                 "r" : "56",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Diagnosis\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Dementia & Mental Degenerations\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Dementia" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "62",
+                           "s" : [ {
+                              "r" : "59",
+                              "s" : [ {
+                                 "r" : "58",
+                                 "s" : [ {
+                                    "value" : [ "Dementia" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "59",
+                                 "s" : [ {
+                                    "value" : [ "prevalencePeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "62",
+                              "value" : [ " ","overlaps"," " ]
+                           }, {
+                              "r" : "61",
+                              "s" : [ {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "value" : [ "ValidFaceToFaceEncounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "61",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "64",
+               "locator" : "42:3-44:90",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "55",
+                  "locator" : "42:3-42:77",
+                  "alias" : "ValidFaceToFaceEncounter",
+                  "expression" : {
+                     "localId" : "54",
+                     "locator" : "42:3-42:52",
+                     "name" : "Face to Face Encounter During Measurement Period",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "63",
+                  "locator" : "43:5-44:90",
+                  "alias" : "Dementia",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "56",
+                     "locator" : "43:10-43:57",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "43:24-43:56",
+                        "name" : "Dementia & Mental Degenerations",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "62",
+                     "locator" : "44:17-44:90",
+                     "type" : "Overlaps",
+                     "operand" : [ {
+                        "localId" : "59",
+                        "locator" : "44:17-44:41",
+                        "path" : "prevalencePeriod",
+                        "scope" : "Dementia",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "61",
+                        "locator" : "44:52-44:90",
+                        "path" : "relevantPeriod",
+                        "scope" : "ValidFaceToFaceEncounter",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "107",
+            "locator" : "88:1-101:3",
+            "name" : "My Qualifying Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "107",
+                  "s" : [ {
+                     "value" : [ "define ","\"My Qualifying Encounters\"",":\n  " ]
+                  }, {
+                     "r" : "106",
+                     "s" : [ {
+                        "value" : [ "( " ]
+                     }, {
+                        "r" : "106",
+                        "s" : [ {
+                           "value" : [ "distinct " ]
+                        }, {
+                           "r" : "105",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "105",
+                              "s" : [ {
+                                 "value" : [ "flatten " ]
+                              }, {
+                                 "r" : "104",
+                                 "s" : [ {
+                                    "value" : [ "( " ]
+                                 }, {
+                                    "r" : "104",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "from\n          " ]
+                                       }, {
+                                          "r" : "67",
+                                          "s" : [ {
+                                             "r" : "66",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Dementia Encounter\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","Enc1" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ ",\n          " ]
+                                       }, {
+                                          "r" : "69",
+                                          "s" : [ {
+                                             "r" : "68",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Dementia Encounter\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","Enc2" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n          " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "let " ]
+                                       }, {
+                                          "r" : "74",
+                                          "s" : [ {
+                                             "value" : [ "Org1",": " ]
+                                          }, {
+                                             "r" : "73",
+                                             "s" : [ {
+                                                "value" : [ "( " ]
+                                             }, {
+                                                "r" : "73",
+                                                "s" : [ {
+                                                   "r" : "71",
+                                                   "s" : [ {
+                                                      "r" : "70",
+                                                      "s" : [ {
+                                                         "value" : [ "Enc1" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "." ]
+                                                   }, {
+                                                      "r" : "71",
+                                                      "s" : [ {
+                                                         "value" : [ "participant" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " as " ]
+                                                }, {
+                                                   "r" : "72",
+                                                   "s" : [ {
+                                                      "value" : [ "\"Organization\"" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " )" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ ",\n          " ]
+                                       }, {
+                                          "r" : "79",
+                                          "s" : [ {
+                                             "value" : [ "Org2",": " ]
+                                          }, {
+                                             "r" : "78",
+                                             "s" : [ {
+                                                "value" : [ "( " ]
+                                             }, {
+                                                "r" : "78",
+                                                "s" : [ {
+                                                   "r" : "76",
+                                                   "s" : [ {
+                                                      "r" : "75",
+                                                      "s" : [ {
+                                                         "value" : [ "Enc2" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "." ]
+                                                   }, {
+                                                      "r" : "76",
+                                                      "s" : [ {
+                                                         "value" : [ "participant" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " as " ]
+                                                }, {
+                                                   "r" : "77",
+                                                   "s" : [ {
+                                                      "value" : [ "\"Organization\"" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " )" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n          " ]
+                                    }, {
+                                       "r" : "99",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "99",
+                                          "s" : [ {
+                                             "r" : "93",
+                                             "s" : [ {
+                                                "r" : "84",
+                                                "s" : [ {
+                                                   "r" : "81",
+                                                   "s" : [ {
+                                                      "r" : "80",
+                                                      "s" : [ {
+                                                         "value" : [ "Org1" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " is not null" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\n            and " ]
+                                                }, {
+                                                   "r" : "83",
+                                                   "s" : [ {
+                                                      "r" : "82",
+                                                      "s" : [ {
+                                                         "value" : [ "Org2" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " is not null" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\n            and " ]
+                                             }, {
+                                                "r" : "92",
+                                                "s" : [ {
+                                                   "r" : "87",
+                                                   "s" : [ {
+                                                      "value" : [ "start of " ]
+                                                   }, {
+                                                      "r" : "86",
+                                                      "s" : [ {
+                                                         "r" : "85",
+                                                         "s" : [ {
+                                                            "value" : [ "Enc2" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "86",
+                                                         "s" : [ {
+                                                            "value" : [ "relevantPeriod" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "92",
+                                                   "s" : [ {
+                                                      "r" : "91",
+                                                      "s" : [ {
+                                                         "value" : [ "1 ","day" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " or more after" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "90",
+                                                   "s" : [ {
+                                                      "value" : [ "start of " ]
+                                                   }, {
+                                                      "r" : "89",
+                                                      "s" : [ {
+                                                         "r" : "88",
+                                                         "s" : [ {
+                                                            "value" : [ "Enc1" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "89",
+                                                         "s" : [ {
+                                                            "value" : [ "relevantPeriod" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n            and " ]
+                                          }, {
+                                             "r" : "98",
+                                             "s" : [ {
+                                                "r" : "95",
+                                                "s" : [ {
+                                                   "r" : "94",
+                                                   "s" : [ {
+                                                      "value" : [ "Org1" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "95",
+                                                   "s" : [ {
+                                                      "value" : [ "identifier" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " ","~"," " ]
+                                             }, {
+                                                "r" : "97",
+                                                "s" : [ {
+                                                   "r" : "96",
+                                                   "s" : [ {
+                                                      "value" : [ "Org2" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "97",
+                                                   "s" : [ {
+                                                      "value" : [ "identifier" ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n          " ]
+                                    }, {
+                                       "r" : "103",
+                                       "s" : [ {
+                                          "value" : [ "return all " ]
+                                       }, {
+                                          "r" : "102",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "r" : "100",
+                                             "s" : [ {
+                                                "value" : [ "Enc1" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ", " ]
+                                          }, {
+                                             "r" : "101",
+                                             "s" : [ {
+                                                "value" : [ "Enc2" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      )" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n    )" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  )" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "106",
+               "locator" : "89:3-101:3",
+               "type" : "Distinct",
+               "operand" : {
+                  "localId" : "105",
+                  "locator" : "89:14-100:5",
+                  "type" : "Flatten",
+                  "operand" : {
+                     "localId" : "104",
+                     "locator" : "89:24-99:7",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "67",
+                        "locator" : "90:11-90:35",
+                        "alias" : "Enc1",
+                        "expression" : {
+                           "localId" : "66",
+                           "locator" : "90:11-90:30",
+                           "name" : "Dementia Encounter",
+                           "type" : "ExpressionRef"
+                        }
+                     }, {
+                        "localId" : "69",
+                        "locator" : "91:11-91:35",
+                        "alias" : "Enc2",
+                        "expression" : {
+                           "localId" : "68",
+                           "locator" : "91:11-91:30",
+                           "name" : "Dementia Encounter",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "let" : [ {
+                        "localId" : "74",
+                        "locator" : "92:15-92:58",
+                        "identifier" : "Org1",
+                        "expression" : {
+                           "localId" : "73",
+                           "locator" : "92:21-92:58",
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "localId" : "71",
+                              "locator" : "92:23-92:38",
+                              "path" : "participant",
+                              "scope" : "Enc1",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "localId" : "72",
+                              "locator" : "92:43-92:56",
+                              "name" : "{urn:healthit-gov:qdm:v5_5}Organization",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     }, {
+                        "localId" : "79",
+                        "locator" : "93:11-93:54",
+                        "identifier" : "Org2",
+                        "expression" : {
+                           "localId" : "78",
+                           "locator" : "93:17-93:54",
+                           "strict" : false,
+                           "type" : "As",
+                           "operand" : {
+                              "localId" : "76",
+                              "locator" : "93:19-93:34",
+                              "path" : "participant",
+                              "scope" : "Enc2",
+                              "type" : "Property"
+                           },
+                           "asTypeSpecifier" : {
+                              "localId" : "77",
+                              "locator" : "93:39-93:52",
+                              "name" : "{urn:healthit-gov:qdm:v5_5}Organization",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "99",
+                        "locator" : "94:11-97:49",
+                        "type" : "And",
+                        "operand" : [ {
+                           "localId" : "93",
+                           "locator" : "94:17-96:93",
+                           "type" : "And",
+                           "operand" : [ {
+                              "localId" : "84",
+                              "locator" : "94:17-95:32",
+                              "type" : "And",
+                              "operand" : [ {
+                                 "localId" : "81",
+                                 "locator" : "94:17-94:32",
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "locator" : "94:17-94:32",
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "localId" : "80",
+                                       "locator" : "94:17-94:20",
+                                       "name" : "Org1",
+                                       "type" : "QueryLetRef"
+                                    }
+                                 }
+                              }, {
+                                 "localId" : "83",
+                                 "locator" : "95:17-95:32",
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "locator" : "95:17-95:32",
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "localId" : "82",
+                                       "locator" : "95:17-95:20",
+                                       "name" : "Org2",
+                                       "type" : "QueryLetRef"
+                                    }
+                                 }
+                              } ]
+                           }, {
+                              "localId" : "92",
+                              "locator" : "96:17-96:93",
+                              "type" : "SameOrAfter",
+                              "operand" : [ {
+                                 "localId" : "87",
+                                 "locator" : "96:17-96:44",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "86",
+                                    "locator" : "96:26-96:44",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "Enc2",
+                                    "type" : "Property"
+                                 }
+                              }, {
+                                 "locator" : "96:66-96:93",
+                                 "type" : "Add",
+                                 "operand" : [ {
+                                    "localId" : "90",
+                                    "locator" : "96:66-96:93",
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "localId" : "89",
+                                       "locator" : "96:75-96:93",
+                                       "path" : "relevantPeriod",
+                                       "scope" : "Enc1",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "localId" : "91",
+                                    "locator" : "96:46-96:50",
+                                    "value" : 1,
+                                    "unit" : "day",
+                                    "type" : "Quantity"
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "localId" : "98",
+                           "locator" : "97:17-97:49",
+                           "type" : "Equivalent",
+                           "operand" : [ {
+                              "localId" : "95",
+                              "locator" : "97:17-97:31",
+                              "path" : "identifier",
+                              "type" : "Property",
+                              "source" : {
+                                 "localId" : "94",
+                                 "locator" : "97:17-97:20",
+                                 "name" : "Org1",
+                                 "type" : "QueryLetRef"
+                              }
+                           }, {
+                              "localId" : "97",
+                              "locator" : "97:35-97:49",
+                              "path" : "identifier",
+                              "type" : "Property",
+                              "source" : {
+                                 "localId" : "96",
+                                 "locator" : "97:35-97:38",
+                                 "name" : "Org2",
+                                 "type" : "QueryLetRef"
+                              }
+                           } ]
+                        } ]
+                     },
+                     "return" : {
+                        "localId" : "103",
+                        "locator" : "98:11-98:35",
+                        "distinct" : false,
+                        "expression" : {
+                           "localId" : "102",
+                           "locator" : "98:22-98:35",
+                           "type" : "List",
+                           "element" : [ {
+                              "localId" : "100",
+                              "locator" : "98:24-98:27",
+                              "name" : "Enc1",
+                              "type" : "AliasRef"
+                           }, {
+                              "localId" : "101",
+                              "locator" : "98:30-98:33",
+                              "name" : "Enc2",
+                              "type" : "AliasRef"
+                           } ]
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "112",
+            "locator" : "106:1-107:39",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "112",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n  " ]
+                  }, {
+                     "r" : "111",
+                     "s" : [ {
+                        "r" : "109",
+                        "s" : [ {
+                           "value" : [ "Count","(" ]
+                        }, {
+                           "r" : "108",
+                           "s" : [ {
+                              "value" : [ "\"My Qualifying Encounters\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     }, {
+                        "r" : "110",
+                        "value" : [ ">="," ","2" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "111",
+               "locator" : "107:3-107:39",
+               "type" : "GreaterOrEqual",
+               "operand" : [ {
+                  "localId" : "109",
+                  "locator" : "107:3-107:35",
+                  "type" : "Count",
+                  "source" : {
+                     "localId" : "108",
+                     "locator" : "107:9-107:34",
+                     "name" : "My Qualifying Encounters",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "110",
+                  "locator" : "107:39",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "2",
+                  "type" : "Literal"
+               } ]
+            }
+         }, {
+            "localId" : "114",
+            "locator" : "46:1-47:22",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "114",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n  " ]
+                  }, {
+                     "r" : "113",
+                     "s" : [ {
+                        "value" : [ "\"Initial Population\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "113",
+               "locator" : "47:3-47:22",
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "130",
+            "locator" : "53:1-57:79",
+            "name" : "Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "130",
+                  "s" : [ {
+                     "value" : [ "define ","\"Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools\"",":\n  " ]
+                  }, {
+                     "r" : "129",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "116",
+                           "s" : [ {
+                              "r" : "115",
+                              "s" : [ {
+                                 "r" : "115",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Assessment, Not Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Standardized Tools for Assessment of Cognition\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NoCognitiveAssessmentUsingTools" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "124",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "118",
+                           "s" : [ {
+                              "r" : "117",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Dementia Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","EncounterDementia" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "123",
+                           "s" : [ {
+                              "r" : "120",
+                              "s" : [ {
+                                 "r" : "119",
+                                 "s" : [ {
+                                    "value" : [ "NoCognitiveAssessmentUsingTools" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "120",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "123",
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "122",
+                              "s" : [ {
+                                 "r" : "121",
+                                 "s" : [ {
+                                    "value" : [ "EncounterDementia" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "122",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "128",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "128",
+                           "s" : [ {
+                              "r" : "126",
+                              "s" : [ {
+                                 "r" : "125",
+                                 "s" : [ {
+                                    "value" : [ "NoCognitiveAssessmentUsingTools" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "126",
+                                 "s" : [ {
+                                    "value" : [ "negationRationale" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " in " ]
+                           }, {
+                              "r" : "127",
+                              "s" : [ {
+                                 "value" : [ "\"Patient Reason\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "129",
+               "locator" : "54:3-57:79",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "116",
+                  "locator" : "54:3-54:113",
+                  "alias" : "NoCognitiveAssessmentUsingTools",
+                  "expression" : {
+                     "localId" : "115",
+                     "locator" : "54:3-54:81",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}NegativeAssessmentPerformed",
+                     "templateId" : "NegativeAssessmentPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "54:33-54:80",
+                        "name" : "Standardized Tools for Assessment of Cognition",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "124",
+                  "locator" : "55:5-56:102",
+                  "alias" : "EncounterDementia",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "117",
+                     "locator" : "55:10-55:29",
+                     "name" : "Dementia Encounter",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "123",
+                     "locator" : "56:17-56:102",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "120",
+                        "locator" : "56:17-56:62",
+                        "path" : "authorDatetime",
+                        "scope" : "NoCognitiveAssessmentUsingTools",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "122",
+                        "locator" : "56:71-56:102",
+                        "path" : "relevantPeriod",
+                        "scope" : "EncounterDementia",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ],
+               "where" : {
+                  "localId" : "128",
+                  "locator" : "57:5-57:79",
+                  "type" : "InValueSet",
+                  "code" : {
+                     "localId" : "126",
+                     "locator" : "57:11-57:59",
+                     "path" : "negationRationale",
+                     "scope" : "NoCognitiveAssessmentUsingTools",
+                     "type" : "Property"
+                  },
+                  "valueset" : {
+                     "localId" : "127",
+                     "locator" : "57:64-57:79",
+                     "name" : "Patient Reason"
+                  }
+               }
+            }
+         }, {
+            "localId" : "148",
+            "locator" : "59:1-63:90",
+            "name" : "Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "148",
+                  "s" : [ {
+                     "value" : [ "define ","\"Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods\"",":\n  " ]
+                  }, {
+                     "r" : "147",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "134",
+                           "s" : [ {
+                              "r" : "133",
+                              "s" : [ {
+                                 "r" : "133",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Intervention, Not Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Cognitive Assessment\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NoCognitiveAssessmentUsingAlternateMethods" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "142",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "136",
+                           "s" : [ {
+                              "r" : "135",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Dementia Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","EncounterDementia" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "141",
+                           "s" : [ {
+                              "r" : "138",
+                              "s" : [ {
+                                 "r" : "137",
+                                 "s" : [ {
+                                    "value" : [ "NoCognitiveAssessmentUsingAlternateMethods" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "138",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "141",
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "140",
+                              "s" : [ {
+                                 "r" : "139",
+                                 "s" : [ {
+                                    "value" : [ "EncounterDementia" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "140",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "146",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "146",
+                           "s" : [ {
+                              "r" : "144",
+                              "s" : [ {
+                                 "r" : "143",
+                                 "s" : [ {
+                                    "value" : [ "NoCognitiveAssessmentUsingAlternateMethods" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "144",
+                                 "s" : [ {
+                                    "value" : [ "negationRationale" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " in " ]
+                           }, {
+                              "r" : "145",
+                              "s" : [ {
+                                 "value" : [ "\"Patient Reason\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "147",
+               "locator" : "60:3-63:90",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "134",
+                  "locator" : "60:3-60:100",
+                  "alias" : "NoCognitiveAssessmentUsingAlternateMethods",
+                  "expression" : {
+                     "localId" : "133",
+                     "locator" : "60:3-60:57",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}NegativeInterventionPerformed",
+                     "templateId" : "NegativeInterventionPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "60:35-60:56",
+                        "name" : "Cognitive Assessment",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "142",
+                  "locator" : "61:5-62:113",
+                  "alias" : "EncounterDementia",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "135",
+                     "locator" : "61:10-61:29",
+                     "name" : "Dementia Encounter",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "141",
+                     "locator" : "62:17-62:113",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "138",
+                        "locator" : "62:17-62:73",
+                        "path" : "authorDatetime",
+                        "scope" : "NoCognitiveAssessmentUsingAlternateMethods",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "140",
+                        "locator" : "62:82-62:113",
+                        "path" : "relevantPeriod",
+                        "scope" : "EncounterDementia",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ],
+               "where" : {
+                  "localId" : "146",
+                  "locator" : "63:5-63:90",
+                  "type" : "InValueSet",
+                  "code" : {
+                     "localId" : "144",
+                     "locator" : "63:11-63:70",
+                     "path" : "negationRationale",
+                     "scope" : "NoCognitiveAssessmentUsingAlternateMethods",
+                     "type" : "Property"
+                  },
+                  "valueset" : {
+                     "localId" : "145",
+                     "locator" : "63:75-63:90",
+                     "name" : "Patient Reason"
+                  }
+               }
+            }
+         }, {
+            "localId" : "152",
+            "locator" : "49:1-51:94",
+            "name" : "Denominator Exceptions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "152",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exceptions\"",":\n  " ]
+                  }, {
+                     "r" : "151",
+                     "s" : [ {
+                        "r" : "132",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "131",
+                           "s" : [ {
+                              "value" : [ "\"Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    or " ]
+                     }, {
+                        "r" : "150",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "149",
+                           "s" : [ {
+                              "value" : [ "\"Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "151",
+               "locator" : "50:3-51:94",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "132",
+                  "locator" : "50:3-50:93",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "131",
+                     "locator" : "50:10-50:93",
+                     "name" : "Patient Reason for Not Performing Assessment of Cognition Using Standardized Tools",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "150",
+                  "locator" : "51:8-51:94",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "149",
+                     "locator" : "51:15-51:94",
+                     "name" : "Patient Reason for Not Performing Cognitive Assessment Using Alternate Methods",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "171",
+            "locator" : "65:1-71:58",
+            "name" : "Assessment of Cognition Using Standardized Tools or Alternate Methods",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "171",
+                  "s" : [ {
+                     "value" : [ "define ","\"Assessment of Cognition Using Standardized Tools or Alternate Methods\"",":\n  " ]
+                  }, {
+                     "r" : "170",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "156",
+                           "s" : [ {
+                              "r" : "155",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "155",
+                                 "s" : [ {
+                                    "r" : "153",
+                                    "s" : [ {
+                                       "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "\"Standardized Tools for Assessment of Cognition\"" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "]" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n    union " ]
+                                 }, {
+                                    "r" : "154",
+                                    "s" : [ {
+                                       "value" : [ "[","\"Intervention, Performed\"",": " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "\"Cognitive Assessment\"" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "]" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " )" ]
+                              } ]
+                           }, {
+                              "value" : [ " ","CognitiveAssessmentUsingTools" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "166",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "158",
+                           "s" : [ {
+                              "r" : "157",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Dementia Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","EncounterDementia" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "165",
+                           "s" : [ {
+                              "r" : "160",
+                              "s" : [ {
+                                 "r" : "159",
+                                 "s" : [ {
+                                    "value" : [ "CognitiveAssessmentUsingTools" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "160",
+                                 "s" : [ {
+                                    "value" : [ "relevantDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "165",
+                              "s" : [ {
+                                 "r" : "164",
+                                 "s" : [ {
+                                    "value" : [ "12 ","months" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " or less on or before day of" ]
+                              } ]
+                           }, {
+                              "value" : [ " \n      " ]
+                           }, {
+                              "r" : "163",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "162",
+                                 "s" : [ {
+                                    "r" : "161",
+                                    "s" : [ {
+                                       "value" : [ "EncounterDementia" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "162",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "169",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "169",
+                           "s" : [ {
+                              "r" : "168",
+                              "s" : [ {
+                                 "r" : "167",
+                                 "s" : [ {
+                                    "value" : [ "CognitiveAssessmentUsingTools" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "168",
+                                 "s" : [ {
+                                    "value" : [ "result" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " is not null" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "170",
+               "locator" : "66:3-71:58",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "156",
+                  "locator" : "66:3-67:93",
+                  "alias" : "CognitiveAssessmentUsingTools",
+                  "expression" : {
+                     "localId" : "155",
+                     "locator" : "66:3-67:63",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "153",
+                           "locator" : "66:5-66:79",
+                           "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveAssessmentPerformed",
+                           "templateId" : "PositiveAssessmentPerformed",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "locator" : "66:31-66:78",
+                              "name" : "Standardized Tools for Assessment of Cognition",
+                              "type" : "ValueSetRef"
+                           }
+                        },
+                        "asTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "type" : "ChoiceTypeSpecifier",
+                              "choice" : [ {
+                                 "name" : "{urn:healthit-gov:qdm:v5_5}PositiveInterventionPerformed",
+                                 "type" : "NamedTypeSpecifier"
+                              }, {
+                                 "name" : "{urn:healthit-gov:qdm:v5_5}PositiveAssessmentPerformed",
+                                 "type" : "NamedTypeSpecifier"
+                              } ]
+                           }
+                        }
+                     }, {
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "154",
+                           "locator" : "67:11-67:61",
+                           "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveInterventionPerformed",
+                           "templateId" : "PositiveInterventionPerformed",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "locator" : "67:39-67:60",
+                              "name" : "Cognitive Assessment",
+                              "type" : "ValueSetRef"
+                           }
+                        },
+                        "asTypeSpecifier" : {
+                           "type" : "ListTypeSpecifier",
+                           "elementType" : {
+                              "type" : "ChoiceTypeSpecifier",
+                              "choice" : [ {
+                                 "name" : "{urn:healthit-gov:qdm:v5_5}PositiveInterventionPerformed",
+                                 "type" : "NamedTypeSpecifier"
+                              }, {
+                                 "name" : "{urn:healthit-gov:qdm:v5_5}PositiveAssessmentPerformed",
+                                 "type" : "NamedTypeSpecifier"
+                              } ]
+                           }
+                        }
+                     } ]
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "166",
+                  "locator" : "68:5-70:45",
+                  "alias" : "EncounterDementia",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "157",
+                     "locator" : "68:10-68:29",
+                     "name" : "Dementia Encounter",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "165",
+                     "locator" : "69:17-70:45",
+                     "type" : "And",
+                     "operand" : [ {
+                        "locator" : "69:64-69:80",
+                        "precision" : "Day",
+                        "type" : "In",
+                        "operand" : [ {
+                           "localId" : "160",
+                           "locator" : "69:17-69:62",
+                           "path" : "relevantDatetime",
+                           "scope" : "CognitiveAssessmentUsingTools",
+                           "type" : "Property"
+                        }, {
+                           "locator" : "69:64-69:80",
+                           "lowClosed" : true,
+                           "highClosed" : true,
+                           "type" : "Interval",
+                           "low" : {
+                              "locator" : "70:7-70:45",
+                              "type" : "Subtract",
+                              "operand" : [ {
+                                 "localId" : "163",
+                                 "locator" : "70:7-70:45",
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "162",
+                                    "locator" : "70:14-70:45",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "EncounterDementia",
+                                    "type" : "Property"
+                                 }
+                              }, {
+                                 "localId" : "164",
+                                 "locator" : "69:64-69:72",
+                                 "value" : 12,
+                                 "unit" : "months",
+                                 "type" : "Quantity"
+                              } ]
+                           },
+                           "high" : {
+                              "localId" : "163",
+                              "locator" : "70:7-70:45",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "162",
+                                 "locator" : "70:14-70:45",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "EncounterDementia",
+                                 "type" : "Property"
+                              }
+                           }
+                        } ]
+                     }, {
+                        "locator" : "69:64-69:80",
+                        "type" : "Not",
+                        "operand" : {
+                           "locator" : "69:64-69:80",
+                           "type" : "IsNull",
+                           "operand" : {
+                              "localId" : "163",
+                              "locator" : "70:7-70:45",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "162",
+                                 "locator" : "70:14-70:45",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "EncounterDementia",
+                                 "type" : "Property"
+                              }
+                           }
+                        }
+                     } ]
+                  }
+               } ],
+               "where" : {
+                  "localId" : "169",
+                  "locator" : "71:5-71:58",
+                  "type" : "Not",
+                  "operand" : {
+                     "locator" : "71:11-71:58",
+                     "type" : "IsNull",
+                     "operand" : {
+                        "localId" : "168",
+                        "locator" : "71:11-71:46",
+                        "path" : "result",
+                        "scope" : "CognitiveAssessmentUsingTools",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "174",
+            "locator" : "73:1-74:80",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "174",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n  " ]
+                  }, {
+                     "r" : "173",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "172",
+                        "s" : [ {
+                           "value" : [ "\"Assessment of Cognition Using Standardized Tools or Alternate Methods\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "173",
+               "locator" : "74:3-74:80",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "172",
+                  "locator" : "74:10-74:80",
+                  "name" : "Assessment of Cognition Using Standardized Tools or Alternate Methods",
+                  "type" : "ExpressionRef"
+               }
+            }
+         } ]
+      }
+   }
+}
