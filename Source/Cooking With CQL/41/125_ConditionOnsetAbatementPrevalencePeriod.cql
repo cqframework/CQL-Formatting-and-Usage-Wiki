@@ -64,6 +64,9 @@ define function "Normalize Abatement"(condition Condition):
 		Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age),
 			FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age) + 1 year)
 	else if condition.abatement is FHIR.boolean then
+    // TODO: handle true vs false
+    // DISCUSSION: Note that this assumes that the condition abated some time before the recorded date,
+    // which may not be clinically appropriate, depending on the use case
 	  Interval[end of "Normalize Onset"(condition.onset), condition.recordedDate)
 	else null
 
