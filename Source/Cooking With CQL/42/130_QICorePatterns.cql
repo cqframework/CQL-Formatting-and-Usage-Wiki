@@ -131,7 +131,7 @@ Use of DeviceRequest
 define "Device Indicating Frailty":
   [DeviceRequest: "Frailty Device"] FrailtyDeviceOrder
     where FrailtyDeviceOrder.status in { 'active', 'on-hold', 'completed' }
-      and FrailtyDeviceOrder.status in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+      and FrailtyDeviceOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
 
 /*
 Use of Encounter
