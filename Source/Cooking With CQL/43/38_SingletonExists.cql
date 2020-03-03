@@ -15,7 +15,8 @@ and exists "EncounterTreatment"
 
 // Naming this something that indicates it returns a yes/no would potentially help:
 // Something like "Has Encounter Treatments"
-define "EncounterTreatment": Count((["Encounter, Performed": "Alcohol and Drug Dependence Treatment"]
+define "Has Encounter Treatments": 
+  Count((["Encounter, Performed": "Alcohol and Drug Dependence Treatment"]
     union ["Encounter, Performed": "Psych Visit - Psychotherapy"]) ENT
     with ("DrugDependenceTreatment") DDT
     such that ENT.relevantPeriod starts 30 days or less after start of DDT.relevantPeriod) >=2
@@ -28,7 +29,7 @@ define "Numerator 2":
 // So the correct expression is:
 define "Numerator 2":
   "Numerator 1"
-    and exists "Has Encounter Treatments"
+    and "Has Encounter Treatments"
     
 /*
 ================================================================================
