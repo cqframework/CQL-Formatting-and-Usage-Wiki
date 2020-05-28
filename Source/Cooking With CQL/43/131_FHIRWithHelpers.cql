@@ -53,5 +53,5 @@ define TestComplexExtensions:
         where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'),
       ombCategory: race.extension E where E.url = 'ombCategory',
       detailed: race.extension E where E.url = 'detailed'
-    where (ombCategory O return O.value) contains "American Indian or Alaska Native"
-      and (detailed O return O.value) contains "Alaska Native"
+    where exists (ombCategory O where O.value ~ "American Indian or Alaska Native")
+      and exists (detailed D where D.value ~ "Alaska Native")
