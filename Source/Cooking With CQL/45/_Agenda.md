@@ -5,7 +5,7 @@
 * Coalesce Review
 * High Risk Medications
 * Advanced Illness
-* Troponin Followup
+* Troponin Measure Followup
 
 # Feedback Request on CDS Connect Authoring Tool
 For any attendees that may have used the CDS Connect Authoring Tool, we'd like
@@ -17,3 +17,4 @@ https://chat.fhir.org/#narrow/stream/179220-cql/topic/CDS.20Authoring.20Tool.20L
 # [High Risk Medications](139_HighRiskMedsNumerator.md)
 # [Advanced Illness](140_AdvancedIllness.md)
 # [Long Term Care Encounters](141_LongTermCare.md)
+# [Troponin Measure Followup](136_TroponinMeasureFollowup.cql)
