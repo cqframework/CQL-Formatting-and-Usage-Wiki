@@ -1,4 +1,4 @@
-# Session 45 Topics (Tentative)
+# Session 45 Topics
 
 * Connectathon Announcement
 * Feedback Request on CDS Connect Authoring Tool
