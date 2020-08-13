@@ -68,7 +68,10 @@ define "Qualifying Blood Pressures":
       such that BP.relevantPeriod during Encounter.relevantPeriod
         and Encounter.participant is Organization
         and Encounter.performer is Organization
-        and CCNOf(Encounter.participant.identifier) = CCNOf(BP.performer.identifier)
-```
+        and EINOf(Encounter.participant.identifier) = EINOf(BP.performer.identifier)
 
-Note that this example is making use of the same CCNOf function defined above.
+define "EIN Identifier System": 'urn:oid:2.16.840.1.113883.4.4'
+
+define function EINOf(identifier Identifier):
+  identifier I where I.namingSystem = "EIN Identifier System" return I
+```
