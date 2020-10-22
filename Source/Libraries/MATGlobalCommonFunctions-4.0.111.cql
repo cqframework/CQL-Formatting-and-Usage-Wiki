@@ -252,3 +252,16 @@ define function "Normalize Interval"(DataElement "Substance, Administered"):
 	  Interval[DataElement.relevantDatetime, DataElement.relevantDatetime]
 	else
 	  null as Interval<DateTime>
+
+define TestAssessmentsWithoutNormalize:
+  ["Assessment, Performed"] AssessmentPerformed
+	  where AssessmentPerformed.relevantPeriod starts during "Measurement Period"
+		  or AssessmentPerformed.relevantDatetime in "Measurement Period"
+
+define TestAssessmentsWithNormalize:
+  ["Assessment, Performed"] AssessmentPerformed
+	  where "Normalize Interval"(AssessmentPerformed) starts during "Measurement Period"
+
+define TestAssessmentsWithNormalizeNoOverload:
+	["Assessment, Performed"] AssessmentPerformed
+		where "Normalize Interval"(AssessmentPerformed.relevantPeriod, AssessmentPerformed.relevantDatetime) starts during "Measurement Period"
