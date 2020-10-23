@@ -39,11 +39,10 @@ relevantPeriod, the recommended approach is to use a "normalizing" function to
 access the timing elements:
 */
 
-define function "NormalizeInterval"(relevantDatetime DateTime, relevantPeriod Interval<DateTime>):
-  if relevantDatetime is null and relevantPeriod is null then
-    null
-  else
-    Coalesce(relevantPeriod, Interval[relevantDatetime, relevantDatetime])
+define function "NormalizeInterval"(pointInTime DateTime, period Interval<DateTime>):
+  if pointInTime is not null then Interval[pointInTime, pointInTime]
+    else if period is not null then period
+    else null as Interval<DateTime>
 
 /*
 This function can then be used for any of the types defining both "relevant" representations, as
