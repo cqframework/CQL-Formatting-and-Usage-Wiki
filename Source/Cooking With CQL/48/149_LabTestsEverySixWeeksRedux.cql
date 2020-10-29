@@ -27,9 +27,18 @@ Starting with the measure as stated from last example:
 
 define "Chemotherapy During Measurement Period":
   ["Medication, Active": "Chemotherapy for Advanced Cancer"] Chemotherapy
-    where ( Chemotherapy.relevantPeriod starts during "Measurement Period"
-        and Chemotherapy.relevantPeriod overlaps "Measurement Period"
+    where ( Chemotherapy.relevantPeriod starts 1 year or less before start "Measurement Period"
+        //and Chemotherapy.relevantPeriod overlaps "Measurement Period"
     )
+
+/*
+   2019/11/01
+      |--------------|----------------|----------------|--------------|
+                |----------------------------------|
+              2020/01/01                        2020/12/31
+                                            |--------------|----------|
+                                        2020/11/01
+*/
 
 define "Start of Chemotherapy During Measurement Period":
   Min("Chemotherapy During Measurement Period" Chemotherapy
@@ -39,6 +48,7 @@ define "Start of Chemotherapy During Measurement Period":
 define "End of Chemotherapy During Measurement Period":
   Min({
     end of "Measurement Period",
+    "Start of Chemotherapy During Measurement Period" + 1 year,
     Max("Chemotherapy During Measurement Period" Chemotherapy
       return end of Chemotherapy.relevantPeriod )
   })
@@ -112,7 +122,7 @@ define "Valid Lab Test Intervals": 
 
 /*
 Now, we can look for any "gap between tests" that is bigger than six weeks (using 42 days so that we don't
-get tests in the sixth week):
+get tests in the seventh week):
 */
 
 define "Has Lab Test Intervals More Than Six Weeks":
@@ -121,4 +131,4 @@ define "Has Lab Test Intervals More Than Six Weeks":
 
 define "Numerator":
   Count("Valid Lab Test Intervals") >= 2
-    and not "Has Lab Test Intervals More Than Six Weeks"
+    and not exists "Has Lab Test Intervals More Than Six Weeks"
