@@ -231,3 +231,66 @@ define function CumulativeMedicationDuration(Medications List<"Medication, Order
     Medications M
       return MedicationPeriod(M)
   )
+
+// TODO:
+// General function for calculating from a choice of medication types
+
+// TODO: Consideration for additional use cases:
+// CQLIT-235/QDM-259
+// CQLIT-259
+// CQLIT-236
+// Routine orders (not PRN)
+// PRN (as needed)
+// Tapering
+
+// TODO: Examples
+/*
+4.	Cumulative Medication Duration Examples
+•	“Medication, Order”  2 tabs 3x/day   #180/2
+dosage = 2
+frequency = 3x /day (i.e., repeats / period = day)
+supply = 180
+daysSupplied = 30 days
+refills = 2
+derived daysSupplied = [supply (180) / ((dosage (2) x frequency (3))] = 30
+daysSuppliedWithRefills = [supply (180) x (1 + refills (2)) / ((dosage (2) x frequency (3))] = 30 x 3 = 90 days
+•	“Medication, Dispensed”  2 tabs 3x/day #180/2*
+dosage = 2
+frequency = 3x /day (i.e., repeats / period = day)
+supply = 180
+daysSupplied = 30 days
+refills = n/a
+derived daysSupplied = [supply (180) / ((dosage (2) x frequency (3))] = 30
+•	“Medication, Order” ½ tab 2x/day #30/2
+dosage = 1/2
+frequency = 2x /day (i.e., repeats / period = day)
+supply = 30
+daysSupplied = 30
+refills = 2
+derived daysSupplied = [supply (30) / ((dosage (1/2) x frequency (2))] = 30
+daysSuppliedWithRefills = [supply (30) x (1 + refills (2)) / ((dosage (1/2) x frequency (2) = 30 x 3 = 90 days
+•	“Medication, Dispensed” ½ tab 2x/day #30/2*
+dosage = 1/2
+frequency = 2x /day (i.e., repeats / period = day)
+supply = 30
+daysSupplied = 30
+refills = n/a
+derived daysSupplied = [supply (30) / ((dosage (1/2) x frequency (2))] = 30
+•	“Medication, Order” 5 ml 3x/day  #150 ml/0
+dosage = 5 ml
+frequency = 3x /day (i.e., repeats / period = day)
+supply = 150 ml
+daysSupplied = 10
+refills = 0
+derived daysSupplied = [supply (150 ml) / ((dosage (5 ml) x frequency (3)) = 10 days
+daysSuppliedWithRefills = [supply (150 ml) x (1 + refills (0)) / ((dosage (5 ml) x frequency (3)) = 10 days
+•	“Medication, Dispensed” 5 ml 3x/day  #150 ml/0*
+dosage = 5 ml
+frequency = 3x /day (i.e., repeats / period = day)
+supply = 150 ml
+daysSupplied = 10
+refills = n/a
+
+
+* CMD calculated for “Medication, Dispensed” does not use the number of refills; rather, the days covered by each dispensing event must be retrieved and added.
+*/
