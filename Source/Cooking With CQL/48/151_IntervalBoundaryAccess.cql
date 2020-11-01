@@ -127,8 +127,10 @@ define function Earliest(period Interval<DateTime>):
   else
     end of period
 
-Latest(NormalizeInterval(Procedure.relevantDateTime, Procedure.relevantPeriod))
+//Latest(NormalizeInterval(Procedure.relevantDateTime, Procedure.relevantPeriod))
 
 define function LatestOf(pointInTime dateTime, period Interval<DateTime>):
+  Latest(NormalizeInterval(pointInTime, period))
 
 define function EarliestOf(pointInTime dateTime, period Interval<DateTime>):
+  Earliest(NormalizeInterval(pointInTime, period))
