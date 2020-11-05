@@ -28,6 +28,7 @@ Device, Applied
 Diagnostic Study, Performed
 Intervention, Performed
 Laboratory Test, Performed
+Medication, Active
 Medication, Administered
 Medication, Dispensed
 Physical Exam, Performed
@@ -270,17 +271,31 @@ Normalized Interval should be considered:
 2.	CMS645 “Has Baseline DEXA Scan Two Years Prior to the Start of or Less than Three Months After the Start of ADT”
 */
 
-exists ( ( ["Diagnostic Study, Order": "DEXA Dual Energy Xray Absorptiometry, Bone Density for Urology Care"] DEXAOrdered
-      with "First Androgen Deprivation Therapy" FirstADT
-        such that DEXAOrdered.authorDatetime 3 months or less after start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
-          or DEXAOrdered.authorDatetime 2 years or less before start of Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
+define "First Androgen Deprivation Therapy":
+  First(["Medication, Active": "Androgen deprivation therapy for Urology Care"] InitialADTTherapy
+     with "Prostate Cancer Diagnosis" ProstateCancer
+       such that Global."NormalizeInterval"(InitialADTTherapy.relevantDatetime, InitialADTTherapy.relevantPeriod) starts on or before
+       end ProstateCancer.prevalencePeriod
+     with ["Procedure, Order": "Injection of leuprolide acetate for twelve month period (regime/therapy)"] TwelveMonthADTTherapy
+       such that TwelveMonthADTTherapy.authorDatetime during Global."NormalizeInterval"(InitialADTTherapy.relevantDatetime, InitialADTTherapy.relevantPeriod)
+     where Global."NormalizeInterval"(InitialADTTherapy.relevantDatetime, InitialADTTherapy.relevantPeriod) overlaps "Measurement Period"
+     sort by start of Global."NormalizeInterval"(relevantDatetime, relevantPeriod)
   )
-    union ( ["Diagnostic Study, Performed": "DEXA Dual Energy Xray Absorptiometry, Bone Density for Urology Care"] DEXAPerformed
+
+define "Has Baseline DEXA Scan Two Years Prior to the Start of or Less than Three Months After the Start of ADT":
+  exists ( ( ["Diagnostic Study, Order": "DEXA Dual Energy Xray Absorptiometry, Bone Density for Urology Care"] DEXAOrdered
         with "First Androgen Deprivation Therapy" FirstADT
-          such that DEXAPerformed.relevantDatetime 3 months or less after start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
-            or DEXAPerformed.relevantDatetime 2 years or less before start of Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
+          such that DEXAOrdered.authorDatetime 3 months or less after start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
+            or DEXAOrdered.authorDatetime 2 years or less before start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
     )
-)
+      union ( ["Diagnostic Study, Performed": "DEXA Dual Energy Xray Absorptiometry, Bone Density for Urology Care"] DEXAPerformed
+          with "First Androgen Deprivation Therapy" FirstADT
+            such that Global."NormalizeInterval"(DEXAPerformed.relevantDatetime, DEXAPerformed.relevantPeriod)
+              3 months or less after start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
+              or Global."NormalizeInterval"(DEXAPerformed.relevantDatetime, DEXAPerformed.relevantPeriod)
+                2 years or less before start Global."NormalizeInterval"(FirstADT.relevantDatetime, FirstADT.relevantPeriod)
+      )
+  )
 
 /*
 Comment:
