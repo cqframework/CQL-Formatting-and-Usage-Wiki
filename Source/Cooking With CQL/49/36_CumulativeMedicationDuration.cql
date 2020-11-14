@@ -86,6 +86,10 @@ for each element:
 * frequency: How frequently the medication should be taken
 * refills: The number of refills allowed by the prescription
 
+If the relevantPeriod element is present (and completely specified), then we can use that directly
+
+    relevantPeriod
+
 If the daysSupplied element is present, then the duration in days is simply
 
     daysSupplied * (1 + refills)
@@ -107,14 +111,17 @@ The following function illustrates this completely:
 Calculates the Medication Period for a single Medication, Order
 */
 define function MedicationPeriod(Order "Medication, Order"):
-  (
-    Coalesce(
-      Order.daysSupplied,
-      Order.supply / Order.dosage * ToDaily(Order.frequency)
-    ) * (1 + Coalesce(Order.refills, 0))
-  ) durationInDays
-    let startDatetime: Coalesce(start of Order.relevantPeriod, Order.authorDatetime)
-    return Interval[startDatetime, startDatetime + durationInDays]
+  if HasEnd(Order.relevantPeriod) then
+    Interval[Coalesce(start of Order.relevantPeriod, Order.authorDatetime), end of Order.relevantPeriod]
+  else
+    (
+      Coalesce(
+        Order.daysSupplied,
+        Order.supply / Order.dosage * ToDaily(Order.frequency)
+      ) * (1 + Coalesce(Order.refills, 0))
+    ) durationInDays
+      let startDatetime: Coalesce(start of Order.relevantPeriod, Order.authorDatetime)
+      return Interval[startDatetime, startDatetime + durationInDays]
 
 /*
 Next, consider the Medication, Dispensed case:
@@ -125,7 +132,7 @@ Next, consider the Medication, Dispensed case:
 * supply: The quantity that was provided to a patient
 * daysSupplied: The number of days over which the medication is expected to last, per dispense
 * frequency: How frequently the medication should be taken
-* refills: The number of refills allowed by the prescription
+* refills: The number of refills remaining on the prescription
 
 We have effectively the same elements, with the same meanings, with the exception that
 if refills are specified on a dispense, it may indicate refills _remaining_ rather than
@@ -134,14 +141,22 @@ be present, and those would all have to be considered as part of an overall calc
 That will be considered when we combine results, but for this function, we'll focus on
 calculating the duration of a single dispense.
 
+NOTE: It is not clear whether relevantPeriod on a dispense would be for the time period
+covered by that dispense only, or if it would include the time period covered by the
+prescription being dispensed. For this reason, we do not use relevantPeriod at all
+in the dispensing duration calculation.
+
 If the daysSupplied element is present, then the duration in days is simply
 
-    daysSupplied * (1 + refills)
+    daysSupplied
+
+Note specifically that we are not considering refills, as those would be covered
+by subsequent dispense records.
 
 If daysSupplied is not present, then daysSupplied must be calculated based on
 the supply, dosage, and frequency:
 
-    (supply / (dosage * frequency)) * (1 + refills)
+    (supply / (dosage * frequency))
 
 This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the authorDatetime
@@ -158,7 +173,7 @@ define function MedicationPeriod(Dispense "Medication, Dispensed"):
     Coalesce(
       Dispense.daysSupplied,
       Dispense.supply / Dispense.dosage * ToDaily(Dispense.frequency)
-    ) * (1 + Coalesce(Dispense.refills, 0))
+    )
   ) durationInDays
     let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
     return Interval[startDatetime, startDatetime + durationInDays]
@@ -185,7 +200,6 @@ define function MedicationPeriod(Medication "Medication, Administered"):
 For Medication, Discharge, we have the same elements, except no relevantPeriod:
 
 * authorDatetime: The date the dispense was authored
-* relevantPeriod: The time period for which the ordered supply is authorized to be dispensed (including refills)
 * dosage: The quantity to be taken at a single administration
 * supply: The quantity that was provided to a patient
 * daysSupplied: The number of days over which the medication is expected to last, per dispense
