@@ -110,7 +110,7 @@ The following function illustrates this completely:
 /*
 Calculates the Medication Period for a single Medication, Order
 */
-define function MedicationPeriod(Order "Medication, Order"):
+define function MedicationOrderPeriod(Order "Medication, Order"):
   if HasEnd(Order.relevantPeriod) then
     Interval[Coalesce(start of Order.relevantPeriod, Order.authorDatetime), end of Order.relevantPeriod]
   else
@@ -127,7 +127,7 @@ define function MedicationPeriod(Order "Medication, Order"):
 Next, consider the Medication, Dispensed case:
 
 * authorDatetime: The date the dispense was authored
-* relevantPeriod: The time period for which the ordered supply is authorized to be dispensed (including refills)
+* relevantPeriod: The time period the dispense is expected to cover (not including refills)
 * dosage: The quantity to be taken at a single administration
 * supply: The quantity that was provided to a patient
 * daysSupplied: The number of days over which the medication is expected to last, per dispense
@@ -135,16 +135,18 @@ Next, consider the Medication, Dispensed case:
 * refills: The number of refills remaining on the prescription
 
 We have effectively the same elements, with the same meanings, with the exception that
-if refills are specified on a dispense, it may indicate refills _remaining_ rather than
+if refills are specified on a dispense, it will indicate refills _remaining_ rather than
 refills on the original prescription. In addition, multiple dispense events would typically
 be present, and those would all have to be considered as part of an overall calculation.
 That will be considered when we combine results, but for this function, we'll focus on
 calculating the duration of a single dispense.
 
-NOTE: It is not clear whether relevantPeriod on a dispense would be for the time period
-covered by that dispense only, or if it would include the time period covered by the
-prescription being dispensed. For this reason, we do not use relevantPeriod at all
-in the dispensing duration calculation.
+With a Medication, Dispense, relevantPeriod covers only the time period for the specific
+dispensing event (i.e. not considering refills).
+
+If the relevantPeriod element is present (and completely specified), then we can use that directly
+
+    relevantPeriod
 
 If the daysSupplied element is present, then the duration in days is simply
 
@@ -168,15 +170,18 @@ period by anchoring that to the authorDatetime
 Calculates Medication Period for a given Medication, Dispensed
 */
 
-define function MedicationPeriod(Dispense "Medication, Dispensed"):
-  (
-    Coalesce(
-      Dispense.daysSupplied,
-      Dispense.supply / Dispense.dosage * ToDaily(Dispense.frequency)
-    )
-  ) durationInDays
-    let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
-    return Interval[startDatetime, startDatetime + durationInDays]
+define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
+  if HasEnd(Dispense.relevantPeriod) then
+    Interval[Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime), end of Dispense.relevantPeriod]
+  else
+    (
+      Coalesce(
+        Dispense.daysSupplied,
+        Dispense.supply / Dispense.dosage * ToDaily(Dispense.frequency)
+      )
+    ) durationInDays
+      let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
+      return Interval[startDatetime, startDatetime + durationInDays]
 
 /*
 Next we consider Medication, Administered. This data type is typically used to
@@ -193,7 +198,7 @@ In this case, we can consider the durationInDays, or we can consider the relevan
 as the duration of the Medication:
 */
 
-define function MedicationPeriod(Medication "Medication, Administered"):
+define function MedicationAdministeredPeriod(Medication "Medication, Administered"):
   Medication.relevantPeriod
 
 /*
@@ -213,7 +218,7 @@ So the calculation is slightly different:
 /*
 Calculates the Medication Period for a Medication, Discharge
 */
-define function MedicationPeriod(Medication "Medication, Discharge"):
+define function MedicationDischargePeriod(Medication "Medication, Discharge"):
   (
     Coalesce(
       Medication.daysSupplied,
@@ -236,18 +241,38 @@ define function CumulativeDuration(Intervals List<Interval<DateTime>>):
   Sum((collapse Intervals) X return all difference in days between start of X and end of X)
 
 /*
+Then, we define a function that allows us to calculate based on the various medication
+types:
+*/
+
+define function MedicationPeriod(
+  Medication Choice<"Medication, Order",
+    "Medication, Dispensed",
+    "Medication, Administered",
+    "Medication, Discharge"
+  >):
+  Coalesce(
+    MedicationOrderPeriod(Medication),
+    MedicationDispensedPeriod(Medication),
+    MedicationAdministeredPeriod(Medication),
+    MedicationDischargePeriod(Medication)
+  )
+
+/*
 We can then use this function, combined with the MedicationDuration functions above
 to calculate Cumulative Medication Duration:
 */
 
-define function CumulativeMedicationDuration(Medications List<"Medication, Order">):
+define function CumulativeMedicationDuration(
+  Medications List<Choice<"Medication, Order",
+    "Medication, Dispensed",
+    "Medication, Administered",
+    "Medication, Discharge"
+  >>):
   CumulativeDuration(
     Medications M
       return MedicationPeriod(M)
   )
-
-// TODO:
-// General function for calculating from a choice of medication types
 
 // TODO: Consideration for additional use cases:
 // CQLIT-235/QDM-259
@@ -308,3 +333,12 @@ refills = n/a
 
 * CMD calculated for “Medication, Dispensed” does not use the number of refills; rather, the days covered by each dispensing event must be retrieved and added.
 */
+
+
+/*Given an interval, return true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value)*/
+define function HasEnd(period Interval<DateTime>):
+  not (end of period is null or end of period = maximum DateTime)
+
+/* Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimumDateTime value)*/
+define function HasStart(period Interval<DateTime>):
+  not (start of period is null or start of period = minimum DateTime)
