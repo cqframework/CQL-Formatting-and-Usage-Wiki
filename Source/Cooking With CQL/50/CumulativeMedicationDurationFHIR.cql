@@ -1,13 +1,15 @@
-library CumulativeMedicationDuration
+library CumulativeMedicationDurationFHIR
 
 /*
 This library provides guidance for calculating Cumulative Medication Duration
-using QDM 5.5 and above.
+using FHIR R4.
 */
 
-using QDM version '5.5'
+using FHIR version '4.0.1'
 
-codesystem "EventTiming": 'urn:oid:2.16.840.1.113883.4.642.1.69' // http://hl7.org/fhir/event-timing
+include FHIRHelpers version '4.0.1'
+
+codesystem "EventTiming": 'http://hl7.org/fhir/event-timing'
 
 code "HS": 'HS' from "EventTiming" // event occurs [offset] before the hour of sleep (or trying to)
 code "WAKE": 'WAKE' from "EventTiming" // event occurs [offset] after waking
@@ -24,6 +26,8 @@ code "PCM": 'PCM' from "EventTiming" //	event occurs [offset] after breakfast (f
 code "PCD": 'PCD' from "EventTiming" //	event occurs [offset] after lunch (from the Latin post cibus diurnus)
 code "PCV": 'PCV' from "EventTiming" //	event occurs [offset] after dinner (from the Latin post cibus vespertinus)
 
+parameter ErrorLevel String default 'Warning'
+
 context Patient
 
 /*
@@ -32,15 +36,9 @@ context Patient
   1) Based on supply and frequency, calculate the number of expected days the medication will cover/has covered
   2) Based on relevant period, determine a covered interval and calculate the length of that interval in days
 
-In previous versions of QDM, general guidance on Cumulative Medication Duration used the
-relevant period approach. However, feedback from measure authors and implementers has
-led to the suggestion that since that data is not readily available for most use cases,
-the first approach is preferred. This topic will cover several use cases and illustrate
-how to calculate Cumulative Medication Duration for each using the supply and frequency
-approach.
-
-// NOTE: This guidance explicitly excludes the Medication, Active QDM data type
-
+This topic covers several use cases and illustrates how to calculate Cumulative
+Medication Duration for each type of medication resource using the supply and
+frequency approach.
 */
 
 /*
@@ -48,16 +46,33 @@ approach.
   So we define ToDaily
 */
 
-define function ToDaily(Frequency Quantity):
-  case Frequency.unit
-    when 'h' then (24.0 / Frequency.value)
-    when 'min' then (24.0 / Frequency.value) * 60
-    when 's' then (24.0 / Frequency.value) * 60 * 60
-    when 'd' then (24.0 / Frequency.value) / 24
-    when 'wk' then (24.0 / Frequency.value) / (24 * 7)
-    when 'mo' then (24.0 / Frequency.value) / (24 * 30) // assuming 30 days in month
-    when 'a' then (24.0 / Frequency.value) / (24 * 365) // assuming 365 days in year
-    else null
+/*
+  Calculates daily frequency given frequency within a period
+*/
+define function ToDaily(frequency System.Integer, period System.Quantity):
+  case period.unit
+    when 'h' then frequency * (24.0 / period.value)
+    when 'min' then frequency * (24.0 / period.value) * 60
+    when 's' then frequency * (24.0 / period.value) * 60 * 60
+    when 'd' then frequency * (24.0 / period.value) / 24
+    when 'wk' then frequency * (24.0 / period.value) / (24 * 7)
+    when 'mo' then frequency * (24.0 / period.value) / (24 * 30) /* assuming 30 days in month */
+    when 'a' then frequency * (24.0 / period.value) / (24 * 365) /* assuming 365 days in year */
+    when 'hour' then frequency * (24.0 / period.value)
+    when 'minute' then frequency * (24.0 / period.value) * 60
+    when 'second' then frequency * (24.0 / period.value) * 60 * 60
+    when 'day' then frequency * (24.0 / period.value) / 24
+    when 'week' then frequency * (24.0 / period.value) / (24 * 7)
+    when 'month' then frequency * (24.0 / period.value) / (24 * 30) /* assuming 30 days in month */
+    when 'year' then frequency * (24.0 / period.value) / (24 * 365) /* assuming 365 days in year */
+    when 'hours' then frequency * (24.0 / period.value)
+    when 'minutes' then frequency * (24.0 / period.value) * 60
+    when 'seconds' then frequency * (24.0 / period.value) * 60 * 60
+    when 'days' then frequency * (24.0 / period.value) / 24
+    when 'weeks' then frequency * (24.0 / period.value) / (24 * 7)
+    when 'months' then frequency * (24.0 / period.value) / (24 * 30) /* assuming 30 days in month */
+    when 'years' then frequency * (24.0 / period.value) / (24 * 365) /* assuming 365 days in year */
+    else Message(null, true, 'OMTKLogic.ToDaily.UnknownUnit', ErrorLevel, 'Unknown unit ' & period.unit)
   end
 
 define function ToDaily(Frequency Code):
@@ -65,12 +80,6 @@ define function ToDaily(Frequency Code):
     when "C" then 3
     // etc.
     else null
-  end
-
-define function ToDaily(Frequency Choice<Quantity, Code>):
-  case
-    when Frequency is Quantity then ToDaily(Frequency as Quantity)
-    else ToDaily(Frequency as Code)
   end
 
 /*
