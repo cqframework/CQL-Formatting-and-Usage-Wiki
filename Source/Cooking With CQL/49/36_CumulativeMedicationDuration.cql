@@ -34,7 +34,7 @@ context Patient
 
 In previous versions of QDM, general guidance on Cumulative Medication Duration used the
 relevant period approach. However, feedback from measure authors and implementers has
-led to the suggestion that since that data is not readily available for most use cases,
+led to the suggestion that since that data is not readily available for many use cases,
 the first approach is preferred. This topic will cover several use cases and illustrate
 how to calculate Cumulative Medication Duration for each using the supply and frequency
 approach.
@@ -194,12 +194,16 @@ time of the administration event:
   the intravenous infusion, or the administration of a pill or IM injection is completed.
   For pills and IM injections, the start and stop times are the same)
 
-In this case, we can consider the durationInDays, or we can consider the relevantPeriod
-as the duration of the Medication:
-*/
+NOTE: Given the relevantPeriod is focused on just the single administration being documented, the
+actual duration of the medication would need to be determined with the corresponding order/dispense
+information. That means relevantPeriod on this type isn't the "duration" of the medication in the
+same sense as the other types.
 
-define function MedicationAdministeredPeriod(Medication "Medication, Administered"):
-  Medication.relevantPeriod
+One potential solution to that is to define the "effectiveDuration" for a given medication
+based on value set, and then define a function that lets you determine the relevant period
+based on the given effective duration. Should consider potential for proportion of covered days
+as well, rather than an effective duration.
+*/
 
 /*
 For Medication, Discharge, we have the same elements, except no relevantPeriod:
@@ -230,7 +234,7 @@ define function MedicationDischargePeriod(Medication "Medication, Discharge"):
 
 /*
 Now that we have functions for determining the medication period for individual
-orders, administrations, discharges, and dispenses, we can combine those using
+orders, discharges, and dispenses, we can combine those using
 an overall cumulative medication duration calculation.
 
 First, we define a function that simply calculates CumulativeDuration of a set of
@@ -248,13 +252,11 @@ types:
 define function MedicationPeriod(
   Medication Choice<"Medication, Order",
     "Medication, Dispensed",
-    "Medication, Administered",
     "Medication, Discharge"
   >):
   Coalesce(
     MedicationOrderPeriod(Medication),
     MedicationDispensedPeriod(Medication),
-    MedicationAdministeredPeriod(Medication),
     MedicationDischargePeriod(Medication)
   )
 
@@ -266,7 +268,6 @@ to calculate Cumulative Medication Duration:
 define function CumulativeMedicationDuration(
   Medications List<Choice<"Medication, Order",
     "Medication, Dispensed",
-    "Medication, Administered",
     "Medication, Discharge"
   >>):
   CumulativeDuration(
