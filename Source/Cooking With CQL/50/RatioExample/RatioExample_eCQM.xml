@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../HQMF_N1_XSD_EXT/schemas/EMeasure_N1.xsd urn:hhs-cql:hqmf-n1-extensions:v1 ../../HQMF_N1_XSD_EXT/schemas/hhs-cql-hqmfn1-ext-v1.xsd">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item root="2.16.840.1.113883.10.20.28.1.2" extension="2018-05-01"/>
+   </templateId>
+   <id root="40280582-5b4d-ee92-015b-8d05cb5601a3"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="RatioExample"/>
+   <text value=""/>
+   <statusCode code="COMPLETED"/>
+   <setId root="2999e82b-abe7-41e6-adee-42bb67f1c88b"/>
+   <versionNumber value="0.0.001"/>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root=""/>
+            </id>
+            <name>
+               <item>
+                  <part value=""/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+         <text mediaType="application/cql">
+            <reference value="RatioExample_CQL.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="RatioExample_ELM.xml"/>
+            </translation>
+         </text>
+         <setId root="http://example.org/ecqms/libraries/" extension="RatioExample"/>
+         <versionNumber value="0.0.001"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="f347406c-56a0-4515-aba1-c85ca1f384e0"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20170101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eMeasure Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="RATIO" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Continuous Variable"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code codeSystem="2.16.840.1.113883.5.1063" code="IPP">
+        <originalText value="Initial Patient Population"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code codeSystem="2.16.840.1.113883.5.1063" code="DENOM">
+        <originalText value="Denominator"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code nullFlavor="OTH">
+        <originalText value="Denominator Exclusions"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code codeSystem="2.16.840.1.113883.5.1063" code="NUMER">
+        <originalText value="Numerator"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code nullFlavor="OTH">
+        <originalText value="Numerator Exclusions"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value="Not Applicable"/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code codeSystem="2.16.840.1.113883.5.1063" code="DENEXCEP">
+        <originalText value="Denominator Exceptions"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value="None"/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code codeSystem="2.16.840.1.113883.5.1063" code="MSRPOPL">
+        <originalText value="Measure Population"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+  <subjectOf>
+    <measureAttribute classCode="OBS" moodCode="EVN">
+      <code nullFlavor="OTH">
+        <originalText value="Measure Observations"/>
+      </code>
+      <value xsi:type="ED" mediaType="text/plain" value=""/>
+    </measureAttribute>
+  </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root=""/>
+         <title value=""/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+     <!-- TODO -->
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item root="2.16.840.1.113883.10.20.28.2.7" extension="2017-08-01"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="EBBF7CE9-5BAC-46BE-87D1-2173923F5EC9"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="4B34D088-C762-4150-890F-C7CAE0593F63"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RatioExample.&quot;Initial Population&quot;"
+                         root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <measurePopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="0276D90F-87A1-44CA-86CC-4A35DD1D708A"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RatioExample.&quot;Denominator&quot;"
+                         root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+                  </criteriaReference>
+               </precondition>
+            </measurePopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <measurePopulationExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="20C5657D-B0AD-4C15-A8A0-5D4E2BCB38F7"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RatioExample.&quot;Numerator&quot;"
+                         root="DFAAF6C1-0609-49C7-BCEA-8EEDFB65DCFF"/>
+                  </criteriaReference>
+               </precondition>
+            </measurePopulationExclusionCriteria>
+         </component>
+         <!-- Use the measureValue extension to specify target units for the measure score -->
+         <component typeCode="COMP">
+            <cql-ext:measureValue nullFlavor="DER" xsi:type="PQ">
+               <unit value="/1000d"/>
+            </cql-ext:measureValue>
+         </component>
+      </populationCriteriaSection>
+   </component>
+   <component>
+      <measureObservationSection>
+         <templateId>
+            <item root="2.16.840.1.113883.10.20.28.2.4" extension="2018-05-01"/>
+         </templateId>
+         <id extension="MeasureObservations" root="B525A408-F6C1-4755-97CF-E08346F3751E"/>
+         <code code="57027-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+         <title value="Measure Observation Section"/>
+         <text/>
+         <!--Definition for Denominator Observation -->
+         <definition>
+            <measureObservationDefinition classCode="OBS" moodCode="DEF">
+               <id extension="Measure Observation" 
+                   root="8A9A47CF-45A4-4385-923C-5A045D8EA9F8"/>
+               <code code="AGGREGATE" codeSystem="2.16.840.1.113883.5.4"/>
+               <value nullFlavor="DER" xsi:type="INT">
+                  <expression value="RatioExample.&quot;Denominator Observation&quot;"/>
+               </value>
+               <methodCode>
+                  <item code="SUM" codeSystem="2.16.840.1.113883.5.84"/>
+               </methodCode>
+               <component typeCode="COMP">
+                  <!-- This criteriaReference is a reference to the measure population criteria by id (root and extension attributes) within the target population group -->
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                    <!-- Points to the extension and root, rather than the name to ensure unique identification of the criteria -->
+                    <id extension="denominator" root="0276D90F-87A1-44CA-86CC-4A35DD1D708A"/>
+				  </criteriaReference>
+               </component>
+            </measureObservationDefinition>
+         </definition>
+         <!--Definition for Numerator Observation -->
+         <definition>
+            <measureObservationDefinition classCode="OBS" moodCode="DEF">
+               <id extension="Measure Observation" 
+                   root="8A9A47CF-45A4-4385-923C-5A045D8EA9F8"/>
+               <code code="AGGREGATE" codeSystem="2.16.840.1.113883.5.4"/>
+               <value nullFlavor="DER" xsi:type="INT">
+                  <expression value="RatioExample.&quot;Numerator Observation&quot;"/>
+               </value>
+               <methodCode>
+                  <item code="SUM" codeSystem="2.16.840.1.113883.5.84"/>
+               </methodCode>
+               <component typeCode="COMP">
+                  <!-- This criteriaReference is a reference to the measure population criteria by id (root and extension attributes) within the target population group -->
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                    <!-- Points to the extension and root, rather than the name to ensure unique identification of the criteria -->
+                    <id extension="numerator" root="20C5657D-B0AD-4C15-A8A0-5D4E2BCB38F7"/>
+				  </criteriaReference>
+               </component>
+            </measureObservationDefinition>
+         </definition>
+      </measureObservationSection>
+   </component>
+</QualityMeasureDocument>

@@ -1,0 +1,194 @@
+<Measure xmlns="http://hl7.org/fhir">
+  <id value="measure-ratio-exm"/>
+  <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/ratio-measure-cqfm"/>
+  </meta>
+  <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="Encounter"/>
+  </extension>
+  <!-- Canonical URL for the measure. This is a globally unique, version-independent identifier for the eCQM. -->
+  <url value="http://example.org/fhir/measures/measure-ratio-exm"/>
+  <!-- A business identifier for the measure. This is typically a short, user-friendly identifier assigned for a particular
+    set of eCQMs such as HEDIS or CMS eCQM identifiers. A measure may have any number of business identifiers. -->
+  <identifier>
+    <system value="http://example.org/fhir/cqi/ecqm/Measure/Identifier/exm"/>
+    <value value="EXMRatio"/>
+  </identifier>
+  <!-- The business version of the measure. This value is incremented as part of managing changes to the measure content. -->
+  <version value="2.0.0"/>
+  <!-- The name of the measure. This is a machine-friendly identifier for the measure -->
+  <name value="EXMRatioMeasure"/>
+  <!-- The title of the measure. This is a user-friendly identifier for the measure -->
+  <title value="EXM Ratio Measure"/>
+  <status value="active"/>
+  <experimental value="true"/>
+  <!-- The publication date of the measure -->
+  <date value="2019-02-17"/>
+  <!-- The publisher of the measure -->
+  <publisher value="Example Measure Publisher"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.example.org/"/>
+    </telecom>
+  </contact>
+  <!-- The description of the measure -->
+  <description value="An example FHIR-based publishable measure"/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="program"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/us/cqfmeasures/CodeSystem/quality-programs"/>
+        <code value="ep-ec"/>
+      </coding>
+      <text value="eligible-provider"/>
+    </valueCodeableConcept>
+  </useContext>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <purpose value="The purpose of this measure is to..."/>
+  <usage value="Users of this measure should be aware of..."/>
+  <copyright value="Example Copyright Statement"/>
+  <approvalDate value="2019-02-17"/>
+  <lastReviewDate value="2019-02-17"/>
+  <effectivePeriod>
+		<extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectivePeriodAnchor">
+			<valueDateTime value="2018-01-01"/>
+		</extension>
+		<extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectivePeriodDuration">
+			<valueDuration>
+				<value value="1"/>
+				<code value="a"/>
+        <system value="http://unitsofmeasure.org"/>
+			</valueDuration>
+		</extension>
+    <start value="2018-01-01"/>
+    <end value="2018-12-31"/>
+  </effectivePeriod>
+  <topic>
+    <coding>
+        <system value="http://loinc.org"/>
+        <code value="57024-2"/>
+    </coding>
+    <text value="Health Quality Measure Document"/>
+  </topic>
+  <author>
+    <name value="Example Measure Content Developer"/>
+  </author>
+  <library value="http://hl7.org/fhir/us/cqfmeasures/Library/EXMRatio"/>
+  <disclaimer value="Example disclaimer"/>
+  <scoring>
+    <!-- https://jira.hl7.org/browse/FHIR-30506 -->
+    <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoringUnit">
+      <coding>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="/1000d"/>
+      </coding>
+      <text value="Per 1000 Patient Days"/>
+    </extension>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>
+      <code value="ratio"/>
+      <display value="Ratio"/>
+    </coding>
+</scoring>
+<type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/measure-type"/>
+      <code value="process"/>
+    </coding>
+  </type>
+  <improvementNotation>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/measure-improvement-notation"/>
+      <code value="decrease"/>
+      <display value="Decreased score indicates improvement"/>
+    </coding>
+  </improvementNotation>
+  <group id="group-1">
+    <population id="initial-population">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="initial-population"/>
+          <display value="Initial Population"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql.identifier"/>
+        <expression value="Initial Population"/>
+      </criteria>
+    </population>
+    <population id="numerator">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="numerator"/>
+          <display value="Numerator"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql.identifier"/>
+        <expression value="Numerator"/>
+      </criteria>
+    </population>
+    <population id="denominator">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="denominator"/>
+          <display value="Denominator"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql.identifier"/>
+        <expression value="Denominator"/>
+      </criteria>
+    </population>
+    <population id="denominator-observation">
+      <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-criteriaReference">
+        <valueString value="denominator"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-aggregateMethod">
+        <valueCode value="sum"/>
+      </extension>
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="measure-observation"/>
+          <display value="Measure Observation"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql.identifier"/>
+        <expression value="Measure Denominator Observation"/>
+      </criteria>
+    </population>
+    <population id="numerator-observation">
+      <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-criteriaReference">
+        <valueString value="numerator"/>
+      </extension>
+      <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-aggregateMethod">
+        <valueCode value="sum"/>
+      </extension>
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="measure-observation"/>
+          <display value="Measure Observation"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql.identifier"/>
+        <expression value="Measure Numerator Observation"/>
+      </criteria>
+    </population>
+  </group>
+</Measure>

@@ -56,3 +56,31 @@ PDC calculation.
 
 Is there a way in CQL to handle this type of calculation?
 */
+
+/*
+Answer:
+Yes, focusing only on the question of how to "roll out" intervals. In the 1.5
+version of CQL, we introduced an operator specifically to support this type of
+operation, using a new clause, "aggregate":
+
+http://build.fhir.org/ig/HL7/cql/03-developersguide.html#aggregate-queries
+
+Factorial Example:
+*/
+
+define FactorialOfFive:
+  ({ 1, 2, 3, 4, 5 }) Num
+    aggregate Result starting 1: Result * Num
+
+/*
+Rollout Intervals Example:
+*/
+
+define "RolledOutIntervals":
+  MedicationRequestIntervals M
+    aggregate R starting (null as List<Interval<DateTime>>): R union ({
+      M X
+        let S: Max({ end of Last(R) + 1 day, start of X }),
+          E: S + duration in days of X
+        return Interval[S, E]
+    })
