@@ -32,29 +32,19 @@ This measure can be represented as an encounter-based ratio measure, with:
 Numerator Observation: Count(Falls with Major Injury)
 Denominator Observation: Sum(Encounter Days)
 
-This does result in a ratio, but there isn't mechanism in the current CQL-based HQMF (or FHIR measure)
+This does result in a ratio, but there isn't mechanism in the current FHIR measure
 to specify that the ratio should be converted to "per 1000 days".
 
-To support that aspect, we are proposing an extension of CQL-based HQMF IG to state the expected
-units of a ratio measure.
+To support that aspect, we are proposing an extension of the Quality Measure IG
+to state the expected units of a ratio measure.
 
-NOTE: 2020-12-17 eCQM Working Group:
-MAT does not support patient-based continuous variable measures because the specification
-requirements for continuous variable measures require the function to take an argument of
-the _element type_ of the population, and since patient-based measures have boolean-valued
-population criteria, there is no element type.
-Logged this as an STU comment: http://www.hl7.org/dstucomments/showdetail_comment.cfm?commentid=2109
+This is submitted as a tracker to the quality measure IG here:
+https://jira.hl7.org/browse/FHIR-30506
 
-To allow the measure to express the "rate per 1000" requirement, we are proposing an extension
-to the CQL-based HQMF IG:
-
-    <component typeCode="COMP">
-        <cql-ext:measureValue nullFlavor="DER" xsi:type="PQ">
-            <unit value="/1000d"/>
-        </cql-ext:measureValue>
-    </component>
-
-Logged this as an STU comment: http://www.hl7.org/dstucomments/showdetail_comment.cfm?commentid=2110
+The included EXMRatioFHIRv603-Artifacts.zip is an export of this measure expressed
+in the MAT which includes everything but the proprosed unitScoring extension. That
+extension is proposed for inclusion in the May 2021 ballot of the quality measure ig
+and is not supported by the MAT at this time.
 */
 
 valueset "Inpatient": 'TBD'
@@ -63,25 +53,22 @@ valueset "Fall": 'TBD'
 context Patient
 
 define "Initial Population":
-  exists "Qualifying Encounters"
+  "Qualifying Encounters"
 
 define "Denominator":
+  "Initial Population"
+
+define "Numerator":
   "Initial Population"
 
 define "Qualifying Encounters":
   ["Encounter": "Inpatient"]
 
-define "Encounter Days":
-  Sum(
-    "Qualifying Encounters" Q
-      return duration in hours of Global.Hospitalization(Q) / 24
-  )
-
 define "Falls with Major Injury":
   ["Observation": "Fall"]
 
 define function "Denominator Observation"(Encounter "Encounter"):
-  "Encounter Days"
+  duration in hours of Global.Hospitalization(Encounter) / 24
 
 define function "Numerator Observation"(Encounter "Encounter"):
   Count(

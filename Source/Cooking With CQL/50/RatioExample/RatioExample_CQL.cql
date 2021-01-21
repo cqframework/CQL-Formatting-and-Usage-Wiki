@@ -51,6 +51,10 @@ to the CQL-based HQMF IG:
     </component>
 
 Logged this as an STU comment: http://www.hl7.org/dstucomments/showdetail_comment.cfm?commentid=2110
+
+The included EXMRatiov603-Artifacts.zip is a MAT export of this measure with everything but
+the unit specification extension above. That extension is proposed for a future edition of the
+standards and is not currently supported by the MAT.
 */
 
 include MATGlobalCommonFunctions called Global

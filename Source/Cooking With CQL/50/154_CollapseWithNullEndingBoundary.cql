@@ -106,6 +106,11 @@ define Test2:
     }
   )
 
+// NOTE: This does throw, so the Java and Java Script implementations are most likely testing the boundary first:
+// Psuedo code here
+// http://build.fhir.org/ig/HL7/cql/09-b-cqlreference.html#collapse
+define Test3: successor of maximum DateTime
+
 /*
 Results:
 Test1=[Interval[2021-01-06, 9999-12-31]]
