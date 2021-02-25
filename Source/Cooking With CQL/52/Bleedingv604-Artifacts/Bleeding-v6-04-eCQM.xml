@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="2c928082-70f5-3309-0171-2be1e23d13ad"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title
+          value="Hospital Harm - Venous Thromboembolism Pharmacoprophylaxis-Related Major Bleeding"/>
+   <text
+         value="The measure assesses the proportion of encounters of patients 18 years of age or older at admission  and who were administered at least one anticoagulant medication for venous thromboembolism (VTE) prophylaxis during the encounter and within 5 days prior to a subsequent bleeding event. Bleeding events must occur during the encounter.&#xA;&#xA;The measure excludes encounters for patient who received dialysis that overlapped the encounter, had a diagnosis related to pregnancy or obstetrics that overlapped the encounter, or received an anticoagulant medication for a reason other than for VTE prophylaxis."/>
+   <statusCode code="COMPLETED"/>
+   <setId root="a4b07408-45ae-4805-a453-b4aeae4b1720"/>
+   <versionNumber value="0.1.055"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="3f2f8061-bce1-4024-b378-c20475dab014"/>
+            </id>
+            <name>
+               <item>
+                  <part value="IMPAQ International"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="93"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Centers for Medicare &amp; Medicaid Services (CMS)"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Hospital based dialysis services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1179.4"/>
+         <title value="Hospital based dialysis services"/>
+      </valueSet>
+   </definition>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Bleeding at Critical Site-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1147.135"/>
+         <title value="Bleeding at Critical Site"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Hemoglobin lab test-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1045.131"/>
+         <title value="Hemoglobin lab test"/>
+      </valueSet>
+   </definition>
+   <!--Observation Services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1111.143"/>
+         <title value="Observation Services"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.292"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Obstetrics-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.263"/>
+         <title value="Obstetrics"/>
+      </valueSet>
+   </definition>
+   <!--Anticoagulants for Indications Other than VTE Prophylaxis-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1147.131"/>
+         <title value="Anticoagulants for Indications Other than VTE Prophylaxis"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Bleeding at Non Critical Site-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1147.125"/>
+         <title value="Bleeding at Non Critical Site"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Blood Transfusion Administration-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1029.209"/>
+         <title value="Blood Transfusion Administration"/>
+      </valueSet>
+   </definition>
+   <!--Anticoagulants for VTE Prophylaxis-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1147.130"/>
+         <title value="Anticoagulants for VTE Prophylaxis"/>
+      </valueSet>
+   </definition>
+   <!--Birth date-CODE:/CodeSystem/LOINC/Version/2.67/Code/21112-8/Info-->
+      <definition>
+      <cql-ext:code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+         <displayName value="Birth date"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.json"/>
+            </translation>
+         </text>
+         <setId extension="a4b07408-45ae-4805-a453-b4aeae4b1720"
+                identifierName="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="0.1.055"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="2c928082756f7d21017579d9bf6e0484"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-6.2.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-6.2.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-6.2.000.json"/>
+            </translation>
+         </text>
+         <setId extension="8bdc0a19-b210-4a58-8a07-f5d95a34eca9"
+                identifierName="MATGlobalCommonFunctions"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="6.2.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="2257a6e0-24d1-4f23-991a-061e19a0d8e7"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20210101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="877" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. IMPAQ disclaims all liability for use or accuracy of any third party codes contained in the specifications.&#xA;&#xA;CPT(R) contained in the Measure specifications is copyright 2004-2020 American Medical Association. LOINC(R) copyright 2004-2020 Regenstrief Institute, Inc. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2020 International Health Terminology Standards Development Organisation. ICD-10 copyright 2020 World Health Organization. All Rights Reserved"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="This measure and specifications are subject to further revisions. This performance measure is not a clinical guideline and does not establish a standard of medical care, and has not been tested for all potential applications.&#xA;&#xA;THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA;&#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="OUTCOME" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="OUTCOME"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Medication-related bleeding is a serious health problem in the inpatient setting and has been found to result in increased morbidity and mortality (Nikolsky et al., 2009; Tsai et al., 2009; Spencer et al., 2007; Cannon et al., 2000; Michaels et al., 2010; Abraham et al., 2018). Hemorrhage has been identified as one of the more common medication-related adverse drug events (ADEs) (US Department of Health, 2014; Menzin et al., 2012; Partnership for Patients, 2017; Kanjanarat et al., 2003). Hospitalized patients are at risk of harm from medication-related bleeding due to factors including complex dosing based on weight and renal function, the required frequency of monitoring, and transitions from intravenously administered medications to those taken orally (Cannon et al., 200; Michaels et al., 2010; US Department of Health 2014). &#xA;&#xA;While many medication classes can increase a patient’s risk of bleeding, anticoagulant and thrombolytic bleeding events in particular are the most common, preventable, and measurable adverse drug events (ADEs) (Michaels et al., 2010; US Department of Health, 2014). Unfractionated heparin and warfarin have been found to be the most commonly implicated medications in anticoagulant-associated adverse drug events (ADEs) (Piazza et al., 2011). However, newer anticoagulants (ie direct acting oral anticoagulants (DOACs) such as apixiban and rivaroxaban) are now routinely in use, and risks of adverse bleeding events and other negative outcomes from these newer anticoagulants have been identified (McConeghy et al., 2014; Abraham et al, 2016; Vinogradova et al., 2018). Thrombolytics are also high alert medications that have a narrow therapeutic window, may not be used routinely and are therefore less familiar to staff, and yet must be used rapidly for the patient to benefit (eg thrombolysis for acute stroke) leading to time pressure and increased risk of error (Cannon et al., 2000; Fagan, 2005; Paparella, 2004)."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Investigators have deemed many anticoagulant- and thrombolytic-associated ADEs to be potentially preventable and prevention of these harms has been prioritized by several patient safety organizations (US Department of Health, 2014; Piazza et al., 2011; US Department of Veterans Affairs, 2015; Hoffman et al., 2015). The National Quality Forum (NQF) endorsed the following patient-safety goal for reducing anticoagulant-associated harms, Safe Practice #29 (Anticoagulation Therapy): “Organizations should implement practices to prevent patient harm due to anticoagulant therapy” (US Department of Health, 2014; Healthcare Facilities Accreditation Program, 2013). Likewise, The Joint Commission has identified the National Patient Safety Goal 03.05.01 to “Reduce the likelihood of patient harm associated with the use of anticoagulant therapy” (US Department of Health, 2014; Healthcare Facilities Accreditation Program, 2013). Other professional organizations such as the Veteran’s Administration and the American Heart Association recommend hospital practices for medication safety including standardized order forms and protocols for anticoagulation and staff education on high-alert medications such as anticoagulants."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="A lower proportion indicates better quality"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONAbraham P, Arroyo DA, Giraud R, et al. Understanding haemorrhagic risk following thrombolytic therapy in patients with intermediate-risk and highrisk pulmonary embolism: a hypothesis paper. Open Heart. 2018;5:e000735."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONAbraham, NS. Prevention of gastrointestinal bleeding in patients receiving direct oral anticoagulants. Amer Journal of Gasteroeontolgoy Supplements. 2016;32-12."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONCannon, CP. Thrombolysis medication errors: benefits of bolus thrombolytic agents. Am J Cardiol. 2000;85(8A), 17C-22C."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONFagan, SC. 2005. Hold the tPA. 2005. AHRQ PSNet."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONHealthcare Facilities Accreditation Program. National Quality Forum's 30 safe practices and the HFAP related standards. Chicago, IL.2013."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONHoffman JL, Aneese NJ, Schmidt KJ, et al. Optimizing anticoagulation management through the use of a hospital engagement network metric for inpatient anticoagulant-associated hemorrhage. Ann Pharmacother. 2015;49(12):1305-1310."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONKanjanarat P, Winterstein A, Johns T, et al. Nature of preventable adverse drug events in hospitals: a literature review. American Journal of Health-System Pharmacy. 2003;60(17), 1750-1759."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONMcConeghy KW, Bress A, Qato DM, et al. Evaluation of dabigatran bleeding adverse reaction reports in the FDA adverse event reporting system during the first year of approval. Pharmacotherapy. 2014;34(6):561-569."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONMenzin J, Hoesche J, Friedman M, et al. Failure to correct International Normalized Ratio and mortality among patients with warfarin-related major bleeding: an analysis of electronic health records. J Thromb Haemost. 2012;10(4):596-605."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONMichaels, AD, Spinler, SA, Leeper, B, et al. Medication errors in acute cardiovascular and stroke patients. A scientific statement from the American Heart Association. 2010;121(14), 1664-1682."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONNikolsky E, Stone GW, Kirtane AJ, et al. Gastrointestinal bleeding in patients with acute coronary syndromes: incidence, predictors, and clinical implications: analysis from the ACUITY (Acute Catheterization and Urgent Intervention Triage Strategy) trial. J Am Coll Cardiol. 2009;54(14):1293-1302."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONPaparella, S. Thrombolytic therapy: No room for error. J Emerg Nurs. 2004;30(4), 348-350."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONPartnership for Patients; Alaska State Hospital &amp; Nursing Home Association; Washington State Hospital Association. Medication Safety Action Bundle - Adverse Drug Events (ADE). Anticoagulants. 2017."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONPiazza G, Nguyen TN, Cios D, et al. Anticoagulation-associated adverse drug events. Am J Med. 2011;124(12):1136-1142."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONTsai TT, Maddox TM, Roe MT, et al. Contraindicated medication use in dialysis patients undergoing percutaneous coronary intervention. JAMA. 2009;302(22):2458-2464"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONSpencer FA, Moscucci M, Granger CB, et al. Does comorbidity account for the excess mortality in patients with major bleeding in acute myocardial infarction? Circulation. 2007;116(24):2793-2801."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONU.S. Department of Health and Human Services: Office of Disease Prevention and Health Promotion. National Action Plan for Adverse Drug Event Prevention. Washington, D.C. 2014."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONUS Department of Veterans Affairs. VA National Center for Patient Safety: Anticoagulation Vulnerability. https://www.patientsafety.va.gov/professionals/hazards/anticoag.asp. Published June 2015. Accessed July 13, 2018"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="CITATIONVinogradova, Y., Coupland, C., Hill T. et al., Risks and benefits of direction oral anticoagulants versus warfarin in a real world setting: cohort study in primary care. BMS. 2018;362:k2505."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The measure is currently confined to using g/dL as the unit of measurement for hemoglobin results.&#xA;&#xA;To calculate the hospital-level measure result, divide the total numerator encounter events by the total number of eligible encounters (denominator). &#xA;&#xA;For each inpatient encounter, eligible encounters include those where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter.&#xA;&#xA;To exclude encounters from the denominator:&#xA;&#xA;1. Remove any encounters where patients received dialysis that overlapped the encounter.&#xA;&#xA;2. Remove any encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;3. Remove encounters where patients received an anticoagulant medication for a reason other than for VTE prophylaxis. &#xA;&#xA;To create the numerator include all encounter records in the denominator with:&#xA;&#xA;Criterion A. Documented diagnosis only of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)&#xA;AND&#xA;(2)&#x9;Transfusion  of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event and documented diagnosis of major bleeding at a non-critical anatomic site&#xA; &#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)&#xA;&#xA;This eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.&#xA;&#xA;This version of the eCQM uses QDM version 5.5. Please refer to the eCQI resource center (https://ecqi.healthit.gov/qdm) for more information on the QDM."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Encounters when the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter. &#xA;&#xA;An encounter is considered an inpatient hospital admission, including time spent in the emergency department or in observation status when the patients are ultimately admitted to inpatient status."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Encounters where patients received dialysis that overlapped the encounter.&#xA;&#xA;Encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;Encounters where the patient received an anticoagulant medication for a reason other than for VTE prophylaxis."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Encounters where bleeding events occurred during the encounter and within 5 days following an anticoagulant medication administration for VTE prophylaxis during the same encounter. &#xA;&#xA;A bleeding event is defined as the presence of one of the following: &#xA;&#xA;Criterion A. Documented diagnosis of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)&#xA;AND&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event, with a documented diagnosis of major bleeding at a non-critical anatomic site.&#xA;&#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and gender."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="a4b07408-45ae-4805-a453-b4aeae4b1720"/>
+         <title value=""/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hospitalbaseddialysisservices_ProcedurePerformed_7mvhD"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="Hospitalbaseddialysisservices_ProcedurePerformed"
+                   root="35847444-1f79-4150-804a-50be1a39696b"/>
+               <code valueSet="2.16.840.1.113762.1.4.1179.4"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_1g02G"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="89e0c5eb-5ff3-4393-8624-b53ef811412f"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_MM9tj"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="e65d78e3-93df-404c-b78a-0a0e0bce6201"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="BleedingatCriticalSite_Diagnosis_iCoJU"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="BleedingatCriticalSite_Diagnosis"
+                   root="b938a5f5-48f4-41d6-b3d8-629140cc273c"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1147.135" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_DlFLo"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="7ff30eb7-5f66-498a-8d1a-2b8053429bdb"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Hemoglobinlabtest_LaboratoryTestPerformed_fB1kX"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="Hemoglobinlabtest_LaboratoryTestPerformed"
+                   root="921f55e5-3dc5-4d30-a7ab-b4e0d1547f75"/>
+               <code valueSet="2.16.840.1.113762.1.4.1045.131"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ObservationServices_EncounterPerformed_qHrq8"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="ObservationServices_EncounterPerformed"
+                   root="215b8958-753d-4e97-88e4-80e69c50bd14"/>
+               <code valueSet="2.16.840.1.113762.1.4.1111.143"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_2Rjs3"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="943fd468-a486-47eb-bcef-69bbc31a73a0"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.292"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Obstetrics_Diagnosis_6jZel"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Obstetrics_Diagnosis" root="80e95bd8-844d-423b-935b-2265826dc1ad"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.117.1.7.1.263" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantsforIndicationsOtherthanVTEProphylaxis_MedicationAdministered_ELFnq"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.45"/>
+               </templateId>
+               <id extension="AnticoagulantsforIndicationsOtherthanVTEProphylaxis_MedicationAdministered"
+                   root="6c5a58b9-a4e3-463a-abb9-b74c38ee3536"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96"/>
+               <title value="Medication, Administered"/>
+               <statusCode code="COMPLETED"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1147.131"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_oBihZ"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="5202c9ad-7051-4055-a72f-df4949948446"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="BleedingatNonCriticalSite_Diagnosis_QCsoQ"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="BleedingatNonCriticalSite_Diagnosis"
+                   root="8416953c-36ac-4491-9627-7a591bd55da5"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1147.125" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_PASzW"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="1383c9ea-f5ca-4895-8742-8f355e02163f"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="BloodTransfusionAdministration_ProcedurePerformed_4B5XQ"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="BloodTransfusionAdministration_ProcedurePerformed"
+                   root="048c9ef4-5ac1-45cf-a498-ec20dfa9747e"/>
+               <code valueSet="2.16.840.1.113762.1.4.1029.209"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantsforVTEProphylaxis_MedicationAdministered_GBeWB"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.45"/>
+               </templateId>
+               <id extension="AnticoagulantsforVTEProphylaxis_MedicationAdministered"
+                   root="8e880639-512c-45e4-bd46-c2f7050c7829"/>
+               <code code="416118004" codeSystem="2.16.840.1.113883.6.96"/>
+               <title value="Medication, Administered"/>
+               <statusCode code="COMPLETED"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1147.130"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.54"/>
+               </templateId>
+               <id extension="21112-8_PatientCharacteristicBirthdate"
+                   root="1A3D65AE-CA70-4E6A-A2BF-65E5F850DB0D"/>
+               <code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+               <title value="Patient Characteristic Birthdate"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="74CD7F01-0E0E-4F08-8F13-74D30EDD2F8E"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="7DA9D6D6-558C-4DFC-A53E-E757BC3A0682"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Initial Population&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="FDED266C-C91E-42D1-9AFF-AEC591D0DBA7"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Denominator&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="F6C434FE-5A64-491E-A8A3-A6DCA2C03A6B"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Denominator Exclusions&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="F3220CA6-AC26-40B1-A08A-2F58D13DF734"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Numerator&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="BC41CD73-C753-4966-8E56-D39D67E6A12E"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Ethnicity&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="B97A6D99-3B81-4F03-96CF-15E983C1DBB4"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Payer&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="B7D1D94D-0F17-42F4-AEC5-BF12AD7168A1"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Race&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="63C2FE93-8B67-4F0E-8939-9AC579E08473"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Sex&quot;"
+                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

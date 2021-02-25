@@ -1,0 +1,2407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding" version="0.1.055"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_5" version="5.5"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="6.2.000"/>
+   </includes>
+   <parameters>
+      <def localId="21" locator="25:1-25:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="20" locator="25:32-25:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="19" locator="25:41-25:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="7:1-7:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="4" locator="9:1-9:110" name="Anticoagulants for Indications Other than VTE Prophylaxis" id="urn:oid:2.16.840.1.113762.1.4.1147.131" accessLevel="Public"/>
+      <def localId="5" locator="10:1-10:87" name="Anticoagulants for VTE Prophylaxis" id="urn:oid:2.16.840.1.113762.1.4.1147.130" accessLevel="Public"/>
+      <def localId="6" locator="11:1-11:78" name="Bleeding at Critical Site" id="urn:oid:2.16.840.1.113762.1.4.1147.135" accessLevel="Public"/>
+      <def localId="7" locator="12:1-12:82" name="Bleeding at Non Critical Site" id="urn:oid:2.16.840.1.113762.1.4.1147.125" accessLevel="Public"/>
+      <def localId="8" locator="13:1-13:85" name="Blood Transfusion Administration" id="urn:oid:2.16.840.1.113762.1.4.1029.209" accessLevel="Public"/>
+      <def localId="9" locator="14:1-14:71" name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def localId="10" locator="15:1-15:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="11" locator="16:1-16:72" name="Hemoglobin lab test" id="urn:oid:2.16.840.1.113762.1.4.1045.131" accessLevel="Public"/>
+      <def localId="12" locator="17:1-17:83" name="Hospital based dialysis services" id="urn:oid:2.16.840.1.113762.1.4.1179.4" accessLevel="Public"/>
+      <def localId="13" locator="18:1-18:66" name="Obstetrics" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.263" accessLevel="Public"/>
+      <def localId="14" locator="19:1-19:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="15" locator="20:1-20:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def localId="16" locator="21:1-21:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="18" locator="23:1-23:62" name="Birth date" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem localId="17" locator="23:35-23:41" name="LOINC"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="27:1-27:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="27:1-27:15" xmlns:ns0="urn:healthit-gov:qdm:v5_5" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="47" locator="128:1-132:148" name="Qualifying Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="47">
+               <a:s>define &quot;Qualifying Encounters&quot;:
+  </a:s>
+               <a:s r="46">
+                  <a:s>
+                     <a:s r="27">
+                        <a:s r="26">
+                           <a:s r="26">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> InpatientEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="45">
+                     <a:s>with </a:s>
+                     <a:s r="29">
+                        <a:s r="28">
+                           <a:s r="28">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Birth date&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="44">
+                        <a:s r="33">
+                           <a:s r="31">
+                              <a:s r="30">
+                                 <a:s>InpatientEncounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="31">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="33"> ends during </a:s>
+                           <a:s r="32">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+        and </a:s>
+                        <a:s r="43">
+                           <a:s r="41">
+                              <a:s r="34">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="41">
+                                 <a:s>&quot;CalendarAgeInYearsAt&quot; ( </a:s>
+                                 <a:s r="36">
+                                    <a:s r="35">
+                                       <a:s>BirthDate</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="36">
+                                       <a:s>birthDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="40">
+                                    <a:s>start of </a:s>
+                                    <a:s r="39">
+                                       <a:s r="37">
+                                          <a:s>Global</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="39">
+                                          <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                          <a:s r="38">
+                                             <a:s>InpatientEncounter</a:s>
+                                          </a:s>
+                                          <a:s> )</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="42"> >= 18</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="46" locator="129:3-132:148" xsi:type="Query">
+            <source localId="27" locator="129:3-129:68" alias="InpatientEncounter">
+               <expression localId="26" locator="129:3-129:49" xmlns:ns1="urn:healthit-gov:qdm:v5_5" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="129:28-129:48" name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="45" locator="130:5-132:148" alias="BirthDate" xsi:type="With">
+               <expression localId="28" locator="130:10-130:59" xmlns:ns2="urn:healthit-gov:qdm:v5_5" dataType="ns2:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand locator="130:47-130:58" name="Birth date" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+               <suchThat localId="44" locator="131:17-132:148" xsi:type="And">
+                  <operand localId="33" locator="131:17-131:82" xsi:type="In">
+                     <operand locator="131:51-131:54" xsi:type="End">
+                        <operand localId="31" locator="131:17-131:49" path="relevantPeriod" scope="InpatientEncounter" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="32" locator="131:63-131:82" name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+                  <operand localId="43" locator="132:13-132:148" xsi:type="GreaterOrEqual">
+                     <operand localId="41" locator="132:13-132:142" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="36" locator="132:45-132:67" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="40" locator="132:70-132:140" xsi:type="Start">
+                           <operand localId="39" locator="132:79-132:140" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="38" locator="132:121-132:138" name="InpatientEncounter" xsi:type="AliasRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="42" locator="132:147-132:148" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="81" locator="29:1-38:3" name="Blood Transfusion Indicative of Bleeding Event" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="81">
+               <a:s>define &quot;Blood Transfusion Indicative of Bleeding Event&quot;:
+  </a:s>
+               <a:s r="80">
+                  <a:s>exists </a:s>
+                  <a:s r="79">
+                     <a:s>( </a:s>
+                     <a:s r="79">
+                        <a:s>
+                           <a:s>from
+      </a:s>
+                           <a:s r="23">
+                              <a:s r="22">
+                                 <a:s r="22">
+                                    <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Blood Transfusion Administration&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> BloodTransfusion</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="25">
+                              <a:s r="24">
+                                 <a:s r="24">
+                                    <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Anticoagulants for VTE Prophylaxis&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AnticoagulantMedication</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="49">
+                              <a:s r="48">
+                                 <a:s>
+                                    <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> QualifyingEncounter</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="78">
+                           <a:s>where </a:s>
+                           <a:s r="78">
+                              <a:s r="71">
+                                 <a:s r="62">
+                                    <a:s r="55">
+                                       <a:s r="51">
+                                          <a:s r="50">
+                                             <a:s>BloodTransfusion</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="51">
+                                             <a:s>relevantPeriod</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="55">
+                                          <a:s>ends </a:s>
+                                          <a:s r="54">
+                                             <a:s>120 hours</a:s>
+                                          </a:s>
+                                          <a:s> or less after</a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="53">
+                                          <a:s r="52">
+                                             <a:s>AnticoagulantMedication</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="53">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+        and </a:s>
+                                    <a:s r="61">
+                                       <a:s r="57">
+                                          <a:s r="56">
+                                             <a:s>BloodTransfusion</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="57">
+                                             <a:s>relevantPeriod</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s r="61"> during </a:s>
+                                       <a:s r="60">
+                                          <a:s r="58">
+                                             <a:s>Global</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="60">
+                                             <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                             <a:s r="59">
+                                                <a:s>QualifyingEncounter</a:s>
+                                             </a:s>
+                                             <a:s> )</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        and </a:s>
+                                 <a:s r="70">
+                                    <a:s r="64">
+                                       <a:s r="63">
+                                          <a:s>BloodTransfusion</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="64">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="70">
+                                       <a:s>starts </a:s>
+                                       <a:s r="69">
+                                          <a:s>48 hours</a:s>
+                                       </a:s>
+                                       <a:s> or more after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="68">
+                                       <a:s>start of </a:s>
+                                       <a:s r="67">
+                                          <a:s r="65">
+                                             <a:s>Global</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="67">
+                                             <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                             <a:s r="66">
+                                                <a:s>QualifyingEncounter</a:s>
+                                             </a:s>
+                                             <a:s> )</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        and </a:s>
+                              <a:s r="77">
+                                 <a:s r="73">
+                                    <a:s r="72">
+                                       <a:s>AnticoagulantMedication</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="73">
+                                       <a:s>relevantDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s r="77"> during </a:s>
+                                 <a:s r="76">
+                                    <a:s r="74">
+                                       <a:s>Global</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="76">
+                                       <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                       <a:s r="75">
+                                          <a:s>QualifyingEncounter</a:s>
+                                       </a:s>
+                                       <a:s> )</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="80" locator="30:3-38:3" xsi:type="Exists">
+            <operand localId="79" locator="30:10-38:3" xsi:type="Query">
+               <source localId="23" locator="31:7-31:83" alias="BloodTransfusion">
+                  <expression localId="22" locator="31:7-31:66" xmlns:ns3="urn:healthit-gov:qdm:v5_5" dataType="ns3:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="31:32-31:65" name="Blood Transfusion Administration" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="25" locator="32:7-32:96" alias="AnticoagulantMedication">
+                  <expression localId="24" locator="32:7-32:72" xmlns:ns4="urn:healthit-gov:qdm:v5_5" dataType="ns4:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="32:36-32:71" name="Anticoagulants for VTE Prophylaxis" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="49" locator="33:7-33:49" alias="QualifyingEncounter">
+                  <expression localId="48" locator="33:7-33:29" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="78" locator="34:7-37:123" xsi:type="And">
+                  <operand localId="71" locator="34:13-36:146" xsi:type="And">
+                     <operand localId="62" locator="34:13-35:114" xsi:type="And">
+                        <operand localId="55" locator="34:13-34:113" xsi:type="And">
+                           <operand locator="34:50-34:66" xsi:type="In">
+                              <operand locator="34:45-34:48" xsi:type="End">
+                                 <operand localId="51" locator="34:13-34:43" path="relevantPeriod" scope="BloodTransfusion" xsi:type="Property"/>
+                              </operand>
+                              <operand locator="34:50-34:66" lowClosed="false" highClosed="true" xsi:type="Interval">
+                                 <low localId="53" locator="34:74-34:113" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                 <high locator="34:98-34:113" xsi:type="Add">
+                                    <operand localId="53" locator="34:74-34:113" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                    <operand localId="54" locator="34:50-34:58" value="120" unit="hours" xsi:type="Quantity"/>
+                                 </high>
+                              </operand>
+                           </operand>
+                           <operand locator="34:50-34:66" xsi:type="Not">
+                              <operand locator="34:50-34:66" xsi:type="IsNull">
+                                 <operand localId="53" locator="34:74-34:113" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="61" locator="35:13-35:114" xsi:type="IncludedIn">
+                           <operand localId="57" locator="35:13-35:43" path="relevantPeriod" scope="BloodTransfusion" xsi:type="Property"/>
+                           <operand localId="60" locator="35:52-35:114" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="59" locator="35:94-35:112" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="70" locator="36:13-36:146" xsi:type="SameOrAfter">
+                        <operand locator="36:45-36:50" xsi:type="Start">
+                           <operand localId="64" locator="36:13-36:43" path="relevantPeriod" scope="BloodTransfusion" xsi:type="Property"/>
+                        </operand>
+                        <operand locator="36:75-36:146" xsi:type="Add">
+                           <operand localId="68" locator="36:75-36:146" xsi:type="Start">
+                              <operand localId="67" locator="36:84-36:146" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                                 <operand localId="66" locator="36:126-36:144" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="69" locator="36:52-36:59" value="48" unit="hours" xsi:type="Quantity"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="77" locator="37:13-37:123" xsi:type="In">
+                     <operand localId="73" locator="37:13-37:52" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                     <operand localId="76" locator="37:61-37:123" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="75" locator="37:103-37:121" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </operand>
+                  </operand>
+               </where>
+               <return distinct="true">
+                  <expression xsi:type="Tuple">
+                     <element name="BloodTransfusion">
+                        <value name="BloodTransfusion" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="AnticoagulantMedication">
+                        <value name="AnticoagulantMedication" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="QualifyingEncounter">
+                        <value name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="94" locator="53:1-56:124" name="Encounters With Anticoagulants For VTE Prophylaxis" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="94">
+               <a:s>define &quot;Encounters With Anticoagulants For VTE Prophylaxis&quot;:
+  </a:s>
+               <a:s r="93">
+                  <a:s>
+                     <a:s r="83">
+                        <a:s r="82">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="92">
+                     <a:s>with </a:s>
+                     <a:s r="85">
+                        <a:s r="84">
+                           <a:s r="84">
+                              <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Anticoagulants for VTE Prophylaxis&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AnticoagulantsForVTE</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="91">
+                        <a:s r="87">
+                           <a:s r="86">
+                              <a:s>AnticoagulantsForVTE</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="87">
+                              <a:s>relevantDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="91"> during </a:s>
+                        <a:s r="90">
+                           <a:s r="88">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="90">
+                              <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                              <a:s r="89">
+                                 <a:s>QualifyingEncounter</a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="93" locator="54:3-56:124" xsi:type="Query">
+            <source localId="83" locator="54:3-54:45" alias="QualifyingEncounter">
+               <expression localId="82" locator="54:3-54:25" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="92" locator="55:5-56:124" alias="AnticoagulantsForVTE" xsi:type="With">
+               <expression localId="84" locator="55:10-55:75" xmlns:ns5="urn:healthit-gov:qdm:v5_5" dataType="ns5:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="55:39-55:74" name="Anticoagulants for VTE Prophylaxis" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="91" locator="56:17-56:124" xsi:type="In">
+                  <operand localId="87" locator="56:17-56:53" path="relevantDatetime" scope="AnticoagulantsForVTE" xsi:type="Property"/>
+                  <operand localId="90" locator="56:62-56:124" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="89" locator="56:104-56:122" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="96" locator="108:1-109:54" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="96">
+               <a:s>define &quot;Initial Population&quot;:
+  </a:s>
+               <a:s r="95">
+                  <a:s>&quot;Encounters With Anticoagulants For VTE Prophylaxis&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="95" locator="109:3-109:54" name="Encounters With Anticoagulants For VTE Prophylaxis" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="98" locator="40:1-41:22" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="98">
+               <a:s>define &quot;Denominator&quot;:
+  </a:s>
+               <a:s r="97">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="97" locator="41:3-41:22" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="111" locator="68:1-71:112" name="Encounters With Dialysis Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="111">
+               <a:s>define &quot;Encounters With Dialysis Procedure&quot;:
+  </a:s>
+               <a:s r="110">
+                  <a:s>
+                     <a:s r="100">
+                        <a:s r="99">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="109">
+                     <a:s>with </a:s>
+                     <a:s r="102">
+                        <a:s r="101">
+                           <a:s r="101">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Hospital based dialysis services&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Dialysis</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="108">
+                        <a:s r="104">
+                           <a:s r="103">
+                              <a:s>Dialysis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="104">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="108"> overlaps </a:s>
+                        <a:s r="107">
+                           <a:s r="105">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="107">
+                              <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                              <a:s r="106">
+                                 <a:s>QualifyingEncounter</a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="110" locator="69:3-71:112" xsi:type="Query">
+            <source localId="100" locator="69:3-69:45" alias="QualifyingEncounter">
+               <expression localId="99" locator="69:3-69:25" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="109" locator="70:5-71:112" alias="Dialysis" xsi:type="With">
+               <expression localId="101" locator="70:10-70:69" xmlns:ns6="urn:healthit-gov:qdm:v5_5" dataType="ns6:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="70:35-70:68" name="Hospital based dialysis services" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="108" locator="71:17-71:112" xsi:type="Overlaps">
+                  <operand localId="104" locator="71:17-71:39" path="relevantPeriod" scope="Dialysis" xsi:type="Property"/>
+                  <operand localId="107" locator="71:50-71:112" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="106" locator="71:92-71:110" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="125" locator="73:1-76:119" name="Encounters With Pregnancy or Obstetric Care" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="125">
+               <a:s>define &quot;Encounters With Pregnancy or Obstetric Care&quot;:
+  </a:s>
+               <a:s r="124">
+                  <a:s>
+                     <a:s r="114">
+                        <a:s r="113">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="123">
+                     <a:s>with </a:s>
+                     <a:s r="116">
+                        <a:s r="115">
+                           <a:s r="115">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Obstetrics&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ObstetricCare</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="122">
+                        <a:s r="118">
+                           <a:s r="117">
+                              <a:s>ObstetricCare</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="118">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="122"> overlaps </a:s>
+                        <a:s r="121">
+                           <a:s r="119">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="121">
+                              <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                              <a:s r="120">
+                                 <a:s>QualifyingEncounter</a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="124" locator="74:3-76:119" xsi:type="Query">
+            <source localId="114" locator="74:3-74:45" alias="QualifyingEncounter">
+               <expression localId="113" locator="74:3-74:25" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="123" locator="75:5-76:119" alias="ObstetricCare" xsi:type="With">
+               <expression localId="115" locator="75:10-75:36" xmlns:ns7="urn:healthit-gov:qdm:v5_5" dataType="ns7:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="75:24-75:35" name="Obstetrics" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="122" locator="76:17-76:119" xsi:type="Overlaps">
+                  <operand localId="118" locator="76:17-76:46" path="prevalencePeriod" scope="ObstetricCare" xsi:type="Property"/>
+                  <operand localId="121" locator="76:57-76:119" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="120" locator="76:99-76:117" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="140" locator="48:1-51:132" name="Encounters With Anticoagulants for Other Indications" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="140">
+               <a:s>define &quot;Encounters With Anticoagulants for Other Indications&quot;:
+  </a:s>
+               <a:s r="139">
+                  <a:s>
+                     <a:s r="129">
+                        <a:s r="128">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="138">
+                     <a:s>with </a:s>
+                     <a:s r="131">
+                        <a:s r="130">
+                           <a:s r="130">
+                              <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Anticoagulants for Indications Other than VTE Prophylaxis&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AnticoagsForOtherIndications</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="137">
+                        <a:s r="133">
+                           <a:s r="132">
+                              <a:s>AnticoagsForOtherIndications</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="133">
+                              <a:s>relevantDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="137"> during </a:s>
+                        <a:s r="136">
+                           <a:s r="134">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="136">
+                              <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                              <a:s r="135">
+                                 <a:s>QualifyingEncounter</a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="139" locator="49:3-51:132" xsi:type="Query">
+            <source localId="129" locator="49:3-49:45" alias="QualifyingEncounter">
+               <expression localId="128" locator="49:3-49:25" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="138" locator="50:5-51:132" alias="AnticoagsForOtherIndications" xsi:type="With">
+               <expression localId="130" locator="50:10-50:98" xmlns:ns8="urn:healthit-gov:qdm:v5_5" dataType="ns8:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="50:39-50:97" name="Anticoagulants for Indications Other than VTE Prophylaxis" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="137" locator="51:17-51:132" xsi:type="In">
+                  <operand localId="133" locator="51:17-51:61" path="relevantDatetime" scope="AnticoagsForOtherIndications" xsi:type="Property"/>
+                  <operand localId="136" locator="51:70-51:132" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="135" locator="51:112-51:130" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="143" locator="43:1-46:64" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="143">
+               <a:s>define &quot;Denominator Exclusions&quot;:
+  </a:s>
+               <a:s r="142">
+                  <a:s r="127">
+                     <a:s r="112">
+                        <a:s>&quot;Encounters With Dialysis Procedure&quot;</a:s>
+                     </a:s>
+                     <a:s>
+    union </a:s>
+                     <a:s r="126">
+                        <a:s>&quot;Encounters With Pregnancy or Obstetric Care&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    union </a:s>
+                  <a:s r="141">
+                     <a:s>&quot;Encounters With Anticoagulants for Other Indications&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="142" locator="44:3-46:64" xsi:type="Union">
+            <operand localId="127" locator="44:3-45:55" xsi:type="Union">
+               <operand localId="112" locator="44:3-44:38" name="Encounters With Dialysis Procedure" xsi:type="ExpressionRef"/>
+               <operand localId="126" locator="45:11-45:55" name="Encounters With Pregnancy or Obstetric Care" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="141" locator="46:11-46:64" name="Encounters With Anticoagulants for Other Indications" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="173" locator="58:1-66:30" name="Encounters With Critical Bleeding Diagnosis" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="173">
+               <a:s>define &quot;Encounters With Critical Bleeding Diagnosis&quot;:
+  </a:s>
+               <a:s r="172">
+                  <a:s>
+                     <a:s>from
+    </a:s>
+                     <a:s r="145">
+                        <a:s r="144">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="147">
+                        <a:s r="146">
+                           <a:s r="146">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Bleeding at Critical Site&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BleedingDiagnosis</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="149">
+                        <a:s r="148">
+                           <a:s r="148">
+                              <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Anticoagulants for VTE Prophylaxis&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AnticoagulantMedication</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="169">
+                     <a:s>where </a:s>
+                     <a:s r="169">
+                        <a:s r="162">
+                           <a:s r="155">
+                              <a:s r="151">
+                                 <a:s r="150">
+                                    <a:s>BleedingDiagnosis</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="151">
+                                    <a:s>prevalencePeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s r="155"> during </a:s>
+                              <a:s r="154">
+                                 <a:s r="152">
+                                    <a:s>Global</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="154">
+                                    <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                    <a:s r="153">
+                                       <a:s>QualifyingEncounter</a:s>
+                                    </a:s>
+                                    <a:s> )</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+      and </a:s>
+                           <a:s r="161">
+                              <a:s r="157">
+                                 <a:s r="156">
+                                    <a:s>BleedingDiagnosis</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="157">
+                                    <a:s>prevalencePeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="161">
+                                 <a:s>starts </a:s>
+                                 <a:s r="160">
+                                    <a:s>120 hours</a:s>
+                                 </a:s>
+                                 <a:s> or less after</a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="159">
+                                 <a:s r="158">
+                                    <a:s>AnticoagulantMedication</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="159">
+                                    <a:s>relevantDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      and </a:s>
+                        <a:s r="168">
+                           <a:s r="164">
+                              <a:s r="163">
+                                 <a:s>AnticoagulantMedication</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="164">
+                                 <a:s>relevantDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="168"> during </a:s>
+                           <a:s r="167">
+                              <a:s r="165">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="167">
+                                 <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                 <a:s r="166">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="171">
+                     <a:s>return </a:s>
+                     <a:s r="170">
+                        <a:s>QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="172" locator="59:3-66:30" xsi:type="Query">
+            <source localId="145" locator="60:5-60:47" alias="QualifyingEncounter">
+               <expression localId="144" locator="60:5-60:27" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="147" locator="61:5-61:64" alias="BleedingDiagnosis">
+               <expression localId="146" locator="61:5-61:46" xmlns:ns9="urn:healthit-gov:qdm:v5_5" dataType="ns9:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="61:19-61:45" name="Bleeding at Critical Site" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source localId="149" locator="62:5-62:94" alias="AnticoagulantMedication">
+               <expression localId="148" locator="62:5-62:70" xmlns:ns10="urn:healthit-gov:qdm:v5_5" dataType="ns10:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="62:34-62:69" name="Anticoagulants for VTE Prophylaxis" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="169" locator="63:5-65:121" xsi:type="And">
+               <operand localId="162" locator="63:11-64:116" xsi:type="And">
+                  <operand localId="155" locator="63:11-63:115" xsi:type="IncludedIn">
+                     <operand localId="151" locator="63:11-63:44" path="prevalencePeriod" scope="BleedingDiagnosis" xsi:type="Property"/>
+                     <operand localId="154" locator="63:53-63:115" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="153" locator="63:95-63:113" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="161" locator="64:11-64:116" xsi:type="And">
+                     <operand locator="64:53-64:69" xsi:type="In">
+                        <operand locator="64:46-64:51" xsi:type="Start">
+                           <operand localId="157" locator="64:11-64:44" path="prevalencePeriod" scope="BleedingDiagnosis" xsi:type="Property"/>
+                        </operand>
+                        <operand locator="64:53-64:69" lowClosed="false" highClosed="true" xsi:type="Interval">
+                           <low localId="159" locator="64:77-64:116" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                           <high locator="64:101-64:116" xsi:type="Add">
+                              <operand localId="159" locator="64:77-64:116" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                              <operand localId="160" locator="64:53-64:61" value="120" unit="hours" xsi:type="Quantity"/>
+                           </high>
+                        </operand>
+                     </operand>
+                     <operand locator="64:53-64:69" xsi:type="Not">
+                        <operand locator="64:53-64:69" xsi:type="IsNull">
+                           <operand localId="159" locator="64:77-64:116" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="168" locator="65:11-65:121" xsi:type="In">
+                  <operand localId="164" locator="65:11-65:50" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                  <operand localId="167" locator="65:59-65:121" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="166" locator="65:101-65:119" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                  </operand>
+               </operand>
+            </where>
+            <return localId="171" locator="66:5-66:30">
+               <expression localId="170" locator="66:12-66:30" name="QualifyingEncounter" xsi:type="AliasRef"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="214" locator="87:1-97:3" name="Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>define &quot;Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication&quot;:
+  </a:s>
+               <a:s r="213">
+                  <a:s>exists </a:s>
+                  <a:s r="212">
+                     <a:s>( </a:s>
+                     <a:s r="212">
+                        <a:s>
+                           <a:s>from
+      </a:s>
+                           <a:s r="179">
+                              <a:s r="178">
+                                 <a:s r="178">
+                                    <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Hemoglobin lab test&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> FirstHemoglobinLabResult</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="181">
+                              <a:s r="180">
+                                 <a:s r="180">
+                                    <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Hemoglobin lab test&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> SecondHemoglobinLabResult</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="183">
+                              <a:s r="182">
+                                 <a:s>
+                                    <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> QualifyingEncounter</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="185">
+                              <a:s r="184">
+                                 <a:s r="184">
+                                    <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Anticoagulants for VTE Prophylaxis&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AnticoagulantMedication</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="211">
+                           <a:s>where </a:s>
+                           <a:s r="211">
+                              <a:s r="205">
+                                 <a:s r="198">
+                                    <a:s r="191">
+                                       <a:s r="187">
+                                          <a:s r="186">
+                                             <a:s>FirstHemoglobinLabResult</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="187">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="191">
+                                          <a:s r="190">
+                                             <a:s>120 hours</a:s>
+                                          </a:s>
+                                          <a:s> or less after</a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="189">
+                                          <a:s r="188">
+                                             <a:s>AnticoagulantMedication</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="189">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+        and </a:s>
+                                    <a:s r="197">
+                                       <a:s r="193">
+                                          <a:s r="192">
+                                             <a:s>SecondHemoglobinLabResult</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="193">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="197">
+                                          <a:s r="196">
+                                             <a:s>120 hours</a:s>
+                                          </a:s>
+                                          <a:s> or less after</a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="195">
+                                          <a:s r="194">
+                                             <a:s>AnticoagulantMedication</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="195">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        and </a:s>
+                                 <a:s r="204">
+                                    <a:s r="200">
+                                       <a:s r="199">
+                                          <a:s>AnticoagulantMedication</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="200">
+                                          <a:s>relevantDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="204"> during </a:s>
+                                    <a:s r="203">
+                                       <a:s r="201">
+                                          <a:s>Global</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="203">
+                                          <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                          <a:s r="202">
+                                             <a:s>QualifyingEncounter</a:s>
+                                          </a:s>
+                                          <a:s> )</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        and </a:s>
+                              <a:s r="210">
+                                 <a:s r="207">
+                                    <a:s r="206">
+                                       <a:s>FirstHemoglobinLabResult</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="207">
+                                       <a:s>id</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> != </a:s>
+                                 <a:s r="209">
+                                    <a:s r="208">
+                                       <a:s>SecondHemoglobinLabResult</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="209">
+                                       <a:s>id</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="213" locator="88:3-97:3" xsi:type="Exists">
+            <operand localId="212" locator="88:10-97:3" xsi:type="Query">
+               <source localId="179" locator="89:7-89:84" alias="FirstHemoglobinLabResult">
+                  <expression localId="178" locator="89:7-89:59" xmlns:ns11="urn:healthit-gov:qdm:v5_5" dataType="ns11:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="89:38-89:58" name="Hemoglobin lab test" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="181" locator="90:7-90:85" alias="SecondHemoglobinLabResult">
+                  <expression localId="180" locator="90:7-90:59" xmlns:ns12="urn:healthit-gov:qdm:v5_5" dataType="ns12:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="90:38-90:58" name="Hemoglobin lab test" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="183" locator="91:7-91:49" alias="QualifyingEncounter">
+                  <expression localId="182" locator="91:7-91:29" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+               </source>
+               <source localId="185" locator="92:7-92:96" alias="AnticoagulantMedication">
+                  <expression localId="184" locator="92:7-92:72" xmlns:ns13="urn:healthit-gov:qdm:v5_5" dataType="ns13:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="92:36-92:71" name="Anticoagulants for VTE Prophylaxis" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <where localId="211" locator="93:7-96:71" xsi:type="And">
+                  <operand localId="205" locator="93:13-95:123" xsi:type="And">
+                     <operand localId="198" locator="93:13-94:119" xsi:type="And">
+                        <operand localId="191" locator="93:13-93:118" xsi:type="And">
+                           <operand locator="93:55-93:71" xsi:type="In">
+                              <operand localId="187" locator="93:13-93:53" path="relevantDatetime" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                              <operand locator="93:55-93:71" lowClosed="false" highClosed="true" xsi:type="Interval">
+                                 <low localId="189" locator="93:79-93:118" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                 <high locator="93:103-93:118" xsi:type="Add">
+                                    <operand localId="189" locator="93:79-93:118" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                    <operand localId="190" locator="93:55-93:63" value="120" unit="hours" xsi:type="Quantity"/>
+                                 </high>
+                              </operand>
+                           </operand>
+                           <operand locator="93:55-93:71" xsi:type="Not">
+                              <operand locator="93:55-93:71" xsi:type="IsNull">
+                                 <operand localId="189" locator="93:79-93:118" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="197" locator="94:13-94:119" xsi:type="And">
+                           <operand locator="94:56-94:72" xsi:type="In">
+                              <operand localId="193" locator="94:13-94:54" path="relevantDatetime" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                              <operand locator="94:56-94:72" lowClosed="false" highClosed="true" xsi:type="Interval">
+                                 <low localId="195" locator="94:80-94:119" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                 <high locator="94:104-94:119" xsi:type="Add">
+                                    <operand localId="195" locator="94:80-94:119" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                    <operand localId="196" locator="94:56-94:64" value="120" unit="hours" xsi:type="Quantity"/>
+                                 </high>
+                              </operand>
+                           </operand>
+                           <operand locator="94:56-94:72" xsi:type="Not">
+                              <operand locator="94:56-94:72" xsi:type="IsNull">
+                                 <operand localId="195" locator="94:80-94:119" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="204" locator="95:13-95:123" xsi:type="In">
+                        <operand localId="200" locator="95:13-95:52" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                        <operand localId="203" locator="95:61-95:123" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="202" locator="95:103-95:121" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="210" locator="96:13-96:71" xsi:type="Not">
+                     <operand locator="96:13-96:71" xsi:type="Equal">
+                        <operand localId="207" locator="96:13-96:39" path="id" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                        <operand localId="209" locator="96:44-96:71" path="id" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+               </where>
+               <return distinct="true">
+                  <expression xsi:type="Tuple">
+                     <element name="FirstHemoglobinLabResult">
+                        <value name="FirstHemoglobinLabResult" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="SecondHemoglobinLabResult">
+                        <value name="SecondHemoglobinLabResult" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="QualifyingEncounter">
+                        <value name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="AnticoagulantMedication">
+                        <value name="AnticoagulantMedication" xsi:type="AliasRef"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="272" locator="134:1-145:3" name="Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="272">
+               <a:s>define &quot;Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests&quot;:
+  </a:s>
+               <a:s r="271">
+                  <a:s>exists </a:s>
+                  <a:s r="270">
+                     <a:s>( </a:s>
+                     <a:s r="270">
+                        <a:s>
+                           <a:s>from
+      </a:s>
+                           <a:s r="218">
+                              <a:s r="217">
+                                 <a:s r="217">
+                                    <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Hemoglobin lab test&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> FirstHemoglobinLabResult</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="220">
+                              <a:s r="219">
+                                 <a:s r="219">
+                                    <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Hemoglobin lab test&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> SecondHemoglobinLabResult</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="222">
+                              <a:s r="221">
+                                 <a:s>
+                                    <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> QualifyingEncounter</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="269">
+                           <a:s>where </a:s>
+                           <a:s r="269">
+                              <a:s r="263">
+                                 <a:s r="254">
+                                    <a:s r="247">
+                                       <a:s r="240">
+                                          <a:s r="233">
+                                             <a:s r="231">
+                                                <a:s>( </a:s>
+                                                <a:s r="231">
+                                                   <a:s r="226">
+                                                      <a:s>( </a:s>
+                                                      <a:s r="226">
+                                                         <a:s r="224">
+                                                            <a:s r="223">
+                                                               <a:s>FirstHemoglobinLabResult</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="224">
+                                                               <a:s>result</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> as </a:s>
+                                                         <a:s r="225">
+                                                            <a:s>Quantity</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s> )</a:s>
+                                                   </a:s>
+                                                   <a:s> - </a:s>
+                                                   <a:s r="230">
+                                                      <a:s>( </a:s>
+                                                      <a:s r="230">
+                                                         <a:s r="228">
+                                                            <a:s r="227">
+                                                               <a:s>SecondHemoglobinLabResult</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="228">
+                                                               <a:s>result</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> as </a:s>
+                                                         <a:s r="229">
+                                                            <a:s>Quantity</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s> )</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> )</a:s>
+                                             </a:s>
+                                             <a:s> >= </a:s>
+                                             <a:s r="232">
+                                                <a:s>2 'g/dL'</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+        and </a:s>
+                                          <a:s r="239">
+                                             <a:s r="235">
+                                                <a:s r="234">
+                                                   <a:s>FirstHemoglobinLabResult</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="235">
+                                                   <a:s>relevantDatetime</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="239">
+                                                <a:s r="238">
+                                                   <a:s>48 hours</a:s>
+                                                </a:s>
+                                                <a:s> or less before or on</a:s>
+                                             </a:s>
+                                             <a:s> </a:s>
+                                             <a:s r="237">
+                                                <a:s r="236">
+                                                   <a:s>SecondHemoglobinLabResult</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="237">
+                                                   <a:s>relevantDatetime</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+        and </a:s>
+                                       <a:s r="246">
+                                          <a:s r="242">
+                                             <a:s r="241">
+                                                <a:s>FirstHemoglobinLabResult</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="242">
+                                                <a:s>relevantDatetime</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s r="246"> during </a:s>
+                                          <a:s r="245">
+                                             <a:s r="243">
+                                                <a:s>Global</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="245">
+                                                <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                                <a:s r="244">
+                                                   <a:s>QualifyingEncounter</a:s>
+                                                </a:s>
+                                                <a:s> )</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+        and </a:s>
+                                    <a:s r="253">
+                                       <a:s r="249">
+                                          <a:s r="248">
+                                             <a:s>SecondHemoglobinLabResult</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="249">
+                                             <a:s>relevantDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s r="253"> during </a:s>
+                                       <a:s r="252">
+                                          <a:s r="250">
+                                             <a:s>Global</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="252">
+                                             <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                             <a:s r="251">
+                                                <a:s>QualifyingEncounter</a:s>
+                                             </a:s>
+                                             <a:s> )</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        and </a:s>
+                                 <a:s r="262">
+                                    <a:s r="256">
+                                       <a:s r="255">
+                                          <a:s>FirstHemoglobinLabResult</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="256">
+                                          <a:s>relevantDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="262">
+                                       <a:s r="261">
+                                          <a:s>24 hours</a:s>
+                                       </a:s>
+                                       <a:s> or more after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="260">
+                                       <a:s>start of </a:s>
+                                       <a:s r="259">
+                                          <a:s r="257">
+                                             <a:s>Global</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="259">
+                                             <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                             <a:s r="258">
+                                                <a:s>QualifyingEncounter</a:s>
+                                             </a:s>
+                                             <a:s> )</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        and </a:s>
+                              <a:s r="268">
+                                 <a:s r="265">
+                                    <a:s r="264">
+                                       <a:s>FirstHemoglobinLabResult</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="265">
+                                       <a:s>id</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> != </a:s>
+                                 <a:s r="267">
+                                    <a:s r="266">
+                                       <a:s>SecondHemoglobinLabResult</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="267">
+                                       <a:s>id</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="271" locator="135:3-145:3" xsi:type="Exists">
+            <operand localId="270" locator="135:10-145:3" xsi:type="Query">
+               <source localId="218" locator="136:7-136:84" alias="FirstHemoglobinLabResult">
+                  <expression localId="217" locator="136:7-136:59" xmlns:ns14="urn:healthit-gov:qdm:v5_5" dataType="ns14:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="136:38-136:58" name="Hemoglobin lab test" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="220" locator="137:7-137:85" alias="SecondHemoglobinLabResult">
+                  <expression localId="219" locator="137:7-137:59" xmlns:ns15="urn:healthit-gov:qdm:v5_5" dataType="ns15:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="137:38-137:58" name="Hemoglobin lab test" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="222" locator="138:7-138:49" alias="QualifyingEncounter">
+                  <expression localId="221" locator="138:7-138:29" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="269" locator="139:7-144:71" xsi:type="And">
+                  <operand localId="263" locator="139:13-143:149" xsi:type="And">
+                     <operand localId="254" locator="139:13-142:125" xsi:type="And">
+                        <operand localId="247" locator="139:13-141:124" xsi:type="And">
+                           <operand localId="240" locator="139:13-140:126" xsi:type="And">
+                              <operand localId="233" locator="139:13-139:126" xsi:type="GreaterOrEqual">
+                                 <operand localId="231" locator="139:13-139:114" xsi:type="Subtract">
+                                    <operand localId="226" locator="139:15-139:61" strict="false" xsi:type="As">
+                                       <operand localId="224" locator="139:17-139:47" path="result" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                                       <asTypeSpecifier localId="225" locator="139:52-139:59" name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    </operand>
+                                    <operand localId="230" locator="139:65-139:112" strict="false" xsi:type="As">
+                                       <operand localId="228" locator="139:67-139:98" path="result" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                                       <asTypeSpecifier localId="229" locator="139:103-139:110" name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    </operand>
+                                 </operand>
+                                 <operand localId="232" locator="139:119-139:126" value="2" unit="g/dL" xsi:type="Quantity"/>
+                              </operand>
+                              <operand localId="239" locator="140:13-140:126" xsi:type="And">
+                                 <operand locator="140:55-140:70" xsi:type="In">
+                                    <operand localId="235" locator="140:13-140:53" path="relevantDatetime" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                                    <operand locator="140:55-140:70" lowClosed="true" highClosed="true" xsi:type="Interval">
+                                       <low locator="140:111-140:126" xsi:type="Subtract">
+                                          <operand localId="237" locator="140:85-140:126" path="relevantDatetime" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                                          <operand localId="238" locator="140:55-140:62" value="48" unit="hours" xsi:type="Quantity"/>
+                                       </low>
+                                       <high localId="237" locator="140:85-140:126" path="relevantDatetime" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                                    </operand>
+                                 </operand>
+                                 <operand locator="140:55-140:70" xsi:type="Not">
+                                    <operand locator="140:55-140:70" xsi:type="IsNull">
+                                       <operand localId="237" locator="140:85-140:126" path="relevantDatetime" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                                    </operand>
+                                 </operand>
+                              </operand>
+                           </operand>
+                           <operand localId="246" locator="141:13-141:124" xsi:type="In">
+                              <operand localId="242" locator="141:13-141:53" path="relevantDatetime" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                              <operand localId="245" locator="141:62-141:124" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                                 <operand localId="244" locator="141:104-141:122" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="253" locator="142:13-142:125" xsi:type="In">
+                           <operand localId="249" locator="142:13-142:54" path="relevantDatetime" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                           <operand localId="252" locator="142:63-142:125" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="251" locator="142:105-142:123" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="262" locator="143:13-143:149" xsi:type="SameOrAfter">
+                        <operand localId="256" locator="143:13-143:53" path="relevantDatetime" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                        <operand locator="143:78-143:149" xsi:type="Add">
+                           <operand localId="260" locator="143:78-143:149" xsi:type="Start">
+                              <operand localId="259" locator="143:87-143:149" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                                 <operand localId="258" locator="143:129-143:147" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="261" locator="143:55-143:62" value="24" unit="hours" xsi:type="Quantity"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="268" locator="144:13-144:71" xsi:type="Not">
+                     <operand locator="144:13-144:71" xsi:type="Equal">
+                        <operand localId="265" locator="144:13-144:39" path="id" scope="FirstHemoglobinLabResult" xsi:type="Property"/>
+                        <operand localId="267" locator="144:44-144:71" path="id" scope="SecondHemoglobinLabResult" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+               </where>
+               <return distinct="true">
+                  <expression xsi:type="Tuple">
+                     <element name="FirstHemoglobinLabResult">
+                        <value name="FirstHemoglobinLabResult" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="SecondHemoglobinLabResult">
+                        <value name="SecondHemoglobinLabResult" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="QualifyingEncounter">
+                        <value name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="286" locator="99:1-106:3" name="Hemoglobin Lab Tests Indicative of Bleeding Event" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="286">
+               <a:s>define &quot;Hemoglobin Lab Tests Indicative of Bleeding Event&quot;:
+  </a:s>
+               <a:s r="285">
+                  <a:s>exists </a:s>
+                  <a:s r="284">
+                     <a:s>( </a:s>
+                     <a:s r="284">
+                        <a:s>
+                           <a:s>from
+      </a:s>
+                           <a:s r="216">
+                              <a:s r="215">
+                                 <a:s>
+                                    <a:s>&quot;Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> HemoglobinLabAntiCoagulant</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="274">
+                              <a:s r="273">
+                                 <a:s>
+                                    <a:s>&quot;Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> HemoglobinLabAbsoluteDecrease</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="276">
+                              <a:s r="275">
+                                 <a:s>
+                                    <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> QualifyingEncounter</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="283">
+                           <a:s>where </a:s>
+                           <a:s r="283">
+                              <a:s r="279">
+                                 <a:s>( </a:s>
+                                 <a:s r="279">
+                                    <a:s>
+                                       <a:s r="278">
+                                          <a:s r="277">
+                                             <a:s>
+                                                <a:s>HemoglobinLabAntiCoagulant</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> isTrue</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                              <a:s>
+        and </a:s>
+                              <a:s r="282">
+                                 <a:s>( </a:s>
+                                 <a:s r="282">
+                                    <a:s>
+                                       <a:s r="281">
+                                          <a:s r="280">
+                                             <a:s>
+                                                <a:s>HemoglobinLabAbsoluteDecrease</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> isTrue</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="285" locator="100:3-106:3" xsi:type="Exists">
+            <operand localId="284" locator="100:10-106:3" xsi:type="Query">
+               <source localId="216" locator="101:7-101:107" alias="HemoglobinLabAntiCoagulant">
+                  <expression localId="215" locator="101:7-101:80" name="Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication" xsi:type="ExpressionRef"/>
+               </source>
+               <source localId="274" locator="102:7-102:94" alias="HemoglobinLabAbsoluteDecrease">
+                  <expression localId="273" locator="102:7-102:64" name="Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests" xsi:type="ExpressionRef"/>
+               </source>
+               <source localId="276" locator="103:7-103:49" alias="QualifyingEncounter">
+                  <expression localId="275" locator="103:7-103:29" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="283" locator="104:7-105:52" xsi:type="And">
+                  <operand localId="279" locator="104:13-104:49" xsi:type="Query">
+                     <source localId="278" locator="104:15-104:47" alias="isTrue">
+                        <expression localId="277" locator="104:15-104:40" name="HemoglobinLabAntiCoagulant" xsi:type="AliasRef"/>
+                     </source>
+                  </operand>
+                  <operand localId="282" locator="105:13-105:52" xsi:type="Query">
+                     <source localId="281" locator="105:15-105:50" alias="isTrue">
+                        <expression localId="280" locator="105:15-105:43" name="HemoglobinLabAbsoluteDecrease" xsi:type="AliasRef"/>
+                     </source>
+                  </operand>
+               </where>
+               <return distinct="true">
+                  <expression xsi:type="Tuple">
+                     <element name="HemoglobinLabAntiCoagulant">
+                        <value name="HemoglobinLabAntiCoagulant" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="HemoglobinLabAbsoluteDecrease">
+                        <value name="HemoglobinLabAbsoluteDecrease" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="QualifyingEncounter">
+                        <value name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="299" locator="78:1-85:30" name="Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="299">
+               <a:s>define &quot;Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding&quot;:
+  </a:s>
+               <a:s r="298">
+                  <a:s>
+                     <a:s>from
+    </a:s>
+                     <a:s r="175">
+                        <a:s r="174">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="177">
+                        <a:s r="176">
+                           <a:s>
+                              <a:s>&quot;Blood Transfusion Indicative of Bleeding Event&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BloodTransfusion</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="288">
+                        <a:s r="287">
+                           <a:s>
+                              <a:s>&quot;Hemoglobin Lab Tests Indicative of Bleeding Event&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> HemoglobinDecrease</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="295">
+                     <a:s>where </a:s>
+                     <a:s r="295">
+                        <a:s r="291">
+                           <a:s>( </a:s>
+                           <a:s r="291">
+                              <a:s>
+                                 <a:s r="290">
+                                    <a:s r="289">
+                                       <a:s>
+                                          <a:s>BloodTransfusion</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> isTrue</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s>
+      and </a:s>
+                        <a:s r="294">
+                           <a:s>( </a:s>
+                           <a:s r="294">
+                              <a:s>
+                                 <a:s r="293">
+                                    <a:s r="292">
+                                       <a:s>
+                                          <a:s>HemoglobinDecrease</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> isTrue</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="297">
+                     <a:s>return </a:s>
+                     <a:s r="296">
+                        <a:s>QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="298" locator="79:3-85:30" xsi:type="Query">
+            <source localId="175" locator="80:5-80:47" alias="QualifyingEncounter">
+               <expression localId="174" locator="80:5-80:27" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="177" locator="81:5-81:69" alias="BloodTransfusion">
+               <expression localId="176" locator="81:5-81:52" name="Blood Transfusion Indicative of Bleeding Event" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="288" locator="82:5-82:74" alias="HemoglobinDecrease">
+               <expression localId="287" locator="82:5-82:55" name="Hemoglobin Lab Tests Indicative of Bleeding Event" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="295" locator="83:5-84:39" xsi:type="And">
+               <operand localId="291" locator="83:11-83:37" xsi:type="Query">
+                  <source localId="290" locator="83:13-83:35" alias="isTrue">
+                     <expression localId="289" locator="83:13-83:28" name="BloodTransfusion" xsi:type="AliasRef"/>
+                  </source>
+               </operand>
+               <operand localId="294" locator="84:11-84:39" xsi:type="Query">
+                  <source localId="293" locator="84:13-84:37" alias="isTrue">
+                     <expression localId="292" locator="84:13-84:30" name="HemoglobinDecrease" xsi:type="AliasRef"/>
+                  </source>
+               </operand>
+            </where>
+            <return localId="297" locator="85:5-85:30">
+               <expression localId="296" locator="85:12-85:30" name="QualifyingEncounter" xsi:type="AliasRef"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="333" locator="147:1-155:3" name="Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="333">
+               <a:s>define &quot;Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication&quot;:
+  </a:s>
+               <a:s r="332">
+                  <a:s>exists </a:s>
+                  <a:s r="331">
+                     <a:s>( </a:s>
+                     <a:s r="331">
+                        <a:s>
+                           <a:s>from
+      </a:s>
+                           <a:s r="306">
+                              <a:s r="305">
+                                 <a:s r="305">
+                                    <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Anticoagulants for VTE Prophylaxis&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AnticoagulantMedication</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="308">
+                              <a:s r="307">
+                                 <a:s r="307">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Bleeding at Non Critical Site&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> NonCriticalBleedingDiagnosis</a:s>
+                           </a:s>
+                           <a:s>,
+      </a:s>
+                           <a:s r="310">
+                              <a:s r="309">
+                                 <a:s>
+                                    <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> QualifyingEncounter</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="330">
+                           <a:s>where </a:s>
+                           <a:s r="330">
+                              <a:s r="323">
+                                 <a:s r="316">
+                                    <a:s r="312">
+                                       <a:s r="311">
+                                          <a:s>NonCriticalBleedingDiagnosis</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="312">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="316">
+                                       <a:s>starts </a:s>
+                                       <a:s r="315">
+                                          <a:s>120 hours</a:s>
+                                       </a:s>
+                                       <a:s> or less after</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="314">
+                                       <a:s r="313">
+                                          <a:s>AnticoagulantMedication</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="314">
+                                          <a:s>relevantDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        and </a:s>
+                                 <a:s r="322">
+                                    <a:s r="318">
+                                       <a:s r="317">
+                                          <a:s>NonCriticalBleedingDiagnosis</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="318">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="322"> during </a:s>
+                                    <a:s r="321">
+                                       <a:s r="319">
+                                          <a:s>Global</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="321">
+                                          <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                          <a:s r="320">
+                                             <a:s>QualifyingEncounter</a:s>
+                                          </a:s>
+                                          <a:s> )</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        and </a:s>
+                              <a:s r="329">
+                                 <a:s r="325">
+                                    <a:s r="324">
+                                       <a:s>AnticoagulantMedication</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="325">
+                                       <a:s>relevantDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s r="329"> during </a:s>
+                                 <a:s r="328">
+                                    <a:s r="326">
+                                       <a:s>Global</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="328">
+                                       <a:s>&quot;HospitalizationWithObservation&quot; ( </a:s>
+                                       <a:s r="327">
+                                          <a:s>QualifyingEncounter</a:s>
+                                       </a:s>
+                                       <a:s> )</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="332" locator="148:3-155:3" xsi:type="Exists">
+            <operand localId="331" locator="148:10-155:3" xsi:type="Query">
+               <source localId="306" locator="149:7-149:96" alias="AnticoagulantMedication">
+                  <expression localId="305" locator="149:7-149:72" xmlns:ns16="urn:healthit-gov:qdm:v5_5" dataType="ns16:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="149:36-149:71" name="Anticoagulants for VTE Prophylaxis" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="308" locator="150:7-150:81" alias="NonCriticalBleedingDiagnosis">
+                  <expression localId="307" locator="150:7-150:52" xmlns:ns17="urn:healthit-gov:qdm:v5_5" dataType="ns17:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="150:21-150:51" name="Bleeding at Non Critical Site" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <source localId="310" locator="151:7-151:49" alias="QualifyingEncounter">
+                  <expression localId="309" locator="151:7-151:29" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="330" locator="152:7-154:123" xsi:type="And">
+                  <operand localId="323" locator="152:13-153:128" xsi:type="And">
+                     <operand localId="316" locator="152:13-152:129" xsi:type="And">
+                        <operand locator="152:66-152:82" xsi:type="In">
+                           <operand locator="152:59-152:64" xsi:type="Start">
+                              <operand localId="312" locator="152:13-152:57" path="prevalencePeriod" scope="NonCriticalBleedingDiagnosis" xsi:type="Property"/>
+                           </operand>
+                           <operand locator="152:66-152:82" lowClosed="false" highClosed="true" xsi:type="Interval">
+                              <low localId="314" locator="152:90-152:129" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                              <high locator="152:114-152:129" xsi:type="Add">
+                                 <operand localId="314" locator="152:90-152:129" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                                 <operand localId="315" locator="152:66-152:74" value="120" unit="hours" xsi:type="Quantity"/>
+                              </high>
+                           </operand>
+                        </operand>
+                        <operand locator="152:66-152:82" xsi:type="Not">
+                           <operand locator="152:66-152:82" xsi:type="IsNull">
+                              <operand localId="314" locator="152:90-152:129" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="322" locator="153:13-153:128" xsi:type="IncludedIn">
+                        <operand localId="318" locator="153:13-153:57" path="prevalencePeriod" scope="NonCriticalBleedingDiagnosis" xsi:type="Property"/>
+                        <operand localId="321" locator="153:66-153:128" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="320" locator="153:108-153:126" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="329" locator="154:13-154:123" xsi:type="In">
+                     <operand localId="325" locator="154:13-154:52" path="relevantDatetime" scope="AnticoagulantMedication" xsi:type="Property"/>
+                     <operand localId="328" locator="154:61-154:123" name="HospitalizationWithObservation" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="327" locator="154:103-154:121" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </operand>
+                  </operand>
+               </where>
+               <return distinct="true">
+                  <expression xsi:type="Tuple">
+                     <element name="AnticoagulantMedication">
+                        <value name="AnticoagulantMedication" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="NonCriticalBleedingDiagnosis">
+                        <value name="NonCriticalBleedingDiagnosis" xsi:type="AliasRef"/>
+                     </element>
+                     <element name="QualifyingEncounter">
+                        <value name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="354" locator="157:1-167:30" name="Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="354">
+               <a:s>define &quot;Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding&quot;:
+  </a:s>
+               <a:s r="353">
+                  <a:s>
+                     <a:s>from
+    </a:s>
+                     <a:s r="304">
+                        <a:s r="303">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="335">
+                        <a:s r="334">
+                           <a:s>
+                              <a:s>&quot;Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonCriticalBleedingDiagnosis</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="337">
+                        <a:s r="336">
+                           <a:s>
+                              <a:s>&quot;Blood Transfusion Indicative of Bleeding Event&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BloodTransfusion</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="339">
+                        <a:s r="338">
+                           <a:s>
+                              <a:s>&quot;Hemoglobin Lab Tests Indicative of Bleeding Event&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> HemoglobinDecrease</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="350">
+                     <a:s>where </a:s>
+                     <a:s r="350">
+                        <a:s r="342">
+                           <a:s>( </a:s>
+                           <a:s r="342">
+                              <a:s>
+                                 <a:s r="341">
+                                    <a:s r="340">
+                                       <a:s>
+                                          <a:s>NonCriticalBleedingDiagnosis</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> isTrue</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s>
+      and </a:s>
+                        <a:s r="349">
+                           <a:s>( </a:s>
+                           <a:s r="349">
+                              <a:s r="345">
+                                 <a:s>( </a:s>
+                                 <a:s r="345">
+                                    <a:s>
+                                       <a:s r="344">
+                                          <a:s r="343">
+                                             <a:s>
+                                                <a:s>HemoglobinDecrease</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> isTrue</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                              <a:s>
+          or </a:s>
+                              <a:s r="348">
+                                 <a:s>( </a:s>
+                                 <a:s r="348">
+                                    <a:s>
+                                       <a:s r="347">
+                                          <a:s r="346">
+                                             <a:s>
+                                                <a:s>BloodTransfusion</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> isTrue</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> )</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+      )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="352">
+                     <a:s>return </a:s>
+                     <a:s r="351">
+                        <a:s>QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="353" locator="158:3-167:30" xsi:type="Query">
+            <source localId="304" locator="159:5-159:47" alias="QualifyingEncounter">
+               <expression localId="303" locator="159:5-159:27" name="Qualifying Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="335" locator="160:5-160:108" alias="NonCriticalBleedingDiagnosis">
+               <expression localId="334" locator="160:5-160:79" name="Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="337" locator="161:5-161:69" alias="BloodTransfusion">
+               <expression localId="336" locator="161:5-161:52" name="Blood Transfusion Indicative of Bleeding Event" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="339" locator="162:5-162:74" alias="HemoglobinDecrease">
+               <expression localId="338" locator="162:5-162:55" name="Hemoglobin Lab Tests Indicative of Bleeding Event" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="350" locator="163:5-166:7" xsi:type="And">
+               <operand localId="342" locator="163:11-163:49" xsi:type="Query">
+                  <source localId="341" locator="163:13-163:47" alias="isTrue">
+                     <expression localId="340" locator="163:13-163:40" name="NonCriticalBleedingDiagnosis" xsi:type="AliasRef"/>
+                  </source>
+               </operand>
+               <operand localId="349" locator="164:11-166:7" xsi:type="Or">
+                  <operand localId="345" locator="164:13-164:41" xsi:type="Query">
+                     <source localId="344" locator="164:15-164:39" alias="isTrue">
+                        <expression localId="343" locator="164:15-164:32" name="HemoglobinDecrease" xsi:type="AliasRef"/>
+                     </source>
+                  </operand>
+                  <operand localId="348" locator="165:14-165:40" xsi:type="Query">
+                     <source localId="347" locator="165:16-165:38" alias="isTrue">
+                        <expression localId="346" locator="165:16-165:31" name="BloodTransfusion" xsi:type="AliasRef"/>
+                     </source>
+                  </operand>
+               </operand>
+            </where>
+            <return localId="352" locator="167:5-167:30">
+               <expression localId="351" locator="167:12-167:30" name="QualifyingEncounter" xsi:type="AliasRef"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="357" locator="111:1-114:93" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="357">
+               <a:s>define &quot;Numerator&quot;:
+  </a:s>
+               <a:s r="356">
+                  <a:s r="302">
+                     <a:s r="300">
+                        <a:s>&quot;Encounters With Critical Bleeding Diagnosis&quot;</a:s>
+                     </a:s>
+                     <a:s>
+    union </a:s>
+                     <a:s r="301">
+                        <a:s>&quot;Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    union </a:s>
+                  <a:s r="355">
+                     <a:s>&quot;Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="356" locator="112:3-114:93" xsi:type="Union">
+            <operand localId="302" locator="112:3-113:86" xsi:type="Union">
+               <operand localId="300" locator="112:3-112:47" name="Encounters With Critical Bleeding Diagnosis" xsi:type="ExpressionRef"/>
+               <operand localId="301" locator="113:11-113:86" name="Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="355" locator="114:11-114:93" name="Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="359" locator="116:1-117:51" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="359">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+  </a:s>
+               <a:s r="358">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="358" locator="117:3-117:51" xmlns:ns18="urn:healthit-gov:qdm:v5_5" dataType="ns18:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="117:40-117:50" name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="361" locator="119:1-120:43" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="361">
+               <a:s>define &quot;SDE Payer&quot;:
+  </a:s>
+               <a:s r="360">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="360" locator="120:3-120:43" xmlns:ns19="urn:healthit-gov:qdm:v5_5" dataType="ns19:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="120:36-120:42" name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="363" locator="122:1-123:41" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="363">
+               <a:s>define &quot;SDE Race&quot;:
+  </a:s>
+               <a:s r="362">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="362" locator="123:3-123:41" xmlns:ns20="urn:healthit-gov:qdm:v5_5" dataType="ns20:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="123:35-123:40" name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="365" locator="125:1-126:58" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="365">
+               <a:s>define &quot;SDE Sex&quot;:
+  </a:s>
+               <a:s r="364">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="364" locator="126:3-126:58" xmlns:ns21="urn:healthit-gov:qdm:v5_5" dataType="ns21:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="126:34-126:57" name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+   </statements>
+</library>

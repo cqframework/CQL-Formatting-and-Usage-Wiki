@@ -117,7 +117,7 @@ define function MedicationOrderPeriod(Order "Medication, Order"):
     (
       Coalesce(
         Order.daysSupplied,
-        Order.supply / Order.dosage * ToDaily(Order.frequency)
+        Order.supply / (Order.dosage * ToDaily(Order.frequency))
       ) * (1 + Coalesce(Order.refills, 0))
     ) durationInDays
       let startDatetime: Coalesce(start of Order.relevantPeriod, Order.authorDatetime)
@@ -177,7 +177,7 @@ define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
     (
       Coalesce(
         Dispense.daysSupplied,
-        Dispense.supply / Dispense.dosage * ToDaily(Dispense.frequency)
+        Dispense.supply / (Dispense.dosage * ToDaily(Dispense.frequency))
       )
     ) durationInDays
       let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
@@ -226,7 +226,7 @@ define function MedicationDischargePeriod(Medication "Medication, Discharge"):
   (
     Coalesce(
       Medication.daysSupplied,
-      Medication.supply / Medication.dosage * ToDaily(Medication.frequency)
+      Medication.supply / (Medication.dosage * ToDaily(Medication.frequency))
     ) * (1 + Coalesce(Medication.refills, 0))
   ) durationInDays
     let startDatetime: Medication.authorDatetime
