@@ -236,6 +236,9 @@ period by anchoring that to the whenHandedOver
 Calculates Medication Period for a given MedicationDispense
 */
 
+// TODO: Consider whenPrepared as a default for whenHandedOver
+// Many systems don't populate the whenHandedOver versus the whenPrepared
+
 define function MedicationDispensePeriod(Dispense "MedicationDispense"):
   Dispense D
     let

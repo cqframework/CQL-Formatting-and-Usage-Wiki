@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Hospital Harm - Venous Thromboembolism Pharmacoprophylaxis-Related Major Bleeding 0.1.055</title>
+        <title>Hospital Harm - Venous Thromboembolism Pharmacoprophylaxis-Related Major Bleeding 0.1.058</title>
 <style type="text/css">
     body {
         color: rgb(0,0,0);
@@ -628,7 +628,7 @@
             <td style="width:30%">877</td>
 
             <th scope="row" class="row-header"><span class="td_label">eCQM Version Number</span></th>
-            <td style="width:30%">0.1.055</td>
+            <td style="width:30%">0.1.058</td>
         </tr>
         <tr>
             <th scope="row" class="row-header"><span class="td_label">NQF Number</span></th>
@@ -657,7 +657,7 @@
             <th scope="row" class="row-header"><span class="td_label">Description</span></th>
             <td style="width:80%" colspan="3">
                 <div style="width:660px;">
-                    <pre>The measure assesses the proportion of encounters of patients 18 years of age or older at admission  and who were administered at least one anticoagulant medication for venous thromboembolism (VTE) prophylaxis during the encounter and within 5 days prior to a subsequent bleeding event. Bleeding events must occur during the encounter.
+                    <pre>The proportion of inpatient hospitalizations for patients 18 years of age or older at admission who were administered at least one anticoagulant medication for venous thromboembolism (VTE) prophylaxis during the encounter and within 5 days prior to a subsequent bleeding event. Bleeding events must occur during the encounter.
 
 The measure excludes encounters for patient who received dialysis that overlapped the encounter, had a diagnosis related to pregnancy or obstetrics that overlapped the encounter, or received an anticoagulant medication for a reason other than for VTE prophylaxis.</pre>
                 </div>
@@ -937,7 +937,7 @@ While many medication classes can increase a patient’s risk of bleeding, antic
             <th scope="row" class="row-header"><span class="td_label">Definition</span></th>
             <td style="width:80%" colspan="3">
                 <div style="width:660px;">
-                    <pre>None</pre>
+                    <pre>Inpatient hospitalizations: Includes time in the emergency department or observation when these encounters are within an hour of the inpatient admission.</pre>
                 </div>
             </td>
         </tr>
@@ -947,19 +947,19 @@ While many medication classes can increase a patient’s risk of bleeding, antic
                 <div style="width:660px;">
                     <pre>The measure is currently confined to using g/dL as the unit of measurement for hemoglobin results.
 
-To calculate the hospital-level measure result, divide the total numerator encounter events by the total number of eligible encounters (denominator). 
+To calculate the hospital-level measure result, divide the total numerator encounter events by the total number of eligible inpatient hospitalizations (denominator). 
 
-For each inpatient encounter, eligible encounters include those where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter.
+Eligible inpatient hospitalizations (denominator) include those where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter.
 
-To exclude encounters from the denominator:
+To exclude inpatient hospitalizations from the denominator:
 
-1. Remove any encounters where patients received dialysis that overlapped the encounter.
+1. Remove any inpatient hospitalizations where patients received dialysis that overlapped the encounter.
 
-2. Remove any encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.
+2. Remove any inpatient hospitalizations where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.
 
-3. Remove encounters where patients received an anticoagulant medication for a reason other than for VTE prophylaxis. 
+3. Remove inpatient hospitalizations where patients received an anticoagulant medication for a reason other than for VTE prophylaxis. 
 
-To create the numerator include all encounter records in the denominator with:
+To create the numerator, for each eligible inpatient hospitalization identify:
 
 Criterion A. Documented diagnosis only of acute bleeding in/into a critical anatomic site 
 
@@ -968,18 +968,18 @@ OR
 Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.
 
 Evidence of Criterion B bleeding event is determined by BOTH:
-(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)
+(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation)
 AND
-(2)	Transfusion  of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)
+(2)	Transfusion  of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department and observation)
 
 OR
 
 Criterion C. One evidence factor of a bleeding event and documented diagnosis of major bleeding at a non-critical anatomic site
  
 Evidence of Criterion C bleeding event is determine by EITHER:
-(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); 
+(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation); 
 OR
-(2)	Transfusion of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)
+(2)	Transfusion of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department and observation)
 
 This eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.
 
@@ -999,9 +999,9 @@ This version of the eCQM uses QDM version 5.5. Please refer to the eCQI resource
             <th scope="row" class="row-header"><span class="td_label">Initial Population</span></th>
             <td style="width:80%" colspan="3">
                 <div style="width:660px;">
-                    <pre>Encounters when the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter. 
+                    <pre>Inpatient hospitalizations where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter. 
 
-An encounter is considered an inpatient hospital admission, including time spent in the emergency department or in observation status when the patients are ultimately admitted to inpatient status.</pre>
+An encounter is considered an inpatient hospitalization, including time spent in the emergency department or in observation status when the patients are ultimately admitted to inpatient status.</pre>
                 </div>
             </td>
         </tr>
@@ -1017,11 +1017,11 @@ An encounter is considered an inpatient hospital admission, including time spent
                 <th scope="row" class="row-header"><span class="td_label">Denominator Exclusions</span></th>
                 <td style="width:80%" colspan="3">
                     <div style="width:660px;">
-                        <pre>Encounters where patients received dialysis that overlapped the encounter.
+                        <pre>Inpatient hospitalizations where patients received dialysis that overlapped the encounter.
 
-Encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.
+Inpatient hospitalizations where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.
 
-Encounters where the patient received an anticoagulant medication for a reason other than for VTE prophylaxis.</pre>
+Inpatient hospitalizations where the patient received an anticoagulant medication for a reason other than for VTE prophylaxis.</pre>
                     </div>
                 </td>
             </tr>
@@ -1029,7 +1029,7 @@ Encounters where the patient received an anticoagulant medication for a reason o
                 <th scope="row" class="row-header"><span class="td_label">Numerator</span></th>
                 <td style="width:80%" colspan="3">
                     <div style="width:660px;">
-                        <pre>Encounters where bleeding events occurred during the encounter and within 5 days following an anticoagulant medication administration for VTE prophylaxis during the same encounter. 
+                        <pre>Inpatient hospitalizations that include bleeding events during the encounter and within 5 days following an anticoagulant medication administration for VTE prophylaxis during the same encounter. 
 
 A bleeding event is defined as the presence of one of the following: 
 
@@ -1040,18 +1040,18 @@ OR
 Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.
 
 Evidence of Criterion B bleeding event is determined by BOTH:
-(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)
+(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation)
 AND
-(2)	Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)
+(2)	Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department and observation)
 
 OR
 
 Criterion C. One evidence factor of a bleeding event, with a documented diagnosis of major bleeding at a non-critical anatomic site.
 
 Evidence of Criterion C bleeding event is determine by EITHER:
-(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); 
+(1)	An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation); 
 OR
-(2)	Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)</pre>
+(2)	Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department and observation)</pre>
                     </div>
                 </td>
             </tr>
@@ -1100,8 +1100,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Initial_Population_1961288690"/>
-                <label for="Initial_Population_1961288690" class="list-header"><strong>Initial Population</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Initial_Population_687364902"/>
+                <label for="Initial_Population_687364902" class="list-header"><strong>Initial Population</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1123,8 +1123,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Denominator_2090441954"/>
-                <label for="Denominator_2090441954" class="list-header"><strong>Denominator</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Denominator_1972454274"/>
+                <label for="Denominator_1972454274" class="list-header"><strong>Denominator</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1146,8 +1146,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Denominator_Exclusions_72706320"/>
-                <label for="Denominator_Exclusions_72706320" class="list-header"><strong>Denominator Exclusions</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Denominator_Exclusions_722640662"/>
+                <label for="Denominator_Exclusions_722640662" class="list-header"><strong>Denominator Exclusions</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1171,8 +1171,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Numerator_776724324"/>
-                <label for="Numerator_776724324" class="list-header"><strong>Numerator</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Numerator_520530308"/>
+                <label for="Numerator_520530308" class="list-header"><strong>Numerator</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1196,8 +1196,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Numerator_Exclusions_1833545429"/>
-                <label for="Numerator_Exclusions_1833545429" class="list-header"><strong>Numerator Exclusions</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Numerator_Exclusions_303165472"/>
+                <label for="Numerator_Exclusions_303165472" class="list-header"><strong>Numerator Exclusions</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1219,8 +1219,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Denominator_Exceptions_1022354392"/>
-                <label for="Denominator_Exceptions_1022354392" class="list-header"><strong>Denominator Exceptions</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Denominator_Exceptions_824526990"/>
+                <label for="Denominator_Exceptions_824526990" class="list-header"><strong>Denominator Exceptions</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1242,8 +1242,8 @@ OR
 <li class="list-unstyled" style="list-style:none;padding-left:0px;">
     <div class="treeview hover p-l-10">
         <ul class="list-unstyled">
-            <li class="list-unstyled"><input type="checkbox" id="Stratification_118920105"/>
-                <label for="Stratification_118920105" class="list-header"><strong>Stratification</strong></label>
+            <li class="list-unstyled"><input type="checkbox" id="Stratification_1076735987"/>
+                <label for="Stratification_1076735987" class="list-header"><strong>Stratification</strong></label>
                 <ul class="code">
                     <li class="list-unstyled">
                         <div class="treeview hover p-l-10">
@@ -1269,66 +1269,8 @@ OR
                 <ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Absolute_Decrease_of_2_g_dL_Between_Hemoglobin_Lab_Tests1502533252" />
-            <label for="Absolute_Decrease_of_2_g_dL_Between_Hemoglobin_Lab_Tests1502533252" class="list-header"><strong>Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests</strong></label>
-            <ul class="code" style="margin-right: 20%; opacity: 1;">
-                <li class="list-unstyled">
-                    <div>
-                        <ul style="padding-left: 0px;">
-                            <li style="padding-left: 0px;" class="list-unstyled">
-                                <div>
-                                    <pre class="cql-definition-body">exists ( from
-    [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] FirstHemoglobinLabResult,
-    [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] SecondHemoglobinLabResult,
-    &quot;Qualifying Encounters&quot; QualifyingEncounter
-    where ( ( FirstHemoglobinLabResult.result as Quantity ) - ( SecondHemoglobinLabResult.result as Quantity ) ) &gt;= 2 &#39;g/dL&#39;
-      and FirstHemoglobinLabResult.relevantDatetime 48 hours or less before or on SecondHemoglobinLabResult.relevantDatetime
-      and FirstHemoglobinLabResult.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and SecondHemoglobinLabResult.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and FirstHemoglobinLabResult.relevantDatetime 24 hours or more after start of Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and FirstHemoglobinLabResult.id != SecondHemoglobinLabResult.id
-)</pre>
-                                </div>
-                            </li>
-                        </ul>&nbsp;
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
-    <li class="list-unstyled">
-        <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Blood_Transfusion_Indicative_of_Bleeding_Event1905385912" />
-            <label for="Blood_Transfusion_Indicative_of_Bleeding_Event1905385912" class="list-header"><strong>Blood Transfusion Indicative of Bleeding Event</strong></label>
-            <ul class="code" style="margin-right: 20%; opacity: 1;">
-                <li class="list-unstyled">
-                    <div>
-                        <ul style="padding-left: 0px;">
-                            <li style="padding-left: 0px;" class="list-unstyled">
-                                <div>
-                                    <pre class="cql-definition-body">exists ( from
-    [&quot;Procedure, Performed&quot;: &quot;Blood Transfusion Administration&quot;] BloodTransfusion,
-    [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication,
-    &quot;Qualifying Encounters&quot; QualifyingEncounter
-    where BloodTransfusion.relevantPeriod ends 120 hours or less after AnticoagulantMedication.relevantDatetime
-      and BloodTransfusion.relevantPeriod during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and BloodTransfusion.relevantPeriod starts 48 hours or more after start of Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and AnticoagulantMedication.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-)</pre>
-                                </div>
-                            </li>
-                        </ul>&nbsp;
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
-    <li class="list-unstyled">
-        <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Denominator608838198" />
-            <label for="Denominator608838198" class="list-header"><strong>Denominator</strong></label>
+            <input type="checkbox" id="Denominator1134100456" />
+            <label for="Denominator1134100456" class="list-header"><strong>Denominator</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1347,8 +1289,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Denominator_Exclusions596692629" />
-            <label for="Denominator_Exclusions596692629" class="list-header"><strong>Denominator Exclusions</strong></label>
+            <input type="checkbox" id="Denominator_Exclusions850578018" />
+            <label for="Denominator_Exclusions850578018" class="list-header"><strong>Denominator Exclusions</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1369,8 +1311,38 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Anticoagulants_for_Other_Indications1022480229" />
-            <label for="Encounters_With_Anticoagulants_for_Other_Indications1022480229" class="list-header"><strong>Encounters With Anticoagulants for Other Indications</strong></label>
+            <input type="checkbox" id="Encounters_With_Absolute_Decrease_of_2_g_dL_Between_Hemoglobin_Lab_Tests1909101976" />
+            <label for="Encounters_With_Absolute_Decrease_of_2_g_dL_Between_Hemoglobin_Lab_Tests1909101976" class="list-header"><strong>Encounters With Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests</strong></label>
+            <ul class="code" style="margin-right: 20%; opacity: 1;">
+                <li class="list-unstyled">
+                    <div>
+                        <ul style="padding-left: 0px;">
+                            <li style="padding-left: 0px;" class="list-unstyled">
+                                <div>
+                                    <pre class="cql-definition-body">from
+  &quot;Qualifying Encounters&quot; QualifyingEncounter,
+  [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] FirstHemoglobinLabResult,
+  [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] SecondHemoglobinLabResult
+  let HospEncounter: Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  where FirstHemoglobinLabResult.relevantDatetime during Interval[start of HospEncounter + 24 hours, 
+  end of HospEncounter]
+    and SecondHemoglobinLabResult.relevantDatetime during Interval[FirstHemoglobinLabResult.relevantDatetime, FirstHemoglobinLabResult.relevantDatetime + 48 hours]
+    and ( ( FirstHemoglobinLabResult.result as Quantity ) - ( SecondHemoglobinLabResult.result as Quantity ) ) &gt;= 2 &#39;g/dL&#39;
+    and FirstHemoglobinLabResult.id != SecondHemoglobinLabResult.id
+  return QualifyingEncounter</pre>
+                                </div>
+                            </li>
+                        </ul>&nbsp;
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
+    <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+            <input type="checkbox" id="Encounters_With_Anticoagulants_for_Other_Indications329953576" />
+            <label for="Encounters_With_Anticoagulants_for_Other_Indications329953576" class="list-header"><strong>Encounters With Anticoagulants for Other Indications</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1391,8 +1363,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Anticoagulants_For_VTE_Prophylaxis2098754041" />
-            <label for="Encounters_With_Anticoagulants_For_VTE_Prophylaxis2098754041" class="list-header"><strong>Encounters With Anticoagulants For VTE Prophylaxis</strong></label>
+            <input type="checkbox" id="Encounters_With_Anticoagulants_For_VTE_Prophylaxis1333346875" />
+            <label for="Encounters_With_Anticoagulants_For_VTE_Prophylaxis1333346875" class="list-header"><strong>Encounters With Anticoagulants For VTE Prophylaxis</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1413,8 +1385,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Critical_Bleeding_Diagnosis882303938" />
-            <label for="Encounters_With_Critical_Bleeding_Diagnosis882303938" class="list-header"><strong>Encounters With Critical Bleeding Diagnosis</strong></label>
+            <input type="checkbox" id="Encounters_With_Blood_Transfusion_Indicative_of_Bleeding_Event92765674" />
+            <label for="Encounters_With_Blood_Transfusion_Indicative_of_Bleeding_Event92765674" class="list-header"><strong>Encounters With Blood Transfusion Indicative of Bleeding Event</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1422,12 +1394,14 @@ OR
                             <li style="padding-left: 0px;" class="list-unstyled">
                                 <div>
                                     <pre class="cql-definition-body">from
-  &quot;Qualifying Encounters&quot; QualifyingEncounter,
-  [&quot;Diagnosis&quot;: &quot;Bleeding at Critical Site&quot;] BleedingDiagnosis,
-  [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication
-  where BleedingDiagnosis.prevalencePeriod during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-    and BleedingDiagnosis.prevalencePeriod starts 120 hours or less after AnticoagulantMedication.relevantDatetime
-    and AnticoagulantMedication.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  [&quot;Procedure, Performed&quot;: &quot;Blood Transfusion Administration&quot;] BloodTransfusion,
+  [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication,
+  &quot;Qualifying Encounters&quot; QualifyingEncounter
+  let HospEncounter: Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  where BloodTransfusion.relevantPeriod during Interval[start of HospEncounter + 48 hours, 
+  end of HospEncounter]
+    and BloodTransfusion.relevantPeriod ends 120 hours or less after AnticoagulantMedication.relevantDatetime
+    and AnticoagulantMedication.relevantDatetime during HospEncounter
   return QualifyingEncounter</pre>
                                 </div>
                             </li>
@@ -1440,8 +1414,36 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Dialysis_Procedure705424777" />
-            <label for="Encounters_With_Dialysis_Procedure705424777" class="list-header"><strong>Encounters With Dialysis Procedure</strong></label>
+            <input type="checkbox" id="Encounters_With_Critical_Bleeding_Diagnosis320120168" />
+            <label for="Encounters_With_Critical_Bleeding_Diagnosis320120168" class="list-header"><strong>Encounters With Critical Bleeding Diagnosis</strong></label>
+            <ul class="code" style="margin-right: 20%; opacity: 1;">
+                <li class="list-unstyled">
+                    <div>
+                        <ul style="padding-left: 0px;">
+                            <li style="padding-left: 0px;" class="list-unstyled">
+                                <div>
+                                    <pre class="cql-definition-body">from
+  &quot;Qualifying Encounters&quot; QualifyingEncounter,
+  [&quot;Diagnosis&quot;: &quot;Bleeding at Critical Site&quot;] BleedingDiagnosis,
+  [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication
+  let HospEncounter: Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  where BleedingDiagnosis.prevalencePeriod starts during HospEncounter
+    and AnticoagulantMedication.relevantDatetime during HospEncounter
+    and BleedingDiagnosis.prevalencePeriod starts 120 hours or less after AnticoagulantMedication.relevantDatetime
+  return QualifyingEncounter</pre>
+                                </div>
+                            </li>
+                        </ul>&nbsp;
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
+    <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+            <input type="checkbox" id="Encounters_With_Dialysis_Procedure817695407" />
+            <label for="Encounters_With_Dialysis_Procedure817695407" class="list-header"><strong>Encounters With Dialysis Procedure</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1462,8 +1464,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_One_Bleeding_Event_Factor_With_Diagnosis_of_Non_Critical_Bleeding1215178073" />
-            <label for="Encounters_With_One_Bleeding_Event_Factor_With_Diagnosis_of_Non_Critical_Bleeding1215178073" class="list-header"><strong>Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding</strong></label>
+            <input type="checkbox" id="Encounters_With_Follow_Up_Hemoglobin_Lab_Tests_Within_5_Days_of_Anticoagulant_Medication1134761667" />
+            <label for="Encounters_With_Follow_Up_Hemoglobin_Lab_Tests_Within_5_Days_of_Anticoagulant_Medication1134761667" class="list-header"><strong>Encounters With Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1472,13 +1474,14 @@ OR
                                 <div>
                                     <pre class="cql-definition-body">from
   &quot;Qualifying Encounters&quot; QualifyingEncounter,
-  &quot;Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication&quot; NonCriticalBleedingDiagnosis,
-  &quot;Blood Transfusion Indicative of Bleeding Event&quot; BloodTransfusion,
-  &quot;Hemoglobin Lab Tests Indicative of Bleeding Event&quot; HemoglobinDecrease
-  where ( NonCriticalBleedingDiagnosis isTrue )
-    and ( ( HemoglobinDecrease isTrue )
-        or ( BloodTransfusion isTrue )
-    )
+  [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication,
+  [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] FirstHemoglobinLabResult,
+  [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] SecondHemoglobinLabResult
+  let HospEncounter: Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  where AnticoagulantMedication.relevantDatetime during HospEncounter
+    and FirstHemoglobinLabResult.relevantDatetime 120 hours or less after AnticoagulantMedication.relevantDatetime
+    and SecondHemoglobinLabResult.relevantDatetime 120 hours or less after AnticoagulantMedication.relevantDatetime
+    and FirstHemoglobinLabResult.id != SecondHemoglobinLabResult.id
   return QualifyingEncounter</pre>
                                 </div>
                             </li>
@@ -1491,8 +1494,80 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Pregnancy_or_Obstetric_Care63258580" />
-            <label for="Encounters_With_Pregnancy_or_Obstetric_Care63258580" class="list-header"><strong>Encounters With Pregnancy or Obstetric Care</strong></label>
+            <input type="checkbox" id="Encounters_With_Hemoglobin_Lab_Tests_Indicative_of_Bleeding_Event824345399" />
+            <label for="Encounters_With_Hemoglobin_Lab_Tests_Indicative_of_Bleeding_Event824345399" class="list-header"><strong>Encounters With Hemoglobin Lab Tests Indicative of Bleeding Event</strong></label>
+            <ul class="code" style="margin-right: 20%; opacity: 1;">
+                <li class="list-unstyled">
+                    <div>
+                        <ul style="padding-left: 0px;">
+                            <li style="padding-left: 0px;" class="list-unstyled">
+                                <div>
+                                    <pre class="cql-definition-body">&quot;Encounters With Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests&quot;
+  intersect &quot;Encounters With Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication&quot;</pre>
+                                </div>
+                            </li>
+                        </ul>&nbsp;
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
+    <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+            <input type="checkbox" id="Encounters_With_Non_Critical_Bleeding_Diagnosis_Within_5_Days_of_Anticoagulant_Medication270633437" />
+            <label for="Encounters_With_Non_Critical_Bleeding_Diagnosis_Within_5_Days_of_Anticoagulant_Medication270633437" class="list-header"><strong>Encounters With Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication</strong></label>
+            <ul class="code" style="margin-right: 20%; opacity: 1;">
+                <li class="list-unstyled">
+                    <div>
+                        <ul style="padding-left: 0px;">
+                            <li style="padding-left: 0px;" class="list-unstyled">
+                                <div>
+                                    <pre class="cql-definition-body">from
+  &quot;Qualifying Encounters&quot; QualifyingEncounter,
+  [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication,
+  [&quot;Diagnosis&quot;: &quot;Bleeding at Non Critical Site&quot;] NonCriticalBleedingDiagnosis
+  let HospEncounter: Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
+  where NonCriticalBleedingDiagnosis.prevalencePeriod starts during HospEncounter
+    and AnticoagulantMedication.relevantDatetime during HospEncounter
+    and NonCriticalBleedingDiagnosis.prevalencePeriod starts 120 hours or less after AnticoagulantMedication.relevantDatetime
+  return QualifyingEncounter</pre>
+                                </div>
+                            </li>
+                        </ul>&nbsp;
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
+    <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+            <input type="checkbox" id="Encounters_With_One_Bleeding_Event_Factor_With_Diagnosis_of_Non_Critical_Bleeding1569899791" />
+            <label for="Encounters_With_One_Bleeding_Event_Factor_With_Diagnosis_of_Non_Critical_Bleeding1569899791" class="list-header"><strong>Encounters With One Bleeding Event Factor With Diagnosis of Non Critical Bleeding</strong></label>
+            <ul class="code" style="margin-right: 20%; opacity: 1;">
+                <li class="list-unstyled">
+                    <div>
+                        <ul style="padding-left: 0px;">
+                            <li style="padding-left: 0px;" class="list-unstyled">
+                                <div>
+                                    <pre class="cql-definition-body">&quot;Encounters With Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication&quot;
+  intersect ( &quot;Encounters With Blood Transfusion Indicative of Bleeding Event&quot;
+      union &quot;Encounters With Hemoglobin Lab Tests Indicative of Bleeding Event&quot;
+  )</pre>
+                                </div>
+                            </li>
+                        </ul>&nbsp;
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
+    <li class="list-unstyled">
+        <div class="treeview hover p-l-10">
+            <input type="checkbox" id="Encounters_With_Pregnancy_or_Obstetric_Care277931439" />
+            <label for="Encounters_With_Pregnancy_or_Obstetric_Care277931439" class="list-header"><strong>Encounters With Pregnancy or Obstetric Care</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1513,21 +1588,16 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Encounters_With_Two_Bleeding_Event_Factors_Without_a_Diagnosis_of_Bleeding1026367635" />
-            <label for="Encounters_With_Two_Bleeding_Event_Factors_Without_a_Diagnosis_of_Bleeding1026367635" class="list-header"><strong>Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding</strong></label>
+            <input type="checkbox" id="Encounters_With_Two_Bleeding_Event_Factors_Without_a_Diagnosis_of_Bleeding1273506915" />
+            <label for="Encounters_With_Two_Bleeding_Event_Factors_Without_a_Diagnosis_of_Bleeding1273506915" class="list-header"><strong>Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
                         <ul style="padding-left: 0px;">
                             <li style="padding-left: 0px;" class="list-unstyled">
                                 <div>
-                                    <pre class="cql-definition-body">from
-  &quot;Qualifying Encounters&quot; QualifyingEncounter,
-  &quot;Blood Transfusion Indicative of Bleeding Event&quot; BloodTransfusion,
-  &quot;Hemoglobin Lab Tests Indicative of Bleeding Event&quot; HemoglobinDecrease
-  where ( BloodTransfusion isTrue )
-    and ( HemoglobinDecrease isTrue )
-  return QualifyingEncounter</pre>
+                                    <pre class="cql-definition-body">&quot;Encounters With Blood Transfusion Indicative of Bleeding Event&quot;
+  intersect &quot;Encounters With Hemoglobin Lab Tests Indicative of Bleeding Event&quot;</pre>
                                 </div>
                             </li>
                         </ul>&nbsp;
@@ -1539,63 +1609,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Follow_Up_Hemoglobin_Lab_Tests_Within_5_Days_of_Anticoagulant_Medication2019344907" />
-            <label for="Follow_Up_Hemoglobin_Lab_Tests_Within_5_Days_of_Anticoagulant_Medication2019344907" class="list-header"><strong>Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication</strong></label>
-            <ul class="code" style="margin-right: 20%; opacity: 1;">
-                <li class="list-unstyled">
-                    <div>
-                        <ul style="padding-left: 0px;">
-                            <li style="padding-left: 0px;" class="list-unstyled">
-                                <div>
-                                    <pre class="cql-definition-body">exists ( from
-    [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] FirstHemoglobinLabResult,
-    [&quot;Laboratory Test, Performed&quot;: &quot;Hemoglobin lab test&quot;] SecondHemoglobinLabResult,
-    &quot;Qualifying Encounters&quot; QualifyingEncounter,
-    [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication
-    where FirstHemoglobinLabResult.relevantDatetime 120 hours or less after AnticoagulantMedication.relevantDatetime
-      and SecondHemoglobinLabResult.relevantDatetime 120 hours or less after AnticoagulantMedication.relevantDatetime
-      and AnticoagulantMedication.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and FirstHemoglobinLabResult.id != SecondHemoglobinLabResult.id
-)</pre>
-                                </div>
-                            </li>
-                        </ul>&nbsp;
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
-    <li class="list-unstyled">
-        <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Hemoglobin_Lab_Tests_Indicative_of_Bleeding_Event1247881129" />
-            <label for="Hemoglobin_Lab_Tests_Indicative_of_Bleeding_Event1247881129" class="list-header"><strong>Hemoglobin Lab Tests Indicative of Bleeding Event</strong></label>
-            <ul class="code" style="margin-right: 20%; opacity: 1;">
-                <li class="list-unstyled">
-                    <div>
-                        <ul style="padding-left: 0px;">
-                            <li style="padding-left: 0px;" class="list-unstyled">
-                                <div>
-                                    <pre class="cql-definition-body">exists ( from
-    &quot;Follow Up Hemoglobin Lab Tests Within 5 Days of Anticoagulant Medication&quot; HemoglobinLabAntiCoagulant,
-    &quot;Absolute Decrease of 2 g dL Between Hemoglobin Lab Tests&quot; HemoglobinLabAbsoluteDecrease,
-    &quot;Qualifying Encounters&quot; QualifyingEncounter
-    where ( HemoglobinLabAntiCoagulant isTrue )
-      and ( HemoglobinLabAbsoluteDecrease isTrue )
-)</pre>
-                                </div>
-                            </li>
-                        </ul>&nbsp;
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
-    <li class="list-unstyled">
-        <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Initial_Population1661862635" />
-            <label for="Initial_Population1661862635" class="list-header"><strong>Initial Population</strong></label>
+            <input type="checkbox" id="Initial_Population658022637" />
+            <label for="Initial_Population658022637" class="list-header"><strong>Initial Population</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1614,35 +1629,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Non_Critical_Bleeding_Diagnosis_Within_5_Days_of_Anticoagulant_Medication159500919" />
-            <label for="Non_Critical_Bleeding_Diagnosis_Within_5_Days_of_Anticoagulant_Medication159500919" class="list-header"><strong>Non Critical Bleeding Diagnosis Within 5 Days of Anticoagulant Medication</strong></label>
-            <ul class="code" style="margin-right: 20%; opacity: 1;">
-                <li class="list-unstyled">
-                    <div>
-                        <ul style="padding-left: 0px;">
-                            <li style="padding-left: 0px;" class="list-unstyled">
-                                <div>
-                                    <pre class="cql-definition-body">exists ( from
-    [&quot;Medication, Administered&quot;: &quot;Anticoagulants for VTE Prophylaxis&quot;] AnticoagulantMedication,
-    [&quot;Diagnosis&quot;: &quot;Bleeding at Non Critical Site&quot;] NonCriticalBleedingDiagnosis,
-    &quot;Qualifying Encounters&quot; QualifyingEncounter
-    where NonCriticalBleedingDiagnosis.prevalencePeriod starts 120 hours or less after AnticoagulantMedication.relevantDatetime
-      and NonCriticalBleedingDiagnosis.prevalencePeriod during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-      and AnticoagulantMedication.relevantDatetime during Global.&quot;HospitalizationWithObservation&quot; ( QualifyingEncounter )
-)</pre>
-                                </div>
-                            </li>
-                        </ul>&nbsp;
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
-    <li class="list-unstyled">
-        <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Numerator1977771688" />
-            <label for="Numerator1977771688" class="list-header"><strong>Numerator</strong></label>
+            <input type="checkbox" id="Numerator482811251" />
+            <label for="Numerator482811251" class="list-header"><strong>Numerator</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1663,8 +1651,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Qualifying_Encounters564463090" />
-            <label for="Qualifying_Encounters564463090" class="list-header"><strong>Qualifying Encounters</strong></label>
+            <input type="checkbox" id="Qualifying_Encounters154462807" />
+            <label for="Qualifying_Encounters154462807" class="list-header"><strong>Qualifying Encounters</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1686,8 +1674,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="SDE_Ethnicity429305355" />
-            <label for="SDE_Ethnicity429305355" class="list-header"><strong>SDE Ethnicity</strong></label>
+            <input type="checkbox" id="SDE_Ethnicity695132107" />
+            <label for="SDE_Ethnicity695132107" class="list-header"><strong>SDE Ethnicity</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1706,8 +1694,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="SDE_Payer1611128472" />
-            <label for="SDE_Payer1611128472" class="list-header"><strong>SDE Payer</strong></label>
+            <input type="checkbox" id="SDE_Payer2007646367" />
+            <label for="SDE_Payer2007646367" class="list-header"><strong>SDE Payer</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1726,8 +1714,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="SDE_Race1495305302" />
-            <label for="SDE_Race1495305302" class="list-header"><strong>SDE Race</strong></label>
+            <input type="checkbox" id="SDE_Race729208290" />
+            <label for="SDE_Race729208290" class="list-header"><strong>SDE Race</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1746,8 +1734,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="SDE_Sex443405676" />
-            <label for="SDE_Sex443405676" class="list-header"><strong>SDE Sex</strong></label>
+            <input type="checkbox" id="SDE_Sex487195341" />
+            <label for="SDE_Sex487195341" class="list-header"><strong>SDE Sex</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1774,8 +1762,8 @@ OR
                 <ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Global_CalendarAgeInYearsAt_BirthDateTime_DateTime__AsOf_DateTime_1198352228" />
-            <label for="Global_CalendarAgeInYearsAt_BirthDateTime_DateTime__AsOf_DateTime_1198352228" class="list-header"><strong>Global.CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime)</strong></label>
+            <input type="checkbox" id="Global_CalendarAgeInYearsAt_BirthDateTime_DateTime__AsOf_DateTime_500013369" />
+            <label for="Global_CalendarAgeInYearsAt_BirthDateTime_DateTime__AsOf_DateTime_500013369" class="list-header"><strong>Global.CalendarAgeInYearsAt(BirthDateTime DateTime, AsOf DateTime)</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1794,8 +1782,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Global_HospitalizationWithObservation_Encounter__Encounter__Performed__955943226" />
-            <label for="Global_HospitalizationWithObservation_Encounter__Encounter__Performed__955943226" class="list-header"><strong>Global.HospitalizationWithObservation(Encounter &quot;Encounter, Performed&quot;)</strong></label>
+            <input type="checkbox" id="Global_HospitalizationWithObservation_Encounter__Encounter__Performed__1522236809" />
+            <label for="Global_HospitalizationWithObservation_Encounter__Encounter__Performed__1522236809" class="list-header"><strong>Global.HospitalizationWithObservation(Encounter &quot;Encounter, Performed&quot;)</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1827,8 +1815,8 @@ OR
 </ul><ul class="list-unstyled" style="list-style:none;padding-left:0;">
     <li class="list-unstyled">
         <div class="treeview hover p-l-10">
-            <input type="checkbox" id="Global_ToDate_Value_DateTime_1525239507" />
-            <label for="Global_ToDate_Value_DateTime_1525239507" class="list-header"><strong>Global.ToDate(Value DateTime)</strong></label>
+            <input type="checkbox" id="Global_ToDate_Value_DateTime_1759236123" />
+            <label for="Global_ToDate_Value_DateTime_1759236123" class="list-header"><strong>Global.ToDate(Value DateTime)</strong></label>
             <ul class="code" style="margin-right: 20%; opacity: 1;">
                 <li class="list-unstyled">
                     <div>
@@ -1892,8 +1880,8 @@ OR
 <ul style="list-style:none;padding-left: 25px;">
 	<li class="list-unstyled">
     <div class="treeview hover p-l-10">
-        <input type="checkbox" id="SDE_Ethnicity346469906" />
-        <label for="SDE_Ethnicity346469906" class="list-header"><strong>SDE Ethnicity</strong></label>
+        <input type="checkbox" id="SDE_Ethnicity637130313" />
+        <label for="SDE_Ethnicity637130313" class="list-header"><strong>SDE Ethnicity</strong></label>
         <ul class="code" style="margin-right: 20%; opacity: 1;">
             <li class="list-unstyled">
                 <div>
@@ -1910,8 +1898,8 @@ OR
     </div>
 </li><li class="list-unstyled">
     <div class="treeview hover p-l-10">
-        <input type="checkbox" id="SDE_Payer1968263204" />
-        <label for="SDE_Payer1968263204" class="list-header"><strong>SDE Payer</strong></label>
+        <input type="checkbox" id="SDE_Payer638840574" />
+        <label for="SDE_Payer638840574" class="list-header"><strong>SDE Payer</strong></label>
         <ul class="code" style="margin-right: 20%; opacity: 1;">
             <li class="list-unstyled">
                 <div>
@@ -1928,8 +1916,8 @@ OR
     </div>
 </li><li class="list-unstyled">
     <div class="treeview hover p-l-10">
-        <input type="checkbox" id="SDE_Race2048133390" />
-        <label for="SDE_Race2048133390" class="list-header"><strong>SDE Race</strong></label>
+        <input type="checkbox" id="SDE_Race861555252" />
+        <label for="SDE_Race861555252" class="list-header"><strong>SDE Race</strong></label>
         <ul class="code" style="margin-right: 20%; opacity: 1;">
             <li class="list-unstyled">
                 <div>
@@ -1946,8 +1934,8 @@ OR
     </div>
 </li><li class="list-unstyled">
     <div class="treeview hover p-l-10">
-        <input type="checkbox" id="SDE_Sex753049167" />
-        <label for="SDE_Sex753049167" class="list-header"><strong>SDE Sex</strong></label>
+        <input type="checkbox" id="SDE_Sex1424768" />
+        <label for="SDE_Sex1424768" class="list-header"><strong>SDE Sex</strong></label>
         <ul class="code" style="margin-right: 20%; opacity: 1;">
             <li class="list-unstyled">
                 <div>

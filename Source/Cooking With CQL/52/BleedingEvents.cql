@@ -1,5 +1,12 @@
 library BleedingEvents
 
+using QDM version '5.5'
+
+include MATGlobalCommonFunctions version '6.2.000' called Global
+
+valueset "Blood Transfusion Administration": 'urn:oid:2.16.840.1.113762.1.4.1029.209'
+valueset "Anticoagulants for VTE Prophylaxis": 'urn:oid:2.16.840.1.113762.1.4.1147.130'
+
 /*
 The numerator definition is:
 
@@ -125,3 +132,65 @@ problem, to no avail. We’ve attached the MAT package and are hoping that you c
 take a look to see if there is anything obvious in the logic that that is causing
 this, and recommendations on how to revise the CQL to rectify the issue.
 */
+
+/*
+SOLUTION: The criteria need to be expressed in terms of a particular encounter. The problem
+with the criteria as written was that it did not tie to specific encounters, so the criteria
+were evaluating across encounters, and would end up returning true on all encounters,
+rather than only on the particular encounters with bleeding events.
+
+For example, consider the initial expression of "Blood Transfusion Indicative of Bleeding Event"
+*/
+
+define "Blood Transfusion Indicative of Bleeding Event":
+  exists ( from
+      ["Procedure, Performed": "Blood Transfusion Administration"] BloodTransfusion,
+      ["Medication, Administered": "Anticoagulants for VTE Prophylaxis"] AnticoagulantMedication,
+      "Qualifying Encounters" QualifyingEncounter
+      where BloodTransfusion.relevantPeriod ends 120 hours or less after AnticoagulantMedication.relevantDatetime
+        and BloodTransfusion.relevantPeriod during Global."HospitalizationWithObservation" ( QualifyingEncounter )
+        and BloodTransfusion.relevantPeriod starts 48 hours or more after start of Global."HospitalizationWithObservation" ( QualifyingEncounter )
+        and AnticoagulantMedication.relevantDatetime during Global."HospitalizationWithObservation" ( QualifyingEncounter )
+  )
+
+/*
+This expression was then used in other criteria such as "Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding":
+*/
+
+define "Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding":
+  from
+    "Qualifying Encounters" QualifyingEncounter,
+    "Blood Transfusion Indicative of Bleeding Event" BloodTransfusion,
+    "Hemoglobin Lab Tests Indicative of Bleeding Event" HemoglobinDecrease
+    where ( BloodTransfusion isTrue )
+      and ( HemoglobinDecrease isTrue )
+    return QualifyingEncounter
+
+/*
+Because there is no link between the "Blood Transfusion" procedure and the encounter under
+consideration, it will return true for all encounters if there are any encounters meeting the
+criteria.
+
+To address this, the criteria for bleeding event factors can be rewritten to be encounter-focused:
+*/
+
+define "Encounters With Blood Transfusion Indicative of Bleeding Event":
+  from
+    ["Procedure, Performed": "Blood Transfusion Administration"] BloodTransfusion,
+    ["Medication, Administered": "Anticoagulants for VTE Prophylaxis"] AnticoagulantMedication,
+    "Qualifying Encounters" QualifyingEncounter
+    let HospEncounter: Global."HospitalizationWithObservation" ( QualifyingEncounter )
+    where BloodTransfusion.relevantPeriod during Interval[start of HospEncounter + 48 hours,
+    end of HospEncounter]
+      and BloodTransfusion.relevantPeriod ends 120 hours or less after AnticoagulantMedication.relevantDatetime
+      and AnticoagulantMedication.relevantDatetime during HospEncounter
+    return QualifyingEncounter
+
+/*
+This criteria returns encounters with bleeding events, which can then be correlated
+with other encounter-based criteria:
+*/
+
+define "Encounters With Two Bleeding Event Factors Without a Diagnosis of Bleeding":
+  "Encounters With Blood Transfusion Indicative of Bleeding Event"
+    intersect "Encounters With Hemoglobin Lab Tests Indicative of Bleeding Event"

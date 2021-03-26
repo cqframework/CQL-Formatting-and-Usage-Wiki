@@ -19,10 +19,10 @@
    <title
           value="Hospital Harm - Venous Thromboembolism Pharmacoprophylaxis-Related Major Bleeding"/>
    <text
-         value="The measure assesses the proportion of encounters of patients 18 years of age or older at admission  and who were administered at least one anticoagulant medication for venous thromboembolism (VTE) prophylaxis during the encounter and within 5 days prior to a subsequent bleeding event. Bleeding events must occur during the encounter.&#xA;&#xA;The measure excludes encounters for patient who received dialysis that overlapped the encounter, had a diagnosis related to pregnancy or obstetrics that overlapped the encounter, or received an anticoagulant medication for a reason other than for VTE prophylaxis."/>
+         value="The proportion of inpatient hospitalizations for patients 18 years of age or older at admission who were administered at least one anticoagulant medication for venous thromboembolism (VTE) prophylaxis during the encounter and within 5 days prior to a subsequent bleeding event. Bleeding events must occur during the encounter.&#xA;&#xA;The measure excludes encounters for patient who received dialysis that overlapped the encounter, had a diagnosis related to pregnancy or obstetrics that overlapped the encounter, or received an anticoagulant medication for a reason other than for VTE prophylaxis."/>
    <statusCode code="COMPLETED"/>
    <setId root="a4b07408-45ae-4805-a453-b4aeae4b1720"/>
-   <versionNumber value="0.1.055"/>
+   <versionNumber value="0.1.058"/>
    <author>
       <responsibleParty classCode="ASSIGNED">
          <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
@@ -164,20 +164,20 @@
    </definition>
    <relatedDocument typeCode="COMP">
       <expressionDocument>
-         <id root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+         <id root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
          <text mediaType="text/cql">
-            <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.cql"/>
+            <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.058.cql"/>
             <translation mediaType="application/elm+xml">
-               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.xml"/>
+               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.058.xml"/>
             </translation>
             <translation mediaType="application/elm+json">
-               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.055.json"/>
+               <reference value="https://emeasuretool.cms.gov/libraries/a4b07408-45ae-4805-a453-b4aeae4b1720/HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding-0.1.058.json"/>
             </translation>
          </text>
          <setId extension="a4b07408-45ae-4805-a453-b4aeae4b1720"
                 identifierName="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding"
                 root="https://emeasuretool.cms.gov/libraries"/>
-         <versionNumber value="0.1.055"/>
+         <versionNumber value="0.1.058"/>
       </expressionDocument>
    </relatedDocument>
    <relatedDocument typeCode="COMP">
@@ -200,7 +200,7 @@
    </relatedDocument>
    <controlVariable>
       <measurePeriod>
-         <id extension="measureperiod" root="2257a6e0-24d1-4f23-991a-061e19a0d8e7"/>
+         <id extension="measureperiod" root="9a920cb8-454a-482a-9f86-bca610b95488"/>
          <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
             <originalText value="Measurement Period"/>
          </code>
@@ -517,7 +517,9 @@
          <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
             <displayName value="Definition"/>
          </code>
-         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations: Includes time in the emergency department or observation when these encounters are within an hour of the inpatient admission."
+                xsi:type="ED"/>
       </measureAttribute>
    </subjectOf>
    <subjectOf>
@@ -526,7 +528,7 @@
             <displayName value="Guidance"/>
          </code>
          <value mediaType="text/plain"
-                value="The measure is currently confined to using g/dL as the unit of measurement for hemoglobin results.&#xA;&#xA;To calculate the hospital-level measure result, divide the total numerator encounter events by the total number of eligible encounters (denominator). &#xA;&#xA;For each inpatient encounter, eligible encounters include those where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter.&#xA;&#xA;To exclude encounters from the denominator:&#xA;&#xA;1. Remove any encounters where patients received dialysis that overlapped the encounter.&#xA;&#xA;2. Remove any encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;3. Remove encounters where patients received an anticoagulant medication for a reason other than for VTE prophylaxis. &#xA;&#xA;To create the numerator include all encounter records in the denominator with:&#xA;&#xA;Criterion A. Documented diagnosis only of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)&#xA;AND&#xA;(2)&#x9;Transfusion  of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event and documented diagnosis of major bleeding at a non-critical anatomic site&#xA; &#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department)&#xA;&#xA;This eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.&#xA;&#xA;This version of the eCQM uses QDM version 5.5. Please refer to the eCQI resource center (https://ecqi.healthit.gov/qdm) for more information on the QDM."
+                value="The measure is currently confined to using g/dL as the unit of measurement for hemoglobin results.&#xA;&#xA;To calculate the hospital-level measure result, divide the total numerator encounter events by the total number of eligible inpatient hospitalizations (denominator). &#xA;&#xA;Eligible inpatient hospitalizations (denominator) include those where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter.&#xA;&#xA;To exclude inpatient hospitalizations from the denominator:&#xA;&#xA;1. Remove any inpatient hospitalizations where patients received dialysis that overlapped the encounter.&#xA;&#xA;2. Remove any inpatient hospitalizations where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;3. Remove inpatient hospitalizations where patients received an anticoagulant medication for a reason other than for VTE prophylaxis. &#xA;&#xA;To create the numerator, for each eligible inpatient hospitalization identify:&#xA;&#xA;Criterion A. Documented diagnosis only of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation)&#xA;AND&#xA;(2)&#x9;Transfusion  of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department and observation)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event and documented diagnosis of major bleeding at a non-critical anatomic site&#xA; &#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours after arrival in the hospital (including the emergency department and observation)&#xA;&#xA;This eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.&#xA;&#xA;This version of the eCQM uses QDM version 5.5. Please refer to the eCQI resource center (https://ecqi.healthit.gov/qdm) for more information on the QDM."
                 xsi:type="ED"/>
       </measureAttribute>
    </subjectOf>
@@ -544,7 +546,7 @@
             <displayName value="Initial Population"/>
          </code>
          <value mediaType="text/plain"
-                value="Encounters when the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter. &#xA;&#xA;An encounter is considered an inpatient hospital admission, including time spent in the emergency department or in observation status when the patients are ultimately admitted to inpatient status."
+                value="Inpatient hospitalizations where the patient is 18 years of age or older at the start of the encounter and at least one anticoagulant medication for VTE prophylaxis was administered during the encounter. &#xA;&#xA;An encounter is considered an inpatient hospitalization, including time spent in the emergency department or in observation status when the patients are ultimately admitted to inpatient status."
                 xsi:type="ED"/>
       </measureAttribute>
    </subjectOf>
@@ -562,7 +564,7 @@
             <displayName value="Denominator Exclusions"/>
          </code>
          <value mediaType="text/plain"
-                value="Encounters where patients received dialysis that overlapped the encounter.&#xA;&#xA;Encounters where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;Encounters where the patient received an anticoagulant medication for a reason other than for VTE prophylaxis."
+                value="Inpatient hospitalizations where patients received dialysis that overlapped the encounter.&#xA;&#xA;Inpatient hospitalizations where patients had a diagnosis related to pregnancy or obstetrics that overlapped the encounter.&#xA;&#xA;Inpatient hospitalizations where the patient received an anticoagulant medication for a reason other than for VTE prophylaxis."
                 xsi:type="ED"/>
       </measureAttribute>
    </subjectOf>
@@ -572,7 +574,7 @@
             <displayName value="Numerator"/>
          </code>
          <value mediaType="text/plain"
-                value="Encounters where bleeding events occurred during the encounter and within 5 days following an anticoagulant medication administration for VTE prophylaxis during the same encounter. &#xA;&#xA;A bleeding event is defined as the presence of one of the following: &#xA;&#xA;Criterion A. Documented diagnosis of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department)&#xA;AND&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event, with a documented diagnosis of major bleeding at a non-critical anatomic site.&#xA;&#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department)"
+                value="Inpatient hospitalizations that include bleeding events during the encounter and within 5 days following an anticoagulant medication administration for VTE prophylaxis during the same encounter. &#xA;&#xA;A bleeding event is defined as the presence of one of the following: &#xA;&#xA;Criterion A. Documented diagnosis of acute bleeding in/into a critical anatomic site &#xA;&#xA;OR&#xA;&#xA;Criterion B. Two evidence factors of a bleeding event, without a documented bleeding diagnosis.&#xA;&#xA;Evidence of Criterion B bleeding event is determined by BOTH:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation)&#xA;AND&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department and observation)&#xA;&#xA;OR&#xA;&#xA;Criterion C. One evidence factor of a bleeding event, with a documented diagnosis of major bleeding at a non-critical anatomic site.&#xA;&#xA;Evidence of Criterion C bleeding event is determine by EITHER:&#xA;(1)&#x9;An absolute decrease in hemoglobin results of 2 g/dL or more within a 48-hour period, excluding the first 24 hours of arrival in the hospital (including the emergency department and observation); &#xA;OR&#xA;(2)&#x9;Transfusion of whole or red blood cells, excluding the first 48 hours of arrival in the hospital (including the emergency department and observation)"
                 xsi:type="ED"/>
       </measureAttribute>
    </subjectOf>
@@ -618,7 +620,7 @@
          <title value="Data Criteria Section"/>
          <text/>
          <entry typeCode="DRIV">
-            <localVariableName value="Hospitalbaseddialysisservices_ProcedurePerformed_7mvhD"/>
+            <localVariableName value="Hospitalbaseddialysisservices_ProcedurePerformed_bDaFn"/>
             <procedureCriteria classCode="PROC" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
@@ -631,7 +633,7 @@
             </procedureCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="EncounterInpatient_EncounterPerformed_1g02G"/>
+            <localVariableName value="EncounterInpatient_EncounterPerformed_wMUaK"/>
             <encounterCriteria classCode="ENC" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
@@ -644,7 +646,7 @@
             </encounterCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="Payer_PatientCharacteristicPayer_MM9tj"/>
+            <localVariableName value="Payer_PatientCharacteristicPayer_AnFRj"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
@@ -660,7 +662,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="BleedingatCriticalSite_Diagnosis_iCoJU"/>
+            <localVariableName value="BleedingatCriticalSite_Diagnosis_w2X8q"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
@@ -676,7 +678,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_DlFLo"/>
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_f3wj1"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
@@ -692,7 +694,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="Hemoglobinlabtest_LaboratoryTestPerformed_fB1kX"/>
+            <localVariableName value="Hemoglobinlabtest_LaboratoryTestPerformed_QpcZN"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.42"/>
@@ -705,7 +707,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="ObservationServices_EncounterPerformed_qHrq8"/>
+            <localVariableName value="ObservationServices_EncounterPerformed_RYI7P"/>
             <encounterCriteria classCode="ENC" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
@@ -718,7 +720,7 @@
             </encounterCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_2Rjs3"/>
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_ZbmjG"/>
             <encounterCriteria classCode="ENC" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
@@ -731,7 +733,7 @@
             </encounterCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="Obstetrics_Diagnosis_6jZel"/>
+            <localVariableName value="Obstetrics_Diagnosis_XZTPY"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
@@ -746,7 +748,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="AnticoagulantsforIndicationsOtherthanVTEProphylaxis_MedicationAdministered_ELFnq"/>
+            <localVariableName value="AnticoagulantsforIndicationsOtherthanVTEProphylaxis_MedicationAdministered_jvley"/>
             <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.45"/>
@@ -766,7 +768,7 @@
 		          </substanceAdministrationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_oBihZ"/>
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_K99mT"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
@@ -782,7 +784,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="BleedingatNonCriticalSite_Diagnosis_QCsoQ"/>
+            <localVariableName value="BleedingatNonCriticalSite_Diagnosis_swe9A"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
@@ -798,7 +800,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="Race_PatientCharacteristicRace_PASzW"/>
+            <localVariableName value="Race_PatientCharacteristicRace_cETzQ"/>
             <observationCriteria classCode="OBS" moodCode="EVN">
                <templateId>
                   <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
@@ -814,7 +816,7 @@
             </observationCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="BloodTransfusionAdministration_ProcedurePerformed_4B5XQ"/>
+            <localVariableName value="BloodTransfusionAdministration_ProcedurePerformed_4gGcw"/>
             <procedureCriteria classCode="PROC" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
@@ -827,7 +829,7 @@
             </procedureCriteria>
          </entry>
          <entry typeCode="DRIV">
-            <localVariableName value="AnticoagulantsforVTEProphylaxis_MedicationAdministered_GBeWB"/>
+            <localVariableName value="AnticoagulantsforVTEProphylaxis_MedicationAdministered_2fiDz"/>
             <substanceAdministrationCriteria classCode="SBADM" moodCode="EVN">
                <templateId>
                   <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.45"/>
@@ -852,7 +854,7 @@
                   <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.54"/>
                </templateId>
                <id extension="21112-8_PatientCharacteristicBirthdate"
-                   root="1A3D65AE-CA70-4E6A-A2BF-65E5F850DB0D"/>
+                   root="F93DC6E8-57EB-412D-9AD2-EF9E1A518670"/>
                <code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
                <title value="Patient Characteristic Birthdate"/>
                <statusCode code="COMPLETED"/>
@@ -865,54 +867,54 @@
          <templateId>
             <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
          </templateId>
-         <id extension="PopulationCriteria1" root="74CD7F01-0E0E-4F08-8F13-74D30EDD2F8E"/>
+         <id extension="PopulationCriteria1" root="FCBDB368-A14B-4370-A993-FE3D53841516"/>
          <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
          <title value="Population Criteria Section"/>
          <text/>
          <component typeCode="COMP">
             <initialPopulationCriteria classCode="OBS" moodCode="EVN">
-               <id extension="initialPopulation" root="7DA9D6D6-558C-4DFC-A53E-E757BC3A0682"/>
+               <id extension="initialPopulation" root="3D49BD54-A6F0-428C-AE16-829AFFAA41AD"/>
                <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Initial Population&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </initialPopulationCriteria>
          </component>
          <component typeCode="COMP">
             <denominatorCriteria classCode="OBS" moodCode="EVN">
-               <id extension="denominator" root="FDED266C-C91E-42D1-9AFF-AEC591D0DBA7"/>
+               <id extension="denominator" root="93F3E8DD-C465-49E8-AECE-7993FC1534C8"/>
                <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Denominator&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </denominatorCriteria>
          </component>
          <component typeCode="COMP">
             <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
-               <id extension="denominatorExclusions" root="F6C434FE-5A64-491E-A8A3-A6DCA2C03A6B"/>
+               <id extension="denominatorExclusions" root="C4A6FBA9-11CD-4E48-B4FB-2AEE2E90C910"/>
                <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Denominator Exclusions&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </denominatorExclusionCriteria>
          </component>
          <component typeCode="COMP">
             <numeratorCriteria classCode="OBS" moodCode="EVN">
-               <id extension="numerator" root="F3220CA6-AC26-40B1-A08A-2F58D13DF734"/>
+               <id extension="numerator" root="34BB5D0D-A750-46CA-AD0C-E4CD84B7E5F7"/>
                <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;Numerator&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </numeratorCriteria>
@@ -920,12 +922,12 @@
          <component typeCode="COMP">
             <cql-ext:supplementalDataElement>
                <id extension="Supplemental Data Elements"
-                   root="BC41CD73-C753-4966-8E56-D39D67E6A12E"/>
+                   root="3ACF1EED-11E6-4AFE-9DEC-AAA4E68D6444"/>
                <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Ethnicity&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </cql-ext:supplementalDataElement>
@@ -933,12 +935,12 @@
          <component typeCode="COMP">
             <cql-ext:supplementalDataElement>
                <id extension="Supplemental Data Elements"
-                   root="B97A6D99-3B81-4F03-96CF-15E983C1DBB4"/>
+                   root="DD0DDF75-F0E1-41FF-ACAE-EAAA29BE8165"/>
                <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Payer&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </cql-ext:supplementalDataElement>
@@ -946,12 +948,12 @@
          <component typeCode="COMP">
             <cql-ext:supplementalDataElement>
                <id extension="Supplemental Data Elements"
-                   root="B7D1D94D-0F17-42F4-AEC5-BF12AD7168A1"/>
+                   root="40F39BE4-BED0-4CB6-A462-52539788DBBD"/>
                <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Race&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </cql-ext:supplementalDataElement>
@@ -959,12 +961,12 @@
          <component typeCode="COMP">
             <cql-ext:supplementalDataElement>
                <id extension="Supplemental Data Elements"
-                   root="63C2FE93-8B67-4F0E-8939-9AC579E08473"/>
+                   root="CE7AD36D-C442-4FBE-A2F1-4296CEF77502"/>
                <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
                <precondition typeCode="PRCN">
                   <criteriaReference classCode="OBS" moodCode="EVN">
                      <id extension="HospitalHarmVTEPharmacoprophylaxisRelatedMajorBleeding.&quot;SDE Sex&quot;"
-                         root="5D7D8D5B-8E86-439D-B7C8-3337B0395337"/>
+                         root="52DF1E66-88D9-44B0-8124-8D4D89DEE0A1"/>
                   </criteriaReference>
                </precondition>
             </cql-ext:supplementalDataElement>
