@@ -324,11 +324,11 @@ time of the administration event:
 * effective[x]: Start and end time of administration
 
 However, when calculating cumulative medication duration, it is typically the
-therapeutic period of the medication that should be considered. Currently neither
-the Medication nor MedicationKnowledge resources provide this information, so
-we model it here as a function that can potentially be implemented in a variety
-of ways, including measure-specific values, as well as distribution as an RxNorm
-code system supplement.
+expected therapeutic duration of the medication that should be considered.
+Currently neither the Medication nor MedicationKnowledge resources provide this
+information, so we model it here as a function that can potentially be implemented
+in a variety of ways, including measure-specific values, as well as distribution
+as an RxNorm code system supplement.
 
 However it is obtained, if therapeutic duration can be obtained, and the effective
 period has a start, the result will be
@@ -363,6 +363,14 @@ define function CumulativeDuration(Intervals List<Interval<DateTime>>):
 
 /*
 Next, we define a function that rolls out intervals:
+
+     |---------|
+            |---------|
+                   |---------|
+                                 |-----------|
+
+C   |------------------------|   |-----------|
+R   |----------|----------|--------|------------|
 */
 define function RolloutIntervals(intervals List<Interval<DateTime>>):
   intervals I

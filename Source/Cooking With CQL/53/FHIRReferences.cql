@@ -20,7 +20,18 @@ context Patient
 
 /*
 Singleton element that is a reference
+[MedicationRequest.encounter](http://hl7.org/fhir/medicationrequest-definitions.html#MedicationRequest.encounter)
+dataRequirement: { type: MedicationRequest, relatedDataRequirement: { type: Encounter, relatedByPath: encounter } }
+*/
+define MedicationRequestWithEncounter:
+  [MedicationRequest] M
+    with [Encounter] E
+      such that E.id = Last(Split(M.encounter.reference, '/'))
+
+/*
+Singleton element that is a reference to the subject
 [Patient.managingOrganization](http://hl7.org/fhir/patient-definitions.html#Patient.managingOrganization)
+dataRequirement: { type: Patient, relatedDataRequirement: { type: Organization, code: type, valueset: "Healthcare Provider", relatedByPath: managingOrganization } }
 */
 define PatientManagedByHealthcareProvider:
   Patient P
@@ -99,3 +110,12 @@ define TestMedicationRequest1C:
   [MedicationRequest] MR
     let M: singleton from ([MR.medication -> Medication])
     where M.code in "Aspirin"
+
+
+define TestMedicationRequirement:
+  [Medication]
+
+// If only TestBoundDataRequirement is referenced, the data requirement should only be [Medication: code]
+define TestBoundDataRequirement:
+  TestMedicationRequirement R
+    where R.code in "Aspirin"
