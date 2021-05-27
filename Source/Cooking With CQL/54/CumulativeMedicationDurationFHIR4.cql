@@ -1,4 +1,4 @@
-library CumulativeMedicationDurationFHIR
+library CumulativeMedicationDurationFHIR4
 
 /*
 This library provides guidance for calculating Cumulative Medication Duration
@@ -9,6 +9,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
 
+// These code systems are not known to the MAT environment yet, request to have them added submitted
 codesystem "V3TimingEvent": 'http://terminology.hl7.org/CodeSystem/v3-TimingEvent'
 codesystem "EventTiming": 'http://hl7.org/fhir/event-timing'
 
@@ -396,8 +397,8 @@ define function MedicationPeriod(
 We can then use this function, combined with the MedicationDuration functions above
 to calculate Cumulative Medication Duration:
 
-TODO: Is it appropriate to collapse across MedicationRequest - MedicationDispense/MedicationAdministration,
-but roll out across MedicationDispense/MedicationAdministration
+Generally speaking, we want to _roll out_ intervals from dispense and administration
+events, and then collapse across that result and intervals from prescriptions.
 
 Note also that the separation of medications by type should already be done
 by this stage as well.
@@ -411,9 +412,18 @@ define function CumulativeMedicationDuration(
     "MedicationDispense",
     "MedicationAdministration"
   >>):
-  CumulativeDuration(
-    Medications M
-      return MedicationPeriod(M)
+  CumulativeDuration((
+      Medications M
+        where M is MedicationRequest
+        return MedicationPeriod(M)
+    )
+      union (
+        RolloutIntervals(
+          Medications M
+            where M is MedicationDispense or M is MedicationAdministration
+            return MedicationPeriod(M)
+        )
+      )
   )
 
 /*
