@@ -282,6 +282,15 @@ list of MedicationDispense instances provided to this function should already ha
 considered appropriate statuses, depending on the use case, typically `completed`,
 especially since whenHandedOver would be expected to be present for a completed
 MedicationDispense.
+
+Note also that the dosage information recorded in a dispense is expected to be a copy of the
+dispense information from the related medication request. As such, the boundsPeriod would be expected
+to cover the entire range, and should _not_ be used for timing of the event.
+
+There is also active discussion in the Pharmacy WG about what date should be used if whenPrepared/whenHandedOver is not present.
+This may take the form of an "original creation date", but may also be a "status change date" for dispense events that are updating
+status of an existing dispense. That discussion is ongoing, so until that is resolved, this logic will return
+null if whenPrepared/whenHandedOver are not available.
 */
 define function MedicationDispensePeriod(Dispense "MedicationDispense"):
   Dispense D
@@ -295,17 +304,12 @@ define function MedicationDispensePeriod(Dispense "MedicationDispense"):
       frequency: Coalesce(timing.repeat.frequencyMax, timing.repeat.frequency),
       period: System.Quantity { value: timing.repeat.period, unit: timing.repeat.periodUnit.value },
       dosesPerDay: Coalesce(ToDaily(frequency, period), Count(timing.repeat.timeOfDay), 1.0),
-      boundsPeriod: timing.repeat.bounds as Period,
       startDate:
         Coalesce(
-          start of boundsPeriod,
           D.whenHandedOver,
           D.whenPrepared
         )
     return
-      if HasEnd(boundsPeriod) then
-        Interval[startDate, end of boundsPeriod]
-      else
         Interval[startDate, startDate + Coalesce(D.daysSupply, D.quantity / (dose * dosesPerDay))]
 
 /*
@@ -360,7 +364,7 @@ First, we define a function that simply calculates CumulativeDuration of a set o
 intervals:
 */
 define function CumulativeDuration(Intervals List<Interval<DateTime>>):
-  Sum((collapse Intervals) X return all difference in days between start of X and end of X)
+  Sum((collapse Intervals per day) X return all difference in days between start of X and end of X)
 
 /*
 Next, we define a function that rolls out intervals:
