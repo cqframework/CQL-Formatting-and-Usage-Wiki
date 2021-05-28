@@ -233,17 +233,14 @@ Next, consider the MedicationDispense case:
 * dosageInstruction.doseAndRate.doseRange
 
 We have effectively the same elements, with the same meanings, with the exception that the
-event is documenting a single dispense, and dose not contain refill information. In addition,
+event is documenting a single dispense, and does not contain refill information. In addition,
 multiple dispense events would typically be present, and those would all have to be considered
 as part of an overall calculation. That will be considered when we combine results, but for
 this function, we'll focus on calculating the duration of a single dispense.
 
-With a MedicationDispense, boundsPeriod covers only the time period for the specific
-dispensing event (i.e. not considering refills).
-
-If the boundsPeriod element is present (and completely specified), then we can use that directly
-
-    boundsPeriod
+With a MedicationDispense, dosage information is expected to be the same as the related
+MedicationRequest, so boundsPeriod would still cover the entire prescription (including refills)
+and so cannot be used to calculate the interval covered by the dispense.
 
 If the daysSupply element is present, then the duration in days is simply
 
@@ -276,7 +273,8 @@ profile, which expects:
 * period, periodUnit, defaulting to 1 'd'
 * timeOfDay
 * doseQuantity or doseRange, missing doseQuantity and doseRange will result in a null
-* whenHandedOver or whenPrepared, missing all of start of boundsPeriod, whenHandedOver and whenPrepared will result in a null
+* whenHandedOver or whenPrepared, if missing both whenHandedOver and whenPrepared will result in a null
+
 Note that MedicationDispense status is not considered by this calculation, as the
 list of MedicationDispense instances provided to this function should already have
 considered appropriate statuses, depending on the use case, typically `completed`,
