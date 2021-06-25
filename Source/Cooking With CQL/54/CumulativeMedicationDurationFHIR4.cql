@@ -203,7 +203,7 @@ define function MedicationRequestPeriod(Request "MedicationRequest"):
           R.authoredOn
         )
     return
-      if HasEnd(boundsPeriod) then
+      if not (end of boundsPeriod is null or end of boundsPeriod = maximum DateTime) then
         Interval[startDate, end of boundsPeriod]
       else
         Interval[startDate, startDate + Coalesce(daysSupply, quantity / (dose * dosesPerDay)) * (1 + refills)]
@@ -493,11 +493,3 @@ daysSuppliedWithRefills = [supply (150 ml) x (1 + refills (0)) / ((dosage (5 ml)
 
 * CMD calculated for “Medication, Dispensed” does not use the number of refills; rather, the days covered by each dispensing event must be retrieved and added.
 */
-
-/*Given an interval, return true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value)*/
-define function HasEnd(period Interval<DateTime>):
-  not (end of period is null or end of period = maximum DateTime)
-
-/* Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimumDateTime value)*/
-define function HasStart(period Interval<DateTime>):
-  not (start of period is null or start of period = minimum DateTime)
