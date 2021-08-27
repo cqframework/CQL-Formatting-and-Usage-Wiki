@@ -5,12 +5,12 @@ Although the Unified Code for Units of Measure (UCUM) is a code system, it requi
 For these reasons, within quality artifacts in general, and quality measures specifically, UCUM codes should make use of the direct mechanisms wherever possible. In CQL logic, this means using the [Quantity literal](https://cql.hl7.org/02-authorsguide.html#quantities), rather than declaring UCUM codes as direct-reference codes as is recommended when using codes from other code systems. For example, when accessing a Body Mass Index (BMI) observation in CQL:
 
 ```cql
-define "BMI Percentile in Measurement Period":
-  [Observation: "BMI percentile"] BMIPercentile
-    where BMIPercentile.status in {'final', 'amended', 'corrected'}
-      and BMIPercentile.effective during "Measurement Period"
-      and BMIPercentile.value is not null
-      and BMIPercentile.value.code = 'kg/m2'
+define "BMI in Measurement Period":
+  [Observation: "BMI"] BMI
+    where BMI.status in {'final', 'amended', 'corrected'}
+      and BMI.effective during "Measurement Period"
+      and BMI.value is not null
+      and BMI.value.code = 'kg/m2'
 ```
 
 Notice the use of the UCUM code directly, as opposed to declaring a CQL `code` for the unit:
@@ -19,10 +19,10 @@ Notice the use of the UCUM code directly, as opposed to declaring a CQL `code` f
 codesystem UCUM: 'http://unitsofmeasure.org'
 code "kg/m2": 'kg/m2' from UCUM
 
-define "BMI Percentile in Measurement Period":
-  [Observation: "BMI percentile"] BMIPercentile
-    where BMIPercentile.status in {'final', 'amended', 'corrected'}
-      and BMIPercentile.effective during "Measurement Period"
-      and BMIPercentile.value is not null
-      and BMIPercentile.value.code = "kg/m2"
+define "BMI in Measurement Period":
+  [Observation: "BMI"] BMI
+    where BMI.status in {'final', 'amended', 'corrected'}
+      and BMI.effective during "Measurement Period"
+      and BMI.value is not null
+      and BMI.value.code = "kg/m2"
 ```
