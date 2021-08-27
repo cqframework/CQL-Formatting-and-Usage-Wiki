@@ -61,6 +61,7 @@ approach.
   So we define ToDaily
 */
 
+// TODO: Rename ToDaily (overloads not supported in QDM stack)
 define function ToDaily(Frequency Quantity):
   case Frequency.unit
     when 'h' then (24.0 / Frequency.value)
@@ -87,6 +88,7 @@ define function ToDaily(Frequency Quantity):
     else null
   end
 
+// TODO: Use SNOMED codes here, rather than the HL7v3 and FHIR codes
 define function ToDaily(Frequency Code):
   case Frequency
     when "HS" then 1 // event occurs [offset] before the hour of sleep (or trying to)
@@ -221,7 +223,8 @@ period by anchoring that to the authorDatetime
 /*
 Calculates Medication Period for a given Medication, Dispensed
 */
-
+// TODO: If daysSupplied is not present, or cannot be calculated from supply, dosage, and frequency, return null (the order has insufficient information to contribute meaningfully to a CMD calculation)
+// TODO: Apply that change to the FHIR calculation as well
 define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
   if HasEnd(Dispense.relevantPeriod) then
     Interval[Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime), end of Dispense.relevantPeriod]
@@ -301,6 +304,7 @@ Then, we define a function that allows us to calculate based on the various medi
 types:
 */
 
+// TODO: Add rollout like the FHIR one does
 define function MedicationPeriod(
   Medication Choice<"Medication, Order",
     "Medication, Dispensed",
