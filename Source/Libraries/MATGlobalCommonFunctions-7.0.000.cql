@@ -12,16 +12,6 @@ parameter "Measurement Period" Interval<DateTime>
 
 context Patient
 
-/*
-@description: Returns an interval of date values extracted from the input interval of date-time values
-@comment: This function returns an interval constructed using the `date from` extractor on the start
-and end values of the input date-time interval. Note that using a precision specifier as part of a
-timing phrase is preferred to communicate intent to perform day-level comparison, as well as for
-general readability.
-*/
-define function "ToDateInterval"(period Interval<DateTime>):
-  Interval[date from start of period, date from end of period]
-
 define "ED Encounter":
   ["Encounter, Performed": "Emergency Department Visit"]
 
@@ -30,11 +20,19 @@ define "Inpatient Encounter":
     where "LengthInDays"(EncounterInpatient.relevantPeriod)<= 120
       and EncounterInpatient.relevantPeriod ends during day of "Measurement Period"
 
+/*@description: Returns an interval of date values extracted from the input interval of date-time values
+@comment: This function returns an interval constructed using the `date from` extractor on the start
+and end values of the input date-time interval. Note that using a precision specifier as part of a
+timing phrase is preferred to communicate intent to perform day-level comparison, as well as for
+general readability.*/
+define function "ToDateInterval"(period Interval<DateTime> ):
+  Interval[date from start of period, date from end of period]
+
 /*calculates the difference in calendar days between the start and end of the given interval.*/
 define function "LengthInDays"(Value Interval<DateTime> ):
   difference in days between start of Value and end of Value
 
-/* returns list of all locations within an encounter, including locations for immediately prior ED visit. */
+/*returns list of all locations within an encounter, including locations for immediately prior ED visit.*/
 define function "HospitalizationLocations"(Encounter "Encounter, Performed" ):
   Encounter Visit
   	let EDVisit: Last(["Encounter, Performed": "Emergency Department Visit"] LastED
@@ -45,19 +43,18 @@ define function "HospitalizationLocations"(Encounter "Encounter, Performed" ):
   	return if EDVisit is null then Visit.facilityLocations
   		else flatten { EDVisit.facilityLocations, Visit.facilityLocations }
 
-/*Returns the arrival time in the ED for the encounter.
-*/
+/*Returns the arrival time in the ED for the encounter.*/
 define function "EmergencyDepartmentArrivalTime"(Encounter "Encounter, Performed" ):
   start of First(("HospitalizationLocations"(Encounter))HospitalLocation
   		where HospitalLocation.code in "Emergency Department Visit"
   		sort by start of locationPeriod
   ).locationPeriod
 
-/*Returns admission time for an encounter or for immediately prior emergency department visit.  */
+/*Returns admission time for an encounter or for immediately prior emergency department visit.*/
 define function "HospitalAdmissionTime"(Encounter "Encounter, Performed" ):
   start of "Hospitalization"(Encounter)
 
-/*Returns earliest arrival time for an encounter including any prior ED visit. */
+/*Returns earliest arrival time for an encounter including any prior ED visit.*/
 define function "HospitalArrivalTime"(Encounter "Encounter, Performed" ):
   start of First(("HospitalizationLocations"(Encounter))HospitalLocation
   		sort by start of locationPeriod
@@ -78,7 +75,7 @@ define function "Hospitalization"(Encounter "Encounter, Performed" ):
 define function "HospitalizationLengthofStay"(Encounter "Encounter, Performed" ):
   LengthInDays("Hospitalization"(Encounter))
 
-/*Returns the latest departure time for encounter including any prior ED visit. */
+/*Returns the latest departure time for encounter including any prior ED visit.*/
 define function "HospitalDepartureTime"(Encounter "Encounter, Performed" ):
   end of Last(("HospitalizationLocations"(Encounter))HospitalLocation
   		sort by start of locationPeriod

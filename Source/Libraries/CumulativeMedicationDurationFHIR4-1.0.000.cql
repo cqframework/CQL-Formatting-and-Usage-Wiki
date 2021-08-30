@@ -12,6 +12,7 @@ include FHIRHelpers version '4.0.001'
 // These code systems are not known to the MAT environment yet, request to have them added submitted
 codesystem "V3TimingEvent": 'http://terminology.hl7.org/CodeSystem/v3-TimingEvent'
 codesystem "EventTiming": 'http://hl7.org/fhir/event-timing'
+codesystem "SNOMEDCT": 'urn:oid:2.16.840.1.113883.6.96'
 
 code "HS": 'HS' from "V3TimingEvent" // event occurs [offset] before the hour of sleep (or trying to)
 code "WAKE": 'WAKE' from "V3TimingEvent" // event occurs [offset] after waking
@@ -40,6 +41,29 @@ code "EVE.early": 'EVE.early' from EventTiming //	Early Evening	Event occurs dur
 code "EVE.late": 'EVE.late' from EventTiming //	Late Evening	Event occurs during the late evening. The exact time is unspecified and established by institution convention or patient interpretation.
 code "NIGHT": 'NIGHT' from EventTiming //	Night	Event occurs during the night. The exact time is unspecified and established by institution convention or patient interpretation.
 code "PHS": 'PHS' from EventTiming //	After Sleep	Event occurs [offset] after subject goes to sleep. The exact time is unspecified and established by institution convention or patient interpretation.
+
+code "Every eight hours (qualifier value)": '307469008' from "SNOMEDCT" display 'Every eight hours (qualifier value)'
+code "Every eight to twelve hours (qualifier value)": '396140003' from "SNOMEDCT" display 'Every eight to twelve hours (qualifier value)'
+code "Every forty eight hours (qualifier value)": '396131002' from "SNOMEDCT" display 'Every forty eight hours (qualifier value)'
+code "Every forty hours (qualifier value)": '396130001' from "SNOMEDCT" display 'Every forty hours (qualifier value)'
+code "Every four hours (qualifier value)": '225756002' from "SNOMEDCT" display 'Every four hours (qualifier value)'
+code "Every seventy two hours (qualifier value)": '396143001' from "SNOMEDCT" display 'Every seventy two hours (qualifier value)'
+code "Every six hours (qualifier value)": '307468000' from "SNOMEDCT" display 'Every six hours (qualifier value)'
+code "Every six to eight hours (qualifier value)": '396139000' from "SNOMEDCT" display 'Every six to eight hours (qualifier value)'
+code "Every thirty six hours (qualifier value)": '396126004' from "SNOMEDCT" display 'Every thirty six hours (qualifier value)'
+code "Every three to four hours (qualifier value)": '225754004' from "SNOMEDCT" display 'Every three to four hours (qualifier value)'
+code "Every three to six hours (qualifier value)": '396127008' from "SNOMEDCT" display 'Every three to six hours (qualifier value)'
+code "Every twelve hours (qualifier value)": '307470009' from "SNOMEDCT" display 'Every twelve hours (qualifier value)'
+code "Every twenty four hours (qualifier value)": '396125000' from "SNOMEDCT" display 'Every twenty four hours (qualifier value)'
+code "Every two to four hours (qualifier value)": '225752000' from "SNOMEDCT" display 'Every two to four hours (qualifier value)'
+code "Four times daily (qualifier value)": '307439001' from "SNOMEDCT" display 'Four times daily (qualifier value)'
+code "Once daily (qualifier value)": '229797004' from "SNOMEDCT" display 'Once daily (qualifier value)'
+code "One to four times a day (qualifier value)": '396109005' from "SNOMEDCT" display 'One to four times a day (qualifier value)'
+code "One to three times a day (qualifier value)": '396108002' from "SNOMEDCT" display 'One to three times a day (qualifier value)'
+code "One to two times a day (qualifier value)": '396107007' from "SNOMEDCT" display 'One to two times a day (qualifier value)'
+code "Three times daily (qualifier value)": '229798009' from "SNOMEDCT" display 'Three times daily (qualifier value)'
+code "Twice a day (qualifier value)": '229799001' from "SNOMEDCT" display 'Twice a day (qualifier value)'
+code "Two to four times a day (qualifier value)": '396111001' from "SNOMEDCT" display 'Two to four times a day (qualifier value)'
 
 parameter ErrorLevel String default 'Warning'
 
@@ -97,34 +121,57 @@ define function ToDaily(frequency System.Integer, period System.Quantity):
   // TODO: Determine whether or not we should use timing.code at all....
 */
 define function ToDaily(frequency Code):
-  case frequency
-    when "HS" then 1 // event occurs [offset] before the hour of sleep (or trying to)
-    when "WAKE" then 1 // event occurs [offset] after waking
-    when "C" then 3 //	event occurs at a meal (from the Latin cibus)
-    when "CM" then 1 //	event occurs at breakfast (from the Latin cibus matutinus)
-    when "CD" then 1 //	event occurs at lunch (from the Latin cibus diurnus)
-    when "CV" then 1 //	event occurs at dinner (from the Latin ante cibus vespertinus)
-    when "AC" then 3 //	event occurs [offset] before a meal (from the Latin ante cibus)
-    when "ACM" then 1 //	event occurs [offset] before breakfast (from the Latin ante cibus matutinus)
-    when "ACD" then 1 //	event occurs [offset] before lunch (from the Latin ante cibus diurnus)
-    when "ACV" then 1 //	event occurs [offset] before dinner (from the Latin ante cibus vespertinus)
-    when "PC" then 3 //	event occurs [offset] after a meal (from the Latin post cibus)
-    when "PCM" then 1 //	event occurs [offset] after breakfast (from the Latin post cibus matutinus)
-    when "PCD" then 1 //	event occurs [offset] after lunch (from the Latin post cibus diurnus)
-    when "PCV" then 1 //	event occurs [offset] after dinner (from the Latin post cibus vespertinus)
+  case
+    when frequency ~ "HS" then 1 // event occurs [offset] before the hour of sleep (or trying to)
+    when frequency ~ "WAKE" then 1 // event occurs [offset] after waking
+    when frequency ~ "C" then 3 //	event occurs at a meal (from the Latin cibus)
+    when frequency ~ "CM" then 1 //	event occurs at breakfast (from the Latin cibus matutinus)
+    when frequency ~ "CD" then 1 //	event occurs at lunch (from the Latin cibus diurnus)
+    when frequency ~ "CV" then 1 //	event occurs at dinner (from the Latin ante cibus vespertinus)
+    when frequency ~ "AC" then 3 //	event occurs [offset] before a meal (from the Latin ante cibus)
+    when frequency ~ "ACM" then 1 //	event occurs [offset] before breakfast (from the Latin ante cibus matutinus)
+    when frequency ~ "ACD" then 1 //	event occurs [offset] before lunch (from the Latin ante cibus diurnus)
+    when frequency ~ "ACV" then 1 //	event occurs [offset] before dinner (from the Latin ante cibus vespertinus)
+    when frequency ~ "PC" then 3 //	event occurs [offset] after a meal (from the Latin post cibus)
+    when frequency ~ "PCM" then 1 //	event occurs [offset] after breakfast (from the Latin post cibus matutinus)
+    when frequency ~ "PCD" then 1 //	event occurs [offset] after lunch (from the Latin post cibus diurnus)
+    when frequency ~ "PCV" then 1 //	event occurs [offset] after dinner (from the Latin post cibus vespertinus)
 
-    when "MORN" then 1 //	Event occurs during the morning. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "MORN.early" then 1 //	Early Morning	Event occurs during the early morning. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "MORN.late" then 1 // Late Morning	Event occurs during the late morning. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "NOON" then 1 //	Noon	Event occurs around 12:00pm. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "AFT" then 1 //	Afternoon	Event occurs during the afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "AFT.early" then 1 //	Early Afternoon	Event occurs during the early afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "AFT.late" then 1 //	Late Afternoon	Event occurs during the late afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "EVE" then 1 //	Evening	Event occurs during the evening. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "EVE.early" then 1 //	Early Evening	Event occurs during the early evening. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "EVE.late" then 1 //	Late Evening	Event occurs during the late evening. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "NIGHT" then 1 //	Night	Event occurs during the night. The exact time is unspecified and established by institution convention or patient interpretation.
-    when "PHS" then 1 //	After Sleep	Event occurs [offset] after subject goes to sleep. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "MORN" then 1 //	Event occurs during the morning. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "MORN.early" then 1 //	Early Morning	Event occurs during the early morning. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "MORN.late" then 1 // Late Morning	Event occurs during the late morning. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "NOON" then 1 //	Noon	Event occurs around 12:00pm. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "AFT" then 1 //	Afternoon	Event occurs during the afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "AFT.early" then 1 //	Early Afternoon	Event occurs during the early afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "AFT.late" then 1 //	Late Afternoon	Event occurs during the late afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "EVE" then 1 //	Evening	Event occurs during the evening. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "EVE.early" then 1 //	Early Evening	Event occurs during the early evening. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "EVE.late" then 1 //	Late Evening	Event occurs during the late evening. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "NIGHT" then 1 //	Night	Event occurs during the night. The exact time is unspecified and established by institution convention or patient interpretation.
+    when frequency ~ "PHS" then 1 //	After Sleep	Event occurs [offset] after subject goes to sleep. The exact time is unspecified and established by institution convention or patient interpretation.
+
+    when frequency ~ "Once daily (qualifier value)" then 1.0
+    when frequency ~ "Twice a day (qualifier value)" then 2.0
+    when frequency ~ "Three times daily (qualifier value)" then 3.0
+    when frequency ~ "Four times daily (qualifier value)" then 4.0
+    when frequency ~ "Every twenty four hours (qualifier value)" then 1.0
+    when frequency ~ "Every twelve hours (qualifier value)" then 2.0
+    when frequency ~ "Every thirty six hours (qualifier value)" then 0.67
+    when frequency ~ "Every eight hours (qualifier value)" then 3.0
+    when frequency ~ "Every four hours (qualifier value)" then 6.0
+    when frequency ~ "Every six hours (qualifier value)" then 4.0
+    when frequency ~ "Every seventy two hours (qualifier value)" then 0.34
+    when frequency ~ "Every forty eight hours (qualifier value)" then 0.5
+    when frequency ~ "Every eight to twelve hours (qualifier value)" then 2.0
+    when frequency ~ "Every six to eight hours (qualifier value)" then 3.0
+    when frequency ~ "Every three to four hours (qualifier value)" then 6.0
+    when frequency ~ "Every three to six hours (qualifier value)" then 4.0
+    when frequency ~ "Every two to four hours (qualifier value)" then 6.0
+    when frequency ~ "One to four times a day (qualifier value)" then 4.0
+    when frequency ~ "One to three times a day (qualifier value)" then 3.0
+    when frequency ~ "One to two times a day (qualifier value)" then 2.0
+    when frequency ~ "Two to four times a day (qualifier value)" then 4.0
+
     else Message(null, true, 'CMDLogic.ToDaily.UnknownFrequencyCode', ErrorLevel, 'Unknown frequency code ' & frequency.code)
   end
 
@@ -226,12 +273,15 @@ define function MedicationRequestPeriod(Request "MedicationRequest"):
           start of boundsPeriod,
           start of R.dispenseRequest.validityPeriod,
           R.authoredOn
-        )
+        ),
+      durationInDays: Coalesce(daysSupply, quantity / (dose * dosesPerDay)) * (1 + refills)
     return
       if not (end of boundsPeriod is null or end of boundsPeriod = maximum DateTime) then
         Interval[startDate, end of boundsPeriod]
+      else if durationInDays is not null then
+        Interval[startDate, startDate + durationInDays]
       else
-        Interval[startDate, startDate + Coalesce(daysSupply, quantity / (dose * dosesPerDay)) * (1 + refills)]
+        null
 
 /*
 Next, consider the MedicationDispense case:
@@ -331,9 +381,13 @@ define function MedicationDispensePeriod(Dispense "MedicationDispense"):
         Coalesce(
           D.whenHandedOver,
           D.whenPrepared
-        )
+        ),
+      durationInDays: Coalesce(D.daysSupply, D.quantity / (dose * dosesPerDay))
     return
-        Interval[startDate, startDate + Coalesce(D.daysSupply, D.quantity / (dose * dosesPerDay))]
+      if durationInDays is not null then
+        Interval[startDate, startDate + durationInDays]
+      else
+        null
 
 /*
 Returns the established therapeutic duration for a given medication.
