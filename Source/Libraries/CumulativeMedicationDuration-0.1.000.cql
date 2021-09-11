@@ -109,6 +109,7 @@ define function "MedicationOrderPeriod"(Order "Medication, Order" ):
     Interval[Coalesce(start of Order.relevantPeriod, Order.authorDatetime), end of Order.relevantPeriod]
   else
     (
+      // TODO: durationInDays ends up being a Quantity here but with a unit of '1', needs to be a unit of 'd'
       Coalesce(
         Order.daysSupplied,
         Order.supply / (Order.dosage * ToDaily(Order.frequency))
@@ -134,6 +135,7 @@ define function "MedicationDispensedPeriod"(Dispense "Medication, Dispensed" ):
     Interval[Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime), end of Dispense.relevantPeriod]
   else
     (
+      // TODO: durationInDays ends up being a Quantity here but with a unit of '1', needs to be a unit of 'd'
       Coalesce(
         Dispense.daysSupplied,
         Dispense.supply / (Dispense.dosage * ToDaily(Dispense.frequency))

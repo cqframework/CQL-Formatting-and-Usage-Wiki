@@ -35,7 +35,7 @@ define "Initial Population (165)":
       and exists AdultOutpatientEncounters."Qualifying Encounters"
 
 define "Initial Population (165) (Global v6)":
-  AgeInYearsAt(start of "Measurement Period") between 18 and 84
+  AgeInYearsAt(date from start of "Measurement Period") between 18 and 84
       and exists "Essential Hypertension Diagnosis"
       and exists AdultOutpatientEncounters."Qualifying Encounters"
 
@@ -48,22 +48,22 @@ define "Stratification 1 (74)":
   )
 
 define "Stratification 1 (74) (Global v6)":
-  AgeInMonthsAt(start of "Measurement Period" ) >= 6
-    and AgeInYearsAt(start of "Measurement Period" ) <= 4
+  AgeInMonthsAt(date from start of "Measurement Period" ) >= 6
+    and AgeInYearsAt(date from start of "Measurement Period" ) <= 4
 
 define "Stratification 2 (74)":
   exists ["Patient"] BirthDate
     where Global."CalendarAgeInYearsAt" ( FHIRHelpers.ToDate(BirthDate.birthDate), start of "Measurement Period" ) in Interval[5, 11]
 
 define "Stratification 2 (74) (Global v6)":
-  AgeInYearsAt(start of "Measurement Period" ) in Interval[5, 11]
+  AgeInYearsAt(date from start of "Measurement Period" ) in Interval[5, 11]
 
 define "Stratification 3 (74)":
   exists ["Patient"] BirthDate
     where Global."CalendarAgeInYearsAt" ( FHIRHelpers.ToDate(BirthDate.birthDate), start of "Measurement Period" ) in Interval[12, 20 )
 
 define "Stratification 3 (74) (Global v6)":
-  AgeInYearsAt(start of "Measurement Period" ) in Interval[12, 20 )
+  AgeInYearsAt(date from start of "Measurement Period" ) in Interval[12, 20 )
 
 define "Initial Population (74)":
   exists ( ["Patient"] BirthDate
@@ -74,8 +74,8 @@ define "Initial Population (74)":
 
 define "Initial Population (74) (Global v6)":
   exists ( "Qualifying Encounters" )
-    and AgeInMonthsAt(start of "Measurement Period" ) >= 6
-    and AgeInYearsAt(start of "Measurement Period" ) < 20
+    and AgeInMonthsAt(date from start of "Measurement Period" ) >= 6
+    and AgeInYearsAt(date from start of "Measurement Period" ) < 20
 
 // From CMS124 - Cervical Cancer Screening
 
@@ -90,7 +90,7 @@ define "HPV Test Within 5 Years for Women Age 30 and Older (124) (Global v6)":
   [Observation: "HPV Test"] HPVTest
     where HPVTest.value is not null
       and HPVTest.status in { 'final', 'amended', 'corrected', 'preliminary' }
-      and AgeInYearsAt(start of Global6."Normalize Interval"(HPVTest.effective)) >= 30
+      and AgeInYearsAt(date from start of Global6."Normalize Interval"(HPVTest.effective)) >= 30
       and Global6."Normalize Interval"(HPVTest.effective) ends 5 years or less on or before end of "Measurement Period"
 
 
