@@ -2,6 +2,7 @@
 @changelog:
 v1.0.001
 Fixed Quantity handling in duration calculations
+Fixed authorDatetime null handling
 */
 library CumulativeMedicationDuration version '1.0.001'
 
@@ -205,7 +206,7 @@ define function "MedicationDischargePeriod"(Medication "Medication, Discharge" )
   ) durationInDays
     let startDatetime: Medication.authorDatetime
     return
-      if durationInDays is not null then
+      if startDatetime is not null and durationInDays is not null then
         Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
       else
         null

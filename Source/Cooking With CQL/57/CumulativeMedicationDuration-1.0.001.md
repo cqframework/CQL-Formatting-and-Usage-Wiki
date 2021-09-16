@@ -150,6 +150,9 @@ for each element:
 * frequency: How frequently the medication should be taken
 * refills: The number of refills allowed by the prescription
 
+If there is no relevantPeriod start or authorDatetime, we cannot determine a start date and cannot
+calculate a medication period, and so return null
+
 If the relevantPeriod element is present (and completely specified), then we can use that directly
 
     relevantPeriod
@@ -178,8 +181,10 @@ The following function illustrates this completely:
 Calculates the Medication Period for a single Medication, Order
 */
 define function MedicationOrderPeriod(Order "Medication, Order"):
-  if Global.HasEnd(Order.relevantPeriod) then
-    Interval[Coalesce(start of Order.relevantPeriod, Order.authorDatetime), end of Order.relevantPeriod]
+  if Order.relevantPeriod.low is null and Order.authorDatetime is null then
+    null
+  else if Order.relevantPeriod.high is not null then
+    Interval[Coalesce(Order.relevantPeriod.low, Order.authorDatetime), end of Order.relevantPeriod]
   else
     (
       Coalesce(
@@ -187,7 +192,7 @@ define function MedicationOrderPeriod(Order "Medication, Order"):
         Order.supply.value / (Order.dosage.value * ToDaily(Order.frequency))
       ) * (1 + Coalesce(Order.refills, 0))
     ) durationInDays
-      let startDatetime: Coalesce(start of Order.relevantPeriod, Order.authorDatetime)
+      let startDatetime: Coalesce(Order.relevantPeriod.low, Order.authorDatetime)
       return
         if durationInDays is not null then
           Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
@@ -216,6 +221,9 @@ calculating the duration of a single dispense.
 
 With a Medication, Dispense, relevantPeriod covers only the time period for the specific
 dispensing event (i.e. not considering refills).
+
+If there is no relevantPeriod start or authorDatetime, we cannot determine a start date and cannot
+calculate a medication period, and so return null
 
 If the relevantPeriod element is present (and completely specified), then we can use that directly
 
@@ -246,8 +254,10 @@ period by anchoring that to the authorDatetime
 Calculates Medication Period for a given Medication, Dispensed
 */
 define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
-  if Global.HasEnd(Dispense.relevantPeriod) then
-    Interval[Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime), end of Dispense.relevantPeriod]
+  if Dispense.relevantPeriod.low is null and Dispense.authorDatetime is null then
+    null
+  else if Dispense.relevantPeriod.high is not null then
+    Interval[Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime), end of Dispense.relevantPeriod]
   else
     (
       Coalesce(
@@ -255,7 +265,7 @@ define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
         Dispense.supply.value / (Dispense.dosage.value * ToDaily(Dispense.frequency))
       )
     ) durationInDays
-      let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
+      let startDatetime: Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime)
       return
         if durationInDays is not null then
           Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
@@ -337,7 +347,7 @@ define function MedicationDischargePeriod(Medication "Medication, Discharge"):
   ) durationInDays
     let startDatetime: Medication.authorDatetime
     return
-      if durationInDays is not null then
+      if startDatetime is not null and durationInDays is not null then
         Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
       else
         null
