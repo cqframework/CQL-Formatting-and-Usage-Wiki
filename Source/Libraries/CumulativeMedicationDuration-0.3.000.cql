@@ -1,10 +1,17 @@
 /*
+@description: This library provides cumulative medication duration calculation
+logic for use with Quality Data Model prescription, discharge, administration,
+and dispensing events. The logic here follows the guidance provided as part of
+the 5.6 version of Quality Data Model.
+@comment: Note that the logic here assumes single-instruction dosing information.
+Split-dosing, tapering, and other more complex dosing instructions are not handled.
 @changelog:
-v1.0.001
+v0.3.000
 Fixed Quantity handling in duration calculations
 Fixed authorDatetime null handling
+Changed to provide Date-level calculation, rather than DateTime
 */
-library CumulativeMedicationDuration version '1.0.001'
+library CumulativeMedicationDuration version '0.3.000'
 
 using QDM version '5.6'
 
@@ -111,13 +118,15 @@ using `(supply / dosage * frequency)) * (1 + refills)`. The result is then the i
 from `authorDatetime` to `authorDatetime + daysSupplied`.
 
 Note that the supply and dosage Quantity values on the order are assumed to be in
-terms of the same unit, typically a tablet or mL.
+terms of the same unit, typically a tablet or mL. If supply and dosage are not
+expressed in the same unit, this function will return null if duration in days
+must be calculated.
 @seealso: [Cumulative MedicationDuration](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/blob/master/Source/Libraries/CumulativeMedicationDuration-1.0.000.md)*/
 define function "MedicationOrderPeriod"(Order "Medication, Order" ):
   if Order.relevantPeriod.low is null and Order.authorDatetime is null then
     null
   else if Order.relevantPeriod.high is not null then
-    Interval[Coalesce(Order.relevantPeriod.low, Order.authorDatetime), end of Order.relevantPeriod]
+    Interval[date from Coalesce(Order.relevantPeriod.low, Order.authorDatetime), date from end of Order.relevantPeriod]
   else
     (
       Coalesce(
@@ -125,10 +134,10 @@ define function "MedicationOrderPeriod"(Order "Medication, Order" ):
         Order.supply.value / (Order.dosage.value * ToDaily(Order.frequency))
       ) * (1 + Coalesce(Order.refills, 0))
     ) durationInDays
-      let startDatetime: Coalesce(Order.relevantPeriod.low, Order.authorDatetime)
+      let startDate: date from Coalesce(Order.relevantPeriod.low, Order.authorDatetime)
       return
         if durationInDays is not null then
-          Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'days' }]
+          Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
         else
           null
 
@@ -147,7 +156,7 @@ define function "MedicationDispensedPeriod"(Dispense "Medication, Dispensed" ):
   if Dispense.relevantPeriod.low is null and Dispense.authorDatetime is null then
     null
   else if Dispense.relevantPeriod.high is not null then
-    Interval[Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime), end of Dispense.relevantPeriod]
+    Interval[date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime), date from end of Dispense.relevantPeriod]
   else
     (
       Coalesce(
@@ -155,10 +164,10 @@ define function "MedicationDispensedPeriod"(Dispense "Medication, Dispensed" ):
         Dispense.supply.value / (Dispense.dosage.value * ToDaily(Dispense.frequency))
       )
     ) durationInDays
-      let startDatetime: Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime)
+      let startDate: date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime)
       return
         if durationInDays is not null then
-          Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
+          Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
         else
           null
 
@@ -180,7 +189,7 @@ define function "MedicationAdministrationPeriod"(Administration "Medication, Adm
   Administration M
     let
       therapeuticDuration: TherapeuticDuration(Administration.code),
-      startDate: Global.EarliestOf(Administration.relevantDatetime, Administration.relevantPeriod)
+      startDate: date from Global.EarliestOf(Administration.relevantDatetime, Administration.relevantPeriod)
     return
       if startDate is not null and therapeuticDuration is not null then
         Interval[startDate, startDate + therapeuticDuration]
@@ -204,10 +213,10 @@ define function "MedicationDischargePeriod"(Medication "Medication, Discharge" )
       Medication.supply.value / (Medication.dosage.value * ToDaily(Medication.frequency))
     ) * (1 + Coalesce(Medication.refills, 0))
   ) durationInDays
-    let startDatetime: Medication.authorDatetime
+    let startDate: date from Medication.authorDatetime
     return
-      if startDatetime is not null and durationInDays is not null then
-        Interval[startDatetime, startDatetime + Quantity { value: durationInDays, unit: 'day' }]
+      if startDate is not null and durationInDays is not null then
+        Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
       else
         null
 
@@ -215,15 +224,15 @@ define function "MedicationDischargePeriod"(Medication "Medication, Discharge" )
 @comment: This function calculates the total duration in days covered by the given
 periods. If multiple periods in the input include the same day, that day is only
 counted once in the final result.*/
-define function "CumulativeDuration"(Intervals List<Interval<DateTime>> ):
+define function "CumulativeDuration"(Intervals List<Interval<Date>> ):
   Sum((collapse Intervals) X return all difference in days between start of X and end of X)
 
 /*@description: Rolls out periods so that overlapping periods delay the start of subsequent periods.
 @comment: Returns the periods with overlapping periods delayed so that there is no overlap between
 any two periods in the result.*/
-define function "RolloutIntervals"(intervals List<Interval<DateTime>> ):
+define function "RolloutIntervals"(intervals List<Interval<Date>> ):
   intervals I
-    aggregate R starting (null as List<Interval<DateTime>>):
+    aggregate R starting (null as List<Interval<Date>>):
       R union ({
         I X
           let

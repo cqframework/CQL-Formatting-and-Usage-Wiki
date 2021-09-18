@@ -44,11 +44,16 @@ define "Initial Population (165)":
           )
       )
 
+// NOTE: Preference for use of inclusive boundaries (closed bracket) to avoid potential confusion with operation invocation syntax
 define "Initial Population (165) (Global v7)":
-  AgeInYearsAt(date from start of "Measurement Period") in Interval[18, 85)
+  AgeInYearsAt(date from start of "Measurement Period") in Interval[18, 84]
       and exists "Essential Hypertension Diagnosis"
-      and exists AdultOutpatientEncounters."Qualifying Encounters"
-      // NOTE: Did not apply telehealth changes
+      and ( exists AdultOutpatientEncounters."Qualifying Encounters"
+          or exists ( ( ["Encounter, Performed": "Telephone Visits"]
+              union ["Encounter, Performed": "Online Assessments"] ) Telehealth
+              where Telehealth.relevantPeriod during "Measurement Period"
+          )
+      )
 
 // From CMS74 - Primary Caries Prevention
 
@@ -73,8 +78,9 @@ define "Stratification 3 (74)":
   exists ["Patient Characteristic Birthdate": "Birth date"] BirthDate
     where Global."CalendarAgeInYearsAt" ( BirthDate.birthDatetime, start of "Measurement Period" ) in Interval[12, 20 )
 
+// NOTE: Preference for use of inclusive boundaries (closed bracket) to avoid potential confusion with operation invocation syntax
 define "Stratification 3 (74) (Global v7)":
-  AgeInYearsAt(date from start of "Measurement Period" ) in Interval[12, 20 )
+  AgeInYearsAt(date from start of "Measurement Period" ) in Interval[12, 19]
 
 define "Initial Population (74)":
   exists ( ["Patient Characteristic Birthdate": "Birth date"] BirthDate
@@ -86,7 +92,7 @@ define "Initial Population (74)":
 define "Initial Population (74) (Global v7)":
   exists ( "Qualifying Encounters" )
     and AgeInMonthsAt(date from start of "Measurement Period" ) >= 6
-    and AgeInYearsAt(date from start of "Measurement Period" ) < 20
+    and AgeInYearsAt(date from start of "Measurement Period" ) <= 19
 
 // From CMS124 - Cervical Cancer Screening
 

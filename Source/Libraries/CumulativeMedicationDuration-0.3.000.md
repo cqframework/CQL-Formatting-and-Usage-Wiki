@@ -1,7 +1,20 @@
-# CumulativeMedicationDuration version '1.0.000'
+# CumulativeMedicationDuration version '0.3.000'
 
-This library provides functions for calculating Cumulative Medication Duration
-using QDM 5.6 and above.
+This library provides cumulative medication duration calculation
+logic for use with Quality Data Model prescription, discharge, administration,
+and dispensing events. The logic here follows the guidance provided as part of
+the 5.6 version of Quality Data Model.
+
+## Comment
+
+Note that the logic here assumes single-instruction dosing information.
+Split-dosing, tapering, and other more complex dosing instructions are not handled.
+
+## Changelog
+v0.3.000
+Fixed Quantity handling in duration calculations
+Fixed authorDatetime null handling
+Changed to provide Date-level calculation, rather than DateTime
 
 ## Using
 
@@ -146,6 +159,9 @@ for each element:
 * frequency: How frequently the medication should be taken
 * refills: The number of refills allowed by the prescription
 
+If there is no relevantPeriod start or authorDatetime, we cannot determine a start date and cannot
+calculate a medication period, and so return null
+
 If the relevantPeriod element is present (and completely specified), then we can use that directly
 
     relevantPeriod
@@ -159,6 +175,9 @@ the supply, dosage, and frequency:
 
     (supply / (dosage * frequency)) * (1 + refills)
 
+Note that the supply and dosage Quantity values on the order are assumed to be in
+terms of the same unit, typically a tablet or mL.
+
 This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the authorDatetime
 
@@ -171,19 +190,21 @@ The following function illustrates this completely:
 Calculates the Medication Period for a single Medication, Order
 */
 define function MedicationOrderPeriod(Order "Medication, Order"):
-  if Global.HasEnd(Order.relevantPeriod) then
-    Interval[Coalesce(start of Order.relevantPeriod, Order.authorDatetime), end of Order.relevantPeriod]
+  if Order.relevantPeriod.low is null and Order.authorDatetime is null then
+    null
+  else if Order.relevantPeriod.high is not null then
+    Interval[date from Coalesce(Order.relevantPeriod.low, Order.authorDatetime), date from end of Order.relevantPeriod]
   else
     (
       Coalesce(
         Order.daysSupplied,
-        Order.supply / (Order.dosage * ToDaily(Order.frequency))
+        Order.supply.value / (Order.dosage.value * ToDaily(Order.frequency))
       ) * (1 + Coalesce(Order.refills, 0))
     ) durationInDays
-      let startDatetime: Coalesce(start of Order.relevantPeriod, Order.authorDatetime)
+      let startDate: date from Coalesce(Order.relevantPeriod.low, Order.authorDatetime)
       return
         if durationInDays is not null then
-          Interval[startDatetime, startDatetime + durationInDays]
+          Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
         else
           null
 ```
@@ -210,6 +231,9 @@ calculating the duration of a single dispense.
 With a Medication, Dispense, relevantPeriod covers only the time period for the specific
 dispensing event (i.e. not considering refills).
 
+If there is no relevantPeriod start or authorDatetime, we cannot determine a start date and cannot
+calculate a medication period, and so return null
+
 If the relevantPeriod element is present (and completely specified), then we can use that directly
 
     relevantPeriod
@@ -226,6 +250,9 @@ the supply, dosage, and frequency:
 
     (supply / (dosage * frequency))
 
+Again, note that the supply and dosage Quantity values on the order are assumed to be in
+terms of the same unit, typically a tablet or mL.
+
 This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the authorDatetime
 
@@ -236,19 +263,21 @@ period by anchoring that to the authorDatetime
 Calculates Medication Period for a given Medication, Dispensed
 */
 define function MedicationDispensedPeriod(Dispense "Medication, Dispensed"):
-  if Global.HasEnd(Dispense.relevantPeriod) then
-    Interval[Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime), end of Dispense.relevantPeriod]
+  if Dispense.relevantPeriod.low is null and Dispense.authorDatetime is null then
+    null
+  else if Dispense.relevantPeriod.high is not null then
+    Interval[date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime), date from end of Dispense.relevantPeriod]
   else
     (
       Coalesce(
         Dispense.daysSupplied,
-        Dispense.supply / (Dispense.dosage * ToDaily(Dispense.frequency))
+        Dispense.supply.value / (Dispense.dosage.value * ToDaily(Dispense.frequency))
       )
     ) durationInDays
-      let startDatetime: Coalesce(start of Dispense.relevantPeriod, Dispense.authorDatetime)
+      let startDate: date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime)
       return
         if durationInDays is not null then
-          Interval[startDatetime, startDatetime + durationInDays]
+          Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
         else
           null
 ```
@@ -282,7 +311,7 @@ define function MedicationAdministrationPeriod(Administration "Medication, Admin
   Administration M
     let
       therapeuticDuration: TherapeuticDuration(Administration.code),
-      startDate: Global.EarliestOf(Administration.relevantDatetime, Administration.relevantPeriod)
+      startDate: date from Global.EarliestOf(Administration.relevantDatetime, Administration.relevantPeriod)
     return
       if startDate is not null and therapeuticDuration is not null then
         Interval[startDate, startDate + therapeuticDuration]
@@ -322,13 +351,13 @@ define function MedicationDischargePeriod(Medication "Medication, Discharge"):
   (
     Coalesce(
       Medication.daysSupplied,
-      Medication.supply / (Medication.dosage * ToDaily(Medication.frequency))
+      Medication.supply.value / (Medication.dosage.value * ToDaily(Medication.frequency))
     ) * (1 + Coalesce(Medication.refills, 0))
   ) durationInDays
-    let startDatetime: Medication.authorDatetime
+    let startDate: date from Medication.authorDatetime
     return
-      if durationInDays is not null then
-        Interval[startDatetime, startDatetime + durationInDays]
+      if startDate is not null and durationInDays is not null then
+        Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
       else
         null
 ```
@@ -343,16 +372,16 @@ First, we define a function that simply calculates CumulativeDuration of a set o
 intervals:
 
 ```cql
-define function CumulativeDuration(Intervals List<Interval<DateTime>>):
+define function CumulativeDuration(Intervals List<Interval<Date>>):
   Sum((collapse Intervals) X return all difference in days between start of X and end of X)
 ```
 
 Next, we define a function that rolls out intervals:
 
 ```cql
-define function RolloutIntervals(intervals List<Interval<DateTime>>):
+define function RolloutIntervals(intervals List<Interval<Date>>):
   intervals I
-    aggregate R starting (null as List<Interval<DateTime>>):
+    aggregate R starting (null as List<Interval<Date>>):
       R union ({
         I X
           let
