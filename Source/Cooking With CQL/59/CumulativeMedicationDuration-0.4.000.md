@@ -15,8 +15,6 @@ v0.3.000
 Fixed Quantity handling in duration calculations
 Fixed authorDatetime null handling
 Changed to provide Date-level calculation, rather than DateTime
-v0.4.000
-Fixed daysSupply vs durationInDays calculation
 
 ## Using
 
@@ -66,8 +64,7 @@ context Patient
 ```
 
 ## Guidance and Documentation
-Goal is to calculate to the duration of a medication from the various sources of medication data:
-orders, dispenses, statements, and discharge information.
+Goal is to get to number of days
 
 Two broad approaches to the calculation:
 
@@ -169,11 +166,11 @@ If the relevantPeriod element is present (and completely specified), then we can
 
     relevantPeriod
 
-If the daysSupplied element is present, then the total days supplied is simply
+If the daysSupplied element is present, then the duration in days is simply
 
     daysSupplied * (1 + refills)
 
-If daysSupplied is not present, then totalDaysSupplied must be calculated based on
+If daysSupplied is not present, then daysSupplied must be calculated based on
 the supply, dosage, and frequency:
 
     (supply / (dosage * frequency)) * (1 + refills)
@@ -184,7 +181,7 @@ terms of the same unit, typically a tablet or mL.
 This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the authorDatetime
 
-   Interval[authorDatetime, authorDatetime + totalDaysSupplied - 1]
+   Interval[authorDatetime, authorDatetime + durationInDays]
 
 The following function illustrates this completely:
 
@@ -203,11 +200,11 @@ define function MedicationOrderPeriod(Order "Medication, Order"):
         Order.daysSupplied,
         Order.supply.value / (Order.dosage.value * ToDaily(Order.frequency))
       ) * (1 + Coalesce(Order.refills, 0))
-    ) totalDaysSupplied
+    ) durationInDays
       let startDate: date from Coalesce(Order.relevantPeriod.low, Order.authorDatetime)
       return
-        if totalDaysSupplied is not null then
-          Interval[startDate, startDate + Quantity { value: totalDaysSupplied - 1, unit: 'day' }]
+        if durationInDays is not null then
+          Interval[startDate, startDate + Quantity { value: durationInDays, unit: 'day' }]
         else
           null
 ```

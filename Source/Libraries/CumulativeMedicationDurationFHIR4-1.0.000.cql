@@ -1,9 +1,18 @@
-library CumulativeMedicationDurationFHIR4
-
 /*
-This library provides guidance for calculating Cumulative Medication Duration
-using FHIR R4.
+@description: This library provides cumulative medication duration calculation
+logic for use with Quality Data Model prescription, discharge, administration,
+and dispensing events. The logic here follows the guidance provided as part of
+the 5.6 version of Quality Data Model.
+@comment: Note that the logic here assumes single-instruction dosing information.
+Split-dosing, tapering, and other more complex dosing instructions are not handled.
+@changelog:
+v0.2.000
+Fixed Quantity handling in duration calculations
+Fixed authorDatetime null handling
+Changed to provide Date-level calculation, rather than DateTime
 */
+
+library CumulativeMedicationDurationFHIR4 version '0.2.0'
 
 using FHIR version '4.0.1'
 
@@ -265,21 +274,21 @@ define function MedicationRequestPeriod(Request "MedicationRequest"):
       period: System.Quantity { value: timing.repeat.period, unit: timing.repeat.periodUnit.value },
       dosesPerDay: Coalesce(ToDaily(frequency, period), Count(timing.repeat.timeOfDay), 1.0),
       boundsPeriod: timing.repeat.bounds as Period,
-      daysSupply: R.dispenseRequest.expectedSupplyDuration,
+      daysSupply: convert R.dispenseRequest.expectedSupplyDuration to days,
       quantity: R.dispenseRequest.quantity,
       refills: Coalesce(R.dispenseRequest.numberOfRepeatsAllowed, 0),
       startDate:
         Coalesce(
-          start of boundsPeriod,
-          start of R.dispenseRequest.validityPeriod,
-          R.authoredOn
+          date from start of boundsPeriod,
+          date from R.authoredOn,
+          date from start of R.dispenseRequest.validityPeriod
         ),
       durationInDays: Coalesce(daysSupply, quantity / (dose * dosesPerDay)) * (1 + refills)
     return
-      if not (end of boundsPeriod is null or end of boundsPeriod = maximum DateTime) then
+      if startDate is not null and boundsPeriod."end" is not null then
         Interval[startDate, end of boundsPeriod]
-      else if durationInDays is not null then
-        Interval[startDate, startDate + durationInDays]
+      else if startDate is not null and durationInDays is not null then
+        Interval[startDate, startDate + (durationInDays - 1 day) ]
       else
         null
 
@@ -333,7 +342,7 @@ This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the startDate, as determined by the first available
 value of the start of the boundsPeriod, whenHandedOver, and whenPrepared.
 
-   Interval[startDate, startDate + durationInDays]
+   Interval[startDate, startDate + durationInDays - 1 day]
 */
 
 /*
@@ -376,16 +385,17 @@ define function MedicationDispensePeriod(Dispense "MedicationDispense"):
       timing: dosage.timing,
       frequency: Coalesce(timing.repeat.frequencyMax, timing.repeat.frequency),
       period: System.Quantity { value: timing.repeat.period, unit: timing.repeat.periodUnit.value },
+      daysSupply: convert D.daysSupply to days,
       dosesPerDay: Coalesce(ToDaily(frequency, period), Count(timing.repeat.timeOfDay), 1.0),
       startDate:
         Coalesce(
-          D.whenHandedOver,
-          D.whenPrepared
+          date from D.whenHandedOver,
+          date from D.whenPrepared
         ),
-      durationInDays: Coalesce(D.daysSupply, D.quantity / (dose * dosesPerDay))
+      durationInDays: Coalesce(daysSupply, D.quantity / (dose * dosesPerDay))
     return
-      if durationInDays is not null then
-        Interval[startDate, startDate + durationInDays]
+      if startDate is not null and durationInDays is not null then
+        Interval[startDate, startDate + (durationInDays - 1 day)]
       else
         null
 
@@ -415,16 +425,16 @@ code system supplement.
 However it is obtained, if therapeutic duration can be obtained, and the effective
 period has a start, the result will be
 
-    Interval[startDate, startDate + therapeuticDuration]
+    Interval[startDate, startDate + therapeuticDuration - 1 day]
 */
 define function MedicationAdministrationPeriod(Administration "MedicationAdministration"):
   Administration M
     let
       therapeuticDuration: TherapeuticDuration(Administration.medication),
-      startDate: start of Administration.effective
+      startDate: date from start of Administration.effective
     return
       if startDate is not null and therapeuticDuration is not null then
-        Interval[startDate, startDate + therapeuticDuration]
+        Interval[startDate, startDate + (therapeuticDuration - 1 day)]
       else
         null
 

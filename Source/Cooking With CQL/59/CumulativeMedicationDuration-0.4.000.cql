@@ -11,7 +11,6 @@ Fixed Quantity handling in duration calculations
 Fixed authorDatetime null handling
 Changed to provide Date-level calculation, rather than DateTime
 v0.4.000
-Fixed relevantePeriod vs relevantDatetime in dispense calculation
 Fixed daysSupply vs durationInDays calculation
 */
 library CumulativeMedicationDuration version '0.3.000'
@@ -156,10 +155,10 @@ Note that the supply and dosage Quantity values on the order are assumed to be i
 terms of the same unit, typically a tablet or mL.
 @seealso: [Cumulative MedicationDuration](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/blob/master/Source/Libraries/CumulativeMedicationDuration-1.0.000.md)*/
 define function "MedicationDispensedPeriod"(Dispense "Medication, Dispensed" ):
-  if Dispense.relevantPeriod.low is null and Dispense.relevantDatetime is null and Dispense.authorDatetime is null then
+  if Dispense.relevantPeriod.low is null and Dispense.authorDatetime is null then
     null
   else if Dispense.relevantPeriod.high is not null then
-    Interval[date from Coalesce(Dispense.relevantPeriod.low, Dispense.relevantDatetime, Dispense.authorDatetime), date from end of Dispense.relevantPeriod]
+    Interval[date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime), date from end of Dispense.relevantPeriod]
   else
     (
       Coalesce(
@@ -167,7 +166,7 @@ define function "MedicationDispensedPeriod"(Dispense "Medication, Dispensed" ):
         Dispense.supply.value / (Dispense.dosage.value * ToDaily(Dispense.frequency))
       )
     ) totalDaysSupplied
-      let startDate: date from Coalesce(Dispense.relevantPeriod.low, Dispense.relevantDatetime, Dispense.authorDatetime)
+      let startDate: date from Coalesce(Dispense.relevantPeriod.low, Dispense.authorDatetime)
       return
         if totalDaysSupplied is not null then
           Interval[startDate, startDate + Quantity { value: totalDaysSupplied - 1, unit: 'day' }]
@@ -224,11 +223,11 @@ define function "MedicationDischargePeriod"(Medication "Medication, Discharge" )
         null
 
 /*@description: Returns the total duration in days covered by the given periods.
-@comment: This function calculates the total number of days covered by the given
+@comment: This function calculates the total duration in days covered by the given
 periods. If multiple periods in the input include the same day, that day is only
 counted once in the final result.*/
 define function "CumulativeDuration"(Intervals List<Interval<Date>> ):
-  Sum((collapse Intervals) X return all (difference in days between start of X and end of X) + 1)
+  Sum((collapse Intervals) X return all difference in days between start of X and end of X)
 
 /*@description: Rolls out periods so that overlapping periods delay the start of subsequent periods.
 @comment: Returns the periods with overlapping periods delayed so that there is no overlap between
