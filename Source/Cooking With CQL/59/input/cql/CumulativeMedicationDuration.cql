@@ -238,7 +238,7 @@ If expectedSupplyDuration is not present, then it must be calculated based on th
 This calculation results in a number of days, which can then be turned into a period by anchoring that to the
 start of the validityPeriod or the authoredOn:
 
-    Interval[earliestDispensable, earliestDispensable + expectedSupplyDuration]
+    Interval[earliestDispensable, earliestDispensable + expectedSupplyDuration - 1]
 
     earliestDispensable: Coalesce(start of validityPeriod, authoredOn)
 
@@ -283,12 +283,12 @@ define function MedicationRequestPeriod(Request "MedicationRequest"):
           date from R.authoredOn,
           date from start of R.dispenseRequest.validityPeriod
         ),
-      durationInDays: Coalesce(daysSupply, quantity.value / (dose.value * dosesPerDay)) * (1 + refills)
+      totalDaysSupplied: Coalesce(daysSupply, quantity.value / (dose.value * dosesPerDay)) * (1 + refills)
     return
       if startDate is not null and boundsPeriod."end" is not null then
         Interval[startDate, end of boundsPeriod]
-      else if startDate is not null and durationInDays is not null then
-        Interval[startDate, startDate + Quantity(durationInDays, 'day') ]
+      else if startDate is not null and totalDaysSupplied is not null then
+        Interval[startDate, startDate + Quantity(totalDaysSupplied - 1, 'day') ]
       else
         null
 
@@ -342,7 +342,7 @@ This calculation results in a number of days, which can then be turned into a
 period by anchoring that to the startDate, as determined by the first available
 value of the start of the boundsPeriod, whenHandedOver, and whenPrepared.
 
-   Interval[startDate, startDate + durationInDays - 1 day]
+   Interval[startDate, startDate + totalDaysSupplied - 1 day]
 */
 
 /*
@@ -392,10 +392,10 @@ define function MedicationDispensePeriod(Dispense "MedicationDispense"):
           date from D.whenHandedOver,
           date from D.whenPrepared
         ),
-      durationInDays: Coalesce(daysSupply, D.quantity.value / (dose.value * dosesPerDay))
+      totalDaysSupplied: Coalesce(daysSupply, D.quantity.value / (dose.value * dosesPerDay))
     return
-      if startDate is not null and durationInDays is not null then
-        Interval[startDate, startDate + Quantity(durationInDays, 'day')]
+      if startDate is not null and totalDaysSupplied is not null then
+        Interval[startDate, startDate + Quantity(totalDaysSupplied - 1, 'day')]
       else
         null
 
@@ -434,7 +434,7 @@ define function MedicationAdministrationPeriod(Administration "MedicationAdminis
       startDate: date from start of Administration.effective
     return
       if startDate is not null and therapeuticDuration is not null then
-        Interval[startDate, startDate + therapeuticDuration]
+        Interval[startDate, startDate + therapeuticDuration - 1]
       else
         null
 
@@ -451,7 +451,7 @@ First, we define a function that simply calculates CumulativeDuration of a set o
 intervals:
 */
 define function CumulativeDuration(Intervals List<Interval<DateTime>>):
-  Sum((collapse Intervals per day) X return all difference in days between start of X and end of X)
+  Sum((collapse Intervals per day) X return all difference in days between start of X and end of X) + 1
 
 /*
 Next, we define a function that rolls out intervals:
