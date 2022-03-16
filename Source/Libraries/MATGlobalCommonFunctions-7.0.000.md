@@ -1,6 +1,5 @@
 # MATGlobalCommonFunctions version 7.0.000
-The MATGlobalCommonFunctions library provides common functions and expressions used throughout electronic
-Clinical Quality Measures (eCQM) published for use in Centers for Medicare and Medicaid (CMS) quality programs.
+The MATGlobalCommonFunctions library provides common functions and expressions used throughout electronic. Clinical Quality Measures (eCQM) published for use in Centers for Medicare and Medicaid (CMS) quality programs.
 
 ## Using QDM version '5.6'
 
@@ -19,17 +18,37 @@ parameter "Measurement Period" Interval<DateTime>
 ```
 
 ## Context
+Within the Patient context, the results of any retrieve will always be scoped to a single patient, as determined by the environment. Patient-based or Encounter-based results will contain all data for a single patient within the Measurement Period as specified by the query constraints.
 ```
 context Patient
 ```
 
-## Function `ToDateInterval(Interval<DateTime>): Interval<Date>`
-Returns an interval of date values extracted from the input interval of date-time values
+## Expression `ED Encounter`
+Returns encounters with codes from the "Emergency Department Visit" value set.
+
+```
+define "ED Encounter":
+  ["Encounter, Performed": "Emergency Department Visit"]
+```
+
+## Expression `Inpatient Encounter`
+Returns completed encounters with codes from the "Encounter Inpatient" value set when the inpatient stay is less than or equal to 120 days and the discharge date falls within the Measurement Period.
+
+```
+define "Inpatient Encounter":
+  ["Encounter, Performed": "Encounter Inpatient"] EncounterInpatient
+    where "LengthInDays"(EncounterInpatient.relevantPeriod)<= 120
+      and EncounterInpatient.relevantPeriod ends during day of "Measurement Period"
+```
+
+## Function `ToDateInterval(Interval<DateTime>) returns Interval<Date>`
+Returns an interval of date values extracted from the input interval of date-time values.
 
 This function returns an interval constructed using the `date from` extractor on the start
-and end values of the input date-time interval. Note that using a precision specifier as part of a
-timing phrase is preferred to communicate intent to perform day-level comparison, as well as for
-general readability.
+and end values of the input date-time interval. Note that using a precision specifier, such as `day of`, as part of a timing phrase is preferred to communicate intent to perform day-level comparison, as well as for general readability. e.g. Input Attribute 2022-02-01T00:00:00.000+00.00, Output Return 2022-02-01
+(ISO-8601 format YYYY-MM-DDTHH:MM:SS.msZ where Z is timezone offset -05:00 EST New York)
+
+QDM clinical measures use granularity of one minute (computers have granularity of one millisecond).  Be aware that datetime comparison involving different timezone offsets with a precision of less than 1 day granularity (e.g. hours) will normalize the timezone offset to that of the evaluation request timezone stamp. This may impact edge cases for boundaries such as Measurement Period, daylight savings transitions or across different time zone regions.
 
 ```
 define function "ToDateInterval"(period Interval<DateTime>):
@@ -37,7 +56,7 @@ define function "ToDateInterval"(period Interval<DateTime>):
 ```
 
 ### Examples:
-For example, the function could be used to get day-level comparison as in the following:
+For example, the function could be used to get day-level comparison for an interval from a year before the start of the Measurement Period to the end of the Measurement Period as in the following. However, note that the function must still be used on both sides of the `during` operator.
 
 ```
 define Example1:
@@ -46,42 +65,18 @@ define Example1:
       during "ToDateInterval"(Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"])
 ```
 
-However, note that the function must sill be used on both sides of the `during` operator, whereas
-using the `day of` precision specifier both communicates the intent to perform the comparisons to
-the day, and results in more readable criteria:
-
-```
-define Example2:
-  ["Physical Exam, Performed": "Observation Services"] RetinalExam
-    where "NormalizeInterval"(RetinalExam.relevantDatetime, RetinalExam.relevantPeriod)
-      during day of Interval[start of "Measurement Period" - 1 year, end of "Measurement Period"]
-```
-
-
-## Expression `ED Encounter`
-```
-define "ED Encounter":
-  ["Encounter, Performed": "Emergency Department Visit"]
-```
-
-## Expression `Inpatient Encounter`
-```
-define "Inpatient Encounter":
-  ["Encounter, Performed": "Encounter Inpatient"] EncounterInpatient
-    where "LengthInDays"(EncounterInpatient.relevantPeriod)<= 120
-      and EncounterInpatient.relevantPeriod ends during day of "Measurement Period"
-```
-
-## Function `LengthInDays(Interval<DateTime>): Integer`
+## Function `LengthInDays(Interval<DateTime>) returns Integer`
+Returns the number of days between the start and the end of a given interval.
 Calculates the difference in calendar days between the start and end of the given interval.
+Difference calculations are performed by truncating the datetime values at the next precision and then performing the corresponding duration calculation on the truncated values. (midnights crossed) e.g. [2022-02-01T23:00,2022-02-02T01:00] becomes [2022-02-01,2022-02-02] then returns 1 day.
 
 ```
 define function "LengthInDays"(Value Interval<DateTime> ):
   difference in days between start of Value and end of Value
 ```
 
-## Function `HospitalizationLocations("Encounter, Performed"): List<Location>`
-Returns list of all locations within an encounter, including locations for immediately prior ED visit.
+## Function `HospitalizationLocations("Encounter, Performed") returns List<Location>`
+Returns list of all facility locations within an encounter, including locations for immediately prior Emergency Department visit.
 
 ```
 define function "HospitalizationLocations"(Encounter "Encounter, Performed" ):
@@ -95,8 +90,8 @@ define function "HospitalizationLocations"(Encounter "Encounter, Performed" ):
   		else flatten { EDVisit.facilityLocations, Visit.facilityLocations }
 ```
 
-## Function `EmergencyDepartmentArrivalTime("Encounter, Performed"): DateTime`
-Returns the arrival time in the ED for the encounter.
+## Function `EmergencyDepartmentArrivalTime("Encounter, Performed") returns DateTime`
+Returns the documented date and time of patient arrival for an Emergency Department visit.
 
 ```
 define function "EmergencyDepartmentArrivalTime"(Encounter "Encounter, Performed" ):
@@ -106,16 +101,16 @@ define function "EmergencyDepartmentArrivalTime"(Encounter "Encounter, Performed
   ).locationPeriod
 ```
 
-## Function `HospitalAdmissionTime("Encounter, Performed"): DateTime`
-Returns admission time for an encounter or for immediately prior emergency department visit.
+## Function `HospitalAdmissionTime("Encounter, Performed") returns DateTime`
+Returns patient admission date and time for an inpatient encounter or for an Emergency Department visit completed immediately prior to the inpatient admission.
 
 ```
 define function "HospitalAdmissionTime"(Encounter "Encounter, Performed" ):
   start of "Hospitalization"(Encounter)
 ```
 
-## Function `HospitalArrivalTime("Encounter, Performed"): DateTime`
-Returns earliest arrival time for an encounter including any prior ED visit.
+## Function `HospitalArrivalTime("Encounter, Performed") returns DateTime`
+Returns documented patient arrival date and time for an inpatient encounter or for an Emergency Department visit completed immediately prior to the inpatient admission.
 
 ```
 define function "HospitalArrivalTime"(Encounter "Encounter, Performed" ):
@@ -124,8 +119,8 @@ define function "HospitalArrivalTime"(Encounter "Encounter, Performed" ):
   ).locationPeriod
 ```
 
-## Function `Hospitalization("Encounter, Performed"): Interval<DateTime>`
-Hospitalization returns the total interval for admission to discharge for the given encounter, or for the admission of any immediately prior emergency department visit to the discharge of the given encounter.
+## Function `Hospitalization("Encounter, Performed") returns Interval<DateTime>`
+Returns the total date and time interval from the start of inpatient encounter or Emergency Department visit completed immediately prior to the inpatient encounter through to the end of the inpatient stay.  The Coalesce operator returns the first non-null expression from the associated attributes.
 
 ```
 define function "Hospitalization"(Encounter "Encounter, Performed" ):
@@ -139,17 +134,16 @@ define function "Hospitalization"(Encounter "Encounter, Performed" ):
   	end of Visit.relevantPeriod]
 ```
 
-## Function `HospitalizationLengthOfStay("Encounter, Performed"): Integer`
-Returns the length of stay in days (i.e. the number of days between admission and discharge) for the given encounter, or from the
-admission of any immediately prior emergency department visit to the discharge of the encounter.
+## Function `HospitalizationLengthOfStay("Encounter, Performed") returns Integer`
+Returns the number of days from the start of inpatient encounter or Emergency Department visit completed immediately prior to the inpatient encounter through to the end of the inpatient stay. The LengthInDays function returns difference in calendar days, including leap years, as midnights crossed.
 
 ```
 define function "HospitalizationLengthofStay"(Encounter "Encounter, Performed" ):
   LengthInDays("Hospitalization"(Encounter))
 ```
 
-## Function `HospitalDerpartureTime("Encounter, Performed"): DateTime`
-Returns the latest departure time for encounter including any prior ED visit.
+## Function `HospitalDepartureTime("Encounter, Performed") returns DateTime`
+Returns the last date and time of patient departure from facility location associated with the completed inpatient encounter including an immediately prior Emergency Department visit.
 
 ```
 define function "HospitalDepartureTime"(Encounter "Encounter, Performed" ):
@@ -158,16 +152,16 @@ define function "HospitalDepartureTime"(Encounter "Encounter, Performed" ):
   ).locationPeriod
 ```
 
-## Function `HospitalDischargeTime("Encounter, Performed"): DateTime`
-Hospital Discharge Time returns the discharge time for an encounter.
+## Function `HospitalDischargeTime("Encounter, Performed") returns DateTime`
+Returns the discharge date and time for an completed inpatient encounter.
 
 ```
 define function "HospitalDischargeTime"(Encounter "Encounter, Performed" ):
   end of Encounter.relevantPeriod
 ```
 
-## Function `HospitalizationWithObservationAndOutpatientSurgeryService("Encounter, Performed"): Interval<DateTime>`
-Hospitalization with Observation and Outpatient Surgery Service returns the total interval from the start of any immediately prior emergency department visit, outpatient surgery visit or observation visit to the discharge of the given encounter.
+## Function `HospitalizationWithObservationAndOutpatientSurgeryService("Encounter, Performed") returns Interval<DateTime>`
+Returns the total date and time interval from the start to end of a completed inpatient encounter including dates and times of observation or outpatient services that occurred  immediately prior to the inpatient encounter. The Coalesce operator returns the first non-null expression from the associated attributes.
 
 ```
 define function "HospitalizationWithObservationAndOutpatientSurgeryService"(Encounter "Encounter, Performed" ):
@@ -193,8 +187,8 @@ define function "HospitalizationWithObservationAndOutpatientSurgeryService"(Enco
   	end of Visit.relevantPeriod]
 ```
 
-## Function `HospitalizationWithObservation("Encounter, Performed"): Interval<DateTime>`
-Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter.
+## Function `HospitalizationWithObservation("Encounter, Performed") returns Interval<DateTime>`
+Returns the total date and time interval from start to end of a completed inpatient encounter including dates and times of Observation and Emergency Department visits that occurred immediately prior to the inpatient encounter. The Coalesce operator returns the first non-null expression from the associated attributes.
 
 ```
 define function "HospitalizationWithObservation"(Encounter "Encounter, Performed" ):
@@ -214,17 +208,16 @@ define function "HospitalizationWithObservation"(Encounter "Encounter, Performed
   	end of Visit.relevantPeriod]
 ```
 
-## Function `HospitalizationWithObservationLengthofStay("Encounter, Performed"): Interval<DateTime>`
-Hospitalization with Observation Length of Stay returns the length in days from the start of any immediately prior emergency
-department visit through the observation visit to the discharge of the given encounter.
+## Function `HospitalizationWithObservationLengthofStay("Encounter, Performed") returns Interval<DateTime>`
+Returns the number of days of a given hospitalization from the start of any immediately prior Emergency Department visit through associated Observation visit to the discharge of the completed inpatient encounter. The LengthInDays function returns difference in calendar days, including leap years, as midnights crossed.
 
 ```
 define function "HospitalizationWithObservationLengthofStay"(Encounter "Encounter, Performed" ):
   "LengthInDays"("HospitalizationWithObservation"(Encounter))
 ```
 
-## Function `FirstInpatientIntensiveCareUnit("Encounter, Performed"): Location`
-First Inpatient Intensive Care Unit returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
+## Function `FirstInpatientIntensiveCareUnit("Encounter, Performed") returns Location`
+Returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.
 
 ```
 define function "FirstInpatientIntensiveCareUnit"(Encounter "Encounter, Performed" ):
@@ -233,10 +226,11 @@ define function "FirstInpatientIntensiveCareUnit"(Encounter "Encounter, Performe
         and HospitalLocation.locationPeriod during Encounter.relevantPeriod
       sort by start of locationPeriod
   )
+  
 ```
 
-## Function `NormalizeInterval(DateTime, Interval<DateTime>): Interval<DateTime>`
-Given a datetime and a period, returns the period (if a period is provided) or the interval beginning and ending on the datetime (if a datetime is provided).
+## Function `NormalizeInterval(DateTime, Interval<DateTime>) returns Interval<DateTime>`
+Given a datetime and a period, returns the period (if a period is provided) or the interval beginning and ending on the datetime (if a datetime is provided).  This allows evaluation of EHR data elements which might be stored as either Datetime or Period.
 
 ```
 define function "NormalizeInterval"(pointInTime DateTime, period Interval<DateTime> ):
@@ -245,18 +239,19 @@ define function "NormalizeInterval"(pointInTime DateTime, period Interval<DateTi
     else null as Interval<DateTime>
 ```
 
-## Function `HasStart(Interval<DateTime>): Boolean`
-Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value).
+## Function `HasStart(Interval<DateTime>) returns Boolean`
+Given an interval, returns true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value). Function evaluates for an empty start of interval by checking for the presence of the lowest possible value. Inclusive [closed] boundaries, indicated with square brackets, could include null as beginning of interval. Exclusive (open) boundaries, indicated with parentheses, could exclude null as lowest granularity for the minimum Datetime value for the interval (i.e. null+1 unit of granularity).
 
 ```
 define function "HasStart"(period Interval<DateTime> ):
   not ( start of period is null
       or start of period = minimum DateTime
   )
+  
 ```
 
-## Function `HasEnd(Interval<DateTime>): Boolean`
-Given an interval, return true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value).
+## Function `HasEnd(Interval<DateTime>) returns Boolean`
+Given an interval, returns true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value). Function evaluates for an empty end of interval by checking for the presence of the highest possible value. Inclusive [closed] boundaries, indicated with square brackets, could include null (infinity) as end of interval. Exclusive (open) boundaries, indicated with parentheses, could exclude null (infinity) as highest granularity for the maximum Datetime value for the interval (i.e infinity-1 unit of granularity).
 
 ```
 define function "HasEnd"(period Interval<DateTime> ):
@@ -265,10 +260,11 @@ define function "HasEnd"(period Interval<DateTime> ):
       or
       end of period = maximum DateTime
   )
+  
 ```
 
-## Function `Latest(Interval<DateTime>): DateTime`
-Given an interval, return the ending point if the interval has an ending boundary specified, otherwise, return the starting point.
+## Function `Latest(Interval<DateTime>) returns DateTime`
+Returns the latest date and time from a given interval as the ending point if the interval has an ending boundary specified, otherwise returns the starting point.
 
 ```
 define function "Latest"(period Interval<DateTime> ):
@@ -277,8 +273,8 @@ define function "Latest"(period Interval<DateTime> ):
     else start of period
 ```
 
-## Function `Earliest(Interval<DateTime>): DateTime`
-Given an interval, return the starting point if the interval has a starting boundary specified, otherwise, return the ending point.
+## Function `Earliest(Interval<DateTime>) returns DateTime`
+Return the earliest date and time from a given interval as the starting point if the interval has a starting boundary specified, otherwise returns the ending point.
 
 ```
 define function "Earliest"(period Interval<DateTime> ):
@@ -287,15 +283,15 @@ define function "Earliest"(period Interval<DateTime> ):
   end of period
 ```
 
-## Function `LatestOf(DateTime, Interval<DateTime>): DateTime`
-Given a pointInTime or period, if the pointInTime is specified, returns the pointInTime, returns the ending point of the period if the period has an ending boundary specified, otherwise returns the starting point of the interval.
+## Function `LatestOf(DateTime, Interval<DateTime>) returns DateTime`
+Returns the last chronological date and time for a data element whether stored as a datetime or period. Depending upon the data available, priority is datetime, ending point of interval, then starting point of interval. 
 
 ```
 define function "LatestOf"(pointInTime DateTime, period Interval<DateTime> ):
   Latest(NormalizeInterval(pointInTime, period))
 ```
-## Function `EarliestOf(DateTime, Interval<DateTime>): DateTime`
-Given a pointInTime or period, if the pointInTime is specified, returns the pointInTime, returns the starting point of the period if the period has a starting boundary specified, otherwise returns the ending point of the period.
+## Function `EarliestOf(DateTime, Interval<DateTime>) returns DateTime`
+Returns the first chronological date and time for a data element whether stored as a datetime or period. Depending upon the data available, priority is datetime, starting point of interval, then ending point of interval. 
 
 ```
 define function "EarliestOf"(pointInTime DateTime, period Interval<DateTime> ):
