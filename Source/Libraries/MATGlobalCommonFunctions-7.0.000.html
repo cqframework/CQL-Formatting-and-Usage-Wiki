@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MATGlobalCommonFunctions-7.0.000.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="matglobalcommonfunctions-version-70000">MATGlobalCommonFunctions version 7.0.000</h1>
+<p>The MATGlobalCommonFunctions library provides common functions and expressions used throughout electronic. Clinical Quality Measures (eCQM) published for use in Centers for Medicare and Medicaid (CMS) quality programs.</p>
+<h2 id="using-qdm-version-56">Using QDM version '5.6'</h2>
+<h2 id="terminology">Terminology</h2>
+<pre class="hljs"><code><div>valueset &quot;Emergency Department Visit&quot;: 'urn:oid:2.16.840.1.113883.3.117.1.7.1.292'
+valueset &quot;Encounter Inpatient&quot;: 'urn:oid:2.16.840.1.113883.3.666.5.307'
+valueset &quot;Intensive Care Unit&quot;: 'urn:oid:2.16.840.1.113762.1.4.1029.206'
+valueset &quot;Observation Services&quot;: 'urn:oid:2.16.840.1.113762.1.4.1111.143'
+valueset &quot;Outpatient Surgery Service&quot;: 'urn:oid:2.16.840.1.113762.1.4.1110.38'
+</div></code></pre>
+<h2 id="parameters">Parameters</h2>
+<pre class="hljs"><code><div>parameter &quot;Measurement Period&quot; Interval&lt;DateTime&gt;
+</div></code></pre>
+<h2 id="context">Context</h2>
+<p>Within the Patient context, the results of any retrieve will always be scoped to a single patient, as determined by the environment. Patient-based or Encounter-based results will contain all data for a single patient within the Measurement Period as specified by the query constraints.</p>
+<pre class="hljs"><code><div>context Patient
+</div></code></pre>
+<h2 id="expression-ed-encounter">Expression <code>ED Encounter</code></h2>
+<p>Returns encounters with codes from the &quot;Emergency Department Visit&quot; value set.</p>
+<pre class="hljs"><code><div>define &quot;ED Encounter&quot;:
+  [&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;]
+</div></code></pre>
+<h2 id="expression-inpatient-encounter">Expression <code>Inpatient Encounter</code></h2>
+<p>Returns completed encounters with codes from the &quot;Encounter Inpatient&quot; value set when the inpatient stay is less than or equal to 120 days and the discharge date falls within the Measurement Period.</p>
+<pre class="hljs"><code><div>define &quot;Inpatient Encounter&quot;:
+  [&quot;Encounter, Performed&quot;: &quot;Encounter Inpatient&quot;] EncounterInpatient
+    where &quot;LengthInDays&quot;(EncounterInpatient.relevantPeriod)&lt;= 120
+      and EncounterInpatient.relevantPeriod ends during day of &quot;Measurement Period&quot;
+</div></code></pre>
+<h2 id="function-todateintervalintervaldatetime-returns-intervaldate">Function <code>ToDateInterval(Interval&lt;DateTime&gt;) returns Interval&lt;Date&gt;</code></h2>
+<p>Returns an interval of date values extracted from the input interval of date-time values.</p>
+<p>This function returns an interval constructed using the <code>date from</code> extractor on the start
+and end values of the input date-time interval. Note that using a precision specifier, such as <code>day of</code>, as part of a timing phrase is preferred to communicate intent to perform day-level comparison, as well as for general readability. e.g. Input Attribute 2022-02-01T00:00:00.000+00:00, Output Return 2022-02-01
+(ISO-8601 format YYYY-MM-DDTHH:MM:SS.msZ where Z is timezone offset -05:00 EST New York)</p>
+<p>Unless otherwise specified, DateTime and Time comparisons (including interval operations on intervals of DateTime or Time) in CQL are performed to millisecond precision.  Be aware that datetime comparison involving different timezone offsets with a precision of less than 1 day granularity (e.g. hours) will normalize the timezone offset to that of the evaluation request timezone stamp. This may impact edge cases for boundaries such as Measurement Period, daylight savings transitions or across different time zone regions.</p>
+<pre class="hljs"><code><div>define function &quot;ToDateInterval&quot;(period Interval&lt;DateTime&gt;):
+  Interval[date from start of period, date from end of period]
+</div></code></pre>
+<h3 id="examples">Examples:</h3>
+<p>For example, the function could be used to get day-level comparison for an interval from a year before the start of the Measurement Period to the end of the Measurement Period as in the following. However, note that the function must still be used on both sides of the <code>during</code> operator.</p>
+<pre class="hljs"><code><div>define Example1:
+  [&quot;Physical Exam, Performed&quot;: &quot;Observation Services&quot;] RetinalExam
+    where &quot;ToDateInterval&quot;(&quot;NormalizeInterval&quot;(RetinalExam.relevantDatetime, RetinalExam.relevantPeriod))
+      during &quot;ToDateInterval&quot;(Interval[start of &quot;Measurement Period&quot; - 1 year, end of &quot;Measurement Period&quot;])
+</div></code></pre>
+<h2 id="function-lengthindaysintervaldatetime-returns-integer">Function <code>LengthInDays(Interval&lt;DateTime&gt;) returns Integer</code></h2>
+<p>Returns the number of days between the start and the end of a given interval.
+Calculates the difference in calendar days between the start and end of the given interval.
+Difference calculations are performed by truncating the datetime values at the next precision and then performing the corresponding duration calculation on the truncated values. (midnights crossed) e.g. [2022-02-01T23:00,2022-02-02T01:00] becomes [2022-02-01,2022-02-02] then returns 1 day.</p>
+<pre class="hljs"><code><div>define function &quot;LengthInDays&quot;(Value Interval&lt;DateTime&gt; ):
+  difference in days between start of Value and end of Value
+</div></code></pre>
+<h2 id="function-hospitalizationlocations%22encounter-performed%22-returns-listlocation">Function <code>HospitalizationLocations(&quot;Encounter, Performed&quot;) returns List&lt;Location&gt;</code></h2>
+<p>Returns list of all facility locations within an encounter, including locations for immediately prior Emergency Department visit.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalizationLocations&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  Encounter Visit
+  	let EDVisit: Last([&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] LastED
+  			where LastED.relevantPeriod ends 1 hour or less on or before start of Visit.relevantPeriod
+  			sort by
+  			end of relevantPeriod
+  	)
+  	return if EDVisit is null then Visit.facilityLocations
+  		else flatten { EDVisit.facilityLocations, Visit.facilityLocations }
+</div></code></pre>
+<h2 id="function-emergencydepartmentarrivaltime%22encounter-performed%22-returns-datetime">Function <code>EmergencyDepartmentArrivalTime(&quot;Encounter, Performed&quot;) returns DateTime</code></h2>
+<p>Returns the documented date and time of patient arrival for an Emergency Department visit.</p>
+<pre class="hljs"><code><div>define function &quot;EmergencyDepartmentArrivalTime&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  start of First((&quot;HospitalizationLocations&quot;(Encounter))HospitalLocation
+  		where HospitalLocation.code in &quot;Emergency Department Visit&quot;
+  		sort by start of locationPeriod
+  ).locationPeriod
+</div></code></pre>
+<h2 id="function-hospitaladmissiontime%22encounter-performed%22-returns-datetime">Function <code>HospitalAdmissionTime(&quot;Encounter, Performed&quot;) returns DateTime</code></h2>
+<p>Returns patient admission date and time for an inpatient encounter or for an Emergency Department visit completed immediately prior to the inpatient admission.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalAdmissionTime&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  start of &quot;Hospitalization&quot;(Encounter)
+</div></code></pre>
+<h2 id="function-hospitalarrivaltime%22encounter-performed%22-returns-datetime">Function <code>HospitalArrivalTime(&quot;Encounter, Performed&quot;) returns DateTime</code></h2>
+<p>Returns documented patient arrival date and time for an inpatient encounter or for an Emergency Department visit completed immediately prior to the inpatient admission.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalArrivalTime&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  start of First((&quot;HospitalizationLocations&quot;(Encounter))HospitalLocation
+  		sort by start of locationPeriod
+  ).locationPeriod
+</div></code></pre>
+<h2 id="function-hospitalization%22encounter-performed%22-returns-intervaldatetime">Function <code>Hospitalization(&quot;Encounter, Performed&quot;) returns Interval&lt;DateTime&gt;</code></h2>
+<p>Returns the total date and time interval from the start of inpatient encounter or Emergency Department visit completed immediately prior to the inpatient encounter through to the end of the inpatient stay.  The Coalesce operator returns the first non-null expression from the associated attributes.</p>
+<pre class="hljs"><code><div>define function &quot;Hospitalization&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  Encounter Visit
+  	let EDVisit: Last([&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] LastED
+  			where LastED.relevantPeriod ends 1 hour or less on or before start of Visit.relevantPeriod
+  			sort by
+  			end of relevantPeriod
+  	)
+  	return Interval[Coalesce(start of EDVisit.relevantPeriod, start of Visit.relevantPeriod),
+  	end of Visit.relevantPeriod]
+</div></code></pre>
+<h2 id="function-hospitalizationlengthofstay%22encounter-performed%22-returns-integer">Function <code>HospitalizationLengthOfStay(&quot;Encounter, Performed&quot;) returns Integer</code></h2>
+<p>Returns the number of days from the start of inpatient encounter or Emergency Department visit completed immediately prior to the inpatient encounter through to the end of the inpatient stay. The LengthInDays function returns difference in calendar days, including leap years, as midnights crossed.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalizationLengthofStay&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  LengthInDays(&quot;Hospitalization&quot;(Encounter))
+</div></code></pre>
+<h2 id="function-hospitaldeparturetime%22encounter-performed%22-returns-datetime">Function <code>HospitalDepartureTime(&quot;Encounter, Performed&quot;) returns DateTime</code></h2>
+<p>Returns the last date and time of patient departure from facility location associated with the completed inpatient encounter including an immediately prior Emergency Department visit.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalDepartureTime&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  end of Last((&quot;HospitalizationLocations&quot;(Encounter))HospitalLocation
+  		sort by start of locationPeriod
+  ).locationPeriod
+</div></code></pre>
+<h2 id="function-hospitaldischargetime%22encounter-performed%22-returns-datetime">Function <code>HospitalDischargeTime(&quot;Encounter, Performed&quot;) returns DateTime</code></h2>
+<p>Returns the discharge date and time for an completed inpatient encounter.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalDischargeTime&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  end of Encounter.relevantPeriod
+</div></code></pre>
+<h2 id="function-hospitalizationwithobservationandoutpatientsurgeryservice%22encounter-performed%22-returns-intervaldatetime">Function <code>HospitalizationWithObservationAndOutpatientSurgeryService(&quot;Encounter, Performed&quot;) returns Interval&lt;DateTime&gt;</code></h2>
+<p>Returns the total date and time interval from the start to end of a completed inpatient encounter including dates and times of observation or outpatient services that occurred  immediately prior to the inpatient encounter. The Coalesce operator returns the first non-null expression from the associated attributes.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalizationWithObservationAndOutpatientSurgeryService&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  Encounter Visit
+  	let ObsVisit: Last([&quot;Encounter, Performed&quot;: &quot;Observation Services&quot;] LastObs
+  			where LastObs.relevantPeriod ends 1 hour or less on or before start of Visit.relevantPeriod
+  			sort by
+  			end of relevantPeriod
+  	),
+  	VisitStart: Coalesce(start of ObsVisit.relevantPeriod, start of Visit.relevantPeriod),
+  	EDVisit: Last([&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] LastED
+  			where LastED.relevantPeriod ends 1 hour or less on or before VisitStart
+  			sort by
+  			end of relevantPeriod
+  	),
+  	VisitStartWithED: Coalesce(start of EDVisit.relevantPeriod, VisitStart),
+  	OutpatientSurgeryVisit: Last([&quot;Encounter, Performed&quot;: &quot;Outpatient Surgery Service&quot;] LastSurgeryOP
+  			where LastSurgeryOP.relevantPeriod ends 1 hour or less on or before VisitStartWithED
+  			sort by
+  			end of relevantPeriod
+  	)
+  	return Interval[Coalesce(start of OutpatientSurgeryVisit.relevantPeriod, VisitStartWithED),
+  	end of Visit.relevantPeriod]
+</div></code></pre>
+<h2 id="function-hospitalizationwithobservation%22encounter-performed%22-returns-intervaldatetime">Function <code>HospitalizationWithObservation(&quot;Encounter, Performed&quot;) returns Interval&lt;DateTime&gt;</code></h2>
+<p>Returns the total date and time interval from start to end of a completed inpatient encounter including dates and times of Observation and Emergency Department visits that occurred immediately prior to the inpatient encounter. The Coalesce operator returns the first non-null expression from the associated attributes.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalizationWithObservation&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  Encounter Visit
+  	let ObsVisit: Last([&quot;Encounter, Performed&quot;: &quot;Observation Services&quot;] LastObs
+  			where LastObs.relevantPeriod ends 1 hour or less on or before start of Visit.relevantPeriod
+  			sort by
+  			end of relevantPeriod
+  	),
+  	VisitStart: Coalesce(start of ObsVisit.relevantPeriod, start of Visit.relevantPeriod),
+  	EDVisit: Last([&quot;Encounter, Performed&quot;: &quot;Emergency Department Visit&quot;] LastED
+  			where LastED.relevantPeriod ends 1 hour or less on or before VisitStart
+  			sort by
+  			end of relevantPeriod
+  	)
+  	return Interval[Coalesce(start of EDVisit.relevantPeriod, VisitStart),
+  	end of Visit.relevantPeriod]
+</div></code></pre>
+<h2 id="function-hospitalizationwithobservationlengthofstay%22encounter-performed%22-returns-intervaldatetime">Function <code>HospitalizationWithObservationLengthofStay(&quot;Encounter, Performed&quot;) returns Interval&lt;DateTime&gt;</code></h2>
+<p>Returns the number of days of a given hospitalization from the start of any immediately prior Emergency Department visit through associated Observation visit to the discharge of the completed inpatient encounter. The LengthInDays function returns difference in calendar days, including leap years, as midnights crossed.</p>
+<pre class="hljs"><code><div>define function &quot;HospitalizationWithObservationLengthofStay&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  &quot;LengthInDays&quot;(&quot;HospitalizationWithObservation&quot;(Encounter))
+</div></code></pre>
+<h2 id="function-firstinpatientintensivecareunit%22encounter-performed%22-returns-location">Function <code>FirstInpatientIntensiveCareUnit(&quot;Encounter, Performed&quot;) returns Location</code></h2>
+<p>Returns the first intensive care unit for the given encounter, without considering any immediately prior emergency department visit.</p>
+<pre class="hljs"><code><div>define function &quot;FirstInpatientIntensiveCareUnit&quot;(Encounter &quot;Encounter, Performed&quot; ):
+  First((Encounter.facilityLocations)HospitalLocation
+      where HospitalLocation.code in &quot;Intensive Care Unit&quot;
+        and HospitalLocation.locationPeriod during Encounter.relevantPeriod
+      sort by start of locationPeriod
+  )
+  
+</div></code></pre>
+<h2 id="function-normalizeintervaldatetime-intervaldatetime-returns-intervaldatetime">Function <code>NormalizeInterval(DateTime, Interval&lt;DateTime&gt;) returns Interval&lt;DateTime&gt;</code></h2>
+<p>Given a datetime and a period, returns the period (if a period is provided) or the interval beginning and ending on the datetime (if a datetime is provided).  This allows evaluation of EHR data elements which might be stored as either Datetime or Period.</p>
+<pre class="hljs"><code><div>define function &quot;NormalizeInterval&quot;(pointInTime DateTime, period Interval&lt;DateTime&gt; ):
+  if pointInTime is not null then Interval[pointInTime, pointInTime]
+    else if period is not null then period
+    else null as Interval&lt;DateTime&gt;
+</div></code></pre>
+<h2 id="function-hasstartintervaldatetime-returns-boolean">Function <code>HasStart(Interval&lt;DateTime&gt;) returns Boolean</code></h2>
+<p>Given an interval, returns true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value). Function evaluates for an empty start of interval by checking for the presence of the lowest possible value. Inclusive [closed] boundaries, indicated with square brackets, could include null as beginning of interval. Exclusive (open) boundaries, indicated with parentheses, could exclude null as lowest granularity for the minimum Datetime value for the interval (i.e. null+1 unit of granularity).</p>
+<pre class="hljs"><code><div>define function &quot;HasStart&quot;(period Interval&lt;DateTime&gt; ):
+  not ( start of period is null
+      or start of period = minimum DateTime
+  )
+  
+</div></code></pre>
+<h2 id="function-hasendintervaldatetime-returns-boolean">Function <code>HasEnd(Interval&lt;DateTime&gt;) returns Boolean</code></h2>
+<p>Given an interval, returns true if the interval has an ending boundary specified (i.e. the end of the interval is not null and not the maximum DateTime value). Function evaluates for an empty end of interval by checking for the presence of the highest possible value. Inclusive [closed] boundaries, indicated with square brackets, could include null (infinity) as end of interval. Exclusive (open) boundaries, indicated with parentheses, could exclude null (infinity) as highest granularity for the maximum Datetime value for the interval (i.e infinity-1 unit of granularity).</p>
+<pre class="hljs"><code><div>define function &quot;HasEnd&quot;(period Interval&lt;DateTime&gt; ):
+  not (
+    end of period is null
+      or
+      end of period = maximum DateTime
+  )
+  
+</div></code></pre>
+<h2 id="function-latestintervaldatetime-returns-datetime">Function <code>Latest(Interval&lt;DateTime&gt;) returns DateTime</code></h2>
+<p>Returns the latest date and time from a given interval as the ending point if the interval has an ending boundary specified, otherwise returns the starting point.</p>
+<pre class="hljs"><code><div>define function &quot;Latest&quot;(period Interval&lt;DateTime&gt; ):
+  if ( HasEnd(period)) then
+  end of period
+    else start of period
+</div></code></pre>
+<h2 id="function-earliestintervaldatetime-returns-datetime">Function <code>Earliest(Interval&lt;DateTime&gt;) returns DateTime</code></h2>
+<p>Return the earliest date and time from a given interval as the starting point if the interval has a starting boundary specified, otherwise returns the ending point.</p>
+<pre class="hljs"><code><div>define function &quot;Earliest&quot;(period Interval&lt;DateTime&gt; ):
+  if ( HasStart(period)) then start of period
+    else
+  end of period
+</div></code></pre>
+<h2 id="function-latestofdatetime-intervaldatetime-returns-datetime">Function <code>LatestOf(DateTime, Interval&lt;DateTime&gt;) returns DateTime</code></h2>
+<p>Returns the last chronological date and time for a data element whether stored as a datetime or period. Depending upon the data available, priority is datetime, ending point of interval, then starting point of interval.</p>
+<pre class="hljs"><code><div>define function &quot;LatestOf&quot;(pointInTime DateTime, period Interval&lt;DateTime&gt; ):
+  Latest(NormalizeInterval(pointInTime, period))
+</div></code></pre>
+<h2 id="function-earliestofdatetime-intervaldatetime-returns-datetime">Function <code>EarliestOf(DateTime, Interval&lt;DateTime&gt;) returns DateTime</code></h2>
+<p>Returns the first chronological date and time for a data element whether stored as a datetime or period. Depending upon the data available, priority is datetime, starting point of interval, then ending point of interval.</p>
+<pre class="hljs"><code><div>define function &quot;EarliestOf&quot;(pointInTime DateTime, period Interval&lt;DateTime&gt; ):
+  Earliest(NormalizeInterval(pointInTime, period))
+</div></code></pre>
+
+</body>
+</html>

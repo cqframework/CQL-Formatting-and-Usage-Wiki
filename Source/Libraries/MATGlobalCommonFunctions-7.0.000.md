@@ -45,10 +45,10 @@ define "Inpatient Encounter":
 Returns an interval of date values extracted from the input interval of date-time values.
 
 This function returns an interval constructed using the `date from` extractor on the start
-and end values of the input date-time interval. Note that using a precision specifier, such as `day of`, as part of a timing phrase is preferred to communicate intent to perform day-level comparison, as well as for general readability. e.g. Input Attribute 2022-02-01T00:00:00.000+00.00, Output Return 2022-02-01
+and end values of the input date-time interval. Note that using a precision specifier, such as `day of`, as part of a timing phrase is preferred to communicate intent to perform day-level comparison, as well as for general readability. e.g. Input Attribute 2022-02-01T00:00:00.000+00:00, Output Return 2022-02-01
 (ISO-8601 format YYYY-MM-DDTHH:MM:SS.msZ where Z is timezone offset -05:00 EST New York)
 
-QDM clinical measures use granularity of one minute (computers have granularity of one millisecond).  Be aware that datetime comparison involving different timezone offsets with a precision of less than 1 day granularity (e.g. hours) will normalize the timezone offset to that of the evaluation request timezone stamp. This may impact edge cases for boundaries such as Measurement Period, daylight savings transitions or across different time zone regions.
+Unless otherwise specified, DateTime and Time comparisons (including interval operations on intervals of DateTime or Time) in CQL are performed to millisecond precision.  Be aware that datetime comparison involving different timezone offsets with a precision of less than 1 day granularity (e.g. hours) will normalize the timezone offset to that of the evaluation request timezone stamp. This may impact edge cases for boundaries such as Measurement Period, daylight savings transitions or across different time zone regions.
 
 ```
 define function "ToDateInterval"(period Interval<DateTime>):
