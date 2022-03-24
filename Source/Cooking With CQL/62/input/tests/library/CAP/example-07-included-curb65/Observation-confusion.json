@@ -1,0 +1,24 @@
+{
+  "resourceType": "Observation",
+  "id": "confusion",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "42849-0",
+        "display": "Confusion [CCC]"
+      }
+    ],
+    "text": "Confusion"
+  },
+  "subject": {
+    "reference": "Patient/example-07-included-curb65"
+  },
+  "encounter": {
+    "display": "GP Visit"
+  },
+  "effectiveDateTime": "2022-03-24",
+  "issued": "2022-03-24T08:30:00+00:00",
+  "valueBoolean": true
+}

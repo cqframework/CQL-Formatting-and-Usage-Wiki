@@ -1,0 +1,57 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+    <id value="active-condition"/>
+    <meta>
+      <profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-publishablevalueset"/>
+    </meta>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+      <valueCode value="shareable"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+      <valueCode value="computable"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+      <valueCode value="publishable"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel">
+      <valueCode value="structured"/>
+    </extension>
+		<extension url="http://hl7.org/fhir/StructureDefinition/valueset-author">
+			<valueContactDetail>
+				<name value="Bryn Rhodes"/>
+			</valueContactDetail>
+		</extension>
+    <url value="http://fhir.org/guides/cqf/common/ValueSet/active-condition"/>
+    <version value="0.1.0"/>
+    <name value="CQFActiveCondition"/>
+    <title value="CQF Active Condition"/>
+    <status value="active"/>
+    <experimental value="false"/>
+    <date value="2019-07-21"/>
+    <publisher value="Health Level 7 International - Clinical Decision Support WG"/>
+    <contact>
+      <telecom>
+        <system value="url"/>
+        <value value="http://www.hl7.org/Special/committees/dss/index.cfm"/>
+      </telecom>
+    </contact>
+    <description value="Active condition clinical status codes"/>
+    <purpose value="Used to specify the set of clinical status codes that are considered active"/>
+    <copyright value="© HL7 2016+."/>
+    <compose>
+        <include>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+            <concept>
+                <code value="active"/>
+                <display value="Active"/>
+            </concept>
+            <concept>
+                <code value="recurrence"/>
+                <display value="Recurrence"/>
+            </concept>
+            <concept>
+                <code value="relapse"/>
+                <display value="Relapse"/>
+            </concept>
+        </include>
+    </compose>
+</ValueSet>

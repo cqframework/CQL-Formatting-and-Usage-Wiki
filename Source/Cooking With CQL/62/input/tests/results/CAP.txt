@@ -1,0 +1,357 @@
+Running tests.
+Data path: C:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\62\input\tests\library\CAP
+Terminology path: C:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\62\input\vocabulary\valueset
+cql-options not found. Using default options.
+Patient=Patient(id=example-01-not-included)
+Confusion=null
+Blood urea nitrogen=null
+Respiratory rate=null
+Blood pressure=null
+Age=Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}
+CAP Severity Factors=[null, null, null, null, Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}]
+CAP Severity Score=0
+Inclusion Criteria=false
+Has CRB65 Elements=false
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Very low risk of death; usually does not require hospitalization
+CAP Severity Recommendation=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Mortality Rate=7/1,223 (0.6%)
+CRB65 Severity Mortality Rate=2/212 (0.9%)
+Summary=Patient does not have an active diagnosis of Community Acquired Pneumonia (CAP)
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=CURB-65 = Confusion, Urea nitrogen, Respiratory rate, Blood pressure, 65 years of age and older.
+CRB-65 = Confusion, Respiratory rate, Blood pressure, 65 years of age and older.
+
+*?Data are weighted averages from validation studies.1-2
+??Recommendations are consistent with British Thoracic Society guidelines.3 Clinical judgment may overrule the guideline recommendation.
+??A CRB-65 score can be calculated by omitting the blood urea nitrogen value, which gives it a point range from 0 to 4. This score is useful when blood tests are not readily available.
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-02-included-no-data)
+Confusion=null
+Blood urea nitrogen=null
+Respiratory rate=null
+Blood pressure=null
+Age=Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}
+CAP Severity Factors=[null, null, null, null, Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}]
+CAP Severity Score=0
+Inclusion Criteria=true
+Has CRB65 Elements=false
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Very low risk of death; usually does not require hospitalization
+CAP Severity Recommendation=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Mortality Rate=7/1,223 (0.6%)
+CRB65 Severity Mortality Rate=2/212 (0.9%)
+Summary=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=CURB-65 = Confusion, Urea nitrogen, Respiratory rate, Blood pressure, 65 years of age and older.
+CRB-65 = Confusion, Respiratory rate, Blood pressure, 65 years of age and older.
+
+*?Data are weighted averages from validation studies.1-2
+??Recommendations are consistent with British Thoracic Society guidelines.3 Clinical judgment may overrule the guideline recommendation.
+??A CRB-65 score can be calculated by omitting the blood urea nitrogen value, which gives it a point range from 0 to 4. This score is useful when blood tests are not readily available.
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-03-included-c)
+Confusion=Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}
+Blood urea nitrogen=null
+Respiratory rate=null
+Blood pressure=null
+Age=Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}
+CAP Severity Factors=[Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}, null, null, null, Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}]
+CAP Severity Score=1
+Inclusion Criteria=true
+Has CRB65 Elements=false
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Increased risk of deah; consider hospitalization
+CAP Severity Recommendation=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Mortality Rate=31/1,142 (2.7%)
+CRB65 Severity Mortality Rate=18/344 (5.2%)
+Summary=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=CURB-65 = Confusion, Urea nitrogen, Respiratory rate, Blood pressure, 65 years of age and older.
+CRB-65 = Confusion, Respiratory rate, Blood pressure, 65 years of age and older.
+
+*?Data are weighted averages from validation studies.1-2
+??Recommendations are consistent with British Thoracic Society guidelines.3 Clinical judgment may overrule the guideline recommendation.
+??A CRB-65 score can be calculated by omitting the blood urea nitrogen value, which gives it a point range from 0 to 4. This score is useful when blood tests are not readily available.
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-04-included-cr)
+Confusion=Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}
+Blood urea nitrogen=null
+Respiratory rate=Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}
+Blood pressure=null
+Age=Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}
+CAP Severity Factors=[Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}, null, Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}, null, Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}]
+CAP Severity Score=1
+Inclusion Criteria=true
+Has CRB65 Elements=false
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Increased risk of deah; consider hospitalization
+CAP Severity Recommendation=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Mortality Rate=31/1,142 (2.7%)
+CRB65 Severity Mortality Rate=18/344 (5.2%)
+Summary=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=CURB-65 = Confusion, Urea nitrogen, Respiratory rate, Blood pressure, 65 years of age and older.
+CRB-65 = Confusion, Respiratory rate, Blood pressure, 65 years of age and older.
+
+*?Data are weighted averages from validation studies.1-2
+??Recommendations are consistent with British Thoracic Society guidelines.3 Clinical judgment may overrule the guideline recommendation.
+??A CRB-65 score can be calculated by omitting the blood urea nitrogen value, which gives it a point range from 0 to 4. This score is useful when blood tests are not readily available.
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-05-included-crb)
+Confusion=Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}
+Blood urea nitrogen=null
+Respiratory rate=Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}
+Blood pressure=Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}
+Age=Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}
+CAP Severity Factors=[Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}, null, Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}, Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}, Tuple {
+	"label": Age
+	"value": 47
+	"score": 0
+}]
+CAP Severity Score=1
+Inclusion Criteria=true
+Has CRB65 Elements=true
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Increased risk of deah; consider hospitalization
+CAP Severity Recommendation=Increased risk of deah; consider hospitalization
+CURB65 Severity Mortality Rate=31/1,142 (2.7%)
+CRB65 Severity Mortality Rate=18/344 (5.2%)
+Summary=Increased risk of deah; consider hospitalization
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=null
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-06-included-crb65)
+Confusion=Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}
+Blood urea nitrogen=null
+Respiratory rate=Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}
+Blood pressure=Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}
+Age=Tuple {
+	"label": Age
+	"value": 87
+	"score": 1
+}
+CAP Severity Factors=[Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}, null, Tuple {
+	"label": Respiratory rate
+	"value": 36.0 '/min'
+	"score": 1
+}, Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}, Tuple {
+	"label": Age
+	"value": 87
+	"score": 1
+}]
+CAP Severity Score=1
+Inclusion Criteria=true
+Has CRB65 Elements=true
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Increased risk of deah; consider hospitalization
+CAP Severity Recommendation=Increased risk of deah; consider hospitalization
+CURB65 Severity Mortality Rate=31/1,142 (2.7%)
+CRB65 Severity Mortality Rate=18/344 (5.2%)
+Summary=Increased risk of deah; consider hospitalization
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=null
+
+cql-options not found. Using default options.
+Patient=Patient(id=example-07-included-curb65)
+Confusion=Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}
+Blood urea nitrogen=Tuple {
+	"label": Blood urea nitrogen
+	"value": 22 'mg/dL'
+	"score": 1
+}
+Respiratory rate=null
+Blood pressure=Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}
+Age=Tuple {
+	"label": Age
+	"value": 87
+	"score": 1
+}
+CAP Severity Factors=[Tuple {
+	"label": Confusion
+	"value": true
+	"score": 1
+}, Tuple {
+	"label": Blood urea nitrogen
+	"value": 22 'mg/dL'
+	"score": 1
+}, null, Tuple {
+	"label": Blood pressure
+	"value": Tuple {
+	"systolic": 109 'mm[Hg]'
+	"diastolic": 44 'mm[Hg]'
+}
+	"score": 1
+}, Tuple {
+	"label": Age
+	"value": 87
+	"score": 1
+}]
+CAP Severity Score=1
+Inclusion Criteria=true
+Has CRB65 Elements=false
+Has CURB65 Elements=false
+CURB65 Severity Recommendation=Low risk; consider home treatment
+CRB65 Severity Recommendation=Increased risk of deah; consider hospitalization
+CAP Severity Recommendation=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Mortality Rate=31/1,142 (2.7%)
+CRB65 Severity Mortality Rate=18/344 (5.2%)
+Summary=Confusion, respiratory rate, blood pressure and age are required, and blood urea nitrogen is recommended as input to determining CAP severity
+CURB65 Severity Score Detail=null
+CRB65 Severity Score Detail=null
+Detail=CURB-65 = Confusion, Urea nitrogen, Respiratory rate, Blood pressure, 65 years of age and older.
+CRB-65 = Confusion, Respiratory rate, Blood pressure, 65 years of age and older.
+
+*?Data are weighted averages from validation studies.1-2
+??Recommendations are consistent with British Thoracic Society guidelines.3 Clinical judgment may overrule the guideline recommendation.
+??A CRB-65 score can be calculated by omitting the blood urea nitrogen value, which gives it a point range from 0 to 4. This score is useful when blood tests are not readily available.
+
+
+The following errors were encountered during evaluation:
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://fhir.org/guides/cqf/common/ValueSet/active-condition is not expanded. Falling back to compose definition. This will potentially produce incorrect results.
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://fhir.org/guides/cqf/common/ValueSet/inactive-condition is not expanded. Falling back to compose definition. This will potentially produce incorrect results.
+elapsed: 1.107 seconds

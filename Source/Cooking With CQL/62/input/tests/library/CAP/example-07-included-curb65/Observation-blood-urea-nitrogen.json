@@ -1,0 +1,43 @@
+{
+  "resourceType": "Observation",
+  "id": "blood-urea-nitrogen",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"
+    ]
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ],
+      "text": "Laboratory"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "12962-7",
+        "display": "Urea nitrogen [Mass/volume] in Venous blood"
+      }
+    ],
+    "text": "Blood urea nitrogen"
+  },
+  "subject": {
+    "reference": "Patient/example-07-included-curb65"
+  },
+  "effectiveDateTime": "2022-03-24",
+  "issued": "2022-03-24T08:30:00+00:00",
+  "valueQuantity": {
+    "value": 22,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  }
+}
