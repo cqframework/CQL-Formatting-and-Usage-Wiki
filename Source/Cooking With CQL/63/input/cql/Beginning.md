@@ -32,6 +32,8 @@
 
 ## Example 01 - Qualifying Encounters
 
+> NOTE: To be able to run these examples, you will need to download local copies of the ValueSet resources listed in [README.md](../vocabulary/valueset/README.md)
+
 * [Example01](Example01.cql)
 
 ```cql
