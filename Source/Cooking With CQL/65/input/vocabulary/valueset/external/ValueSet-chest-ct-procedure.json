@@ -1,0 +1,26 @@
+{
+  "resourceType": "ValueSet",
+  "id": "chest-ct-procedure",
+  "url": "http://example.org/fhir/ValueSet/chest-ct-procedure",
+  "version": "0.1.0",
+  "name": "ChestCTProcedure",
+  "title": "Chest CT Procedure",
+  "status": "active",
+  "experimental": true,
+  "publisher": "ACME",
+  "description": "This value set includes SNOMED-CT codes for Chest CT Procedures",
+  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement",
+  "compose" : {
+    "include" : [
+      {
+        "system" : "http://snomed.info/sct",
+        "concept" : [
+          {
+            "code" : "169069000",
+            "display" : "Computed tomography of chest (procedure)"
+          }
+        ]
+      }
+    ]
+  }
+}
