@@ -1,7 +1,4 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. Using VSCode IDE Plugin
+2. Testing Patterns
+3. Lung Cancer Screening Example
+4. Cervical Cancer Screening Example

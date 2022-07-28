@@ -60,3 +60,39 @@ HINT: Express the intermediates first:
 * Cervical Cytology Within 3 Years
 * HPV Test Within 5 Years For Women Age 30 and Older
 */
+
+define "Absence of Cervix":
+  ([Procedure: "Hysterectomy with No Residual Cervix"] NoCervixProcedure
+    where FC.ToInterval(NoCervixProcedure.performed) ends on or before end of "Measurement Period"
+      and NoCervixProcedure.status = 'completed'
+  )
+    union [Condition : "Congenital absence of cervix (disorder)"] NoCervixBirth
+  		where FC.ToInterval(NoCervixBirth.onset) starts on or before end of "Measurement Period"
+
+define "Cervical Cytology Within 3 Years":
+	[Observation: "Pap Test"] CervicalCytology
+		where CervicalCytology.value is not null
+			and CervicalCytology.status in { 'final', 'amended', 'corrected', 'preliminary' }
+		  and FC.ToInterval(CervicalCytology.effective) ends 3 years or less on or before end of "Measurement Period"
+
+define "HPV Test Within 5 Years for Women Age 30 and Older":
+	[Observation: "HPV Test"] HPVTest
+    where HPVTest.value is not null
+      and HPVTest.status in { 'final', 'amended', 'corrected', 'preliminary' }
+      and AgeInYearsAt(start of FC.ToInterval(HPVTest.effective)) >= 30
+      and FC.ToInterval(HPVTest.effective) ends 5 years or less on or before end of "Measurement Period"
+
+define "Initial Population":
+	Patient.gender = 'female'
+		and AgeInYearsAt(start of "Measurement Period") in Interval[23, 64]
+
+define "Denominator":
+	"Initial Population"
+
+define "Denominator Exclusion":
+		exists "Absence of Cervix"
+
+define "Numerator":
+	exists "Cervical Cytology Within 3 Years"
+		or exists "HPV Test Within 5 Years for Women Age 30 and Older"
+

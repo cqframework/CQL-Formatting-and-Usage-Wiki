@@ -62,6 +62,10 @@ define "Denominator":
 define "Denominator Exclusion":
 		exists "Absence of Cervix"
 
+define "Numerator":
+	exists "Cervical Cytology Within 3 Years"
+		or exists "HPV Test Within 5 Years for Women Age 30 and Older"
+
 define "Absence of Cervix":
   ([Procedure: "Hysterectomy with No Residual Cervix"] NoCervixProcedure
     where FC.ToInterval(NoCervixProcedure.performed) ends on or before end of "Measurement Period"
@@ -69,10 +73,6 @@ define "Absence of Cervix":
   )
     union [Condition : "Congenital absence of cervix (disorder)"] NoCervixBirth
   		where FC.ToInterval(NoCervixBirth.onset) starts on or before end of "Measurement Period"
-
-define "Numerator":
-	exists "Cervical Cytology Within 3 Years"
-		or exists "HPV Test Within 5 Years for Women Age 30 and Older"
 
 define "Cervical Cytology Within 3 Years":
 	[Observation: "Pap Test"] CervicalCytology
