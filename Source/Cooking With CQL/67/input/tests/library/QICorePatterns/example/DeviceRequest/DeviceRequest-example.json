@@ -1,0 +1,24 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p></div><p><b>status</b>: completed</p><p><b>intent</b>: original-order</p><p><b>code</b>: <a href=\"Device-example.html\">Device/example: Device/example</a></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example: Patient/example</a> \" CHALMERS\"</p></div>"
+  },
+  "status": "completed",
+  "intent": "original-order",
+  "codeCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "version": "http://snomed.info/sct/731000124108",
+        "code": "442023007",
+        "display": "Venous foot pump, device (physical object)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Patient/example"
+  }
+}

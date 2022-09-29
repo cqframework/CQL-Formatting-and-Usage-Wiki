@@ -1,0 +1,77 @@
+{
+  "resourceType": "CommunicationRequest",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationrequest"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-communicationrequest.html\">QICoreCommunicationRequest</a></p></div><p><b>identifier</b>: id: ABC123</p><p><b>basedOn</b>: <span>: EligibilityRequest</span></p><p><b>replaces</b>: <span>: prior CommunicationRequest</span></p><p><b>groupIdentifier</b>: id: 12345</p><p><b>status</b>: active</p><p><b>category</b>: SolicitedAttachmentRequest <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (messagetypes#SolicitedAttachmentRequest)</span></p><p><b>priority</b>: routine</p><p><b>medium</b>: written <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-v3-ParticipationMode.html\">ParticipationMode</a>#WRITTEN)</span></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Encounter/example</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td>-</td><td><b>Content[x]</b></td></tr><tr><td>*</td><td>Please provide the accident report and any associated pictures to support your Claim #DEF5647.</td></tr></table><p><b>occurrence</b>: 2016-06-10 11:01:10-0800</p><p><b>authoredOn</b>: 2016-06-10 11:01:10-0800</p><p><b>requester</b>: <a href=\"Practitioner-example.html\">Practitioner/example</a> \" CAREFUL\"</p><p><b>recipient</b>: <a href=\"Organization-example.html\">Organization/example</a> \"Health Level Seven International\"</p><p><b>sender</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.jurisdiction.com/insurer/123456",
+      "value": "ABC123"
+    }
+  ],
+  "basedOn": [
+    {
+      "display": "EligibilityRequest"
+    }
+  ],
+  "replaces": [
+    {
+      "display": "prior CommunicationRequest"
+    }
+  ],
+  "groupIdentifier": {
+    "value": "12345"
+  },
+  "status": "active",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://acme.org/messagetypes",
+          "code": "SolicitedAttachmentRequest"
+        }
+      ]
+    }
+  ],
+  "priority": "routine",
+  "medium": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode",
+          "code": "WRITTEN",
+          "display": "written"
+        }
+      ],
+      "text": "written"
+    }
+  ],
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "payload": [
+    {
+      "contentString": "Please provide the accident report and any associated pictures to support your Claim #DEF5647."
+    }
+  ],
+  "occurrenceDateTime": "2016-06-10T11:01:10-08:00",
+  "authoredOn": "2016-06-10T11:01:10-08:00",
+  "requester": {
+    "reference": "Practitioner/example"
+  },
+  "recipient": [
+    {
+      "reference": "Organization/example"
+    }
+  ],
+  "sender": {
+    "reference": "Patient/example"
+  }
+}

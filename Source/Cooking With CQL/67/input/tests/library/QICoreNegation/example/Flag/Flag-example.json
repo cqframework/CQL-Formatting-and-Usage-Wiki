@@ -1,0 +1,53 @@
+{
+  "resourceType": "Flag",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-flag"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-flag.html\">QICoreFlag</a></p></div><p><b>identifier</b>: id: 12345</p><p><b>status</b>: inactive</p><p><b>category</b>: admin <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (local#admin \"Admin\")</span></p><p><b>code</b>: Patient has a big dog at his home. Always always wear a suit of armor or take other active      counter-measures <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (local#bigdog \"Big dog\")</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example: Peter Patient</a> \" CHALMERS\"</p><p><b>period</b>: 2015-01-17 --&gt; 2016-12-01</p><p><b>author</b>: <a href=\"Practitioner-example.html\">Practitioner/example: Nancy Nurse</a> \" CAREFUL\"</p></div>"
+  },
+  "identifier": [
+    {
+      "value": "12345"
+    }
+  ],
+  "status": "inactive",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://example.org/local",
+          "code": "admin",
+          "display": "Admin"
+        }
+      ],
+      "text": "admin"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://example.org/local",
+        "code": "bigdog",
+        "display": "Big dog"
+      }
+    ],
+    "text": "Patient has a big dog at his home. Always always wear a suit of armor or take other active      counter-measures"
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter Patient"
+  },
+  "period": {
+    "start": "2015-01-17",
+    "end": "2016-12-01"
+  },
+  "author": {
+    "reference": "Practitioner/example",
+    "display": "Nancy Nurse"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "elective-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"elective-example\" </p></div><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>code</b>: Stomach Bypass <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#442338001 \"Bypass of stomach (procedure)\")</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>authoredOn</b>: 2015-03-30</p><p><b>requester</b>: <span>: Dr. Beverly Crusher</span></p><p><b>performer</b>: <a href=\"Practitioner-example.html\">Practitioner/example: Dr Cecil Surgeon</a> \" CAREFUL\"</p></div>"
+  },
+  "modifierExtension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-isElective",
+      "valueBoolean": true
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442338001",
+        "display": "Bypass of stomach (procedure)"
+      }
+    ],
+    "text": "Stomach Bypass"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2015-03-30",
+  "requester": {
+    "display": "Dr. Beverly Crusher"
+  },
+  "performer": [
+    {
+      "reference": "Practitioner/example",
+      "display": "Dr Cecil Surgeon"
+    }
+  ]
+}

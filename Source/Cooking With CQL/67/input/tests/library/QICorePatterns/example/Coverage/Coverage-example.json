@@ -1,0 +1,57 @@
+{
+  "resourceType": "Coverage",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-coverage.html\">QICoreCoverage</a></p></div><p><b>identifier</b>: id: 12345</p><p><b>status</b>: active</p><p><b>type</b>: Other Private Insurance <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-SOPT.html\">Source of Payment Typology</a>#59)</span></p><p><b>policyHolder</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>subscriber</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>beneficiary</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>dependent</b>: 0</p><p><b>relationship</b>: Self <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-subscriber-relationship.html\">SubscriberPolicyholder Relationship Codes</a>#self)</span></p><p><b>period</b>: 2011-05-23 --&gt; 2012-05-23</p><p><b>payor</b>: <a href=\"Organization-example.html\">Organization/example</a> \"Health Level Seven International\"</p><p><b>order</b>: 9</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://benefitsinc.com/certificate",
+      "value": "12345"
+    }
+  ],
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "urn:oid:2.16.840.1.113883.3.221.5",
+        "code": "59",
+        "display": "Other Private Insurance"
+      }
+    ]
+  },
+  "policyHolder": {
+    "reference": "Patient/example"
+  },
+  "subscriber": {
+    "reference": "Patient/example"
+  },
+  "beneficiary": {
+    "reference": "Patient/example"
+  },
+  "dependent": "0",
+  "relationship": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/subscriber-relationship",
+        "code": "self"
+      }
+    ]
+  },
+  "period": {
+    "start": "2011-05-23",
+    "end": "2012-05-23"
+  },
+  "payor": [
+    {
+      "reference": "Organization/example"
+    }
+  ],
+  "order": 9
+}

@@ -1,0 +1,64 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitionerrole"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-practitionerrole.html\">QICorePractitionerRole</a></p></div><p><b>identifier</b>: id: 31 (TEMP)</p><p><b>active</b>: true</p><p><b>period</b>: 1995 --&gt; (ongoing)</p><p><b>practitioner</b>: <a href=\"Practitioner-example.html\">Practitioner/example: Dr Adam Careful</a> \" CAREFUL\"</p><p><b>organization</b>: <a href=\"Organization-example.html\">Organization/example</a> \"Health Level Seven International\"</p><p><b>code</b>: Clinic/Center <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (provider-taxonomy#261Q00000X)</span></p><p><b>specialty</b>: Dentist <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (provider-taxonomy#122300000X)</span></p><p><b>location</b>: <a href=\"Location-example.html\">Location/example</a> \"South Wing, second floor\"</p><p><b>telecom</b>: ph: 801-123-4567</p></div>"
+  },
+  "identifier": [
+    {
+      "use": "temp",
+      "system": "http://www.acme.org/practitionerroles",
+      "value": "31"
+    }
+  ],
+  "active": true,
+  "period": {
+    "start": "1995"
+  },
+  "practitioner": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "organization": {
+    "reference": "Organization/example"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "261Q00000X",
+          "display": "Clinic/Center"
+        }
+      ]
+    }
+  ],
+  "specialty": [
+    {
+      "coding": [
+        {
+          "system": "http://nucc.org/provider-taxonomy",
+          "code": "122300000X",
+          "display": "Dentist"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/example"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "801-123-4567"
+    }
+  ]
+}

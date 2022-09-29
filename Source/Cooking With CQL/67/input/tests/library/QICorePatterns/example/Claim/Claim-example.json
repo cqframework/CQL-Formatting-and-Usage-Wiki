@@ -1,0 +1,177 @@
+{
+  "resourceType": "Claim",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-claim.html\">QICoreClaim</a></p></div><p><b>identifier</b>: id: 6612346</p><p><b>status</b>: active</p><p><b>type</b>: Vision <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-claim-type.html\">Claim Type Codes</a>#vision)</span></p><p><b>use</b>: claim</p><p><b>patient</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>created</b>: 2014-08-16</p><p><b>insurer</b>: <a href=\"Organization-example.html\">Organization/example</a> \"Health Level Seven International\"</p><p><b>provider</b>: <a href=\"Practitioner-example.html\">Practitioner/example</a> \" CAREFUL\"</p><p><b>priority</b>: Normal <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-processpriority.html\">Process Priority Codes</a>#normal)</span></p><p><b>prescription</b>: <a href=\"MedicationRequest-example.html\">MedicationRequest/example</a></p><h3>Payees</h3><table class=\"grid\"><tr><td>-</td><td><b>Type</b></td><td><b>Party</b></td></tr><tr><td>*</td><td>Provider <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-payeetype.html\">ClaimPayeeTypeCodes</a>#provider)</span></td><td><a href=\"Practitioner-example.html\">Practitioner/example</a> \" CAREFUL\"</td></tr></table><h3>CareTeams</h3><table class=\"grid\"><tr><td>-</td><td><b>Sequence</b></td><td><b>Provider</b></td></tr><tr><td>*</td><td>1</td><td><a href=\"Practitioner-example.html\">Practitioner/example</a> \" CAREFUL\"</td></tr></table><h3>Diagnoses</h3><table class=\"grid\"><tr><td>-</td><td><b>Sequence</b></td><td><b>Diagnosis[x]</b></td></tr><tr><td>*</td><td>1</td><td>654321 <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (CodeSystem#654321)</span></td></tr></table><h3>Insurances</h3><table class=\"grid\"><tr><td>-</td><td><b>Sequence</b></td><td><b>Focal</b></td><td><b>Coverage</b></td></tr><tr><td>*</td><td>1</td><td>true</td><td><a href=\"Coverage-example.html\">Coverage/example</a></td></tr></table><blockquote><p><b>item</b></p><p><b>sequence</b>: 1</p><p><b>careTeamSequence</b>: 1</p><p><b>productOrService</b>: glasses <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ex-visionservice#glasses)</span></p><p><b>serviced</b>: 2014-08-16</p><blockquote><p><b>detail</b></p><p><b>sequence</b>: 1</p><p><b>productOrService</b>: frame <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ex-visionservice#frame)</span></p></blockquote><blockquote><p><b>detail</b></p><p><b>sequence</b>: 2</p><p><b>productOrService</b>: lens <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ex-visionservice#lens)</span></p><p><b>quantity</b>: 2</p></blockquote><blockquote><p><b>detail</b></p><p><b>sequence</b>: 3</p><p><b>productOrService</b>: fst <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ex-visionservice#fst)</span></p><p><b>factor</b>: 0.07</p></blockquote></blockquote></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://happysight.com/claim",
+      "value": "6612346"
+    }
+  ],
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+        "code": "vision"
+      }
+    ]
+  },
+  "use": "claim",
+  "patient": {
+    "reference": "Patient/example"
+  },
+  "created": "2014-08-16",
+  "insurer": {
+    "reference": "Organization/example"
+  },
+  "provider": {
+    "reference": "Practitioner/example"
+  },
+  "priority": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+        "code": "normal"
+      }
+    ]
+  },
+  "prescription": {
+    "reference": "MedicationRequest/example"
+  },
+  "payee": {
+    "type": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/payeetype",
+          "code": "provider"
+        }
+      ]
+    },
+    "party": {
+      "reference": "Practitioner/example"
+    }
+  },
+  "careTeam": [
+    {
+      "sequence": 1,
+      "provider": {
+        "reference": "Practitioner/example"
+      }
+    }
+  ],
+  "diagnosis": [
+    {
+      "sequence": 1,
+      "diagnosisCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://example.org/diagnosis/CodeSystem",
+            "code": "654321"
+          }
+        ]
+      }
+    }
+  ],
+  "insurance": [
+    {
+      "sequence": 1,
+      "focal": true,
+      "coverage": {
+        "reference": "Coverage/example"
+      }
+    }
+  ],
+  "item": [
+    {
+      "sequence": 1,
+      "careTeamSequence": [
+        1
+      ],
+      "productOrService": {
+        "coding": [
+          {
+            "system": "http://example.org/fhir/CodeSystem/ex-visionservice",
+            "code": "glasses"
+          }
+        ]
+      },
+      "servicedDate": "2014-08-16",
+      "unitPrice": {
+        "value": 214.00,
+        "currency": "USD"
+      },
+      "detail": [
+        {
+          "sequence": 1,
+          "productOrService": {
+            "coding": [
+              {
+                "system": "http://example.org/fhir/CodeSystem/ex-visionservice",
+                "code": "frame"
+              }
+            ]
+          },
+          "unitPrice": {
+            "value": 100.00,
+            "currency": "USD"
+          },
+          "net": {
+            "value": 100.00,
+            "currency": "USD"
+          }
+        },
+        {
+          "sequence": 2,
+          "productOrService": {
+            "coding": [
+              {
+                "system": "http://example.org/fhir/CodeSystem/ex-visionservice",
+                "code": "lens"
+              }
+            ]
+          },
+          "quantity": {
+            "value": 2
+          },
+          "unitPrice": {
+            "value": 50.00,
+            "currency": "USD"
+          },
+          "net": {
+            "value": 100.00,
+            "currency": "USD"
+          }
+        },
+        {
+          "sequence": 3,
+          "productOrService": {
+            "coding": [
+              {
+                "system": "http://example.org/fhir/CodeSystem/ex-visionservice",
+                "code": "fst"
+              }
+            ]
+          },
+          "unitPrice": {
+            "value": 200.00,
+            "currency": "USD"
+          },
+          "factor": 0.07,
+          "net": {
+            "value": 14.00,
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  ]
+}

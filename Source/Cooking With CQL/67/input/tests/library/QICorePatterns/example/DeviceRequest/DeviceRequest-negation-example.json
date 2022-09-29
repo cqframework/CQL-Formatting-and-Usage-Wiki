@@ -1,0 +1,48 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "negation-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicenotrequested"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"negation-example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-devicenotrequested.html\">QICoreDeviceNotRequested</a></p></div><p><b>QICoreDoNotPerformReason</b>: Not indicated (qualifier value) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#410534003)</span></p><p><b>status</b>: completed</p><p><b>intent</b>: original-order</p><p><b>code</b>: Not Done Value Set: Venous Foot Pumps (VFP) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (Not done value set: <a href=\"http://cts.nlm.nih.gov/fhir/2.16.840.1.113883.3.117.1.7.1.230\">http://cts.nlm.nih.gov/fhir/2.16.840.1.113883.3.117.1.7.1.230</a>)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>authoredOn</b>: 2016-04-05 09:20:00-0400</p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "410534003",
+            "display": "Not indicated (qualifier value)"
+          }
+        ]
+      }
+    }
+  ],
+  "modifierExtension": [
+    {
+      "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-DeviceRequest.doNotPerform",
+      "valueBoolean": true
+    }
+  ],
+  "status": "completed",
+  "intent": "original-order",
+  "codeCodeableConcept": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneValueSet",
+        "valueCanonical": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230"
+      }
+    ],
+    "text": "Not Done Value Set: Venous Foot Pumps (VFP)"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2016-04-05T09:20:00-04:00"
+}

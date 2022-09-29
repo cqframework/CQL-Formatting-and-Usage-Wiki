@@ -1,0 +1,85 @@
+{
+  "resourceType": "Procedure",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-procedure.html\">QICoreProcedure</a></p></div><p><b>approachBodyStructure</b>: <a href=\"BodyStructure-example.html\">BodyStructure/example</a></p><p><b>incisionDateTime</b>: 2013-04-05 09:30:00-0400</p><p><b>QICoreNotDoneRecorded</b>: 2013-04-05 09:35:00-0400</p><p><b>status</b>: completed</p><p><b>code</b>: Excision of appendix (procedure) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#80146002)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Encounter/example</a></p><p><b>performed</b>: 2013-04-05 09:20:00-0400 --&gt; 2013-04-05 10:30:00-0400</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-example.html\">Practitioner/example: Dr Cecil Surgeon</a> \" CAREFUL\"</td></tr></table><p><b>reasonCode</b>: On examination - abdominal pain - right iliac <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#163220003)</span></p><p><b>bodySite</b>: Appendix structure <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#66754008)</span></p><p><b>report</b>: <a href=\"DiagnosticReport-example.html\">DiagnosticReport/example</a></p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/procedure-approachBodyStructure",
+      "valueReference": {
+        "reference": "BodyStructure/example"
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/procedure-incisionDateTime",
+      "valueDateTime": "2013-04-05T09:30:00-04:00"
+    },
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded",
+      "valueDateTime": "2013-04-05T09:35:00-04:00"
+    }
+  ],
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "80146002",
+        "display": "Excision of appendix (procedure)"
+      }
+    ],
+    "text": "Excision of appendix (procedure)"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "performedPeriod": {
+    "start": "2013-04-05T09:20:00-04:00",
+    "end": "2013-04-05T10:30:00-04:00"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Cecil Surgeon"
+      }
+    }
+  ],
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "163220003",
+          "display": "On examination - abdominal pain - right iliac"
+        }
+      ]
+    }
+  ],
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "66754008",
+          "display": "Appendix structure"
+        }
+      ]
+    }
+  ],
+  "report": [
+    {
+      "reference": "DiagnosticReport/example"
+    }
+  ]
+}

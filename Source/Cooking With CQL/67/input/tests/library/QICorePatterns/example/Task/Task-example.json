@@ -1,0 +1,32 @@
+{
+  "resourceType": "Task",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-task.html\">QICoreTask</a></p></div><p><b>identifier</b>: id: 19009</p><p><b>status</b>: draft</p><p><b>intent</b>: proposal</p><p><b>priority</b>: routine</p><p><b>code</b>: Medication Reconciliation <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> ()</span></p><p><b>for</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>executionPeriod</b>: 2018-06-11 --&gt; 2018-06-11</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.acme.org/tasks",
+      "value": "19009"
+    }
+  ],
+  "status": "draft",
+  "intent": "proposal",
+  "priority": "routine",
+  "code": {
+    "text": "Medication Reconciliation"
+  },
+  "for": {
+    "reference": "Patient/example"
+  },
+  "executionPeriod": {
+    "start": "2018-06-11",
+    "end": "2018-06-11"
+  }
+}

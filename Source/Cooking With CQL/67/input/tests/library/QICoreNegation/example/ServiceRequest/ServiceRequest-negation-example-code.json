@@ -1,0 +1,48 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "negation-example-code",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"negation-example-code\" </p></div><p><b>QICoreDoNotPerformReason</b>: Procedure discontinued (situation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#416406003)</span></p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>priority</b>: urgent</p><p><b>doNotPerform</b>: true</p><p><b>code</b>: Graduated compression elastic hosiery (physical object) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#348681001)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Encounter/example</a></p><p><b>occurrence</b>: 2013-04-05</p><p><b>authoredOn</b>: 2013-04-04</p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "416406003",
+            "display": "Procedure discontinued (situation)"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "priority": "urgent",
+  "doNotPerform": true,
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "348681001",
+        "display": "Graduated compression elastic hosiery (physical object)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "occurrenceDateTime": "2013-04-05",
+  "authoredOn": "2013-04-04"
+}

@@ -1,0 +1,59 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "negation-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"negation-example\" </p></div><p><b>QICoreDoNotPerformReason</b>: Procedure discontinued (situation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#416406003)</span></p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>priority</b>: urgent</p><p><b>doNotPerform</b>: true</p><p><b>code</b>: Not Done Value Set: Application of intermittent pneumatic compression devices (IPC) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (Not done value set: <a href=\"http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65\">http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65</a>)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Encounter/example</a></p><p><b>occurrence</b>: 2013-04-05</p><p><b>authoredOn</b>: 2013-04-04</p><p><b>bodySite</b>: Appendix structure <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#66754008)</span></p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "416406003",
+            "display": "Procedure discontinued (situation)"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "priority": "urgent",
+  "doNotPerform": true,
+  "code": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneValueSet",
+        "valueCanonical": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65"
+      }
+    ],
+    "text": "Not Done Value Set: Application of intermittent pneumatic compression devices (IPC)"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "occurrenceDateTime": "2013-04-05",
+  "authoredOn": "2013-04-04",
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "66754008",
+          "display": "Appendix structure"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "appropriateness-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"appropriateness-example\" </p></div><p><b>RAND Appropriateness Score Extension</b>: appropriate</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>code</b>: CT, head, wo iv contrast <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-CPT.html\">Current Procedural Terminology (CPT&#174;)</a>#70450)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>authoredOn</b>: 2015-03-30</p><p><b>requester</b>: <span>: Dr. Beverly Crusher</span></p><p><b>reasonCode</b>: Occipital headache <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#330007)</span></p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest-appropriatenessScore",
+      "valueCode": "appropriate"
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.ama-assn.org/go/cpt",
+        "code": "70450",
+        "display": "CT, head, wo iv contrast"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2015-03-30",
+  "requester": {
+    "display": "Dr. Beverly Crusher"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "330007",
+          "display": "Occipital headache"
+        }
+      ]
+    }
+  ]
+}

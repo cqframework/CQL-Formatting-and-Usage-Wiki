@@ -1,0 +1,186 @@
+Executing CQL...
+CQL path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\67\input\cql
+Data path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\67\input\tests\library\QICorePatterns
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\67\input\vocabulary\valueset
+Patient=Patient(id=example)
+TestAdverseEvent=[AdverseEvent(id=example)]
+TestAllergyIntolerance=[AllergyIntolerance(id=example-refuted), AllergyIntolerance(id=example)]
+TestBodyStructure=[BodyStructure(id=example)]
+TestCarePlan=[]
+TestCareTeam=[]
+TestClaim=[Claim(id=example)]
+TestCommunication=[Communication(id=example)]
+TestCommunicationNotDone=[Communication(id=negation-example)]
+TestCommunicationRequest=[]
+TestCondition=[Condition(id=appendicitis-example), Condition(id=example)]
+TestCoverage=[Coverage(id=example)]
+TestDevice=[Device(id=example)]
+TestDeviceNotRequested=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestDeviceRequest=[]
+TestDeviceUseStatement=[DeviceUseStatement(id=example)]
+TestDiagnosticReportLab=[]
+TestDiagnosticReportNote=[DiagnosticReport(id=note-example)]
+TestEncounter=[Encounter(id=example)]
+TestFamilyMemberHistory=[FamilyMemberHistory(id=example)]
+TestFlag=[Flag(id=example)]
+TestGoal=[Goal(id=example)]
+TestImagingStudy=[ImagingStudy(id=example)]
+TestImmunization=[Immunization(id=example)]
+TestImmunizationEvaluation=[ImmunizationEvaluation(id=example)]
+TestImmunizationNotDone=[Immunization(id=negation-example-code), Immunization(id=negation-example)]
+TestImmunizationRecommendation=[ImmunizationRecommendation(id=example)]
+TestLocation=[Location(id=example)]
+TestMedication=[Medication(id=example)]
+TestMedicationAdministration=[MedicationAdministration(id=example)]
+TestMedicationAdministrationNotDone=[MedicationAdministration(id=negation-example), MedicationAdministration(id=negation-with-code-example)]
+TestMedicationDispense=[MedicationDispense(id=example)]
+TestMedicationDispenseNotDone=[MedicationDispense(id=negation-example), MedicationDispense(id=negation-with-code-example)]
+TestMedicationNotRequested=[MedicationRequest(id=negation-example-code), MedicationRequest(id=negation-example)]
+TestMedicationRequest=[MedicationRequest(id=cmd-example), MedicationRequest(id=example)]
+TestMedicationStatement=[MedicationStatement(id=example)]
+TestObservation=[Observation(id=example)]
+TestObservationNotDone=[]
+TestOrganization=[Organization(id=example)]
+TestPatient=[Patient(id=example)]
+TestVitalsPanel=[]
+TestRespRate=[]
+TestHeartRate=[]
+TestOxygenSat=[]
+TestBodyTemp=[]
+TestBodyHeight=[]
+TestHeadCircum=[]
+TestBodyWeight=[]
+TestBMI=[]
+TestBP=[]
+TestPractitioner=[Practitioner(id=example)]
+TestPractitionerRole=[PractitionerRole(id=example)]
+TestProcedure=[Procedure(id=example)]
+TestProcedureNotDone=[Procedure(id=negation-example), Procedure(id=negation-with-code-example)]
+TestRelatedPerson=[RelatedPerson(id=example)]
+TestServiceNotRequested=[ServiceRequest(id=negation-example-code), ServiceRequest(id=negation-example)]
+TestServiceRequest=[ServiceRequest(id=appropriateness-example), ServiceRequest(id=elective-example), ServiceRequest(id=example), ServiceRequest(id=referral-example)]
+TestSpecimen=[Specimen(id=example)]
+TestSubstsance=[Substance(id=example)]
+TestTask=[]
+TestTaskNotDone=[]
+TestUSCoreImplantableDevice=[Device(id=udi-1), Device(id=udi-2), Device(id=udi-3)]
+TestUSCoreLaboratoryResult=[Observation(id=blood-glucose), Observation(id=bun), Observation(id=erythrocytes), Observation(id=hemoglobin), Observation(id=mchc), Observation(id=neutrophils), Observation(id=serum-calcium), Observation(id=serum-chloride), Observation(id=serum-co2), Observation(id=serum-creatinine), Observation(id=serum-potassium), Observation(id=serum-sodium), Observation(id=serum-total-bilirubin), Observation(id=urine-bacteria), Observation(id=urine-bilirubin), Observation(id=urine-cells), Observation(id=urine-clarity), Observation(id=urine-color), Observation(id=urine-epi-cells), Observation(id=urine-glucose), Observation(id=urine-hemoglobin), Observation(id=urine-ketone), Observation(id=urine-leukocyte-esterase), Observation(id=urine-nitrite), Observation(id=urine-ph), Observation(id=urine-protein), Observation(id=urine-rbcs), Observation(id=urine-sediment), Observation(id=urine-wbcs), Observation(id=urobilinogen), Observation(id=usg)]
+TestUSCoreSmokingStatus=[Observation(id=some-day-smoker)]
+TestUSCorePulseOximetry=[]
+TestUSCorePediatricBMIForAge=[Observation(id=pediatric-bmi-example)]
+TestUSCorePediatricWeightForHeight=[Observation(id=pediatric-wt-example)]
+TestPatientGender=Patient(id=example)
+TestPatientActive=Patient(id=example)
+TestPatientBirthDate=Patient(id=example)
+TestPatientMaritalStatusMembership=Patient(id=example)
+TestPatientMartialStatusComparison=Patient(id=example)
+TestPatientDeceasedAsBoolean=Patient(id=example)
+TestPatientDeceasedAsDateTime=null
+TestSlices=[]
+TestSimpleExtensions=Patient(id=example)
+TestComplexExtensions=Patient(id=example)
+TestEncounterDiagnosisCardinality=true
+TestProcedureNotDoneElements=[Procedure(id=negation-example), Procedure(id=negation-with-code-example)]
+TestSpecificDeviceNotRequestedExplicit=[]
+TestGeneralDeviceNotRequested=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedCode=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedValueSet=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedActual=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedExplicit=[DeviceRequest(id=negation-example), DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedCodeExplicit=[DeviceRequest(id=negation-with-code-example)]
+TestGeneralDeviceNotRequestedValueSetExplicit=[DeviceRequest(id=negation-example)]
+TestSpecificImmunizationNotDoneExplicit=[]
+TestGeneralImmunizationNotDone=[Immunization(id=negation-example-code)]
+TestGeneralImmunizationNotDoneActual=[Immunization(id=negation-example-code)]
+TestGeneralImmunizationNotDoneExplicit=[Immunization(id=negation-example-code), Immunization(id=negation-example)]
+TestSpecificMedicationAdministrationNotDoneExplicit=[]
+TestGeneralMedicationAdministrationNotDone=[MedicationAdministration(id=negation-with-code-example)]
+TestGeneralMedicationAdministrationNotDoneActual=[MedicationAdministration(id=negation-with-code-example)]
+TestGeneralMedicationAdministrationNotDoneExplicit=[MedicationAdministration(id=negation-example), MedicationAdministration(id=negation-with-code-example)]
+TestSpecificMedicationNotRequestedExplicit=[]
+TestGeneralMedicationNotRequested=[]
+TestGeneralMedicationNotRequestedActual=[]
+TestGeneralMedicationNotRequestedExplicit=[MedicationRequest(id=negation-example)]
+TestSpecificObservationNotDoneExplicit=[]
+TestGeneralObservationNotDone=[]
+TestGeneralObservationNotDoneActual=[]
+TestGeneralObservationNotDoneExplicit=[]
+TestSpecificProcedureNotDoneExplicit=[]
+TestGeneralProcedureNotDone=[Procedure(id=negation-example)]
+TestGeneralProcedureNotDoneActual=[Procedure(id=negation-example)]
+TestGeneralProcedureNotDoneExplicit=[]
+TestSpecificServiceNotRequestedExplicit=[]
+TestGeneralServiceNotRequested=[]
+TestGeneralServiceNotRequestedActual=[ServiceRequest(id=negation-example)]
+TestGeneralServiceNotRequestedExplicit=[ServiceRequest(id=negation-example)]
+TestSpecificTaskNotDoneExplicit=[]
+TestGeneralTaskNotDone=[]
+TestGeneralTaskNotDoneActual=[]
+TestGeneralTaskNotDoneExplicit=[]
+
+
+Evaluation logs:
+22:27:15.447 [pool-2-thread-1] INFO  ca.uhn.fhir.context.FhirContext - Creating new FHIR context for FHIR version [R4]
+22:27:15.543 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
+22:27:16.142 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
+22:27:16.189 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
+22:27:16.474 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/birthsex is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/ValueSet/communication-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-race is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/device-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/immunization-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/medication-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.966 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-race-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-allergyintolerance-reason-refuted is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-appropriateness-score is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-bodystructure-precoordinated is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-communication-reason-not-performed is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-condition-certainty is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-condition-criticality is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-condition-stage is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-encounter-canceled-reason is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-encounter-condition-role is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-flag-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-goal-reason-rejected is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-medication-dose-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-negation-reason is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-observation-body-position is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-observation-delta is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-observation-verification is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-patient-disability is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-present-on-admission is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-priority is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-procedure-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/qicore/ValueSet/qicore-servicerequest-reason-rejected is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/simple-language is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.967 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-allergy-substance is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-careteam-provider-roles is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-note-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-lab-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-report-and-note-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-encounter-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-ndc-vaccine-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus-max is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.968 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-value-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-icd10pcs is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provenance-participant-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-role is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-specialty is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status-observation-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+22:27:16.969 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-vaccines-cvx is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+elapsed: 1.573 seconds
+

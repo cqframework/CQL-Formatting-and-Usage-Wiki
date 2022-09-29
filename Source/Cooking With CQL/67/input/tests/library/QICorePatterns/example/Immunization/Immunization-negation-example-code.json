@@ -1,0 +1,42 @@
+{
+  "resourceType": "Immunization",
+  "id": "negation-example-code",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationnotdone"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"negation-example-code\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-immunizationnotdone.html\">QICoreImmunizationNotDone</a></p></div><p><b>status</b>: not-done</p><p><b>statusReason</b>: Procedure refused for religious reason (situation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#183945002)</span></p><p><b>vaccineCode</b>: Influenza Vaccine A <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-CVX.html\">PH_VaccinesAdministeredCVX_CDC_NIP</a>#160 \"Influenza A monovalent (H5N1), ADJUVANTED-2013\")</span></p><p><b>patient</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Encounter/example</a></p><p><b>occurrence</b>: 2013-01-10</p><p><b>recorded</b>: 2013-01-10</p><p><b>primarySource</b>: true</p></div>"
+  },
+  "status": "not-done",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183945002",
+        "display": "Procedure refused for religious reason (situation)"
+      }
+    ]
+  },
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "160",
+        "display": "Influenza A monovalent (H5N1), ADJUVANTED-2013"
+      }
+    ],
+    "text": "Influenza Vaccine A"
+  },
+  "patient": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "occurrenceDateTime": "2013-01-10",
+  "recorded": "2013-01-10",
+  "primarySource": true
+}

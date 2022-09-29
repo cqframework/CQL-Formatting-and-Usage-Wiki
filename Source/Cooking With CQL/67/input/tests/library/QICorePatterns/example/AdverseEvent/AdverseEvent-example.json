@@ -1,0 +1,50 @@
+{
+  "resourceType": "AdverseEvent",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-adverseevent.html\">QICoreAdverseEvent</a></p></div><p><b>identifier</b>: id: 49476534</p><p><b>actuality</b>: actual</p><p><b>event</b>: O/E - itchy rash <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#304386008)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>date</b>: 2017-01-29 12:34:56+0000</p><p><b>seriousness</b>: Non-serious <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-adverse-event-seriousness.html\">AdverseEventSeriousness</a>#non-serious)</span></p><p><b>recorder</b>: <a href=\"Practitioner-example.html\">Practitioner/example</a> \" CAREFUL\"</p><h3>SuspectEntities</h3><table class=\"grid\"><tr><td>-</td><td><b>Instance</b></td></tr><tr><td>*</td><td><a href=\"Medication-example.html\">Medication/example</a></td></tr></table></div>"
+  },
+  "identifier": {
+    "system": "http://acme.com/ids/patients/risks",
+    "value": "49476534"
+  },
+  "actuality": "actual",
+  "event": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "304386008",
+        "display": "O/E - itchy rash"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "date": "2017-01-29T12:34:56+00:00",
+  "seriousness": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
+        "code": "non-serious",
+        "display": "Non-serious"
+      }
+    ]
+  },
+  "recorder": {
+    "reference": "Practitioner/example"
+  },
+  "suspectEntity": [
+    {
+      "instance": {
+        "reference": "Medication/example"
+      }
+    }
+  ]
+}

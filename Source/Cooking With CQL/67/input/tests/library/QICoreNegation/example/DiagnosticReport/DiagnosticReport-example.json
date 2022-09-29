@@ -1,0 +1,45 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2><span title=\"Codes: {http://loinc.org 58410-2}\">CBC panel - Blood by Automated count</span> (<span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0074 LAB}\">Laboratory</span>) </h2><table class=\"grid\"><tr><td>Subject</td><td><b>Jim Chalmers </b> male, DoB: 1974-12-25 ( Medical record number: 12345 (USUAL))</td></tr><tr><td>When For</td><td>2005-07-05</td></tr><tr><td>Reported</td><td>2005-07-06 11:45:33+1100</td></tr></table><p><b>Report Details</b></p><table class=\"grid\"><tr><td><b>Code</b></td><td><b>Value</b></td><td><b>Flags</b></td><td><b>When For</b></td><td><b>Reported</b></td></tr><tr><td><a href=\"Observation-example.html\"><span title=\"Codes: {http://loinc.org 30350-3}\">Hemoglobin [Mass/volume] in Venous blood</span></a> (<span title=\"Codes: {http://snomed.info/sct 308046002}\">Superficial forearm vein</span>)</td><td>7.2 g/dl</td><td><span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0078 L}\">Below low normal</span></td><td>2013-04-02 10:30:10+0100 --&gt; 2013-04-05 10:30:10+0100</td><td>2013-04-03 03:30:10+0100</td></tr></table></div>"
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "CBC panel - Blood by Automated count"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter Chalmers"
+  },
+  "effectiveDateTime": "2005-07-05",
+  "issued": "2005-07-06T11:45:33+11:00",
+  "performer": [
+    {
+      "reference": "Organization/example"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/example"
+    }
+  ]
+}

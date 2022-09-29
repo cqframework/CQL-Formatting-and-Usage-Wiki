@@ -1,0 +1,50 @@
+{
+  "resourceType": "BodyStructure",
+  "id": "example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-bodystructure.html\">QICoreBodyStructure</a></p></div><p><b>identifier</b>: id: 12345</p><p><b>active</b>: true</p><p><b>morphology</b>: Splenic mass <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#4147007 \"Mass (morphologic abnormality)\")</span></p><p><b>location</b>: Splenic mass <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#78961009 \"Splenic structure (body structure)\")</span></p><p><b>description</b>: 7 cm maximum diameter</p><p><b>patient</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://goodhealth.org/bodystructure/identifiers",
+      "value": "12345"
+    }
+  ],
+  "active": true,
+  "morphology": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "4147007",
+        "display": "Mass (morphologic abnormality)"
+      }
+    ],
+    "text": "Splenic mass"
+  },
+  "location": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "78961009",
+        "display": "Splenic structure (body structure)"
+      }
+    ],
+    "text": "Splenic mass"
+  },
+  "description": "7 cm maximum diameter",
+  "image": [
+    {
+      "contentType": "application/dicom",
+      "url": "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
+    }
+  ],
+  "patient": {
+    "reference": "Patient/example"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Task",
+  "id": "negation-example",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-tasknotdone"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource \"negation-example\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-qicore-tasknotdone.html\">QICoreTaskNotDone</a></p></div><p><b>identifier</b>: id: 19009</p><p><b>status</b>: rejected</p><p><b>statusReason</b>: Patient noncompliance - general (situation) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#275936005)</span></p><p><b>intent</b>: proposal</p><p><b>code</b>: Interventions Related to Medication Management, Medication Reconciliation <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (Not done value set: <a href=\"http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1096.11\">http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1096.11</a>)</span></p><p><b>focus</b>: <a href=\"Procedure-example.html\">Procedure/example</a></p><p><b>for</b>: <a href=\"Patient-example.html\">Patient/example</a> \" CHALMERS\"</p><p><b>executionPeriod</b>: 2018-06-11 --&gt; 2018-06-11</p></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.acme.org/tasks",
+      "value": "19009"
+    }
+  ],
+  "status": "rejected",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "275936005",
+        "display": "Patient noncompliance - general (situation)"
+      }
+    ]
+  },
+  "intent": "proposal",
+  "code": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneValueSet",
+        "valueCanonical": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1096.11"
+      }
+    ],
+    "text": "Interventions Related to Medication Management, Medication Reconciliation"
+  },
+  "focus": {
+    "reference": "Procedure/example"
+  },
+  "for": {
+    "reference": "Patient/example"
+  },
+  "executionPeriod": {
+    "start": "2018-06-11",
+    "end": "2018-06-11"
+  }
+}

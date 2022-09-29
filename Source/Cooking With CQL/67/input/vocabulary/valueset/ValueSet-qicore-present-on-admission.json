@@ -1,0 +1,68 @@
+{
+  "resourceType": "ValueSet",
+  "id": "qicore-present-on-admission",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-presentOnAdmission.html\"><code>https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-presentOnAdmission.html#presentOnAdmission-Y\">Y</a></td><td>Yes</td><td>Diagnosis was present at time of inpatient admission. CMS will pay the CC/MCC DRG for those selected HACs that are coded as &quot;Y&quot; for the POA Indicator.</td></tr><tr><td><a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-presentOnAdmission.html#presentOnAdmission-N\">N</a></td><td>No</td><td>Diagnosis was not present at time of inpatient admission. CMS will not pay the CC/MCC DRG for those selected HACs that are coded as &quot;N&quot; for the POA Indicator.</td></tr><tr><td><a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-presentOnAdmission.html#presentOnAdmission-U\">U</a></td><td>Unknown</td><td>Documentation insufficient to determine if the condition was present at the time of inpatient admission. CMS will not pay the CC/MCC DRG for those selected HACs that are coded as &quot;U&quot; for the POA Indicator.</td></tr><tr><td><a href=\"http://terminology.hl7.org/3.1.0/CodeSystem-presentOnAdmission.html#presentOnAdmission-W\">W</a></td><td>Undetermined</td><td>Clinically undetermined.  Provider unable to clinically determine whether the condition was present at the time of inpatient admission. CMS will pay the CC/MCC DRG for those selected HACs that are coded as &quot;W&quot; for the POA Indicator.</td></tr></table></li></ul></div>"
+  },
+  "url": "http://hl7.org/fhir/us/qicore/ValueSet/qicore-present-on-admission",
+  "version": "4.1.1",
+  "name": "QICorePresentOnAdmission",
+  "title": "QICore Present On Admission Codes",
+  "status": "draft",
+  "experimental": false,
+  "date": "2021-05-14",
+  "publisher": "http://www.hl7.org/Special/committees/cqi/index.cfm",
+  "contact": [
+    {
+      "name": "Clinical Quality Information WG",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/cqi"
+        }
+      ]
+    }
+  ],
+  "description": "Value Set for QICore Present On Admission.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US"
+        }
+      ]
+    }
+  ],
+  "compose": {
+    "include": [
+      {
+        "system": "https://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/HospitalAcqCond/Coding",
+        "concept": [
+          {
+            "code": "Y",
+            "display": "Yes"
+          },
+          {
+            "code": "N",
+            "display": "No"
+          },
+          {
+            "code": "U",
+            "display": "Unknown"
+          },
+          {
+            "code": "W",
+            "display": "Undetermined"
+          }
+        ]
+      }
+    ]
+  }
+}
