@@ -1,1 +1,1 @@
-1. Types and Values
+1. Deep Dive on Types, Values and Choices
