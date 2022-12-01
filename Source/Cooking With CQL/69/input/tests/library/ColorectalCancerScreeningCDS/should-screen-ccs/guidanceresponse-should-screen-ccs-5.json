@@ -1,0 +1,57 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "should-screen-ccs-5",
+  "contained": [
+    {
+      "resourceType": "CarePlan",
+      "id": "expected",
+      "instantiatesCanonical": [
+        "http://fhir.org/guides/cqf/ccc/PlanDefinition/ColorectalCancerScreeningCDS"
+      ],
+      "status": "draft",
+      "intent": "proposal",
+      "subject": {
+        "reference": "Patient/should-screen-ccs"
+      },
+      "activity": [
+        {
+          "reference": {
+            "reference": "#screening-recommended"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "ServiceRequest",
+      "id": "screening-recommended",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-rationale",
+          "valueMarkdown": "Patient meets the inclusion criteria for appropriate colorectal cancer screening, but has most recent Colonoscopy performed on 2009-12-30"
+        }
+      ],
+      "status": "draft",
+      "intent": "proposal",
+      "doNotPerform": true,
+      "code": {
+        "text": "Colorectal Cancer Screening Recommended"
+      },
+      "subject": {
+        "reference": "Patient/should-screen-ccs"
+      },
+      "supportingInfo": [
+        {
+          "reference": "Procedure/should-screen-ccs-2"
+        }
+      ]
+    }
+  ],
+  "moduleCanonical": "http://fhir.org/guides/cqf/ccc/PlanDefinition/ColorectalCancerScreeningCDS",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/should-screen-ccs"
+  },
+  "result": {
+    "reference": "#expected"
+  }
+}

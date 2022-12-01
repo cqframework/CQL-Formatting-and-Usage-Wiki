@@ -58,16 +58,16 @@ For delivery as a CDS Hooks service, we represent the recommendation as an Event
 
 ## Unit Testing
 
-For unit testing, we define test cases in the `input/tests/cdshooks` directory. In the CQL editor, right-clicking and selecting Execute will run the tests in the tests folder with the same name as the library. For example, the ColorectalCancerScreeningCDS library has two tests:
+For unit testing, we define test cases in the `input/tests/library` directory. In the CQL editor, right-clicking and selecting Execute will run the tests in the tests folder with the same name as the library. For example, the ColorectalCancerScreeningCDS library has two tests:
 
 * should-not-screen-ccs
-    * [Patient](input/tests/cdshooks/ColorectalCancerScreeningCDS/patient-should-not-screen-ccs.json)
-    * [Encounter](input/tests/cdshooks/ColorectalCancerScreeningCDS/encounter-should-not-screen-ccs-4.json)
-    * [Procedure](input/tests/cdshooks/ColorectalCancerScreeningCDS/procedure-should-not-screen-ccs-1.json)
+    * [Patient](input/tests/library/ColorectalCancerScreeningCDS/should-not-screen-ccs/patient-should-not-screen-ccs.json)
+    * [Encounter](input/tests/library/ColorectalCancerScreeningCDS/should-not-screen-ccs/encounter-should-not-screen-ccs-4.json)
+    * [Procedure](input/tests/library/ColorectalCancerScreeningCDS/should-not-screen-ccs/procedure-should-not-screen-ccs-1.json)
 * should-screen-ccs
-    * [Patient](input/tests/cdshooks/ColorectalCancerScreeningCDS/patient-should-screen-ccs.json)
-    * [Encounter](input/tests/cdshooks/ColorectalCancerScreeningCDS/encounter-should-screen-ccs-1.json)
-    * [Procedure](input/tests/cdshooks/ColorectalCancerScreeningCDS/procedure-should-screen-ccs-2.json)
+    * [Patient](input/tests/library/ColorectalCancerScreeningCDS/should-screen-ccs/patient-should-screen-ccs.json)
+    * [Encounter](input/tests/library/ColorectalCancerScreeningCDS/should-screen-ccs/encounter-should-screen-ccs-1.json)
+    * [Procedure](input/tests/library/ColorectalCancerScreeningCDS/should-screen-ccs/procedure-should-screen-ccs-2.json)
 
 To run the tests, open the [ColorectalCancerScreeningCDS.cql](input/cql/ColorectalCancerScreeningCDS.cql) file, and in the CQL editor, right-click and select `Execute CQL`:
 
