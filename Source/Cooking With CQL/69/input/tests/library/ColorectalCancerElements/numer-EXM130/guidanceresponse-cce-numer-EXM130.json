@@ -1,0 +1,40 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "cce-numer-EXM130",
+  "contained": [
+    {
+      "resourceType": "Parameters",
+      "id": "output",
+      "parameter": [
+        {
+          "name": "Colonoscopy Performed",
+          "valueReference": {
+            "reference": "Procedure/denom-EXM130-1"
+          }
+        },
+        {
+          "name": "Most Recent Colonoscopy Performed",
+          "valueReference": {
+            "reference": "Procedure/denom-EXM130-1"
+          }
+        },
+        {
+          "name": "Has Active Malignant Neoplasm",
+          "valueBoolean": false
+        },
+        {
+          "name": "Has Appropriate Colorectal Cancer Screening",
+          "valueBoolean": true
+        }
+      ]
+    }
+  ],
+  "moduleCanonical": "http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerElements",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/numer-EXM130"
+  },
+  "outputParameters": {
+    "reference": "#output"
+  }
+}

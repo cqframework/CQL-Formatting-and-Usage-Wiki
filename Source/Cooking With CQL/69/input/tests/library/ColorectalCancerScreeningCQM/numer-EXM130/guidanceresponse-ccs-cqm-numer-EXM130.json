@@ -1,0 +1,36 @@
+{
+  "resourceType": "GuidanceResponse",
+  "id": "ccs-cqm-numer-EXM130",
+  "contained": [
+    {
+      "resourceType": "Parameters",
+      "id": "output",
+      "parameter": [
+        {
+          "name": "Initial Population",
+          "valueBoolean": true
+        },
+        {
+          "name": "Denominator",
+          "valueBoolean": true
+        },
+        {
+          "name": "Numerator",
+          "valueBoolean": true
+        },
+        {
+          "name": "Denominator Exclusion",
+          "valueBoolean": false
+        }
+      ]
+    }
+  ],
+  "moduleCanonical": "http://fhir.org/guides/cqf/ccc/Library/ColorectalCancerScreeningCQM",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/numer-EXM130"
+  },
+  "outputParameters": {
+    "reference": "#output"
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "resourceType": "Procedure",
+    "id": "denom-EXM130-2",
+    "meta": {
+        "profile": [
+          "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+        ]
+    },
+    "status": "completed",
+    "code": {
+        "coding": [
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "44392",
+                "display": "Colonoscopy through stoma; with removal of tumor(s), polyp(s), or other lesion(s) by hot biopsy forceps"
+            }
+        ]
+    },
+    "subject": {
+        "reference": "Patient/denom-EXM130"
+    },
+    "performedPeriod": {
+        "start": "2011-12-30T12:00:00",
+        "end": "2011-12-30T13:00:00"
+    }
+}
