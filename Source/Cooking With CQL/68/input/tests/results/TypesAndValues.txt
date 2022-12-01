@@ -1,0 +1,35 @@
+Executing CQL...
+CQL path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\68\input\cql
+No data found at c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\68\input\tests. Evaluation may fail if data is required.
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\68\input\vocabulary\valueset
+Patient=null
+Qualifying Encounters=[]
+Info=Tuple {
+	"name": Patrick
+	"birthDate": 2014-01-01
+}
+PatientExpression=Patient
+IntegerInterval=Interval[3, 5)
+DateTimeInterval=Interval[2014-01-01T00:00:00.000, 2015-01-01T00:00:00.000)
+IntegerList=[1, 2, 3, 4, 5]
+StringList=[a, b, c]
+TestXAsInteger=null
+TestXAsDecimal=null
+TestXAsString=null
+TestXAsQuantity=null
+ConvertValues=1
+ConvertUnits=0.005000000000000000000000 'g'
+InvalidConvert=null
+ImplicitConversion=4.0
+
+
+Evaluation logs:
+11:20:22.184 [pool-2-thread-1] INFO  ca.uhn.fhir.context.FhirContext - Creating new FHIR context for FHIR version [R4]
+11:20:22.188 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
+11:20:22.887 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
+11:20:22.930 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
+11:20:23.086 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
+11:20:23.646 [pool-2-thread-1] INFO  o.o.c.c.e.engine.retrieve.NoOpRetrieveProvider - Attempted retrieve of Patient. Returning empty set.
+11:20:23.648 [pool-2-thread-1] INFO  o.o.c.c.e.engine.retrieve.NoOpRetrieveProvider - Attempted retrieve of Encounter. Returning empty set.
+elapsed: 1.508 seconds
+
