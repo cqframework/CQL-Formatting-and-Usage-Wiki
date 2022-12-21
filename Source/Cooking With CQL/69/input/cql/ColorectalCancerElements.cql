@@ -5,7 +5,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
 include FHIRCommon version '4.0.1' called FC
 
-include ColorectalCancerConcepts called Cx
+include ColorectalCancerConcepts called Cs
 
 // QUESTION: Should this be a single timepoint, or is a period required?
 //parameter AsOf DateTime default Now()
@@ -23,51 +23,51 @@ define AsOf:
   end of "Measurement Period"
 
 define "Flexible Sigmoidoscopy Performed":
-  [Procedure: Cx."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
+  [Procedure: Cs."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopy
 		where FlexibleSigmoidoscopy.status = 'completed'
 
 // NOTE: HEDIS version allows for a "history of" SNOMED code as FHIR.Condition. Code is present in eCQM valueset.
 define "Flexible Sigmoidoscopy from Patient History":
-  [Condition: Cx."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopyCondition
+  [Condition: Cs."Flexible Sigmoidoscopy"] FlexibleSigmoidoscopyCondition
     where FlexibleSigmoidoscopyCondition.clinicalStatus in FC."Active Condition"
       and FlexibleSigmoidoscopyCondition.verificationStatus ~ FC."confirmed"
 
 define "CT Colonography Performed":
-  [Procedure: Cx."CT Colonography"] Colonography
+  [Procedure: Cs."CT Colonography"] Colonography
     where Colonography.status = 'completed'
 
 define "Total Colectomy Performed":
-  [Procedure: Cx."Total Colectomy"] Colectomy
+  [Procedure: Cs."Total Colectomy"] Colectomy
     where Colectomy.status = 'completed'
 
 // NOTE: HEDIS version allows for a "history of" SNOMED code as FHIR.Condition. Code is present in eCQM valueset.
 define "Total Colectomy from Patient History":
-  [Condition: Cx."Total Colectomy"] ColectomyCondition
+  [Condition: Cs."Total Colectomy"] ColectomyCondition
     where ColectomyCondition.clinicalStatus in FC."Active Condition"
       and ColectomyCondition.verificationStatus ~ FC."confirmed"
 
 define "Fecal Occult Blood Test Result":
-  [Observation: Cx."Fecal Occult Blood Test (FOBT)"] FecalOccultResult
+  [Observation: Cs."Fecal Occult Blood Test (FOBT)"] FecalOccultResult
 		where FecalOccultResult.status in {'final', 'amended', 'corrected', 'preliminary'}
 			and FecalOccultResult.value is not null
 
 define "Fecal Immunochemical Test DNA Result":
-  [Observation: Cx."FIT DNA"] FitDNA
+  [Observation: Cs."FIT DNA"] FitDNA
 		where FitDNA.status in {'final', 'amended', 'corrected', 'preliminary'}
 			and FitDNA.value is not null
 
 define "Colonoscopy Performed":
-  [Procedure: Cx."Colonoscopy"] Colonoscopy
+  [Procedure: Cs."Colonoscopy"] Colonoscopy
 		where Colonoscopy.status = 'completed'
 
 // NOTE: HEDIS version allows for a "history of" SNOMED code as FHIR.Condition. Code is present in eCQM valueset.
 define "Colonoscopy from Patient History":
-  [Condition: Cx."Colonoscopy"] C
+  [Condition: Cs."Colonoscopy"] C
     where C.clinicalStatus in FC."Active Condition"
     and C.verificationStatus ~ FC."confirmed"
 
 define "Active Malignant Neoplasm":
-  [Condition: Cx."Malignant Neoplasm of Colon"] ColorectalCancer
+  [Condition: Cs."Malignant Neoplasm of Colon"] ColorectalCancer
     where ColorectalCancer.clinicalStatus in FC."Active Condition"
       and ColorectalCancer.verificationStatus ~ FC."confirmed"
 
