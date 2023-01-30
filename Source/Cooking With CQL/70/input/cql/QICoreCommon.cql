@@ -218,6 +218,13 @@ define fluent function isDischarge(medicationRequest MedicationNotRequested):
     where C ~ Discharge
   )
 
+define fluent function doNotPerform(deviceRequest DeviceRequest):
+  singleton from (
+    deviceRequest.modifierExtension E
+      where E.url = 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerform'
+      return E.value as Boolean
+  )
+
 /*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
 @comment: Normalizes a choice type of DateTime, Quanitty, Interval<DateTime>, or Interval<Quantity> types
@@ -300,7 +307,7 @@ If the abatement is represented as a Quantity Interval, the quantities are expec
 which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
 before one year later than the date the patient turned the ending age of the quantity interval.
 */
-define function ToAbatementInterval(condition Condition):
+define function AbatementInterval(condition Condition):
 	if condition.abatement is DateTime then
 	  Interval[condition.abatement as DateTime, condition.abatement as DateTime]
 	else if condition.abatement is Quantity then
@@ -323,7 +330,7 @@ If the abatement is represented as a Quantity Interval, the quantities are expec
 which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
 before one year later than the date the patient turned the ending age of the quantity interval.
 */
-define fluent function toAbatementInterval(condition Condition):
+define fluent function abatementInterval(condition Condition):
 	if condition.abatement is DateTime then
 	  Interval[condition.abatement as DateTime, condition.abatement as DateTime]
 	else if condition.abatement is Quantity then
@@ -342,13 +349,13 @@ define fluent function toAbatementInterval(condition Condition):
 onset to abatement as specified in the given Condition. If the condition is active, the resulting interval will have
 a closed ending boundary. If the condition is not active, the resulting interval will have an open ending boundary.
 */
-define function ToPrevalenceInterval(condition Condition):
+define function PrevalenceInterval(condition Condition):
 if condition.clinicalStatus ~ "active"
   or condition.clinicalStatus ~ "recurrence"
   or condition.clinicalStatus ~ "relapse" then
-  Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition)]
+  Interval[start of ToInterval(condition.onset), end of AbatementInterval(condition)]
 else
-  Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))
+  Interval[start of ToInterval(condition.onset), end of AbatementInterval(condition))
 
 /*
 @description: Returns an interval representing the normalized prevalence period of a given Condition.
@@ -356,13 +363,13 @@ else
 onset to abatement as specified in the given Condition. If the condition is active, the resulting interval will have
 a closed ending boundary. If the condition is not active, the resulting interval will have an open ending boundary.
 */
-define fluent function toPrevalenceInterval(condition Condition):
+define fluent function prevalenceInterval(condition Condition):
 if condition.clinicalStatus ~ "active"
   or condition.clinicalStatus ~ "recurrence"
   or condition.clinicalStatus ~ "relapse" then
-  Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition)]
+  Interval[start of ToInterval(condition.onset), end of AbatementInterval(condition)]
 else
-  Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition))
+  Interval[start of ToInterval(condition.onset), end of AbatementInterval(condition))
 
 /*
 @description: Returns the tail of the given uri (i.e. everything after the last slash in the URI).
