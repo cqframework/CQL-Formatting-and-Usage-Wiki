@@ -1,1 +1,1 @@
-1. Authoring Patterns
+1. Authoring Patterns (QICore STU4)

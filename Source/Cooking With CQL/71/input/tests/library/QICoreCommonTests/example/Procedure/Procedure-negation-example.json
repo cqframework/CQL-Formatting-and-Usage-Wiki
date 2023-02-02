@@ -1,0 +1,57 @@
+{
+  "resourceType": "Procedure",
+  "id": "negation-example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: negation-example</p><p><b>status</b>: not-done</p><p><b>statusReason</b>: Complication of medical care (disorder) <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '35688006' = 'Complication of medical care', given as 'Complication of medical care (disorder)'})</span></p><p><b>code</b>: Excision of appendix (procedure) <span style=\"background: LightGoldenRodYellow\">(Details : {[not stated] code 'null' = 'null)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-example.html\">Dr Cecil Surgeon. Generated Summary: id: example; 23; active; Adam Careful </a></td></tr></table></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded",
+      "valueDateTime": "2013-04-05T10:30:00-04:00"
+    }
+  ],
+  "modifierExtension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDone",
+      "valueBoolean": true
+    }
+  ],
+  "status": "not-done",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "35688006",
+        "display": "Complication of medical care (disorder)"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-reference",
+            "valueUri": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1018.240"
+          }
+        ]
+      }
+    ],
+    "text": "Excision of appendix (procedure)"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Cecil Surgeon"
+      }
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 library AuthoringPatterns
 
-using QICore version '4.1.1'
+using QICore version '5.0.0'
 
-include FHIRHelpers version '4.1.000'
-include QICoreCommon version '1.3.000'
-include CQMCommon version '1.1.000'
+include FHIRHelpers version '4.0.1'
+include QICoreCommon version '2.0.000'
+include CQMCommon version '2.0.000'
 
 codesystem "Marital Status Codes": 'http://terminology.hl7.org/CodeSystem/v3-MaritalStatus'
 codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
@@ -26,20 +26,20 @@ valueset "Application of intermittent pneumatic compression devices (IPC)": 'htt
 valueset "TaskCodes": 'http://hl7.org/fhir/ValueSet/task-code'
 valueset "NegationReasonCodes": 'http://hl7.org/fhir/us/qicore/ValueSet/qicore-negation-reason'
 
-valueset "Office Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001' 
+valueset "Office Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001'
 valueset "Non-Elective Inpatient Encounter": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.424'
 valueset "Comfort Measures": 'http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45'
 valueset "Diabetes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.103.12.1001'
 valueset "Present on Admission or Clinically Undetermined": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1147.197'
-valueset "Pap Test": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1017' 
+valueset "Pap Test": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1017'
 valueset "Frailty Device": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.118.12.1300'
 valueset "Statin Allergen": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.42'
-valueset "Inactivated Polio Vaccine (IPV)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.196.12.1219' 
-valueset "Low Dose Unfractionated Heparin for VTE Prophylaxis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39' 
+valueset "Inactivated Polio Vaccine (IPV)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.196.12.1219'
+valueset "Low Dose Unfractionated Heparin for VTE Prophylaxis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39'
 valueset "Dementia Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.196.12.1510'
-valueset "Antithrombotic Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62' 
-valueset "Medical Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.473' 
-valueset "Patient Refusal": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.93' 
+valueset "Antithrombotic Therapy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.62'
+valueset "Medical Reason": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.473'
+valueset "Patient Refusal": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.93'
 valueset "Application of Intermittent Pneumatic Compression Devices (IPC)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65'
 valueset "Macular Edema Absent Findings": 'http://example.org/fhir/ValueSet/macular-edema-absent-findings'
 
@@ -99,13 +99,11 @@ define "Encounter with Comfort Measures Performed during Hospitalization":
       such that start of ComfortMeasure.performed.toInterval() during Encounter.hospitalizationWithObservation()
 
 define "Active Diabetes Conditions":
-  [Condition: Diabetes] Condition
-    where (Condition.isProblemListItem() or Condition.isHealthConcern())
-      and Condition.isActive()
+  [ConditionProblemsHealthConcerns: Diabetes] Condition
+    where Condition.isActive()
 
 define "Diabetes Conditions Indicated during an Encounter":
-  [Condition: Diabetes] Condition
-    where Condition.isEncounterDiagnosis()
+  [ConditionEncounterDiagnosis: Diabetes] Condition
 
 define "Active Diabetes Conditions Onset During the Measurement Period":
   "Active Diabetes Conditions" Diabetes
@@ -119,15 +117,15 @@ define "Encounter With Diabetes Diagnosis Present on Admission":
     )
 
 // Respiratory rate - 9279-1
-// @profile: http://hl7.org/fhir/StructureDefinition/resprate
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-respiratory-rate
 define RespiratoryRate:
-  ["observation-resprate"] O
+  [USCoreRespiratoryRateProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Heart rate - 8867-4
-// @profile: http://hl7.org/fhir/StructureDefinition/heartrate
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-heart-rate
 define HeartRate:
-  ["observation-heartrate"] O
+  [USCoreHeartRateProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Oxygen saturation - 2708-6
@@ -137,55 +135,49 @@ define OxygenSaturation:
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body temperature - 8310-5
-// @profile: http://hl7.org/fhir/StructureDefinition/bodytemp
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-temperature
 define BodyTemperature:
-  ["observation-bodytemp"] O
+  [USCoreBodyTemperatureProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body height - 8302-2
-// @profile: http://hl7.org/fhir/StructureDefinition/bodyheight
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-height
 define BodyHeight:
-  ["observation-bodyheight"] O
+  [USCoreBodyHeightProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Head circumference - 9843-4
-// @profile: http://hl7.org/fhir/StructureDefinition/headcircum
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-head-circumference
 define HeadCircumference:
-  ["observation-headcircum"] O
+  [USCoreHeadCircumferenceProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body weight - 29463-7
-// @profile: http://hl7.org/fhir/StructureDefinition/bodyweight
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
 define BodyWeight:
-  ["observation-bodyweight"] O
+  [USCoreBodyWeightProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body mass index - 39156-5
-// @profile: http://hl7.org/fhir/StructureDefinition/bmi
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-bmi
 define BodyMassIndex:
-  ["observation-bmi"] O
+  [USCoreBMIProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Blood pressure systolic and diastolic - 85354-9
 // Systolic blood pressure - 8480-6
 // Diastolic blood pressure - 8462-4
-// @profile: http://hl7.org/fhir/StructureDefinition/bp
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-blood-pressure
 define "BloodPressure less than 140 over 90":
-  ["observation-bp"] BP
+  [USCoreBloodPressureProfile] BP
     where BP.status in { 'final', 'amended', 'corrected' }
-      and BP.SystolicBP.value < 140 'mm[Hg]'
-      and BP.DiastolicBP.value < 90 'mm[Hg]'
+      and BP.systolic.value < 140 'mm[Hg]'
+      and BP.diastolic.value < 90 'mm[Hg]'
 
 // USCore Smoking Status
 // @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus
 define SmokingStatus:
   ["USCoreSmokingStatusProfile"] O
-    where O.status in { 'final', 'amended', 'corrected' }
-
-// USCore Laboratory Result
-// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab
-define LaboratoryResult:
-  [USCoreLaboratoryResultObservationProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // USCore Pediatric BMI for Age - 59576-9
@@ -206,13 +198,33 @@ define PulseOximetry:
   [USCorePulseOximetryProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
+// Laboratory Result
+define LaboratoryResultObservation:
+  [LaboratoryResultObservation] O
+    where O.status in { 'final', 'amended', 'corrected' }
+
+// Clinical Test Result
+define ObservationClinicalTestResult:
+  [ObservationClinicalTestResult] O
+    where O.status in { 'final', 'amended', 'corrected' }
+
+// Imaging Result
+define ObservationImagingResult:
+  [ObservationImagingResult] O
+    where O.status in { 'final', 'amended', 'corrected' }
+
+// Survey
+define ObservationSurvey:
+  [ObservationSurvey] O
+    where O.status in { 'final', 'amended', 'corrected' }
+
 define "Pap Test with Results":
   [Observation: "Pap Test"] PapTest
     where PapTest.value is not null
       and PapTest.status in { 'final', 'amended', 'corrected', 'preliminary' }
 
 define "Pap Test Refused":
-  ["ObservationNotDone": "Pap Test"] PapTest
+  ["ObservationCancelled": "Pap Test"] PapTest
     where PapTest.notDoneReason in "Patient Refusal"
 
 define "Low Dose Unfractionated Heparin Administration":
@@ -236,6 +248,7 @@ define "Reason for Not Ordering Antithrombotic":
     where (NoAntithromboticDischarge.reasonCode in "Medical Reason"
       or NoAntithromboticDischarge.reasonCode in "Patient Refusal")
       and (NoAntithromboticDischarge.isCommunity() or NoAntithromboticDischarge.isDischarge())
+      and NoAntithromboticDischarge.status in { 'active', 'completed' }
       and NoAntithromboticDischarge.intent = 'order'
 
 define "Dementia Medication Dispensed":
@@ -243,7 +256,7 @@ define "Dementia Medication Dispensed":
     where MedicationDispense.status in { 'active', 'completed', 'on-hold' }
 
 define "Dementia Medication Not Dispensed":
-    ["MedicationDispenseNotDone": "Dementia Medications"] MedicationDispense
+    ["MedicationDispenseDeclined": "Dementia Medications"] MedicationDispense
       where MedicationDispense.statusReason in "Medical Reason"
         or MedicationDispense.statusReason in "Patient Refusal"
 
@@ -253,13 +266,12 @@ define "Application of Intermittent Pneumatic Compression Devices":
 
 define "Intermittent Pneumatic Compression Devices Not Applied":
   [ProcedureNotDone: "Application of Intermittent Pneumatic Compression Devices (IPC)"] DeviceNotApplied
-    where DeviceNotApplied.statusReason in "Medical Reason" 
+    where DeviceNotApplied.statusReason in "Medical Reason"
       or DeviceNotApplied.statusReason in "Patient Refusal"
 
 define "Intermittent Pneumatic Compression Devices Ordered":
   ["ServiceRequest": "Application of intermittent pneumatic compression devices (IPC)"] DeviceOrdered
     where DeviceOrdered.status in { 'active', 'completed', 'on-hold' }
-      and DeviceOrdered.doNotPerform is not true
 
 define "Intermittent Pneumatic Compression Devices Not Ordered":
   ["ServiceNotRequested": "Application of intermittent pneumatic compression devices (IPC)"] DeviceNotOrdered
@@ -273,12 +285,13 @@ define "Device Indicating Frailty":
 
 define "Venous Foot Pumps Not Ordered":
   ["DeviceNotRequested": "Venous Foot Pumps (VFP)"] DeviceNotOrdered
-    where DeviceNotOrdered.doNotPerformReason in "Medical Reason"
-      or DeviceNotOrdered.doNotPerformReason in "Patient Refusal"
+    where (DeviceNotOrdered.doNotPerformReason in "Medical Reason"
+      or DeviceNotOrdered.doNotPerformReason in "Patient Refusal")
+      and DeviceNotOrdered.status in { 'active', 'on-hold', 'completed' }
 
 define "Statin Allergy Intolerance":
   ["AllergyIntolerance": "Statin Allergen"] StatinAllergyIntolerance
-    where StatinAllergyIntolerance.clinicalStatus is null 
+    where StatinAllergyIntolerance.clinicalStatus is null
       or StatinAllergyIntolerance.clinicalStatus ~ QICoreCommon."allergy-active"
 
 define "Polio Immunizations":
@@ -310,8 +323,8 @@ define "Reason for Macular Edema Absent Not Communicated (Explicit Test)":
   ["CommunicationNotDone"] MacularEdemaAbsentNotCommunicated
     with "Office Visit Encounters" EncounterDiabeticRetinopathy
       such that MacularEdemaAbsentNotCommunicated.sent during EncounterDiabeticRetinopathy.period
-    where (MacularEdemaAbsentNotCommunicated.reasonCode ~ "Macular edema absent (situation)"
-        or "Macular edema absent (situation)" in MacularEdemaAbsentNotCommunicated.reasonCode
+    where (MacularEdemaAbsentNotCommunicated.topic ~ "Macular edema absent (situation)"
+        or "Macular edema absent (situation)" in MacularEdemaAbsentNotCommunicated.topic
       )
       and (MacularEdemaAbsentNotCommunicated.statusReason in "Medical Reason"
         or MacularEdemaAbsentNotCommunicated.statusReason in "Patient Refusal"

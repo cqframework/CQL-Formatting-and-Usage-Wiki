@@ -6,7 +6,7 @@ This page provides discussion and best-practice recommendations for authoring pa
 
 [HL7 Fast Healthcare Interoperability Resources (FHIR)](https://hl7.org/fhir/R4) is a platform specification for exchanging healthcare data. FHIR defines a core information model that can be profiled for use in a variety of applications across the healthcare industry. These profiles are defined in Implementation Guides that provide constraints on the ways that FHIR resources can be used in to support interoperability (i.e. the ability of both sides of an interaction to correctly interpret the information being exchanged).
 
-In the United States, the [US Core](http://hl7.org/fhir/us/core/STU3.1.1/) Implementation Guide defines a floor for that interoperability, enabling a broad range of clinical and administrative use cases. For quality improvement use cases, such as decision support and quality measurement, the [QI Core](https://hl7.org/fhir/us/qicore/STU4.1.1/) Implementation Guide extends US Core to support additional information used for quality improvement. For the most part, US Core covers the data required, but some use cases, such as documentation of events that did not occur, require additional profiles.
+In the United States, the [US Core](http://hl7.org/fhir/us/core/STU5.0.1/) Implementation Guide defines a floor for that interoperability, enabling a broad range of clinical and administrative use cases. For quality improvement use cases, such as decision support and quality measurement, the [QI Core](https://hl7.org/fhir/us/qicore/STU5.0.0/) Implementation Guide extends US Core to support additional information used for quality improvement. For the most part, US Core covers the data required, but some use cases, such as documentation of events that did not occur, require additional profiles.
 
 [Clinical Quality Language(CQL)](https://cql.hl7.org/N1) is high-level, domain-specific language focused on clinical quality and targeted at measure and decision support artifact authors.
 
@@ -23,17 +23,17 @@ To simplify the expression of logic in quality improvement artifacts, CQL can be
 9. [Immunizations](#immunizations) - Information related to immunizations the patient has received or been recommended
 10. [Communication](#communications) - Information related to communications with or about the patient
 
-> NOTE: The information in this page specifically uses the [4.1.1](https://hl7.org/fhir/us/qicore/STU4.1.1/) version of QICore, which depends on the [3.1.1](https://hl7.org/fhir/us/core/STU3.1.1) version of USCore, and both of which are based on the [R4](https://hl7.org/fhir/R4) version 4.0.1 of FHIR. As of this writing (2023-01-26) QICore 5.0.0 is currently in ballot reconciliation and is expected to be published soon. A 5.0.0 version of this page will be produced once that publication is finalized.
+> NOTE: The information in this page specifically uses the [5.0.0](https://hl7.org/fhir/us/qicore/STU5.0.0/) version of QICore, which depends on the [5.0.1](https://hl7.org/fhir/us/core/STU5.0.1) version of USCore, and both of which are based on the [R4](https://hl7.org/fhir/R4) version 4.0.1 of FHIR.
 
 The following sections provide specific examples of best practices for accessing information in each of these high-level areas.
 
 ### Patient
 
-QICore defines a [QICore Patient](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-patient.html) profile that extends the USCore patient.
+QICore defines a [QICore Patient](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-patient.html) profile that extends the USCore patient.
 
 #### Patient age
 
-Patient information includes the birth date, and CQL provides a built-in function to calculate the age of a patient, either current age (i.e. as of now), or _as of_ a particular date. In quality improvement artifacts, age is typically calculated _as of_ a particular date such as the start of the measurement period:
+Patient information includes the birth date, and CQL provides a built-in function to calculate the age of a patient, either current age (i.e. _as of_ now), or _as of_ a particular date. In quality improvement artifacts, age is typically calculated as of a particular date such as the start of the measurement period:
 
 ```cql
 define "Patient Age Between 50 and 75":
@@ -51,7 +51,7 @@ define "Patient Is Male":
   Patient.gender = 'male'
 ```
 
-> NOTE: Terminology-valued elements in FHIR resources are _bound_ to _value sets_. The gender element is an example of a _required_ binding, which means that only the codes in the bound value set are allowed to be used. This allows the logic in this example to compare using the actual string `'male'`. In general, terminology-valued elements should be compared using terminology operators. For more information, see the [Using Terminology](https://hl7.org/fhir/us/cqfmeasures/using-cql.html#use-of-terminologies) topic in the Quality Measure IG.
+> NOTE: Terminology-valued elements in FHIR resources are _bound_ to _value sets_. The gender element is an example of a _required_ binding, which means that only the codes in that binding are allowed to be used. This is why the logic here can be specific about comparing to the actual string `'male'`. In general, terminology-valued elements should be compared using terminology operators. For more information see the [Using Terminology](https://hl7.org/fhir/us/cqfmeasures/using-cql.html#use-of-terminologies) topic in the Quality Measure IG.
 
 #### Patient race and ethnicity
 
@@ -68,13 +68,13 @@ define "Patient Race Includes Alaska Native":
 
 ### Encounters
 
-QICore defines an [Encounter](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-encounter.html) profile to model any encounter between a patient and any number of providers in any setting, including virtual.
+QICore defines an [Encounter](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-encounter.html) profile to model any encounter between a patient and any number of providers in any setting, including virtual.
 
 > NOTE: For background information on accessing clinical information with CQL, see the [Retrieve](https://cql.hl7.org/02-authorsguide.html#retrieve) topic in the CQL specification.
 
 #### Office visit encounters
 
-By default, encounters in QICore are characterized by the `type` element, which is typically associated with a value set to limit the set of encounters returned to those with a code in the given value set. For example:
+By default, encounters in QICore are characterized by the `type` element, which is typically associated with a value set to limit the set of encounters returned to those that a code in the given value set. For example:
 
 ```cql
 define "Office Visit Encounters":
@@ -138,7 +138,7 @@ define "Encounter with Comfort Measures Performed during Hospitalization":
 
 ### Conditions
 
-QICore defines the [Condition](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-condition.html) profile to represent information about patient problems, health concerns, and diagnoses.
+QICore defines the [ConditionProblemsHealthConcerns](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-condition-problems-health-concerns.html) profile to represent information about patient problems and health concerns, and the [ConditionEncounterDiagnosis](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-condition-encounter-diagnosis.html) profile to represent diagnoses indicated as part of an encounter.
 
 As an aside, whether expressions in general should use the various elements of a profile depends entirely on measure or rule intent. However, there are some general guidelines that should be followed to ensure correct expression and evaluation of CQL. 
 
@@ -146,7 +146,7 @@ To begin with, all elements in FHIR profiles have a _cardinality_ that determine
 
 > NOTE: Cardinality determines whether and how many values may appear for a given element, but the fact that an element is specified as required (e.g. 1..1) does not mean that expressions using that profile must use that element.
 
-In addition, elements in FHIR profiles may be marked _must support_, meaning that implementations are required to provide values for the element if they are present in the system. To ensure expression logic can be evaluated correctly, expressions must only use elements that are marked must support. For a complete discussion of this aspect, refer to the [MustSupport Flag](https://hl7.org/fhir/us/qicore/STU4.1.1/#mustsupport-flag) topic in the QICore Implementation Guide.
+In addition, elements in FHIR profiles may be marked _must support_, meaning that implementations are required to provide values for the element if they are present in the system. To ensure expression logic can be evaluated correctly, expressions must only use elements that are marked must support. For a complete discussion of this aspect, refer to the [MustSupport Flag](https://hl7.org/fhir/us/qicore/STU5.0.0/#mustsupport-flag) topic in the QICore Implementation Guide.
 
 And finally, elements in FHIR profiles may be marked as _modifier elements_, meaning that the value of the element may change the overall meaning of the resource. For example, the _clinicalStatus_ element of a Condition is a modifier element because the value determines whether the Condition overall represents the _presence_ or _absence_ of a condition. As a result, for each modifier element, authors must carefully consider whether each possible value would impact the intent of the expression.
 
@@ -156,34 +156,32 @@ To summarize, cardinality determines whether data will be present at all, must s
 
 By default, Condition resources are characterized by the `code` element which is typically associated with a value set of diagnosis codes.
 
-Many clinical systems make a distinction between the active conditions for a patient (i.e. the problem list or health concerns) and the diagnoses associated with an encounter. Problem list items and health concerns are typically documented with additional information about the condition such as prevalence period and clinical status, while encounter diagnoses typically have less information, usually only the diagnosis code as part of the encounter information. Within FHIR, both these types of data are represented using the Condition resource. The `category` element is used to indicate which kind of data the Condition represents, a problem list item, a health concern, or an encounter diagnosis. 
+Many clinical systems make a distinction between the active conditions for a patient (i.e. the problem list or health concerns) and the diagnoses associated with an encounter. Problem list items and health concerns are typically documented with additional information about the condition such as prevalence period and clinical status, while encounter diagnoses typically have less information, usually only the diagnosis code as part of the encounter information. Within FHIR, both these types of data are represented using the Condition resource. The `category` element is used to indicate which kind of data the Condition represents, a problem list item, a health concern, or an encounter diagnosis, and the ConditionHealthProblems and ConditionEncounterDiagnosis profiles separate conditions by these ctaegories. 
 
 Depending on measure intent, different approaches may be needed to access condition data. In particular, clinical status and prevalence period would only be expected to be present on problem list items and health concerns:
 
 ```cql
 define "Active Diabetes Conditions":
-  [Condition: Diabetes] Condition
-    where (Condition.isProblemListItem() or Condition.isHealthConcern())
-      and Condition.isActive()
+  [ConditionProblemsHealthConcerns: Diabetes] Condition
+    where Condition.isActive()
 ```
 
 The [QICoreCommon](input/cql/QICoreCommon.cql) library defines `isProblemListItem()` and `isHealthConcern()` functions to facilitate identifying the category of a Condition, as well as an `isActive()` function to facilitate determining whether the Condition indicates the presence of a particular diagnosis for the patient. The `isActive()` function is equivalent to testing the `clinicalStatus` element for the `active`, `recurrence`, and `relapse` values.
 
 #### Conditions indicated during an encounter
 
-For encounter diagnoses, QICoreCommon defines an `isEncounterDiagnosis()` function to facilitate identifying encounter diagnoses:
+For encounter diagnoses, QICore defines the [ConditionEncounterDiagnosis]() profile to retrieve encounter diagnoses:
 
 ```cql
 define "Diabetes Conditions Indicated during an Encounter":
-  [Condition: Diabetes] Condition
-    where Condition.isEncounterDiagnosis()
+  [ConditionEncounterDiagnosis: Diabetes] Condition
 ```
 
 Note the absence of testing for the clinical status of the condition.
 
 #### Onset, abatement, and prevalence period
 
-The Condition profiles defines onset and abatement elements that specify the prevalence period of the condition. The elements can be specified as choices of various types to allow systems flexibility in the way that information is represented. The QICore profile for Condition constrains those choices to only those that support actual computation of a prevalence period, and the QICoreCommon library defines `abatementInterval` and `prevalenceInterval` functions to facilitate accessing this information:
+The Condition profiles define onset and abatement elements that specify the prevalence period of the condition. The elements can be specified as choices of various types to allow systems flexibility in the way that information is represented. The QICore profile for Condition constrains those choices to only those that support actual computation of a prevalence period, and the QICoreCommon library defines `abatementInterval` and `prevalenceInterval` functions to facilitate accessing this information:
 
 ```cql
 define "Active Diabetes Conditions Onset During the Measurement Period":
@@ -193,7 +191,7 @@ define "Active Diabetes Conditions Onset During the Measurement Period":
 
 #### Conditions present on admission
 
-The QICore Condition profile also defines a `diagnosisPresentOnAdmission` indicator to allow systems to indicate whether a particular diagnosis was present on admission for an encounter:
+The QICore condition profiles also define a `diagnosisPresentOnAdmission` indicator to allow systems to indicate whether a particular diagnosis was present on admission for an encounter:
 
 ```cql
 define "Encounter With Diabetes Diagnosis Present on Admission":
@@ -208,7 +206,7 @@ Note that this expression is using the condition reference from the Encounter to
 
 ### Observations
 
-QICore defines a variety of profiles for use in accessing observations for a patient. Specifically, QICore includes the Vital Signs profiles defined in the base FHIR specification, as well as several additional Vital Signs profiles defined in USCore such as Pediatric BMI.
+QICore defines a variety of profiles for use in accessing observations for a patient. Specifically, QICore includes the vital signs profiles defined in USCore such as blood pressure, body height and weight, and bmi, as well as several social determinants observations.
 
 In general, these profiles do not constrain the value of the `status` element, meaning that retrieves of these profiles will return observations in any status. As a modifier element, authors must consider the possible values of the observation status when determining how to filter the results of a retrieve of these profiles.
 
@@ -227,10 +225,16 @@ define RespiratoryRate:
 As a rule of thumb, if a profile definition defines a fixed value constraint for an element, then the expression does not need to use that element.
 
 ```cql
+// Respiratory rate - 9279-1
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-respiratory-rate
+define RespiratoryRate:
+  [USCoreRespiratoryRateProfile] O
+    where O.status in { 'final', 'amended', 'corrected' }
+
 // Heart rate - 8867-4
-// @profile: http://hl7.org/fhir/StructureDefinition/heartrate
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-heart-rate
 define HeartRate:
-  ["observation-heartrate"] O
+  [USCoreHeartRateProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Oxygen saturation - 2708-6
@@ -240,44 +244,50 @@ define OxygenSaturation:
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body temperature - 8310-5
-// @profile: http://hl7.org/fhir/StructureDefinition/bodytemp
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-temperature
 define BodyTemperature:
-  ["observation-bodytemp"] O
+  [USCoreBodyTemperatureProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body height - 8302-2
-// @profile: http://hl7.org/fhir/StructureDefinition/bodyheight
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-height
 define BodyHeight:
-  ["observation-bodyheight"] O
+  [USCoreBodyHeightProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Head circumference - 9843-4
-// @profile: http://hl7.org/fhir/StructureDefinition/headcircum
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-head-circumference
 define HeadCircumference:
-  ["observation-headcircum"] O
+  [USCoreHeadCircumferenceProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body weight - 29463-7
-// @profile: http://hl7.org/fhir/StructureDefinition/bodyweight
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-body-weight
 define BodyWeight:
-  ["observation-bodyweight"] O
+  [USCoreBodyWeightProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Body mass index - 39156-5
-// @profile: http://hl7.org/fhir/StructureDefinition/bmi
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-bmi
 define BodyMassIndex:
-  ["observation-bmi"] O
+  [USCoreBMIProfile] O
     where O.status in { 'final', 'amended', 'corrected' }
 
 // Blood pressure systolic and diastolic - 85354-9
 // Systolic blood pressure - 8480-6
 // Diastolic blood pressure - 8462-4
-// @profile: http://hl7.org/fhir/StructureDefinition/bp
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-blood-pressure
 define "BloodPressure less than 140 over 90":
-  ["observation-bp"] BP
+  [USCoreBloodPressureProfile] BP
     where BP.status in { 'final', 'amended', 'corrected' }
-      and BP.SystolicBP.value < 140 'mm[Hg]'
-      and BP.DiastolicBP.value < 90 'mm[Hg]'
+      and BP.systolic.value < 140 'mm[Hg]'
+      and BP.diastolic.value < 90 'mm[Hg]'
+
+// USCore Smoking Status
+// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus
+define SmokingStatus:
+  ["USCoreSmokingStatusProfile"] O
+    where O.status in { 'final', 'amended', 'corrected' }
 
 // USCore Pediatric BMI for Age - 59576-9
 // @profile: http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age
@@ -312,18 +322,47 @@ define SmokingStatus:
 
 #### Laboratory Result
 
-Laboratory results in QICore use the [USCoreLaboratoryResultObservationProfile](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html). Laboratory results in QICore are characterized by the `code` element.
+Laboratory results in QICore use the [LaboratoryResultObservation](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-observation-lab.html) profile. By default, Laboratory results in QICore are characterized by the `code` element.
 
 ```cql
-// @profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab
-define LaboratoryResult:
-  [USCoreLaboratoryResultObservationProfile] O
+define LaboratoryResultObservation:
+  [LaboratoryResultObservation] O
+    where O.status in { 'final', 'amended', 'corrected' }
+```
+
+#### Clinical Test Result
+
+Clinical test results in QICore use the [ObservationClinicalTestResult](https://build.fhir.org/ig/HL7/fhir-qi-core/StructureDefinition-qicore-observation-clinical-test.html) profile. By default, clinical test results in QICore are characterized by the `code` element.
+
+```cql
+define ObservationClinicalTestResult:
+  [ObservationClinicalTestResult] O
+    where O.status in { 'final', 'amended', 'corrected' }
+```
+
+#### Imaging Result
+
+Imaging results in QICore use the [ObservationImagingResult](https://build.fhir.org/ig/HL7/fhir-qi-core/StructureDefinition-qicore-observation-imaging.html) profile. By default, imaging results in QICore are characterized by the `code` element.
+
+```cql
+define ObservationImagingResult:
+  [ObservationImagingResult] O
+    where O.status in { 'final', 'amended', 'corrected' }
+```
+
+#### Survey
+
+Survey observations in QICore use the [ObservationSurvey](https://build.fhir.org/ig/HL7/fhir-qi-core/StructureDefinition-qicore-observation-survey.html) profile. By default, survey observations in QICore are characterized by the `code` element.
+
+```cql
+define ObservationSurvey:
+  [ObservationSurvey] O
     where O.status in { 'final', 'amended', 'corrected' }
 ```
 
 #### Other Observations
 
-In addition, QICore defines a general [Observation](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-observation.html) profile for use when accessing observations that are not covered by the specific profiles defined in FHIR and US Core. Observations in QICore are characterized by the `code` element, which is typically filtered to a particular value set:
+In addition, QICore defines a general [Observation](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-observation.html) profile for use when accessing observations that are not covered by the specific profiles defined in FHIR and US Core. Observations in QICore are characterized by the `code` element, which is typically filtered to a particular value set:
 
 ```cql
 define "Pap Test with Results":
@@ -336,11 +375,11 @@ define "Pap Test with Results":
 
 #### Observations not done
 
-And finally, QICore defines an [ObservationNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-observationnotdone.html) profile to support identifying observations that were not performed for a particular reason:
+And finally, QICore defines an [ObservationCancelled](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-observationcancelled.html) profile to support identifying observations that were not performed for a particular reason:
 
 ```cql
 define "Pap Test Refused":
-  ["ObservationNotDone": "Pap Test"] PapTest
+  ["ObservationCancelled": "Pap Test"] PapTest
     where PapTest.notDoneReason in "Patient Refusal"
 ```
 
@@ -350,7 +389,7 @@ FHIR defines several medication-related resources that are profiled for use in t
 
 #### Medication ordered
 
-QICore defines the [MedicationRequest](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-medicationrequest.html) profile to represent medication proposals, plans, and orders, as well as self-reported medications. The following example illustrates an order for Antithrombotic Therapy to be taken by the patient once discharged. MedicationRequest resources in QICore are characterized by the `medication` element which can be represented as a code or a reference.
+QICore defines the [MedicationRequest](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationrequest.html) profile to represent medication proposals, plans, and orders, as well as self-reported medications. The following example illustrates an order for Antithrombotic Therapy to be taken by the patient once discharged. MedicationRequest resources in QICore are characterized by the `medication` element which can be represented as a code or a reference.
 
 
 ```cql
@@ -359,17 +398,15 @@ define "Antithrombotic Therapy at Discharge":
     where (Antithrombotic.isCommunity() or Antithrombotic.isDischarge())
       and Antithrombotic.status in { 'active', 'completed' }
       and Antithrombotic.intent = 'order'
-      and Antithrombotic.doNotPerform is not true
 ```
 
 > NOTE: Because the `status` element is a modifier that is not constrained by the profile to a specific value or value set, authors must consider all the possible values of the status to ensure the expression matches measure intent. In this case the statuses of `active` and `completed` indicate active or filled prescriptions for medications in the Antithrombotic Therapy value set.
 
-> NOTE: Because the MedicationRequest profile does not fix the value of the `doNotPerform` element, authors must consider the value of this element to ensure the expression matches measure intent. In this case, the `doNotPerform` element is tested to ensure it `is not true`. This phrasing is important in that it captures both the case that there is no value for the `doNotPerform` element, as well as when the value is specified as `false`.
-
+> NOTE: Because the MedicationRequest profile fixes the value of the `doNotPerform` element to false if it is present, that element does not need to be tested in the expression.
 
 #### Medication not ordered
 
-QICore defines the [MedicationNotRequested](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-mednotrequested.html) profile to represent documentation of the reason for not ordering a particular medication or class of medications. By default, MedicationNotRequested resources in QICore are characterized by the `medication` element which can be represented as a code or a reference.
+QICore defines the [MedicationNotRequested](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationnotrequested.html) profile to represent documentation of the reason for not ordering a particular medication or class of medications. By default, MedicationNotRequested resources in QICore are characterized by the `medication` element which can be represented as a code or a reference.
 
 ```cql
 define "Reason for Not Ordering Antithrombotic":
@@ -377,14 +414,17 @@ define "Reason for Not Ordering Antithrombotic":
     where (NoAntithromboticDischarge.reasonCode in "Medical Reason"
       or NoAntithromboticDischarge.reasonCode in "Patient Refusal")
       and (NoAntithromboticDischarge.isCommunity() or NoAntithromboticDischarge.isDischarge())
+      and NoAntithromboticDischarge.status in { 'active', 'completed' }
       and NoAntithromboticDischarge.intent = 'order'
 ```
+
+> NOTE: Because the `status` element is a modifier that is not constrained by the profile to a specific value or value set, authors must consider all the possible values of the status to ensure the expression matches measure intent. In this case the statuses of `active` and `completed` indicate no active or filled prescriptions for medications in the Antithrombotic Therapy value set.
 
 > NOTE: Because the MedicationNotRequested profile fixes the value of `doNotPerform` to true, that element does not need to be tested in the expression.
 
 #### Medication administered
 
-QICore defines the [MedicationAdministration](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-medicationadministration.html) profile to represent the administration of a medication to a patient. By default, MedicationAdministration resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
+QICore defines the [MedicationAdministration](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationadministration.html) profile to represent the administration of a medication to a patient. By default, MedicationAdministration resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
 
 ```cql
 define "Low Dose Unfractionated Heparin Administration":
@@ -397,7 +437,7 @@ define "Low Dose Unfractionated Heparin Administration":
 
 #### Medication not administered
 
-QICore defines the [MedicationAdministrationNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-mednotadministered.html) profile to represent documentation of the reason a medication administration did not occur. By default, MedicationAdministrationNotDone resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
+QICore defines the [MedicationAdministrationNotDone](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationadministrationnotdone.html) profile to represent documentation of the reason a medication administration did not occur. By default, MedicationAdministrationNotDone resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
 
 ```cql
 define "Low Dose Unfractionated Heparin for VTE Prophylaxis Not Administered":
@@ -410,7 +450,7 @@ define "Low Dose Unfractionated Heparin for VTE Prophylaxis Not Administered":
 
 #### Medication dispensed
 
-QICore defines the [MedicationDispense](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-medicationdispense.html) profile to represent the fulfillment of a medication request, either in a hospital or community pharmacy. By default, MedicationDispense resources in QICore are charaacterized by the `medication` element, which can be represented as a code or a reference.
+QICore defines the [MedicationDispense](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationdispense.html) profile to represent the fulfillment of a medication request, either in a hospital or community pharmacy. By default, MedicationDispense resources in QICore are charaacterized by the `medication` element, which can be represented as a code or a reference.
 
 ```cql
 define "Dementia Medication Dispensed":
@@ -422,7 +462,7 @@ define "Dementia Medication Dispensed":
 
 #### Medication not dispensed
 
-QICore defines the [MedicationDispenseNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-mednotdispensed.html) profile to represent documentation of the reason that a dispense did not occur. By default, MedicationDispenseNotDone resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
+QICore defines the [MedicationDispenseDeclined](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-medicationdispensedeclined.html) profile to represent documentation of the reason that a dispense did not occur. By default, MedicationDispenseDeclined resources in QICore are characterized by the `medication` element, which can be represented as a code or a reference.
 
 ```cql
 define "Dementia Medication Not Dispensed":
@@ -431,7 +471,7 @@ define "Dementia Medication Not Dispensed":
         or MedicationDispense.statusReason in "Patient Refusal"
 ```
 
-> NOTE: Because the MedicationDispenseNotDone profile fixes the value of the `status` element to `declined`, that element does not need to be tested in the expression.
+> NOTE: Because the MedicationDispenseDeclined profile fixes the value of the `status` element to `declined`, that element does not need to be tested in the expression.
 
 #### Medication in use
 
@@ -446,7 +486,7 @@ FHIR defines several procedure-related resources to support representing the pro
 
 #### Procedure performed
 
-QICore defines the [Procedure](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-procedure.html) profile to represent an in-progress or complete procedure for a patient. By default, Procedure resources in QICore are characterized by the `code` element.
+QICore defines the [Procedure](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-procedure.html) profile to represent an in-progress or complete procedure for a patient. By default, Procedure resources in QICore are characterized by the `code` element.
 
 ```cql
 define "Application of Intermittent Pneumatic Compression Devices":
@@ -458,7 +498,7 @@ define "Application of Intermittent Pneumatic Compression Devices":
 
 #### Procedure not done
 
-QICore defines the [ProcedureNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-procedurenotdone.html) profile to represent documentation of the reason a particular procedure, or class of procedures, was not performed. By default, ProcedureNotDone resources in QICore are characterized by the `code` element.
+QICore defines the [ProcedureNotDone](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-procedurenotdone.html) profile to represent documentation of the reason a particular procedure, or class of procedures, was not performed. By default, ProcedureNotDone resources in QICore are characterized by the `code` element.
 
 ```cql
 define "Intermittent Pneumatic Compression Devices Not Applied":
@@ -471,29 +511,31 @@ define "Intermittent Pneumatic Compression Devices Not Applied":
 
 #### Procedure ordered
 
-QICore defines the [ServiceRequest](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-servicerequest.html) profile to represent the proposal, planning, or ordering of a particular service. By default, ServiceRequest resources in QICore are characterized by the `code` element.
+QICore defines the [ServiceRequest](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-servicerequest.html) profile to represent the proposal, planning, or ordering of a particular service. By default, ServiceRequest resources in QICore are characterized by the `code` element.
 
 ```cql
 define "Intermittent Pneumatic Compression Devices Ordered":
   ["ServiceRequest": "Application of intermittent pneumatic compression devices (IPC)"] DeviceOrdered
     where DeviceOrdered.status in { 'active', 'completed', 'on-hold' }
-      and DeviceOrdered.doNotPerform is not true
 ```
 
 > NOTE: Because the ServiceRequest profile does not fix the value of the `status` element, authors must consider all the possible values of the element to ensure the expression matches measure intent. In this case, the `active`, `completed`, and `on-hold` statuses are used to ensure a positive order.
 
-> NOTE: Because the ServiceRequest profile does not fix the value of the `doNotPerform` element, authors must consider the value of this element to ensure the expression matches measure intent. In this case, the `doNotPerform` element is tested to ensure it `is not true`. This phrasing is important in that it captures both the case that there is no value for the `doNotPerform` element, as well as when the value is specified as `false`.
+> NOTE: Because the ServiceRequest profile fixes the value of the `doNotPerform` element to `false` if it is present, that element does not need to be tested in the expression.
 
 #### Procedure not ordered
 
-QICore defines the [ServiceNotRequested](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-servicenotrequested.html) profile to represent documentation of the reason a particular service or class of services was not ordered. By default, ServiceNotRequested resources in QICore are characterized by the `code` element.
+QICore defines the [ServiceNotRequested](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-servicenotrequested.html) profile to represent documentation of the reason a particular service or class of services was not ordered. By default, ServiceNotRequested resources in QICore are characterized by the `code` element.
 
 ```cql
 define "Intermittent Pneumatic Compression Devices Not Ordered":
   ["ServiceNotRequested": "Application of intermittent pneumatic compression devices (IPC)"] DeviceNotOrdered
-    where DeviceNotOrdered.reasonRefused in "Medical Reason"
-      or DeviceNotOrdered.reasonRefused in "Patient Refusal"
+    where (DeviceNotOrdered.reasonRefused in "Medical Reason"
+      or DeviceNotOrdered.reasonRefused in "Patient Refusal")
+      and DeviceNotOrdered.status in { 'active', 'completed', 'on-hold' }
 ```
+
+> NOTE: Because the ServiceNotRequested profile does not fix the value of the `status` element, authors must consider all the possible values of the element to ensure the expression matches measure intent. In this case, the `active`, `completed`, and `on-hold` statuses are used to ensure a valid order statement.
 
 > NOTE: Because the ServiceNotRequested profile fixes the value of `doNotPerform` to `true`, that element does not need to be tested in the expression.
 
@@ -503,31 +545,29 @@ FHIR defines several resources related to the tracking and management of devices
 
 #### Device ordered
 
-QICore defines the [DeviceRequest](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-devicerequest.html) profile to represent proposals, planning, and ordering of devices for a patient. By default, DeviceRequest resources in QICore are characterized by the `code` element, which can be represented as a code or a reference.
+QICore defines the [DeviceRequest](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-devicerequest.html) profile to represent proposals, planning, and ordering of devices for a patient. By default, DeviceRequest resources in QICore are characterized by the `code` element, which can be represented as a code or a reference.
 
 ```cql
 define "Device Indicating Frailty":
   [DeviceRequest: "Frailty Device"] FrailtyDeviceOrder
     where FrailtyDeviceOrder.status in { 'active', 'on-hold', 'completed' }
       and FrailtyDeviceOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
-      and FrailtyDeviceOrder.doNotPerform() is not true
 ```
 
 > NOTE: Because the DeviceRequest profile does not fix the value of the `status` element, authors must consider all the possible values of the element to ensure the expression matches measure intent. In this case the `active`, `completed` and `on-hold` statuses are used to ensure a positive device order.
 
-> NOTE: Because the DeviceRequest profile does not fix the value of the `doNotPerform` element, authors must consider the value of this element to ensure the expression matches measure intent. In this case, the `doNotPerform` element is tested to ensure it `is not true`. This phrasing is important in that it captures both the case that there is no value for the `doNotPerform` element, as well as when the value is specified as `false`.
-
-> NOTE: The 4.1.1 version of this profile does not define doNotPerform as an allowable extension, so the QICoreCommon library includes a `doNotPerform()` function that accesses the modifier extension if it is present in the instance.
+> NOTE: Because the DeviceRequest profile fixes the value of the `doNotPerform` element to `false` if it is present, that element does not need to be tested in the expression.
 
 #### Device not ordered
 
-QICore defines the [DeviceNotRequested](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-devicenotrequested.html) profile to represent documentation of the reason for not ordering a particular device, or class of devices. By default, DeviceNotRequested resources in QICore are characterized by the `code` element, which can be represented as a code or a reference.
+QICore defines the [DeviceNotRequested](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-devicenotrequested.html) profile to represent documentation of the reason for not ordering a particular device, or class of devices. By default, DeviceNotRequested resources in QICore are characterized by the `code` element, which can be represented as a code or a reference.
 
 ```cql
 define "Venous Foot Pumps Not Ordered":
   ["DeviceNotRequested": "Venous Foot Pumps (VFP)"] DeviceNotOrdered
-    where DeviceNotOrdered.doNotPerformReason in "Medical Reason"
-      or DeviceNotOrdered.doNotPerformReason in "Patient Refusal"
+    where (DeviceNotOrdered.doNotPerformReason in "Medical Reason"
+      or DeviceNotOrdered.doNotPerformReason in "Patient Refusal")
+      and DeviceNotOrdered.status in { 'active', 'on-hold', 'completed' }
 ```
 
 > NOTE: Because the DeviceNotRequested profile fixes the value of `doNotPerform` to true, this element does not need to be tested in the expression.
@@ -545,7 +585,7 @@ FHIR defines the [AllergyIntolerance](http://hl7.org/fhir/allergyintolerance.htm
 
 #### Current allergies
 
-QICore defines the [AllergyIntolerance](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-allergyintolerance.html) profile to represent allergies and intolerances for a patient. By default, AllergyIntolerance resources in QICore are characterized by the `code` element.
+QICore defines the [AllergyIntolerance](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-allergyintolerance.html) profile to represent allergies and intolerances for a patient. By default, AllergyIntolerance resources in QICore are characterized by the `code` element.
 
 ```cql
 define "Statin Allergy Intolerance":
@@ -580,7 +620,7 @@ medication resources should be used?
 
 #### Immunization performed
 
-QICore defines the [Immunization](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-immunization.html) profile to represent immunization information for a patient. By default, Immunization resources in QICore are characterized by the `vaccineCode` element.
+QICore defines the [Immunization](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-immunization.html) profile to represent immunization information for a patient. By default, Immunization resources in QICore are characterized by the `vaccineCode` element.
 
 ```cql
 define "Polio Immunizations":
@@ -592,7 +632,7 @@ define "Polio Immunizations":
 
 #### Immunization not performed
 
-QICore defines the [ImmunizationNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-immunizationnotdone.html) profile to represent documentation of the reason an immunization was not performed. By default, ImmunizationNotDone resources in QICore are characterized by the `vaccineCode` element.
+QICore defines the [ImmunizationNotDone](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-immunizationnotdone.html) profile to represent documentation of the reason an immunization was not performed. By default, ImmunizationNotDone resources in QICore are characterized by the `vaccineCode` element.
 
 ```cql
 define "Reason for No Polio Immunization":
@@ -614,8 +654,7 @@ TODO
 
 #### Communication
 
-QICore defines the [Communication](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-communication.html) profile to represent communications with or about the patient. By default, Communication resources in QICore are characterized by the `reasonCode` element.
-
+QICore defines the [Communication](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-communication.html) profile to represent communications with or about the patient. By default, Communication resources in QICore are characterized by the `topic` element.
 
 ```cql
 define "Macular Edema Absence Communicated":
@@ -631,7 +670,7 @@ define "Macular Edema Absence Communicated":
 
 #### Communication not done
 
-QICore defines the [CommunicationNotDone](https://hl7.org/fhir/us/qicore/STU4.1.1/StructureDefinition-qicore-communicationnotdone.html) to represent documentation of the reason a communication was not done. By default, CommunicationNotDone resources in QICore are characterized by the `reasonCode` element.
+QICore defines the [CommunicationNotDone](https://hl7.org/fhir/us/qicore/STU5.0.0/StructureDefinition-qicore-communicationnotdone.html) to represent documentation of the reason a communication was not done. By default, CommunicationNotDone resources in QICore are characterized by the `topic` element.
 
 ```cql
 define "Reason for Macular Edema Absent Not Communicated":
@@ -651,8 +690,8 @@ define "Reason for Macular Edema Absent Not Communicated (Explicit Test)":
   ["CommunicationNotDone"] MacularEdemaAbsentNotCommunicated
     with "Office Visit Encounters" EncounterDiabeticRetinopathy
       such that MacularEdemaAbsentNotCommunicated.sent during EncounterDiabeticRetinopathy.period
-    where (MacularEdemaAbsentNotCommunicated.reasonCode ~ "Macular edema absent (situation)"
-        or "Macular edema absent (situation)" in MacularEdemaAbsentNotCommunicated.reasonCode
+    where (MacularEdemaAbsentNotCommunicated.topic ~ "Macular edema absent (situation)"
+        or "Macular edema absent (situation)" in MacularEdemaAbsentNotCommunicated.topic
       )
       and (MacularEdemaAbsentNotCommunicated.statusReason in "Medical Reason"
         or MacularEdemaAbsentNotCommunicated.statusReason in "Patient Refusal"
