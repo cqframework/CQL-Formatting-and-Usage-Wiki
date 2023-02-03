@@ -1,4 +1,4 @@
-# Authoring Patterns
+# Authoring Patterns (QICore v4.1.1)
 
 This page provides discussion and best-practice recommendations for authoring patterns for accessing patient information in FHIR and CQL. For general conventions and guidance regarding the use of FHIR and CQL, refer to the [Using CQL](https://hl7.org/fhir/us/cqfmeasures/using-cql.html) topic in the Quality Measure IG.
 
