@@ -1,0 +1,96 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.117.1.7.1.232",
+    "meta": {
+        "versionId": "36",
+        "lastUpdated": "2022-11-02T13:52:44.000-04:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2021-02-20"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232",
+    "version": "20210220",
+    "name": "Warfarin",
+    "status": "active",
+    "date": "2021-02-20T01:02:00-05:00",
+    "publisher": "TJC EH Steward",
+    "expansion": {
+        "identifier": "urn:uuid:e123f547-f64c-44de-bcad-583438caf73c",
+        "timestamp": "2023-03-23T12:31:46-04:00",
+        "total": 9,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855288",
+                "display": "warfarin sodium 1 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855296",
+                "display": "warfarin sodium 10 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855302",
+                "display": "warfarin sodium 2 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855312",
+                "display": "warfarin sodium 2.5 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855318",
+                "display": "warfarin sodium 3 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855324",
+                "display": "warfarin sodium 4 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855332",
+                "display": "warfarin sodium 5 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855338",
+                "display": "warfarin sodium 6 MG Oral Tablet"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "version": "01032023",
+                "code": "855344",
+                "display": "warfarin sodium 7.5 MG Oral Tablet"
+            }
+        ]
+    }
+}
