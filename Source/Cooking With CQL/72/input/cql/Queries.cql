@@ -19,6 +19,8 @@ context Patient
 ## Retrieve
 */
 
+// https://hl7.org/fhir/us/qicore/profiles.html
+
 define "All Encounters":
   [Encounter]
 
@@ -31,6 +33,8 @@ define "Encounters By Class":
 /*
 ## Where
 */
+
+// https://cql.hl7.org/02-authorsguide.html#queries
 
 define "All Completed Encounters":
   [Encounter] E
@@ -51,6 +55,9 @@ define "All Encounters During Measurement Period":
 /*
 ## With
 */
+
+define "Blood Pressure Observations":
+  ["Observation Blood Pressure Profile"]
 
 // NOTE: Should be able to use during here, issue logged with the evaluator
 define "Encounters With Blood Pressure":
@@ -203,3 +210,72 @@ define "Appropriate Warfarin Overlap Therapy (Step 5)":
 /*
 ## Return
 */
+
+define "Appropriate Warfarin Overlap Therapy (Step 6)":
+  from "Inpatient Encounters" E,
+    "Warfarin Administrations" W,
+    "Parenteral Anticoagulant Administrations" P
+  let overlapDuration: duration in days of (W.effective intersect P.effective),
+    endingINR: Last("INR Observations" I 
+      where I.effective on or after start P.effective 
+        and I.effective on or before end P.effective 
+      sort by effective
+    ).value
+  where W.effective starts during E.period
+    and P.effective starts during E.period
+    and overlapDuration >= 5
+    and endingINR >= 2
+  return E
+
+define "Appropriate Warfarin Overlap Therapy (Step 7)":
+  from "Inpatient Encounters" E,
+    "Warfarin Administrations" W,
+    "Parenteral Anticoagulant Administrations" P
+  let overlapDuration: duration in days of (W.effective intersect P.effective),
+    endingINR: Last("INR Observations" I 
+      where I.effective on or after start P.effective 
+        and I.effective on or before end P.effective 
+      sort by effective
+    ).value
+  where W.effective starts during E.period
+    and P.effective starts during E.period
+    and (
+      (overlapDuration >= 5 and endingINR >= 2)
+        or (overlapDuration >= 5 and endingINR < 2 and P.effective overlaps after E.period)
+        or (overlapDuration < 5 and P.effective overlaps after E.period)
+    )
+  return E
+
+
+define "Most Recent INR":
+  Last("INR Observations" I 
+      sort by effective
+  )
+
+define "Singleton Query":   
+  "Most Recent INR" I
+    where I.value < 2
+
+define "Singleton With Multiple":
+  from "Inpatient Encounters" E,
+    "Most Recent INR" I
+
+define "Singleton With":
+  "Inpatient Encounters" E
+    with "Most Recent INR" I such that I.effective on or after start E.period
+
+define "Singleton Source":
+  "Most Recent INR" I
+    with "Inpatient Encounters" E such that I.effective on or after start E.period
+
+define "First List": { 1, 2, 3 }
+define "Second List": { 4, 5, 6 }
+define "Third List": { 7, 8, 9 }
+
+define "Combinations":
+  from "First List" X,
+    "Second List" Y,
+    "Third List" Z
+  where Z = X + Y
+
+
