@@ -1,5 +1,8 @@
 /*
-NOTE: This library is based on in-progress work on an ADHD measure
+NOTE: This library is based on in-progress work on an ADHD measure. 
+The logic is known incomplete and the value sets have not been committed to the repository. 
+To run these examples, the appropriate value sets would need to be retrieved and housed 
+locally in the vocabulary/valueset/external folder.
 */
 library ADHDMeasure version '0.0.001'
 
@@ -57,23 +60,62 @@ define "Last Calendar Day of February of Measurement Period":
 define "March 1 of Year Prior to Measurement Period":
   DateTime((year from start of "Measurement Period" - 1), 3, 1, 0, 0, 0, 0, 0)
 
-/*Note relevantPeriod.low represents the interval's lower boundary and its usage is to ensure appropriate evaluation of the coalesce.*/
-define "ADHD Medication Prescribed During Intake Period and Not Previously on ADHD Medication":
- ( ( ( ["MedicationRequest": "Atomoxetine"]
+// PJM DISPLAY ONLY Age
+define "Display Age in years at start of Intake Period":
+  AgeInYearsAt(date from start of "Intake Period")
+
+//PJM
+define "DISPLAY ALL ADHD Medication Prescribed":
+  ( ["MedicationRequest": "Atomoxetine"]
+    union ["MedicationRequest": "Clonidine"]
+    union ["MedicationRequest": "Dexmethylphenidate"]
+    union ["MedicationRequest": "Dextroamphetamine"]
+//    union ["MedicationRequest": "Lisdexamfetamine"]
+//    union ["MedicationRequest": "methamphetamine hydrochloride 5 MG Oral Tablet"]
+//    union ["MedicationRequest": "Methylphenidate"]
+//    union ["MedicationRequest": "Guanfacine"] 
+  ) ADHDMedRequest
+    where ADHDMedRequest is not null
+    return Tuple {
+      AuthorDate: ADHDMedRequest.authoredOn,
+      RxPeriod: CMD."MedicationRequestPeriod"(ADHDMedRequest),
+      SupplyDuration: ADHDMedRequest.dispenseRequest.expectedSupplyDuration,
+      Rx: ADHDMedRequest.medication,
+      RequestId: ADHDMedRequest.id
+    } sort by AuthorDate
+
+define "Active ADHD Medication Prescription":
+  (["MedicationRequest": "Atomoxetine"]
       union ["MedicationRequest": "Clonidine"]
       union ["MedicationRequest": "Dexmethylphenidate"]
       union ["MedicationRequest": "Dextroamphetamine"]
-      ) ADHDMedications
+  ) ADHDMedications
+  where ADHDMedications.status in { 'active', 'completed' }
+      and ADHDMedications.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+      and ADHDMedications.doNotPerform is not true
+
+/*Note relevantPeriod.low represents the interval's lower boundary and its usage is to ensure appropriate evaluation of the coalesce.*/
+define "ADHD Medication Prescribed During Intake Period and Not Previously on ADHD Medication":
+ ( ( "Active ADHD Medication Prescription" ADHDMedications
       where CMD."MedicationRequestPeriod"(ADHDMedications) starts during "Intake Period" ) ADHDMedicationOrder
-      without ( ["MedicationRequest": "Atomoxetine"]
-        union ["MedicationRequest": "Clonidine"]
-        union ["MedicationRequest": "Dexmethylphenidate"]
-        union ["MedicationRequest": "Dextroamphetamine"]
-      ) ActiveADHDMedication
-        such that CMD."MedicationRequestPeriod"(ActiveADHDMedication) overlaps CMD."MedicationRequestPeriod"(ADHDMedicationOrder)) QualifyingMed
+      without "Active ADHD Medication Prescription" ActiveADHDMedication
+        such that CMD."MedicationRequestPeriod"(ActiveADHDMedication) ends 120 days or more before start of CMD."MedicationRequestPeriod"(ADHDMedicationOrder)
+  ) QualifyingMed
     return all {
         startDate: start of CMD."MedicationRequestPeriod"(QualifyingMed) 
       } sort by startDate asc 
+
+/*
+Good Scenario                      Intake    |--------------------------------------------------------------|
+    |------------------------|                     |------------------------------------------|
+                                                                             |---------------------------------------------------|
+
+
+Rule out Scenario
+    |-------------------------------------------------------|      
+                                                |------------------------------------------|
+                                                                             |---------------------------------------------------|
+*/
 
 /*Index Prescription Start Date (IPSD)*/
 define "IPSD":
