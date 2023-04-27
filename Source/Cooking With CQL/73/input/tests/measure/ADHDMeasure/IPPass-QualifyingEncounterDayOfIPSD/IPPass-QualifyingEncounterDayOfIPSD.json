@@ -1,0 +1,156 @@
+{
+  "resourceType": "Bundle",
+  "id": "IPPass-QualifyingEncounterDayOfIPSD",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "IPPass-QualifyingEncounterDayOfIPSD",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "IPPass-QualifyingEncounterDayOfIPSD",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2028-9",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Asian"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Asian"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "code": "2135-2",
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "display": "Hispanic or Latino"
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "system": "http://hospital.smarthealthit.org",
+            "value": "999999995"
+          }
+        ],
+        "name": [
+          {
+            "family": "IPPass",
+            "given": [
+              "QualifyingEncounterDayOfIPSD"
+            ]
+          }
+        ],
+        "birthDate": "2020-12-31",
+        "gender": "female"
+      }
+    },
+    {
+      "fullUrl": "IPPass-QualifyingEncounterDayOfIPSD",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "IPPass-QualifyingEncounterDayOfIPSD-01",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },
+        "subject": {
+          "reference": "Patient/IPPass-QualifyingEncounterDayOfIPSD"
+        },
+        "status": "finished",
+        "class": {
+          "code": "AMB",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "code": "185464004",
+                "system": "http://snomed.info/sct",
+                "display": "Out of hours visit - not night visit (procedure)"
+              }
+            ]
+          }
+        ],
+        "period": {
+          "start": "2024-01-01T00:00:00.000Z",
+          "end": "2024-01-01T01:00:00.000Z"
+        }
+      }
+    },
+    {
+      "fullUrl": "IPPass-QualifyingEncounterDayOfIPSD-21",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "IPPass-QualifyingEncounterDayOfIPSD-21",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+          ]
+        },
+        "requester": {
+          "reference": "Practitioner/IPPass-QualifyingEncounterDayOfIPSD-71"
+        },
+        "subject": {
+          "reference": "Patient/IPPass-QualifyingEncounterDayOfIPSD"
+        },
+        "status": "completed",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "884173",
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "display": "clonidine hydrochloride 0.1 MG Oral Tablet"
+            }
+          ]
+        },
+        "authoredOn": "2024-01-01T00:00:00.000Z",
+        "dispenseRequest": {
+          "expectedSupplyDuration": {
+            "value": 90,
+            "code": "days",
+            "system": "http://unitsofmeasure.org"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2024-01-01T00:00:00.000Z",
+                  "end": "2024-03-31T23:59:59.000Z"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

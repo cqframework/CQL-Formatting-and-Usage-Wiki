@@ -1,1 +1,1 @@
-1. Authoring Patterns (QICore STU5)
+1. Troubleshooting Tips and Tricks
