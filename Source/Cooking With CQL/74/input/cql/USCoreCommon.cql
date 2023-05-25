@@ -257,6 +257,14 @@ define fluent function isDischarge(medicationRequest MedicationRequestProfile):
   )
 
 /*
+@description: Returns true if the given MedicationRequest has the given category
+*/
+define fluent function hasCategory(medicationRequest MedicationRequestProfile, category Code):
+  exists (medicationRequest.category C
+    where C ~ category
+  )
+
+/*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
 @comment: Normalizes a choice type of DateTime, Quanitty, Interval<DateTime>, or Interval<Quantity> types
 to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible

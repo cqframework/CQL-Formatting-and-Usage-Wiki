@@ -75,16 +75,46 @@ define "All Health Concerns":
 
 // Laboratory Diagnostic Report
 
+/*
+@comment: [Diagnostic Report for Laboratory Results](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-diagnosticreport-lab.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab
+*/
+
 // Diagnostic Report
+
+/*
+@comment: [Diagnostic Report Note](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-diagnosticreport-note.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note
+*/
 
 // Encounter
 
+/*
+@comment: [Encounter](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter 
+*/
+
 // Immunization
+
+/*
+@comment: [Immunization](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-immunization.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization
+*/
 
 // Implantable Device
 
+/*
+@comment: [Implantable Device](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-implantable-device.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device
+*/
+
 // Laboratory Result
 
+/*
+@description: Returns all laboratory results
+@comment: [Laboratory Result](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab
+*/
 define "All Laboratory Results":
   ["LaboratoryResultObservationProfile"]
 
@@ -94,6 +124,11 @@ define "Resulted Laboratory Results":
 
 // Medication Request
 
+/*
+@description: Returns all medication requests
+@comment: [Medication Request](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medicationrequest.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest
+*/
 define "All Medication Requests":
   [MedicationRequestProfile]
 
@@ -104,13 +139,38 @@ define "Active Medication Orders":
 
 // Pediatric BMI for Age
 
+/*
+@comment: [Pediatric BMI for Age](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-pediatric-bmi-for-age.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age
+*/
+
 // Pediatric Head Circumference Percentile
+
+/*
+@comment: [Pediatric Head Circumference Percentile](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-head-occipital-frontal-circumference-percentile.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/head-occipital-frontal-circumference-percentile
+*/
 
 // Pediatric Weight for Height
 
+/*
+@comment: [Pediatric Weight for Height](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-pediatric-weight-for-height.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height
+*/
+
 // Procedure
 
+/*
+@comment: [Procedure](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-procedure.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure
+*/
+
 // Pulse Oximetry
+
+/*
+@comment: [Pulse Oximetry](https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-pulse-oximetry.html)
+@profile: http://hl7.org/fhir/us/core/StructureDefinition/us-core-pulse-oximetry
+*/
 
 // Smoking Status
 
@@ -139,24 +199,76 @@ define "Most Recent Smoking Status":
 
 // Vital Signs Panel
 
+/*
+@comment: [Vital Signs Panel](http://hl7.org/fhir/R4/vitalspanel.html)
+@profile: http://hl7.org/fhir/StructureDefinition/vitalspanel
+*/
+
 // Respiratory Rate
+
+/*
+@comment: [Respiratory Rate](http://hl7.org/fhir/R4/resprate.html)
+@profile: http://hl7.org/fhir/StructureDefinition/resprate
+*/
 
 // Heart Rate
 
+/*
+@comment: [Heart Rate](http://hl7.org/fhir/R4/heartrate.html)
+@profile:http://hl7.org/fhir/StructureDefinition/heartrate
+*/
+
 // Oxygen Saturation
+
+/*
+@comment: [Oxygen Saturation](http://hl7.org/fhir/R4/oxygensat.html)
+@profile: http://hl7.org/fhir/StructureDefinition/oxygensat
+*/
 
 // Body Temperature
 
+/*
+@comment: [Body Temperature](http://hl7.org/fhir/R4/bodytemp.html)
+@profile: http://hl7.org/fhir/StructureDefinition/bodytemp
+*/
+
 // Body Height
+
+/*
+@comment: [Body Height](http://hl7.org/fhir/R4/bodyheight.html)
+@profile: http://hl7.org/fhir/StructureDefinition/bodyheight
+*/
 
 // Head Circumference
 
+/*
+@comment: [Head Circumference](http://hl7.org/fhir/R4/headcircum.html)
+@profile: http://hl7.org/fhir/StructureDefinition/headcircum
+*/
+
 // Body Weight
+
+/*
+@comment: [Body Weight](http://hl7.org/fhir/R4/bodyweight.html)
+@profile: http://hl7.org/fhir/StructureDefinition/bodyweight
+*/
 
 // Body Mass Index
 
+/*
+@comment: [Body Mass Index](http://hl7.org/fhir/R4/bmi.html)
+@profile: http://hl7.org/fhir/StructureDefinition/bmi
+*/
+
 // Blood Pressure
+
+/*
+@comment: [Blood Pressure](http://hl7.org/fhir/R4/bp.html)
+@profile: http://hl7.org/fhir/StructureDefinition/bp
+*/
 
 // Systolic Blood Pressure
 
 // Diastolic Blood Pressure
+
+
