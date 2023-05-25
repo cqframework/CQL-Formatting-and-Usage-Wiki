@@ -4,14 +4,15 @@
 in QICore as fluent functions in CQL, as well as common terminology and functions
 used in writing CQL with FHIR and QICore profiles.
 */
-library QICoreCommon version '2.0.000'
+library USCoreCommon version '0.1.0'
 
-using QICore version '5.0.0'
+using USCore version '3.1.1'
 
 include FHIRHelpers version '4.0.1'
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
+codesystem "CVX": 'http://hl7.org/fhir/sid/cvx'
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "RoleCode": 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
@@ -25,6 +26,8 @@ codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/ob
 codesystem "USCoreObservationCategory": 'http://hl7.org/fhir/us/core/CodeSystem/us-core-observation-category'
 codesystem "ConditionCategory": 'http://terminology.hl7.org/CodeSystem/condition-category'
 codesystem "USCoreConditionCategory": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
+codesystem "CDC Race and Ethnicity Codes": 'urn:oid:2.16.840.1.113883.6.238'
+codesystem "CommunicationCategoryCodeSystem": 'http://terminology.hl7.org/CodeSystem/communication-category'
 
 code "Birthdate": '21112-8' from "LOINC" display 'Birth date'
 code "Dead": '419099009' from "SNOMEDCT" display 'Dead'
@@ -109,31 +112,63 @@ context Patient
 /*
 @description: Returns true if the given condition has a clinical status of active, recurrence, or relapse
 */
-define fluent function isActive(condition ConditionProblemsHealthConcerns):
+define fluent function isActive(condition Condition):
   condition.clinicalStatus ~ "active"
     or condition.clinicalStatus ~ "recurrence"
     or condition.clinicalStatus ~ "relapse"
 
-/*
-@description: Returns true if the given condition has a clinical status of active, recurrence, or relapse
-*/
-define fluent function isActive(condition ConditionEncounterDiagnosis):
-  condition.clinicalStatus ~ "active"
-    or condition.clinicalStatus ~ "recurrence"
-    or condition.clinicalStatus ~ "relapse"
+define fluent function active(conditions List<Condition>):
+  conditions C
+    where C.clinicalStatus ~ "active"
+      or C.clinicalStatus ~ "recurrence"
+      or C.clinicalStatus ~ "relapse"
+
+define fluent function isActive(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-active"
+
+define fluent function active(allergyIntolerances List<AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-active"
+
+define fluent function isInactive(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-inactive"
+
+define fluent function inactive(allergyIntolerances List<AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-inactive"
+
+define fluent function isResolved(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-resolved"
+
+define fluent function resolved(allergyIntolerances List<AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-resolved"
+
+define fluent function isConfirmed(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-confirmed"
+
+define fluent function confirmed(allergyIntolerances List<AllergyIntolerance>):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-confirmed"
+
+define fluent function isUnconfirmed(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-unconfirmed"
+
+define fluent function unconfirmed(allergyIntolerances AllergyIntolerance):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-unconfirmed"
+
+define fluent function isRefuted(allergyIntolerance AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-refuted"
+
+define fluent function refuted(allergyIntolerances AllergyIntolerance):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-refuted"
 
 /*
 @description: Returns true if the given condition has the given category
 */
-define fluent function hasCategory(condition ConditionProblemsHealthConcerns, category Code):
-  exists (condition.category C
-    where C ~ category
-  )
-
-/*
-@description: Returns true if the given condition has the given category
-*/
-define fluent function hasCategory(condition ConditionEncounterDiagnosis, category Code):
+define fluent function hasCategory(condition Condition, category Code):
   exists (condition.category C
     where C ~ category
   )
@@ -141,7 +176,7 @@ define fluent function hasCategory(condition ConditionEncounterDiagnosis, catego
 /*
 @description: Returns true if the given condition is a problem list item.
 */
-define fluent function isProblemListItem(condition ConditionProblemsHealthConcerns):
+define fluent function isProblemListItem(condition Condition):
   exists (condition.category C
     where C ~ "problem-list-item"
   )
@@ -149,7 +184,7 @@ define fluent function isProblemListItem(condition ConditionProblemsHealthConcer
 /*
 @description: Returns true if the given condition is an encounter diagnosis
 */
-define fluent function isEncounterDiagnosis(condition ConditionEncounterDiagnosis):
+define fluent function isEncounterDiagnosis(condition Condition):
   exists (condition.category C
     where C ~ "encounter-diagnosis"
   )
@@ -157,111 +192,58 @@ define fluent function isEncounterDiagnosis(condition ConditionEncounterDiagnosi
 /*
 @description: Returns true if the given condition is a health concern
 */
-define fluent function isHealthConcern(condition ConditionProblemsHealthConcerns):
+define fluent function isHealthConcern(condition Condition):
   exists (condition.category C
     where C ~ "health-concern"
   )
 
+define fluent function isUnconfirmed(condition Condition):
+  condition.verificationStatus ~ "unconfirmed"
+
+define fluent function unconfirmed(conditions List<Condition>):
+  conditions C
+    where C.verificationStatus ~ "unconfirmed"
+
+define fluent function isProvisional(condition Condition):
+  condition.verificationStatus ~ "provisional"
+
+define fluent function provisional(conditions List<Condition>):
+  conditions C
+    where C.verificationStatus ~ "provisional"
+
+define fluent function isDifferential(condition Condition):
+  condition.verificationStatus ~ "differential"
+
+define fluent function differential(conditions List<Condition>):
+  conditions C
+    where C.verificationStatus ~ "differential"
+
+define fluent function isConfirmed(condition Condition):
+  condition.verificationStatus ~ "confirmed"
+
+define fluent function confirmed(conditions List<Condition>):
+  conditions C
+    where C.verificationStatus ~ "confirmed"
+
+define fluent function isRefuted(condition Condition):
+  condition.verificationStatus ~ "refuted"
+
+define fluent function refuted(conditions List<Condition>):
+  conditions C
+    where C.verificationStatus ~ "refuted"
+
 /*
 @description: Returns true if the given observation has the given category
 */
-define fluent function hasCategory(observation Observation, category Code):
+define fluent function hasCategory(observation LaboratoryResultObservationProfile, category Code):
   exists (observation.category C
     where C ~ category
   )
 
 /*
-@description: Returns true if the given observation is a social history observation
-*/
-define fluent function isSocialHistory(observation Observation):
-  exists (observation.category C
-    where C ~ "social-history"
-  )
-
-/*
-@description: Returns true if the given observation is a vital sign
-*/
-define fluent function isVitalSign(observation Observation):
-  exists (observation.category C
-    where C ~ "vital-signs"
-  )
-
-/*
-@description: Returns true if the given observation is an imaging observation
-*/
-define fluent function isImaging(observation Observation):
-  exists (observation.category C
-    where C ~ "imaging"
-  )
-
-/*
-@description: Returns true if the given observation is a laboratory observation
-*/
-define fluent function isLaboratory(observation Observation):
-  exists (observation.category C
-    where C ~ "laboratory"
-  )
-
-/*
-@description: REturns true if the given observation is a procedure observation
-*/
-define fluent function isProcedure(observation Observation):
-  exists (observation.category C
-    where C ~ "procedure"
-  )
-
-/*
-@description: Returns true if the given observation is a survey observation
-*/
-define fluent function isSurvey(observation Observation):
-  exists (observation.category C
-    where C ~ "survey"
-  )
-
-/*
-@description: Returns true if the given observation is an exam observation
-*/
-define fluent function isExam(observation Observation):
-  exists (observation.category C
-    where C ~ "exam"
-  )
-
-/*
-@description: Returns true if the given observation is a therapy observation
-*/
-define fluent function isTherapy(observation Observation):
-  exists (observation.category C
-    where C ~ "therapy"
-  )
-
-/*
-@description: Returns true if the given observation is an activity observation
-*/
-define fluent function isActivity(observation Observation):
-  exists (observation.category C
-    where C ~ "activity"
-  )
-
-/*
-@description: Returns true if the given observation is a clinical test result
-*/
-define fluent function isClinicalTest(observation Observation):
-  exists (observation.category C
-    where C ~ "clinical-test"
-  )
-
-/*
 @description: Returns true if the given MedicationRequest has a category of Community
 */
-define fluent function isCommunity(medicationRequest MedicationRequest):
-  exists (medicationRequest.category C
-    where C ~ Community
-  )
-
-/*
-@description: Returns true if the given MedicationRequest has a category of Community
-*/
-define fluent function isCommunity(medicationRequest MedicationNotRequested):
+define fluent function isCommunity(medicationRequest MedicationRequestProfile):
   exists (medicationRequest.category C
     where C ~ Community
   )
@@ -269,15 +251,7 @@ define fluent function isCommunity(medicationRequest MedicationNotRequested):
 /*
 @description: Returns true if the given MedicationRequest has a category of Discharge
 */
-define fluent function isDischarge(medicationRequest MedicationRequest):
-  exists (medicationRequest.category C
-    where C ~ Discharge
-  )
-
-/*
-@description: Returns true if the given MedicationRequest has a category of Discharge
-*/
-define fluent function isDischarge(medicationRequest MedicationNotRequested):
+define fluent function isDischarge(medicationRequest MedicationRequestProfile):
   exists (medicationRequest.category C
     where C ~ Discharge
   )
@@ -328,7 +302,7 @@ If the abatement is represented as a Quantity Interval, the quantities are expec
 which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
 before one year later than the date the patient turned the ending age of the quantity interval.
 */
-define fluent function abatementInterval(condition ConditionProblemsHealthConcerns):
+define fluent function abatementInterval(condition Condition):
 	if condition.abatement is DateTime then
 	  Interval[condition.abatement as DateTime, condition.abatement as DateTime]
 	else if condition.abatement is Quantity then
@@ -347,7 +321,7 @@ define fluent function abatementInterval(condition ConditionProblemsHealthConcer
 onset to abatement as specified in the given Condition. If the condition is active, the resulting interval will have
 a closed ending boundary. If the condition is not active, the resulting interval will have an open ending boundary.
 */
-define fluent function prevalenceInterval(condition ConditionProblemsHealthConcerns):
+define fluent function prevalenceInterval(condition Condition):
 if condition.clinicalStatus ~ "active"
   or condition.clinicalStatus ~ "recurrence"
   or condition.clinicalStatus ~ "relapse" then
@@ -403,24 +377,3 @@ define fluent function earliest(choice Choice<DateTime, Quantity, Interval<DateT
       if (period.hasStart()) then start of period
       else end of period
 
-/*
-@description: Creates a list of integers from 1 to how many days are in the interval. Note, this wont create an index for
-the final day if it is less than 24 hours. This also includes the first 24 hour period.
-*/
-define fluent function toDayNumbers(Period Interval<DateTime>):
-  ( expand { Interval[1, duration in days between start of Period and end of Period]} ) DayNumber
-    return end of DayNumber
-
-/*
-@description: Creates a list of 24 hour long intervals in an interval paired with the index (1 indexed) to which 24 hour interval it is.
-Note that the result will include intervals that are closed at the beginning and open at the end
-*/
-define fluent function daysInPeriod(Period Interval<DateTime>):
-  ( Period.toDayNumbers()) DayIndex
-    let startPeriod: start of Period + (24 hours * (DayIndex - 1)),
-    endPeriod: if (hours between startPeriod and end of Period < 24) then startPeriod
-      else start of Period + (24 hours * DayIndex)
-    return Tuple {
-      dayIndex: DayIndex,
-      dayPeriod: Interval[startPeriod, endPeriod)
-    }
