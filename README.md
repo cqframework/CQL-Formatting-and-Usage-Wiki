@@ -10,7 +10,7 @@ Please feel free to submit edits, comments, and concerns to this wiki, as well a
 
 To view the wiki, use the Wiki link at the top of this page, or follow this [link](https://github.com/esacinc/CQL-Formatting-and-Usage-Wiki/wiki).
 
-[Getting Started](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Getting-Started) - A collection of resources to help new users get started
-[Cooking with CQL Examples](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Cooking-with-CQL-Examples) - Examples from Cooking with CQL sessions
+* [Getting Started](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Getting-Started) - A collection of resources to help new users get started
+* [Cooking with CQL Examples](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Cooking-with-CQL-Examples) - Examples from Cooking with CQL sessions
 
 The Clinical Quality Framework Team
