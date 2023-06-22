@@ -1,0 +1,748 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "ZZ_AnnualWellnessAssessmentMeasure_AllOrNone",
+         "version" : "0.0.001"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:91",
+            "localIdentifier" : "ScreeningForAlcoholMisuse",
+            "path" : "Test01_ScreeningForAlcoholMisuse",
+            "version" : "1.1.000"
+         }, {
+            "localId" : "3",
+            "locator" : "7:1-7:85",
+            "localIdentifier" : "HypertensionAssessment",
+            "path" : "Test02_HypertensionAssessment",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "4",
+            "locator" : "9:1-9:89",
+            "localIdentifier" : "ScreeningForBreastCancer",
+            "path" : "Test03_ScreeningForBreastCancer",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "5",
+            "locator" : "11:1-11:97",
+            "localIdentifier" : "ScreeningForColorectalCancer",
+            "path" : "Test04_ScreeningForColorectalCancer",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "6",
+            "locator" : "13:1-13:85",
+            "localIdentifier" : "ScreeningForDepression",
+            "path" : "Test05_ScreeningForDepression",
+            "version" : "1.0.000"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "19:1-19:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "19:1-19:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "21",
+            "locator" : "22:1-27:48",
+            "name" : "Initial Populaiton",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "21",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Populaiton\"",":\n\t" ]
+                  }, {
+                     "r" : "20",
+                     "s" : [ {
+                        "r" : "17",
+                        "s" : [ {
+                           "r" : "14",
+                           "s" : [ {
+                              "r" : "11",
+                              "s" : [ {
+                                 "r" : "8",
+                                 "s" : [ {
+                                    "r" : "7",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForAlcoholMisuse" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "8",
+                                    "s" : [ {
+                                       "value" : [ "\"Initial Population\"" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\tor " ]
+                              }, {
+                                 "r" : "10",
+                                 "s" : [ {
+                                    "r" : "9",
+                                    "s" : [ {
+                                       "value" : [ "HypertensionAssessment" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "10",
+                                    "s" : [ {
+                                       "value" : [ "\"Initial Population\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\tor " ]
+                           }, {
+                              "r" : "13",
+                              "s" : [ {
+                                 "r" : "12",
+                                 "s" : [ {
+                                    "value" : [ "ScreeningForBreastCancer" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "13",
+                                 "s" : [ {
+                                    "value" : [ "\"Initial Population\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\tor " ]
+                        }, {
+                           "r" : "16",
+                           "s" : [ {
+                              "r" : "15",
+                              "s" : [ {
+                                 "value" : [ "ScreeningForColorectalCancer" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "16",
+                              "s" : [ {
+                                 "value" : [ "\"Initial Population\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tor " ]
+                     }, {
+                        "r" : "19",
+                        "s" : [ {
+                           "r" : "18",
+                           "s" : [ {
+                              "value" : [ "ScreeningForDepression" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "19",
+                           "s" : [ {
+                              "value" : [ "\"Initial Population\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "20",
+               "locator" : "23:2-27:48",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "17",
+                  "locator" : "23:2-26:54",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "14",
+                     "locator" : "23:2-25:50",
+                     "type" : "Or",
+                     "operand" : [ {
+                        "localId" : "11",
+                        "locator" : "23:2-24:48",
+                        "type" : "Or",
+                        "operand" : [ {
+                           "localId" : "8",
+                           "locator" : "23:2-23:47",
+                           "name" : "Initial Population",
+                           "libraryName" : "ScreeningForAlcoholMisuse",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "localId" : "10",
+                           "locator" : "24:6-24:48",
+                           "name" : "Initial Population",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }, {
+                        "localId" : "13",
+                        "locator" : "25:6-25:50",
+                        "name" : "Initial Population",
+                        "libraryName" : "ScreeningForBreastCancer",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "localId" : "16",
+                     "locator" : "26:6-26:54",
+                     "name" : "Initial Population",
+                     "libraryName" : "ScreeningForColorectalCancer",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "19",
+                  "locator" : "27:6-27:48",
+                  "name" : "Initial Population",
+                  "libraryName" : "ScreeningForDepression",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "36",
+            "locator" : "30:1-35:40",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "36",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n\t" ]
+                  }, {
+                     "r" : "35",
+                     "s" : [ {
+                        "r" : "32",
+                        "s" : [ {
+                           "r" : "29",
+                           "s" : [ {
+                              "r" : "26",
+                              "s" : [ {
+                                 "r" : "23",
+                                 "s" : [ {
+                                    "r" : "22",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForAlcoholMisuse" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "23",
+                                    "s" : [ {
+                                       "value" : [ "\"Numerator\"" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\tand " ]
+                              }, {
+                                 "r" : "25",
+                                 "s" : [ {
+                                    "r" : "24",
+                                    "s" : [ {
+                                       "value" : [ "HypertensionAssessment" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "25",
+                                    "s" : [ {
+                                       "value" : [ "\"Numerator\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\tand " ]
+                           }, {
+                              "r" : "28",
+                              "s" : [ {
+                                 "r" : "27",
+                                 "s" : [ {
+                                    "value" : [ "ScreeningForBreastCancer" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "28",
+                                 "s" : [ {
+                                    "value" : [ "\"Numerator\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\tand " ]
+                        }, {
+                           "r" : "31",
+                           "s" : [ {
+                              "r" : "30",
+                              "s" : [ {
+                                 "value" : [ "ScreeningForColorectalCancer" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "31",
+                              "s" : [ {
+                                 "value" : [ "\"Numerator\"" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tand " ]
+                     }, {
+                        "r" : "34",
+                        "s" : [ {
+                           "r" : "33",
+                           "s" : [ {
+                              "value" : [ "ScreeningForDepression" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "34",
+                           "s" : [ {
+                              "value" : [ "\"Numerator\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "35",
+               "locator" : "31:2-35:40",
+               "type" : "And",
+               "operand" : [ {
+                  "localId" : "32",
+                  "locator" : "31:2-34:46",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "29",
+                     "locator" : "31:2-33:42",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "26",
+                        "locator" : "31:2-32:40",
+                        "type" : "And",
+                        "operand" : [ {
+                           "localId" : "23",
+                           "locator" : "31:2-31:38",
+                           "name" : "Numerator",
+                           "libraryName" : "ScreeningForAlcoholMisuse",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "localId" : "25",
+                           "locator" : "32:7-32:40",
+                           "name" : "Numerator",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }, {
+                        "localId" : "28",
+                        "locator" : "33:7-33:42",
+                        "name" : "Numerator",
+                        "libraryName" : "ScreeningForBreastCancer",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "localId" : "31",
+                     "locator" : "34:7-34:46",
+                     "name" : "Numerator",
+                     "libraryName" : "ScreeningForColorectalCancer",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "34",
+                  "locator" : "35:7-35:40",
+                  "name" : "Numerator",
+                  "libraryName" : "ScreeningForDepression",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "67",
+            "locator" : "38:1-51:3",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "67",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n\t" ]
+                  }, {
+                     "r" : "66",
+                     "s" : [ {
+                        "r" : "59",
+                        "s" : [ {
+                           "r" : "52",
+                           "s" : [ {
+                              "r" : "45",
+                              "s" : [ {
+                                 "r" : "42",
+                                 "s" : [ {
+                                    "value" : [ "( " ]
+                                 }, {
+                                    "r" : "42",
+                                    "s" : [ {
+                                       "r" : "38",
+                                       "s" : [ {
+                                          "r" : "37",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForAlcoholMisuse" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "38",
+                                          "s" : [ {
+                                             "value" : [ "\"Denominator\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\t\tand " ]
+                                    }, {
+                                       "r" : "41",
+                                       "s" : [ {
+                                          "value" : [ "not " ]
+                                       }, {
+                                          "r" : "40",
+                                          "s" : [ {
+                                             "r" : "39",
+                                             "s" : [ {
+                                                "value" : [ "ScreeningForAlcoholMisuse" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "40",
+                                             "s" : [ {
+                                                "value" : [ "\"Denominator Exclusions\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t)" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\tor " ]
+                              }, {
+                                 "r" : "44",
+                                 "s" : [ {
+                                    "r" : "43",
+                                    "s" : [ {
+                                       "value" : [ "HypertensionAssessment" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "44",
+                                    "s" : [ {
+                                       "value" : [ "\"Denominator\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\tor " ]
+                           }, {
+                              "r" : "51",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "51",
+                                 "s" : [ {
+                                    "r" : "47",
+                                    "s" : [ {
+                                       "r" : "46",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForBreastCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "47",
+                                       "s" : [ {
+                                          "value" : [ "\"Denominator\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\tand " ]
+                                 }, {
+                                    "r" : "50",
+                                    "s" : [ {
+                                       "value" : [ "not " ]
+                                    }, {
+                                       "r" : "49",
+                                       "s" : [ {
+                                          "r" : "48",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForBreastCancer" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "49",
+                                          "s" : [ {
+                                             "value" : [ "\"Denominator Exclusions\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t)" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\tor " ]
+                        }, {
+                           "r" : "58",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "58",
+                              "s" : [ {
+                                 "r" : "54",
+                                 "s" : [ {
+                                    "r" : "53",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForColorectalCancer" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "54",
+                                    "s" : [ {
+                                       "value" : [ "\"Denominator\"" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t\t\tand " ]
+                              }, {
+                                 "r" : "57",
+                                 "s" : [ {
+                                    "value" : [ "not " ]
+                                 }, {
+                                    "r" : "56",
+                                    "s" : [ {
+                                       "r" : "55",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForColorectalCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "56",
+                                       "s" : [ {
+                                          "value" : [ "\"Denominator Exclusions\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t)" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tor " ]
+                     }, {
+                        "r" : "65",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "65",
+                           "s" : [ {
+                              "r" : "61",
+                              "s" : [ {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "value" : [ "ScreeningForDepression" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "61",
+                                 "s" : [ {
+                                    "value" : [ "\"Denominator\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t\tand " ]
+                           }, {
+                              "r" : "64",
+                              "s" : [ {
+                                 "value" : [ "not " ]
+                              }, {
+                                 "r" : "63",
+                                 "s" : [ {
+                                    "r" : "62",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForDepression" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "63",
+                                    "s" : [ {
+                                       "value" : [ "\"Denominator Exclusions\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "66",
+               "locator" : "39:2-51:3",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "59",
+                  "locator" : "39:2-48:3",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "52",
+                     "locator" : "39:2-45:3",
+                     "type" : "Or",
+                     "operand" : [ {
+                        "localId" : "45",
+                        "locator" : "39:2-42:41",
+                        "type" : "Or",
+                        "operand" : [ {
+                           "localId" : "42",
+                           "locator" : "39:2-41:2",
+                           "type" : "And",
+                           "operand" : [ {
+                              "localId" : "38",
+                              "locator" : "39:4-39:42",
+                              "name" : "Denominator",
+                              "libraryName" : "ScreeningForAlcoholMisuse",
+                              "type" : "ExpressionRef"
+                           }, {
+                              "localId" : "41",
+                              "locator" : "40:8-40:61",
+                              "type" : "Not",
+                              "operand" : {
+                                 "localId" : "40",
+                                 "locator" : "40:12-40:61",
+                                 "name" : "Denominator Exclusions",
+                                 "libraryName" : "ScreeningForAlcoholMisuse",
+                                 "type" : "ExpressionRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "44",
+                           "locator" : "42:6-42:41",
+                           "name" : "Denominator",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        } ]
+                     }, {
+                        "localId" : "51",
+                        "locator" : "43:6-45:3",
+                        "type" : "And",
+                        "operand" : [ {
+                           "localId" : "47",
+                           "locator" : "43:8-43:45",
+                           "name" : "Denominator",
+                           "libraryName" : "ScreeningForBreastCancer",
+                           "type" : "ExpressionRef"
+                        }, {
+                           "localId" : "50",
+                           "locator" : "44:9-44:61",
+                           "type" : "Not",
+                           "operand" : {
+                              "localId" : "49",
+                              "locator" : "44:13-44:61",
+                              "name" : "Denominator Exclusions",
+                              "libraryName" : "ScreeningForBreastCancer",
+                              "type" : "ExpressionRef"
+                           }
+                        } ]
+                     } ]
+                  }, {
+                     "localId" : "58",
+                     "locator" : "46:6-48:3",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "54",
+                        "locator" : "46:8-46:49",
+                        "name" : "Denominator",
+                        "libraryName" : "ScreeningForColorectalCancer",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "localId" : "57",
+                        "locator" : "47:9-47:65",
+                        "type" : "Not",
+                        "operand" : {
+                           "localId" : "56",
+                           "locator" : "47:13-47:65",
+                           "name" : "Denominator Exclusions",
+                           "libraryName" : "ScreeningForColorectalCancer",
+                           "type" : "ExpressionRef"
+                        }
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "65",
+                  "locator" : "49:6-51:3",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "61",
+                     "locator" : "49:8-49:43",
+                     "name" : "Denominator",
+                     "libraryName" : "ScreeningForDepression",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "64",
+                     "locator" : "50:9-50:59",
+                     "type" : "Not",
+                     "operand" : {
+                        "localId" : "63",
+                        "locator" : "50:13-50:59",
+                        "name" : "Denominator Exclusions",
+                        "libraryName" : "ScreeningForDepression",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               } ]
+            }
+         } ]
+      }
+   }
+}

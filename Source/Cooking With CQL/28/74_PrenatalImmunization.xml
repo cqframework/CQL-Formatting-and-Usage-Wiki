@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="PrenatalImmunizationStatus" version="0.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="9:1-9:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def localId="16" locator="25:1-25:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="15" locator="25:32-25:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="14" locator="25:41-25:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="2" locator="11:1-11:55" name="SNOMEDCT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="3" locator="13:1-13:66" name="Deliveries" id="urn:oid:2.16.840.1.113883.3.464.1004.1072" accessLevel="Public"/>
+      <def localId="4" locator="14:1-14:79" name="Adult Influenza Vaccine" id="urn:oid:2.16.840.1.113883.3.464.1004.1475" accessLevel="Public"/>
+      <def localId="5" locator="15:1-15:76" name="37 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1880" accessLevel="Public"/>
+      <def localId="6" locator="16:1-16:76" name="38 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1881" accessLevel="Public"/>
+      <def localId="7" locator="17:1-17:76" name="39 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1882" accessLevel="Public"/>
+      <def localId="8" locator="18:1-18:76" name="40 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1883" accessLevel="Public"/>
+      <def localId="9" locator="19:1-19:76" name="41 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1884" accessLevel="Public"/>
+      <def localId="10" locator="20:1-20:76" name="42 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1885" accessLevel="Public"/>
+      <def localId="11" locator="21:1-21:76" name="43 Gestational Weeks" id="urn:oid:2.16.840.1.113883.3.464.1003.1886" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="13" locator="23:1-23:143" name="Length of gestation at birth (observable entity)" id="412726003" display="Length of gestation at birth (observable entity)" accessLevel="Public">
+         <codeSystem localId="12" locator="23:75-23:84" name="SNOMEDCT"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="27:1-27:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="27:1-27:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="24" locator="29:1-31:73" name="Delivery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="24">
+               <a:s>define &quot;Delivery&quot;:&#xd;
+	</a:s>
+               <a:s r="23">
+                  <a:s>
+                     <a:s r="18">
+                        <a:s r="17">
+                           <a:s r="17">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Deliveries&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DeliveryProcedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="22">
+                     <a:s>where </a:s>
+                     <a:s r="22">
+                        <a:s r="20">
+                           <a:s r="19">
+                              <a:s>DeliveryProcedure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="20">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ends during </a:s>
+                        <a:s r="21">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="23" locator="30:2-31:73" xsi:type="Query">
+            <source localId="18" locator="30:2-30:57" alias="DeliveryProcedure">
+               <expression localId="17" locator="30:2-30:39" dataType="qdm53:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Deliveries" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="22" locator="31:3-31:73" xsi:type="In">
+               <operand locator="31:42-31:45" xsi:type="End">
+                  <operand localId="20" locator="31:9-31:40" path="relevantPeriod" scope="DeliveryProcedure" xsi:type="Property"/>
+               </operand>
+               <operand localId="21" locator="31:54-31:73" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="26" locator="33:1-34:78" name="Gestational Age Assessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="26">
+               <a:s>define &quot;Gestational Age Assessment&quot;:&#xd;
+	</a:s>
+               <a:s r="25">
+                  <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Length of gestation at birth (observable entity)&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="25" locator="34:2-34:78" dataType="qdm53:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes xsi:type="ToList">
+               <operand name="Length of gestation at birth (observable entity)" xsi:type="CodeRef"/>
+            </codes>
+         </expression>
+      </def>
+      <def localId="124" locator="36:1-63:5" name="Gestational Age Diagnosis" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="124">
+               <a:s>define &quot;Gestational Age Diagnosis&quot;:&#xd;
+	</a:s>
+               <a:s r="123">
+                  <a:s r="109">
+                     <a:s r="95">
+                        <a:s r="81">
+                           <a:s r="67">
+                              <a:s r="53">
+                                 <a:s r="39">
+                                    <a:s>(</a:s>
+                                    <a:s r="39">
+                                       <a:s>
+                                          <a:s r="28">
+                                             <a:s r="27">
+                                                <a:s r="27">
+                                                   <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                                   <a:s>
+                                                      <a:s>&quot;37 Gestational Weeks&quot;</a:s>
+                                                   </a:s>
+                                                   <a:s>]</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> D</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+	    </a:s>
+                                       <a:s r="38">
+                                          <a:s>return </a:s>
+                                          <a:s r="37">
+                                             <a:s>{ </a:s>
+                                             <a:s>
+                                                <a:s>id: </a:s>
+                                                <a:s r="30">
+                                                   <a:s r="29">
+                                                      <a:s>D</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="30">
+                                                      <a:s>id</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>code: </a:s>
+                                                <a:s r="32">
+                                                   <a:s r="31">
+                                                      <a:s>D</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="32">
+                                                      <a:s>code</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>authorDatetime: </a:s>
+                                                <a:s r="35">
+                                                   <a:s>end of </a:s>
+                                                   <a:s r="34">
+                                                      <a:s r="33">
+                                                         <a:s>D</a:s>
+                                                      </a:s>
+                                                      <a:s>.</a:s>
+                                                      <a:s r="34">
+                                                         <a:s>prevalencePeriod</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>result: </a:s>
+                                                <a:s r="36">
+                                                   <a:s>37 weeks</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> }</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+  )</a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                                 <a:s r="52">
+                                    <a:s>(</a:s>
+                                    <a:s r="52">
+                                       <a:s>
+                                          <a:s r="41">
+                                             <a:s r="40">
+                                                <a:s r="40">
+                                                   <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                                   <a:s>
+                                                      <a:s>&quot;38 Gestational Weeks&quot;</a:s>
+                                                   </a:s>
+                                                   <a:s>]</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> D</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+	       </a:s>
+                                       <a:s r="51">
+                                          <a:s>return </a:s>
+                                          <a:s r="50">
+                                             <a:s>{ </a:s>
+                                             <a:s>
+                                                <a:s>id: </a:s>
+                                                <a:s r="43">
+                                                   <a:s r="42">
+                                                      <a:s>D</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="43">
+                                                      <a:s>id</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>code: </a:s>
+                                                <a:s r="45">
+                                                   <a:s r="44">
+                                                      <a:s>D</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="45">
+                                                      <a:s>code</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>authorDatetime: </a:s>
+                                                <a:s r="48">
+                                                   <a:s>end of </a:s>
+                                                   <a:s r="47">
+                                                      <a:s r="46">
+                                                         <a:s>D</a:s>
+                                                      </a:s>
+                                                      <a:s>.</a:s>
+                                                      <a:s r="47">
+                                                         <a:s>prevalencePeriod</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>, </a:s>
+                                             <a:s>
+                                                <a:s>result: </a:s>
+                                                <a:s r="49">
+                                                   <a:s>38 weeks</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> }</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+	   )</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                              <a:s r="66">
+                                 <a:s>(</a:s>
+                                 <a:s r="66">
+                                    <a:s>
+                                       <a:s r="55">
+                                          <a:s r="54">
+                                             <a:s r="54">
+                                                <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                                <a:s>
+                                                   <a:s>&quot;39 Gestational Weeks&quot;</a:s>
+                                                </a:s>
+                                                <a:s>]</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> D</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+	       </a:s>
+                                    <a:s r="65">
+                                       <a:s>return </a:s>
+                                       <a:s r="64">
+                                          <a:s>{ </a:s>
+                                          <a:s>
+                                             <a:s>id: </a:s>
+                                             <a:s r="57">
+                                                <a:s r="56">
+                                                   <a:s>D</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="57">
+                                                   <a:s>id</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>, </a:s>
+                                          <a:s>
+                                             <a:s>code: </a:s>
+                                             <a:s r="59">
+                                                <a:s r="58">
+                                                   <a:s>D</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="59">
+                                                   <a:s>code</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>, </a:s>
+                                          <a:s>
+                                             <a:s>authorDatetime: </a:s>
+                                             <a:s r="62">
+                                                <a:s>end of </a:s>
+                                                <a:s r="61">
+                                                   <a:s r="60">
+                                                      <a:s>D</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="61">
+                                                      <a:s>prevalencePeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>, </a:s>
+                                          <a:s>
+                                             <a:s>result: </a:s>
+                                             <a:s r="63">
+                                                <a:s>39 weeks</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> }</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+	   )</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                           <a:s r="80">
+                              <a:s>(</a:s>
+                              <a:s r="80">
+                                 <a:s>
+                                    <a:s r="69">
+                                       <a:s r="68">
+                                          <a:s r="68">
+                                             <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;40 Gestational Weeks&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> D</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+	       </a:s>
+                                 <a:s r="79">
+                                    <a:s>return </a:s>
+                                    <a:s r="78">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>id: </a:s>
+                                          <a:s r="71">
+                                             <a:s r="70">
+                                                <a:s>D</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="71">
+                                                <a:s>id</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s>
+                                          <a:s>code: </a:s>
+                                          <a:s r="73">
+                                             <a:s r="72">
+                                                <a:s>D</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="73">
+                                                <a:s>code</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s>
+                                          <a:s>authorDatetime: </a:s>
+                                          <a:s r="76">
+                                             <a:s>end of </a:s>
+                                             <a:s r="75">
+                                                <a:s r="74">
+                                                   <a:s>D</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="75">
+                                                   <a:s>prevalencePeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s>
+                                          <a:s>result: </a:s>
+                                          <a:s r="77">
+                                             <a:s>40 weeks</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+	   )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                        <a:s r="94">
+                           <a:s>(</a:s>
+                           <a:s r="94">
+                              <a:s>
+                                 <a:s r="83">
+                                    <a:s r="82">
+                                       <a:s r="82">
+                                          <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;41 Gestational Weeks&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> D</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+	       </a:s>
+                              <a:s r="93">
+                                 <a:s>return </a:s>
+                                 <a:s r="92">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>id: </a:s>
+                                       <a:s r="85">
+                                          <a:s r="84">
+                                             <a:s>D</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="85">
+                                             <a:s>id</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s>
+                                       <a:s>code: </a:s>
+                                       <a:s r="87">
+                                          <a:s r="86">
+                                             <a:s>D</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="87">
+                                             <a:s>code</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s>
+                                       <a:s>authorDatetime: </a:s>
+                                       <a:s r="90">
+                                          <a:s>end of </a:s>
+                                          <a:s r="89">
+                                             <a:s r="88">
+                                                <a:s>D</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="89">
+                                                <a:s>prevalencePeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s>
+                                       <a:s>result: </a:s>
+                                       <a:s r="91">
+                                          <a:s>41 weeks</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	   )</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                     <a:s r="108">
+                        <a:s>(</a:s>
+                        <a:s r="108">
+                           <a:s>
+                              <a:s r="97">
+                                 <a:s r="96">
+                                    <a:s r="96">
+                                       <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;42 Gestational Weeks&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> D</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	       </a:s>
+                           <a:s r="107">
+                              <a:s>return </a:s>
+                              <a:s r="106">
+                                 <a:s>{ </a:s>
+                                 <a:s>
+                                    <a:s>id: </a:s>
+                                    <a:s r="99">
+                                       <a:s r="98">
+                                          <a:s>D</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="99">
+                                          <a:s>id</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s>
+                                    <a:s>code: </a:s>
+                                    <a:s r="101">
+                                       <a:s r="100">
+                                          <a:s>D</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="101">
+                                          <a:s>code</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s>
+                                    <a:s>authorDatetime: </a:s>
+                                    <a:s r="104">
+                                       <a:s>end of </a:s>
+                                       <a:s r="103">
+                                          <a:s r="102">
+                                             <a:s>D</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="103">
+                                             <a:s>prevalencePeriod</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s>
+                                    <a:s>result: </a:s>
+                                    <a:s r="105">
+                                       <a:s>42 weeks</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	   )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	   union&#xd;
+	   </a:s>
+                  <a:s r="122">
+                     <a:s>(</a:s>
+                     <a:s r="122">
+                        <a:s>
+                           <a:s r="111">
+                              <a:s r="110">
+                                 <a:s r="110">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;43 Gestational Weeks&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> D</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	       </a:s>
+                        <a:s r="121">
+                           <a:s>return </a:s>
+                           <a:s r="120">
+                              <a:s>{ </a:s>
+                              <a:s>
+                                 <a:s>id: </a:s>
+                                 <a:s r="113">
+                                    <a:s r="112">
+                                       <a:s>D</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="113">
+                                       <a:s>id</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s>
+                                 <a:s>code: </a:s>
+                                 <a:s r="115">
+                                    <a:s r="114">
+                                       <a:s>D</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="115">
+                                       <a:s>code</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s>
+                                 <a:s>authorDatetime: </a:s>
+                                 <a:s r="118">
+                                    <a:s>end of </a:s>
+                                    <a:s r="117">
+                                       <a:s r="116">
+                                          <a:s>D</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="117">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s>
+                                 <a:s>result: </a:s>
+                                 <a:s r="119">
+                                    <a:s>43 weeks</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	   )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="123" locator="37:2-63:5" xsi:type="Union">
+            <operand localId="109" locator="37:2-59:5" xsi:type="Union">
+               <operand localId="81" locator="37:2-51:5" xsi:type="Union">
+                  <operand localId="53" locator="37:2-43:5" xsi:type="Union">
+                     <operand localId="39" locator="37:2-39:3" xsi:type="Query">
+                        <source localId="28" locator="37:3-37:41" alias="D">
+                           <expression localId="27" locator="37:3-37:39" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="37 Gestational Weeks" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <return localId="38" locator="38:6-38:99">
+                           <expression localId="37" locator="38:13-38:99" xsi:type="Tuple">
+                              <element name="id">
+                                 <value localId="30" locator="38:19-38:22" path="id" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="code">
+                                 <value localId="32" locator="38:31-38:36" path="code" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="authorDatetime">
+                                 <value localId="35" locator="38:55-38:79" xsi:type="End">
+                                    <operand localId="34" locator="38:62-38:79" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                                 </value>
+                              </element>
+                              <element name="result">
+                                 <value localId="36" locator="38:90-38:97" value="37" unit="weeks" xsi:type="Quantity"/>
+                              </element>
+                           </expression>
+                        </return>
+                     </operand>
+                     <operand localId="52" locator="41:5-43:5" xsi:type="Query">
+                        <source localId="41" locator="41:6-41:44" alias="D">
+                           <expression localId="40" locator="41:6-41:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="38 Gestational Weeks" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <return localId="51" locator="42:9-42:102">
+                           <expression localId="50" locator="42:16-42:102" xsi:type="Tuple">
+                              <element name="id">
+                                 <value localId="43" locator="42:22-42:25" path="id" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="code">
+                                 <value localId="45" locator="42:34-42:39" path="code" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="authorDatetime">
+                                 <value localId="48" locator="42:58-42:82" xsi:type="End">
+                                    <operand localId="47" locator="42:65-42:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                                 </value>
+                              </element>
+                              <element name="result">
+                                 <value localId="49" locator="42:93-42:100" value="38" unit="weeks" xsi:type="Quantity"/>
+                              </element>
+                           </expression>
+                        </return>
+                     </operand>
+                  </operand>
+                  <operand xsi:type="Union">
+                     <operand localId="66" locator="45:5-47:5" xsi:type="Query">
+                        <source localId="55" locator="45:6-45:44" alias="D">
+                           <expression localId="54" locator="45:6-45:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="39 Gestational Weeks" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <return localId="65" locator="46:9-46:102">
+                           <expression localId="64" locator="46:16-46:102" xsi:type="Tuple">
+                              <element name="id">
+                                 <value localId="57" locator="46:22-46:25" path="id" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="code">
+                                 <value localId="59" locator="46:34-46:39" path="code" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="authorDatetime">
+                                 <value localId="62" locator="46:58-46:82" xsi:type="End">
+                                    <operand localId="61" locator="46:65-46:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                                 </value>
+                              </element>
+                              <element name="result">
+                                 <value localId="63" locator="46:93-46:100" value="39" unit="weeks" xsi:type="Quantity"/>
+                              </element>
+                           </expression>
+                        </return>
+                     </operand>
+                     <operand localId="80" locator="49:5-51:5" xsi:type="Query">
+                        <source localId="69" locator="49:6-49:44" alias="D">
+                           <expression localId="68" locator="49:6-49:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes name="40 Gestational Weeks" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <return localId="79" locator="50:9-50:102">
+                           <expression localId="78" locator="50:16-50:102" xsi:type="Tuple">
+                              <element name="id">
+                                 <value localId="71" locator="50:22-50:25" path="id" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="code">
+                                 <value localId="73" locator="50:34-50:39" path="code" scope="D" xsi:type="Property"/>
+                              </element>
+                              <element name="authorDatetime">
+                                 <value localId="76" locator="50:58-50:82" xsi:type="End">
+                                    <operand localId="75" locator="50:65-50:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                                 </value>
+                              </element>
+                              <element name="result">
+                                 <value localId="77" locator="50:93-50:100" value="40" unit="weeks" xsi:type="Quantity"/>
+                              </element>
+                           </expression>
+                        </return>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand localId="94" locator="53:5-55:5" xsi:type="Query">
+                     <source localId="83" locator="53:6-53:44" alias="D">
+                        <expression localId="82" locator="53:6-53:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="41 Gestational Weeks" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <return localId="93" locator="54:9-54:102">
+                        <expression localId="92" locator="54:16-54:102" xsi:type="Tuple">
+                           <element name="id">
+                              <value localId="85" locator="54:22-54:25" path="id" scope="D" xsi:type="Property"/>
+                           </element>
+                           <element name="code">
+                              <value localId="87" locator="54:34-54:39" path="code" scope="D" xsi:type="Property"/>
+                           </element>
+                           <element name="authorDatetime">
+                              <value localId="90" locator="54:58-54:82" xsi:type="End">
+                                 <operand localId="89" locator="54:65-54:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                              </value>
+                           </element>
+                           <element name="result">
+                              <value localId="91" locator="54:93-54:100" value="41" unit="weeks" xsi:type="Quantity"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="108" locator="57:5-59:5" xsi:type="Query">
+                     <source localId="97" locator="57:6-57:44" alias="D">
+                        <expression localId="96" locator="57:6-57:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <codes name="42 Gestational Weeks" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <return localId="107" locator="58:9-58:102">
+                        <expression localId="106" locator="58:16-58:102" xsi:type="Tuple">
+                           <element name="id">
+                              <value localId="99" locator="58:22-58:25" path="id" scope="D" xsi:type="Property"/>
+                           </element>
+                           <element name="code">
+                              <value localId="101" locator="58:34-58:39" path="code" scope="D" xsi:type="Property"/>
+                           </element>
+                           <element name="authorDatetime">
+                              <value localId="104" locator="58:58-58:82" xsi:type="End">
+                                 <operand localId="103" locator="58:65-58:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                              </value>
+                           </element>
+                           <element name="result">
+                              <value localId="105" locator="58:93-58:100" value="42" unit="weeks" xsi:type="Quantity"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="122" locator="61:5-63:5" xsi:type="Query">
+               <source localId="111" locator="61:6-61:44" alias="D">
+                  <expression localId="110" locator="61:6-61:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="43 Gestational Weeks" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <return localId="121" locator="62:9-62:102">
+                  <expression localId="120" locator="62:16-62:102" xsi:type="Tuple">
+                     <element name="id">
+                        <value localId="113" locator="62:22-62:25" path="id" scope="D" xsi:type="Property"/>
+                     </element>
+                     <element name="code">
+                        <value localId="115" locator="62:34-62:39" path="code" scope="D" xsi:type="Property"/>
+                     </element>
+                     <element name="authorDatetime">
+                        <value localId="118" locator="62:58-62:82" xsi:type="End">
+                           <operand localId="117" locator="62:65-62:82" path="prevalencePeriod" scope="D" xsi:type="Property"/>
+                        </value>
+                     </element>
+                     <element name="result">
+                        <value localId="119" locator="62:93-62:100" value="43" unit="weeks" xsi:type="Quantity"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="128" locator="65:1-67:38" name="All Gestational Age Assessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="128">
+               <a:s>define &quot;All Gestational Age Assessment&quot;:&#xd;
+	</a:s>
+               <a:s r="127">
+                  <a:s r="125">
+                     <a:s>&quot;Gestational Age Assessment&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	    union </a:s>
+                  <a:s r="126">
+                     <a:s>&quot;Gestational Age Diagnosis&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="127" locator="66:2-67:38" xsi:type="Union">
+            <operand xsi:type="As">
+               <operand localId="125" locator="66:2-66:29" name="Gestational Age Assessment" xsi:type="ExpressionRef"/>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xsi:type="TupleTypeSpecifier">
+                        <element name="id">
+                           <type name="qdm53:Id" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="code">
+                           <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="authorDatetime">
+                           <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="result">
+                           <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </type>
+                     <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand xsi:type="As">
+               <operand localId="126" locator="67:12-67:38" name="Gestational Age Diagnosis" xsi:type="ExpressionRef"/>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xsi:type="TupleTypeSpecifier">
+                        <element name="id">
+                           <type name="qdm53:Id" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="code">
+                           <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="authorDatetime">
+                           <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="result">
+                           <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </type>
+                     <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="137" locator="69:1-70:55" name="Conception Date" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="137">
+               <a:s>define function &quot;Conception Date&quot;(Delivery </a:s>
+               <a:s r="129">
+                  <a:s>&quot;Procedure, Performed&quot;</a:s>
+               </a:s>
+               <a:s>, GestationalAge </a:s>
+               <a:s r="130">
+                  <a:s>&quot;Assessment, Performed&quot;</a:s>
+               </a:s>
+               <a:s> ):&#xd;
+	</a:s>
+               <a:s r="136">
+                  <a:s r="136">
+                     <a:s r="133">
+                        <a:s>end of </a:s>
+                        <a:s r="132">
+                           <a:s r="131">
+                              <a:s>Delivery</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="132">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> - </a:s>
+                     <a:s r="135">
+                        <a:s r="134">
+                           <a:s>GestationalAge</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="135">
+                           <a:s>result</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="136" locator="70:2-70:55" xsi:type="Subtract">
+            <operand localId="133" locator="70:2-70:31" xsi:type="End">
+               <operand localId="132" locator="70:9-70:31" path="relevantPeriod" xsi:type="Property">
+                  <source localId="131" locator="70:9-70:16" name="Delivery" xsi:type="OperandRef"/>
+               </operand>
+            </operand>
+            <operand asType="t:Quantity" xsi:type="As">
+               <operand localId="135" locator="70:35-70:55" path="result" xsi:type="Property">
+                  <source localId="134" locator="70:35-70:48" name="GestationalAge" xsi:type="OperandRef"/>
+               </operand>
+            </operand>
+         </expression>
+         <operand name="Delivery">
+            <operandTypeSpecifier localId="129" locator="69:44-69:65" name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="GestationalAge">
+            <operandTypeSpecifier localId="130" locator="69:83-69:105" name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="139" locator="73:1-74:58" name="Influenza Immunization Administered" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="139">
+               <a:s>define &quot;Influenza Immunization Administered&quot;:&#xd;
+	</a:s>
+               <a:s r="138">
+                  <a:s>[&quot;Immunization, Administered&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Adult Influenza Vaccine&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="138" locator="74:2-74:58" dataType="qdm53:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Adult Influenza Vaccine" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="165" locator="76:1-86:6" name="Immunization Post Conception" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="165">
+               <a:s>define &quot;Immunization Post Conception&quot;:&#xd;
+	</a:s>
+               <a:s r="164">
+                  <a:s>
+                     <a:s r="141">
+                        <a:s r="140">
+                           <a:s>
+                              <a:s>&quot;Delivery&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DeliveryProcedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  </a:s>
+                  <a:s r="163">
+                     <a:s>with </a:s>
+                     <a:s r="143">
+                        <a:s r="142">
+                           <a:s>
+                              <a:s>&quot;Influenza Immunization Administered&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> I</a:s>
+                     </a:s>
+                     <a:s> &#xd;
+      such that </a:s>
+                     <a:s r="162">
+                        <a:s r="145">
+                           <a:s r="144">
+                              <a:s>I</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="145">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> after &#xd;
+        </a:s>
+                        <a:s r="161">
+                           <a:s>&quot;Conception Date&quot;(&#xd;
+          </a:s>
+                           <a:s r="146">
+                              <a:s>DeliveryProcedure</a:s>
+                           </a:s>
+                           <a:s>,&#xd;
+  	      </a:s>
+                           <a:s r="160">
+                              <a:s>Last(</a:s>
+                              <a:s r="159">
+                                 <a:s>
+                                    <a:s r="148">
+                                       <a:s r="147">
+                                          <a:s>
+                                             <a:s>&quot;All Gestational Age Assessment&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> Assessment</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> &#xd;
+            </a:s>
+                                 <a:s r="155">
+                                    <a:s>where </a:s>
+                                    <a:s r="155">
+                                       <a:s r="150">
+                                          <a:s r="149">
+                                             <a:s>Assessment</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="150">
+                                             <a:s>authorDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="155">
+                                          <a:s>within </a:s>
+                                          <a:s r="154">
+                                             <a:s>24 hours</a:s>
+                                          </a:s>
+                                          <a:s> of</a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="153">
+                                          <a:s>end of </a:s>
+                                          <a:s r="152">
+                                             <a:s r="151">
+                                                <a:s>DeliveryProcedure</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="152">
+                                                <a:s>relevantPeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> &#xd;
+            </a:s>
+                                 <a:s r="158">
+                                    <a:s>sort by </a:s>
+                                    <a:s r="157">
+                                       <a:s r="156">
+                                          <a:s>authorDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+        )</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	    )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="164" locator="77:2-86:6" xsi:type="Query">
+            <source localId="141" locator="77:2-77:29" alias="DeliveryProcedure">
+               <expression localId="140" locator="77:2-77:11" name="Delivery" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="163" locator="78:4-86:6" alias="I" xsi:type="With">
+               <expression localId="142" locator="78:9-78:45" name="Influenza Immunization Administered" xsi:type="ExpressionRef"/>
+               <suchThat localId="162" locator="79:17-86:6" xsi:type="After">
+                  <operand localId="145" locator="79:17-79:32" path="authorDatetime" scope="I" xsi:type="Property"/>
+                  <operand localId="161" locator="80:9-86:6" name="Conception Date" xsi:type="FunctionRef">
+                     <operand localId="146" locator="81:11-81:27" name="DeliveryProcedure" xsi:type="AliasRef"/>
+                     <operand asType="qdm53:PositiveAssessmentPerformed" xsi:type="As">
+                        <operand localId="160" locator="82:10-85:9" xsi:type="Last">
+                           <source localId="159" locator="82:15-84:34" xsi:type="Query">
+                              <source localId="148" locator="82:15-82:57" alias="Assessment">
+                                 <expression localId="147" locator="82:15-82:46" name="All Gestational Age Assessment" xsi:type="ExpressionRef"/>
+                              </source>
+                              <where localId="155" locator="83:13-83:102" xsi:type="In">
+                                 <operand localId="150" locator="83:19-83:43" path="authorDatetime" scope="Assessment" xsi:type="Property"/>
+                                 <operand locator="83:52-83:59" lowClosed="true" highClosed="true" xsi:type="Interval">
+                                    <low locator="83:52-83:59" xsi:type="Subtract">
+                                       <operand localId="153" locator="83:64-83:102" xsi:type="End">
+                                          <operand localId="152" locator="83:71-83:102" path="relevantPeriod" scope="DeliveryProcedure" xsi:type="Property"/>
+                                       </operand>
+                                       <operand localId="154" locator="83:52-83:59" value="24" unit="hours" xsi:type="Quantity"/>
+                                    </low>
+                                    <high locator="83:52-83:59" xsi:type="Add">
+                                       <operand localId="153" locator="83:64-83:102" xsi:type="End">
+                                          <operand localId="152" locator="83:71-83:102" path="relevantPeriod" scope="DeliveryProcedure" xsi:type="Property"/>
+                                       </operand>
+                                       <operand localId="154" locator="83:52-83:59" value="24" unit="hours" xsi:type="Quantity"/>
+                                    </high>
+                                 </operand>
+                              </where>
+                              <sort localId="158" locator="84:13-84:34">
+                                 <by localId="157" locator="84:21-84:34" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+                              </sort>
+                           </source>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

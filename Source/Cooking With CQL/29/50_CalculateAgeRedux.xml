@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="CalculateAgeRedux"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_4" version="5.4"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="3.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="5" locator="7:1-7:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="4" locator="7:32-7:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="3" locator="7:41-7:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <statements>
+      <def locator="9:1-9:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="9:1-9:15" xmlns:ns0="urn:healthit-gov:qdm:v5_4" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="17" locator="15:1-17:98" name="Patient Characteristic BirthDate" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="17">
+               <a:s>define &quot;Patient Characteristic BirthDate&quot;:&#xd;
+  </a:s>
+               <a:s r="16">
+                  <a:s>
+                     <a:s r="7">
+                        <a:s r="6">
+                           <a:s r="6">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> &#xd;
+    </a:s>
+                  <a:s r="15">
+                     <a:s>where </a:s>
+                     <a:s r="15">
+                        <a:s r="13">
+                           <a:s r="8">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="13">
+                              <a:s>CalendarAgeInYearsAt(</a:s>
+                              <a:s r="10">
+                                 <a:s r="9">
+                                    <a:s>BirthDate</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="10">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="12">
+                                 <a:s>start of </a:s>
+                                 <a:s r="11">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> >= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns1="urn:healthit-gov:qdm:v5_4" name="ns1:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="16" locator="16:3-17:98" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_4" name="ns2:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="7" locator="16:3-16:48" alias="BirthDate">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns3="urn:healthit-gov:qdm:v5_4" name="ns3:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="6" locator="16:3-16:38" xmlns:ns4="urn:healthit-gov:qdm:v5_4" dataType="ns4:PatientCharacteristicBirthdate" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns5="urn:healthit-gov:qdm:v5_4" name="ns5:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="15" locator="17:5-17:98" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand localId="13" locator="17:11-17:93" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                  <operand localId="10" locator="17:39-17:61" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                  <operand localId="12" locator="17:64-17:92" resultTypeName="t:DateTime" xsi:type="Start">
+                     <operand localId="11" locator="17:73-17:92" name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="14" locator="17:98" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="26" locator="21:1-22:88" resultTypeName="t:Boolean" name="Patient.birthDatetime" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="26">
+               <a:s>define &quot;Patient.birthDatetime&quot;:&#xd;
+  </a:s>
+               <a:s r="25">
+                  <a:s r="23">
+                     <a:s r="18">
+                        <a:s>Global</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="23">
+                        <a:s>CalendarAgeInYearsAt(</a:s>
+                        <a:s r="20">
+                           <a:s r="19">
+                              <a:s>Patient</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="20">
+                              <a:s>birthDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="22">
+                           <a:s>start of </a:s>
+                           <a:s r="21">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> >= 2</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="25" locator="22:3-22:88" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="23" locator="22:3-22:83" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+               <operand localId="20" locator="22:31-22:51" resultTypeName="t:DateTime" path="birthDatetime" xsi:type="Property">
+                  <source localId="19" locator="22:31-22:37" xmlns:ns6="urn:healthit-gov:qdm:v5_4" resultTypeName="ns6:Patient" name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="22" locator="22:54-22:82" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="21" locator="22:63-22:82" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="24" locator="22:88" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="42" locator="26:1-29:108" name="Patient Characteristic BirthDate in a Relationship" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="42">
+               <a:s>define &quot;Patient Characteristic BirthDate in a Relationship&quot;:&#xd;
+  </a:s>
+               <a:s r="41">
+                  <a:s>
+                     <a:s r="28">
+                        <a:s r="27">
+                           <a:s>
+                              <a:s>Global.&quot;Inpatient Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="40">
+                     <a:s>with </a:s>
+                     <a:s r="30">
+                        <a:s r="29">
+                           <a:s r="29">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+      such that </a:s>
+                     <a:s r="39">
+                        <a:s r="37">
+                           <a:s r="31">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="37">
+                              <a:s>CalendarAgeInYearsAt(</a:s>
+                              <a:s r="33">
+                                 <a:s r="32">
+                                    <a:s>BirthDate</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="33">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="36">
+                                 <a:s>start of </a:s>
+                                 <a:s r="35">
+                                    <a:s r="34">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="35">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> >= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_4" name="ns7:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="41" locator="27:3-29:108" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns8="urn:healthit-gov:qdm:v5_4" name="ns8:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="28" locator="27:3-27:40" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_4" name="ns9:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="27" locator="27:3-27:30" name="Inpatient Encounter" libraryName="Global" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_4" name="ns10:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <relationship localId="40" locator="28:5-29:108" alias="BirthDate" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_4" name="ns11:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="29" locator="28:10-28:45" xmlns:ns12="urn:healthit-gov:qdm:v5_4" dataType="ns12:PatientCharacteristicBirthdate" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns13="urn:healthit-gov:qdm:v5_4" name="ns13:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat localId="39" locator="29:17-29:108" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="37" locator="29:17-29:103" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="33" locator="29:45-29:67" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                     <operand localId="36" locator="29:70-29:102" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="35" locator="29:79-29:102" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="38" locator="29:108" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="55" locator="31:1-33:100" name="Patient.birthDatetime in a Where Clause" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="55">
+               <a:s>define &quot;Patient.birthDatetime in a Where Clause&quot;:&#xd;
+  </a:s>
+               <a:s r="54">
+                  <a:s>
+                     <a:s r="44">
+                        <a:s r="43">
+                           <a:s>
+                              <a:s>Global.&quot;Inpatient Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="53">
+                     <a:s>where </a:s>
+                     <a:s r="53">
+                        <a:s r="51">
+                           <a:s r="45">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="51">
+                              <a:s>CalendarAgeInYearsAt(</a:s>
+                              <a:s r="47">
+                                 <a:s r="46">
+                                    <a:s>Patient</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="47">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="50">
+                                 <a:s>start of </a:s>
+                                 <a:s r="49">
+                                    <a:s r="48">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="49">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> >= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns14="urn:healthit-gov:qdm:v5_4" name="ns14:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="54" locator="32:3-33:100" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns15="urn:healthit-gov:qdm:v5_4" name="ns15:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="44" locator="32:3-32:40" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns16="urn:healthit-gov:qdm:v5_4" name="ns16:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="43" locator="32:3-32:30" name="Inpatient Encounter" libraryName="Global" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns17="urn:healthit-gov:qdm:v5_4" name="ns17:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="53" locator="33:5-33:100" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand localId="51" locator="33:11-33:95" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                  <operand localId="47" locator="33:39-33:59" resultTypeName="t:DateTime" path="birthDatetime" xsi:type="Property">
+                     <source localId="46" locator="33:39-33:45" xmlns:ns18="urn:healthit-gov:qdm:v5_4" resultTypeName="ns18:Patient" name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="50" locator="33:62-33:94" resultTypeName="t:DateTime" xsi:type="Start">
+                     <operand localId="49" locator="33:71-33:94" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="52" locator="33:100" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="68" locator="37:1-41:3" resultTypeName="t:Boolean" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="68">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+  </a:s>
+               <a:s r="67">
+                  <a:s>exists </a:s>
+                  <a:s r="66">
+                     <a:s>(&#xd;
+    </a:s>
+                     <a:s r="66">
+                        <a:s>
+                           <a:s r="57">
+                              <a:s r="56">
+                                 <a:s r="56">
+                                    <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> BirthDate</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+      </a:s>
+                        <a:s r="65">
+                           <a:s>where </a:s>
+                           <a:s r="65">
+                              <a:s r="63">
+                                 <a:s r="58">
+                                    <a:s>Global</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="63">
+                                    <a:s>CalendarAgeInYearsAt(</a:s>
+                                    <a:s r="60">
+                                       <a:s r="59">
+                                          <a:s>BirthDate</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="60">
+                                          <a:s>birthDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="62">
+                                       <a:s>start of </a:s>
+                                       <a:s r="61">
+                                          <a:s>&quot;Measurement Period&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> >= 2</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="67" locator="38:3-41:3" resultTypeName="t:Boolean" xsi:type="Exists">
+            <operand localId="66" locator="38:10-41:3" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns19="urn:healthit-gov:qdm:v5_4" name="ns19:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="57" locator="39:5-39:50" alias="BirthDate">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns20="urn:healthit-gov:qdm:v5_4" name="ns20:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="56" locator="39:5-39:40" xmlns:ns21="urn:healthit-gov:qdm:v5_4" dataType="ns21:PatientCharacteristicBirthdate" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns22="urn:healthit-gov:qdm:v5_4" name="ns22:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <where localId="65" locator="40:7-40:100" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand localId="63" locator="40:13-40:95" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="60" locator="40:41-40:63" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                     <operand localId="62" locator="40:66-40:94" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="61" locator="40:75-40:94" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="64" locator="40:100" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="77" locator="44:1-45:88" resultTypeName="t:Boolean" name="Simplified Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="77">
+               <a:s>define &quot;Simplified Initial Population&quot;:&#xd;
+  </a:s>
+               <a:s r="76">
+                  <a:s r="74">
+                     <a:s r="69">
+                        <a:s>Global</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="74">
+                        <a:s>CalendarAgeInYearsAt(</a:s>
+                        <a:s r="71">
+                           <a:s r="70">
+                              <a:s>Patient</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="71">
+                              <a:s>birthDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="73">
+                           <a:s>start of </a:s>
+                           <a:s r="72">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> >= 2</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="76" locator="45:3-45:88" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="74" locator="45:3-45:83" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+               <operand localId="71" locator="45:31-45:51" resultTypeName="t:DateTime" path="birthDatetime" xsi:type="Property">
+                  <source localId="70" locator="45:31-45:37" xmlns:ns23="urn:healthit-gov:qdm:v5_4" resultTypeName="ns23:Patient" name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="73" locator="45:54-45:82" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="72" locator="45:63-45:82" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="75" locator="45:88" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="88" locator="52:1-54:70" name="AgeInYearsAt in a Where Clause" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="88">
+               <a:s>define &quot;AgeInYearsAt in a Where Clause&quot;:&#xd;
+  </a:s>
+               <a:s r="87">
+                  <a:s>
+                     <a:s r="79">
+                        <a:s r="78">
+                           <a:s>
+                              <a:s>Global.&quot;Inpatient Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="86">
+                     <a:s>where </a:s>
+                     <a:s r="86">
+                        <a:s r="84">
+                           <a:s>AgeInYearsAt(</a:s>
+                           <a:s r="83">
+                              <a:s>ToDate(</a:s>
+                              <a:s r="82">
+                                 <a:s>start of </a:s>
+                                 <a:s r="81">
+                                    <a:s r="80">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="81">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns24="urn:healthit-gov:qdm:v5_4" name="ns24:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="87" locator="53:3-54:70" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns25="urn:healthit-gov:qdm:v5_4" name="ns25:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="79" locator="53:3-53:40" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns26="urn:healthit-gov:qdm:v5_4" name="ns26:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="78" locator="53:3-53:30" name="Inpatient Encounter" libraryName="Global" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns27="urn:healthit-gov:qdm:v5_4" name="ns27:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="86" locator="54:5-54:70" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand localId="84" locator="54:11-54:65" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="ToDateTime">
+                     <operand localId="83" locator="54:24-54:64" resultTypeName="t:Date" xsi:type="ToDate">
+                        <operand localId="82" locator="54:31-54:63" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="81" locator="54:40-54:63" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="85" locator="54:70" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="95" locator="56:1-56:93" resultTypeName="t:Boolean" name="AgeInYearsAt in a Criteria" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="95">
+               <a:s>define &quot;AgeInYearsAt in a Criteria&quot;: </a:s>
+               <a:s r="94">
+                  <a:s r="92">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="91">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="90">
+                           <a:s>start of </a:s>
+                           <a:s r="89">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> >= 2</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="94" locator="56:38-56:93" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="92" locator="56:38-56:88" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand xsi:type="ToDateTime">
+                  <operand localId="91" locator="56:51-56:87" resultTypeName="t:Date" xsi:type="ToDate">
+                     <operand localId="90" locator="56:58-56:86" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="89" locator="56:67-56:86" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="93" locator="56:93" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="106" locator="63:1-65:72" name="AgeInYearsAt with date from in a Where Clause" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="106">
+               <a:s>define &quot;AgeInYearsAt with date from in a Where Clause&quot;:&#xd;
+  </a:s>
+               <a:s r="105">
+                  <a:s>
+                     <a:s r="97">
+                        <a:s r="96">
+                           <a:s>
+                              <a:s>Global.&quot;Inpatient Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="104">
+                     <a:s>where </a:s>
+                     <a:s r="104">
+                        <a:s r="102">
+                           <a:s>AgeInYearsAt(</a:s>
+                           <a:s r="101">
+                              <a:s>date from </a:s>
+                              <a:s r="100">
+                                 <a:s>start of </a:s>
+                                 <a:s r="99">
+                                    <a:s r="98">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="99">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> >= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns28="urn:healthit-gov:qdm:v5_4" name="ns28:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="105" locator="64:3-65:72" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns29="urn:healthit-gov:qdm:v5_4" name="ns29:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="97" locator="64:3-64:40" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns30="urn:healthit-gov:qdm:v5_4" name="ns30:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="96" locator="64:3-64:30" name="Inpatient Encounter" libraryName="Global" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns31="urn:healthit-gov:qdm:v5_4" name="ns31:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="104" locator="65:5-65:72" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand localId="102" locator="65:11-65:67" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand xsi:type="ToDateTime">
+                     <operand localId="101" locator="65:24-65:66" resultTypeName="t:Date" xsi:type="DateFrom">
+                        <operand localId="100" locator="65:34-65:66" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="99" locator="65:43-65:66" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="103" locator="65:72" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="113" locator="67:1-67:110" resultTypeName="t:Boolean" name="AgeInYearsAt with date from in a Criteria" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="113">
+               <a:s>define &quot;AgeInYearsAt with date from in a Criteria&quot;: </a:s>
+               <a:s r="112">
+                  <a:s r="110">
+                     <a:s>AgeInYearsAt(</a:s>
+                     <a:s r="109">
+                        <a:s>date from </a:s>
+                        <a:s r="108">
+                           <a:s>start of </a:s>
+                           <a:s r="107">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> >= 2</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="112" locator="67:53-67:110" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="110" locator="67:53-67:105" resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand xsi:type="ToDateTime">
+                  <operand localId="109" locator="67:66-67:104" resultTypeName="t:Date" xsi:type="DateFrom">
+                     <operand localId="108" locator="67:76-67:104" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="107" locator="67:85-67:104" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="111" locator="67:110" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

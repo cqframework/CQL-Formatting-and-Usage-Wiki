@@ -1,0 +1,76 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.117.1.7.1.323",
+  "meta": {
+    "versionId": "28",
+    "lastUpdated": "2021-03-17T18:37:27.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "TJC EH Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-keyWord",
+    "valueString": "VTE-01,VTE-02"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2023-01-13"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2021-02-20"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.323",
+  "version": "20210220",
+  "name": "Hip Fracture Surgery SNOMED CT",
+  "status": "active",
+  "experimental": false,
+  "date": "2021-02-20T01:02:00-05:00",
+  "publisher": "TJC EH Steward",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for procedures of hip fracture surgery.),(Data Element Scope: This value set may use a model element related to Procedure.),(Inclusion Criteria: Includes concepts that represent a procedure for hip fracture surgery.),(Exclusion Criteria: No exclusions.)",
+  "compose": {
+    "include": [ {
+      "system": "http://snomed.info/sct",
+      "version": "http://snomed.info/sct/731000124108/version/20220901",
+      "concept": [ {
+        "code": "16174006",
+        "display": "Acetabuloplasty with use of methyl methacrylate (procedure)"
+      }, {
+        "code": "239499008",
+        "display": "Excision arthroplasty of the hip (procedure)"
+      }, {
+        "code": "239500004",
+        "display": "Interposition arthroplasty of the hip (procedure)"
+      }, {
+        "code": "265745003",
+        "display": "Secondary arthroplasty of hip for correction of congenital deformity (procedure)"
+      }, {
+        "code": "32972004",
+        "display": "Acetabuloplasty, Whitman type procedure (procedure)"
+      }, {
+        "code": "44167006",
+        "display": "Shelf operation, arthroplasty of hip (procedure)"
+      }, {
+        "code": "47458005",
+        "display": "Repair of hip joint (procedure)"
+      }, {
+        "code": "61509005",
+        "display": "Acetabuloplasty, Colonna type procedure (procedure)"
+      }, {
+        "code": "73764009",
+        "display": "Repair of acetabulum (procedure)"
+      }, {
+        "code": "83381006",
+        "display": "Arthroplasty of hip with bone graft (procedure)"
+      }, {
+        "code": "87618002",
+        "display": "Acetabuloplasty with resection of femoral head (procedure)"
+      } ]
+    } ]
+  }
+}

@@ -1,0 +1,621 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "AnnualWellness",
+         "version" : "1.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "11",
+            "locator" : "13:1-13:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "10",
+               "locator" : "13:32-13:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "9",
+                  "locator" : "13:41-13:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "name" : "LOINC",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "3",
+            "locator" : "6:1-6:55",
+            "name" : "SNOMEDCT",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "8:1-8:84",
+            "name" : "Annual Wellness Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.101.12.1063",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "6",
+            "locator" : "10:1-10:60",
+            "name" : "Birthdate",
+            "id" : "21112-8",
+            "display" : "Birthdate",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "5",
+               "locator" : "10:34-10:40",
+               "name" : "LOINC"
+            }
+         }, {
+            "localId" : "8",
+            "locator" : "11:1-11:55",
+            "name" : "Dead",
+            "id" : "419099009",
+            "display" : "Dead",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "7",
+               "locator" : "11:31-11:40",
+               "name" : "SNOMEDCT"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "15:1-15:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "15:1-15:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "37",
+            "locator" : "24:1-25:93",
+            "name" : "ToDate",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "37",
+                  "s" : [ {
+                     "value" : [ "define function ","\"ToDate\"","(","Value"," " ]
+                  }, {
+                     "r" : "23",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "36",
+                     "s" : [ {
+                        "r" : "36",
+                        "s" : [ {
+                           "value" : [ "DateTime","(" ]
+                        }, {
+                           "r" : "25",
+                           "s" : [ {
+                              "value" : [ "year from " ]
+                           }, {
+                              "r" : "24",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "27",
+                           "s" : [ {
+                              "value" : [ "month from " ]
+                           }, {
+                              "r" : "26",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "29",
+                           "s" : [ {
+                              "value" : [ "day from " ]
+                           }, {
+                              "r" : "28",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", ","0",", ","0",", ","0",", ","0",", " ]
+                        }, {
+                           "r" : "35",
+                           "s" : [ {
+                              "value" : [ "timezone from " ]
+                           }, {
+                              "r" : "34",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "36",
+               "locator" : "25:2-25:93",
+               "type" : "DateTime",
+               "year" : {
+                  "localId" : "25",
+                  "locator" : "25:11-25:25",
+                  "precision" : "Year",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "24",
+                     "locator" : "25:21-25:25",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "month" : {
+                  "localId" : "27",
+                  "locator" : "25:28-25:43",
+                  "precision" : "Month",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "26",
+                     "locator" : "25:39-25:43",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "day" : {
+                  "localId" : "29",
+                  "locator" : "25:46-25:59",
+                  "precision" : "Day",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "28",
+                     "locator" : "25:55-25:59",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "hour" : {
+                  "localId" : "30",
+                  "locator" : "25:62",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "minute" : {
+                  "localId" : "31",
+                  "locator" : "25:65",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "second" : {
+                  "localId" : "32",
+                  "locator" : "25:68",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "millisecond" : {
+                  "localId" : "33",
+                  "locator" : "25:71",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "timezoneOffset" : {
+                  "localId" : "35",
+                  "locator" : "25:74-25:92",
+                  "type" : "TimezoneFrom",
+                  "operand" : {
+                     "localId" : "34",
+                     "locator" : "25:88-25:92",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Value",
+               "operandTypeSpecifier" : {
+                  "localId" : "23",
+                  "locator" : "24:32-24:39",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "42",
+            "locator" : "28:1-29:52",
+            "name" : "CalendarAgeInYearsAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "42",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInYearsAt\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "20",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ ", ","AsOf"," " ]
+                  }, {
+                     "r" : "21",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "41",
+                     "s" : [ {
+                        "r" : "41",
+                        "s" : [ {
+                           "value" : [ "years between " ]
+                        }, {
+                           "r" : "38",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "22",
+                              "s" : [ {
+                                 "value" : [ "BirthDateTime" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        }, {
+                           "value" : [ "and " ]
+                        }, {
+                           "r" : "40",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "39",
+                              "s" : [ {
+                                 "value" : [ "AsOf" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "41",
+               "locator" : "29:2-29:52",
+               "precision" : "Year",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "localId" : "38",
+                  "locator" : "29:16-29:36",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "22",
+                     "locator" : "29:23-29:35",
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "localId" : "40",
+                  "locator" : "29:41-29:52",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "39",
+                     "locator" : "29:48-29:51",
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "20",
+                  "locator" : "28:54-28:61",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "localId" : "21",
+                  "locator" : "28:69-28:76",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "53",
+            "locator" : "17:1-21:54",
+            "name" : "Annual Wellness Encounters",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "53",
+                  "s" : [ {
+                     "value" : [ "define ","\"Annual Wellness Encounters\"",":\n\t" ]
+                  }, {
+                     "r" : "52",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "13",
+                           "s" : [ {
+                              "r" : "12",
+                              "s" : [ {
+                                 "r" : "12",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Annual Wellness Visit\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","AWV" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "51",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "15",
+                           "s" : [ {
+                              "r" : "14",
+                              "s" : [ {
+                                 "r" : "14",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Patient Characteristic Birthdate\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Birthdate\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","BirthDate" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t\tsuch that " ]
+                        }, {
+                           "r" : "50",
+                           "s" : [ {
+                              "r" : "45",
+                              "s" : [ {
+                                 "r" : "43",
+                                 "s" : [ {
+                                    "value" : [ "\"CalendarAgeInYearsAt\"","(" ]
+                                 }, {
+                                    "r" : "17",
+                                    "s" : [ {
+                                       "r" : "16",
+                                       "s" : [ {
+                                          "value" : [ "BirthDate" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "17",
+                                       "s" : [ {
+                                          "value" : [ "birthDatetime" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ", " ]
+                                 }, {
+                                    "r" : "19",
+                                    "s" : [ {
+                                       "value" : [ "start of " ]
+                                    }, {
+                                       "r" : "18",
+                                       "s" : [ {
+                                          "value" : [ "\"Measurement Period\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              }, {
+                                 "value" : [ ">="," ","65" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t\tand " ]
+                           }, {
+                              "r" : "49",
+                              "s" : [ {
+                                 "r" : "47",
+                                 "s" : [ {
+                                    "r" : "46",
+                                    "s" : [ {
+                                       "value" : [ "AWV" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "47",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " ","during"," " ]
+                              }, {
+                                 "r" : "48",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "52",
+               "locator" : "18:2-21:54",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "13",
+                  "locator" : "18:2-18:54",
+                  "alias" : "AWV",
+                  "expression" : {
+                     "localId" : "12",
+                     "locator" : "18:2-18:50",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                     "templateId" : "PositiveEncounterPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Annual Wellness Visit",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "51",
+                  "locator" : "19:3-21:54",
+                  "alias" : "BirthDate",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "14",
+                     "locator" : "19:8-19:56",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicBirthdate",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "type" : "ToList",
+                        "operand" : {
+                           "name" : "Birthdate",
+                           "type" : "CodeRef"
+                        }
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "50",
+                     "locator" : "20:14-21:54",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "45",
+                        "locator" : "20:14-20:96",
+                        "type" : "GreaterOrEqual",
+                        "operand" : [ {
+                           "localId" : "43",
+                           "locator" : "20:14-20:91",
+                           "name" : "CalendarAgeInYearsAt",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "localId" : "17",
+                              "locator" : "20:37-20:59",
+                              "path" : "birthDatetime",
+                              "scope" : "BirthDate",
+                              "type" : "Property"
+                           }, {
+                              "localId" : "19",
+                              "locator" : "20:62-20:90",
+                              "type" : "Start",
+                              "operand" : {
+                                 "localId" : "18",
+                                 "locator" : "20:71-20:90",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "44",
+                           "locator" : "20:95-20:96",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "65",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "localId" : "49",
+                        "locator" : "21:9-21:54",
+                        "type" : "IncludedIn",
+                        "operand" : [ {
+                           "localId" : "47",
+                           "locator" : "21:9-21:26",
+                           "path" : "relevantPeriod",
+                           "scope" : "AWV",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "48",
+                           "locator" : "21:35-21:54",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     } ]
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}

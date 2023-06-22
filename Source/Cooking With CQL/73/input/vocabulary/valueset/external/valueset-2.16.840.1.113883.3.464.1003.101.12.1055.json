@@ -1,0 +1,78 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.464.1003.101.12.1055",
+    "meta": {
+        "versionId": "17",
+        "lastUpdated": "2021-01-19T08:48:15.000-05:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2017-05-04"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1055",
+    "version": "20170504",
+    "name": "Psychotherapy and Pharmacologic Management",
+    "status": "active",
+    "date": "2017-05-04T01:00:13-04:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:315e3c8e-3926-4f53-af00-0c8719f575f6",
+        "timestamp": "2023-04-27T12:48:23-04:00",
+        "total": 6,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90845",
+                "display": "Psychoanalysis"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90847",
+                "display": "Family psychotherapy (conjoint psychotherapy) (with patient present), 50 minutes"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90849",
+                "display": "Multiple-family group psychotherapy"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90853",
+                "display": "Group psychotherapy (other than of a multiple-family group)"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90875",
+                "display": "Individual psychophysiological therapy incorporating biofeedback training by any modality (face-to-face with the patient), with psychotherapy (eg, insight oriented, behavior modifying or supportive psychotherapy); 30 minutes"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90876",
+                "display": "Individual psychophysiological therapy incorporating biofeedback training by any modality (face-to-face with the patient), with psychotherapy (eg, insight oriented, behavior modifying or supportive psychotherapy); 45 minutes"
+            }
+        ]
+    }
+}

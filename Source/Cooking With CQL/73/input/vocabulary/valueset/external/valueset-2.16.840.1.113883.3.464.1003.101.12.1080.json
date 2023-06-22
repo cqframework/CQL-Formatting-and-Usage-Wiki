@@ -1,0 +1,108 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.464.1003.101.12.1080",
+    "meta": {
+        "versionId": "18",
+        "lastUpdated": "2022-03-02T18:04:20.000-05:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2021-02-20"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1080",
+    "version": "20210220",
+    "name": "Telephone Visits",
+    "status": "active",
+    "date": "2022-03-03T18:46:01-05:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:058120ef-61ea-42ed-a0e2-0b76bfddc117",
+        "timestamp": "2023-04-27T12:51:18-04:00",
+        "total": 11,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "185317003",
+                "display": "Telephone encounter (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "314849005",
+                "display": "Telephone contact by consultant (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "386472008",
+                "display": "Telephone consultation (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "386473003",
+                "display": "Telephone follow-up (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "401267002",
+                "display": "Telephone triage encounter (procedure)"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "98966",
+                "display": "Telephone assessment and management service provided by a qualified nonphysician health care professional to an established patient, parent, or guardian not originating from a related assessment and management service provided within the previous 7 days nor leading to an assessment and management service or procedure within the next 24 hours or soonest available appointment; 5-10 minutes of medical discussion"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "98967",
+                "display": "Telephone assessment and management service provided by a qualified nonphysician health care professional to an established patient, parent, or guardian not originating from a related assessment and management service provided within the previous 7 days nor leading to an assessment and management service or procedure within the next 24 hours or soonest available appointment; 11-20 minutes of medical discussion"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "98968",
+                "display": "Telephone assessment and management service provided by a qualified nonphysician health care professional to an established patient, parent, or guardian not originating from a related assessment and management service provided within the previous 7 days nor leading to an assessment and management service or procedure within the next 24 hours or soonest available appointment; 21-30 minutes of medical discussion"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99441",
+                "display": "Telephone evaluation and management service by a physician or other qualified health care professional who may report evaluation and management services provided to an established patient, parent, or guardian not originating from a related E/M service provided within the previous 7 days nor leading to an E/M service or procedure within the next 24 hours or soonest available appointment; 5-10 minutes of medical discussion"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99442",
+                "display": "Telephone evaluation and management service by a physician or other qualified health care professional who may report evaluation and management services provided to an established patient, parent, or guardian not originating from a related E/M service provided within the previous 7 days nor leading to an E/M service or procedure within the next 24 hours or soonest available appointment; 11-20 minutes of medical discussion"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99443",
+                "display": "Telephone evaluation and management service by a physician or other qualified health care professional who may report evaluation and management services provided to an established patient, parent, or guardian not originating from a related E/M service provided within the previous 7 days nor leading to an E/M service or procedure within the next 24 hours or soonest available appointment; 21-30 minutes of medical discussion"
+            }
+        ]
+    }
+}

@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="IntermediateResults"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="10:1-10:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="2.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="13" locator="22:1-22:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="12" locator="22:32-22:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="11" locator="22:41-22:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="12:1-12:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def localId="4" locator="14:1-14:73" name="Acute or Evolving MI" id="urn:oid:2.16.840.1.113883.3.666.5.3022" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="5" locator="15:1-15:71" name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="6" locator="16:1-16:72" name="Fibrinolytic Therapy" id="urn:oid:2.16.840.1.113883.3.666.5.736" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="7" locator="17:1-17:55" name="PCI" id="urn:oid:2.16.840.1.113762.1.4.1045.67" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="8" locator="18:1-18:75" name="Electrocardiogram (ECG)" id="urn:oid:2.16.840.1.113883.3.666.5.735" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def localId="10" locator="20:1-20:61" resultTypeName="t:Code" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem localId="9" locator="20:34-20:40" name="LOINC">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def locator="24:1-24:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="24:1-24:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="28" locator="45:1-48:64" name="Inpatient Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="28">
+               <a:s>define &quot;Inpatient Encounters&quot;:&#xd;
+	</a:s>
+               <a:s r="27">
+                  <a:s>
+                     <a:s r="15">
+                        <a:s r="14">
+                           <a:s r="14">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="26">
+                     <a:s>where </a:s>
+                     <a:s r="26">
+                        <a:s r="21">
+                           <a:s r="19">
+                              <a:s r="16">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="19">
+                                 <a:s>&quot;LengthInDays&quot;(</a:s>
+                                 <a:s r="18">
+                                    <a:s r="17">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="18">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&lt;= 120</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="25">
+                           <a:s r="23">
+                              <a:s r="22">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="23">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ends during </a:s>
+                           <a:s r="24">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="27" locator="46:2-48:64" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="15" locator="46:2-46:58" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="14" locator="46:2-46:48" dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="26" locator="47:3-48:64" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="21" locator="47:9-47:61" resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+                  <operand localId="19" locator="47:9-47:55" resultTypeName="t:Integer" name="LengthInDays" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="18" locator="47:31-47:54" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand localId="20" locator="47:59-47:61" resultTypeName="t:Integer" valueType="t:Integer" value="120" xsi:type="Literal"/>
+               </operand>
+               <operand localId="25" locator="48:8-48:64" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand locator="48:33-48:36" xsi:type="End">
+                     <operand localId="23" locator="48:8-48:31" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand localId="24" locator="48:45-48:64" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="50" locator="50:1-54:62" name="AMI Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="50">
+               <a:s>define &quot;AMI Encounter&quot;:&#xd;
+	</a:s>
+               <a:s r="49">
+                  <a:s>
+                     <a:s r="31">
+                        <a:s r="30">
+                           <a:s r="30">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="48">
+                     <a:s>with </a:s>
+                     <a:s r="33">
+                        <a:s r="32">
+                           <a:s r="32">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Birthdate&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="47">
+                        <a:s r="42">
+                           <a:s r="40">
+                              <a:s r="34">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="40">
+                                 <a:s>CalendarAgeInYearsAt(</a:s>
+                                 <a:s r="36">
+                                    <a:s r="35">
+                                       <a:s>BirthDate</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="36">
+                                       <a:s>birthDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="39">
+                                    <a:s>start of </a:s>
+                                    <a:s r="38">
+                                       <a:s r="37">
+                                          <a:s>Encounter</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="38">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>>= 18</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+				and </a:s>
+                        <a:s r="46">
+                           <a:s r="44">
+                              <a:s r="43">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="44">
+                                 <a:s>principalDiagnosis</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="45">
+                              <a:s>&quot;Acute or Evolving MI&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="49" locator="51:2-54:62" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="31" locator="51:2-51:58" alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="30" locator="51:2-51:48" dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="48" locator="52:3-54:62" alias="BirthDate" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="32" locator="52:8-52:56" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes xsi:type="ToList">
+                     <operand name="Birthdate" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+               <suchThat localId="47" locator="53:14-54:62" resultTypeName="t:Boolean" xsi:type="And">
+                  <operand localId="42" locator="53:14-53:105" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand localId="40" locator="53:14-53:100" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="36" locator="53:42-53:64" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="39" locator="53:67-53:99" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="38" locator="53:76-53:99" path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="41" locator="53:104-53:105" resultTypeName="t:Integer" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                  </operand>
+                  <operand localId="46" locator="54:9-54:62" resultTypeName="t:Boolean" xsi:type="InValueSet">
+                     <code localId="44" locator="54:9-54:36" resultTypeName="t:Code" path="principalDiagnosis" scope="Encounter" xsi:type="Property"/>
+                     <valueset localId="45" locator="54:41-54:62" name="Acute or Evolving MI">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </valueset>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="53" locator="41:1-43:27" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="53">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="52">
+                  <a:s r="29">
+                     <a:s>&quot;Inpatient Encounters&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		intersect </a:s>
+                  <a:s r="51">
+                     <a:s>&quot;AMI Encounter&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="52" locator="42:2-43:27" xsi:type="Intersect">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand localId="29" locator="42:2-42:23" name="Inpatient Encounters" xsi:type="ExpressionRef">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+            </operand>
+            <operand localId="51" locator="43:13-43:27" name="AMI Encounter" xsi:type="ExpressionRef">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="57" locator="56:1-57:32" name="PCI Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="57">
+               <a:s>define &quot;PCI Procedure&quot;:&#xd;
+	</a:s>
+               <a:s r="56">
+                  <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;PCI&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="56" locator="57:2-57:32" dataType="qdm53:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="PCI" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="74" locator="59:1-60:59" name="Diagnostic Electrocardiogram" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="74">
+               <a:s>define &quot;Diagnostic Electrocardiogram&quot;:&#xd;
+	</a:s>
+               <a:s r="73">
+                  <a:s>[&quot;Diagnostic Study, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Electrocardiogram (ECG)&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="73" locator="60:2-60:59" dataType="qdm53:PositiveDiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Electrocardiogram (ECG)" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="100" locator="62:1-63:53" name="Fibrinolytic" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="100">
+               <a:s>define &quot;Fibrinolytic&quot;:&#xd;
+	</a:s>
+               <a:s r="99">
+                  <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Fibrinolytic Therapy&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="99" locator="63:2-63:53" dataType="qdm53:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Fibrinolytic Therapy" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="121" locator="26:1-39:4" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="121">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+	</a:s>
+               <a:s r="120">
+                  <a:s>
+                     <a:s r="55">
+                        <a:s r="54">
+                           <a:s>
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s>
+                     <a:s>let </a:s>
+                     <a:s r="72">
+                        <a:s>FirstPCI: </a:s>
+                        <a:s r="71">
+                           <a:s>First(</a:s>
+                           <a:s r="70">
+                              <a:s>
+                                 <a:s r="59">
+                                    <a:s r="58">
+                                       <a:s>
+                                          <a:s>&quot;PCI Procedure&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> FirstPCI</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				</a:s>
+                              <a:s r="65">
+                                 <a:s>where </a:s>
+                                 <a:s r="65">
+                                    <a:s r="61">
+                                       <a:s r="60">
+                                          <a:s>FirstPCI</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="61">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> starts on or after </a:s>
+                                    <a:s r="64">
+                                       <a:s r="62">
+                                          <a:s>Global</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="64">
+                                          <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                          <a:s r="63">
+                                             <a:s>QualifyingEncounter</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				</a:s>
+                              <a:s r="69">
+                                 <a:s>sort by </a:s>
+                                 <a:s r="68">
+                                    <a:s r="67">
+                                       <a:s>start of </a:s>
+                                       <a:s r="66">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+		)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="91">
+                     <a:s>with </a:s>
+                     <a:s r="76">
+                        <a:s r="75">
+                           <a:s>
+                              <a:s>&quot;Diagnostic Electrocardiogram&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ECG</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="90">
+                        <a:s r="82">
+                           <a:s r="78">
+                              <a:s r="77">
+                                 <a:s>ECG</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="78">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> starts during </a:s>
+                           <a:s r="81">
+                              <a:s r="79">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="81">
+                                 <a:s>&quot;Hospitalization&quot;(</a:s>
+                                 <a:s r="80">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+				or </a:s>
+                        <a:s r="89">
+                           <a:s r="84">
+                              <a:s r="83">
+                                 <a:s>ECG</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="84">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="89">
+                              <a:s>starts </a:s>
+                              <a:s r="88">
+                                 <a:s>1 hour</a:s>
+                              </a:s>
+                              <a:s> or less on or before</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="87">
+                              <a:s r="85">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="87">
+                                 <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                 <a:s r="86">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="119">
+                     <a:s>where </a:s>
+                     <a:s r="119">
+                        <a:s r="98">
+                           <a:s r="93">
+                              <a:s r="92">
+                                 <a:s>FirstPCI</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="93">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="98">
+                              <a:s>starts </a:s>
+                              <a:s r="97">
+                                 <a:s>1440 minutes</a:s>
+                              </a:s>
+                              <a:s> or less on or after</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="96">
+                              <a:s r="94">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="96">
+                                 <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                 <a:s r="95">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="118">
+                           <a:s>not </a:s>
+                           <a:s r="117">
+                              <a:s>exists </a:s>
+                              <a:s r="116">
+                                 <a:s>( </a:s>
+                                 <a:s r="116">
+                                    <a:s>
+                                       <a:s r="102">
+                                          <a:s r="101">
+                                             <a:s>
+                                                <a:s>&quot;Fibrinolytic&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> FibrinolyticTherapy</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+					</a:s>
+                                    <a:s r="115">
+                                       <a:s>where </a:s>
+                                       <a:s r="115">
+                                          <a:s r="108">
+                                             <a:s r="104">
+                                                <a:s r="103">
+                                                   <a:s>FibrinolyticTherapy</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="104">
+                                                   <a:s>relevantPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> starts after </a:s>
+                                             <a:s r="107">
+                                                <a:s r="105">
+                                                   <a:s>Global</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="107">
+                                                   <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                                   <a:s r="106">
+                                                      <a:s>QualifyingEncounter</a:s>
+                                                   </a:s>
+                                                   <a:s>)</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>&#xd;
+						and </a:s>
+                                          <a:s r="114">
+                                             <a:s r="110">
+                                                <a:s r="109">
+                                                   <a:s>FibrinolyticTherapy</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="110">
+                                                   <a:s>relevantPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> starts before </a:s>
+                                             <a:s r="113">
+                                                <a:s>start of </a:s>
+                                                <a:s r="112">
+                                                   <a:s r="111">
+                                                      <a:s>FirstPCI</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="112">
+                                                      <a:s>relevantPeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+			)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="120" locator="27:2-39:4" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="55" locator="27:2-27:41" alias="QualifyingEncounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="54" locator="27:2-27:21" name="Initial Population" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <let localId="72" locator="28:7-31:3" resultTypeName="qdm53:PositiveProcedurePerformed" identifier="FirstPCI">
+               <expression localId="71" locator="28:17-31:3" resultTypeName="qdm53:PositiveProcedurePerformed" xsi:type="First">
+                  <source localId="70" locator="28:23-30:35" xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source localId="59" locator="28:23-28:46" alias="FirstPCI">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression localId="58" locator="28:23-28:37" name="PCI Procedure" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </expression>
+                     </source>
+                     <where localId="65" locator="29:5-29:104" resultTypeName="t:Boolean" xsi:type="SameOrAfter">
+                        <operand locator="29:35-29:40" xsi:type="Start">
+                           <operand localId="61" locator="29:11-29:33" path="relevantPeriod" scope="FirstPCI" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand localId="64" locator="29:54-29:104" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="63" locator="29:85-29:103" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                     </where>
+                     <sort localId="69" locator="30:5-30:35">
+                        <by localId="68" locator="30:13-30:35" resultTypeName="t:DateTime" direction="asc" xsi:type="ByExpression">
+                           <expression localId="67" locator="30:13-30:35" resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand localId="66" locator="30:22-30:35" name="relevantPeriod" xsi:type="IdentifierRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </expression>
+                        </by>
+                     </sort>
+                  </source>
+               </expression>
+            </let>
+            <relationship localId="91" locator="32:3-34:112" alias="ECG" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="75" locator="32:8-32:37" name="Diagnostic Electrocardiogram" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveDiagnosticStudyPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat localId="90" locator="33:14-34:112" resultTypeName="t:Boolean" xsi:type="Or">
+                  <operand localId="82" locator="33:14-33:91" resultTypeName="t:Boolean" xsi:type="In">
+                     <operand locator="33:33-33:38" xsi:type="Start">
+                        <operand localId="78" locator="33:14-33:31" path="relevantPeriod" scope="ECG" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand localId="81" locator="33:47-33:91" name="Hospitalization" libraryName="Global" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand localId="80" locator="33:72-33:90" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="89" locator="34:8-34:112" resultTypeName="t:Boolean" xsi:type="In">
+                     <operand locator="34:27-34:32" xsi:type="Start">
+                        <operand localId="84" locator="34:8-34:25" path="relevantPeriod" scope="ECG" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand locator="34:34-34:47" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <low locator="34:69-34:112" xsi:type="Subtract">
+                           <operand localId="87" locator="34:62-34:112" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="86" locator="34:93-34:111" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                           </operand>
+                           <operand localId="88" locator="34:34-34:39" resultTypeName="t:Quantity" value="1" unit="hour" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="87" locator="34:62-34:112" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="86" locator="34:93-34:111" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </high>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where localId="119" locator="35:3-39:4" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="98" locator="35:9-35:123" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand locator="35:33-35:38" xsi:type="Start">
+                     <operand localId="93" locator="35:9-35:31" path="relevantPeriod" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source localId="92" locator="35:9-35:16" resultTypeName="qdm53:PositiveProcedurePerformed" name="FirstPCI" xsi:type="QueryLetRef"/>
+                     </operand>
+                  </operand>
+                  <operand locator="35:40-35:59" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <low localId="96" locator="35:73-35:123" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="95" locator="35:104-35:122" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </low>
+                     <high locator="35:80-35:123" xsi:type="Add">
+                        <operand localId="96" locator="35:73-35:123" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="95" locator="35:104-35:122" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                        <operand localId="97" locator="35:40-35:51" resultTypeName="t:Quantity" value="1440" unit="minutes" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </operand>
+               <operand localId="118" locator="36:8-39:4" resultTypeName="t:Boolean" xsi:type="Not">
+                  <operand localId="117" locator="36:12-39:4" resultTypeName="t:Boolean" xsi:type="Exists">
+                     <operand localId="116" locator="36:19-39:4" xsi:type="Query">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source localId="102" locator="36:21-36:54" alias="FibrinolyticTherapy">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <expression localId="101" locator="36:21-36:34" name="Fibrinolytic" xsi:type="ExpressionRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:PositiveMedicationAdministered" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </expression>
+                        </source>
+                        <where localId="115" locator="37:6-38:91" resultTypeName="t:Boolean" xsi:type="And">
+                           <operand localId="108" locator="37:12-37:110" resultTypeName="t:Boolean" xsi:type="After">
+                              <operand locator="37:47-37:52" xsi:type="Start">
+                                 <operand localId="104" locator="37:12-37:45" path="relevantPeriod" scope="FibrinolyticTherapy" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand localId="107" locator="37:60-37:110" resultTypeName="t:DateTime" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                                 <operand localId="106" locator="37:91-37:109" resultTypeName="qdm53:PositiveEncounterPerformed" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="114" locator="38:11-38:91" resultTypeName="t:Boolean" xsi:type="Before">
+                              <operand locator="38:46-38:51" xsi:type="Start">
+                                 <operand localId="110" locator="38:11-38:44" path="relevantPeriod" scope="FibrinolyticTherapy" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand localId="113" locator="38:60-38:91" resultTypeName="t:DateTime" xsi:type="Start">
+                                 <operand localId="112" locator="38:69-38:91" path="relevantPeriod" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                    <source localId="111" locator="38:69-38:76" resultTypeName="qdm53:PositiveProcedurePerformed" name="FirstPCI" xsi:type="QueryLetRef"/>
+                                 </operand>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

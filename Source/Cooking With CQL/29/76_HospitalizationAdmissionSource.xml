@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="HospitalizationAdmissionSource" version="7.3.012"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_4" version="5.4"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="10:1-10:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="3.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="18" locator="26:1-26:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="17" locator="26:32-26:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="16" locator="26:41-26:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="3" locator="12:1-12:73" name="Acute or Evolving MI" id="urn:oid:2.16.840.1.113883.3.666.5.3022" accessLevel="Public"/>
+      <def localId="4" locator="13:1-13:78" name="Ambulatory surgical center" id="urn:oid:2.16.840.1.113883.3.666.5.687" accessLevel="Public"/>
+      <def localId="5" locator="14:1-14:82" name="Aortic balloon pump insertion" id="urn:oid:2.16.840.1.113883.3.666.5.1151" accessLevel="Public"/>
+      <def localId="6" locator="15:1-15:74" name="Cardiopulmonary arrest" id="urn:oid:2.16.840.1.113883.3.666.5.748" accessLevel="Public"/>
+      <def localId="7" locator="16:1-16:75" name="Electrocardiogram (ECG)" id="urn:oid:2.16.840.1.113883.3.666.5.735" accessLevel="Public"/>
+      <def localId="8" locator="17:1-17:71" name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def localId="9" locator="18:1-18:75" name="Endotracheal Intubation" id="urn:oid:2.16.840.1.113762.1.4.1045.69" accessLevel="Public"/>
+      <def localId="10" locator="19:1-19:72" name="Fibrinolytic Therapy" id="urn:oid:2.16.840.1.113883.3.666.5.736" accessLevel="Public"/>
+      <def localId="11" locator="20:1-20:55" name="PCI" id="urn:oid:2.16.840.1.113762.1.4.1045.67" accessLevel="Public"/>
+      <def localId="12" locator="21:1-21:102" name="Transfer From Emergency Department (ED) Locations" id="urn:oid:2.16.840.1.113883.3.666.5.3006" accessLevel="Public"/>
+      <def localId="13" locator="22:1-22:76" name="Transfer From Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.3013" accessLevel="Public"/>
+      <def localId="14" locator="23:1-23:79" name="Transfer From Outpatient" id="urn:oid:2.16.840.1.113883.3.67.1.101.950" accessLevel="Public"/>
+      <def localId="15" locator="24:1-24:88" name="Ventricular Assist Device placement" id="urn:oid:2.16.840.1.113883.3.666.5.3015" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def locator="28:1-28:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="28:1-28:15" xmlns:ns0="urn:healthit-gov:qdm:v5_4" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="33" locator="56:1-59:64" name="Inpatient Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="33">
+               <a:s>define &quot;Inpatient Encounters&quot;:&#xd;
+	</a:s>
+               <a:s r="32">
+                  <a:s>
+                     <a:s r="20">
+                        <a:s r="19">
+                           <a:s r="19">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="31">
+                     <a:s>where </a:s>
+                     <a:s r="31">
+                        <a:s r="26">
+                           <a:s r="24">
+                              <a:s r="21">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="24">
+                                 <a:s>&quot;LengthInDays&quot;(</a:s>
+                                 <a:s r="23">
+                                    <a:s r="22">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="23">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&lt;= 120</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="30">
+                           <a:s r="28">
+                              <a:s r="27">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="28">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ends during </a:s>
+                           <a:s r="29">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="32" locator="57:2-59:64" xsi:type="Query">
+            <source localId="20" locator="57:2-57:58" alias="Encounter">
+               <expression localId="19" locator="57:2-57:48" xmlns:ns1="urn:healthit-gov:qdm:v5_4" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="31" locator="58:3-59:64" xsi:type="And">
+               <operand localId="26" locator="58:9-58:61" xsi:type="LessOrEqual">
+                  <operand localId="24" locator="58:9-58:55" name="LengthInDays" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="23" locator="58:31-58:54" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="25" locator="58:59-58:61" valueType="t:Integer" value="120" xsi:type="Literal"/>
+               </operand>
+               <operand localId="30" locator="59:8-59:64" xsi:type="In">
+                  <operand locator="59:33-59:36" xsi:type="End">
+                     <operand localId="28" locator="59:8-59:31" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="29" locator="59:45-59:64" name="Measurement Period" xsi:type="ParameterRef"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="49" locator="61:1-64:61" name="AMI Encounter" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="49">
+               <a:s>define &quot;AMI Encounter&quot;:&#xd;
+	</a:s>
+               <a:s r="48">
+                  <a:s>
+                     <a:s r="36">
+                        <a:s r="35">
+                           <a:s r="35">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="47">
+                     <a:s>where </a:s>
+                     <a:s r="47">
+                        <a:s r="42">
+                           <a:s r="40">
+                              <a:s>AgeInYearsAt(</a:s>
+                              <a:s r="39">
+                                 <a:s>start of </a:s>
+                                 <a:s r="38">
+                                    <a:s r="37">
+                                       <a:s>Encounter</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="38">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s> >= 18</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="46">
+                           <a:s r="44">
+                              <a:s r="43">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="44">
+                                 <a:s>principalDiagnosis</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="45">
+                              <a:s>&quot;Acute or Evolving MI&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="48" locator="62:2-64:61" xsi:type="Query">
+            <source localId="36" locator="62:2-62:58" alias="Encounter">
+               <expression localId="35" locator="62:2-62:48" xmlns:ns2="urn:healthit-gov:qdm:v5_4" dataType="ns2:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="47" locator="63:3-64:61" xsi:type="And">
+               <operand localId="42" locator="63:9-63:61" xsi:type="GreaterOrEqual">
+                  <operand localId="40" locator="63:9-63:55" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand path="birthDatetime" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="39" locator="63:22-63:54" xsi:type="Start">
+                        <operand localId="38" locator="63:31-63:54" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+                     </operand>
+                  </operand>
+                  <operand localId="41" locator="63:60-63:61" valueType="t:Integer" value="18" xsi:type="Literal"/>
+               </operand>
+               <operand localId="46" locator="64:8-64:61" xsi:type="InValueSet">
+                  <code localId="44" locator="64:8-64:35" path="principalDiagnosis" scope="Encounter" xsi:type="Property"/>
+                  <valueset localId="45" locator="64:40-64:61" name="Acute or Evolving MI"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="52" locator="52:1-54:27" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="52">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="51">
+                  <a:s r="34">
+                     <a:s>&quot;Inpatient Encounters&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		intersect </a:s>
+                  <a:s r="50">
+                     <a:s>&quot;AMI Encounter&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="51" locator="53:2-54:27" xsi:type="Intersect">
+            <operand localId="34" locator="53:2-53:23" name="Inpatient Encounters" xsi:type="ExpressionRef"/>
+            <operand localId="50" locator="54:13-54:27" name="AMI Encounter" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="56" locator="83:1-84:32" name="PCI Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="56">
+               <a:s>define &quot;PCI Procedure&quot;:&#xd;
+	</a:s>
+               <a:s r="55">
+                  <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;PCI&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="55" locator="84:2-84:32" xmlns:ns3="urn:healthit-gov:qdm:v5_4" dataType="ns3:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="PCI" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="73" locator="77:1-78:59" name="Diagnostic Electrocardiogram" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="73">
+               <a:s>define &quot;Diagnostic Electrocardiogram&quot;:&#xd;
+	</a:s>
+               <a:s r="72">
+                  <a:s>[&quot;Diagnostic Study, Performed&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Electrocardiogram (ECG)&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="72" locator="78:2-78:59" xmlns:ns4="urn:healthit-gov:qdm:v5_4" dataType="ns4:PositiveDiagnosticStudyPerformed" templateId="PositiveDiagnosticStudyPerformed" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Electrocardiogram (ECG)" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="99" locator="80:1-81:53" name="Fibrinolytic" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="99">
+               <a:s>define &quot;Fibrinolytic&quot;:&#xd;
+	</a:s>
+               <a:s r="98">
+                  <a:s>[&quot;Medication, Administered&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Fibrinolytic Therapy&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="98" locator="81:2-81:53" xmlns:ns5="urn:healthit-gov:qdm:v5_4" dataType="ns5:PositiveMedicationAdministered" templateId="PositiveMedicationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Fibrinolytic Therapy" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="120" locator="37:1-50:4" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="120">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+	</a:s>
+               <a:s r="119">
+                  <a:s>
+                     <a:s r="54">
+                        <a:s r="53">
+                           <a:s>
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s>
+                     <a:s>let </a:s>
+                     <a:s r="71">
+                        <a:s>FirstPCI: </a:s>
+                        <a:s r="70">
+                           <a:s>First(</a:s>
+                           <a:s r="69">
+                              <a:s>
+                                 <a:s r="58">
+                                    <a:s r="57">
+                                       <a:s>
+                                          <a:s>&quot;PCI Procedure&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> FirstPCI</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				</a:s>
+                              <a:s r="64">
+                                 <a:s>where </a:s>
+                                 <a:s r="64">
+                                    <a:s r="60">
+                                       <a:s r="59">
+                                          <a:s>FirstPCI</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="60">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> starts on or after </a:s>
+                                    <a:s r="63">
+                                       <a:s r="61">
+                                          <a:s>Global</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="63">
+                                          <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                          <a:s r="62">
+                                             <a:s>QualifyingEncounter</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				</a:s>
+                              <a:s r="68">
+                                 <a:s>sort by </a:s>
+                                 <a:s r="67">
+                                    <a:s r="66">
+                                       <a:s>start of </a:s>
+                                       <a:s r="65">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+		)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="90">
+                     <a:s>with </a:s>
+                     <a:s r="75">
+                        <a:s r="74">
+                           <a:s>
+                              <a:s>&quot;Diagnostic Electrocardiogram&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ECG</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="89">
+                        <a:s r="81">
+                           <a:s r="77">
+                              <a:s r="76">
+                                 <a:s>ECG</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="77">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> starts during </a:s>
+                           <a:s r="80">
+                              <a:s r="78">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="80">
+                                 <a:s>&quot;Hospitalization&quot;(</a:s>
+                                 <a:s r="79">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+				or </a:s>
+                        <a:s r="88">
+                           <a:s r="83">
+                              <a:s r="82">
+                                 <a:s>ECG</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="83">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="88">
+                              <a:s>starts </a:s>
+                              <a:s r="87">
+                                 <a:s>1 hour</a:s>
+                              </a:s>
+                              <a:s> or less on or before</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="86">
+                              <a:s r="84">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="86">
+                                 <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                 <a:s r="85">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="118">
+                     <a:s>where </a:s>
+                     <a:s r="118">
+                        <a:s r="97">
+                           <a:s r="92">
+                              <a:s r="91">
+                                 <a:s>FirstPCI</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="92">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="97">
+                              <a:s>starts </a:s>
+                              <a:s r="96">
+                                 <a:s>1440 minutes</a:s>
+                              </a:s>
+                              <a:s> or less on or after</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="95">
+                              <a:s r="93">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="95">
+                                 <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                 <a:s r="94">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="117">
+                           <a:s>not </a:s>
+                           <a:s r="116">
+                              <a:s>exists </a:s>
+                              <a:s r="115">
+                                 <a:s>( </a:s>
+                                 <a:s r="115">
+                                    <a:s>
+                                       <a:s r="101">
+                                          <a:s r="100">
+                                             <a:s>
+                                                <a:s>&quot;Fibrinolytic&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> FibrinolyticTherapy</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+					</a:s>
+                                    <a:s r="114">
+                                       <a:s>where </a:s>
+                                       <a:s r="114">
+                                          <a:s r="107">
+                                             <a:s r="103">
+                                                <a:s r="102">
+                                                   <a:s>FibrinolyticTherapy</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="103">
+                                                   <a:s>relevantPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> starts after </a:s>
+                                             <a:s r="106">
+                                                <a:s r="104">
+                                                   <a:s>Global</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="106">
+                                                   <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                                                   <a:s r="105">
+                                                      <a:s>QualifyingEncounter</a:s>
+                                                   </a:s>
+                                                   <a:s>)</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>&#xd;
+						and </a:s>
+                                          <a:s r="113">
+                                             <a:s r="109">
+                                                <a:s r="108">
+                                                   <a:s>FibrinolyticTherapy</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="109">
+                                                   <a:s>relevantPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> starts before </a:s>
+                                             <a:s r="112">
+                                                <a:s>start of </a:s>
+                                                <a:s r="111">
+                                                   <a:s r="110">
+                                                      <a:s>FirstPCI</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="111">
+                                                      <a:s>relevantPeriod</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+			)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="119" locator="38:2-50:4" xsi:type="Query">
+            <source localId="54" locator="38:2-38:41" alias="QualifyingEncounter">
+               <expression localId="53" locator="38:2-38:21" name="Initial Population" xsi:type="ExpressionRef"/>
+            </source>
+            <let localId="71" locator="39:7-42:3" identifier="FirstPCI">
+               <expression localId="70" locator="39:17-42:3" xsi:type="First">
+                  <source localId="69" locator="39:23-41:35" xsi:type="Query">
+                     <source localId="58" locator="39:23-39:46" alias="FirstPCI">
+                        <expression localId="57" locator="39:23-39:37" name="PCI Procedure" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="64" locator="40:5-40:104" xsi:type="SameOrAfter">
+                        <operand locator="40:35-40:40" xsi:type="Start">
+                           <operand localId="60" locator="40:11-40:33" path="relevantPeriod" scope="FirstPCI" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="63" locator="40:54-40:104" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="62" locator="40:85-40:103" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                     </where>
+                     <sort localId="68" locator="41:5-41:35">
+                        <by localId="67" locator="41:13-41:35" direction="asc" xsi:type="ByExpression">
+                           <expression localId="66" locator="41:13-41:35" xsi:type="Start">
+                              <operand localId="65" locator="41:22-41:35" name="relevantPeriod" xsi:type="IdentifierRef"/>
+                           </expression>
+                        </by>
+                     </sort>
+                  </source>
+               </expression>
+            </let>
+            <relationship localId="90" locator="43:3-45:112" alias="ECG" xsi:type="With">
+               <expression localId="74" locator="43:8-43:37" name="Diagnostic Electrocardiogram" xsi:type="ExpressionRef"/>
+               <suchThat localId="89" locator="44:14-45:112" xsi:type="Or">
+                  <operand localId="81" locator="44:14-44:91" xsi:type="In">
+                     <operand locator="44:33-44:38" xsi:type="Start">
+                        <operand localId="77" locator="44:14-44:31" path="relevantPeriod" scope="ECG" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="80" locator="44:47-44:91" name="Hospitalization" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="79" locator="44:72-44:90" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="88" locator="45:8-45:112" xsi:type="In">
+                     <operand locator="45:27-45:32" xsi:type="Start">
+                        <operand localId="83" locator="45:8-45:25" path="relevantPeriod" scope="ECG" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="45:34-45:47" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="45:69-45:112" xsi:type="Subtract">
+                           <operand localId="86" locator="45:62-45:112" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="85" locator="45:93-45:111" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                           </operand>
+                           <operand localId="87" locator="45:34-45:39" value="1" unit="hour" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="86" locator="45:62-45:112" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="85" locator="45:93-45:111" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </high>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+            <where localId="118" locator="46:3-50:4" xsi:type="And">
+               <operand localId="97" locator="46:9-46:123" xsi:type="In">
+                  <operand locator="46:33-46:38" xsi:type="Start">
+                     <operand localId="92" locator="46:9-46:31" path="relevantPeriod" xsi:type="Property">
+                        <source localId="91" locator="46:9-46:16" name="FirstPCI" xsi:type="QueryLetRef"/>
+                     </operand>
+                  </operand>
+                  <operand locator="46:40-46:59" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="95" locator="46:73-46:123" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="94" locator="46:104-46:122" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </low>
+                     <high locator="46:80-46:123" xsi:type="Add">
+                        <operand localId="95" locator="46:73-46:123" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="94" locator="46:104-46:122" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                        <operand localId="96" locator="46:40-46:51" value="1440" unit="minutes" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </operand>
+               <operand localId="117" locator="47:8-50:4" xsi:type="Not">
+                  <operand localId="116" locator="47:12-50:4" xsi:type="Exists">
+                     <operand localId="115" locator="47:19-50:4" xsi:type="Query">
+                        <source localId="101" locator="47:21-47:54" alias="FibrinolyticTherapy">
+                           <expression localId="100" locator="47:21-47:34" name="Fibrinolytic" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where localId="114" locator="48:6-49:91" xsi:type="And">
+                           <operand localId="107" locator="48:12-48:110" xsi:type="After">
+                              <operand locator="48:47-48:52" xsi:type="Start">
+                                 <operand localId="103" locator="48:12-48:45" path="relevantPeriod" scope="FibrinolyticTherapy" xsi:type="Property"/>
+                              </operand>
+                              <operand localId="106" locator="48:60-48:110" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                                 <operand localId="105" locator="48:91-48:109" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="113" locator="49:11-49:91" xsi:type="Before">
+                              <operand locator="49:46-49:51" xsi:type="Start">
+                                 <operand localId="109" locator="49:11-49:44" path="relevantPeriod" scope="FibrinolyticTherapy" xsi:type="Property"/>
+                              </operand>
+                              <operand localId="112" locator="49:60-49:91" xsi:type="Start">
+                                 <operand localId="111" locator="49:69-49:91" path="relevantPeriod" xsi:type="Property">
+                                    <source localId="110" locator="49:69-49:76" name="FirstPCI" xsi:type="QueryLetRef"/>
+                                 </operand>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="143" locator="30:1-35:72" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="143">
+               <a:s>define &quot;Denominator Exclusions&quot;:&#xd;
+	</a:s>
+               <a:s r="142">
+                  <a:s>
+                     <a:s r="122">
+                        <a:s r="121">
+                           <a:s>
+                              <a:s>&quot;Denominator&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DenominatorExclusions</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="141">
+                     <a:s>where </a:s>
+                     <a:s r="141">
+                        <a:s r="136">
+                           <a:s r="131">
+                              <a:s r="126">
+                                 <a:s r="124">
+                                    <a:s r="123">
+                                       <a:s>DenominatorExclusions</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="124">
+                                       <a:s>admissionSource</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="125">
+                                    <a:s>&quot;Ambulatory surgical center&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			or </a:s>
+                              <a:s r="130">
+                                 <a:s r="128">
+                                    <a:s r="127">
+                                       <a:s>DenominatorExclusions</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="128">
+                                       <a:s>admissionSource</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="129">
+                                    <a:s>&quot;Transfer From Outpatient&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			or </a:s>
+                           <a:s r="135">
+                              <a:s r="133">
+                                 <a:s r="132">
+                                    <a:s>DenominatorExclusions</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="133">
+                                    <a:s>admissionSource</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> in </a:s>
+                              <a:s r="134">
+                                 <a:s>&quot;Transfer From Emergency Department (ED) Locations&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			or </a:s>
+                        <a:s r="140">
+                           <a:s r="138">
+                              <a:s r="137">
+                                 <a:s>DenominatorExclusions</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="138">
+                                 <a:s>admissionSource</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="139">
+                              <a:s>&quot;Transfer From Inpatient&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="142" locator="31:2-35:72" xsi:type="Query">
+            <source localId="122" locator="31:2-31:36" alias="DenominatorExclusions">
+               <expression localId="121" locator="31:2-31:14" name="Denominator" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="141" locator="32:3-35:72" xsi:type="Or">
+               <operand localId="136" locator="32:9-34:98" xsi:type="Or">
+                  <operand localId="131" locator="32:9-33:73" xsi:type="Or">
+                     <operand localId="126" locator="32:9-32:77" xsi:type="InValueSet">
+                        <code localId="124" locator="32:9-32:45" path="admissionSource" scope="DenominatorExclusions" xsi:type="Property"/>
+                        <valueset localId="125" locator="32:50-32:77" name="Ambulatory surgical center"/>
+                     </operand>
+                     <operand localId="130" locator="33:7-33:73" xsi:type="InValueSet">
+                        <code localId="128" locator="33:7-33:43" path="admissionSource" scope="DenominatorExclusions" xsi:type="Property"/>
+                        <valueset localId="129" locator="33:48-33:73" name="Transfer From Outpatient"/>
+                     </operand>
+                  </operand>
+                  <operand localId="135" locator="34:7-34:98" xsi:type="InValueSet">
+                     <code localId="133" locator="34:7-34:43" path="admissionSource" scope="DenominatorExclusions" xsi:type="Property"/>
+                     <valueset localId="134" locator="34:48-34:98" name="Transfer From Emergency Department (ED) Locations"/>
+                  </operand>
+               </operand>
+               <operand localId="140" locator="35:7-35:72" xsi:type="InValueSet">
+                  <code localId="138" locator="35:7-35:43" path="admissionSource" scope="DenominatorExclusions" xsi:type="Property"/>
+                  <valueset localId="139" locator="35:48-35:72" name="Transfer From Inpatient"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="149" locator="66:1-70:2" name="Exception Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="149">
+               <a:s>define &quot;Exception Procedures&quot;:&#xd;
+	</a:s>
+               <a:s r="148">
+                  <a:s>( </a:s>
+                  <a:s r="148">
+                     <a:s r="146">
+                        <a:s r="144">
+                           <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                           <a:s>
+                              <a:s>&quot;Endotracheal Intubation&quot;</a:s>
+                           </a:s>
+                           <a:s>]</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			union </a:s>
+                        <a:s r="145">
+                           <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                           <a:s>
+                              <a:s>&quot;Aortic balloon pump insertion&quot;</a:s>
+                           </a:s>
+                           <a:s>]</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			union </a:s>
+                     <a:s r="147">
+                        <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                        <a:s>
+                           <a:s>&quot;Ventricular Assist Device placement&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="148" locator="67:2-70:2" xsi:type="Union">
+            <operand localId="146" locator="67:4-68:66" xsi:type="Union">
+               <operand localId="144" locator="67:4-67:54" xmlns:ns6="urn:healthit-gov:qdm:v5_4" dataType="ns6:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Endotracheal Intubation" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="145" locator="68:10-68:66" xmlns:ns7="urn:healthit-gov:qdm:v5_4" dataType="ns7:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Aortic balloon pump insertion" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="147" locator="69:10-69:72" xmlns:ns8="urn:healthit-gov:qdm:v5_4" dataType="ns8:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+               <codes name="Ventricular Assist Device placement" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="163" locator="96:1-99:127" name="Procedure Exceptions Within 90 Minutes of Arrival" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="163">
+               <a:s>define &quot;Procedure Exceptions Within 90 Minutes of Arrival&quot;:&#xd;
+	</a:s>
+               <a:s r="162">
+                  <a:s>
+                     <a:s r="151">
+                        <a:s r="150">
+                           <a:s>
+                              <a:s>&quot;Inpatient Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="161">
+                     <a:s>with </a:s>
+                     <a:s r="153">
+                        <a:s r="152">
+                           <a:s>
+                              <a:s>&quot;Exception Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ExceptionProcedures</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="160">
+                        <a:s r="155">
+                           <a:s r="154">
+                              <a:s>ExceptionProcedures</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="155">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="160">
+                           <a:s>starts </a:s>
+                           <a:s r="159">
+                              <a:s>90 minutes</a:s>
+                           </a:s>
+                           <a:s> or less on or after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="158">
+                           <a:s r="156">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="158">
+                              <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                              <a:s r="157">
+                                 <a:s>Encounter</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="162" locator="97:2-99:127" xsi:type="Query">
+            <source localId="151" locator="97:2-97:33" alias="Encounter">
+               <expression localId="150" locator="97:2-97:23" name="Inpatient Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="161" locator="98:3-99:127" alias="ExceptionProcedures" xsi:type="With">
+               <expression localId="152" locator="98:8-98:29" name="Exception Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="160" locator="99:14-99:127" xsi:type="In">
+                  <operand locator="99:49-99:54" xsi:type="Start">
+                     <operand localId="155" locator="99:14-99:47" path="relevantPeriod" scope="ExceptionProcedures" xsi:type="Property"/>
+                  </operand>
+                  <operand locator="99:56-99:73" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="158" locator="99:87-99:127" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="157" locator="99:118-99:126" name="Encounter" xsi:type="AliasRef"/>
+                     </low>
+                     <high locator="99:94-99:127" xsi:type="Add">
+                        <operand localId="158" locator="99:87-99:127" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="157" locator="99:118-99:126" name="Encounter" xsi:type="AliasRef"/>
+                        </operand>
+                        <operand localId="159" locator="99:56-99:65" value="90" unit="minutes" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="179" locator="86:1-89:124" name="Diagnosis Exception" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="179">
+               <a:s>define &quot;Diagnosis Exception&quot;:&#xd;
+	</a:s>
+               <a:s r="178">
+                  <a:s>
+                     <a:s r="166">
+                        <a:s r="165">
+                           <a:s>
+                              <a:s>&quot;Inpatient Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="177">
+                     <a:s>with </a:s>
+                     <a:s r="168">
+                        <a:s r="167">
+                           <a:s r="167">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Cardiopulmonary arrest&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> CardiacArrest</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="176">
+                        <a:s r="170">
+                           <a:s r="169">
+                              <a:s>CardiacArrest</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="170">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="176">
+                           <a:s>starts </a:s>
+                           <a:s r="175">
+                              <a:s>90 minutes</a:s>
+                           </a:s>
+                           <a:s> or less on or after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="174">
+                           <a:s>start of </a:s>
+                           <a:s r="173">
+                              <a:s r="171">
+                                 <a:s>Global</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="173">
+                                 <a:s>Hospitalization(</a:s>
+                                 <a:s r="172">
+                                    <a:s>Encounter</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="178" locator="87:2-89:124" xsi:type="Query">
+            <source localId="166" locator="87:2-87:33" alias="Encounter">
+               <expression localId="165" locator="87:2-87:23" name="Inpatient Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="177" locator="88:3-89:124" alias="CardiacArrest" xsi:type="With">
+               <expression localId="167" locator="88:8-88:46" xmlns:ns9="urn:healthit-gov:qdm:v5_4" dataType="ns9:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Cardiopulmonary arrest" xsi:type="ValueSetRef"/>
+               </expression>
+               <suchThat localId="176" locator="89:14-89:124" xsi:type="In">
+                  <operand locator="89:45-89:50" xsi:type="Start">
+                     <operand localId="170" locator="89:14-89:43" path="prevalencePeriod" scope="CardiacArrest" xsi:type="Property"/>
+                  </operand>
+                  <operand locator="89:52-89:69" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="174" locator="89:83-89:124" xsi:type="Start">
+                        <operand localId="173" locator="89:92-89:124" name="Hospitalization" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="172" locator="89:115-89:123" name="Encounter" xsi:type="AliasRef"/>
+                        </operand>
+                     </low>
+                     <high locator="89:83-89:124" xsi:type="Add">
+                        <operand localId="174" locator="89:83-89:124" xsi:type="Start">
+                           <operand localId="173" locator="89:92-89:124" name="Hospitalization" libraryName="Global" xsi:type="FunctionRef">
+                              <operand localId="172" locator="89:115-89:123" name="Encounter" xsi:type="AliasRef"/>
+                           </operand>
+                        </operand>
+                        <operand localId="175" locator="89:52-89:61" value="90" unit="minutes" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="182" locator="72:1-75:2" name="Denominator Exceptions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="182">
+               <a:s>define &quot;Denominator Exceptions&quot;:&#xd;
+	</a:s>
+               <a:s r="181">
+                  <a:s>( </a:s>
+                  <a:s r="181">
+                     <a:s r="164">
+                        <a:s>&quot;Procedure Exceptions Within 90 Minutes of Arrival&quot;</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			union </a:s>
+                     <a:s r="180">
+                        <a:s>&quot;Diagnosis Exception&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="181" locator="73:2-75:2" xsi:type="Union">
+            <operand localId="164" locator="73:4-73:54" name="Procedure Exceptions Within 90 Minutes of Arrival" xsi:type="ExpressionRef"/>
+            <operand localId="180" locator="74:10-74:30" name="Diagnosis Exception" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="196" locator="91:1-94:121" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="196">
+               <a:s>define &quot;Numerator&quot;:&#xd;
+	</a:s>
+               <a:s r="195">
+                  <a:s>
+                     <a:s r="184">
+                        <a:s r="183">
+                           <a:s>
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="194">
+                     <a:s>with </a:s>
+                     <a:s r="186">
+                        <a:s r="185">
+                           <a:s>
+                              <a:s>&quot;PCI Procedure&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> PCI</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="193">
+                        <a:s r="188">
+                           <a:s r="187">
+                              <a:s>PCI</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="188">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="193">
+                           <a:s>starts </a:s>
+                           <a:s r="192">
+                              <a:s>90 minutes</a:s>
+                           </a:s>
+                           <a:s> or less on or after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="191">
+                           <a:s r="189">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="191">
+                              <a:s>&quot;Hospital Arrival Time&quot;(</a:s>
+                              <a:s r="190">
+                                 <a:s>QualifyingEncounter</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="195" locator="92:2-94:121" xsi:type="Query">
+            <source localId="184" locator="92:2-92:41" alias="QualifyingEncounter">
+               <expression localId="183" locator="92:2-92:21" name="Initial Population" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="194" locator="93:3-94:121" alias="PCI" xsi:type="With">
+               <expression localId="185" locator="93:8-93:22" name="PCI Procedure" xsi:type="ExpressionRef"/>
+               <suchThat localId="193" locator="94:14-94:121" xsi:type="In">
+                  <operand locator="94:33-94:38" xsi:type="Start">
+                     <operand localId="188" locator="94:14-94:31" path="relevantPeriod" scope="PCI" xsi:type="Property"/>
+                  </operand>
+                  <operand locator="94:40-94:57" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="191" locator="94:71-94:121" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="190" locator="94:102-94:120" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                     </low>
+                     <high locator="94:78-94:121" xsi:type="Add">
+                        <operand localId="191" locator="94:71-94:121" name="Hospital Arrival Time" libraryName="Global" xsi:type="FunctionRef">
+                           <operand localId="190" locator="94:102-94:120" name="QualifyingEncounter" xsi:type="AliasRef"/>
+                        </operand>
+                        <operand localId="192" locator="94:40-94:49" value="90" unit="minutes" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

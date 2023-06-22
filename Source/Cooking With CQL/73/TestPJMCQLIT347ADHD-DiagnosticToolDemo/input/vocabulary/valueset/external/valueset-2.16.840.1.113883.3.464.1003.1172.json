@@ -1,0 +1,73 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.1172",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2022-09-02T01:02:12.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "NCQA PHEMUR Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2022-12-15"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2022-09-02"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1172",
+  "version": "20220902",
+  "name": "Dexmethylphenidate",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-09-02T01:02:12-04:00",
+  "publisher": "NCQA PHEMUR",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for dexmethylphenidate medications.),(Data Element Scope: This value set may use a model element related to Medication.),(Inclusion Criteria: Includes concepts that represent generic, human use, prescribable dexmethylphenidate and dexmethylphenidate in combination with other medications.),(Exclusion Criteria: Excludes concepts that represent non-prescribable, branded drugs and excludes concepts that represent components or ingredients.)",
+  "compose": {
+    "include": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "04032023",
+      "concept": [ {
+        "code": "1006608",
+        "display": "24 HR dexmethylphenidate hydrochloride 40 MG Extended Release Oral Capsule"
+      }, {
+        "code": "1101926",
+        "display": "24 HR dexmethylphenidate hydrochloride 25 MG Extended Release Oral Capsule"
+      }, {
+        "code": "1101932",
+        "display": "24 HR dexmethylphenidate hydrochloride 35 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899439",
+        "display": "24 HR dexmethylphenidate hydrochloride 10 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899461",
+        "display": "24 HR dexmethylphenidate hydrochloride 15 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899485",
+        "display": "24 HR dexmethylphenidate hydrochloride 20 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899495",
+        "display": "24 HR dexmethylphenidate hydrochloride 30 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899511",
+        "display": "24 HR dexmethylphenidate hydrochloride 5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "899518",
+        "display": "dexmethylphenidate hydrochloride 5 MG Oral Tablet"
+      }, {
+        "code": "899548",
+        "display": "dexmethylphenidate hydrochloride 10 MG Oral Tablet"
+      }, {
+        "code": "899557",
+        "display": "dexmethylphenidate hydrochloride 2.5 MG Oral Tablet"
+      } ]
+    } ]
+  }
+}

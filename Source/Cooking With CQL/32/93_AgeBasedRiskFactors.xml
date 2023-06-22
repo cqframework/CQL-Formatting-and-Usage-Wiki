@@ -1,0 +1,2008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="AgeBasedRiskFactors"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="10:1-10:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="2.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="22" locator="31:1-31:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="21" locator="31:32-31:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="20" locator="31:41-31:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="12:1-12:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def localId="4" locator="14:1-14:104" name="Average Number of Drinks per Drinking Day" id="urn:oid:2.16.840.1.113883.3.464.1003.106.12.1018" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="5" locator="15:1-15:62" name="BMI Ratio" id="urn:oid:2.16.840.1.113883.3.600.1.1490" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="6" locator="16:1-16:84" name="Chronic Liver Disease" id="urn:oid:2.16.840.1.113883.3.464.1003.199.12.1035" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="7" locator="17:1-17:83" name="Chronic Malnutrition" id="urn:oid:2.16.840.1.113883.3.464.1003.199.12.1036" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="8" locator="18:1-18:73" name="Current Tobacco Smoker" id="urn:oid:2.16.840.1.113883.3.600.2390" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="9" locator="19:1-19:90" name="Glucocorticoids (oral only)" id="urn:oid:2.16.840.1.113883.3.464.1003.196.12.1266" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="10" locator="20:1-20:96" name="History of hip fracture in parent" id="urn:oid:2.16.840.1.113883.3.464.1003.113.12.1040" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="11" locator="21:1-21:78" name="Hyperthyroidism" id="urn:oid:2.16.840.1.113883.3.464.1003.117.12.1015" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="12" locator="22:1-22:86" name="Malabsorption Syndromes" id="urn:oid:2.16.840.1.113883.3.464.1003.199.12.1050" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="13" locator="23:1-23:73" name="Osteopenia" id="urn:oid:2.16.840.1.113883.3.464.1003.113.12.1049" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="14" locator="24:1-24:85" name="Osteoporotic Fractures" id="urn:oid:2.16.840.1.113883.3.464.1003.113.12.1050" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="15" locator="25:1-25:83" name="Rheumatoid Arthritis" id="urn:oid:2.16.840.1.113883.3.464.1003.113.12.1005" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="16" locator="26:1-26:74" name="Tobacco Use Screening" id="urn:oid:2.16.840.1.113883.3.526.3.1278" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="17" locator="27:1-27:68" name="White" id="urn:oid:2.16.840.1.113883.3.464.1003.123.12.1007" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def localId="19" locator="29:1-29:61" resultTypeName="t:Code" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem localId="18" locator="29:34-29:40" name="LOINC">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def locator="33:1-33:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="33:1-33:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="47" locator="62:1-68:88" name="Combination Risk Factors Applicable Any Time" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="47">
+               <a:s>define &quot;Combination Risk Factors Applicable Any Time&quot;:&#xd;
+	</a:s>
+               <a:s r="46">
+                  <a:s>
+                     <a:s r="41">
+                        <a:s r="40">
+                           <a:s>( </a:s>
+                           <a:s r="40">
+                              <a:s r="38">
+                                 <a:s r="36">
+                                    <a:s r="34">
+                                       <a:s r="32">
+                                          <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;Rheumatoid Arthritis&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+		union </a:s>
+                                       <a:s r="33">
+                                          <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;Hyperthyroidism&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+		union </a:s>
+                                    <a:s r="35">
+                                       <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Malabsorption Syndromes&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+		union </a:s>
+                                 <a:s r="37">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Chronic Liver Disease&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+		union </a:s>
+                              <a:s r="39">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Chronic Malnutrition&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> CombinationRiskDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="45">
+                     <a:s>where </a:s>
+                     <a:s r="45">
+                        <a:s r="43">
+                           <a:s r="42">
+                              <a:s>CombinationRiskDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="43">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts before end </a:s>
+                        <a:s r="44">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="46" locator="63:2-68:88" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="41" locator="63:2-67:72" alias="CombinationRiskDiagnosis">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="40" locator="63:2-67:47" xsi:type="Union">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand localId="38" locator="63:4-66:46" xsi:type="Union">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <operand localId="34" locator="63:4-64:40" xsi:type="Union">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand localId="32" locator="63:4-63:40" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Rheumatoid Arthritis" xsi:type="ValueSetRef"/>
+                        </operand>
+                        <operand localId="33" locator="64:9-64:40" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Hyperthyroidism" xsi:type="ValueSetRef"/>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="Union">
+                        <operand localId="35" locator="65:9-65:48" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Malabsorption Syndromes" xsi:type="ValueSetRef"/>
+                        </operand>
+                        <operand localId="37" locator="66:9-66:46" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Chronic Liver Disease" xsi:type="ValueSetRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="39" locator="67:9-67:45" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Chronic Malnutrition" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <where localId="45" locator="68:3-68:88" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand locator="68:51-68:56" xsi:type="Start">
+                  <operand localId="43" locator="68:9-68:49" path="prevalencePeriod" scope="CombinationRiskDiagnosis" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand locator="68:65-68:67" xsi:type="End">
+                  <operand localId="44" locator="68:69-68:88" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="56" locator="70:1-73:2" name="Osteoporotic Fracture From Patient History" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="56">
+               <a:s>define &quot;Osteoporotic Fracture From Patient History&quot;:&#xd;
+	</a:s>
+               <a:s r="55">
+                  <a:s>( </a:s>
+                  <a:s r="55">
+                     <a:s>
+                        <a:s r="50">
+                           <a:s r="49">
+                              <a:s r="49">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Osteoporotic Fractures&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> PathologicalFracture</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			</a:s>
+                     <a:s r="54">
+                        <a:s>where </a:s>
+                        <a:s r="54">
+                           <a:s r="52">
+                              <a:s r="51">
+                                 <a:s>PathologicalFracture</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="52">
+                                 <a:s>prevalencePeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> starts before start </a:s>
+                           <a:s r="53">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="55" locator="71:2-73:2" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="50" locator="71:4-71:63" alias="PathologicalFracture">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="49" locator="71:4-71:42" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Osteoporotic Fractures" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="54" locator="72:4-72:87" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand locator="72:48-72:53" xsi:type="Start">
+                  <operand localId="52" locator="72:10-72:46" path="prevalencePeriod" scope="PathologicalFracture" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand locator="72:62-72:66" xsi:type="Start">
+                  <operand localId="53" locator="72:68-72:87" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="67" locator="75:1-77:81" name="Parent History of Hip Fracture" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="67">
+               <a:s>define &quot;Parent History of Hip Fracture&quot;:&#xd;
+	</a:s>
+               <a:s r="66">
+                  <a:s>
+                     <a:s r="60">
+                        <a:s r="59">
+                           <a:s r="59">
+                              <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;History of hip fracture in parent&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> ParentFractureHistory</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="65">
+                     <a:s>where </a:s>
+                     <a:s r="65">
+                        <a:s r="62">
+                           <a:s r="61">
+                              <a:s>ParentFractureHistory</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="62">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> before </a:s>
+                        <a:s r="64">
+                           <a:s>start of </a:s>
+                           <a:s r="63">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="66" locator="76:2-77:81" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="60" locator="76:2-76:85" alias="ParentFractureHistory">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="59" locator="76:2-76:63" dataType="qdm53:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="History of hip fracture in parent" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="65" locator="77:3-77:81" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand localId="62" locator="77:9-77:44" resultTypeName="t:DateTime" path="authorDatetime" scope="ParentFractureHistory" xsi:type="Property"/>
+               <operand localId="64" locator="77:53-77:81" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="63" locator="77:62-77:81" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="77" locator="79:1-81:85" name="Osteopenia Before Measurement Period" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="77">
+               <a:s>define &quot;Osteopenia Before Measurement Period&quot;:&#xd;
+	</a:s>
+               <a:s r="76">
+                  <a:s>
+                     <a:s r="71">
+                        <a:s r="70">
+                           <a:s r="70">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Osteopenia&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> OsteopeniaDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="75">
+                     <a:s>where </a:s>
+                     <a:s r="75">
+                        <a:s r="73">
+                           <a:s r="72">
+                              <a:s>OsteopeniaDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="73">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts before start </a:s>
+                        <a:s r="74">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="76" locator="80:2-81:85" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="71" locator="80:2-80:48" alias="OsteopeniaDiagnosis">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="70" locator="80:2-80:28" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Osteopenia" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="75" locator="81:3-81:85" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand locator="81:46-81:51" xsi:type="Start">
+                  <operand localId="73" locator="81:9-81:44" path="prevalencePeriod" scope="OsteopeniaDiagnosis" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand locator="81:60-81:64" xsi:type="Start">
+                  <operand localId="74" locator="81:66-81:85" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="97" locator="83:1-88:3" name="Current Tobacco User" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="97">
+               <a:s>define &quot;Current Tobacco User&quot;:&#xd;
+	</a:s>
+               <a:s r="96">
+                  <a:s>{ </a:s>
+                  <a:s r="95">
+                     <a:s>First(</a:s>
+                     <a:s r="94">
+                        <a:s>
+                           <a:s r="81">
+                              <a:s r="80">
+                                 <a:s r="80">
+                                    <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Tobacco Use Screening&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> TobaccoScreen</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="90">
+                           <a:s>where </a:s>
+                           <a:s r="90">
+                              <a:s r="85">
+                                 <a:s r="83">
+                                    <a:s r="82">
+                                       <a:s>TobaccoScreen</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="83">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> in </a:s>
+                                 <a:s r="84">
+                                    <a:s>&quot;Current Tobacco Smoker&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				and </a:s>
+                              <a:s r="89">
+                                 <a:s r="87">
+                                    <a:s r="86">
+                                       <a:s>TobaccoScreen</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="87">
+                                       <a:s>authorDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> during </a:s>
+                                 <a:s r="88">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="93">
+                           <a:s>sort by </a:s>
+                           <a:s r="92">
+                              <a:s r="91">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+                  <a:s>}</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="96" locator="84:2-88:3" xsi:type="List">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <element localId="95" locator="84:4-88:2" resultTypeName="qdm53:PositiveAssessmentPerformed" xsi:type="First">
+               <source localId="94" locator="84:10-87:25" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="81" locator="84:10-84:73" alias="TobaccoScreen">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="80" locator="84:10-84:59" dataType="qdm53:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes name="Tobacco Use Screening" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where localId="90" locator="85:4-86:64" resultTypeName="t:Boolean" xsi:type="And">
+                     <operand localId="85" locator="85:10-85:57" resultTypeName="t:Boolean" xsi:type="InValueSet">
+                        <code asType="t:Code" xsi:type="As">
+                           <operand localId="83" locator="85:10-85:29" path="result" scope="TobaccoScreen" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                 <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Time" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </code>
+                        <valueset localId="84" locator="85:34-85:57" name="Current Tobacco Smoker">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </valueset>
+                     </operand>
+                     <operand localId="89" locator="86:9-86:64" resultTypeName="t:Boolean" xsi:type="In">
+                        <operand localId="87" locator="86:9-86:36" resultTypeName="t:DateTime" path="authorDatetime" scope="TobaccoScreen" xsi:type="Property"/>
+                        <operand localId="88" locator="86:45-86:64" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </where>
+                  <sort localId="93" locator="87:4-87:25">
+                     <by localId="92" locator="87:12-87:25" resultTypeName="t:DateTime" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+                  </sort>
+               </source>
+            </element>
+         </expression>
+      </def>
+      <def localId="117" locator="90:1-95:3" name="Average of More Than Two Drinks Per Drinking Day" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="117">
+               <a:s>define &quot;Average of More Than Two Drinks Per Drinking Day&quot;:&#xd;
+	</a:s>
+               <a:s r="116">
+                  <a:s>{ </a:s>
+                  <a:s r="115">
+                     <a:s>First(</a:s>
+                     <a:s r="114">
+                        <a:s>
+                           <a:s r="101">
+                              <a:s r="100">
+                                 <a:s r="100">
+                                    <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Average Number of Drinks per Drinking Day&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AverageDrinks</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="110">
+                           <a:s>where </a:s>
+                           <a:s r="110">
+                              <a:s r="105">
+                                 <a:s r="103">
+                                    <a:s r="102">
+                                       <a:s>AverageDrinks</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="103">
+                                       <a:s>authorDatetime</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> during </a:s>
+                                 <a:s r="104">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				and </a:s>
+                              <a:s r="109">
+                                 <a:s r="107">
+                                    <a:s r="106">
+                                       <a:s>AverageDrinks</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="107">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> > </a:s>
+                                 <a:s r="108">
+                                    <a:s>2 '{drinks}/d'</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="113">
+                           <a:s>sort by </a:s>
+                           <a:s r="112">
+                              <a:s r="111">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+                  <a:s>}</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="116" locator="91:2-95:3" xsi:type="List">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <element localId="115" locator="91:4-95:2" resultTypeName="qdm53:PositiveAssessmentPerformed" xsi:type="First">
+               <source localId="114" locator="91:10-94:25" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="101" locator="91:10-91:93" alias="AverageDrinks">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="100" locator="91:10-91:79" dataType="qdm53:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes name="Average Number of Drinks per Drinking Day" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where localId="110" locator="92:4-93:45" resultTypeName="t:Boolean" xsi:type="And">
+                     <operand localId="105" locator="92:10-92:65" resultTypeName="t:Boolean" xsi:type="In">
+                        <operand localId="103" locator="92:10-92:37" resultTypeName="t:DateTime" path="authorDatetime" scope="AverageDrinks" xsi:type="Property"/>
+                        <operand localId="104" locator="92:46-92:65" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand localId="109" locator="93:9-93:45" resultTypeName="t:Boolean" xsi:type="Greater">
+                        <operand asType="t:Quantity" xsi:type="As">
+                           <operand localId="107" locator="93:9-93:28" path="result" scope="AverageDrinks" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                 <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Time" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand localId="108" locator="93:32-93:45" resultTypeName="t:Quantity" value="2" unit="{drinks}/d" xsi:type="Quantity"/>
+                     </operand>
+                  </where>
+                  <sort localId="113" locator="94:4-94:25">
+                     <by localId="112" locator="94:12-94:25" resultTypeName="t:DateTime" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+                  </sort>
+               </source>
+            </element>
+         </expression>
+      </def>
+      <def localId="128" locator="106:1-108:81" name="Glucocorticoid Medication Active" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="128">
+               <a:s>define &quot;Glucocorticoid Medication Active&quot;:&#xd;
+	</a:s>
+               <a:s r="127">
+                  <a:s>
+                     <a:s r="121">
+                        <a:s r="120">
+                           <a:s r="120">
+                              <a:s>[&quot;Medication, Active&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Glucocorticoids (oral only)&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Glucocorticoid</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="126">
+                     <a:s>where </a:s>
+                     <a:s r="126">
+                        <a:s r="123">
+                           <a:s r="122">
+                              <a:s>Glucocorticoid</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="123">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts before </a:s>
+                        <a:s r="125">
+                           <a:s>start of </a:s>
+                           <a:s r="124">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="127" locator="107:2-108:81" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="121" locator="107:2-107:69" alias="Glucocorticoid">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="120" locator="107:2-107:54" dataType="qdm53:MedicationActive" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Glucocorticoids (oral only)" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="126" locator="108:3-108:81" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand locator="108:39-108:44" xsi:type="Start">
+                  <operand localId="123" locator="108:9-108:37" path="relevantPeriod" scope="Glucocorticoid" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand localId="125" locator="108:53-108:81" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="124" locator="108:62-108:81" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="141" locator="110:1-113:2" resultTypeName="t:Integer" name="Cumulative Medication Duration" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="141">
+               <a:s>define function &quot;Cumulative Medication Duration&quot;(Medication </a:s>
+               <a:s r="131">
+                  <a:s>List&lt;</a:s>
+                  <a:s r="130">
+                     <a:s>&quot;Medication, Active&quot;</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="140">
+                  <a:s r="140">
+                     <a:s>Sum(</a:s>
+                     <a:s r="139">
+                        <a:s>
+                           <a:s r="135">
+                              <a:s r="134">
+                                 <a:s>(</a:s>
+                                 <a:s r="134">
+                                    <a:s>collapse</a:s>
+                                    <a:s r="133">
+                                       <a:s>(</a:s>
+                                       <a:s r="133">
+                                          <a:s r="132">
+                                             <a:s>Medication</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="133">
+                                             <a:s>relevantPeriod</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s>CumulativeMedication</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="138">
+                           <a:s>return all </a:s>
+                           <a:s r="137">
+                              <a:s>duration in days of </a:s>
+                              <a:s r="136">
+                                 <a:s>CumulativeMedication</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="140" locator="111:2-113:2" resultTypeName="t:Integer" xsi:type="Sum">
+            <source localId="139" locator="111:6-112:54" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="135" locator="111:6-111:62" alias="CumulativeMedication">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </resultTypeSpecifier>
+                  <expression localId="134" locator="111:6-111:42" xsi:type="Collapse">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </resultTypeSpecifier>
+                     <operand localId="133" locator="111:15-111:41" xsi:type="Query">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <source alias="$this">
+                           <expression localId="132" locator="111:16-111:25" name="Medication" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </expression>
+                        </source>
+                        <where xsi:type="Not">
+                           <operand xsi:type="IsNull">
+                              <operand path="relevantPeriod" xsi:type="Property">
+                                 <source name="$this" xsi:type="AliasRef"/>
+                              </operand>
+                           </operand>
+                        </where>
+                        <return>
+                           <expression path="relevantPeriod" xsi:type="Property">
+                              <source name="$this" xsi:type="AliasRef"/>
+                           </expression>
+                        </return>
+                     </operand>
+                     <operand resultTypeName="t:Quantity" xsi:type="Null"/>
+                  </expression>
+               </source>
+               <return localId="138" locator="112:4-112:54" distinct="false">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="137" locator="112:15-112:54" resultTypeName="t:Integer" precision="Day" xsi:type="DurationBetween">
+                     <operand xsi:type="Start">
+                        <operand localId="136" locator="112:35-112:54" name="CumulativeMedication" xsi:type="AliasRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand xsi:type="End">
+                        <operand localId="136" locator="112:35-112:54" name="CumulativeMedication" xsi:type="AliasRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </expression>
+               </return>
+            </source>
+         </expression>
+         <operand name="Medication">
+            <operandTypeSpecifier localId="131" locator="110:61-110:86" xsi:type="ListTypeSpecifier">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <elementType localId="130" locator="110:66-110:85" resultTypeName="qdm53:MedicationActive" name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="145" locator="101:1-104:4" name="Cumulative Glucocorticoid Medication Duration" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="145">
+               <a:s>define &quot;Cumulative Glucocorticoid Medication Duration&quot;:&#xd;
+	</a:s>
+               <a:s r="144">
+                  <a:s>{ </a:s>
+                  <a:s r="143">
+                     <a:s>Tuple {&#xd;
+		</a:s>
+                     <a:s>
+                        <a:s>Duration: </a:s>
+                        <a:s r="142">
+                           <a:s>&quot;Cumulative Medication Duration&quot;(</a:s>
+                           <a:s r="129">
+                              <a:s>&quot;Glucocorticoid Medication Active&quot;</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	}</a:s>
+                  </a:s>
+                  <a:s> }</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="Duration">
+                  <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="144" locator="102:2-104:4" xsi:type="List">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="Duration">
+                     <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <element localId="143" locator="102:4-104:2" xsi:type="Tuple">
+               <resultTypeSpecifier xsi:type="TupleTypeSpecifier">
+                  <element name="Duration">
+                     <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </resultTypeSpecifier>
+               <element name="Duration">
+                  <value localId="142" locator="103:13-103:80" resultTypeName="t:Integer" name="Cumulative Medication Duration" xsi:type="FunctionRef">
+                     <operand localId="129" locator="103:46-103:79" name="Glucocorticoid Medication Active" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </value>
+               </element>
+            </element>
+         </expression>
+      </def>
+      <def localId="153" locator="97:1-99:57" name="Glucocorticoid Medication Duration Greater Than or Equal to 90 Days" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="153">
+               <a:s>define &quot;Glucocorticoid Medication Duration Greater Than or Equal to 90 Days&quot;:&#xd;
+	</a:s>
+               <a:s r="152">
+                  <a:s>
+                     <a:s r="147">
+                        <a:s r="146">
+                           <a:s>
+                              <a:s>&quot;Cumulative Glucocorticoid Medication Duration&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> CumulativeGlucocorticoidMedication</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="151">
+                     <a:s>where </a:s>
+                     <a:s r="151">
+                        <a:s r="149">
+                           <a:s r="148">
+                              <a:s>CumulativeGlucocorticoidMedication</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="149">
+                              <a:s>Duration</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> >= 90</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="Duration">
+                  <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="152" locator="98:2-99:57" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="Duration">
+                     <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source localId="147" locator="98:2-98:83" alias="CumulativeGlucocorticoidMedication">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="TupleTypeSpecifier">
+                     <element name="Duration">
+                        <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </elementType>
+               </resultTypeSpecifier>
+               <expression localId="146" locator="98:2-98:48" name="Cumulative Glucocorticoid Medication Duration" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="TupleTypeSpecifier">
+                        <element name="Duration">
+                           <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="151" locator="99:3-99:57" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand localId="149" locator="99:9-99:51" resultTypeName="t:Integer" path="Duration" scope="CumulativeGlucocorticoidMedication" xsi:type="Property"/>
+               <operand localId="150" locator="99:56-99:57" resultTypeName="t:Integer" valueType="t:Integer" value="90" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="173" locator="119:1-124:3" name="First BMI in Measurement Period" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="173">
+               <a:s>define &quot;First BMI in Measurement Period&quot;:&#xd;
+	</a:s>
+               <a:s r="172">
+                  <a:s>{ </a:s>
+                  <a:s r="171">
+                     <a:s>First(</a:s>
+                     <a:s r="170">
+                        <a:s>
+                           <a:s r="157">
+                              <a:s r="156">
+                                 <a:s r="156">
+                                    <a:s>[&quot;Physical Exam, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;BMI Ratio&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> BMI</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="165">
+                           <a:s>where </a:s>
+                           <a:s r="165">
+                              <a:s r="161">
+                                 <a:s r="159">
+                                    <a:s r="158">
+                                       <a:s>BMI</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="159">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> during </a:s>
+                                 <a:s r="160">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				and </a:s>
+                              <a:s r="164">
+                                 <a:s r="163">
+                                    <a:s r="162">
+                                       <a:s>BMI</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="163">
+                                       <a:s>result</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> is not null</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="169">
+                           <a:s>sort by </a:s>
+                           <a:s r="168">
+                              <a:s r="167">
+                                 <a:s>start of </a:s>
+                                 <a:s r="166">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+                  <a:s>}</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="172" locator="120:2-124:3" xsi:type="List">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <element localId="171" locator="120:4-124:2" resultTypeName="qdm53:PositivePhysicalExamPerformed" xsi:type="First">
+               <source localId="170" locator="120:10-123:34" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="157" locator="120:10-120:54" alias="BMI">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression localId="156" locator="120:10-120:50" dataType="qdm53:PositivePhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes name="BMI Ratio" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where localId="165" locator="121:4-122:30" resultTypeName="t:Boolean" xsi:type="And">
+                     <operand localId="161" locator="121:10-121:55" resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                        <operand localId="159" locator="121:10-121:27" path="relevantPeriod" scope="BMI" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                        <operand localId="160" locator="121:36-121:55" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand localId="164" locator="122:9-122:30" resultTypeName="t:Boolean" xsi:type="Not">
+                        <operand locator="122:9-122:30" resultTypeName="t:Boolean" xsi:type="IsNull">
+                           <operand localId="163" locator="122:9-122:18" path="result" scope="BMI" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                 <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </where>
+                  <sort localId="169" locator="123:4-123:34">
+                     <by localId="168" locator="123:12-123:34" resultTypeName="t:DateTime" direction="asc" xsi:type="ByExpression">
+                        <expression localId="167" locator="123:12-123:34" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="166" locator="123:21-123:34" name="relevantPeriod" xsi:type="IdentifierRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </expression>
+                     </by>
+                  </sort>
+               </source>
+            </element>
+         </expression>
+      </def>
+      <def localId="181" locator="115:1-117:37" name="First BMI in Measurement Period Less Than or Equal to 20 kg m2" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="181">
+               <a:s>define &quot;First BMI in Measurement Period Less Than or Equal to 20 kg m2&quot;:&#xd;
+	</a:s>
+               <a:s r="180">
+                  <a:s>
+                     <a:s r="175">
+                        <a:s r="174">
+                           <a:s>
+                              <a:s>&quot;First BMI in Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> FirstBMI</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="179">
+                     <a:s>where </a:s>
+                     <a:s r="179">
+                        <a:s r="177">
+                           <a:s r="176">
+                              <a:s>FirstBMI</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="177">
+                              <a:s>result</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> &lt;= </a:s>
+                        <a:s r="178">
+                           <a:s>20 'kg/m2'</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="180" locator="116:2-117:37" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="175" locator="116:2-116:43" alias="FirstBMI">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="174" locator="116:2-116:34" name="First BMI in Measurement Period" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="179" locator="117:3-117:37" resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+               <operand asType="t:Quantity" xsi:type="As">
+                  <operand localId="177" locator="117:9-117:23" path="result" scope="FirstBMI" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                        <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand localId="178" locator="117:28-117:37" resultTypeName="t:Quantity" value="20" unit="kg/m2" xsi:type="Quantity"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="186" locator="51:1-60:48" name="Age Dependent Combination Risk Factors" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="186">
+               <a:s>define &quot;Age Dependent Combination Risk Factors&quot;:&#xd;
+	</a:s>
+               <a:s r="185">
+                  <a:s r="183">
+                     <a:s r="155">
+                        <a:s r="119">
+                           <a:s r="99">
+                              <a:s r="79">
+                                 <a:s r="69">
+                                    <a:s r="58">
+                                       <a:s r="48">
+                                          <a:s>&quot;Combination Risk Factors Applicable Any Time&quot;</a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+		union </a:s>
+                                       <a:s r="57">
+                                          <a:s>&quot;Osteoporotic Fracture From Patient History&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+		union </a:s>
+                                    <a:s r="68">
+                                       <a:s>&quot;Parent History of Hip Fracture&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+		union </a:s>
+                                 <a:s r="78">
+                                    <a:s>&quot;Osteopenia Before Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+		union </a:s>
+                              <a:s r="98">
+                                 <a:s>&quot;Current Tobacco User&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+		union </a:s>
+                           <a:s r="118">
+                              <a:s>&quot;Average of More Than Two Drinks Per Drinking Day&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		union </a:s>
+                        <a:s r="154">
+                           <a:s>&quot;Glucocorticoid Medication Duration Greater Than or Equal to 90 Days&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		union </a:s>
+                     <a:s r="182">
+                        <a:s>&quot;First BMI in Measurement Period Less Than or Equal to 20 kg m2&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="184">
+                     <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                     <a:s>
+                        <a:s>&quot;White&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="ChoiceTypeSpecifier">
+               <type xsi:type="TupleTypeSpecifier">
+                  <element name="Duration">
+                     <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </type>
+               <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+               <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               <type name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+               <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="185" locator="52:2-60:48" xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="ChoiceTypeSpecifier">
+                  <type xsi:type="TupleTypeSpecifier">
+                     <element name="Duration">
+                        <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </type>
+                  <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                  <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  <type name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+                  <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+               </elementType>
+            </resultTypeSpecifier>
+            <operand xsi:type="As">
+               <operand localId="183" locator="52:2-59:72" xsi:type="Union">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="ChoiceTypeSpecifier">
+                        <type xsi:type="TupleTypeSpecifier">
+                           <element name="Duration">
+                              <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </type>
+                        <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                        <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </resultTypeSpecifier>
+                  <operand xsi:type="As">
+                     <operand localId="155" locator="52:2-58:77" xsi:type="Union">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="ChoiceTypeSpecifier">
+                              <type xsi:type="TupleTypeSpecifier">
+                                 <element name="Duration">
+                                    <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </type>
+                              <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <operand xsi:type="As">
+                           <operand localId="119" locator="52:2-57:58" xsi:type="Union">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="ChoiceTypeSpecifier">
+                                    <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                              <operand xsi:type="As">
+                                 <operand localId="99" locator="52:2-56:30" xsi:type="Union">
+                                    <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                       <elementType xsi:type="ChoiceTypeSpecifier">
+                                          <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                          <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                       </elementType>
+                                    </resultTypeSpecifier>
+                                    <operand xsi:type="As">
+                                       <operand localId="79" locator="52:2-55:46" xsi:type="Union">
+                                          <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                             <elementType xsi:type="ChoiceTypeSpecifier">
+                                                <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                             </elementType>
+                                          </resultTypeSpecifier>
+                                          <operand xsi:type="As">
+                                             <operand localId="69" locator="52:2-54:40" xsi:type="Union">
+                                                <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                   <elementType xsi:type="ChoiceTypeSpecifier">
+                                                      <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                      <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                   </elementType>
+                                                </resultTypeSpecifier>
+                                                <operand xsi:type="As">
+                                                   <operand localId="58" locator="52:2-53:52" xsi:type="Union">
+                                                      <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                         <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                      </resultTypeSpecifier>
+                                                      <operand localId="48" locator="52:2-52:47" name="Combination Risk Factors Applicable Any Time" xsi:type="ExpressionRef">
+                                                         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                         </resultTypeSpecifier>
+                                                      </operand>
+                                                      <operand localId="57" locator="53:9-53:52" name="Osteoporotic Fracture From Patient History" xsi:type="ExpressionRef">
+                                                         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                         </resultTypeSpecifier>
+                                                      </operand>
+                                                   </operand>
+                                                   <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                      <elementType xsi:type="ChoiceTypeSpecifier">
+                                                         <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                         <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                      </elementType>
+                                                   </asTypeSpecifier>
+                                                </operand>
+                                                <operand xsi:type="As">
+                                                   <operand localId="68" locator="54:9-54:40" name="Parent History of Hip Fracture" xsi:type="ExpressionRef">
+                                                      <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                         <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                      </resultTypeSpecifier>
+                                                   </operand>
+                                                   <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                      <elementType xsi:type="ChoiceTypeSpecifier">
+                                                         <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                         <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                      </elementType>
+                                                   </asTypeSpecifier>
+                                                </operand>
+                                             </operand>
+                                             <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                <elementType xsi:type="ChoiceTypeSpecifier">
+                                                   <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                   <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                </elementType>
+                                             </asTypeSpecifier>
+                                          </operand>
+                                          <operand xsi:type="As">
+                                             <operand localId="78" locator="55:9-55:46" name="Osteopenia Before Measurement Period" xsi:type="ExpressionRef">
+                                                <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                   <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                </resultTypeSpecifier>
+                                             </operand>
+                                             <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                                <elementType xsi:type="ChoiceTypeSpecifier">
+                                                   <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                                   <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                                </elementType>
+                                             </asTypeSpecifier>
+                                          </operand>
+                                       </operand>
+                                       <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                          <elementType xsi:type="ChoiceTypeSpecifier">
+                                             <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                             <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </asTypeSpecifier>
+                                    </operand>
+                                    <operand xsi:type="As">
+                                       <operand localId="98" locator="56:9-56:30" name="Current Tobacco User" xsi:type="ExpressionRef">
+                                          <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                             <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                          </resultTypeSpecifier>
+                                       </operand>
+                                       <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                          <elementType xsi:type="ChoiceTypeSpecifier">
+                                             <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                             <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </asTypeSpecifier>
+                                    </operand>
+                                 </operand>
+                                 <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="ChoiceTypeSpecifier">
+                                       <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </asTypeSpecifier>
+                              </operand>
+                              <operand xsi:type="As">
+                                 <operand localId="118" locator="57:9-57:58" name="Average of More Than Two Drinks Per Drinking Day" xsi:type="ExpressionRef">
+                                    <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                       <elementType name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                                 <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="ChoiceTypeSpecifier">
+                                       <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </asTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="ChoiceTypeSpecifier">
+                                 <type xsi:type="TupleTypeSpecifier">
+                                    <element name="Duration">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </type>
+                                 <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </asTypeSpecifier>
+                        </operand>
+                        <operand xsi:type="As">
+                           <operand localId="154" locator="58:9-58:77" name="Glucocorticoid Medication Duration Greater Than or Equal to 90 Days" xsi:type="ExpressionRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="TupleTypeSpecifier">
+                                    <element name="Duration">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="ChoiceTypeSpecifier">
+                                 <type xsi:type="TupleTypeSpecifier">
+                                    <element name="Duration">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </type>
+                                 <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </asTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <type xsi:type="TupleTypeSpecifier">
+                              <element name="Duration">
+                                 <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </type>
+                           <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+                  <operand xsi:type="As">
+                     <operand localId="182" locator="59:9-59:72" name="First BMI in Measurement Period Less Than or Equal to 20 kg m2" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                     <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <type xsi:type="TupleTypeSpecifier">
+                              <element name="Duration">
+                                 <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </type>
+                           <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                           <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </asTypeSpecifier>
+                  </operand>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xsi:type="TupleTypeSpecifier">
+                        <element name="Duration">
+                           <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </type>
+                     <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand xsi:type="As">
+               <operand localId="184" locator="60:9-60:48" dataType="qdm53:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="White" xsi:type="ValueSetRef"/>
+               </operand>
+               <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type xsi:type="TupleTypeSpecifier">
+                        <element name="Duration">
+                           <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </type>
+                     <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="219" locator="35:1-49:2" resultTypeName="t:Boolean" name="Has Age Dependent Risk Factors" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="219">
+               <a:s>define function &quot;Has Age Dependent Risk Factors&quot;():&#xd;
+	</a:s>
+               <a:s r="218">
+                  <a:s r="218">
+                     <a:s>singleton from </a:s>
+                     <a:s r="217">
+                        <a:s>( </a:s>
+                        <a:s r="217">
+                           <a:s>
+                              <a:s r="24">
+                                 <a:s r="23">
+                                    <a:s r="23">
+                                       <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;Birthdate&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> BirthDate</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s>
+                              <a:s>let </a:s>
+                              <a:s r="31">
+                                 <a:s>Age: </a:s>
+                                 <a:s r="30">
+                                    <a:s r="25">
+                                       <a:s>Global</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="30">
+                                       <a:s>&quot;CalendarAgeInYearsAt&quot;(</a:s>
+                                       <a:s r="27">
+                                          <a:s r="26">
+                                             <a:s>BirthDate</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="27">
+                                             <a:s>birthDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>, </a:s>
+                                       <a:s r="29">
+                                          <a:s>start of </a:s>
+                                          <a:s r="28">
+                                             <a:s>&quot;Measurement Period&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>,&#xd;
+			</a:s>
+                              <a:s r="189">
+                                 <a:s>NumberOfRiskFactors: </a:s>
+                                 <a:s r="188">
+                                    <a:s>Count(</a:s>
+                                    <a:s r="187">
+                                       <a:s>&quot;Age Dependent Combination Risk Factors&quot;</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="216">
+                              <a:s>return </a:s>
+                              <a:s r="215">
+                                 <a:s>( </a:s>
+                                 <a:s r="215">
+                                    <a:s r="206">
+                                       <a:s r="197">
+                                          <a:s>( </a:s>
+                                          <a:s r="197">
+                                             <a:s r="193">
+                                                <a:s r="190">
+                                                   <a:s>Age</a:s>
+                                                </a:s>
+                                                <a:s> between 50 and 54</a:s>
+                                             </a:s>
+                                             <a:s>&#xd;
+						and </a:s>
+                                             <a:s r="196">
+                                                <a:s r="194">
+                                                   <a:s>NumberOfRiskFactors</a:s>
+                                                </a:s>
+                                                <a:s> >= 4</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>&#xd;
+				)</a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+					or </a:s>
+                                       <a:s r="205">
+                                          <a:s>( </a:s>
+                                          <a:s r="205">
+                                             <a:s r="201">
+                                                <a:s r="198">
+                                                   <a:s>Age</a:s>
+                                                </a:s>
+                                                <a:s> between 55 and 59</a:s>
+                                             </a:s>
+                                             <a:s>&#xd;
+							and </a:s>
+                                             <a:s r="204">
+                                                <a:s r="202">
+                                                   <a:s>NumberOfRiskFactors</a:s>
+                                                </a:s>
+                                                <a:s> >= 3</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>&#xd;
+					)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+					or </a:s>
+                                    <a:s r="214">
+                                       <a:s>( </a:s>
+                                       <a:s r="214">
+                                          <a:s r="210">
+                                             <a:s r="207">
+                                                <a:s>Age</a:s>
+                                             </a:s>
+                                             <a:s> between 60 and 63</a:s>
+                                          </a:s>
+                                          <a:s>&#xd;
+							and </a:s>
+                                          <a:s r="213">
+                                             <a:s r="211">
+                                                <a:s>NumberOfRiskFactors</a:s>
+                                             </a:s>
+                                             <a:s> >= 2</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+					)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+			)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="218" locator="36:2-49:2" resultTypeName="t:Boolean" xsi:type="SingletonFrom">
+            <operand localId="217" locator="36:17-49:2" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="24" locator="36:19-36:77" alias="BirthDate">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="23" locator="36:19-36:67" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes xsi:type="ToList">
+                        <operand name="Birthdate" xsi:type="CodeRef"/>
+                     </codes>
+                  </expression>
+               </source>
+               <let localId="31" locator="37:8-37:97" resultTypeName="t:Integer" identifier="Age">
+                  <expression localId="30" locator="37:13-37:97" resultTypeName="t:Integer" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="27" locator="37:43-37:65" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                     <operand localId="29" locator="37:68-37:96" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="28" locator="37:77-37:96" name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </expression>
+               </let>
+               <let localId="189" locator="38:4-38:71" resultTypeName="t:Integer" identifier="NumberOfRiskFactors">
+                  <expression localId="188" locator="38:25-38:71" resultTypeName="t:Integer" xsi:type="Count">
+                     <source localId="187" locator="38:31-38:70" name="Age Dependent Combination Risk Factors" xsi:type="ExpressionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="ChoiceTypeSpecifier">
+                              <type xsi:type="TupleTypeSpecifier">
+                                 <element name="Duration">
+                                    <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </type>
+                              <type name="qdm53:PositiveAssessmentPerformed" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                     </source>
+                  </expression>
+               </let>
+               <return localId="216" locator="39:4-48:4">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="215" locator="39:11-48:4" resultTypeName="t:Boolean" xsi:type="Or">
+                     <operand localId="206" locator="39:13-44:6" resultTypeName="t:Boolean" xsi:type="Or">
+                        <operand localId="197" locator="39:13-41:5" resultTypeName="t:Boolean" xsi:type="And">
+                           <operand localId="193" locator="39:15-39:35" resultTypeName="t:Boolean" xsi:type="And">
+                              <operand xsi:type="GreaterOrEqual">
+                                 <operand localId="190" locator="39:15-39:17" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                                 <operand localId="191" locator="39:27-39:28" resultTypeName="t:Integer" valueType="t:Integer" value="50" xsi:type="Literal"/>
+                              </operand>
+                              <operand xsi:type="LessOrEqual">
+                                 <operand localId="190" locator="39:15-39:17" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                                 <operand localId="192" locator="39:34-39:35" resultTypeName="t:Integer" valueType="t:Integer" value="54" xsi:type="Literal"/>
+                              </operand>
+                           </operand>
+                           <operand localId="196" locator="40:11-40:34" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                              <operand localId="194" locator="40:11-40:29" resultTypeName="t:Integer" name="NumberOfRiskFactors" xsi:type="QueryLetRef"/>
+                              <operand localId="195" locator="40:34" resultTypeName="t:Integer" valueType="t:Integer" value="4" xsi:type="Literal"/>
+                           </operand>
+                        </operand>
+                        <operand localId="205" locator="42:9-44:6" resultTypeName="t:Boolean" xsi:type="And">
+                           <operand localId="201" locator="42:11-42:31" resultTypeName="t:Boolean" xsi:type="And">
+                              <operand xsi:type="GreaterOrEqual">
+                                 <operand localId="198" locator="42:11-42:13" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                                 <operand localId="199" locator="42:23-42:24" resultTypeName="t:Integer" valueType="t:Integer" value="55" xsi:type="Literal"/>
+                              </operand>
+                              <operand xsi:type="LessOrEqual">
+                                 <operand localId="198" locator="42:11-42:13" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                                 <operand localId="200" locator="42:30-42:31" resultTypeName="t:Integer" valueType="t:Integer" value="59" xsi:type="Literal"/>
+                              </operand>
+                           </operand>
+                           <operand localId="204" locator="43:12-43:35" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                              <operand localId="202" locator="43:12-43:30" resultTypeName="t:Integer" name="NumberOfRiskFactors" xsi:type="QueryLetRef"/>
+                              <operand localId="203" locator="43:35" resultTypeName="t:Integer" valueType="t:Integer" value="3" xsi:type="Literal"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="214" locator="45:9-47:6" resultTypeName="t:Boolean" xsi:type="And">
+                        <operand localId="210" locator="45:11-45:31" resultTypeName="t:Boolean" xsi:type="And">
+                           <operand xsi:type="GreaterOrEqual">
+                              <operand localId="207" locator="45:11-45:13" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                              <operand localId="208" locator="45:23-45:24" resultTypeName="t:Integer" valueType="t:Integer" value="60" xsi:type="Literal"/>
+                           </operand>
+                           <operand xsi:type="LessOrEqual">
+                              <operand localId="207" locator="45:11-45:13" resultTypeName="t:Integer" name="Age" xsi:type="QueryLetRef"/>
+                              <operand localId="209" locator="45:30-45:31" resultTypeName="t:Integer" valueType="t:Integer" value="63" xsi:type="Literal"/>
+                           </operand>
+                        </operand>
+                        <operand localId="213" locator="46:12-46:35" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                           <operand localId="211" locator="46:12-46:30" resultTypeName="t:Integer" name="NumberOfRiskFactors" xsi:type="QueryLetRef"/>
+                           <operand localId="212" locator="46:35" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

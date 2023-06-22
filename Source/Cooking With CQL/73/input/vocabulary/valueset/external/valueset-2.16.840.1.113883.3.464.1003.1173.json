@@ -1,0 +1,124 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.1173",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2022-09-02T01:02:12.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "NCQA PHEMUR Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2022-12-15"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2022-09-02"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1173",
+  "version": "20220902",
+  "name": "Dextroamphetamine",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-09-02T01:02:12-04:00",
+  "publisher": "NCQA PHEMUR",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for dextroamphetamine medications.),(Data Element Scope: This value set may use a model element related to Medication.),(Inclusion Criteria: Includes concepts that represent generic, human use, prescribable dextroamphetamine and dextroamphetamine in combination with other medications.),(Exclusion Criteria: Excludes concepts that represent non-prescribable, branded drugs and excludes concepts that represent components or ingredients.)",
+  "compose": {
+    "include": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "04032023",
+      "concept": [ {
+        "code": "1009145",
+        "display": "amphetamine aspartate 1.875 MG / amphetamine sulfate 1.875 MG / dextroamphetamine saccharate 1.875 MG / dextroamphetamine sulfate 1.875 MG Oral Tablet"
+      }, {
+        "code": "1425847",
+        "display": "dextroamphetamine sulfate 2.5 MG Oral Tablet"
+      }, {
+        "code": "1425854",
+        "display": "dextroamphetamine sulfate 7.5 MG Oral Tablet"
+      }, {
+        "code": "1535454",
+        "display": "dextroamphetamine sulfate 20 MG Oral Tablet"
+      }, {
+        "code": "1535470",
+        "display": "dextroamphetamine sulfate 30 MG Oral Tablet"
+      }, {
+        "code": "1927610",
+        "display": "3-Bead 24 HR amphetamine aspartate 12.5 MG / amphetamine sulfate 12.5 MG / dextroamphetamine saccharate 12.5 MG / dextroamphetamine sulfate 12.5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "1927617",
+        "display": "3-Bead 24 HR amphetamine aspartate 6.25 MG / amphetamine sulfate 6.25 MG / dextroamphetamine saccharate 6.25 MG / dextroamphetamine sulfate 6.25 MG Extended Release Oral Capsule"
+      }, {
+        "code": "1927630",
+        "display": "3-Bead 24 HR amphetamine aspartate 3.125 MG / amphetamine sulfate 3.125 MG / dextroamphetamine saccharate 3.125 MG / dextroamphetamine sulfate 3.125 MG Extended Release Oral Capsule"
+      }, {
+        "code": "1927637",
+        "display": "3-Bead 24 HR amphetamine aspartate 9.375 MG / amphetamine sulfate 9.375 MG / dextroamphetamine saccharate 9.375 MG / dextroamphetamine sulfate 9.375 MG Extended Release Oral Capsule"
+      }, {
+        "code": "541363",
+        "display": "amphetamine aspartate 7.5 MG / amphetamine sulfate 7.5 MG / dextroamphetamine saccharate 7.5 MG / dextroamphetamine sulfate 7.5 MG Oral Tablet"
+      }, {
+        "code": "541878",
+        "display": "amphetamine aspartate 1.25 MG / amphetamine sulfate 1.25 MG / dextroamphetamine saccharate 1.25 MG / dextroamphetamine sulfate 1.25 MG Oral Tablet"
+      }, {
+        "code": "541892",
+        "display": "amphetamine aspartate 2.5 MG / amphetamine sulfate 2.5 MG / dextroamphetamine saccharate 2.5 MG / dextroamphetamine sulfate 2.5 MG Oral Tablet"
+      }, {
+        "code": "577957",
+        "display": "amphetamine aspartate 3.75 MG / amphetamine sulfate 3.75 MG / dextroamphetamine saccharate 3.75 MG / dextroamphetamine sulfate 3.75 MG Oral Tablet"
+      }, {
+        "code": "577961",
+        "display": "amphetamine aspartate 5 MG / amphetamine sulfate 5 MG / dextroamphetamine saccharate 5 MG / dextroamphetamine sulfate 5 MG Oral Tablet"
+      }, {
+        "code": "687043",
+        "display": "amphetamine aspartate 3.125 MG / amphetamine sulfate 3.125 MG / dextroamphetamine saccharate 3.125 MG / dextroamphetamine sulfate 3.125 MG Oral Tablet"
+      }, {
+        "code": "861221",
+        "display": "24 HR amphetamine aspartate 2.5 MG / amphetamine sulfate 2.5 MG / dextroamphetamine saccharate 2.5 MG / dextroamphetamine sulfate 2.5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "861223",
+        "display": "24 HR amphetamine aspartate 3.75 MG / amphetamine sulfate 3.75 MG / dextroamphetamine saccharate 3.75 MG / dextroamphetamine sulfate 3.75 MG Extended Release Oral Capsule"
+      }, {
+        "code": "861225",
+        "display": "24 HR amphetamine aspartate 5 MG / amphetamine sulfate 5 MG / dextroamphetamine saccharate 5 MG / dextroamphetamine sulfate 5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "861227",
+        "display": "24 HR amphetamine aspartate 6.25 MG / amphetamine sulfate 6.25 MG / dextroamphetamine saccharate 6.25 MG / dextroamphetamine sulfate 6.25 MG Extended Release Oral Capsule"
+      }, {
+        "code": "861232",
+        "display": "24 HR amphetamine aspartate 7.5 MG / amphetamine sulfate 7.5 MG / dextroamphetamine saccharate 7.5 MG / dextroamphetamine sulfate 7.5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "861237",
+        "display": "24 HR amphetamine aspartate 1.25 MG / amphetamine sulfate 1.25 MG / dextroamphetamine saccharate 1.25 MG / dextroamphetamine sulfate 1.25 MG Extended Release Oral Capsule"
+      }, {
+        "code": "884385",
+        "display": "dextroamphetamine sulfate 10 MG Oral Tablet"
+      }, {
+        "code": "884386",
+        "display": "dextroamphetamine sulfate 5 MG Oral Tablet"
+      }, {
+        "code": "884520",
+        "display": "dextroamphetamine sulfate 10 MG Extended Release Oral Capsule"
+      }, {
+        "code": "884522",
+        "display": "dextroamphetamine sulfate 1 MG/ML Oral Solution"
+      }, {
+        "code": "884532",
+        "display": "dextroamphetamine sulfate 15 MG Extended Release Oral Capsule"
+      }, {
+        "code": "884535",
+        "display": "dextroamphetamine sulfate 5 MG Extended Release Oral Capsule"
+      }, {
+        "code": "884684",
+        "display": "dextroamphetamine sulfate 15 MG Oral Tablet"
+      } ]
+    } ]
+  }
+}

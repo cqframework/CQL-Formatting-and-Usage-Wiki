@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="SequentialEvents"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="10:1-10:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="2.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="9" locator="18:1-18:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="8" locator="18:32-18:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="7" locator="18:41-18:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="12:1-12:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def localId="4" locator="14:1-14:75" name="DTaP Vaccine" id="urn:oid:2.16.840.1.113883.3.464.1003.196.12.1214" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def localId="6" locator="16:1-16:61" resultTypeName="t:Code" name="Birthdate" id="21112-8" display="Birth date" accessLevel="Public">
+         <codeSystem localId="5" locator="16:34-16:40" name="LOINC">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def locator="20:1-20:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="20:1-20:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="25" locator="23:1-27:26" name="DTaP Immunizations or Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="25">
+               <a:s>define &quot;DTaP Immunizations or Procedures&quot;:&#xd;
+	</a:s>
+               <a:s r="24">
+                  <a:s>
+                     <a:s r="11">
+                        <a:s r="10">
+                           <a:s r="10">
+                              <a:s>[&quot;Immunization, Administered&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;DTaP Vaccine&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DTaPVaccination</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="23">
+                     <a:s>with </a:s>
+                     <a:s r="13">
+                        <a:s r="12">
+                           <a:s r="12">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Birthdate&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="22">
+                        <a:s r="19">
+                           <a:s r="14">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="19">
+                              <a:s>&quot;CalendarAgeInDaysAt&quot;(</a:s>
+                              <a:s r="16">
+                                 <a:s r="15">
+                                    <a:s>BirthDate</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="16">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="18">
+                                 <a:s r="17">
+                                    <a:s>DTaPVaccination</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="18">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> &#xd;
+        between 42 and 730</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="24" locator="24:2-27:26" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="11" locator="24:2-24:63" alias="DTaPVaccination">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="10" locator="24:2-24:47" dataType="qdm53:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="DTaP Vaccine" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="23" locator="25:3-27:26" alias="BirthDate" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="12" locator="25:8-25:56" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes xsi:type="ToList">
+                     <operand name="Birthdate" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+               <suchThat localId="22" locator="26:14-27:26" resultTypeName="t:Boolean" xsi:type="And">
+                  <operand xsi:type="GreaterOrEqual">
+                     <operand localId="19" locator="26:14-26:98" resultTypeName="t:Integer" name="CalendarAgeInDaysAt" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="16" locator="26:43-26:65" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="18" locator="26:68-26:97" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="20" locator="27:17-27:18" resultTypeName="t:Integer" valueType="t:Integer" value="42" xsi:type="Literal"/>
+                  </operand>
+                  <operand xsi:type="LessOrEqual">
+                     <operand localId="19" locator="26:14-26:98" resultTypeName="t:Integer" name="CalendarAgeInDaysAt" libraryName="Global" xsi:type="FunctionRef">
+                        <operand localId="16" locator="26:43-26:65" resultTypeName="t:DateTime" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="18" locator="26:68-26:97" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="21" locator="27:24-27:26" resultTypeName="t:Integer" valueType="t:Integer" value="730" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="57" locator="29:1-38:25" name="Four DTaP Vaccinations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="57">
+               <a:s>define &quot;Four DTaP Vaccinations&quot;:&#xd;
+	</a:s>
+               <a:s r="56">
+                  <a:s>
+                     <a:s>from&#xd;
+		</a:s>
+                     <a:s r="27">
+                        <a:s r="26">
+                           <a:s>
+                              <a:s>&quot;DTaP Immunizations or Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DTaPVaccination1</a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+		</a:s>
+                     <a:s r="29">
+                        <a:s r="28">
+                           <a:s>
+                              <a:s>&quot;DTaP Immunizations or Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DTaPVaccination2</a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+		</a:s>
+                     <a:s r="31">
+                        <a:s r="30">
+                           <a:s>
+                              <a:s>&quot;DTaP Immunizations or Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DTaPVaccination3</a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+		</a:s>
+                     <a:s r="33">
+                        <a:s r="32">
+                           <a:s>
+                              <a:s>&quot;DTaP Immunizations or Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> DTaPVaccination4</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="53">
+                     <a:s>where </a:s>
+                     <a:s r="53">
+                        <a:s r="46">
+                           <a:s r="39">
+                              <a:s r="35">
+                                 <a:s r="34">
+                                    <a:s>DTaPVaccination2</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="35">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="39">
+                                 <a:s r="38">
+                                    <a:s>1 day</a:s>
+                                 </a:s>
+                                 <a:s> or more after day of</a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="37">
+                                 <a:s r="36">
+                                    <a:s>DTaPVaccination1</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="37">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			and </a:s>
+                           <a:s r="45">
+                              <a:s r="41">
+                                 <a:s r="40">
+                                    <a:s>DTaPVaccination3</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="41">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="45">
+                                 <a:s r="44">
+                                    <a:s>1 day</a:s>
+                                 </a:s>
+                                 <a:s> or more after day of</a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="43">
+                                 <a:s r="42">
+                                    <a:s>DTaPVaccination2</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="43">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="52">
+                           <a:s r="48">
+                              <a:s r="47">
+                                 <a:s>DTaPVaccination4</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="48">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="52">
+                              <a:s r="51">
+                                 <a:s>1 day</a:s>
+                              </a:s>
+                              <a:s> or more after day of</a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="50">
+                              <a:s r="49">
+                                 <a:s>DTaPVaccination3</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="50">
+                                 <a:s>authorDatetime</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="55">
+                     <a:s>return </a:s>
+                     <a:s r="54">
+                        <a:s>DTaPVaccination1</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="56" locator="30:2-38:25" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="27" locator="31:3-31:53" alias="DTaPVaccination1">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="26" locator="31:3-31:36" name="DTaP Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source localId="29" locator="32:3-32:53" alias="DTaPVaccination2">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="28" locator="32:3-32:36" name="DTaP Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source localId="31" locator="33:3-33:53" alias="DTaPVaccination3">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="30" locator="33:3-33:36" name="DTaP Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <source localId="33" locator="34:3-34:53" alias="DTaPVaccination4">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="32" locator="34:3-34:36" name="DTaP Immunizations or Procedures" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where localId="53" locator="35:3-37:97" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="46" locator="35:9-36:97" resultTypeName="t:Boolean" xsi:type="And">
+                  <operand localId="39" locator="35:9-35:98" resultTypeName="t:Boolean" precision="Day" xsi:type="SameOrAfter">
+                     <operand localId="35" locator="35:9-35:39" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination2" xsi:type="Property"/>
+                     <operand locator="35:85-35:98" xsi:type="Add">
+                        <operand localId="37" locator="35:68-35:98" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination1" xsi:type="Property"/>
+                        <operand localId="38" locator="35:41-35:45" resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                     </operand>
+                  </operand>
+                  <operand localId="45" locator="36:8-36:97" resultTypeName="t:Boolean" precision="Day" xsi:type="SameOrAfter">
+                     <operand localId="41" locator="36:8-36:38" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination3" xsi:type="Property"/>
+                     <operand locator="36:84-36:97" xsi:type="Add">
+                        <operand localId="43" locator="36:67-36:97" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination2" xsi:type="Property"/>
+                        <operand localId="44" locator="36:40-36:44" resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="52" locator="37:8-37:97" resultTypeName="t:Boolean" precision="Day" xsi:type="SameOrAfter">
+                  <operand localId="48" locator="37:8-37:38" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination4" xsi:type="Property"/>
+                  <operand locator="37:84-37:97" xsi:type="Add">
+                     <operand localId="50" locator="37:67-37:97" resultTypeName="t:DateTime" path="authorDatetime" scope="DTaPVaccination3" xsi:type="Property"/>
+                     <operand localId="51" locator="37:40-37:44" resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                  </operand>
+               </operand>
+            </where>
+            <return localId="55" locator="38:3-38:25">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="54" locator="38:10-38:25" resultTypeName="qdm53:PositiveImmunizationAdministered" name="DTaPVaccination1" xsi:type="AliasRef"/>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

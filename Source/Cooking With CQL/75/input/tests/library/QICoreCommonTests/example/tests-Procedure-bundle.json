@@ -1,0 +1,202 @@
+{
+  "resourceType": "Bundle",
+  "id": "tests-Procedure-bundle",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Procedure",
+      "id": "defib-implant",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: defib-implant</p><p><b>meta</b>: </p><p><b>identifier</b>: urn:uuid:b2a737f2-2fdb-49c1-b097-dac173d07aff</p><p><b>status</b>: completed</p><p><b>code</b>: Insertion or replacement of permanent implantable defibrillator system with transvenous lead(s), single or dual chamber <span style=\"background: LightGoldenRodYellow\">(Details : {http://www.ama-assn.org/go/cpt code '33249' = '33249)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>performed</b>: 27/03/2019 6:55:26 AM --&gt; 27/03/2019 7:25:26 AM</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-practitioner-1.html\">Generated Summary: id: practitioner-1; 9941339108, 25456; Ronald Bone </a></td></tr></table><h3>FocalDevices</h3><table class=\"grid\"><tr><td>-</td><td><b>Manipulated</b></td></tr><tr><td>*</td><td><a href=\"Device-udi-2.html\">Generated Summary: id: udi-2; status: active; manufacturer: ACME Biomedical; expirationDate: 01/01/2022 12:00:00 AM; lotNumber: M320; serialNumber: AC221; modelNumber: 1.0; <span title=\"Codes: {http://snomed.info/sct 19257004}\">Implant</span></a></td></tr></table></div>"
+      },
+      "identifier": [ {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:uuid:b2a737f2-2fdb-49c1-b097-dac173d07aff"
+      } ],
+      "status": "completed",
+      "code": {
+        "coding": [ {
+          "system": "http://www.ama-assn.org/go/cpt",
+          "code": "33249"
+        } ],
+        "text": "Insertion or replacement of permanent implantable defibrillator system with transvenous lead(s), single or dual chamber"
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "performedPeriod": {
+        "start": "2019-03-26T12:55:26-07:00",
+        "end": "2019-03-26T13:25:26-07:00"
+      },
+      "performer": [ {
+        "actor": {
+          "reference": "Practitioner/practitioner-1"
+        }
+      } ],
+      "focalDevice": [ {
+        "manipulated": {
+          "reference": "Device/udi-2"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Procedure/defib-implant"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Procedure",
+      "id": "example",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>meta</b>: </p><p><b>status</b>: completed</p><p><b>code</b>: Excision of appendix (procedure) <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '80146002' = 'Appendectomy', given as 'Excision of appendix (procedure)'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><p><b>performed</b>: Apr 5, 2013 1:20:00 PM --&gt; Apr 5, 2013 2:30:00 PM</p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-example.html\">Dr Cecil Surgeon. Generated Summary: id: example; 23; active; Adam Careful </a></td></tr></table><p><b>reasonCode</b>: On examination - abdominal pain - right iliac <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '163220003' = 'On examination - abdominal pain - right iliac (finding)', given as 'On examination - abdominal pain - right iliac'})</span></p><p><b>bodySite</b>: Appendix structure <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '66754008' = 'Appendix', given as 'Appendix structure'})</span></p><p><b>report</b>: <a href=\"DiagnosticReport-example.html\">Generated Summary: id: example; status: final; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0074 LAB}\">Laboratory</span>; <span title=\"Codes: {http://loinc.org 58410-2}\">Complete blood count (hemogram) panel - Blood by Automated count</span>; effective: Jul 5, 2005 12:00:00 AM; issued: Jul 6, 2005 12:45:33 AM</a></p></div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/StructureDefinition/procedure-approachBodyStructure",
+        "valueReference": {
+          "reference": "BodyStructure/example"
+        }
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/procedure-incisionDateTime",
+        "valueDateTime": "2013-04-05T09:30:00-04:00"
+      } ],
+      "status": "completed",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "80146002",
+          "display": "Excision of appendix (procedure)"
+        } ],
+        "text": "Excision of appendix (procedure)"
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "encounter": {
+        "reference": "Encounter/example"
+      },
+      "performedPeriod": {
+        "start": "2013-04-05T09:20:00-04:00",
+        "end": "2013-04-05T10:30:00-04:00"
+      },
+      "performer": [ {
+        "actor": {
+          "reference": "Practitioner/example",
+          "display": "Dr Cecil Surgeon"
+        }
+      } ],
+      "reasonCode": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "163220003",
+          "display": "On examination - abdominal pain - right iliac"
+        } ]
+      } ],
+      "bodySite": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "66754008",
+          "display": "Appendix structure"
+        } ]
+      } ],
+      "report": [ {
+        "reference": "DiagnosticReport/example"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Procedure/example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Procedure",
+      "id": "negation-example",
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: negation-example</p><p><b>status</b>: not-done</p><p><b>statusReason</b>: Complication of medical care (disorder) <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '35688006' = 'Complication of medical care', given as 'Complication of medical care (disorder)'})</span></p><p><b>code</b>: Excision of appendix (procedure) <span style=\"background: LightGoldenRodYellow\">(Details : {[not stated] code 'null' = 'null)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><h3>Performers</h3><table class=\"grid\"><tr><td>-</td><td><b>Actor</b></td></tr><tr><td>*</td><td><a href=\"Practitioner-example.html\">Dr Cecil Surgeon. Generated Summary: id: example; 23; active; Adam Careful </a></td></tr></table></div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded",
+        "valueDateTime": "2013-04-05T10:30:00-04:00"
+      } ],
+      "modifierExtension": [ {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDone",
+        "valueBoolean": true
+      } ],
+      "status": "not-done",
+      "statusReason": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "35688006",
+          "display": "Complication of medical care (disorder)"
+        } ]
+      },
+      "code": {
+        "coding": [ {
+          "extension": [ {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-reference",
+            "valueUri": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1018.240"
+          } ]
+        } ],
+        "text": "Excision of appendix (procedure)"
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "encounter": {
+        "reference": "Encounter/example"
+      },
+      "performer": [ {
+        "actor": {
+          "reference": "Practitioner/example",
+          "display": "Dr Cecil Surgeon"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Procedure/negation-example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Procedure",
+      "id": "rehab",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: rehab</p><p><b>meta</b>: </p><p><b>status</b>: completed</p><p><b>code</b>: Alcohol rehabilitation <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '35637008' = 'Alcohol rehabilitation (regime/therapy)', given as 'Alcohol rehabilitation'}; {http://www.icd10data.com/icd10pcs code 'HZ30ZZZ' = 'HZ30ZZZ', given as 'Individual Counseling for Substance Abuse Treatment, Cognitive'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>performed</b>: 23/05/2002 12:00:00 AM</p></div>"
+      },
+      "status": "completed",
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "35637008",
+          "display": "Alcohol rehabilitation"
+        }, {
+          "system": "http://www.icd10data.com/icd10pcs",
+          "code": "HZ30ZZZ",
+          "display": "Individual Counseling for Substance Abuse Treatment, Cognitive"
+        } ],
+        "text": "Alcohol rehabilitation"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "performedDateTime": "2002-05-23"
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Procedure/rehab"
+    }
+  } ]
+}

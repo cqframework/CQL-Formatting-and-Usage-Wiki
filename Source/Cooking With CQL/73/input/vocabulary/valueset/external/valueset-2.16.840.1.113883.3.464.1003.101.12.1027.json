@@ -1,0 +1,54 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.464.1003.101.12.1027",
+    "meta": {
+        "versionId": "17",
+        "lastUpdated": "2021-09-13T15:17:41.000-04:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2017-05-04"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1027",
+    "version": "20170504",
+    "name": "Preventive Care Services Group Counseling",
+    "status": "active",
+    "date": "2017-05-04T01:00:13-04:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:8b35e4d1-a27e-4b3b-8e32-432a06f49454",
+        "timestamp": "2023-04-27T12:45:52-04:00",
+        "total": 2,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99411",
+                "display": "Preventive medicine counseling and/or risk factor reduction intervention(s) provided to individuals in a group setting (separate procedure); approximately 30 minutes"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99412",
+                "display": "Preventive medicine counseling and/or risk factor reduction intervention(s) provided to individuals in a group setting (separate procedure); approximately 60 minutes"
+            }
+        ]
+    }
+}

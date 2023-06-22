@@ -1,0 +1,120 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.464.1003.101.12.1001",
+    "meta": {
+        "versionId": "28",
+        "lastUpdated": "2022-03-02T18:06:14.000-05:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2018-03-10"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.12.1001",
+    "version": "20180310",
+    "name": "Office Visit",
+    "status": "active",
+    "date": "2022-03-03T18:46:01-05:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:baf5a50e-3290-4b80-855c-43abfce658ea",
+        "timestamp": "2023-04-27T12:37:43-04:00",
+        "total": 13,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "185463005",
+                "display": "Visit out of hours (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "185464004",
+                "display": "Out of hours visit - not night visit (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "185465003",
+                "display": "Weekend visit (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "3391000175108",
+                "display": "Office visit for pediatric care and assessment (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "439740005",
+                "display": "Postoperative follow-up visit (procedure)"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99202",
+                "display": "Office or other outpatient visit for the evaluation and management of a new patient, which requires a medically appropriate history and/or examination and straightforward medical decision making. When using time for code selection, 15-29 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99203",
+                "display": "Office or other outpatient visit for the evaluation and management of a new patient, which requires a medically appropriate history and/or examination and low level of medical decision making. When using time for code selection, 30-44 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99204",
+                "display": "Office or other outpatient visit for the evaluation and management of a new patient, which requires a medically appropriate history and/or examination and moderate level of medical decision making. When using time for code selection, 45-59 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99205",
+                "display": "Office or other outpatient visit for the evaluation and management of a new patient, which requires a medically appropriate history and/or examination and high level of medical decision making. When using time for code selection, 60-74 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99212",
+                "display": "Office or other outpatient visit for the evaluation and management of an established patient, which requires a medically appropriate history and/or examination and straightforward medical decision making. When using time for code selection, 10-19 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99213",
+                "display": "Office or other outpatient visit for the evaluation and management of an established patient, which requires a medically appropriate history and/or examination and low level of medical decision making. When using time for code selection, 20-29 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99214",
+                "display": "Office or other outpatient visit for the evaluation and management of an established patient, which requires a medically appropriate history and/or examination and moderate level of medical decision making. When using time for code selection, 30-39 minutes of total time is spent on the date of the encounter."
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "99215",
+                "display": "Office or other outpatient visit for the evaluation and management of an established patient, which requires a medically appropriate history and/or examination and high level of medical decision making. When using time for code selection, 40-54 minutes of total time is spent on the date of the encounter."
+            }
+        ]
+    }
+}

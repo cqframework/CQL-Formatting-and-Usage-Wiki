@@ -1,0 +1,524 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Test05_ScreeningForDepression",
+         "version" : "1.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "localIdentifier" : "AWV",
+            "path" : "AnnualWellness",
+            "version" : "1.0.000"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "3",
+            "locator" : "7:1-7:93",
+            "name" : "Depression or Bipolar Disorder",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.105.12.1040",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "8:1-8:92",
+            "name" : "PHQ 2 Total Score (in points)",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.105.12.1013",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "10:1-10:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "10:1-10:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "8",
+            "locator" : "12:1-13:44",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "8",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\r\n\t" ]
+                  }, {
+                     "r" : "7",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "6",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "6",
+                           "s" : [ {
+                              "r" : "5",
+                              "s" : [ {
+                                 "value" : [ "AWV" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "6",
+                              "s" : [ {
+                                 "value" : [ "\"Annual Wellness Encounters\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " )" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "7",
+               "locator" : "13:2-13:44",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "6",
+                  "locator" : "13:9-13:44",
+                  "name" : "Annual Wellness Encounters",
+                  "libraryName" : "AWV",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "10",
+            "locator" : "15:1-16:21",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "10",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\r\n\t" ]
+                  }, {
+                     "r" : "9",
+                     "s" : [ {
+                        "value" : [ "\"Initial Population\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "9",
+               "locator" : "16:2-16:21",
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "23",
+            "locator" : "18:1-22:2",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "23",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\r\n\t" ]
+                  }, {
+                     "r" : "22",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "21",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "21",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "12",
+                                 "s" : [ {
+                                    "r" : "11",
+                                    "s" : [ {
+                                       "r" : "11",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Diagnosis\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Depression or Bipolar Disorder\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","Bipolar" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\t\t" ]
+                           }, {
+                              "r" : "20",
+                              "s" : [ {
+                                 "value" : [ "with " ]
+                              }, {
+                                 "r" : "14",
+                                 "s" : [ {
+                                    "r" : "13",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","AWV" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t\t\t\tsuch that " ]
+                              }, {
+                                 "r" : "19",
+                                 "s" : [ {
+                                    "r" : "16",
+                                    "s" : [ {
+                                       "r" : "15",
+                                       "s" : [ {
+                                          "value" : [ "Bipolar" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "16",
+                                       "s" : [ {
+                                          "value" : [ "prevalencePeriod" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","overlaps before"," " ]
+                                 }, {
+                                    "r" : "18",
+                                    "s" : [ {
+                                       "r" : "17",
+                                       "s" : [ {
+                                          "value" : [ "AWV" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "18",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "22",
+               "locator" : "19:2-22:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "21",
+                  "locator" : "19:9-22:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "12",
+                     "locator" : "19:11-19:65",
+                     "alias" : "Bipolar",
+                     "expression" : {
+                        "localId" : "11",
+                        "locator" : "19:11-19:57",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}Diagnosis",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Depression or Bipolar Disorder",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "localId" : "20",
+                     "locator" : "20:4-21:73",
+                     "alias" : "AWV",
+                     "type" : "With",
+                     "expression" : {
+                        "localId" : "13",
+                        "locator" : "20:9-20:40",
+                        "name" : "Annual Wellness Encounters",
+                        "libraryName" : "AWV",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "localId" : "19",
+                        "locator" : "21:15-21:73",
+                        "type" : "OverlapsBefore",
+                        "operand" : [ {
+                           "localId" : "16",
+                           "locator" : "21:15-21:38",
+                           "path" : "prevalencePeriod",
+                           "scope" : "Bipolar",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "18",
+                           "locator" : "21:56-21:73",
+                           "path" : "relevantPeriod",
+                           "scope" : "AWV",
+                           "type" : "Property"
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "38",
+            "locator" : "24:1-29:2",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "38",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\r\n\t" ]
+                  }, {
+                     "r" : "37",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "36",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "36",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "25",
+                                 "s" : [ {
+                                    "r" : "24",
+                                    "s" : [ {
+                                       "r" : "24",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"PHQ 2 Total Score (in points)\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","PHQ_2" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\t\t" ]
+                           }, {
+                              "r" : "35",
+                              "s" : [ {
+                                 "value" : [ "with " ]
+                              }, {
+                                 "r" : "27",
+                                 "s" : [ {
+                                    "r" : "26",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","AWV" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t\t\t\tsuch that " ]
+                              }, {
+                                 "r" : "34",
+                                 "s" : [ {
+                                    "r" : "29",
+                                    "s" : [ {
+                                       "r" : "28",
+                                       "s" : [ {
+                                          "value" : [ "PHQ_2" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "29",
+                                       "s" : [ {
+                                          "value" : [ "authorDatetime" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "34",
+                                    "s" : [ {
+                                       "r" : "33",
+                                       "s" : [ {
+                                          "value" : [ "12 ","months" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " or less on or before" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " \r\n\t\t\t\t" ]
+                                 }, {
+                                    "r" : "32",
+                                    "s" : [ {
+                                       "value" : [ "end of " ]
+                                    }, {
+                                       "r" : "31",
+                                       "s" : [ {
+                                          "r" : "30",
+                                          "s" : [ {
+                                             "value" : [ "AWV" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "31",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "37",
+               "locator" : "25:2-29:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "36",
+                  "locator" : "25:9-29:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "25",
+                     "locator" : "25:11-25:74",
+                     "alias" : "PHQ_2",
+                     "expression" : {
+                        "localId" : "24",
+                        "locator" : "25:11-25:68",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                        "templateId" : "PositiveAssessmentPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "PHQ 2 Total Score (in points)",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "localId" : "35",
+                     "locator" : "26:4-28:29",
+                     "alias" : "AWV",
+                     "type" : "With",
+                     "expression" : {
+                        "localId" : "26",
+                        "locator" : "26:9-26:40",
+                        "name" : "Annual Wellness Encounters",
+                        "libraryName" : "AWV",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "localId" : "34",
+                        "locator" : "27:15-28:29",
+                        "type" : "In",
+                        "operand" : [ {
+                           "localId" : "29",
+                           "locator" : "27:15-27:34",
+                           "path" : "authorDatetime",
+                           "scope" : "PHQ_2",
+                           "type" : "Property"
+                        }, {
+                           "locator" : "27:36-27:52",
+                           "lowClosed" : true,
+                           "highClosed" : true,
+                           "type" : "Interval",
+                           "low" : {
+                              "locator" : "28:5-28:29",
+                              "type" : "Subtract",
+                              "operand" : [ {
+                                 "localId" : "32",
+                                 "locator" : "28:5-28:29",
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "31",
+                                    "locator" : "28:12-28:29",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "AWV",
+                                    "type" : "Property"
+                                 }
+                              }, {
+                                 "localId" : "33",
+                                 "locator" : "27:36-27:44",
+                                 "value" : 12,
+                                 "unit" : "months",
+                                 "type" : "Quantity"
+                              } ]
+                           },
+                           "high" : {
+                              "localId" : "32",
+                              "locator" : "28:5-28:29",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "31",
+                                 "locator" : "28:12-28:29",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "AWV",
+                                 "type" : "Property"
+                              }
+                           }
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         } ]
+      }
+   }
+}
+

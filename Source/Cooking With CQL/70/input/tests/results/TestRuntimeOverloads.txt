@@ -1,0 +1,114 @@
+Executing CQL...
+CQL path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\70\input\cql
+No data found at c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\70\input\tests. Evaluation may fail if data is required.
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\70\input\vocabulary\valueset
+TestAnyFunctionWithInteger=1
+TestAnyFunctionWithString=joe
+
+
+Evaluation logs:
+09:56:10.655 [pool-2-thread-1] INFO  ca.uhn.fhir.util.VersionUtil - HAPI FHIR version 6.0.1 - Rev 2a70df1a11
+09:56:10.661 [pool-2-thread-1] INFO  ca.uhn.fhir.context.FhirContext - Creating new FHIR context for FHIR version [R4]
+09:56:10.689 [pool-2-thread-1] INFO  o.o.cqf.cql.ls.server.manager.IgContextManager - Searching for ini file in file:///c%3A/Users/Bryn/Documents/Src/SS/CQL-Formatting-and-Usage-Wiki/Source/Cooking%20With%20CQL/70/input
+09:56:10.689 [pool-2-thread-1] INFO  o.o.cqf.cql.ls.server.manager.IgContextManager - Attempting to read ini from path file:///c%3A/Users/Bryn/Documents/Src/SS/CQL-Formatting-and-Usage-Wiki/Source/Cooking%20With%20CQL/70/ig.ini
+09:56:10.690 [pool-2-thread-1] WARN  org.opencds.cqf.cql.ls.core.ContentService - error opening stream for: file:///c%3A/Users/Bryn/Documents/Src/SS/CQL-Formatting-and-Usage-Wiki/Source/Cooking%20With%20CQL/70/ig.ini
+java.io.FileNotFoundException: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\70\ig.ini (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:86)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:184)
+	at java.base/java.net.URL.openStream(URL.java:1165)
+	at org.opencds.cqf.cql.ls.core.ContentService.read(ContentService.java:43)
+	at org.opencds.cqf.cql.ls.server.service.FederatedContentService.read(FederatedContentService.java:41)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.findIgContext(IgContextManager.java:85)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.readContext(IgContextManager.java:48)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager$$Lambda$310/0x000000001c6793e0.apply(Unknown Source)
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1134)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.getContext(IgContextManager.java:39)
+	at org.opencds.cqf.cql.ls.server.command.CqlCommand.call(CqlCommand.java:123)
+	at org.opencds.cqf.cql.ls.server.command.CqlCommand.call(CqlCommand.java:38)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at org.opencds.cqf.cql.ls.server.command.DebugCqlCommandContribution.executeCql(DebugCqlCommandContribution.java:45)
+	at org.opencds.cqf.cql.ls.server.command.DebugCqlCommandContribution.executeCommand(DebugCqlCommandContribution.java:76)
+	at org.opencds.cqf.cql.ls.server.service.CqlWorkspaceService.executeCommandFromContributions(CqlWorkspaceService.java:165)
+	at org.opencds.cqf.cql.ls.server.service.CqlWorkspaceService.executeCommand(CqlWorkspaceService.java:110)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint$$Lambda$19/0x0000000000000000.apply(Unknown Source)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:866)
+09:56:10.690 [pool-2-thread-1] INFO  o.o.cqf.cql.ls.server.manager.IgContextManager - Attempting to read ini from path file:///c%3A/Users/Bryn/Documents/Src/SS/CQL-Formatting-and-Usage-Wiki/Source/Cooking%20With%20CQL/ig.ini
+09:56:10.690 [pool-2-thread-1] WARN  org.opencds.cqf.cql.ls.core.ContentService - error opening stream for: file:///c%3A/Users/Bryn/Documents/Src/SS/CQL-Formatting-and-Usage-Wiki/Source/Cooking%20With%20CQL/ig.ini
+java.io.FileNotFoundException: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\ig.ini (The system cannot find the file specified)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:86)
+	at java.base/sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:184)
+	at java.base/java.net.URL.openStream(URL.java:1165)
+	at org.opencds.cqf.cql.ls.core.ContentService.read(ContentService.java:43)
+	at org.opencds.cqf.cql.ls.server.service.FederatedContentService.read(FederatedContentService.java:41)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.findIgContext(IgContextManager.java:85)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.readContext(IgContextManager.java:48)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager$$Lambda$310/0x000000001c6793e0.apply(Unknown Source)
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1134)
+	at org.opencds.cqf.cql.ls.server.manager.IgContextManager.getContext(IgContextManager.java:39)
+	at org.opencds.cqf.cql.ls.server.command.CqlCommand.call(CqlCommand.java:123)
+	at org.opencds.cqf.cql.ls.server.command.CqlCommand.call(CqlCommand.java:38)
+	at picocli.CommandLine.executeUserObject(CommandLine.java:1953)
+	at picocli.CommandLine.access$1300(CommandLine.java:145)
+	at picocli.CommandLine$RunLast.executeUserObjectOfLastSubcommandWithSameParent(CommandLine.java:2352)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2346)
+	at picocli.CommandLine$RunLast.handle(CommandLine.java:2311)
+	at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:2179)
+	at picocli.CommandLine.execute(CommandLine.java:2078)
+	at org.opencds.cqf.cql.ls.server.command.DebugCqlCommandContribution.executeCql(DebugCqlCommandContribution.java:45)
+	at org.opencds.cqf.cql.ls.server.command.DebugCqlCommandContribution.executeCommand(DebugCqlCommandContribution.java:76)
+	at org.opencds.cqf.cql.ls.server.service.CqlWorkspaceService.executeCommandFromContributions(CqlWorkspaceService.java:165)
+	at org.opencds.cqf.cql.ls.server.service.CqlWorkspaceService.executeCommand(CqlWorkspaceService.java:110)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint$$Lambda$19/0x0000000000000000.apply(Unknown Source)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:866)
+09:56:10.842 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
+09:56:10.858 [pool-2-thread-1] INFO  ca.uhn.fhir.util.XmlUtil - Unable to determine StAX implementation: java.xml/META-INF/MANIFEST.MF not found
+09:56:12.594 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
+09:56:12.649 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
+09:56:12.873 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
+09:56:13.100 [pool-2-thread-1] INFO  ca.uhn.fhir.context.FhirContext - Creating new FHIR context for FHIR version [R4]
+elapsed: 3.587 seconds
+

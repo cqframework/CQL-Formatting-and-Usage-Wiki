@@ -1,0 +1,69 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.1171",
+  "meta": {
+    "versionId": "9",
+    "lastUpdated": "2023-02-17T01:03:27.000-05:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "NCQA PHEMUR Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2023-02-17"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2023-02-17"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1171",
+  "version": "20230217",
+  "name": "Clonidine",
+  "status": "active",
+  "date": "2023-02-17T01:03:27-05:00",
+  "publisher": "NCQA PHEMUR",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for clonidine  medications.),(Data Element Scope: This value set may use a model element related to Medication.),(Inclusion Criteria: Includes concepts that represent generic, human use, prescribable clonidine and clonidine in combination with other medications.),(Exclusion Criteria: Excludes concepts that represent non-prescribable, branded drugs and excludes concepts that represent components or ingredients.)",
+  "compose": {
+    "include": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "04032023",
+      "concept": [ {
+        "code": "1013930",
+        "display": "12 HR clonidine hydrochloride 0.1 MG Extended Release Oral Tablet"
+      }, {
+        "code": "1013937",
+        "display": "12 HR clonidine hydrochloride 0.2 MG Extended Release Oral Tablet"
+      }, {
+        "code": "884173",
+        "display": "clonidine hydrochloride 0.1 MG Oral Tablet"
+      }, {
+        "code": "884185",
+        "display": "clonidine hydrochloride 0.2 MG Oral Tablet"
+      }, {
+        "code": "884189",
+        "display": "clonidine hydrochloride 0.3 MG Oral Tablet"
+      }, {
+        "code": "884221",
+        "display": "10 ML clonidine hydrochloride 0.1 MG/ML Injection"
+      }, {
+        "code": "884225",
+        "display": "10 ML clonidine hydrochloride 0.5 MG/ML Injection"
+      }, {
+        "code": "998671",
+        "display": "168 HR clonidine 0.00417 MG/HR Transdermal System"
+      }, {
+        "code": "998675",
+        "display": "168 HR clonidine 0.00833 MG/HR Transdermal System"
+      }, {
+        "code": "998679",
+        "display": "168 HR clonidine 0.0125 MG/HR Transdermal System"
+      } ]
+    } ]
+  }
+}

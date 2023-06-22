@@ -1,0 +1,145 @@
+Running tests.
+Data path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\tests\library\CervicalCancerScreening
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\vocabulary\valueset
+Patient=Patient(id=denom-EXM124)
+
+Patient=Patient(id=denomexcl-EXM124)
+
+Patient=Patient(id=numer-EXM124)
+
+elapsed: -0.185 seconds
+
+Running tests.
+Data path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\tests\library\CervicalCancerScreening
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\vocabulary\valueset
+Patient=Patient(id=denom-EXM124)
+Absence of Cervix=[]
+Cervical Cytology Within 3 Years=[]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+
+Patient=Patient(id=denomexcl-EXM124)
+Absence of Cervix=[Condition(id=denomexcl-EXM124-2)]
+Cervical Cytology Within 3 Years=[]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+
+Patient=Patient(id=numer-EXM124)
+Absence of Cervix=[]
+Cervical Cytology Within 3 Years=[Observation(id=numer-EXM124-3)]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+
+
+The following errors were encountered during evaluation:
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1017 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.110.12.1059 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1014 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/birthsex is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/chest-ct-procedure is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/conditionclinicalstatusactive is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/currentsmoker is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-race is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.89 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-race-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/simple-language is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-allergy-substance is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-careteam-provider-roles is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-note-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-lab-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-report-and-note-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-encounter-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-ndc-vaccine-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-value-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-icd10pcs is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provenance-participant-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-role is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-specialty is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status-observation-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-vaccines-cvx is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+elapsed: 0.828 seconds
+
+Running tests.
+Data path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\tests\library\CervicalCancerScreening
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\65\input\vocabulary\valueset
+Patient=Patient(id=denom-EXM124)
+Absence of Cervix=[]
+Cervical Cytology Within 3 Years=[]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+Initial Population=true
+Denominator=true
+Denominator Exclusion=false
+Numerator=false
+
+Patient=Patient(id=denomexcl-EXM124)
+Absence of Cervix=[Condition(id=denomexcl-EXM124-2)]
+Cervical Cytology Within 3 Years=[]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+Initial Population=true
+Denominator=true
+Denominator Exclusion=true
+Numerator=false
+
+Patient=Patient(id=numer-EXM124)
+Absence of Cervix=[]
+Cervical Cytology Within 3 Years=[Observation(id=numer-EXM124-3)]
+HPV Test Within 5 Years for Women Age 30 and Older=[]
+Initial Population=true
+Denominator=true
+Denominator Exclusion=false
+Numerator=true
+
+
+The following errors were encountered during evaluation:
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1017 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.110.12.1059 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1014 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/birthsex is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/chest-ct-procedure is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/conditionclinicalstatusactive is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://example.org/fhir/ValueSet/currentsmoker is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-race is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.89 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-race-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/simple-language is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-allergy-substance is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-careteam-provider-roles is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-note-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-lab-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-report-and-note-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-encounter-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-ndc-vaccine-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-value-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-icd10pcs is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provenance-participant-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-role is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-specialty is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status-observation-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+[pool-1-thread-1] WARN org.opencds.cqf.cql.evaluator.engine.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-vaccines-cvx is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+elapsed: -0.297 seconds
+

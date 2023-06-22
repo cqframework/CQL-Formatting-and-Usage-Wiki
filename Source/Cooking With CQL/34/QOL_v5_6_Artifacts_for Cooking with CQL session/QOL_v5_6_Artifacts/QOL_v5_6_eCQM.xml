@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+			**************************************************************
+			Measure Details Section
+			**************************************************************
+		-->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-6963-bf5e-016a-0de09b924a33"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title
+          value="Quality of Life Assessment for Patients who Receive Substance Use Disorder Treatment"/>
+   <text
+         value="Percentage of new and follow-up substance use disorder (SUD) encounters with patients aged 18 years or older at the time of the new SUD encounter who receive a baseline and follow-up quality of life (QOL) assessment using a standardized and validated tool."/>
+   <statusCode code="COMPLETED"/>
+   <setId root="5f97ce0c-7c57-4def-88fd-13e29dee4bfa"/>
+   <versionNumber value="0.0.042"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.1240"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Mathematica Policy Research"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="9048cd4c-b61b-11e4-a71e-12e3f512a338"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Centers for Medicare &amp; Medicaid Services (CMS)"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--VR12 Mental Component T Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.12.1177"/>
+         <title value="VR12 Mental Component T Score"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Hospice for the Terminally Ill-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1046.147"/>
+         <title value="Hospice for the Terminally Ill"/>
+      </valueSet>
+   </definition>
+   <!--PROMIS 10 Global Mental Health Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.11.1138"/>
+         <title value="PROMIS 10 Global Mental Health Score"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Psychotherapy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1496"/>
+         <title value="Psych Visit - Psychotherapy"/>
+      </valueSet>
+   </definition>
+   <!--Psych Visit - Diagnostic Evaluation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1492"/>
+         <title value="Psych Visit - Diagnostic Evaluation"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--PROMIS 10 Global Physical Health Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.12.1139"/>
+         <title value="PROMIS 10 Global Physical Health Score"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--VR12 Physical Component T Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.12.1176"/>
+         <title value="VR12 Physical Component T Score"/>
+      </valueSet>
+   </definition>
+   <!--VR 36 Mental Component Summary (MCS) Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.12.1225"/>
+         <title value="VR 36 Mental Component Summary (MCS) Score"/>
+      </valueSet>
+   </definition>
+   <!--VR 36 Physical Component Summary (PCS) Score-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.118.12.1226"/>
+         <title value="VR 36 Physical Component Summary (PCS) Score"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol and Drug Dependence Treatment-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1145.15"/>
+         <title value="Alcohol and Drug Dependence Treatment"/>
+      </valueSet>
+   </definition>
+   <!--Eligible Clinician Outpatient Encounters with Telehealth-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1046.150"/>
+         <title value="Eligible Clinician Outpatient Encounters with Telehealth"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol and Drug Dependence-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1001"/>
+         <title value="Alcohol and Drug Dependence"/>
+      </valueSet>
+   </definition>
+   <!--Dead (finding)-CODE:/CodeSystem/SNOMEDCT/Version/2019-03/Code/419099009/Info-->
+      <definition>
+      <cql-ext:code code="419099009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT">
+         <displayName value="Dead (finding)"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/5f97ce0c-7c57-4def-88fd-13e29dee4bfa/QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment-0.0.042.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/5f97ce0c-7c57-4def-88fd-13e29dee4bfa/QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment-0.0.042.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/5f97ce0c-7c57-4def-88fd-13e29dee4bfa/QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment-0.0.042.json"/>
+            </translation>
+         </text>
+         <setId extension="5f97ce0c-7c57-4def-88fd-13e29dee4bfa"
+                identifierName="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="0.0.042"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="4028038268434da20168531138e502de"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-4.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-4.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-4.0.000.json"/>
+            </translation>
+         </text>
+         <setId extension="8bdc0a19-b210-4a58-8a07-f5d95a34eca9"
+                identifierName="MATGlobalCommonFunctions"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="4.0.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="f9f1c7db-73d2-4e9e-a250-ccab3b0b9d52"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20190101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="943" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Limited proprietary coding is contained in the measure specifications for convenience. Users of the proprietary code sets should obtain all necessary licenses from the owners of these code sets. CMS disclaims all liability for use or accuracy of any coding contained in the specification. &#xA;&#xA;CPT(R) contained in the measure specification is copyright 2004-2018 American Medical Association. &#xA;&#xA;ICD-10 copyright 2018 World Health Organization. All Rights Reserved.&#xA;&#xA;LOINC(R) copyright 2004-2018 Regenstrief Institute, Inc. &#xA;&#xA;SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2018 International Health Terminology Standards Development Organisation."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="These performance measures are not clinical guidelines, do not establish a standard of medical care, and have not been tested for all potential applications.&#xA;&#xA;THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.&#xA;&#xA;Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM]."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="SUD affects the lives of millions of Americans each year. According to the 2017 National Survey on Drug Use and Health (NSDUH), 18.7 million adults aged 18 or over had either illicit drug use disorder or alcohol use disorder, and only 3.8 million sought SUD treatment (SAMSHA 2017). Of those 3.8 million, over 1.6 million received outpatient treatment. Currently, SUD treatment focuses largely on attainment of abstinence and on symptom reduction (e.g., reduction in urges to use drugs) with very little focus on QOL indicators that may be important to the values, attitudes, beliefs, and aspirations of patients (Colpaert et al. 2012). Including QOL assessment as part of SUD treatment can improve the quality of care by (1) broadening treatment to include multiple factors that affect patient well-being, (2) enabling clinicians to tailor treatment to improve QOL (Laudet 2011; Dawson et al. 2008), and (3) providing tools to clinicians and patients to effectively communicate problems, goals, improvements, and setbacks (Snyder et al. 2011). &#xA;&#xA;These improvements in quality if care may lead to improved health outcomes – an increase in number of patients achieving or sustaining remission and an increase in quality adjusted life years (QALYs) among patients who achieve remission. Only 6.8 percent of SUD patients achieve remission each year (Fleury 2016). Patients whose treatment includes QOL assessments are less likely to drop out of treatment and more likely to sustain remission (Laudet 2011). Further, patients who achieve remission experience a higher quality of life compared to people who continue to abuse drugs. For example, Wittenberg et al. (2015) calculated utilities for people in three health states: those who actively inject opioids, those who actively misuse prescription opioids, or those who are in remission. Utilities are weights applied to each year of life in a given health state and represent QOL. They range from 0 to 1, where 0 is value of being dead and 1 is the value of perfect health. People in remission experience 1.6 times greater utility than someone who injects opioids and 1.3 times greater than someone who misuses prescription opioids.&#xA;&#xA;SUD treatment itself is a cost-effective intervention. Ettner et al. (2005) estimated that the net benefit of SUD treatment was $9,903 per person, which includes savings due to reductions in healthcare and criminal costs, as well as an increase in earnings from employment. Another study estimated that opioid users had an increase in annual health care costs ranging from $13,743 to $15,500, compared to patients without an opioid dependence diagnosis (Florence et al. 2013). Similarly, Strassels (2009) found that opioid users had an increase of $14,054 in health care costs per year compared to non-opioid users. By decreasing the number of patients who drop out of treatment and increasing the number of patients who achieve or sustain remission, this measure has the potential to result in a cost saving to the healthcare system."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The National Institute on Drug Abuse’s principles of effective treatment include: &#xA;• Effective treatment addresses all of the patient’s needs, not just his or her drug use&#xA;• Treatment plans must be reviewed often and modified to fit the patient’s changing needs. (NIDA 2019)&#xA;&#xA;According to the American Psychiatric Association, one of the goals of SUD treatment is to improve the psychological and social functioning of the patient, including family and social relations, school and work performance, financial status, health, and personal independence. As such, they recommend that SUD treatment includes a complete assessment of the patient’s family and social history and the effect of SUD on patient’s cognitive, psychological, behavioral, and physiological functioning, including financial or legal problems, social supports, (including peer relationships), school or vocational adjustment, and other functional impairments. When planning and implementing treatment, clinicians should consider several variables, including comorbid psychiatric and general medical conditions, gender-related factors, age, social milieu and living environment, cultural factors, LGBT issues, and family characteristics . For optimal outcome, the treatment of SUD may also include strategies that target repair of damages or losses that resulted from the individual’s substance use; aid in developing effective interpersonal, vocational, and proactive coping skills; and enhance familial and interpersonal relations that will support an abstinent lifestyle (American Psychiatric Association 2006).&#xA;&#xA;The VA/DoD Clinical Practice Guideline for Management of SUD outlines that one of the expected outcomes of treatment is improvement in QOL. They recommend that patients in SUD specialty care and primary/general care for management of SUD are given a comprehensive biopsychosocial assessment that includes several issues related to QOL: inadequate housing, financial problems, problematic family situations, poor social support, religious/spiritual problems, occupational problems, and difficulties with daily living. They recommend that providers prioritize and address biopsychosocial problems, address housing needs, and provide social/vocational/legal services. Finally, they recommend that providers reassess response to treatment periodically and systematically, using standardized and valid self-report instruments (Department of Veterans Affairs and Department of Defense 2009). &#xA;&#xA;Although there is no predetermined length of treatment for SUD, there is general agreement that treatment for less than 90 days has limited effectiveness (National Institutes of Health 2018). Therefore, this measure requires that the follow-up QOL assessment be completed at least 3 months after the initiation of treatment."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Higher score indicates better quality"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Colpaert, K., De Maeyer, J., Broekaert, E., &amp; Vanderplasschen, W. (2013). Impact of addiction severity and psychiatric comorbidity on the quality of life of alcohol-, drug-and dual-dependent persons in residential treatment. European Addiction Research, 19(4), 173–183. doi: 10.1159/000343098."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Dawson, D. A., Li, T. K., Chou, S. P., &amp; Grant, B. F. (2008). Transitions in and out of alcohol use disorders: Their associations with conditional changes in quality of life over a 3-year follow-up interval. Alcohol &amp; Alcoholism, 44(1), 84–92. doi: 10.1093/alcalc/agn094."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Ettner, S. L., Huang, D., Evans, E., Rose Ash, D., Hardy, M., Jourabchi, M., &amp; Hser, Y. I. (2006). Benefit–cost in the California treatment outcome project: Does substance abuse treatment “pay for itself?” Health Services Research, 41(1), 192–213."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Fleury, M. J., Djouini, A., Hu?nh, C., Tremblay, J., Ferland, F., Ménard, J. M., &amp; Belleville, G. (2016). Remission from substance use disorders: A systematic review and meta-analysis. Drug and Alcohol Dependence, 168, 293–306. doi: 10.1016/j.drugalcdep.2016.08.625."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Florence, C., Luo, F., Xu, L., &amp; Zhou, C. (2016). The economic burden of prescription opioid overdose, abuse and dependence in the United States, 2013. Medical Care, 54(10), 901. doi: 10.1097/MLR.0000000000000625."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Kleber, H.W., Weiss, R.D., Anton, Jr. R.F., George, T.P., Greenfield, S.F., Kosten, T.R., …Connery, H.S. Practice Guideline for the  Treatment of Patients With Substance Use Disorders, 2nd Edition. (2006). Retrieved from https://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/substanceuse.pdf."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Laudet, A. B. (2011). The case for considering quality of life in addiction research and clinical practice. Addiction Science &amp; Clinical Practice, 6(1), 44–55."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Institute on Drug Abuse. (2018). Principles of Drug Addiction Treatment: A Research-Based Guide, 3rd edition. Retrieved from https://www.drugabuse.gov/publications/principles-drug-addiction-treatment-research-based-guide-third-eddition."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="National Institute on Drug Abuse. (2019). Treatment Approaches for Drug Addiction. Retrieved from https://www.drugabuse.gov/publications/drugfacts/treatment-approaches-drug-addiction."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="SAMHSA (2017). Results from the 2017 National Survey on Drug Use and Health: Detailed Tables. Retrieved from https://www.samhsa.gov/data/sites/default/files/cbhsq-reports/NSDUHDetailedTabs2017/NSDUHDetailedTabs2017.htm#lotsect5pe."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Snyder, C. F., Aaronson, N. K., Choucair, A. K., Elliott, T. E., Greenhalgh, J., Halyard, M. Y., . . . Santana, M. (2012). Implementing patient-reported outcomes assessment in clinical practice: a review of the options and considerations. Quality of Life Research, 21(8), 1305–1314."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Strassels, S. (2009). Economic burden of prescription opioid misuse and abuse. Journal of Managed Care Pharmacy, 15(7), 556–562."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The Department of Veterans Affairs (VA) and The Department of Defense (DoD). (2009). VA/DoD Clinical Practice Guideline for Management of Substance Use Disorders, Version 2.0. Retrieved fromhttps://www.healthquality.va.gov/guidelines/MH/sud/sud_sum_6_1.pdf."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Wittenberg, E., Bray, J., Aden, B., Gebremariam, A., Nosyk, B., Schackman, B. (2015) Measuring benefits of opioid misuse treatment for economic evaluation: Health-related quality of life of opioid-dependent individuals and their spouses as assessed by a sample of the US population. Addiction, 111(4), 675–684. doi: 10.1111/add.13219."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For this measure, eligible clinician encounters are assessed. &#xA;&#xA;For this measure, SUD is defined as alcohol use disorder, prescription drug misuse, or illicit drug use disorder. &#xA;&#xA;SUD Treatment: &#xA;Alcohol and drug dependence interventions such as detoxification, education, counseling, rehab and QOL assessment. &#xA;&#xA;SUD Encounter: &#xA;An eligible clinician encounter with SUD treatment -OR- an eligible clinician encounter with a principal diagnosis of alcohol or drug dependence and psychiatric evaluation or therapy during the new SUD event identification period.&#xA;&#xA;New SUD Encounter: &#xA;A SUD encounter with no other SUD encounter in the 60 days prior. &#xA;&#xA;New SUD Encounter Identification Period:&#xA;Defined as 6 months before the measurement period starts (July 1 of the year prior to the measurement period) to 6 months before it ends (June 30 of the year of the measurement period).&#xA;&#xA;Baseline QOL Assessment:&#xA;The use of a standardized and validated QOL tool (see list below) administered 14 days prior to or during the new SUD encounter.&#xA;&#xA;Follow-up QOL Assessment:&#xA;The use of the same standardized and validated QOL assessment tool used for the new baseline QOL assessment, administered 3-6 months after the new SUD encounter AND another SUD encounter within the 60 days before the assessment.&#xA;&#xA;Follow-up QOL Assessment Period:&#xA;The 6 months following the new SUD encounter; this allows for a follow-up QOL assessment to be administered between 3 and 6 months. &#xA;&#xA;Standardized and Validated QOL Tools:&#xA;The following QOL assessment tools are eligible for use in the measure: &#xA;     •&#x9;Short Form – 36 item (SF-36), 12 item (SF-12), or 8 item (SF-8)&#xA;     •&#x9;Veterans Rand – 36 item (VR-36) or 12 item (VR-12)&#xA;     •&#x9;World Health Organization QOL – Abbreviated (WHOQOL-BREF)&#xA;     •&#x9;Patient-Reported Outcomes Measurement Information System (PROMIS-Global 10)&#xA;     •&#x9;EQ-5D&#xA;     •&#x9;Modular System for QOL (MSQOL)&#xA;     •&#x9;Injection Drug User QOL Scale (IDUQOL)&#xA;     •&#x9;Satisfaction with Life Scale&#xA;     •&#x9;Personal Wellbeing Index (PWI)&#xA;     •&#x9;Health-Related QOL for Drug Abusers (HRQOLDA)&#xA;     •&#x9;QOL Scale for Drug Addicts (QOL-DA)"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The intent of the measure is that a baseline QOL assessment was administered within 14 days before or during each new SUD encounter and a follow-up QOL assessment is performed 3-6 months after the new SUD encounter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="New SUD encounters which occurred during the new SUD encounter identification period for patients aged 18 years or older."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="• The patient dies during the follow-up QOL assessment period.&#xA;• The patient has an encounter for hospice during or overlapping the follow-up QOL assessment period."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Numerator 1: Baseline assessment - a new SUD encounter with a QOL assessment within 14 days prior to or during the new SUD encounter.&#xA;&#xA;Numerator 2: Follow-up assessment - the use of the same standardized and validated QOL assessment tool used for the new baseline QOL assessment, administered 3-6 months after the new SUD encounter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity, and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="b598a7c3-20c8-45fc-91f7-d5dedb825cb1"/>
+         <title value="None"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="VR12MentalComponentTScore_AssessmentPerformed_8eZVx"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="VR12MentalComponentTScore_AssessmentPerformed"
+                   root="137b597f-c6dc-4cf4-98e6-40affc636671"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.12.1177"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_kTpD9"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="34ba67c5-3bb1-4d62-ba8a-abc8cdc59fd2"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_GYUPC"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="b680a498-a5d8-4d82-84bd-e5055e62664d"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HospicefortheTerminallyIll_EncounterPerformed_JMIXh"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="HospicefortheTerminallyIll_EncounterPerformed"
+                   root="d0250d4c-9b56-4058-bc22-d0a8516d0390"/>
+               <code valueSet="2.16.840.1.113762.1.4.1046.147"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="HospicefortheTerminallyIll_EncounterOrder_SgcYM"/>
+            <encounterCriteria classCode="ENC" moodCode="RQO">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.27"/>
+               </templateId>
+               <id extension="HospicefortheTerminallyIll_EncounterOrder"
+                   root="d0250d4c-9b56-4058-bc22-d0a8516d0390"/>
+               <code valueSet="2.16.840.1.113762.1.4.1046.147"/>
+               <title value="Encounter, Order"/>
+               <statusCode code="ACTIVE"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PROMIS10GlobalMentalHealthScore_AssessmentPerformed_vNKeW"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="PROMIS10GlobalMentalHealthScore_AssessmentPerformed"
+                   root="10e7f324-293f-4488-b261-45c191938b28"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.11.1138"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-Psychotherapy_ProcedurePerformed_uWWhJ"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="PsychVisit-Psychotherapy_ProcedurePerformed"
+                   root="4604c7de-5a10-4d8e-95d4-3a75b63aaed9"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1496"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PsychVisit-DiagnosticEvaluation_ProcedurePerformed_kTg0T"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="PsychVisit-DiagnosticEvaluation_ProcedurePerformed"
+                   root="d39850a9-76ac-4b20-a16b-2ebbfecf4724"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1492"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_dcNmF"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="c2199a29-8b5e-4893-916f-fbd39905baf5"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PROMIS10GlobalPhysicalHealthScore_AssessmentPerformed_UadyG"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="PROMIS10GlobalPhysicalHealthScore_AssessmentPerformed"
+                   root="cc199c4a-5aa5-4c84-b01e-4e61a9bc1659"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.12.1139"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_DdlaD"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="bca5fb49-ca37-4291-9a33-4f759466418f"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VR12PhysicalComponentTScore_AssessmentPerformed_ap3BE"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="VR12PhysicalComponentTScore_AssessmentPerformed"
+                   root="3ffe7690-4086-4168-83e5-88db3aa7625e"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.12.1176"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VR36MentalComponentSummary(MCS)Score_AssessmentPerformed_Z7N5s"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="VR36MentalComponentSummary(MCS)Score_AssessmentPerformed"
+                   root="a718ba02-9267-42d5-951d-b45eac525c56"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.12.1225"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VR36PhysicalComponentSummary(PCS)Score_AssessmentPerformed_B1Ow8"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="VR36PhysicalComponentSummary(PCS)Score_AssessmentPerformed"
+                   root="851d0c8c-52f3-4b9e-a789-4902881c4461"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.118.12.1226"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AlcoholandDrugDependenceTreatment_ProcedurePerformed_SZX2o"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2018-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="AlcoholandDrugDependenceTreatment_ProcedurePerformed"
+                   root="fba9df59-48e9-4114-8491-f6c3aa1cc2a7"/>
+               <code valueSet="2.16.840.1.113762.1.4.1145.15"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EligibleClinicianOutpatientEncounterswithTelehealth_EncounterPerformed_ZC5xO"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EligibleClinicianOutpatientEncounterswithTelehealth_EncounterPerformed"
+                   root="e72c7b25-8881-4eb2-b7f2-6d38cfd893a1"/>
+               <code valueSet="2.16.840.1.113762.1.4.1046.150"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.57"/>
+               </templateId>
+               <id extension="419099009_PatientCharacteristicExpired"
+                   root="E66DB91C-3703-4CDD-A679-5E1B7D2233DB"/>
+               <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4">
+                  <displayName value="Assertion"/>
+               </code>
+               <title value="Patient Characteristic Expired"/>
+               <statusCode code="COMPLETED"/>
+               <value code="419099009" codeSystem="2.16.840.1.113883.6.96" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="15C1BD59-4173-4F7B-8587-CDE683F95EB1"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="B52B9B84-7FAA-4163-8F62-5152BB063901"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Initial Population&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="8AD5A28B-4967-482B-B09C-B304429A58D7"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Denominator&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="4ACC0F2F-99E0-4B7E-8109-DFD31687EEB5"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Denominator Exclusions&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="6853A965-0B55-43B5-80C9-037CF97D710F"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Numerator 1&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="DFCA4A98-4B12-4763-BCD0-56F0332581F8"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Ethnicity&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="3B2B09C3-D631-4B12-A81F-0555590DF589"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Payer&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="FB8FC6DA-8668-41AC-BF31-13F50DAC75BF"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Race&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="7C7C930F-ABDB-46B5-A529-CF8EFD902781"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Sex&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria2" root="EDF1CB40-92F1-4288-B573-9A2C699D1FE5"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="8B9FFFFE-5143-47AF-AB87-5A8C2C33CC30"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Initial Population&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="0D862CA7-73C4-4F15-8E77-928873FED994"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Denominator&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="E582F1BF-7A04-4877-AD80-8E2E7D88B004"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Denominator Exclusions&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="348F3CF1-1D31-41C1-B6F5-60A98A6352F2"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;Numerator 2&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="8C250019-11A3-4379-A591-B472319F3C30"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Ethnicity&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="07E3EFED-05B3-4BF5-8066-F1FA56ECC87D"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Payer&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="9D3691A7-8C86-40D1-A418-1C8999659F50"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Race&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="6808F5BD-8FB1-4290-8A05-CF5D39C7FB82"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="QualityofLifeAssessmentforPatientswhoReceiveSubstanceUseDisorderTreatment.&quot;SDE Sex&quot;"
+                         root="8F1BDAAB-467E-4A42-8537-1BCFED0FA7B0"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

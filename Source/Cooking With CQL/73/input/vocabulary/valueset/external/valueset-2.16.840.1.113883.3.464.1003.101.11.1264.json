@@ -1,0 +1,61 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.101.11.1264",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-01-18T10:15:01.000-05:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "NCQA PHEMUR Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2022-12-15"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2018-03-10"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.101.11.1264",
+  "version": "20180310",
+  "name": "Office Visit",
+  "status": "active",
+  "experimental": false,
+  "date": "2018-03-10T01:00:08-05:00",
+  "publisher": "NCQA PHEMUR",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for encounters for an outpatient visit.),(Data Element Scope: This value set may use a model element related to Encounter.),(Inclusion Criteria: Includes concepts that represent an encounter for the comprehensive history, evaluation, and management of a patient presenting with minor to high severity problems.),(Exclusion Criteria: No exclusions.)",
+  "compose": {
+    "include": [ {
+      "system": "http://snomed.info/sct",
+      "version": "http://snomed.info/sct/731000124108/version/20230301",
+      "concept": [ {
+        "code": "185463005",
+        "display": "Visit out of hours (procedure)"
+      }, {
+        "code": "185464004",
+        "display": "Out of hours visit - not night visit (procedure)"
+      }, {
+        "code": "185465003",
+        "display": "Weekend visit (procedure)"
+      }, {
+        "code": "30346009",
+        "display": "Evaluation and management of established outpatient in office or other outpatient facility (procedure)"
+      }, {
+        "code": "3391000175108",
+        "display": "Office visit for pediatric care and assessment (procedure)"
+      }, {
+        "code": "37894004",
+        "display": "Evaluation and management of new outpatient in office or other outpatient facility (procedure)"
+      }, {
+        "code": "439740005",
+        "display": "Postoperative follow-up visit (procedure)"
+      } ]
+    } ]
+  }
+}

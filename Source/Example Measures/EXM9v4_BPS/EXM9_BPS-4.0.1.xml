@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="EXM9_BPS" version="4.0.1"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+   </usings>
+   <codeSystems>
+      <def name="SNOMED-CT" id="urn:oid:2.16.840.1.113883.6.96" version="urn:hl7:version:March%202016" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def name="Feeding Intention-Breast" id="urn:oid:2.16.840.1.113762.1.4.1045.29" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Galactosemia" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.35" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Single Live Birth" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.25)" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Single Live Born Newborn Born in Hospital" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.26" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Estimated Gestational Age at Birth" id="urn:oid:2.16.840.1.113762.1.4.1045.47" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Parenteral Nutrition" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.38" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Breast Milk" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.30" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Dietary Intake Other than Breast Milk" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.27" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Neonatal Intensive Care Unit (NICU)" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.75" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Patient Expired" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.309" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Discharge To Acute Care Facility" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.87" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+      <def name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" version="urn:hl7:version:2016-04-01" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+   </valueSets>
+   <codes>
+      <def name="Normative No" id="No" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+   </codes>
+</library>
+
+

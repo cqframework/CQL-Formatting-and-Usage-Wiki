@@ -1,0 +1,138 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.526.3.1496",
+    "meta": {
+        "versionId": "25",
+        "lastUpdated": "2022-03-02T18:03:08.000-05:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2019-03-15"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.1496",
+    "version": "20190315",
+    "name": "Psych Visit Psychotherapy",
+    "status": "active",
+    "date": "2022-03-03T18:46:01-05:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:2cfe7c01-40fb-446d-b614-126c30336a22",
+        "timestamp": "2023-04-27T12:50:40-04:00",
+        "total": 16,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183381005",
+                "display": "General psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183382003",
+                "display": "Psychotherapy - behavioral (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183383008",
+                "display": "Psychotherapy - cognitive (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "18512000",
+                "display": "Individual psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "302242004",
+                "display": "Long-term psychodynamic psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "304820009",
+                "display": "Developmental psychodynamic psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "304822001",
+                "display": "Psychodynamic-interpersonal psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "314034001",
+                "display": "Psychodynamic psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "38678006",
+                "display": "Client-centered psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "401157001",
+                "display": "Brief solution focused psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "443730003",
+                "display": "Interpersonal psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "75516001",
+                "display": "Psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "90102008",
+                "display": "Social psychotherapy (regime/therapy)"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90832",
+                "display": "Psychotherapy, 30 minutes with patient"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90834",
+                "display": "Psychotherapy, 45 minutes with patient"
+            },
+            {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "version": "2023",
+                "code": "90837",
+                "display": "Psychotherapy, 60 minutes with patient"
+            }
+        ]
+    }
+}

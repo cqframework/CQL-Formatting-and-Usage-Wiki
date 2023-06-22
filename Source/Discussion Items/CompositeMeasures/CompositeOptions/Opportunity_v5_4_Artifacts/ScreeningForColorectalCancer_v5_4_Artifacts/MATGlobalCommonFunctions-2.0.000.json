@@ -1,0 +1,2951 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "MATGlobalCommonFunctions",
+         "version" : "2.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "13",
+            "locator" : "15:1-15:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "12",
+               "locator" : "15:32-15:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "11",
+                  "locator" : "15:41-15:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "name" : "LOINC",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "3",
+            "locator" : "6:1-6:55",
+            "name" : "SNOMEDCT",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "8:1-8:82",
+            "name" : "Emergency Department Visit",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.292",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "9:1-9:71",
+            "name" : "Encounter Inpatient",
+            "id" : "urn:oid:2.16.840.1.113883.3.666.5.307",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "10:1-10:71",
+            "name" : "Intensive Care Unit",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1110.23",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "8",
+            "locator" : "12:1-12:60",
+            "name" : "Birthdate",
+            "id" : "21112-8",
+            "display" : "Birthdate",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "7",
+               "locator" : "12:34-12:40",
+               "name" : "LOINC"
+            }
+         }, {
+            "localId" : "10",
+            "locator" : "13:1-13:55",
+            "name" : "Dead",
+            "id" : "419099009",
+            "display" : "Dead",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "9",
+               "locator" : "13:31-13:40",
+               "name" : "SNOMEDCT"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "17:1-17:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "17:1-17:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "15",
+            "locator" : "19:1-20:55",
+            "name" : "Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "15",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter\"",":\n\t" ]
+                  }, {
+                     "r" : "14",
+                     "s" : [ {
+                        "value" : [ "[","\"Encounter, Performed\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Emergency Department Visit\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "14",
+               "locator" : "20:2-20:55",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+               "templateId" : "PositiveEncounterPerformed",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Emergency Department Visit",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "27",
+            "locator" : "63:1-64:59",
+            "name" : "LengthInDays",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "27",
+                  "s" : [ {
+                     "value" : [ "define function ","\"LengthInDays\"","(","Value"," " ]
+                  }, {
+                     "r" : "21",
+                     "s" : [ {
+                        "value" : [ "Interval<" ]
+                     }, {
+                        "r" : "20",
+                        "s" : [ {
+                           "value" : [ "DateTime" ]
+                        } ]
+                     }, {
+                        "value" : [ ">" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "26",
+                     "s" : [ {
+                        "r" : "26",
+                        "s" : [ {
+                           "value" : [ "difference in days between " ]
+                        }, {
+                           "r" : "23",
+                           "s" : [ {
+                              "value" : [ "start of " ]
+                           }, {
+                              "r" : "22",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " and " ]
+                        }, {
+                           "r" : "25",
+                           "s" : [ {
+                              "value" : [ "end of " ]
+                           }, {
+                              "r" : "24",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "26",
+               "locator" : "64:2-64:59",
+               "precision" : "Day",
+               "type" : "DifferenceBetween",
+               "operand" : [ {
+                  "localId" : "23",
+                  "locator" : "64:29-64:42",
+                  "type" : "Start",
+                  "operand" : {
+                     "localId" : "22",
+                     "locator" : "64:38-64:42",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               }, {
+                  "localId" : "25",
+                  "locator" : "64:48-64:59",
+                  "type" : "End",
+                  "operand" : {
+                     "localId" : "24",
+                     "locator" : "64:55-64:59",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               } ]
+            },
+            "operand" : [ {
+               "name" : "Value",
+               "operandTypeSpecifier" : {
+                  "localId" : "21",
+                  "locator" : "63:38-63:55",
+                  "type" : "IntervalTypeSpecifier",
+                  "pointType" : {
+                     "localId" : "20",
+                     "locator" : "63:47-63:54",
+                     "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                     "type" : "NamedTypeSpecifier"
+                  }
+               }
+            } ]
+         }, {
+            "localId" : "37",
+            "locator" : "22:1-25:73",
+            "name" : "Inpatient Encounter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "37",
+                  "s" : [ {
+                     "value" : [ "define ","\"Inpatient Encounter\"",":\n\t" ]
+                  }, {
+                     "r" : "36",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "17",
+                           "s" : [ {
+                              "r" : "16",
+                              "s" : [ {
+                                 "r" : "16",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Encounter Inpatient\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","EncounterInpatient" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\t" ]
+                     }, {
+                        "r" : "35",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "35",
+                           "s" : [ {
+                              "r" : "30",
+                              "s" : [ {
+                                 "r" : "28",
+                                 "s" : [ {
+                                    "value" : [ "\"LengthInDays\"","(" ]
+                                 }, {
+                                    "r" : "19",
+                                    "s" : [ {
+                                       "r" : "18",
+                                       "s" : [ {
+                                          "value" : [ "EncounterInpatient" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "19",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "<="," ","120" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\tand " ]
+                           }, {
+                              "r" : "34",
+                              "s" : [ {
+                                 "r" : "32",
+                                 "s" : [ {
+                                    "r" : "31",
+                                    "s" : [ {
+                                       "value" : [ "EncounterInpatient" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "32",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " ","ends during"," " ]
+                              }, {
+                                 "r" : "33",
+                                 "s" : [ {
+                                    "value" : [ "\"Measurement Period\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "36",
+               "locator" : "23:2-25:73",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "17",
+                  "locator" : "23:2-23:67",
+                  "alias" : "EncounterInpatient",
+                  "expression" : {
+                     "localId" : "16",
+                     "locator" : "23:2-23:48",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                     "templateId" : "PositiveEncounterPerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "name" : "Encounter Inpatient",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "35",
+                  "locator" : "24:3-25:73",
+                  "type" : "And",
+                  "operand" : [ {
+                     "localId" : "30",
+                     "locator" : "24:9-24:63",
+                     "type" : "LessOrEqual",
+                     "operand" : [ {
+                        "localId" : "28",
+                        "locator" : "24:9-24:57",
+                        "name" : "LengthInDays",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "localId" : "19",
+                           "locator" : "24:24-24:56",
+                           "path" : "relevantPeriod",
+                           "scope" : "EncounterInpatient",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "localId" : "29",
+                        "locator" : "24:61-24:63",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "120",
+                        "type" : "Literal"
+                     } ]
+                  }, {
+                     "localId" : "34",
+                     "locator" : "25:8-25:73",
+                     "type" : "In",
+                     "operand" : [ {
+                        "locator" : "25:42-25:45",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "32",
+                           "locator" : "25:8-25:40",
+                           "path" : "relevantPeriod",
+                           "scope" : "EncounterInpatient",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "localId" : "33",
+                        "locator" : "25:54-25:73",
+                        "name" : "Measurement Period",
+                        "type" : "ParameterRef"
+                     } ]
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "52",
+            "locator" : "28:1-29:93",
+            "name" : "ToDate",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "52",
+                  "s" : [ {
+                     "value" : [ "define function ","\"ToDate\"","(","Value"," " ]
+                  }, {
+                     "r" : "38",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "51",
+                     "s" : [ {
+                        "r" : "51",
+                        "s" : [ {
+                           "value" : [ "DateTime","(" ]
+                        }, {
+                           "r" : "40",
+                           "s" : [ {
+                              "value" : [ "year from " ]
+                           }, {
+                              "r" : "39",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "42",
+                           "s" : [ {
+                              "value" : [ "month from " ]
+                           }, {
+                              "r" : "41",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "44",
+                           "s" : [ {
+                              "value" : [ "day from " ]
+                           }, {
+                              "r" : "43",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", ","0",", ","0",", ","0",", ","0",", " ]
+                        }, {
+                           "r" : "50",
+                           "s" : [ {
+                              "value" : [ "timezone from " ]
+                           }, {
+                              "r" : "49",
+                              "s" : [ {
+                                 "value" : [ "Value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "51",
+               "locator" : "29:2-29:93",
+               "type" : "DateTime",
+               "year" : {
+                  "localId" : "40",
+                  "locator" : "29:11-29:25",
+                  "precision" : "Year",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "39",
+                     "locator" : "29:21-29:25",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "month" : {
+                  "localId" : "42",
+                  "locator" : "29:28-29:43",
+                  "precision" : "Month",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "41",
+                     "locator" : "29:39-29:43",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "day" : {
+                  "localId" : "44",
+                  "locator" : "29:46-29:59",
+                  "precision" : "Day",
+                  "type" : "DateTimeComponentFrom",
+                  "operand" : {
+                     "localId" : "43",
+                     "locator" : "29:55-29:59",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               },
+               "hour" : {
+                  "localId" : "45",
+                  "locator" : "29:62",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "minute" : {
+                  "localId" : "46",
+                  "locator" : "29:65",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "second" : {
+                  "localId" : "47",
+                  "locator" : "29:68",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "millisecond" : {
+                  "localId" : "48",
+                  "locator" : "29:71",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                  "value" : "0",
+                  "type" : "Literal"
+               },
+               "timezoneOffset" : {
+                  "localId" : "50",
+                  "locator" : "29:74-29:92",
+                  "type" : "TimezoneFrom",
+                  "operand" : {
+                     "localId" : "49",
+                     "locator" : "29:88-29:92",
+                     "name" : "Value",
+                     "type" : "OperandRef"
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Value",
+               "operandTypeSpecifier" : {
+                  "localId" : "38",
+                  "locator" : "28:32-28:39",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "60",
+            "locator" : "32:1-33:51",
+            "name" : "CalendarAgeInDaysAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "60",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInDaysAt\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "53",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ ", ","AsOf"," " ]
+                  }, {
+                     "r" : "54",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "59",
+                     "s" : [ {
+                        "r" : "59",
+                        "s" : [ {
+                           "value" : [ "days between " ]
+                        }, {
+                           "r" : "56",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "55",
+                              "s" : [ {
+                                 "value" : [ "BirthDateTime" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        }, {
+                           "value" : [ "and " ]
+                        }, {
+                           "r" : "58",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "57",
+                              "s" : [ {
+                                 "value" : [ "AsOf" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "59",
+               "locator" : "33:2-33:51",
+               "precision" : "Day",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "localId" : "56",
+                  "locator" : "33:15-33:35",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "55",
+                     "locator" : "33:22-33:34",
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "localId" : "58",
+                  "locator" : "33:40-33:51",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "57",
+                     "locator" : "33:47-33:50",
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "53",
+                  "locator" : "32:53-32:60",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "localId" : "54",
+                  "locator" : "32:68-32:75",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "65",
+            "locator" : "36:1-37:44",
+            "name" : "CalendarAgeInDays",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "65",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInDays\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "61",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "64",
+                     "s" : [ {
+                        "r" : "64",
+                        "s" : [ {
+                           "value" : [ "CalendarAgeInDaysAt","(" ]
+                        }, {
+                           "r" : "62",
+                           "s" : [ {
+                              "value" : [ "BirthDateTime" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "63",
+                           "s" : [ {
+                              "value" : [ "Today","()" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "64",
+               "locator" : "37:2-37:44",
+               "name" : "CalendarAgeInDaysAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "localId" : "62",
+                  "locator" : "37:22-37:34",
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "localId" : "63",
+                  "locator" : "37:37-37:43",
+                  "type" : "Today"
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "61",
+                  "locator" : "36:51-36:58",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "73",
+            "locator" : "40:1-41:53",
+            "name" : "CalendarAgeInMonthsAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "73",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInMonthsAt\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "66",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ ", ","AsOf"," " ]
+                  }, {
+                     "r" : "67",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "72",
+                     "s" : [ {
+                        "r" : "72",
+                        "s" : [ {
+                           "value" : [ "months between " ]
+                        }, {
+                           "r" : "69",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "68",
+                              "s" : [ {
+                                 "value" : [ "BirthDateTime" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        }, {
+                           "value" : [ "and " ]
+                        }, {
+                           "r" : "71",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "70",
+                              "s" : [ {
+                                 "value" : [ "AsOf" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "72",
+               "locator" : "41:2-41:53",
+               "precision" : "Month",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "localId" : "69",
+                  "locator" : "41:17-41:37",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "68",
+                     "locator" : "41:24-41:36",
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "localId" : "71",
+                  "locator" : "41:42-41:53",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "70",
+                     "locator" : "41:49-41:52",
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "66",
+                  "locator" : "40:55-40:62",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "localId" : "67",
+                  "locator" : "40:70-40:77",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "78",
+            "locator" : "44:1-45:46",
+            "name" : "CalendarAgeInMonths",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "78",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInMonths\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "74",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "77",
+                     "s" : [ {
+                        "r" : "77",
+                        "s" : [ {
+                           "value" : [ "CalendarAgeInMonthsAt","(" ]
+                        }, {
+                           "r" : "75",
+                           "s" : [ {
+                              "value" : [ "BirthDateTime" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "76",
+                           "s" : [ {
+                              "value" : [ "Today","()" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "77",
+               "locator" : "45:2-45:46",
+               "name" : "CalendarAgeInMonthsAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "localId" : "75",
+                  "locator" : "45:24-45:36",
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "localId" : "76",
+                  "locator" : "45:39-45:45",
+                  "type" : "Today"
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "74",
+                  "locator" : "44:53-44:60",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "86",
+            "locator" : "48:1-49:52",
+            "name" : "CalendarAgeInYearsAt",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "86",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInYearsAt\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "79",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ ", ","AsOf"," " ]
+                  }, {
+                     "r" : "80",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "85",
+                     "s" : [ {
+                        "r" : "85",
+                        "s" : [ {
+                           "value" : [ "years between " ]
+                        }, {
+                           "r" : "82",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "81",
+                              "s" : [ {
+                                 "value" : [ "BirthDateTime" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        }, {
+                           "value" : [ "and " ]
+                        }, {
+                           "r" : "84",
+                           "s" : [ {
+                              "value" : [ "ToDate","(" ]
+                           }, {
+                              "r" : "83",
+                              "s" : [ {
+                                 "value" : [ "AsOf" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "85",
+               "locator" : "49:2-49:52",
+               "precision" : "Year",
+               "type" : "DurationBetween",
+               "operand" : [ {
+                  "localId" : "82",
+                  "locator" : "49:16-49:36",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "81",
+                     "locator" : "49:23-49:35",
+                     "name" : "BirthDateTime",
+                     "type" : "OperandRef"
+                  } ]
+               }, {
+                  "localId" : "84",
+                  "locator" : "49:41-49:52",
+                  "name" : "ToDate",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "83",
+                     "locator" : "49:48-49:51",
+                     "name" : "AsOf",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "79",
+                  "locator" : "48:54-48:61",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }, {
+               "name" : "AsOf",
+               "operandTypeSpecifier" : {
+                  "localId" : "80",
+                  "locator" : "48:69-48:76",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "91",
+            "locator" : "52:1-53:45",
+            "name" : "CalendarAgeInYears",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "91",
+                  "s" : [ {
+                     "value" : [ "define function ","\"CalendarAgeInYears\"","(","BirthDateTime"," " ]
+                  }, {
+                     "r" : "87",
+                     "s" : [ {
+                        "value" : [ "DateTime" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "90",
+                     "s" : [ {
+                        "r" : "90",
+                        "s" : [ {
+                           "value" : [ "CalendarAgeInYearsAt","(" ]
+                        }, {
+                           "r" : "88",
+                           "s" : [ {
+                              "value" : [ "BirthDateTime" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "89",
+                           "s" : [ {
+                              "value" : [ "Today","()" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "90",
+               "locator" : "53:2-53:45",
+               "name" : "CalendarAgeInYearsAt",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "localId" : "88",
+                  "locator" : "53:23-53:35",
+                  "name" : "BirthDateTime",
+                  "type" : "OperandRef"
+               }, {
+                  "localId" : "89",
+                  "locator" : "53:38-53:44",
+                  "type" : "Today"
+               } ]
+            },
+            "operand" : [ {
+               "name" : "BirthDateTime",
+               "operandTypeSpecifier" : {
+                  "localId" : "87",
+                  "locator" : "52:52-52:59",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "119",
+            "locator" : "56:1-60:125",
+            "name" : "Hospitalization",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "119",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospitalization\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "92",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "118",
+                     "s" : [ {
+                        "r" : "118",
+                        "s" : [ {
+                           "s" : [ {
+                              "r" : "104",
+                              "s" : [ {
+                                 "r" : "103",
+                                 "s" : [ {
+                                    "value" : [ "( " ]
+                                 }, {
+                                    "r" : "103",
+                                    "s" : [ {
+                                       "value" : [ "singleton from " ]
+                                    }, {
+                                       "r" : "102",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "102",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "r" : "94",
+                                                "s" : [ {
+                                                   "r" : "93",
+                                                   "s" : [ {
+                                                      "r" : "93",
+                                                      "s" : [ {
+                                                         "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                      }, {
+                                                         "s" : [ {
+                                                            "value" : [ "\"Emergency Department Visit\"" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "]" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " ","EDVisit" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\t\t" ]
+                                          }, {
+                                             "r" : "101",
+                                             "s" : [ {
+                                                "value" : [ "where " ]
+                                             }, {
+                                                "r" : "101",
+                                                "s" : [ {
+                                                   "r" : "96",
+                                                   "s" : [ {
+                                                      "r" : "95",
+                                                      "s" : [ {
+                                                         "value" : [ "EDVisit" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "." ]
+                                                   }, {
+                                                      "r" : "96",
+                                                      "s" : [ {
+                                                         "value" : [ "relevantPeriod" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "101",
+                                                   "s" : [ {
+                                                      "value" : [ "ends " ]
+                                                   }, {
+                                                      "r" : "100",
+                                                      "s" : [ {
+                                                         "value" : [ "1 ","hour" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " or less on or before" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "99",
+                                                   "s" : [ {
+                                                      "value" : [ "start of " ]
+                                                   }, {
+                                                      "r" : "98",
+                                                      "s" : [ {
+                                                         "r" : "97",
+                                                         "s" : [ {
+                                                            "value" : [ "Encounter" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "98",
+                                                         "s" : [ {
+                                                            "value" : [ "relevantPeriod" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t)" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " )" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " ","X" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t" ]
+                        }, {
+                           "r" : "117",
+                           "s" : [ {
+                              "value" : [ "return " ]
+                           }, {
+                              "r" : "116",
+                              "s" : [ {
+                                 "value" : [ "if " ]
+                              }, {
+                                 "r" : "106",
+                                 "s" : [ {
+                                    "r" : "105",
+                                    "s" : [ {
+                                       "value" : [ "X" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " is null" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " then " ]
+                              }, {
+                                 "r" : "108",
+                                 "s" : [ {
+                                    "r" : "107",
+                                    "s" : [ {
+                                       "value" : [ "Encounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "108",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " else " ]
+                              }, {
+                                 "r" : "115",
+                                 "s" : [ {
+                                    "value" : [ "Interval[" ]
+                                 }, {
+                                    "r" : "111",
+                                    "s" : [ {
+                                       "value" : [ "start of " ]
+                                    }, {
+                                       "r" : "110",
+                                       "s" : [ {
+                                          "r" : "109",
+                                          "s" : [ {
+                                             "value" : [ "X" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "110",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ", " ]
+                                 }, {
+                                    "r" : "114",
+                                    "s" : [ {
+                                       "value" : [ "end of " ]
+                                    }, {
+                                       "r" : "113",
+                                       "s" : [ {
+                                          "r" : "112",
+                                          "s" : [ {
+                                             "value" : [ "Encounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "113",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "118",
+               "locator" : "57:2-60:125",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "104",
+                  "locator" : "57:2-59:6",
+                  "alias" : "X",
+                  "expression" : {
+                     "localId" : "103",
+                     "locator" : "57:2-59:4",
+                     "type" : "SingletonFrom",
+                     "operand" : {
+                        "localId" : "102",
+                        "locator" : "57:19-59:2",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "94",
+                           "locator" : "57:21-57:82",
+                           "alias" : "EDVisit",
+                           "expression" : {
+                              "localId" : "93",
+                              "locator" : "57:21-57:74",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Emergency Department Visit",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "101",
+                           "locator" : "58:4-58:98",
+                           "type" : "In",
+                           "operand" : [ {
+                              "locator" : "58:33-58:36",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "96",
+                                 "locator" : "58:10-58:31",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "EDVisit",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "locator" : "58:38-58:51",
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "locator" : "58:66-58:98",
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "localId" : "99",
+                                    "locator" : "58:66-58:98",
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "localId" : "98",
+                                       "locator" : "58:75-58:98",
+                                       "path" : "relevantPeriod",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "localId" : "97",
+                                          "locator" : "58:75-58:83",
+                                          "name" : "Encounter",
+                                          "type" : "OperandRef"
+                                       }
+                                    }
+                                 }, {
+                                    "localId" : "100",
+                                    "locator" : "58:38-58:43",
+                                    "value" : 1,
+                                    "unit" : "hour",
+                                    "type" : "Quantity"
+                                 } ]
+                              },
+                              "high" : {
+                                 "localId" : "99",
+                                 "locator" : "58:66-58:98",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "98",
+                                    "locator" : "58:75-58:98",
+                                    "path" : "relevantPeriod",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "localId" : "97",
+                                       "locator" : "58:75-58:83",
+                                       "name" : "Encounter",
+                                       "type" : "OperandRef"
+                                    }
+                                 }
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "117",
+                  "locator" : "60:3-60:125",
+                  "expression" : {
+                     "localId" : "116",
+                     "locator" : "60:10-60:125",
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "106",
+                           "locator" : "60:13-60:21",
+                           "type" : "IsNull",
+                           "operand" : {
+                              "localId" : "105",
+                              "locator" : "60:13",
+                              "name" : "X",
+                              "type" : "AliasRef"
+                           }
+                        }
+                     },
+                     "then" : {
+                        "localId" : "108",
+                        "locator" : "60:28-60:51",
+                        "path" : "relevantPeriod",
+                        "type" : "Property",
+                        "source" : {
+                           "localId" : "107",
+                           "locator" : "60:28-60:36",
+                           "name" : "Encounter",
+                           "type" : "OperandRef"
+                        }
+                     },
+                     "else" : {
+                        "localId" : "115",
+                        "locator" : "60:58-60:125",
+                        "lowClosed" : true,
+                        "highClosed" : true,
+                        "type" : "Interval",
+                        "low" : {
+                           "localId" : "111",
+                           "locator" : "60:67-60:91",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "110",
+                              "locator" : "60:76-60:91",
+                              "path" : "relevantPeriod",
+                              "scope" : "X",
+                              "type" : "Property"
+                           }
+                        },
+                        "high" : {
+                           "localId" : "114",
+                           "locator" : "60:94-60:124",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "113",
+                              "locator" : "60:101-60:124",
+                              "path" : "relevantPeriod",
+                              "type" : "Property",
+                              "source" : {
+                                 "localId" : "112",
+                                 "locator" : "60:101-60:109",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "92",
+                  "locator" : "56:45-56:66",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "149",
+            "locator" : "67:1-71:140",
+            "name" : "Hospitalization Locations",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "149",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospitalization Locations\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "123",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "148",
+                     "s" : [ {
+                        "r" : "148",
+                        "s" : [ {
+                           "s" : [ {
+                              "r" : "135",
+                              "s" : [ {
+                                 "r" : "134",
+                                 "s" : [ {
+                                    "value" : [ "( " ]
+                                 }, {
+                                    "r" : "134",
+                                    "s" : [ {
+                                       "value" : [ "singleton from " ]
+                                    }, {
+                                       "r" : "133",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "133",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "r" : "125",
+                                                "s" : [ {
+                                                   "r" : "124",
+                                                   "s" : [ {
+                                                      "r" : "124",
+                                                      "s" : [ {
+                                                         "value" : [ "[","\"Encounter, Performed\"",": " ]
+                                                      }, {
+                                                         "s" : [ {
+                                                            "value" : [ "\"Emergency Department Visit\"" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "]" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " ","EDVisit" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\t\t" ]
+                                          }, {
+                                             "r" : "132",
+                                             "s" : [ {
+                                                "value" : [ "where " ]
+                                             }, {
+                                                "r" : "132",
+                                                "s" : [ {
+                                                   "r" : "127",
+                                                   "s" : [ {
+                                                      "r" : "126",
+                                                      "s" : [ {
+                                                         "value" : [ "EDVisit" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "." ]
+                                                   }, {
+                                                      "r" : "127",
+                                                      "s" : [ {
+                                                         "value" : [ "relevantPeriod" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "132",
+                                                   "s" : [ {
+                                                      "value" : [ "ends " ]
+                                                   }, {
+                                                      "r" : "131",
+                                                      "s" : [ {
+                                                         "value" : [ "1 ","hour" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " or less on or before" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " " ]
+                                                }, {
+                                                   "r" : "130",
+                                                   "s" : [ {
+                                                      "value" : [ "start of " ]
+                                                   }, {
+                                                      "r" : "129",
+                                                      "s" : [ {
+                                                         "r" : "128",
+                                                         "s" : [ {
+                                                            "value" : [ "Encounter" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "129",
+                                                         "s" : [ {
+                                                            "value" : [ "relevantPeriod" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t)" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " )" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " ","EDEncounter" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t\t" ]
+                        }, {
+                           "r" : "147",
+                           "s" : [ {
+                              "value" : [ "return " ]
+                           }, {
+                              "r" : "146",
+                              "s" : [ {
+                                 "value" : [ "if " ]
+                              }, {
+                                 "r" : "137",
+                                 "s" : [ {
+                                    "r" : "136",
+                                    "s" : [ {
+                                       "value" : [ "EDEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " is null" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " then " ]
+                              }, {
+                                 "r" : "139",
+                                 "s" : [ {
+                                    "r" : "138",
+                                    "s" : [ {
+                                       "value" : [ "Encounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "139",
+                                    "s" : [ {
+                                       "value" : [ "facilityLocations" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " else " ]
+                              }, {
+                                 "r" : "145",
+                                 "s" : [ {
+                                    "value" : [ "flatten " ]
+                                 }, {
+                                    "r" : "144",
+                                    "s" : [ {
+                                       "value" : [ "{ " ]
+                                    }, {
+                                       "r" : "141",
+                                       "s" : [ {
+                                          "r" : "140",
+                                          "s" : [ {
+                                             "value" : [ "EDEncounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "141",
+                                          "s" : [ {
+                                             "value" : [ "facilityLocations" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ", " ]
+                                    }, {
+                                       "r" : "143",
+                                       "s" : [ {
+                                          "r" : "142",
+                                          "s" : [ {
+                                             "value" : [ "Encounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "143",
+                                          "s" : [ {
+                                             "value" : [ "facilityLocations" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " }" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "148",
+               "locator" : "68:2-71:140",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "135",
+                  "locator" : "68:2-70:16",
+                  "alias" : "EDEncounter",
+                  "expression" : {
+                     "localId" : "134",
+                     "locator" : "68:2-70:4",
+                     "type" : "SingletonFrom",
+                     "operand" : {
+                        "localId" : "133",
+                        "locator" : "68:19-70:2",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "125",
+                           "locator" : "68:21-68:82",
+                           "alias" : "EDVisit",
+                           "expression" : {
+                              "localId" : "124",
+                              "locator" : "68:21-68:74",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                              "templateId" : "PositiveEncounterPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Emergency Department Visit",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "132",
+                           "locator" : "69:4-69:98",
+                           "type" : "In",
+                           "operand" : [ {
+                              "locator" : "69:33-69:36",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "127",
+                                 "locator" : "69:10-69:31",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "EDVisit",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "locator" : "69:38-69:51",
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "locator" : "69:66-69:98",
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "localId" : "130",
+                                    "locator" : "69:66-69:98",
+                                    "type" : "Start",
+                                    "operand" : {
+                                       "localId" : "129",
+                                       "locator" : "69:75-69:98",
+                                       "path" : "relevantPeriod",
+                                       "type" : "Property",
+                                       "source" : {
+                                          "localId" : "128",
+                                          "locator" : "69:75-69:83",
+                                          "name" : "Encounter",
+                                          "type" : "OperandRef"
+                                       }
+                                    }
+                                 }, {
+                                    "localId" : "131",
+                                    "locator" : "69:38-69:43",
+                                    "value" : 1,
+                                    "unit" : "hour",
+                                    "type" : "Quantity"
+                                 } ]
+                              },
+                              "high" : {
+                                 "localId" : "130",
+                                 "locator" : "69:66-69:98",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "129",
+                                    "locator" : "69:75-69:98",
+                                    "path" : "relevantPeriod",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "localId" : "128",
+                                       "locator" : "69:75-69:83",
+                                       "name" : "Encounter",
+                                       "type" : "OperandRef"
+                                    }
+                                 }
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "147",
+                  "locator" : "71:3-71:140",
+                  "expression" : {
+                     "localId" : "146",
+                     "locator" : "71:10-71:140",
+                     "type" : "If",
+                     "condition" : {
+                        "asType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                        "type" : "As",
+                        "operand" : {
+                           "localId" : "137",
+                           "locator" : "71:13-71:31",
+                           "type" : "IsNull",
+                           "operand" : {
+                              "localId" : "136",
+                              "locator" : "71:13-71:23",
+                              "name" : "EDEncounter",
+                              "type" : "AliasRef"
+                           }
+                        }
+                     },
+                     "then" : {
+                        "localId" : "139",
+                        "locator" : "71:38-71:64",
+                        "path" : "facilityLocations",
+                        "type" : "Property",
+                        "source" : {
+                           "localId" : "138",
+                           "locator" : "71:38-71:46",
+                           "name" : "Encounter",
+                           "type" : "OperandRef"
+                        }
+                     },
+                     "else" : {
+                        "localId" : "145",
+                        "locator" : "71:71-71:140",
+                        "type" : "Flatten",
+                        "operand" : {
+                           "localId" : "144",
+                           "locator" : "71:79-71:140",
+                           "type" : "List",
+                           "element" : [ {
+                              "localId" : "141",
+                              "locator" : "71:81-71:109",
+                              "path" : "facilityLocations",
+                              "scope" : "EDEncounter",
+                              "type" : "Property"
+                           }, {
+                              "localId" : "143",
+                              "locator" : "71:112-71:138",
+                              "path" : "facilityLocations",
+                              "type" : "Property",
+                              "source" : {
+                                 "localId" : "142",
+                                 "locator" : "71:112-71:120",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "123",
+                  "locator" : "67:55-67:76",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "154",
+            "locator" : "74:1-75:43",
+            "name" : "Hospitalization Length of Stay",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "154",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospitalization Length of Stay\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "150",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "153",
+                     "s" : [ {
+                        "r" : "153",
+                        "s" : [ {
+                           "value" : [ "LengthInDays","(" ]
+                        }, {
+                           "r" : "152",
+                           "s" : [ {
+                              "value" : [ "\"Hospitalization\"","(" ]
+                           }, {
+                              "r" : "151",
+                              "s" : [ {
+                                 "value" : [ "Encounter" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "153",
+               "locator" : "75:2-75:43",
+               "name" : "LengthInDays",
+               "type" : "FunctionRef",
+               "operand" : [ {
+                  "localId" : "152",
+                  "locator" : "75:15-75:42",
+                  "name" : "Hospitalization",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "151",
+                     "locator" : "75:33-75:41",
+                     "name" : "Encounter",
+                     "type" : "OperandRef"
+                  } ]
+               } ]
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "150",
+                  "locator" : "74:60-74:81",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "159",
+            "locator" : "79:1-80:38",
+            "name" : "Hospital Admission Time",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "159",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospital Admission Time\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "155",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "158",
+                     "s" : [ {
+                        "r" : "158",
+                        "s" : [ {
+                           "value" : [ "start of " ]
+                        }, {
+                           "r" : "157",
+                           "s" : [ {
+                              "value" : [ "\"Hospitalization\"","(" ]
+                           }, {
+                              "r" : "156",
+                              "s" : [ {
+                                 "value" : [ "Encounter" ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "158",
+               "locator" : "80:2-80:38",
+               "type" : "Start",
+               "operand" : {
+                  "localId" : "157",
+                  "locator" : "80:11-80:38",
+                  "name" : "Hospitalization",
+                  "type" : "FunctionRef",
+                  "operand" : [ {
+                     "localId" : "156",
+                     "locator" : "80:29-80:37",
+                     "name" : "Encounter",
+                     "type" : "OperandRef"
+                  } ]
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "155",
+                  "locator" : "79:53-79:74",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "164",
+            "locator" : "83:1-84:32",
+            "name" : "Hospital Discharge Time",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "164",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospital Discharge Time\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "160",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "163",
+                     "s" : [ {
+                        "r" : "163",
+                        "s" : [ {
+                           "value" : [ "end of " ]
+                        }, {
+                           "r" : "162",
+                           "s" : [ {
+                              "r" : "161",
+                              "s" : [ {
+                                 "value" : [ "Encounter" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "162",
+                              "s" : [ {
+                                 "value" : [ "relevantPeriod" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "163",
+               "locator" : "84:2-84:32",
+               "type" : "End",
+               "operand" : {
+                  "localId" : "162",
+                  "locator" : "84:9-84:32",
+                  "path" : "relevantPeriod",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "161",
+                     "locator" : "84:9-84:17",
+                     "name" : "Encounter",
+                     "type" : "OperandRef"
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "160",
+                  "locator" : "83:53-83:74",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "177",
+            "locator" : "88:1-91:17",
+            "name" : "Hospital Arrival Time",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "177",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospital Arrival Time\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "165",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "176",
+                     "s" : [ {
+                        "r" : "176",
+                        "s" : [ {
+                           "value" : [ "start of " ]
+                        }, {
+                           "r" : "175",
+                           "s" : [ {
+                              "r" : "174",
+                              "s" : [ {
+                                 "value" : [ "First","(" ]
+                              }, {
+                                 "r" : "173",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "168",
+                                       "s" : [ {
+                                          "r" : "167",
+                                          "s" : [ {
+                                             "value" : [ "(" ]
+                                          }, {
+                                             "r" : "167",
+                                             "s" : [ {
+                                                "value" : [ "\"Hospitalization Locations\"","(" ]
+                                             }, {
+                                                "r" : "166",
+                                                "s" : [ {
+                                                   "value" : [ "Encounter" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ ")" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ")" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "HospitalLocation" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t" ]
+                                 }, {
+                                    "r" : "172",
+                                    "s" : [ {
+                                       "value" : [ "sort by " ]
+                                    }, {
+                                       "r" : "171",
+                                       "s" : [ {
+                                          "r" : "170",
+                                          "s" : [ {
+                                             "value" : [ "start of " ]
+                                          }, {
+                                             "r" : "169",
+                                             "s" : [ {
+                                                "value" : [ "locationPeriod" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t)" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "175",
+                              "s" : [ {
+                                 "value" : [ "locationPeriod" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "176",
+               "locator" : "89:2-91:17",
+               "type" : "Start",
+               "operand" : {
+                  "localId" : "175",
+                  "locator" : "89:11-91:17",
+                  "path" : "locationPeriod",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "174",
+                     "locator" : "89:11-91:2",
+                     "type" : "First",
+                     "source" : {
+                        "localId" : "173",
+                        "locator" : "89:17-90:34",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "168",
+                           "locator" : "89:17-89:72",
+                           "alias" : "HospitalLocation",
+                           "expression" : {
+                              "localId" : "167",
+                              "locator" : "89:17-89:56",
+                              "name" : "Hospitalization Locations",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "localId" : "166",
+                                 "locator" : "89:46-89:54",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              } ]
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "sort" : {
+                           "localId" : "172",
+                           "locator" : "90:4-90:34",
+                           "by" : [ {
+                              "localId" : "171",
+                              "locator" : "90:12-90:34",
+                              "direction" : "asc",
+                              "type" : "ByExpression",
+                              "expression" : {
+                                 "localId" : "170",
+                                 "locator" : "90:12-90:34",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "169",
+                                    "locator" : "90:21-90:34",
+                                    "name" : "locationPeriod",
+                                    "type" : "IdentifierRef"
+                                 }
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "165",
+                  "locator" : "88:51-88:72",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "190",
+            "locator" : "94:1-97:17",
+            "name" : "Hospital Departure Time",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "190",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Hospital Departure Time\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "178",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "189",
+                     "s" : [ {
+                        "r" : "189",
+                        "s" : [ {
+                           "value" : [ "end of " ]
+                        }, {
+                           "r" : "188",
+                           "s" : [ {
+                              "r" : "187",
+                              "s" : [ {
+                                 "value" : [ "Last","(" ]
+                              }, {
+                                 "r" : "186",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "181",
+                                       "s" : [ {
+                                          "r" : "180",
+                                          "s" : [ {
+                                             "value" : [ "(" ]
+                                          }, {
+                                             "r" : "180",
+                                             "s" : [ {
+                                                "value" : [ "\"Hospitalization Locations\"","(" ]
+                                             }, {
+                                                "r" : "179",
+                                                "s" : [ {
+                                                   "value" : [ "Encounter" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ ")" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ")" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "HospitalLocation" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t" ]
+                                 }, {
+                                    "r" : "185",
+                                    "s" : [ {
+                                       "value" : [ "sort by " ]
+                                    }, {
+                                       "r" : "184",
+                                       "s" : [ {
+                                          "r" : "183",
+                                          "s" : [ {
+                                             "value" : [ "start of " ]
+                                          }, {
+                                             "r" : "182",
+                                             "s" : [ {
+                                                "value" : [ "locationPeriod" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t)" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "188",
+                              "s" : [ {
+                                 "value" : [ "locationPeriod" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "189",
+               "locator" : "95:2-97:17",
+               "type" : "End",
+               "operand" : {
+                  "localId" : "188",
+                  "locator" : "95:9-97:17",
+                  "path" : "locationPeriod",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "187",
+                     "locator" : "95:9-97:2",
+                     "type" : "Last",
+                     "source" : {
+                        "localId" : "186",
+                        "locator" : "95:14-96:34",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "181",
+                           "locator" : "95:14-95:69",
+                           "alias" : "HospitalLocation",
+                           "expression" : {
+                              "localId" : "180",
+                              "locator" : "95:14-95:53",
+                              "name" : "Hospitalization Locations",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "localId" : "179",
+                                 "locator" : "95:43-95:51",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              } ]
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "sort" : {
+                           "localId" : "185",
+                           "locator" : "96:4-96:34",
+                           "by" : [ {
+                              "localId" : "184",
+                              "locator" : "96:12-96:34",
+                              "direction" : "asc",
+                              "type" : "ByExpression",
+                              "expression" : {
+                                 "localId" : "183",
+                                 "locator" : "96:12-96:34",
+                                 "type" : "Start",
+                                 "operand" : {
+                                    "localId" : "182",
+                                    "locator" : "96:21-96:34",
+                                    "name" : "locationPeriod",
+                                    "type" : "IdentifierRef"
+                                 }
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "178",
+                  "locator" : "94:53-94:74",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "203",
+            "locator" : "101:1-105:17",
+            "name" : "Emergency Department Arrival Time",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "203",
+                  "s" : [ {
+                     "value" : [ "define function ","\"Emergency Department Arrival Time\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "191",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "202",
+                     "s" : [ {
+                        "r" : "202",
+                        "s" : [ {
+                           "value" : [ "start of " ]
+                        }, {
+                           "r" : "201",
+                           "s" : [ {
+                              "r" : "200",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "200",
+                                 "s" : [ {
+                                    "value" : [ "singleton from " ]
+                                 }, {
+                                    "r" : "199",
+                                    "s" : [ {
+                                       "value" : [ "( " ]
+                                    }, {
+                                       "r" : "199",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "r" : "194",
+                                             "s" : [ {
+                                                "r" : "193",
+                                                "s" : [ {
+                                                   "value" : [ "( " ]
+                                                }, {
+                                                   "r" : "193",
+                                                   "s" : [ {
+                                                      "value" : [ "\"Hospitalization Locations\"","(" ]
+                                                   }, {
+                                                      "r" : "192",
+                                                      "s" : [ {
+                                                         "value" : [ "Encounter" ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ ")" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ ")" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " ","HospitalLocation" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t\t\t\t" ]
+                                       }, {
+                                          "r" : "198",
+                                          "s" : [ {
+                                             "value" : [ "where " ]
+                                          }, {
+                                             "r" : "198",
+                                             "s" : [ {
+                                                "r" : "196",
+                                                "s" : [ {
+                                                   "r" : "195",
+                                                   "s" : [ {
+                                                      "value" : [ "HospitalLocation" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "196",
+                                                   "s" : [ {
+                                                      "value" : [ "code" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " in " ]
+                                             }, {
+                                                "r" : "197",
+                                                "s" : [ {
+                                                   "value" : [ "\"Emergency Department Visit\"" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n\t\t)" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t)" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "201",
+                              "s" : [ {
+                                 "value" : [ "locationPeriod" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "202",
+               "locator" : "102:2-105:17",
+               "type" : "Start",
+               "operand" : {
+                  "localId" : "201",
+                  "locator" : "102:11-105:17",
+                  "path" : "locationPeriod",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "200",
+                     "locator" : "102:11-105:2",
+                     "type" : "SingletonFrom",
+                     "operand" : {
+                        "localId" : "199",
+                        "locator" : "102:28-104:3",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "194",
+                           "locator" : "102:30-102:87",
+                           "alias" : "HospitalLocation",
+                           "expression" : {
+                              "localId" : "193",
+                              "locator" : "102:30-102:70",
+                              "name" : "Hospitalization Locations",
+                              "type" : "FunctionRef",
+                              "operand" : [ {
+                                 "localId" : "192",
+                                 "locator" : "102:60-102:68",
+                                 "name" : "Encounter",
+                                 "type" : "OperandRef"
+                              } ]
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "198",
+                           "locator" : "103:5-103:63",
+                           "type" : "InValueSet",
+                           "code" : {
+                              "localId" : "196",
+                              "locator" : "103:11-103:31",
+                              "path" : "code",
+                              "scope" : "HospitalLocation",
+                              "type" : "Property"
+                           },
+                           "valueset" : {
+                              "localId" : "197",
+                              "locator" : "103:36-103:63",
+                              "name" : "Emergency Department Visit"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "191",
+                  "locator" : "101:63-101:84",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         }, {
+            "localId" : "224",
+            "locator" : "110:1-115:2",
+            "name" : "First Inpatient Intensive Care Unit",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "type" : "FunctionDef",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "224",
+                  "s" : [ {
+                     "value" : [ "define function ","\"First Inpatient Intensive Care Unit\"","(","Encounter"," " ]
+                  }, {
+                     "r" : "204",
+                     "s" : [ {
+                        "value" : [ "\"Encounter, Performed\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " ):\n\t" ]
+                  }, {
+                     "r" : "223",
+                     "s" : [ {
+                        "r" : "223",
+                        "s" : [ {
+                           "value" : [ "First","(" ]
+                        }, {
+                           "r" : "222",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "207",
+                                 "s" : [ {
+                                    "r" : "206",
+                                    "s" : [ {
+                                       "value" : [ "(" ]
+                                    }, {
+                                       "r" : "206",
+                                       "s" : [ {
+                                          "r" : "205",
+                                          "s" : [ {
+                                             "value" : [ "Encounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "206",
+                                          "s" : [ {
+                                             "value" : [ "facilityLocations" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ")" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "HospitalLocation" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "217",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "217",
+                                 "s" : [ {
+                                    "r" : "211",
+                                    "s" : [ {
+                                       "r" : "209",
+                                       "s" : [ {
+                                          "r" : "208",
+                                          "s" : [ {
+                                             "value" : [ "HospitalLocation" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "209",
+                                          "s" : [ {
+                                             "value" : [ "code" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " in " ]
+                                    }, {
+                                       "r" : "210",
+                                       "s" : [ {
+                                          "value" : [ "\"Intensive Care Unit\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\tand " ]
+                                 }, {
+                                    "r" : "216",
+                                    "s" : [ {
+                                       "r" : "213",
+                                       "s" : [ {
+                                          "r" : "212",
+                                          "s" : [ {
+                                             "value" : [ "HospitalLocation" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "213",
+                                          "s" : [ {
+                                             "value" : [ "locationPeriod" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","during"," " ]
+                                    }, {
+                                       "r" : "215",
+                                       "s" : [ {
+                                          "r" : "214",
+                                          "s" : [ {
+                                             "value" : [ "Encounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "215",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "221",
+                              "s" : [ {
+                                 "value" : [ "sort by " ]
+                              }, {
+                                 "r" : "220",
+                                 "s" : [ {
+                                    "r" : "219",
+                                    "s" : [ {
+                                       "value" : [ "start of " ]
+                                    }, {
+                                       "r" : "218",
+                                       "s" : [ {
+                                          "value" : [ "locationPeriod" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "223",
+               "locator" : "111:2-115:2",
+               "type" : "First",
+               "source" : {
+                  "localId" : "222",
+                  "locator" : "111:8-114:34",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "207",
+                     "locator" : "111:8-111:52",
+                     "alias" : "HospitalLocation",
+                     "expression" : {
+                        "localId" : "206",
+                        "locator" : "111:8-111:36",
+                        "path" : "facilityLocations",
+                        "type" : "Property",
+                        "source" : {
+                           "localId" : "205",
+                           "locator" : "111:9-111:17",
+                           "name" : "Encounter",
+                           "type" : "OperandRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "217",
+                     "locator" : "112:4-113:71",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "211",
+                        "locator" : "112:10-112:55",
+                        "type" : "InValueSet",
+                        "code" : {
+                           "localId" : "209",
+                           "locator" : "112:10-112:30",
+                           "path" : "code",
+                           "scope" : "HospitalLocation",
+                           "type" : "Property"
+                        },
+                        "valueset" : {
+                           "localId" : "210",
+                           "locator" : "112:35-112:55",
+                           "name" : "Intensive Care Unit"
+                        }
+                     }, {
+                        "localId" : "216",
+                        "locator" : "113:9-113:71",
+                        "type" : "IncludedIn",
+                        "operand" : [ {
+                           "localId" : "213",
+                           "locator" : "113:9-113:39",
+                           "path" : "locationPeriod",
+                           "scope" : "HospitalLocation",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "215",
+                           "locator" : "113:48-113:71",
+                           "path" : "relevantPeriod",
+                           "type" : "Property",
+                           "source" : {
+                              "localId" : "214",
+                              "locator" : "113:48-113:56",
+                              "name" : "Encounter",
+                              "type" : "OperandRef"
+                           }
+                        } ]
+                     } ]
+                  },
+                  "sort" : {
+                     "localId" : "221",
+                     "locator" : "114:4-114:34",
+                     "by" : [ {
+                        "localId" : "220",
+                        "locator" : "114:12-114:34",
+                        "direction" : "asc",
+                        "type" : "ByExpression",
+                        "expression" : {
+                           "localId" : "219",
+                           "locator" : "114:12-114:34",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "218",
+                              "locator" : "114:21-114:34",
+                              "name" : "locationPeriod",
+                              "type" : "IdentifierRef"
+                           }
+                        }
+                     } ]
+                  }
+               }
+            },
+            "operand" : [ {
+               "name" : "Encounter",
+               "operandTypeSpecifier" : {
+                  "localId" : "204",
+                  "locator" : "110:65-110:86",
+                  "name" : "{urn:healthit-gov:qdm:v5_3}PositiveEncounterPerformed",
+                  "type" : "NamedTypeSpecifier"
+               }
+            } ]
+         } ]
+      }
+   }
+}

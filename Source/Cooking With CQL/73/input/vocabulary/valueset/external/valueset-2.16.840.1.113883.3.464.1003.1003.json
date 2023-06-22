@@ -1,0 +1,198 @@
+{
+    "resourceType": "ValueSet",
+    "id": "2.16.840.1.113883.3.464.1003.1003",
+    "meta": {
+        "versionId": "9",
+        "lastUpdated": "2022-03-02T18:04:05.000-05:00",
+        "profile": [
+            "http://hl7.org/fhir/StructureDefinition/shareablevalueset",
+            "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+            "valueDate": "2021-08-20"
+        }
+    ],
+    "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1003",
+    "version": "20210820",
+    "name": "Hospice Encounter",
+    "status": "active",
+    "date": "2022-03-03T18:46:01-05:00",
+    "publisher": "NCQA PHEMUR",
+    "expansion": {
+        "identifier": "urn:uuid:474597f9-f865-442d-be90-1d2dc41395f5",
+        "timestamp": "2023-04-27T12:44:07-04:00",
+        "total": 26,
+        "offset": 0,
+        "parameter": [
+            {
+                "name": "count",
+                "valueInteger": 1000
+            },
+            {
+                "name": "offset",
+                "valueInteger": 0
+            }
+        ],
+        "contains": [
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183919006",
+                "display": "Urgent admission to hospice (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183920000",
+                "display": "Routine admission to hospice (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "183921001",
+                "display": "Admission to hospice for respite (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "305336008",
+                "display": "Admission to hospice (procedure)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "305911006",
+                "display": "Seen in hospice (finding)"
+            },
+            {
+                "system": "http://snomed.info/sct",
+                "version": "http://snomed.info/sct/731000124108/version/20230301",
+                "code": "385765002",
+                "display": "Hospice care management (procedure)"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9473",
+                "display": "Services performed by chaplain in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9474",
+                "display": "Services performed by dietary counselor in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9475",
+                "display": "Services performed by other counselor in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9476",
+                "display": "Services performed by volunteer in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9477",
+                "display": "Services performed by care coordinator in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9478",
+                "display": "Services performed by other qualified therapist in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "G9479",
+                "display": "Services performed by qualified pharmacist in the hospice setting, each 15 minutes"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5003",
+                "display": "Hospice care provided in nursing long term care facility (ltc) or non-skilled nursing facility (nf)"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5004",
+                "display": "Hospice care provided in skilled nursing facility (snf)"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5005",
+                "display": "Hospice care provided in inpatient hospital"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5006",
+                "display": "Hospice care provided in inpatient hospice facility"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5007",
+                "display": "Hospice care provided in long term care facility"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5008",
+                "display": "Hospice care provided in inpatient psychiatric facility"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "Q5010",
+                "display": "Hospice home care provided in a hospice facility"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "S9126",
+                "display": "Hospice care, in the home, per diem"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "T2042",
+                "display": "Hospice routine home care; per diem"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "T2043",
+                "display": "Hospice continuous home care; per hour"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "T2044",
+                "display": "Hospice inpatient respite care; per diem"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "T2045",
+                "display": "Hospice general inpatient care; per diem"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/hcpcs",
+                "version": "2023",
+                "code": "T2046",
+                "display": "Hospice long term care, room and board only; per diem"
+            }
+        ]
+    }
+}

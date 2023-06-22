@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="AnnualWellness" version="1.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def localId="11" locator="13:1-13:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="10" locator="13:32-13:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="9" locator="13:41-13:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="2" locator="5:1-5:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public"/>
+      <def localId="3" locator="6:1-6:55" name="SNOMEDCT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="4" locator="8:1-8:84" name="Annual Wellness Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1063" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="6" locator="10:1-10:60" name="Birthdate" id="21112-8" display="Birthdate" accessLevel="Public">
+         <codeSystem localId="5" locator="10:34-10:40" name="LOINC"/>
+      </def>
+      <def localId="8" locator="11:1-11:55" name="Dead" id="419099009" display="Dead" accessLevel="Public">
+         <codeSystem localId="7" locator="11:31-11:40" name="SNOMEDCT"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="15:1-15:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="15:1-15:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="37" locator="24:1-25:93" name="ToDate" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="37">
+               <a:s>define function &quot;ToDate&quot;(Value </a:s>
+               <a:s r="23">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s> ):
+	</a:s>
+               <a:s r="36">
+                  <a:s r="36">
+                     <a:s>DateTime(</a:s>
+                     <a:s r="25">
+                        <a:s>year from </a:s>
+                        <a:s r="24">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="27">
+                        <a:s>month from </a:s>
+                        <a:s r="26">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="29">
+                        <a:s>day from </a:s>
+                        <a:s r="28">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 0, 0, 0, 0, </a:s>
+                     <a:s r="35">
+                        <a:s>timezone from </a:s>
+                        <a:s r="34">
+                           <a:s>Value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="36" locator="25:2-25:93" xsi:type="DateTime">
+            <year localId="25" locator="25:11-25:25" precision="Year" xsi:type="DateTimeComponentFrom">
+               <operand localId="24" locator="25:21-25:25" name="Value" xsi:type="OperandRef"/>
+            </year>
+            <month localId="27" locator="25:28-25:43" precision="Month" xsi:type="DateTimeComponentFrom">
+               <operand localId="26" locator="25:39-25:43" name="Value" xsi:type="OperandRef"/>
+            </month>
+            <day localId="29" locator="25:46-25:59" precision="Day" xsi:type="DateTimeComponentFrom">
+               <operand localId="28" locator="25:55-25:59" name="Value" xsi:type="OperandRef"/>
+            </day>
+            <hour localId="30" locator="25:62" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <minute localId="31" locator="25:65" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <second localId="32" locator="25:68" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <millisecond localId="33" locator="25:71" valueType="t:Integer" value="0" xsi:type="Literal"/>
+            <timezoneOffset localId="35" locator="25:74-25:92" xsi:type="TimezoneFrom">
+               <operand localId="34" locator="25:88-25:92" name="Value" xsi:type="OperandRef"/>
+            </timezoneOffset>
+         </expression>
+         <operand name="Value">
+            <operandTypeSpecifier localId="23" locator="24:32-24:39" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="42" locator="28:1-29:52" name="CalendarAgeInYearsAt" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="42">
+               <a:s>define function &quot;CalendarAgeInYearsAt&quot;(BirthDateTime </a:s>
+               <a:s r="20">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>, AsOf </a:s>
+               <a:s r="21">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s> ):
+	</a:s>
+               <a:s r="41">
+                  <a:s r="41">
+                     <a:s>years between </a:s>
+                     <a:s r="38">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="22">
+                           <a:s>BirthDateTime</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s>and </a:s>
+                     <a:s r="40">
+                        <a:s>ToDate(</a:s>
+                        <a:s r="39">
+                           <a:s>AsOf</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="41" locator="29:2-29:52" precision="Year" xsi:type="DurationBetween">
+            <operand localId="38" locator="29:16-29:36" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="22" locator="29:23-29:35" name="BirthDateTime" xsi:type="OperandRef"/>
+            </operand>
+            <operand localId="40" locator="29:41-29:52" name="ToDate" xsi:type="FunctionRef">
+               <operand localId="39" locator="29:48-29:51" name="AsOf" xsi:type="OperandRef"/>
+            </operand>
+         </expression>
+         <operand name="BirthDateTime">
+            <operandTypeSpecifier localId="20" locator="28:54-28:61" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="AsOf">
+            <operandTypeSpecifier localId="21" locator="28:69-28:76" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="53" locator="17:1-21:54" name="Annual Wellness Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="53">
+               <a:s>define &quot;Annual Wellness Encounters&quot;:
+	</a:s>
+               <a:s r="52">
+                  <a:s>
+                     <a:s r="13">
+                        <a:s r="12">
+                           <a:s r="12">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Annual Wellness Visit&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AWV</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="51">
+                     <a:s>with </a:s>
+                     <a:s r="15">
+                        <a:s r="14">
+                           <a:s r="14">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Birthdate&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BirthDate</a:s>
+                     </a:s>
+                     <a:s>
+			such that </a:s>
+                     <a:s r="50">
+                        <a:s r="45">
+                           <a:s r="43">
+                              <a:s>&quot;CalendarAgeInYearsAt&quot;(</a:s>
+                              <a:s r="17">
+                                 <a:s r="16">
+                                    <a:s>BirthDate</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="17">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="19">
+                                 <a:s>start of </a:s>
+                                 <a:s r="18">
+                                    <a:s>&quot;Measurement Period&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>>= 65</a:s>
+                        </a:s>
+                        <a:s>
+				and </a:s>
+                        <a:s r="49">
+                           <a:s r="47">
+                              <a:s r="46">
+                                 <a:s>AWV</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="47">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> during </a:s>
+                           <a:s r="48">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="52" locator="18:2-21:54" xsi:type="Query">
+            <source localId="13" locator="18:2-18:54" alias="AWV">
+               <expression localId="12" locator="18:2-18:50" dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes name="Annual Wellness Visit" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="51" locator="19:3-21:54" alias="BirthDate" xsi:type="With">
+               <expression localId="14" locator="19:8-19:56" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand name="Birthdate" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+               <suchThat localId="50" locator="20:14-21:54" xsi:type="And">
+                  <operand localId="45" locator="20:14-20:96" xsi:type="GreaterOrEqual">
+                     <operand localId="43" locator="20:14-20:91" name="CalendarAgeInYearsAt" xsi:type="FunctionRef">
+                        <operand localId="17" locator="20:37-20:59" path="birthDatetime" scope="BirthDate" xsi:type="Property"/>
+                        <operand localId="19" locator="20:62-20:90" xsi:type="Start">
+                           <operand localId="18" locator="20:71-20:90" name="Measurement Period" xsi:type="ParameterRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="44" locator="20:95-20:96" valueType="t:Integer" value="65" xsi:type="Literal"/>
+                  </operand>
+                  <operand localId="49" locator="21:9-21:54" xsi:type="IncludedIn">
+                     <operand localId="47" locator="21:9-21:26" path="relevantPeriod" scope="AWV" xsi:type="Property"/>
+                     <operand localId="48" locator="21:35-21:54" name="Measurement Period" xsi:type="ParameterRef"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>

@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="PVCForOlderAdults" version="0.0.016"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Anaphylactic Reaction to Pneumococcal Conjugate Vaccine" id="urn:oid:2.16.840.1.113883.3.464.1003.199.12.1027" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Bone Marrow Transplant" id="urn:oid:2.16.840.1.113883.3.464.1004.1325" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Cerebrospinal Fluid Leaks" id="urn:oid:2.16.840.1.113883.3.464.1004.1448" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Chemotherapy" id="urn:oid:2.16.840.1.113883.3.464.1003.108.12.1040" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Cochlear Implants" id="urn:oid:2.16.840.1.113883.3.464.1004.1447" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Disorders of the Immune System" id="urn:oid:2.16.840.1.113883.3.464.1003.120.12.1001" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Functional or Aplastic Anemia" id="urn:oid:2.16.840.1.113883.3.464.1004.1449" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Pneumococcal 13 Valent Vaccine Administered" id="urn:oid:2.16.840.1.113883.3.464.1004.1439" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Pneumococcal 23 Valent Vaccine Administration" id="urn:oid:2.16.840.1.113883.3.464.1004.1440" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Hospice care ambulatory" id="urn:oid:2.16.840.1.113762.1.4.1108.15" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def name="Anaphylactic Reaction Due To Vaccination" id="urn:oid:2.16.840.1.113883.3.464.1004.1024" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PatientCharacteristicEthnicity" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PatientCharacteristicEthnicity" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Payer" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PatientCharacteristicPayer" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PatientCharacteristicPayer" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Race" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PatientCharacteristicRace" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="SDE Sex" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PatientCharacteristicSex" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PatientCharacteristicSex" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Initial Population" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand resultTypeName="t:Integer" valueType="t:Integer" value="65" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Denominator" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def name="Pneumoccal 13 Valent Vaccine" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Pneumococcal 13 Valent Vaccine Administered" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Pneumoccal 23 Valent Vaccine" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression dataType="qdm53:PositiveImmunizationAdministered" templateId="PositiveImmunizationAdministered" codeProperty="code" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <codes name="Pneumococcal 23 Valent Vaccine Administration" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def name="Pneumoccal 13 and 23 12 months apart" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="A">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Pneumoccal 13 Valent Vaccine" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <relationship alias="B" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Pneumoccal 23 Valent Vaccine" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="Or">
+                  <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand resultTypeName="t:Integer" precision="Month" xsi:type="DurationBetween">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="B" xsi:type="Property"/>
+                     </operand>
+                     <operand resultTypeName="t:Integer" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand resultTypeName="t:Integer" precision="Month" xsi:type="DurationBetween">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="B" xsi:type="Property"/>
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+                     </operand>
+                     <operand resultTypeName="t:Integer" valueType="t:Integer" value="12" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def name="Pneumococcal vaccines after age 60" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="A">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Pneumoccal 13 and 23 12 months apart" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+               <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                  <operand path="birthDatetime" xsi:type="Property">
+                     <source name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+               </operand>
+               <operand resultTypeName="t:Integer" valueType="t:Integer" value="60" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Stratifier 1" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="In">
+            <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <low resultTypeName="t:Integer" valueType="t:Integer" value="65" xsi:type="Literal"/>
+               <high resultTypeName="t:Integer" valueType="t:Integer" value="74" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Stratifier 2" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="In">
+            <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand lowClosed="true" highClosed="true" xsi:type="Interval">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <low resultTypeName="t:Integer" valueType="t:Integer" value="75" xsi:type="Literal"/>
+               <high resultTypeName="t:Integer" valueType="t:Integer" value="84" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Stratifier 3" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+               <operand path="birthDatetime" xsi:type="Property">
+                  <source name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand resultTypeName="t:Integer" valueType="t:Integer" value="85" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def name="Aplastic or Functional Anemia" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="A">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Functional or Aplastic Anemia" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+               <operand path="prevalencePeriod" scope="A" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Measurement Period" xsi:type="ParameterRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="CSF" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="F">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Cerebrospinal Fluid Leaks" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+               <operand path="prevalencePeriod" scope="F" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Measurement Period" xsi:type="ParameterRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def name="Cochlear Implant" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="C">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression dataType="qdm53:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Cochlear Implants" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+               <operand path="relevantPeriod" scope="C" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Measurement Period" xsi:type="ParameterRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Exclusions" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Or">
+            <operand resultTypeName="t:Boolean" xsi:type="Or">
+               <operand resultTypeName="t:Boolean" xsi:type="Or">
+                  <operand resultTypeName="t:Boolean" xsi:type="Or">
+                     <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                        <operand xsi:type="Query">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <source alias="C">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <expression dataType="qdm53:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <codes name="Chemotherapy" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+                              <operand path="relevantPeriod" scope="C" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand name="Measurement Period" xsi:type="ParameterRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </where>
+                        </operand>
+                     </operand>
+                     <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                        <operand xsi:type="Query">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <source alias="B">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <expression dataType="qdm53:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                                 <codes name="Bone Marrow Transplant" xsi:type="ValueSetRef"/>
+                              </expression>
+                           </source>
+                           <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+                              <operand path="relevantPeriod" scope="B" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand name="Measurement Period" xsi:type="ParameterRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </where>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                     <operand xsi:type="Query">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source alias="C">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <expression dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <codes name="Anaphylactic Reaction to Pneumococcal Conjugate Vaccine" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+                           <operand path="prevalencePeriod" scope="C" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand name="Measurement Period" xsi:type="ParameterRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="D">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Anaphylactic Reaction Due To Vaccination" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+                        <operand path="prevalencePeriod" scope="D" xsi:type="Property">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                        <operand name="Measurement Period" xsi:type="ParameterRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </where>
+                  </operand>
+               </operand>
+            </operand>
+            <operand resultTypeName="t:Boolean" xsi:type="Exists">
+               <operand xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source alias="E">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <expression dataType="qdm53:PositiveInterventionPerformed" templateId="PositiveInterventionPerformed" codeProperty="code" xsi:type="Retrieve">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveInterventionPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <codes name="Hospice care ambulatory" xsi:type="ValueSetRef"/>
+                     </expression>
+                  </source>
+                  <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+                     <operand path="relevantPeriod" scope="E" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                     <operand name="Measurement Period" xsi:type="ParameterRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def name="Pneumoccal 12 and 23 8 weeks apart" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="A">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Pneumoccal 13 Valent Vaccine" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <relationship alias="B" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="Pneumoccal 23 Valent Vaccine" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat resultTypeName="t:Boolean" xsi:type="Or">
+                  <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand resultTypeName="t:Integer" precision="Week" xsi:type="DurationBetween">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="B" xsi:type="Property"/>
+                     </operand>
+                     <operand resultTypeName="t:Integer" valueType="t:Integer" value="8" xsi:type="Literal"/>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand resultTypeName="t:Integer" precision="Week" xsi:type="DurationBetween">
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="B" xsi:type="Property"/>
+                        <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+                     </operand>
+                     <operand resultTypeName="t:Integer" valueType="t:Integer" value="8" xsi:type="Literal"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Pneumococcal vaccines after age 2" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Exists">
+            <operand xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source alias="A">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression name="Pneumoccal 12 and 23 8 weeks apart" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <where resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                  <operand resultTypeName="t:Integer" precision="Year" xsi:type="CalculateAgeAt">
+                     <operand path="birthDatetime" xsi:type="Property">
+                        <source name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand resultTypeName="t:DateTime" path="authorDatetime" scope="A" xsi:type="Property"/>
+                  </operand>
+                  <operand resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def name="Immune Disorders" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source alias="D">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Disorders of the Immune System" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where resultTypeName="t:Boolean" xsi:type="Overlaps">
+               <operand path="prevalencePeriod" scope="D" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand name="Measurement Period" xsi:type="ParameterRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Immunocompromising Conditions" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Exists">
+            <operand xsi:type="Union">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="ChoiceTypeSpecifier">
+                     <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </resultTypeSpecifier>
+               <operand xsi:type="As">
+                  <operand xsi:type="Union">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="ChoiceTypeSpecifier">
+                           <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                        </elementType>
+                     </resultTypeSpecifier>
+                     <operand xsi:type="As">
+                        <operand xsi:type="Union">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="ChoiceTypeSpecifier">
+                                 <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                 <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </resultTypeSpecifier>
+                           <operand xsi:type="As">
+                              <operand name="Cochlear Implant" xsi:type="ExpressionRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="ChoiceTypeSpecifier">
+                                    <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </asTypeSpecifier>
+                           </operand>
+                           <operand xsi:type="As">
+                              <operand name="Aplastic or Functional Anemia" xsi:type="ExpressionRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="ChoiceTypeSpecifier">
+                                    <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                                    <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </asTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="ChoiceTypeSpecifier">
+                              <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </asTypeSpecifier>
+                     </operand>
+                     <operand xsi:type="As">
+                        <operand name="Immune Disorders" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                        <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="ChoiceTypeSpecifier">
+                              <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                              <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </asTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="ChoiceTypeSpecifier">
+                        <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </asTypeSpecifier>
+               </operand>
+               <operand xsi:type="As">
+                  <operand name="CSF" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="ChoiceTypeSpecifier">
+                        <type name="qdm53:Diagnosis" xsi:type="NamedTypeSpecifier"/>
+                        <type name="qdm53:PositiveProcedurePerformed" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </asTypeSpecifier>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def resultTypeName="t:Boolean" name="Numerator" context="Patient" accessLevel="Public">
+         <expression resultTypeName="t:Boolean" xsi:type="Or">
+            <operand resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="Not">
+                  <operand resultTypeName="t:Boolean" name="Immunocompromising Conditions" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Exists">
+                  <operand name="Pneumococcal vaccines after age 60" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveImmunizationAdministered" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </operand>
+            <operand resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" name="Immunocompromising Conditions" xsi:type="ExpressionRef"/>
+               <operand resultTypeName="t:Boolean" name="Pneumococcal vaccines after age 2" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

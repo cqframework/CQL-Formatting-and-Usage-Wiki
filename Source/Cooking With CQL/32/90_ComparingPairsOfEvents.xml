@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ComparingPairsOfEvents"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def localId="6" locator="13:1-13:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="5" locator="13:32-13:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="4" locator="13:41-13:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" locator="10:1-10:75" name="Office Visit" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1001" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="3" locator="11:1-11:86" name="Outpatient Consultation" id="urn:oid:2.16.840.1.113883.3.464.1003.101.12.1008" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def locator="15:1-15:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="15:1-15:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="16" locator="18:1-21:65" name="Qualifying Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="16">
+               <a:s>define &quot;Qualifying Encounters&quot;:&#xd;
+	</a:s>
+               <a:s r="15">
+                  <a:s>
+                     <a:s r="10">
+                        <a:s r="9">
+                           <a:s>( </a:s>
+                           <a:s r="9">
+                              <a:s r="7">
+                                 <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Office Visit&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>&#xd;
+		union </a:s>
+                              <a:s r="8">
+                                 <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Outpatient Consultation&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> ValidEncounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="14">
+                     <a:s>where </a:s>
+                     <a:s r="14">
+                        <a:s r="12">
+                           <a:s r="11">
+                              <a:s>ValidEncounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="12">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> during </a:s>
+                        <a:s r="13">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="15" locator="19:2-21:65" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="10" locator="19:2-20:76" alias="ValidEncounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="9" locator="19:2-20:61" xsi:type="Union">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand localId="7" locator="19:4-19:43" dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Office Visit" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand localId="8" locator="20:9-20:59" dataType="qdm53:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <codes name="Outpatient Consultation" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <where localId="14" locator="21:3-21:65" resultTypeName="t:Boolean" xsi:type="IncludedIn">
+               <operand localId="12" locator="21:9-21:37" path="relevantPeriod" scope="ValidEncounter" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand localId="13" locator="21:46-21:65" name="Measurement Period" xsi:type="ParameterRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="29" locator="23:1-26:102" name="Followup HIV Visit" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="29">
+               <a:s>define &quot;Followup HIV Visit&quot;:&#xd;
+	</a:s>
+               <a:s r="28">
+                  <a:s>
+                     <a:s r="18">
+                        <a:s r="17">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> FollowupVisit</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="27">
+                     <a:s>with </a:s>
+                     <a:s r="20">
+                        <a:s r="19">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> PriorVisit</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			such that </a:s>
+                     <a:s r="26">
+                        <a:s r="22">
+                           <a:s r="21">
+                              <a:s>FollowupVisit</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="22">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="26">
+                           <a:s r="25">
+                              <a:s>90 days</a:s>
+                           </a:s>
+                           <a:s> or more on or after day of</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="24">
+                           <a:s r="23">
+                              <a:s>PriorVisit</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="24">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="28" locator="24:2-26:102" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="18" locator="24:2-24:38" alias="FollowupVisit">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="17" locator="24:2-24:24" name="Qualifying Encounters" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <relationship localId="27" locator="25:3-26:102" alias="PriorVisit" xsi:type="With">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="19" locator="25:8-25:30" name="Qualifying Encounters" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+               <suchThat localId="26" locator="26:14-26:102" resultTypeName="t:Boolean" precision="Day" xsi:type="SameOrAfter">
+                  <operand localId="22" locator="26:14-26:41" resultTypeName="t:DateTime" path="authorDatetime" scope="FollowupVisit" xsi:type="Property"/>
+                  <operand locator="26:89-26:102" xsi:type="Add">
+                     <operand localId="24" locator="26:78-26:102" resultTypeName="t:DateTime" path="authorDatetime" scope="PriorVisit" xsi:type="Property"/>
+                     <operand localId="25" locator="26:43-26:49" resultTypeName="t:Quantity" value="90" unit="days" xsi:type="Quantity"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

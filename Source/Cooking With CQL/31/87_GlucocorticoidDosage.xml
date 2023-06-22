@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="GlucocorticoidDosage"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:55" localIdentifier="Timing" path="DayMonthTimings" version="0.9.000"/>
+   </includes>
+   <parameters>
+      <def localId="50" locator="34:1-34:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="49" locator="34:32-34:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="48" locator="34:41-34:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="7:1-7:97" name="SNOMEDCT:2018-03" id="urn:oid:2.16.840.1.113883.6.96" version="urn:hl7:version:2018-03" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="4" locator="8:1-8:55" name="SNOMEDCT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def localId="5" locator="10:1-10:82" name="Glucocorticoids (oral only)" id="2.16.840.1.113883.3.464.1003.196.12.1266" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <codes>
+      <def localId="7" locator="12:1-12:125" resultTypeName="t:Code" name="Every eight hours (qualifier value)" id="307469008" display="Every eight hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="6" locator="12:62-12:79" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="9" locator="13:1-13:137" resultTypeName="t:Code" name="Every eight to twelve hours (qualifier value)" id="396140003" display="Every eight to twelve hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="8" locator="13:72-13:81" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="11" locator="14:1-14:137" resultTypeName="t:Code" name="Every forty eight hours (qualifier value)" id="396131002" display="Every forty eight hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="10" locator="14:68-14:85" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="13" locator="15:1-15:115" resultTypeName="t:Code" name="Every four hours (qualifier value)" id="225756002" display="Every four hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="12" locator="15:61-15:70" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="15" locator="16:1-16:137" resultTypeName="t:Code" name="Every seventy two hours (qualifier value)" id="396143001" display="Every seventy two hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="14" locator="16:68-16:85" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="17" locator="17:1-17:121" resultTypeName="t:Code" name="Every six hours (qualifier value)" id="307468000" display="Every six hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="16" locator="17:60-17:77" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="19" locator="18:1-18:131" resultTypeName="t:Code" name="Every six to eight hours (qualifier value)" id="396139000" display="Every six to eight hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="18" locator="18:69-18:78" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="21" locator="19:1-19:135" resultTypeName="t:Code" name="Every thirty six hours (qualifier value)" id="396126004" display="Every thirty six hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="20" locator="19:67-19:84" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="23" locator="20:1-20:133" resultTypeName="t:Code" name="Every three to four hours (qualifier value)" id="225754004" display="Every three to four hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="22" locator="20:70-20:79" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="25" locator="21:1-21:131" resultTypeName="t:Code" name="Every three to six hours (qualifier value)" id="396127008" display="Every three to six hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="24" locator="21:69-21:78" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="27" locator="22:1-22:127" resultTypeName="t:Code" name="Every twelve hours (qualifier value)" id="307470009" display="Every twelve hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="26" locator="22:63-22:80" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="29" locator="23:1-23:137" resultTypeName="t:Code" name="Every twenty four hours (qualifier value)" id="396125000" display="Every twenty four hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="28" locator="23:68-23:85" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="31" locator="24:1-24:129" resultTypeName="t:Code" name="Every two to four hours (qualifier value)" id="225752000" display="Every two to four hours (qualifier value)" accessLevel="Public">
+         <codeSystem localId="30" locator="24:68-24:77" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="33" locator="25:1-25:123" resultTypeName="t:Code" name="Four times daily (qualifier value)" id="307439001" display="Four times daily (qualifier value)" accessLevel="Public">
+         <codeSystem localId="32" locator="25:61-25:78" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="35" locator="26:1-26:111" resultTypeName="t:Code" name="Once daily (qualifier value)" id="229797004" display="Once daily (qualifier value)" accessLevel="Public">
+         <codeSystem localId="34" locator="26:55-26:72" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="37" locator="27:1-27:129" resultTypeName="t:Code" name="One to four times a day (qualifier value)" id="396109005" display="One to four times a day (qualifier value)" accessLevel="Public">
+         <codeSystem localId="36" locator="27:68-27:77" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="39" locator="28:1-28:131" resultTypeName="t:Code" name="One to three times a day (qualifier value)" id="396108002" display="One to three times a day (qualifier value)" accessLevel="Public">
+         <codeSystem localId="38" locator="28:69-28:78" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="41" locator="29:1-29:127" resultTypeName="t:Code" name="One to two times a day (qualifier value)" id="396107007" display="One to two times a day (qualifier value)" accessLevel="Public">
+         <codeSystem localId="40" locator="29:67-29:76" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="43" locator="30:1-30:125" resultTypeName="t:Code" name="Three times daily (qualifier value)" id="229798009" display="Three times daily (qualifier value)" accessLevel="Public">
+         <codeSystem localId="42" locator="30:62-30:79" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="45" locator="31:1-31:113" resultTypeName="t:Code" name="Twice a day (qualifier value)" id="229799001" display="Twice a day (qualifier value)" accessLevel="Public">
+         <codeSystem localId="44" locator="31:56-31:73" name="SNOMEDCT:2018-03">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+      <def localId="47" locator="32:1-32:129" resultTypeName="t:Code" name="Two to four times a day (qualifier value)" id="396111001" display="Two to four times a day (qualifier value)" accessLevel="Public">
+         <codeSystem localId="46" locator="32:68-32:77" name="SNOMEDCT">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </codeSystem>
+      </def>
+   </codes>
+   <statements>
+      <def locator="36:1-36:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="36:1-36:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="59" locator="56:1-58:81" name="Glucocorticoid Medication Active" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="59">
+               <a:s>define &quot;Glucocorticoid Medication Active&quot;:&#xd;
+  </a:s>
+               <a:s r="58">
+                  <a:s>
+                     <a:s r="52">
+                        <a:s r="51">
+                           <a:s r="51">
+                              <a:s>[&quot;Medication, Active&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Glucocorticoids (oral only)&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Glucocorticoid</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="57">
+                     <a:s>where </a:s>
+                     <a:s r="57">
+                        <a:s r="54">
+                           <a:s r="53">
+                              <a:s>Glucocorticoid</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="54">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> starts before </a:s>
+                        <a:s r="56">
+                           <a:s>end of </a:s>
+                           <a:s r="55">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="58" locator="57:3-58:81" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <source localId="52" locator="57:3-57:70" alias="Glucocorticoid">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="51" locator="57:3-57:55" dataType="qdm53:MedicationActive" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Glucocorticoids (oral only)" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="57" locator="58:5-58:81" resultTypeName="t:Boolean" xsi:type="Before">
+               <operand locator="58:41-58:46" xsi:type="Start">
+                  <operand localId="54" locator="58:11-58:39" path="relevantPeriod" scope="Glucocorticoid" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+               <operand localId="56" locator="58:55-58:81" resultTypeName="t:DateTime" xsi:type="End">
+                  <operand localId="55" locator="58:62-58:81" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="168" locator="74:1-99:4" resultTypeName="t:Decimal" name="DosesPerDay" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="168">
+               <a:s>define function &quot;DosesPerDay&quot;(frequency </a:s>
+               <a:s r="60">
+                  <a:s>Code</a:s>
+               </a:s>
+               <a:s>):&#xd;
+	/*Calculates the cumulative dose per day for each prescription*/&#xd;
+	</a:s>
+               <a:s r="167">
+                  <a:s r="167">
+                     <a:s>case&#xd;
+		</a:s>
+                     <a:s r="65">
+                        <a:s>when </a:s>
+                        <a:s r="63">
+                           <a:s r="61">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="62">
+                              <a:s>&quot;Once daily (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 1.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="70">
+                        <a:s>when </a:s>
+                        <a:s r="68">
+                           <a:s r="66">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="67">
+                              <a:s>&quot;Twice a day (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 2.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="75">
+                        <a:s>when </a:s>
+                        <a:s r="73">
+                           <a:s r="71">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="72">
+                              <a:s>&quot;Three times daily (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 3.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="80">
+                        <a:s>when </a:s>
+                        <a:s r="78">
+                           <a:s r="76">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="77">
+                              <a:s>&quot;Four times daily (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 4.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="85">
+                        <a:s>when </a:s>
+                        <a:s r="83">
+                           <a:s r="81">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="82">
+                              <a:s>&quot;Every twenty four hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 1.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="90">
+                        <a:s>when </a:s>
+                        <a:s r="88">
+                           <a:s r="86">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="87">
+                              <a:s>&quot;Every twelve hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 2.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="95">
+                        <a:s>when </a:s>
+                        <a:s r="93">
+                           <a:s r="91">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="92">
+                              <a:s>&quot;Every thirty six hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 0.67</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="100">
+                        <a:s>when </a:s>
+                        <a:s r="98">
+                           <a:s r="96">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="97">
+                              <a:s>&quot;Every eight hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 3.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="105">
+                        <a:s>when </a:s>
+                        <a:s r="103">
+                           <a:s r="101">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="102">
+                              <a:s>&quot;Every four hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 6.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="110">
+                        <a:s>when </a:s>
+                        <a:s r="108">
+                           <a:s r="106">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="107">
+                              <a:s>&quot;Every six hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 4.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="115">
+                        <a:s>when </a:s>
+                        <a:s r="113">
+                           <a:s r="111">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="112">
+                              <a:s>&quot;Every seventy two hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 0.34</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="120">
+                        <a:s>when </a:s>
+                        <a:s r="118">
+                           <a:s r="116">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="117">
+                              <a:s>&quot;Every forty eight hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 0.5</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="125">
+                        <a:s>when </a:s>
+                        <a:s r="123">
+                           <a:s r="121">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="122">
+                              <a:s>&quot;Every eight to twelve hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 2.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="130">
+                        <a:s>when </a:s>
+                        <a:s r="128">
+                           <a:s r="126">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="127">
+                              <a:s>&quot;Every six to eight hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 3.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="135">
+                        <a:s>when </a:s>
+                        <a:s r="133">
+                           <a:s r="131">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="132">
+                              <a:s>&quot;Every three to four hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 6.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="140">
+                        <a:s>when </a:s>
+                        <a:s r="138">
+                           <a:s r="136">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="137">
+                              <a:s>&quot;Every three to six hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 4.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="145">
+                        <a:s>when </a:s>
+                        <a:s r="143">
+                           <a:s r="141">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="142">
+                              <a:s>&quot;Every two to four hours (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 6.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="150">
+                        <a:s>when </a:s>
+                        <a:s r="148">
+                           <a:s r="146">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="147">
+                              <a:s>&quot;One to four times a day (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 4.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="155">
+                        <a:s>when </a:s>
+                        <a:s r="153">
+                           <a:s r="151">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="152">
+                              <a:s>&quot;One to three times a day (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 3.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="160">
+                        <a:s>when </a:s>
+                        <a:s r="158">
+                           <a:s r="156">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="157">
+                              <a:s>&quot;One to two times a day (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 2.0</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		</a:s>
+                     <a:s r="165">
+                        <a:s>when </a:s>
+                        <a:s r="163">
+                           <a:s r="161">
+                              <a:s>frequency</a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="162">
+                              <a:s>&quot;Two to four times a day (qualifier value)&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 4.0</a:s>
+                     </a:s>
+                     <a:s> &#xd;
+		else null &#xd;
+	end</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="167" locator="76:2-99:4" resultTypeName="t:Decimal" xsi:type="Case">
+            <caseItem localId="65" locator="77:3-77:58">
+               <when localId="63" locator="77:8-77:49" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="61" locator="77:8-77:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="62" locator="77:20-77:49" resultTypeName="t:Code" name="Once daily (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="64" locator="77:56-77:58" resultTypeName="t:Decimal" valueType="t:Decimal" value="1.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="70" locator="78:3-78:59">
+               <when localId="68" locator="78:8-78:50" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="66" locator="78:8-78:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="67" locator="78:20-78:50" resultTypeName="t:Code" name="Twice a day (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="69" locator="78:57-78:59" resultTypeName="t:Decimal" valueType="t:Decimal" value="2.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="75" locator="79:3-79:65">
+               <when localId="73" locator="79:8-79:56" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="71" locator="79:8-79:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="72" locator="79:20-79:56" resultTypeName="t:Code" name="Three times daily (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="74" locator="79:63-79:65" resultTypeName="t:Decimal" valueType="t:Decimal" value="3.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="80" locator="80:3-80:64">
+               <when localId="78" locator="80:8-80:55" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="76" locator="80:8-80:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="77" locator="80:20-80:55" resultTypeName="t:Code" name="Four times daily (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="79" locator="80:62-80:64" resultTypeName="t:Decimal" valueType="t:Decimal" value="4.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="85" locator="81:3-81:71">
+               <when localId="83" locator="81:8-81:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="81" locator="81:8-81:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="82" locator="81:20-81:62" resultTypeName="t:Code" name="Every twenty four hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="84" locator="81:69-81:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="1.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="90" locator="82:3-82:66">
+               <when localId="88" locator="82:8-82:57" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="86" locator="82:8-82:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="87" locator="82:20-82:57" resultTypeName="t:Code" name="Every twelve hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="89" locator="82:64-82:66" resultTypeName="t:Decimal" valueType="t:Decimal" value="2.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="95" locator="83:3-83:71">
+               <when localId="93" locator="83:8-83:61" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="91" locator="83:8-83:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="92" locator="83:20-83:61" resultTypeName="t:Code" name="Every thirty six hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="94" locator="83:68-83:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="0.67" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="100" locator="84:3-84:65">
+               <when localId="98" locator="84:8-84:56" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="96" locator="84:8-84:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="97" locator="84:20-84:56" resultTypeName="t:Code" name="Every eight hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="99" locator="84:63-84:65" resultTypeName="t:Decimal" valueType="t:Decimal" value="3.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="105" locator="85:3-85:64">
+               <when localId="103" locator="85:8-85:55" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="101" locator="85:8-85:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="102" locator="85:20-85:55" resultTypeName="t:Code" name="Every four hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="104" locator="85:62-85:64" resultTypeName="t:Decimal" valueType="t:Decimal" value="6.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="110" locator="86:3-86:63">
+               <when localId="108" locator="86:8-86:54" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="106" locator="86:8-86:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="107" locator="86:20-86:54" resultTypeName="t:Code" name="Every six hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="109" locator="86:61-86:63" resultTypeName="t:Decimal" valueType="t:Decimal" value="4.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="115" locator="87:3-87:72">
+               <when localId="113" locator="87:8-87:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="111" locator="87:8-87:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="112" locator="87:20-87:62" resultTypeName="t:Code" name="Every seventy two hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="114" locator="87:69-87:72" resultTypeName="t:Decimal" valueType="t:Decimal" value="0.34" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="120" locator="88:3-88:71">
+               <when localId="118" locator="88:8-88:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="116" locator="88:8-88:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="117" locator="88:20-88:62" resultTypeName="t:Code" name="Every forty eight hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="119" locator="88:69-88:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="0.5" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="125" locator="89:3-89:75">
+               <when localId="123" locator="89:8-89:66" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="121" locator="89:8-89:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="122" locator="89:20-89:66" resultTypeName="t:Code" name="Every eight to twelve hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="124" locator="89:73-89:75" resultTypeName="t:Decimal" valueType="t:Decimal" value="2.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="130" locator="90:3-90:72">
+               <when localId="128" locator="90:8-90:63" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="126" locator="90:8-90:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="127" locator="90:20-90:63" resultTypeName="t:Code" name="Every six to eight hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="129" locator="90:70-90:72" resultTypeName="t:Decimal" valueType="t:Decimal" value="3.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="135" locator="91:3-91:73">
+               <when localId="133" locator="91:8-91:64" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="131" locator="91:8-91:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="132" locator="91:20-91:64" resultTypeName="t:Code" name="Every three to four hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="134" locator="91:71-91:73" resultTypeName="t:Decimal" valueType="t:Decimal" value="6.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="140" locator="92:3-92:72">
+               <when localId="138" locator="92:8-92:63" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="136" locator="92:8-92:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="137" locator="92:20-92:63" resultTypeName="t:Code" name="Every three to six hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="139" locator="92:70-92:72" resultTypeName="t:Decimal" valueType="t:Decimal" value="4.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="145" locator="93:3-93:71">
+               <when localId="143" locator="93:8-93:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="141" locator="93:8-93:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="142" locator="93:20-93:62" resultTypeName="t:Code" name="Every two to four hours (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="144" locator="93:69-93:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="6.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="150" locator="94:3-94:71">
+               <when localId="148" locator="94:8-94:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="146" locator="94:8-94:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="147" locator="94:20-94:62" resultTypeName="t:Code" name="One to four times a day (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="149" locator="94:69-94:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="4.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="155" locator="95:3-95:72">
+               <when localId="153" locator="95:8-95:63" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="151" locator="95:8-95:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="152" locator="95:20-95:63" resultTypeName="t:Code" name="One to three times a day (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="154" locator="95:70-95:72" resultTypeName="t:Decimal" valueType="t:Decimal" value="3.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="160" locator="96:3-96:70">
+               <when localId="158" locator="96:8-96:61" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="156" locator="96:8-96:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="157" locator="96:20-96:61" resultTypeName="t:Code" name="One to two times a day (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="159" locator="96:68-96:70" resultTypeName="t:Decimal" valueType="t:Decimal" value="2.0" xsi:type="Literal"/>
+            </caseItem>
+            <caseItem localId="165" locator="97:3-97:71">
+               <when localId="163" locator="97:8-97:62" resultTypeName="t:Boolean" xsi:type="Equivalent">
+                  <operand localId="161" locator="97:8-97:16" resultTypeName="t:Code" name="frequency" xsi:type="OperandRef"/>
+                  <operand localId="162" locator="97:20-97:62" resultTypeName="t:Code" name="Two to four times a day (qualifier value)" xsi:type="CodeRef"/>
+               </when>
+               <then localId="164" locator="97:69-97:71" resultTypeName="t:Decimal" valueType="t:Decimal" value="4.0" xsi:type="Literal"/>
+            </caseItem>
+            <else asType="t:Decimal" xsi:type="As">
+               <operand localId="166" locator="98:8-98:11" resultTypeName="t:Any" xsi:type="Null"/>
+            </else>
+         </expression>
+         <operand name="frequency">
+            <operandTypeSpecifier localId="60" locator="74:41-74:44" resultTypeName="t:Code" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="176" locator="106:1-107:54" resultTypeName="t:Quantity" name="GetMedicationDailyDose" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="176">
+               <a:s>define function &quot;GetMedicationDailyDose&quot;(dosage </a:s>
+               <a:s r="169">
+                  <a:s>Quantity</a:s>
+               </a:s>
+               <a:s>, dosesPerDay </a:s>
+               <a:s r="170">
+                  <a:s>Decimal</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="175">
+                  <a:s r="175">
+                     <a:s r="171">
+                        <a:s>dosage</a:s>
+                     </a:s>
+                     <a:s> * </a:s>
+                     <a:s r="174">
+                        <a:s>Quantity { </a:s>
+                        <a:s>
+                           <a:s>value: </a:s>
+                           <a:s r="172">
+                              <a:s>dosesPerDay</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>unit: </a:s>
+                           <a:s r="173">
+                              <a:s>'/d'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> }</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="175" locator="107:3-107:54" resultTypeName="t:Quantity" xsi:type="Multiply">
+            <operand localId="171" locator="107:3-107:8" resultTypeName="t:Quantity" name="dosage" xsi:type="OperandRef"/>
+            <operand localId="174" locator="107:12-107:54" resultTypeName="t:Quantity" classType="t:Quantity" xsi:type="Instance">
+               <element name="value">
+                  <value localId="172" locator="107:30-107:40" resultTypeName="t:Decimal" name="dosesPerDay" xsi:type="OperandRef"/>
+               </element>
+               <element name="unit">
+                  <value localId="173" locator="107:49-107:52" resultTypeName="t:String" valueType="t:String" value="/d" xsi:type="Literal"/>
+               </element>
+            </operand>
+         </expression>
+         <operand name="dosage">
+            <operandTypeSpecifier localId="169" locator="106:49-106:56" resultTypeName="t:Quantity" name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="dosesPerDay">
+            <operandTypeSpecifier localId="170" locator="106:71-106:77" resultTypeName="t:Decimal" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="202" locator="116:1-126:5" name="Glucocorticoids Daily Dosage Per Medication" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="202">
+               <a:s>define &quot;Glucocorticoids Daily Dosage Per Medication&quot;:&#xd;
+  </a:s>
+               <a:s r="201">
+                  <a:s>
+                     <a:s r="178">
+                        <a:s r="177">
+                           <a:s>
+                              <a:s>&quot;Glucocorticoid Medication Active&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> M</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s>
+                     <a:s>let &#xd;
+      </a:s>
+                     <a:s r="182">
+                        <a:s>dosesPerDay: </a:s>
+                        <a:s r="181">
+                           <a:s>&quot;DosesPerDay&quot;(</a:s>
+                           <a:s r="180">
+                              <a:s r="179">
+                                 <a:s>M</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="180">
+                                 <a:s>frequency</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+      </a:s>
+                     <a:s r="187">
+                        <a:s>dailyDosage: </a:s>
+                        <a:s r="186">
+                           <a:s>&quot;GetMedicationDailyDose&quot;(</a:s>
+                           <a:s r="184">
+                              <a:s r="183">
+                                 <a:s>M</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="184">
+                                 <a:s>dosage</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="185">
+                              <a:s>dosesPerDay</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+      </a:s>
+                     <a:s r="192">
+                        <a:s>medPeriod: </a:s>
+                        <a:s r="191">
+                           <a:s r="189">
+                              <a:s r="188">
+                                 <a:s>M</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="189">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> intersect </a:s>
+                           <a:s r="190">
+                              <a:s>&quot;Measurement Period&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+    </a:s>
+                  <a:s r="200">
+                     <a:s>return </a:s>
+                     <a:s r="199">
+                        <a:s>{&#xd;
+      </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="194">
+                              <a:s r="193">
+                                 <a:s>M</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="194">
+                                 <a:s>code</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,&#xd;
+      </a:s>
+                        <a:s>
+                           <a:s>daysInPeriod: </a:s>
+                           <a:s r="197">
+                              <a:s r="195">
+                                 <a:s>Timing</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="197">
+                                 <a:s>&quot;DaysInPeriod&quot;(</a:s>
+                                 <a:s r="196">
+                                    <a:s>medPeriod</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,&#xd;
+      </a:s>
+                        <a:s>
+                           <a:s>dailyDosage: </a:s>
+                           <a:s r="198">
+                              <a:s>dailyDosage</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+    }</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="code">
+                  <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="daysInPeriod">
+                  <type xsi:type="ListTypeSpecifier">
+                     <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </type>
+               </element>
+               <element name="dailyDosage">
+                  <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="201" locator="117:3-126:5" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="code">
+                     <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="daysInPeriod">
+                     <type xsi:type="ListTypeSpecifier">
+                        <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </type>
+                  </element>
+                  <element name="dailyDosage">
+                     <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source localId="178" locator="117:3-117:38" alias="M">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="177" locator="117:3-117:36" name="Glucocorticoid Medication Active" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:MedicationActive" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <let localId="182" locator="119:7-119:45" resultTypeName="t:Decimal" identifier="dosesPerDay">
+               <expression localId="181" locator="119:20-119:45" resultTypeName="t:Decimal" name="DosesPerDay" xsi:type="FunctionRef">
+                  <operand localId="180" locator="119:34-119:44" resultTypeName="t:Code" path="frequency" scope="M" xsi:type="Property"/>
+               </expression>
+            </let>
+            <let localId="187" locator="120:7-120:66" resultTypeName="t:Quantity" identifier="dailyDosage">
+               <expression localId="186" locator="120:20-120:66" resultTypeName="t:Quantity" name="GetMedicationDailyDose" xsi:type="FunctionRef">
+                  <operand localId="184" locator="120:45-120:52" resultTypeName="t:Quantity" path="dosage" scope="M" xsi:type="Property"/>
+                  <operand localId="185" locator="120:55-120:65" resultTypeName="t:Decimal" name="dosesPerDay" xsi:type="QueryLetRef"/>
+               </expression>
+            </let>
+            <let localId="192" locator="121:7-121:64" identifier="medPeriod">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="191" locator="121:18-121:64" xsi:type="Intersect">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand localId="189" locator="121:18-121:33" path="relevantPeriod" scope="M" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand localId="190" locator="121:45-121:64" name="Measurement Period" xsi:type="ParameterRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </expression>
+            </let>
+            <return localId="200" locator="122:5-126:5">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="daysInPeriod">
+                        <type xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </type>
+                     </element>
+                     <element name="dailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </elementType>
+               </resultTypeSpecifier>
+               <expression localId="199" locator="122:12-126:5" xsi:type="Tuple">
+                  <resultTypeSpecifier xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="daysInPeriod">
+                        <type xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </type>
+                     </element>
+                     <element name="dailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </resultTypeSpecifier>
+                  <element name="code">
+                     <value localId="194" locator="123:13-123:18" resultTypeName="t:Code" path="code" scope="M" xsi:type="Property"/>
+                  </element>
+                  <element name="daysInPeriod">
+                     <value localId="197" locator="124:21-124:52" name="DaysInPeriod" libraryName="Timing" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <operand localId="196" locator="124:43-124:51" name="medPeriod" xsi:type="QueryLetRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </value>
+                  </element>
+                  <element name="dailyDosage">
+                     <value localId="198" locator="125:20-125:30" resultTypeName="t:Quantity" name="dailyDosage" xsi:type="QueryLetRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="236" locator="128:1-138:5" name="Glucocorticoids Dosage Per Day" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="236">
+               <a:s>define function &quot;Glucocorticoids Dosage Per Day&quot;(glucocorticoids </a:s>
+               <a:s r="211">
+                  <a:s>List&lt;</a:s>
+                  <a:s r="210">
+                     <a:s>Tuple {&#xd;
+  </a:s>
+                     <a:s r="204">
+                        <a:s>code </a:s>
+                        <a:s r="203">
+                           <a:s>Code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+  </a:s>
+                     <a:s r="207">
+                        <a:s>daysInPeriod </a:s>
+                        <a:s r="206">
+                           <a:s>List&lt;</a:s>
+                           <a:s r="205">
+                              <a:s>DateTime</a:s>
+                           </a:s>
+                           <a:s>></a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,&#xd;
+  </a:s>
+                     <a:s r="209">
+                        <a:s>dailyDosage </a:s>
+                        <a:s r="208">
+                           <a:s>Quantity</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+}</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="235">
+                  <a:s r="235">
+                     <a:s>
+                        <a:s r="220">
+                           <a:s r="219">
+                              <a:s>(</a:s>
+                              <a:s r="219">
+                                 <a:s>distinct(</a:s>
+                                 <a:s r="218">
+                                    <a:s>flatten</a:s>
+                                    <a:s r="217">
+                                       <a:s>(</a:s>
+                                       <a:s r="217">
+                                          <a:s>
+                                             <a:s r="213">
+                                                <a:s r="212">
+                                                   <a:s>
+                                                      <a:s>glucocorticoids</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> G</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> </a:s>
+                                          <a:s r="216">
+                                             <a:s>return all </a:s>
+                                             <a:s r="215">
+                                                <a:s r="214">
+                                                   <a:s>G</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="215">
+                                                   <a:s>daysInPeriod</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s> Day</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+    </a:s>
+                     <a:s r="234">
+                        <a:s>return </a:s>
+                        <a:s r="233">
+                           <a:s>{&#xd;
+      </a:s>
+                           <a:s>
+                              <a:s>medicationDay: </a:s>
+                              <a:s r="221">
+                                 <a:s>Day</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,&#xd;
+      </a:s>
+                           <a:s>
+                              <a:s>totalDailyDosage: &#xd;
+        </a:s>
+                              <a:s r="232">
+                                 <a:s>Sum(</a:s>
+                                 <a:s r="231">
+                                    <a:s>
+                                       <a:s r="223">
+                                          <a:s r="222">
+                                             <a:s>
+                                                <a:s>glucocorticoids</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> InnerG</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="227">
+                                       <a:s>where </a:s>
+                                       <a:s r="227">
+                                          <a:s r="224">
+                                             <a:s>Day</a:s>
+                                          </a:s>
+                                          <a:s> in </a:s>
+                                          <a:s r="226">
+                                             <a:s r="225">
+                                                <a:s>InnerG</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="226">
+                                                <a:s>daysInPeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="230">
+                                       <a:s>return all </a:s>
+                                       <a:s r="229">
+                                          <a:s r="228">
+                                             <a:s>InnerG</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="229">
+                                             <a:s>dailyDosage</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+    }</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="medicationDay">
+                  <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="totalDailyDosage">
+                  <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="235" locator="133:3-138:5" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="medicationDay">
+                     <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="totalDailyDosage">
+                     <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source localId="220" locator="133:3-133:70" alias="Day">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="219" locator="133:3-133:66" xsi:type="Distinct">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <operand localId="218" locator="133:13-133:64" xsi:type="Flatten">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <operand localId="217" locator="133:20-133:64" xsi:type="Query">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="ListTypeSpecifier">
+                              <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <source localId="213" locator="133:21-133:37" alias="G">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="TupleTypeSpecifier">
+                                 <element name="code">
+                                    <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element name="daysInPeriod">
+                                    <type xsi:type="ListTypeSpecifier">
+                                       <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </type>
+                                 </element>
+                                 <element name="dailyDosage">
+                                    <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </resultTypeSpecifier>
+                           <expression localId="212" locator="133:21-133:35" name="glucocorticoids" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="TupleTypeSpecifier">
+                                    <element name="code">
+                                       <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element name="daysInPeriod">
+                                       <type xsi:type="ListTypeSpecifier">
+                                          <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                       </type>
+                                    </element>
+                                    <element name="dailyDosage">
+                                       <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </expression>
+                        </source>
+                        <return localId="216" locator="133:39-133:63" distinct="false">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </resultTypeSpecifier>
+                           <expression localId="215" locator="133:50-133:63" path="daysInPeriod" scope="G" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </expression>
+                        </return>
+                     </operand>
+                  </operand>
+               </expression>
+            </source>
+            <return localId="234" locator="134:5-138:5">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="TupleTypeSpecifier">
+                     <element name="medicationDay">
+                        <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="totalDailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </elementType>
+               </resultTypeSpecifier>
+               <expression localId="233" locator="134:12-138:5" xsi:type="Tuple">
+                  <resultTypeSpecifier xsi:type="TupleTypeSpecifier">
+                     <element name="medicationDay">
+                        <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="totalDailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </resultTypeSpecifier>
+                  <element name="medicationDay">
+                     <value localId="221" locator="135:22-135:24" resultTypeName="t:DateTime" name="Day" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="totalDailyDosage">
+                     <value localId="232" locator="137:9-137:98" resultTypeName="t:Quantity" xsi:type="Sum">
+                        <source localId="231" locator="137:13-137:97" xsi:type="Query">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <source localId="223" locator="137:13-137:34" alias="InnerG">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="TupleTypeSpecifier">
+                                    <element name="code">
+                                       <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element name="daysInPeriod">
+                                       <type xsi:type="ListTypeSpecifier">
+                                          <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                       </type>
+                                    </element>
+                                    <element name="dailyDosage">
+                                       <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                              <expression localId="222" locator="137:13-137:27" name="glucocorticoids" xsi:type="OperandRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="TupleTypeSpecifier">
+                                       <element name="code">
+                                          <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element name="daysInPeriod">
+                                          <type xsi:type="ListTypeSpecifier">
+                                             <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                          </type>
+                                       </element>
+                                       <element name="dailyDosage">
+                                          <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </resultTypeSpecifier>
+                              </expression>
+                           </source>
+                           <where localId="227" locator="137:36-137:67" resultTypeName="t:Boolean" xsi:type="In">
+                              <operand localId="224" locator="137:42-137:44" resultTypeName="t:DateTime" name="Day" xsi:type="AliasRef"/>
+                              <operand localId="226" locator="137:49-137:67" path="daysInPeriod" scope="InnerG" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </where>
+                           <return localId="230" locator="137:69-137:97" distinct="false">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <expression localId="229" locator="137:80-137:97" resultTypeName="t:Quantity" path="dailyDosage" scope="InnerG" xsi:type="Property"/>
+                           </return>
+                        </source>
+                     </value>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+         <operand name="glucocorticoids">
+            <operandTypeSpecifier localId="211" locator="128:66-132:2" xsi:type="ListTypeSpecifier">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="daysInPeriod">
+                        <type xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </type>
+                     </element>
+                     <element name="dailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </elementType>
+               </resultTypeSpecifier>
+               <elementType localId="210" locator="128:71-132:1" xsi:type="TupleTypeSpecifier">
+                  <resultTypeSpecifier xsi:type="TupleTypeSpecifier">
+                     <element name="code">
+                        <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element name="daysInPeriod">
+                        <type xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </type>
+                     </element>
+                     <element name="dailyDosage">
+                        <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </resultTypeSpecifier>
+                  <element localId="204" locator="129:3-129:11" name="code">
+                     <elementType localId="203" locator="129:8-129:11" resultTypeName="t:Code" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="207" locator="130:3-130:29" name="daysInPeriod">
+                     <elementType localId="206" locator="130:16-130:29" xsi:type="ListTypeSpecifier">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <elementType localId="205" locator="130:21-130:28" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </element>
+                  <element localId="209" locator="131:3-131:22" name="dailyDosage">
+                     <elementType localId="208" locator="131:15-131:22" resultTypeName="t:Quantity" name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="248" locator="145:1-149:9" resultTypeName="t:Boolean" name="Glucocorticoids greater than 5 mg per day for 90 or more days" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="248">
+               <a:s>define &quot;Glucocorticoids greater than 5 mg per day for 90 or more days&quot;:&#xd;
+  </a:s>
+               <a:s r="247">
+                  <a:s r="245">
+                     <a:s>Count(&#xd;
+    </a:s>
+                     <a:s r="244">
+                        <a:s>
+                           <a:s r="239">
+                              <a:s r="238">
+                                 <a:s>(</a:s>
+                                 <a:s r="238">
+                                    <a:s>&quot;Glucocorticoids Dosage Per Day&quot;(</a:s>
+                                    <a:s r="237">
+                                       <a:s>&quot;Glucocorticoids Daily Dosage Per Medication&quot;</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s> D</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+      </a:s>
+                        <a:s r="243">
+                           <a:s>where </a:s>
+                           <a:s r="243">
+                              <a:s r="241">
+                                 <a:s r="240">
+                                    <a:s>D</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="241">
+                                    <a:s>totalDailyDosage</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> >= </a:s>
+                              <a:s r="242">
+                                 <a:s>5 'mg/d'</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+  )</a:s>
+                  </a:s>
+                  <a:s> >= 90</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="247" locator="146:3-149:9" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+            <operand localId="245" locator="146:3-149:3" resultTypeName="t:Integer" xsi:type="Count">
+               <source localId="244" locator="147:5-148:42" xsi:type="Query">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="TupleTypeSpecifier">
+                        <element name="medicationDay">
+                           <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element name="totalDailyDosage">
+                           <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </resultTypeSpecifier>
+                  <source localId="239" locator="147:5-147:87" alias="D">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xsi:type="TupleTypeSpecifier">
+                           <element name="medicationDay">
+                              <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element name="totalDailyDosage">
+                              <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </resultTypeSpecifier>
+                     <expression localId="238" locator="147:5-147:85" name="Glucocorticoids Dosage Per Day" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="TupleTypeSpecifier">
+                              <element name="medicationDay">
+                                 <type name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element name="totalDailyDosage">
+                                 <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <operand localId="237" locator="147:39-147:83" name="Glucocorticoids Daily Dosage Per Medication" xsi:type="ExpressionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="TupleTypeSpecifier">
+                                 <element name="code">
+                                    <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element name="daysInPeriod">
+                                    <type xsi:type="ListTypeSpecifier">
+                                       <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </type>
+                                 </element>
+                                 <element name="dailyDosage">
+                                    <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                  </source>
+                  <where localId="243" locator="148:7-148:42" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                     <operand localId="241" locator="148:13-148:30" resultTypeName="t:Quantity" path="totalDailyDosage" scope="D" xsi:type="Property"/>
+                     <operand localId="242" locator="148:35-148:42" resultTypeName="t:Quantity" value="5" unit="mg/d" xsi:type="Quantity"/>
+                  </where>
+               </source>
+            </operand>
+            <operand localId="246" locator="149:8-149:9" resultTypeName="t:Integer" valueType="t:Integer" value="90" xsi:type="Literal"/>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

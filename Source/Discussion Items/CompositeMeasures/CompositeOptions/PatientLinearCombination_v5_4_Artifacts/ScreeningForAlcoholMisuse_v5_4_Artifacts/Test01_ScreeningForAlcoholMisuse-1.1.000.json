@@ -1,0 +1,1382 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Test01_ScreeningForAlcoholMisuse",
+         "version" : "1.1.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "localIdentifier" : "AWV",
+            "path" : "AnnualWellness",
+            "version" : "1.0.000"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "3",
+            "locator" : "7:1-7:90",
+            "name" : "Alcohol abuse or dependence",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.106.12.1010",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "8:1-8:86",
+            "name" : "Alcohol Abuse Screening",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.106.12.1026",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "9:1-9:94",
+            "name" : "AUDIT C Total Score (in points)",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.107.12.1039",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "10:1-10:101",
+            "name" : "Frequency of Drinking in the Past Year",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.106.12.1019",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "11:1-11:77",
+            "name" : "Never Response",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.122.12.1022",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "12:1-12:95",
+            "name" : "Times Per Week Or Month Response",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.122.12.1023",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "13:1-13:93",
+            "name" : "Current Non Drinker of Alcohol",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.122.12.1017",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "14:1-14:89",
+            "name" : "Current Drinker of Alcohol",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.122.12.1018",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "16:1-16:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "16:1-16:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "12",
+            "locator" : "18:1-19:5",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "12",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\r\n\t","true" ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "11",
+               "locator" : "19:2-19:5",
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            }
+         }, {
+            "localId" : "16",
+            "locator" : "21:1-22:44",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "16",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\r\n\t" ]
+                  }, {
+                     "r" : "15",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "14",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "14",
+                           "s" : [ {
+                              "r" : "13",
+                              "s" : [ {
+                                 "value" : [ "AWV" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "14",
+                              "s" : [ {
+                                 "value" : [ "\"Annual Wellness Encounters\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " )" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "15",
+               "locator" : "22:2-22:44",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "14",
+                  "locator" : "22:9-22:44",
+                  "name" : "Annual Wellness Encounters",
+                  "libraryName" : "AWV",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "89",
+            "locator" : "24:1-60:3",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "89",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\r\n\t" ]
+                  }, {
+                     "r" : "88",
+                     "s" : [ {
+                        "r" : "59",
+                        "s" : [ {
+                           "r" : "30",
+                           "s" : [ {
+                              "value" : [ "exists " ]
+                           }, {
+                              "r" : "29",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "29",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "18",
+                                       "s" : [ {
+                                          "r" : "17",
+                                          "s" : [ {
+                                             "r" : "17",
+                                             "s" : [ {
+                                                "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                             }, {
+                                                "s" : [ {
+                                                   "value" : [ "\"AUDIT C Total Score (in points)\"" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "]" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","AuditC" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\r\n\t\t\t" ]
+                                 }, {
+                                    "r" : "28",
+                                    "s" : [ {
+                                       "value" : [ "with " ]
+                                    }, {
+                                       "r" : "20",
+                                       "s" : [ {
+                                          "r" : "19",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","AWV" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\r\n\t\t\t\tsuch that " ]
+                                    }, {
+                                       "r" : "27",
+                                       "s" : [ {
+                                          "r" : "22",
+                                          "s" : [ {
+                                             "r" : "21",
+                                             "s" : [ {
+                                                "value" : [ "AuditC" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "22",
+                                             "s" : [ {
+                                                "value" : [ "authorDatetime" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " " ]
+                                       }, {
+                                          "r" : "27",
+                                          "s" : [ {
+                                             "r" : "26",
+                                             "s" : [ {
+                                                "value" : [ "12 ","months" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " or less on or before" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " \r\n\t\t\t\t" ]
+                                       }, {
+                                          "r" : "25",
+                                          "s" : [ {
+                                             "value" : [ "end of " ]
+                                          }, {
+                                             "r" : "24",
+                                             "s" : [ {
+                                                "r" : "23",
+                                                "s" : [ {
+                                                   "value" : [ "AWV" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "24",
+                                                "s" : [ {
+                                                   "value" : [ "relevantPeriod" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t)" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t\tor " ]
+                        }, {
+                           "r" : "58",
+                           "s" : [ {
+                              "value" : [ "exists " ]
+                           }, {
+                              "r" : "57",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "57",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "46",
+                                       "s" : [ {
+                                          "r" : "45",
+                                          "s" : [ {
+                                             "value" : [ "( " ]
+                                          }, {
+                                             "r" : "45",
+                                             "s" : [ {
+                                                "r" : "37",
+                                                "s" : [ {
+                                                   "value" : [ "( " ]
+                                                }, {
+                                                   "r" : "37",
+                                                   "s" : [ {
+                                                      "s" : [ {
+                                                         "r" : "32",
+                                                         "s" : [ {
+                                                            "r" : "31",
+                                                            "s" : [ {
+                                                               "r" : "31",
+                                                               "s" : [ {
+                                                                  "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                                               }, {
+                                                                  "s" : [ {
+                                                                     "value" : [ "\"Frequency of Drinking in the Past Year\"" ]
+                                                                  } ]
+                                                               }, {
+                                                                  "value" : [ "]" ]
+                                                               } ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ " ","DrinkingFrequency" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "\r\n\t\t\t\t\t" ]
+                                                   }, {
+                                                      "r" : "36",
+                                                      "s" : [ {
+                                                         "value" : [ "where " ]
+                                                      }, {
+                                                         "r" : "36",
+                                                         "s" : [ {
+                                                            "r" : "34",
+                                                            "s" : [ {
+                                                               "r" : "33",
+                                                               "s" : [ {
+                                                                  "value" : [ "DrinkingFrequency" ]
+                                                               } ]
+                                                            }, {
+                                                               "value" : [ "." ]
+                                                            }, {
+                                                               "r" : "34",
+                                                               "s" : [ {
+                                                                  "value" : [ "result" ]
+                                                               } ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ " in " ]
+                                                         }, {
+                                                            "r" : "35",
+                                                            "s" : [ {
+                                                               "value" : [ "\"Never Response\"" ]
+                                                            } ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\r\n\t\t\t)" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\r\n\t\t\t\tunion " ]
+                                             }, {
+                                                "r" : "44",
+                                                "s" : [ {
+                                                   "value" : [ "( " ]
+                                                }, {
+                                                   "r" : "44",
+                                                   "s" : [ {
+                                                      "s" : [ {
+                                                         "r" : "39",
+                                                         "s" : [ {
+                                                            "r" : "38",
+                                                            "s" : [ {
+                                                               "r" : "38",
+                                                               "s" : [ {
+                                                                  "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                                               }, {
+                                                                  "s" : [ {
+                                                                     "value" : [ "\"Alcohol Abuse Screening\"" ]
+                                                                  } ]
+                                                               }, {
+                                                                  "value" : [ "]" ]
+                                                               } ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ " ","AlcoholAbuse" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ "\r\n\t\t\t\t\t\t" ]
+                                                   }, {
+                                                      "r" : "43",
+                                                      "s" : [ {
+                                                         "value" : [ "where " ]
+                                                      }, {
+                                                         "r" : "43",
+                                                         "s" : [ {
+                                                            "r" : "41",
+                                                            "s" : [ {
+                                                               "r" : "40",
+                                                               "s" : [ {
+                                                                  "value" : [ "AlcoholAbuse" ]
+                                                               } ]
+                                                            }, {
+                                                               "value" : [ "." ]
+                                                            }, {
+                                                               "r" : "41",
+                                                               "s" : [ {
+                                                                  "value" : [ "result" ]
+                                                               } ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ " in " ]
+                                                         }, {
+                                                            "r" : "42",
+                                                            "s" : [ {
+                                                               "value" : [ "\"Current Non Drinker of Alcohol\"" ]
+                                                            } ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\r\n\t\t\t\t)" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " )" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","Assessment" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\r\n\t\t\t\t" ]
+                                 }, {
+                                    "r" : "56",
+                                    "s" : [ {
+                                       "value" : [ "with " ]
+                                    }, {
+                                       "r" : "48",
+                                       "s" : [ {
+                                          "r" : "47",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","AWV" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\r\n\t\t\t\t\tsuch that " ]
+                                    }, {
+                                       "r" : "55",
+                                       "s" : [ {
+                                          "r" : "50",
+                                          "s" : [ {
+                                             "r" : "49",
+                                             "s" : [ {
+                                                "value" : [ "Assessment" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "50",
+                                             "s" : [ {
+                                                "value" : [ "authorDatetime" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " " ]
+                                       }, {
+                                          "r" : "55",
+                                          "s" : [ {
+                                             "r" : "54",
+                                             "s" : [ {
+                                                "value" : [ "12 ","months" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " or less on or before" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " \r\n\t\t\t\t\t" ]
+                                       }, {
+                                          "r" : "53",
+                                          "s" : [ {
+                                             "value" : [ "end of " ]
+                                          }, {
+                                             "r" : "52",
+                                             "s" : [ {
+                                                "r" : "51",
+                                                "s" : [ {
+                                                   "value" : [ "AWV" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "52",
+                                                "s" : [ {
+                                                   "value" : [ "relevantPeriod" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t\t)" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\n\t//TODO:\n\t/*OR:\n\t        AND: Union of:\n\t            \"Risk Category Assessment: Frequency of Drinking in the Past Year (result: Times Per Week Or Month Response)\"\n\t            \"Risk Category Assessment: Alcohol Abuse Screening (result: Current Drinker of Alcohol)\"\n\t            <= 12 month(s) ends before end of \"Occurrence A of Encounter, Performed: Annual Wellness Visit\"\n\t        AND: Union of:\n\t            \"Risk Category Assessment: Frequency of Four or More Drinks on One Occasion in Past Year (result: Heavy Drinking Days in Past Year Response)\"\n\t            \"Risk Category Assessment: Frequency of Four or More Drinks on One Occasion in Past Year (result >= 0 )\"\n\t            <= 12 month(s) ends before end of \"Occurrence A of Encounter, Performed: Annual Wellness Visit\"*/\r\n\t\tor " ]
+                     }, {
+                        "r" : "87",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "86",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "86",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "75",
+                                    "s" : [ {
+                                       "r" : "74",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "74",
+                                          "s" : [ {
+                                             "r" : "66",
+                                             "s" : [ {
+                                                "value" : [ "( " ]
+                                             }, {
+                                                "r" : "66",
+                                                "s" : [ {
+                                                   "s" : [ {
+                                                      "r" : "61",
+                                                      "s" : [ {
+                                                         "r" : "60",
+                                                         "s" : [ {
+                                                            "r" : "60",
+                                                            "s" : [ {
+                                                               "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                                            }, {
+                                                               "s" : [ {
+                                                                  "value" : [ "\"Frequency of Drinking in the Past Year\"" ]
+                                                               } ]
+                                                            }, {
+                                                               "value" : [ "]" ]
+                                                            } ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ " ","DrinkingFrequency" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\r\n\t\t\t\t\t" ]
+                                                }, {
+                                                   "r" : "65",
+                                                   "s" : [ {
+                                                      "value" : [ "where " ]
+                                                   }, {
+                                                      "r" : "65",
+                                                      "s" : [ {
+                                                         "r" : "63",
+                                                         "s" : [ {
+                                                            "r" : "62",
+                                                            "s" : [ {
+                                                               "value" : [ "DrinkingFrequency" ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ "." ]
+                                                         }, {
+                                                            "r" : "63",
+                                                            "s" : [ {
+                                                               "value" : [ "result" ]
+                                                            } ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ " in " ]
+                                                      }, {
+                                                         "r" : "64",
+                                                         "s" : [ {
+                                                            "value" : [ "\"Times Per Week Or Month Response\"" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\r\n\t\t\t)" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\r\n\t\t\t\tunion " ]
+                                          }, {
+                                             "r" : "73",
+                                             "s" : [ {
+                                                "value" : [ "( " ]
+                                             }, {
+                                                "r" : "73",
+                                                "s" : [ {
+                                                   "s" : [ {
+                                                      "r" : "68",
+                                                      "s" : [ {
+                                                         "r" : "67",
+                                                         "s" : [ {
+                                                            "r" : "67",
+                                                            "s" : [ {
+                                                               "value" : [ "[","\"Assessment, Performed\"",": " ]
+                                                            }, {
+                                                               "s" : [ {
+                                                                  "value" : [ "\"Alcohol Abuse Screening\"" ]
+                                                               } ]
+                                                            }, {
+                                                               "value" : [ "]" ]
+                                                            } ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ " ","AlcoholAbuse" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\r\n\t\t\t\t\t\t" ]
+                                                }, {
+                                                   "r" : "72",
+                                                   "s" : [ {
+                                                      "value" : [ "where " ]
+                                                   }, {
+                                                      "r" : "72",
+                                                      "s" : [ {
+                                                         "r" : "70",
+                                                         "s" : [ {
+                                                            "r" : "69",
+                                                            "s" : [ {
+                                                               "value" : [ "AlcoholAbuse" ]
+                                                            } ]
+                                                         }, {
+                                                            "value" : [ "." ]
+                                                         }, {
+                                                            "r" : "70",
+                                                            "s" : [ {
+                                                               "value" : [ "result" ]
+                                                            } ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ " in " ]
+                                                      }, {
+                                                         "r" : "71",
+                                                         "s" : [ {
+                                                            "value" : [ "\"Current Drinker of Alcohol\"" ]
+                                                         } ]
+                                                      } ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "\r\n\t\t\t\t)" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " )" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","Assessment" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t\t\t\t" ]
+                              }, {
+                                 "r" : "85",
+                                 "s" : [ {
+                                    "value" : [ "with " ]
+                                 }, {
+                                    "r" : "77",
+                                    "s" : [ {
+                                       "r" : "76",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","AWV" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\r\n\t\t\t\t\tsuch that " ]
+                                 }, {
+                                    "r" : "84",
+                                    "s" : [ {
+                                       "r" : "79",
+                                       "s" : [ {
+                                          "r" : "78",
+                                          "s" : [ {
+                                             "value" : [ "Assessment" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "79",
+                                          "s" : [ {
+                                             "value" : [ "authorDatetime" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "84",
+                                       "s" : [ {
+                                          "r" : "83",
+                                          "s" : [ {
+                                             "value" : [ "12 ","months" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " or less on or before" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " \r\n\t\t\t\t\t" ]
+                                    }, {
+                                       "r" : "82",
+                                       "s" : [ {
+                                          "value" : [ "end of " ]
+                                       }, {
+                                          "r" : "81",
+                                          "s" : [ {
+                                             "r" : "80",
+                                             "s" : [ {
+                                                "value" : [ "AWV" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "81",
+                                             "s" : [ {
+                                                "value" : [ "relevantPeriod" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\t)" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "88",
+               "locator" : "25:2-60:3",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "59",
+                  "locator" : "25:2-39:3",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "30",
+                     "locator" : "25:2-29:2",
+                     "type" : "Exists",
+                     "operand" : {
+                        "localId" : "29",
+                        "locator" : "25:9-29:2",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "18",
+                           "locator" : "25:11-25:77",
+                           "alias" : "AuditC",
+                           "expression" : {
+                              "localId" : "17",
+                              "locator" : "25:11-25:70",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                              "templateId" : "PositiveAssessmentPerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "AUDIT C Total Score (in points)",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ {
+                           "localId" : "28",
+                           "locator" : "26:4-28:29",
+                           "alias" : "AWV",
+                           "type" : "With",
+                           "expression" : {
+                              "localId" : "19",
+                              "locator" : "26:9-26:40",
+                              "name" : "Annual Wellness Encounters",
+                              "libraryName" : "AWV",
+                              "type" : "ExpressionRef"
+                           },
+                           "suchThat" : {
+                              "localId" : "27",
+                              "locator" : "27:15-28:29",
+                              "type" : "In",
+                              "operand" : [ {
+                                 "localId" : "22",
+                                 "locator" : "27:15-27:35",
+                                 "path" : "authorDatetime",
+                                 "scope" : "AuditC",
+                                 "type" : "Property"
+                              }, {
+                                 "locator" : "27:37-27:53",
+                                 "lowClosed" : true,
+                                 "highClosed" : true,
+                                 "type" : "Interval",
+                                 "low" : {
+                                    "locator" : "28:5-28:29",
+                                    "type" : "Subtract",
+                                    "operand" : [ {
+                                       "localId" : "25",
+                                       "locator" : "28:5-28:29",
+                                       "type" : "End",
+                                       "operand" : {
+                                          "localId" : "24",
+                                          "locator" : "28:12-28:29",
+                                          "path" : "relevantPeriod",
+                                          "scope" : "AWV",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "localId" : "26",
+                                       "locator" : "27:37-27:45",
+                                       "value" : 12,
+                                       "unit" : "months",
+                                       "type" : "Quantity"
+                                    } ]
+                                 },
+                                 "high" : {
+                                    "localId" : "25",
+                                    "locator" : "28:5-28:29",
+                                    "type" : "End",
+                                    "operand" : {
+                                       "localId" : "24",
+                                       "locator" : "28:12-28:29",
+                                       "path" : "relevantPeriod",
+                                       "scope" : "AWV",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }
+                  }, {
+                     "localId" : "58",
+                     "locator" : "30:6-39:3",
+                     "type" : "Exists",
+                     "operand" : {
+                        "localId" : "57",
+                        "locator" : "30:13-39:3",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "46",
+                           "locator" : "30:15-35:18",
+                           "alias" : "Assessment",
+                           "expression" : {
+                              "localId" : "45",
+                              "locator" : "30:15-35:7",
+                              "type" : "Union",
+                              "operand" : [ {
+                                 "localId" : "37",
+                                 "locator" : "30:17-32:4",
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "localId" : "32",
+                                    "locator" : "30:19-30:103",
+                                    "alias" : "DrinkingFrequency",
+                                    "expression" : {
+                                       "localId" : "31",
+                                       "locator" : "30:19-30:85",
+                                       "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                                       "templateId" : "PositiveAssessmentPerformed",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Frequency of Drinking in the Past Year",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "localId" : "36",
+                                    "locator" : "31:6-31:55",
+                                    "type" : "InValueSet",
+                                    "code" : {
+                                       "asType" : "{urn:hl7-org:elm-types:r1}Code",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "localId" : "34",
+                                          "locator" : "31:12-31:35",
+                                          "path" : "result",
+                                          "scope" : "DrinkingFrequency",
+                                          "type" : "Property"
+                                       }
+                                    },
+                                    "valueset" : {
+                                       "localId" : "35",
+                                       "locator" : "31:40-31:55",
+                                       "name" : "Never Response"
+                                    }
+                                 }
+                              }, {
+                                 "localId" : "44",
+                                 "locator" : "33:11-35:5",
+                                 "type" : "Query",
+                                 "source" : [ {
+                                    "localId" : "39",
+                                    "locator" : "33:13-33:77",
+                                    "alias" : "AlcoholAbuse",
+                                    "expression" : {
+                                       "localId" : "38",
+                                       "locator" : "33:13-33:64",
+                                       "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                                       "templateId" : "PositiveAssessmentPerformed",
+                                       "codeProperty" : "code",
+                                       "type" : "Retrieve",
+                                       "codes" : {
+                                          "name" : "Alcohol Abuse Screening",
+                                          "type" : "ValueSetRef"
+                                       }
+                                    }
+                                 } ],
+                                 "relationship" : [ ],
+                                 "where" : {
+                                    "localId" : "43",
+                                    "locator" : "34:7-34:67",
+                                    "type" : "InValueSet",
+                                    "code" : {
+                                       "asType" : "{urn:hl7-org:elm-types:r1}Code",
+                                       "type" : "As",
+                                       "operand" : {
+                                          "localId" : "41",
+                                          "locator" : "34:13-34:31",
+                                          "path" : "result",
+                                          "scope" : "AlcoholAbuse",
+                                          "type" : "Property"
+                                       }
+                                    },
+                                    "valueset" : {
+                                       "localId" : "42",
+                                       "locator" : "34:36-34:67",
+                                       "name" : "Current Non Drinker of Alcohol"
+                                    }
+                                 }
+                              } ]
+                           }
+                        } ],
+                        "relationship" : [ {
+                           "localId" : "56",
+                           "locator" : "36:5-38:30",
+                           "alias" : "AWV",
+                           "type" : "With",
+                           "expression" : {
+                              "localId" : "47",
+                              "locator" : "36:10-36:41",
+                              "name" : "Annual Wellness Encounters",
+                              "libraryName" : "AWV",
+                              "type" : "ExpressionRef"
+                           },
+                           "suchThat" : {
+                              "localId" : "55",
+                              "locator" : "37:16-38:30",
+                              "type" : "In",
+                              "operand" : [ {
+                                 "localId" : "50",
+                                 "locator" : "37:16-37:40",
+                                 "path" : "authorDatetime",
+                                 "scope" : "Assessment",
+                                 "type" : "Property"
+                              }, {
+                                 "locator" : "37:42-37:58",
+                                 "lowClosed" : true,
+                                 "highClosed" : true,
+                                 "type" : "Interval",
+                                 "low" : {
+                                    "locator" : "38:6-38:30",
+                                    "type" : "Subtract",
+                                    "operand" : [ {
+                                       "localId" : "53",
+                                       "locator" : "38:6-38:30",
+                                       "type" : "End",
+                                       "operand" : {
+                                          "localId" : "52",
+                                          "locator" : "38:13-38:30",
+                                          "path" : "relevantPeriod",
+                                          "scope" : "AWV",
+                                          "type" : "Property"
+                                       }
+                                    }, {
+                                       "localId" : "54",
+                                       "locator" : "37:42-37:50",
+                                       "value" : 12,
+                                       "unit" : "months",
+                                       "type" : "Quantity"
+                                    } ]
+                                 },
+                                 "high" : {
+                                    "localId" : "53",
+                                    "locator" : "38:6-38:30",
+                                    "type" : "End",
+                                    "operand" : {
+                                       "localId" : "52",
+                                       "locator" : "38:13-38:30",
+                                       "path" : "relevantPeriod",
+                                       "scope" : "AWV",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              } ]
+                           }
+                        } ]
+                     }
+                  } ]
+               }, {
+                  "localId" : "87",
+                  "locator" : "51:6-60:3",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "86",
+                     "locator" : "51:13-60:3",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "75",
+                        "locator" : "51:15-56:18",
+                        "alias" : "Assessment",
+                        "expression" : {
+                           "localId" : "74",
+                           "locator" : "51:15-56:7",
+                           "type" : "Union",
+                           "operand" : [ {
+                              "localId" : "66",
+                              "locator" : "51:17-53:4",
+                              "type" : "Query",
+                              "source" : [ {
+                                 "localId" : "61",
+                                 "locator" : "51:19-51:103",
+                                 "alias" : "DrinkingFrequency",
+                                 "expression" : {
+                                    "localId" : "60",
+                                    "locator" : "51:19-51:85",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                                    "templateId" : "PositiveAssessmentPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "Frequency of Drinking in the Past Year",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }
+                              } ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "localId" : "65",
+                                 "locator" : "52:6-52:73",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "localId" : "63",
+                                       "locator" : "52:12-52:35",
+                                       "path" : "result",
+                                       "scope" : "DrinkingFrequency",
+                                       "type" : "Property"
+                                    }
+                                 },
+                                 "valueset" : {
+                                    "localId" : "64",
+                                    "locator" : "52:40-52:73",
+                                    "name" : "Times Per Week Or Month Response"
+                                 }
+                              }
+                           }, {
+                              "localId" : "73",
+                              "locator" : "54:11-56:5",
+                              "type" : "Query",
+                              "source" : [ {
+                                 "localId" : "68",
+                                 "locator" : "54:13-54:77",
+                                 "alias" : "AlcoholAbuse",
+                                 "expression" : {
+                                    "localId" : "67",
+                                    "locator" : "54:13-54:64",
+                                    "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveAssessmentPerformed",
+                                    "templateId" : "PositiveAssessmentPerformed",
+                                    "codeProperty" : "code",
+                                    "type" : "Retrieve",
+                                    "codes" : {
+                                       "name" : "Alcohol Abuse Screening",
+                                       "type" : "ValueSetRef"
+                                    }
+                                 }
+                              } ],
+                              "relationship" : [ ],
+                              "where" : {
+                                 "localId" : "72",
+                                 "locator" : "55:7-55:63",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "asType" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "As",
+                                    "operand" : {
+                                       "localId" : "70",
+                                       "locator" : "55:13-55:31",
+                                       "path" : "result",
+                                       "scope" : "AlcoholAbuse",
+                                       "type" : "Property"
+                                    }
+                                 },
+                                 "valueset" : {
+                                    "localId" : "71",
+                                    "locator" : "55:36-55:63",
+                                    "name" : "Current Drinker of Alcohol"
+                                 }
+                              }
+                           } ]
+                        }
+                     } ],
+                     "relationship" : [ {
+                        "localId" : "85",
+                        "locator" : "57:5-59:30",
+                        "alias" : "AWV",
+                        "type" : "With",
+                        "expression" : {
+                           "localId" : "76",
+                           "locator" : "57:10-57:41",
+                           "name" : "Annual Wellness Encounters",
+                           "libraryName" : "AWV",
+                           "type" : "ExpressionRef"
+                        },
+                        "suchThat" : {
+                           "localId" : "84",
+                           "locator" : "58:16-59:30",
+                           "type" : "In",
+                           "operand" : [ {
+                              "localId" : "79",
+                              "locator" : "58:16-58:40",
+                              "path" : "authorDatetime",
+                              "scope" : "Assessment",
+                              "type" : "Property"
+                           }, {
+                              "locator" : "58:42-58:58",
+                              "lowClosed" : true,
+                              "highClosed" : true,
+                              "type" : "Interval",
+                              "low" : {
+                                 "locator" : "59:6-59:30",
+                                 "type" : "Subtract",
+                                 "operand" : [ {
+                                    "localId" : "82",
+                                    "locator" : "59:6-59:30",
+                                    "type" : "End",
+                                    "operand" : {
+                                       "localId" : "81",
+                                       "locator" : "59:13-59:30",
+                                       "path" : "relevantPeriod",
+                                       "scope" : "AWV",
+                                       "type" : "Property"
+                                    }
+                                 }, {
+                                    "localId" : "83",
+                                    "locator" : "58:42-58:50",
+                                    "value" : 12,
+                                    "unit" : "months",
+                                    "type" : "Quantity"
+                                 } ]
+                              },
+                              "high" : {
+                                 "localId" : "82",
+                                 "locator" : "59:6-59:30",
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "81",
+                                    "locator" : "59:13-59:30",
+                                    "path" : "relevantPeriod",
+                                    "scope" : "AWV",
+                                    "type" : "Property"
+                                 }
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "102",
+            "locator" : "62:1-66:2",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "102",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\r\n\t" ]
+                  }, {
+                     "r" : "101",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "100",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "100",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "91",
+                                 "s" : [ {
+                                    "r" : "90",
+                                    "s" : [ {
+                                       "r" : "90",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Diagnosis\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Alcohol abuse or dependence\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","Dx" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\t\t" ]
+                           }, {
+                              "r" : "99",
+                              "s" : [ {
+                                 "value" : [ "with " ]
+                              }, {
+                                 "r" : "93",
+                                 "s" : [ {
+                                    "r" : "92",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","AWV" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t\t\t\tsuch that " ]
+                              }, {
+                                 "r" : "98",
+                                 "s" : [ {
+                                    "r" : "95",
+                                    "s" : [ {
+                                       "r" : "94",
+                                       "s" : [ {
+                                          "value" : [ "Dx" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "95",
+                                       "s" : [ {
+                                          "value" : [ "prevalencePeriod" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","overlaps before"," " ]
+                                 }, {
+                                    "r" : "97",
+                                    "s" : [ {
+                                       "r" : "96",
+                                       "s" : [ {
+                                          "value" : [ "AWV" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "97",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "101",
+               "locator" : "63:2-66:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "100",
+                  "locator" : "63:9-66:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "91",
+                     "locator" : "63:11-63:57",
+                     "alias" : "Dx",
+                     "expression" : {
+                        "localId" : "90",
+                        "locator" : "63:11-63:54",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}Diagnosis",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Alcohol abuse or dependence",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "localId" : "99",
+                     "locator" : "64:4-65:68",
+                     "alias" : "AWV",
+                     "type" : "With",
+                     "expression" : {
+                        "localId" : "92",
+                        "locator" : "64:9-64:40",
+                        "name" : "Annual Wellness Encounters",
+                        "libraryName" : "AWV",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "localId" : "98",
+                        "locator" : "65:15-65:68",
+                        "type" : "OverlapsBefore",
+                        "operand" : [ {
+                           "localId" : "95",
+                           "locator" : "65:15-65:33",
+                           "path" : "prevalencePeriod",
+                           "scope" : "Dx",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "97",
+                           "locator" : "65:51-65:68",
+                           "path" : "relevantPeriod",
+                           "scope" : "AWV",
+                           "type" : "Property"
+                        } ]
+                     }
+                  } ]
+               }
+            }
+         } ]
+      }
+   }
+}
+

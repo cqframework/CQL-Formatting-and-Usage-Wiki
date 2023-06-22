@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Test05_ScreeningForDepression" version="1.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:51" localIdentifier="AWV" path="AnnualWellness" version="1.0.000"/>
+   </includes>
+   <valueSets>
+      <def localId="3" locator="7:1-7:93" name="Depression or Bipolar Disorder" id="urn:oid:2.16.840.1.113883.3.464.1003.105.12.1040" accessLevel="Public"/>
+      <def localId="4" locator="8:1-8:92" name="PHQ 2 Total Score (in points)" id="urn:oid:2.16.840.1.113883.3.464.1003.105.12.1013" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def locator="10:1-10:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="10:1-10:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="8" locator="12:1-13:44" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="8">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="7">
+                  <a:s>exists </a:s>
+                  <a:s r="6">
+                     <a:s>( </a:s>
+                     <a:s r="6">
+                        <a:s r="5">
+                           <a:s>AWV</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="6">
+                           <a:s>&quot;Annual Wellness Encounters&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="7" locator="13:2-13:44" xsi:type="Exists">
+            <operand localId="6" locator="13:9-13:44" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="10" locator="15:1-16:21" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="10">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+	</a:s>
+               <a:s r="9">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="9" locator="16:2-16:21" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="23" locator="18:1-22:2" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="23">
+               <a:s>define &quot;Denominator Exclusions&quot;:&#xd;
+	</a:s>
+               <a:s r="22">
+                  <a:s>exists </a:s>
+                  <a:s r="21">
+                     <a:s>( </a:s>
+                     <a:s r="21">
+                        <a:s>
+                           <a:s r="12">
+                              <a:s r="11">
+                                 <a:s r="11">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Depression or Bipolar Disorder&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Bipolar</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="20">
+                           <a:s>with </a:s>
+                           <a:s r="14">
+                              <a:s r="13">
+                                 <a:s>
+                                    <a:s>AWV.&quot;Annual Wellness Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AWV</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+				such that </a:s>
+                           <a:s r="19">
+                              <a:s r="16">
+                                 <a:s r="15">
+                                    <a:s>Bipolar</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="16">
+                                    <a:s>prevalencePeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> overlaps before </a:s>
+                              <a:s r="18">
+                                 <a:s r="17">
+                                    <a:s>AWV</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="18">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="22" locator="19:2-22:2" xsi:type="Exists">
+            <operand localId="21" locator="19:9-22:2" xsi:type="Query">
+               <source localId="12" locator="19:11-19:65" alias="Bipolar">
+                  <expression localId="11" locator="19:11-19:57" dataType="qdm53:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="Depression or Bipolar Disorder" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship localId="20" locator="20:4-21:73" alias="AWV" xsi:type="With">
+                  <expression localId="13" locator="20:9-20:40" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+                  <suchThat localId="19" locator="21:15-21:73" xsi:type="OverlapsBefore">
+                     <operand localId="16" locator="21:15-21:38" path="prevalencePeriod" scope="Bipolar" xsi:type="Property"/>
+                     <operand localId="18" locator="21:56-21:73" path="relevantPeriod" scope="AWV" xsi:type="Property"/>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+      <def localId="38" locator="24:1-29:2" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="38">
+               <a:s>define &quot;Numerator&quot;:&#xd;
+	</a:s>
+               <a:s r="37">
+                  <a:s>exists </a:s>
+                  <a:s r="36">
+                     <a:s>( </a:s>
+                     <a:s r="36">
+                        <a:s>
+                           <a:s r="25">
+                              <a:s r="24">
+                                 <a:s r="24">
+                                    <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;PHQ 2 Total Score (in points)&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> PHQ_2</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="35">
+                           <a:s>with </a:s>
+                           <a:s r="27">
+                              <a:s r="26">
+                                 <a:s>
+                                    <a:s>AWV.&quot;Annual Wellness Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> AWV</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+				such that </a:s>
+                           <a:s r="34">
+                              <a:s r="29">
+                                 <a:s r="28">
+                                    <a:s>PHQ_2</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="29">
+                                    <a:s>authorDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="34">
+                                 <a:s r="33">
+                                    <a:s>12 months</a:s>
+                                 </a:s>
+                                 <a:s> or less on or before</a:s>
+                              </a:s>
+                              <a:s> &#xd;
+				</a:s>
+                              <a:s r="32">
+                                 <a:s>end of </a:s>
+                                 <a:s r="31">
+                                    <a:s r="30">
+                                       <a:s>AWV</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="31">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="37" locator="25:2-29:2" xsi:type="Exists">
+            <operand localId="36" locator="25:9-29:2" xsi:type="Query">
+               <source localId="25" locator="25:11-25:74" alias="PHQ_2">
+                  <expression localId="24" locator="25:11-25:68" dataType="qdm53:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes name="PHQ 2 Total Score (in points)" xsi:type="ValueSetRef"/>
+                  </expression>
+               </source>
+               <relationship localId="35" locator="26:4-28:29" alias="AWV" xsi:type="With">
+                  <expression localId="26" locator="26:9-26:40" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+                  <suchThat localId="34" locator="27:15-28:29" xsi:type="In">
+                     <operand localId="29" locator="27:15-27:34" path="authorDatetime" scope="PHQ_2" xsi:type="Property"/>
+                     <operand locator="27:36-27:52" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="28:5-28:29" xsi:type="Subtract">
+                           <operand localId="32" locator="28:5-28:29" xsi:type="End">
+                              <operand localId="31" locator="28:12-28:29" path="relevantPeriod" scope="AWV" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="33" locator="27:36-27:44" value="12" unit="months" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="32" locator="28:5-28:29" xsi:type="End">
+                           <operand localId="31" locator="28:12-28:29" path="relevantPeriod" scope="AWV" xsi:type="Property"/>
+                        </high>
+                     </operand>
+                  </suchThat>
+               </relationship>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

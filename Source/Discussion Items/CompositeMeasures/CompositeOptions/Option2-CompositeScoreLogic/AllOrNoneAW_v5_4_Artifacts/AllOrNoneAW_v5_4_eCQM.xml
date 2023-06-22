@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+            **************************************************************
+            Measure Details Section
+            **************************************************************
+        -->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="40280382-610b-e7a4-0161-4e03765f16f5"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone"/>
+   <text value="Test Measure"/>
+   <statusCode code="COMPLETED"/>
+   <setId root="cad6524c-e66f-4e7b-94df-8da0b86e98f5"/>
+   <versionNumber value="0.0.001"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.67"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Telligen"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="2.16.840.1.113883.3.464"/>
+            </id>
+            <name>
+               <item>
+                  <part value="National Committee for Quality Assurance"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Mammography-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.108.12.1018"/>
+         <title value="Mammography"/>
+      </valueSet>
+   </definition>
+   <!--Annual Wellness Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.101.12.1063"/>
+         <title value="Annual Wellness Visit"/>
+      </valueSet>
+   </definition>
+   <!--AUDIT C Total Score (in points)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.107.12.1039"/>
+         <title value="AUDIT C Total Score (in points)"/>
+      </valueSet>
+   </definition>
+   <!--Frequency of Drinking in the Past Year-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1019"/>
+         <title value="Frequency of Drinking in the Past Year"/>
+      </valueSet>
+   </definition>
+   <!--Unilateral Mastectomy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1020"/>
+         <title value="Unilateral Mastectomy"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol abuse or dependence-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1010"/>
+         <title value="Alcohol abuse or dependence"/>
+      </valueSet>
+   </definition>
+   <!--PHQ 2 Total Score (in points)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.105.12.1013"/>
+         <title value="PHQ 2 Total Score (in points)"/>
+      </valueSet>
+   </definition>
+   <!--Depression or Bipolar Disorder-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.105.12.1040"/>
+         <title value="Depression or Bipolar Disorder"/>
+      </valueSet>
+   </definition>
+   <!--Alcohol Abuse Screening-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.106.12.1026"/>
+         <title value="Alcohol Abuse Screening"/>
+      </valueSet>
+   </definition>
+   <!--Total Colectomy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1019"/>
+         <title value="Total Colectomy"/>
+      </valueSet>
+   </definition>
+   <!--Female-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.560.100.2"/>
+         <title value="Female"/>
+      </valueSet>
+   </definition>
+   <!--Malignant Neoplasm of Colon-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.108.12.1001"/>
+         <title value="Malignant Neoplasm of Colon"/>
+      </valueSet>
+   </definition>
+   <!--Flexible Sigmoidoscopy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1010"/>
+         <title value="Flexible Sigmoidoscopy"/>
+      </valueSet>
+   </definition>
+   <!--Bilateral Mastectomy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1005"/>
+         <title value="Bilateral Mastectomy"/>
+      </valueSet>
+   </definition>
+   <!--Colonoscopy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.108.12.1020"/>
+         <title value="Colonoscopy"/>
+      </valueSet>
+   </definition>
+   <!--Fecal Occult Blood Test (FOBT)-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.198.12.1011"/>
+         <title value="Fecal Occult Blood Test (FOBT)"/>
+      </valueSet>
+   </definition>
+   <!--Never Response-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.122.12.1022"/>
+         <title value="Never Response"/>
+      </valueSet>
+   </definition>
+   <!--Current Non Drinker of Alcohol-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.122.12.1017"/>
+         <title value="Current Non Drinker of Alcohol"/>
+      </valueSet>
+   </definition>
+   <!--Times Per Week Or Month Response-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.122.12.1023"/>
+         <title value="Times Per Week Or Month Response"/>
+      </valueSet>
+   </definition>
+   <!--Current Drinker of Alcohol-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.464.1003.122.12.1018"/>
+         <title value="Current Drinker of Alcohol"/>
+      </valueSet>
+   </definition>
+   <!--Systolic Blood Pressure-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1032"/>
+         <title value="Systolic Blood Pressure"/>
+      </valueSet>
+   </definition>
+   <!--Diastolic Blood Pressure-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1033"/>
+         <title value="Diastolic Blood Pressure"/>
+      </valueSet>
+   </definition>
+   <!--Birthdate
+			-
+			Birth Date-->
+      <definition>
+      <cql-ext:code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                    codeSystemVersion="2.46">
+         <displayName value="Birthdate"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="F224EEFC-A26B-4B9B-9B30-4821EB4641DC"/>
+         <text mediaType="text/cql">
+            <reference value="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone-0.0.001.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone-0.0.001.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone-0.0.001.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382603bb1780160e4c3f7052c06"/>
+         <text mediaType="text/cql">
+            <reference value="MATGlobalCommonFunctions-2.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="MATGlobalCommonFunctions-2.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="MATGlobalCommonFunctions-2.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a40161491d739b13bd"/>
+         <text mediaType="text/cql">
+            <reference value="AnnualWellness-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="AnnualWellness-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="AnnualWellness-1.0.000.json"/>
+            </translation>
+         </text>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a4016149538cc6149c"/>
+         <text mediaType="text/cql">
+            <reference value="Test04_ScreeningForColorectalCancer-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Test04_ScreeningForColorectalCancer-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Test04_ScreeningForColorectalCancer-1.0.000.json"/>
+            </translation>
+         </text>
+          <!-- NOTE: This approach uses the setId and versionNumber elements of the component HQMF document, but we note the following concerns:
+            1) Mixing semantics, because the usual use for setId and versionNumber here is that this refers to the HQMF document, not the library
+            2) What about included libraries of component measures? Are they included in the composite HQMF, and do they have the setId/versionNumber set? 
+                What about libraries referenced by multiple components?
+            3) Does this mean we don't even need the componentQualityMeasureDocument with typeCode of "XCRPT"?
+                What about the version-specific identifier currently included in the componentQualityMeasureDocument?
+            4) We had talked about including more information in componentQualityMeasureDocument like the name of the measure, where would that go in this approach?
+          -->
+         <setId root="b10f4f8b-792a-49fa-b9f7-1212ccb815f7"/>
+         <versionNumber value="1.0"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a401614e01dbfd16f2"/>
+         <text mediaType="text/cql">
+            <reference value="Test05_ScreeningForDepression-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Test05_ScreeningForDepression-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Test05_ScreeningForDepression-1.0.000.json"/>
+            </translation>
+         </text>
+         <setId root="76b2f8a5-7cd9-4bc9-84c5-096835a5cb77"/>
+         <versionNumber value="1.0"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a401614933036d142b"/>
+         <text mediaType="text/cql">
+            <reference value="Test01_ScreeningForAlcoholMisuse-1.1.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Test01_ScreeningForAlcoholMisuse-1.1.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Test01_ScreeningForAlcoholMisuse-1.1.000.json"/>
+            </translation>
+         </text>
+         <setId root="556bb407-50c0-45b9-9188-1606d21cc54e"/>
+         <versionNumber value="1.1"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a40161492e5ff11413"/>
+         <text mediaType="text/cql">
+            <reference value="Test02_HypertensionAssessment-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Test02_HypertensionAssessment-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Test02_HypertensionAssessment-1.0.000.json"/>
+            </translation>
+         </text>
+         <setId root="ba8ce2d3-5742-4326-bb27-a42e5082853c"/>
+         <versionNumber value="1.0"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="40280382610be7a4016149450d451471"/>
+         <text mediaType="text/cql">
+            <reference value="Test03_ScreeningForBreastCancer-1.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="Test03_ScreeningForBreastCancer-1.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="Test03_ScreeningForBreastCancer-1.0.000.json"/>
+            </translation>
+         </text>
+         <setId root="2baedf19-5ae3-41c2-a98b-767acc925d6d"/>
+         <versionNumber value="1.0"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="40280382-610b-e7a4-0161-490b16371398"/>
+         <setId root="ba8ce2d3-5742-4326-bb27-a42e5082853c"/>
+         <versionNumber value="1.0"/>
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="40280382-610b-e7a4-0161-492ed55e141d"/>
+         <setId root="556bb407-50c0-45b9-9188-1606d21cc54e"/>
+         <versionNumber value="1.1"/>
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="40280382-610b-e7a4-0161-4935e78d144d"/>
+         <setId root="2baedf19-5ae3-41c2-a98b-767acc925d6d"/>
+         <versionNumber value="1.0"/>
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="40280382-610b-e7a4-0161-49460aa01476"/>
+         <setId root="b10f4f8b-792a-49fa-b9f7-1212ccb815f7"/>
+         <versionNumber value="1.0"/>
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="XCRPT">
+      <componentQualityMeasureDocument>
+         <id root="40280382-610b-e7a4-0161-4954e94c14a0"/>
+         <setId root="76b2f8a5-7cd9-4bc9-84c5-096835a5cb77"/>
+         <versionNumber value="1.0"/>
+      </componentQualityMeasureDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="78b861dd-0bd0-4df8-b771-7f68f90ce4b2"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20180101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.1.11.20367" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="COMPOSITE" codeSystem="2.16.840.1.113883.1.11.20368" xsi:type="CD">
+            <displayName value="COMPOSITE"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain" value="Test Measure" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root="db663d1c-cc69-4a3d-91e3-5f83e050ee98"/>
+         <title value="Test Measure"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Mammography_DiagnosticStudyPerformed_CQwoV"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.23"/>
+               </templateId>
+               <id extension="Mammography_DiagnosticStudyPerformed"
+                   root="5bad1178-6283-41ec-bf1d-63cfce6a6328"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.108.12.1018"/>
+               <title value="Diagnostic Study, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnnualWellnessVisit_EncounterPerformed_hXp6s"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="AnnualWellnessVisit_EncounterPerformed"
+                   root="1c7645ea-675a-4a7c-9466-3fae54cd9ff2"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.101.12.1063"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AUDITCTotalScore(inpoints)_AssessmentPerformed_PlvbL"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="AUDITCTotalScore(inpoints)_AssessmentPerformed"
+                   root="6ba02abc-e266-4f13-bc7f-e32017d5e072"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.107.12.1039"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="FrequencyofDrinkinginthePastYear_AssessmentPerformed_8Zb1r"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="FrequencyofDrinkinginthePastYear_AssessmentPerformed"
+                   root="53327135-1f28-43b9-96b5-c940c47e19b3"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.106.12.1019"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="UnilateralMastectomy_ProcedurePerformed_8pLiS"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="UnilateralMastectomy_ProcedurePerformed"
+                   root="0bfb2af8-a673-4b3c-ae43-c179329e6d09"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1020"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Alcoholabuseordependence_Diagnosis_pyE0b"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Alcoholabuseordependence_Diagnosis"
+                   root="6c178eaf-5099-4f2d-8d28-9abf740e9c80"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.106.12.1010" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PHQ2TotalScore(inpoints)_AssessmentPerformed_AaF86"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="PHQ2TotalScore(inpoints)_AssessmentPerformed"
+                   root="8f160ee8-d66d-4118-8949-e25e22493415"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.105.12.1013"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="DepressionorBipolarDisorder_Diagnosis_pEwF3"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="DepressionorBipolarDisorder_Diagnosis"
+                   root="23d12333-0121-4342-8a9b-e419f5107027"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.105.12.1040" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AlcoholAbuseScreening_AssessmentPerformed_kvs3i"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="AlcoholAbuseScreening_AssessmentPerformed"
+                   root="3ed15fed-8d18-4595-b045-15a8b75d5281"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.106.12.1026"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="TotalColectomy_ProcedurePerformed_Xhi0B"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="TotalColectomy_ProcedurePerformed"
+                   root="db1f92f3-6888-40a9-94fa-9046eed0ba0e"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1019"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Female_PatientCharacteristicSex_FxW8d"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="Female_PatientCharacteristicSex"
+                   root="5b5bfbe5-6bf0-469b-8485-ee7769fe9c8c"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.560.100.2" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MalignantNeoplasmofColon_Diagnosis_JjG84"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="MalignantNeoplasmofColon_Diagnosis"
+                   root="48cd2d55-8993-49c2-b9b1-efcf31e71bbc"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.464.1003.108.12.1001" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="FlexibleSigmoidoscopy_ProcedurePerformed_Jd1W5"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="FlexibleSigmoidoscopy_ProcedurePerformed"
+                   root="2baaf426-9775-46a8-885f-0ab8e059c92d"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1010"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="BilateralMastectomy_ProcedurePerformed_MajrB"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="BilateralMastectomy_ProcedurePerformed"
+                   root="8a9b2ce9-6b77-422f-b6e8-86c48655dc7a"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1005"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Colonoscopy_ProcedurePerformed_Hu5j5"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="Colonoscopy_ProcedurePerformed"
+                   root="1ac48361-15f2-437d-8b8b-e5d8bde32b88"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.108.12.1020"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="FecalOccultBloodTest(FOBT)_LaboratoryTestPerformed_Y698Y"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.4.42"/>
+               </templateId>
+               <id extension="FecalOccultBloodTest(FOBT)_LaboratoryTestPerformed"
+                   root="725e9fe1-5af5-4a99-9da8-4e2d1b37bd50"/>
+               <code valueSet="2.16.840.1.113883.3.464.1003.198.12.1011"/>
+               <title value="Laboratory Test, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.54"/>
+               </templateId>
+               <id extension="21112-8_PatientCharacteristicBirthdate"
+                   root="05D847BA-7AAB-4ED7-A21D-2B1220355DD7"/>
+               <code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+               <title value="Patient Characteristic Birthdate"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="6154DC20-A9C6-42A7-9513-1A81625C3955"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="132DE342-9179-4774-BA49-FD6E05143ADF"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone.&quot;Initial Populaiton&quot;"
+                         root="F224EEFC-A26B-4B9B-9B30-4821EB4641DC"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="58DF27C8-920D-4568-BAEA-EFB9568ACE7A"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone.&quot;Denominator&quot;"
+                         root="F224EEFC-A26B-4B9B-9B30-4821EB4641DC"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="EBAE3B79-82CC-4A6B-8EE6-35393B361C35"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="ZZ_AnnualWellnessAssessmentMeasure_AllOrNone.&quot;Numerator&quot;"
+                         root="F224EEFC-A26B-4B9B-9B30-4821EB4641DC"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

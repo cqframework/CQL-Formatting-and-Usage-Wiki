@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="EXM9_BPS" version="4.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+   </usings>
+   <codeSystems>
+      <def name="SNOMED-CT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def name="Feeding Intention-Breast" id="urn:oid:2.16.840.1.113762.1.4.1045.29" accessLevel="Public"/>
+      <def name="Galactosemia" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.35" accessLevel="Public"/>
+      <def name="Single Live Birth" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.25)" accessLevel="Public"/>
+      <def name="Single Live Born Newborn Born in Hospital" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.26" accessLevel="Public"/>
+      <def name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def name="Estimated Gestational Age at Birth" id="urn:oid:2.16.840.1.113762.1.4.1045.47" accessLevel="Public"/>
+      <def name="Parenteral Nutrition" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.38" accessLevel="Public"/>
+      <def name="Breast Milk" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.30" accessLevel="Public"/>
+      <def name="Dietary Intake Other than Breast Milk" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.27" accessLevel="Public"/>
+      <def name="Neonatal Intensive Care Unit (NICU)" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.75" accessLevel="Public"/>
+      <def name="Patient Expired" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.309" accessLevel="Public"/>
+      <def name="Discharge To Acute Care Facility" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.87" accessLevel="Public"/>
+      <def name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def name="Normative No" id="No" accessLevel="Public">
+         <codeSystem name="SNOMED-CT"/>
+      </def>
+   </codes>
+</library>
+
+

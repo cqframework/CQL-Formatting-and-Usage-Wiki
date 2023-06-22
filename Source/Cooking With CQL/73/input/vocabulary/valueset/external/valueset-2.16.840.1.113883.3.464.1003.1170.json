@@ -1,0 +1,61 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.464.1003.1170",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2022-09-02T01:02:12.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-author",
+    "valueString": "NCQA PHEMUR Author"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/resource-lastReviewDate",
+    "valueDate": "2022-12-15"
+  }, {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2022-09-02"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.1170",
+  "version": "20220902",
+  "name": "Atomoxetine",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-09-02T01:02:12-04:00",
+  "publisher": "NCQA PHEMUR",
+  "jurisdiction": [ {
+    "extension": [ {
+      "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+      "valueString": "UNKNOWN"
+    } ]
+  } ],
+  "purpose": "(Clinical Focus: The purpose of this value set is to represent concepts for atomoxetine medications.),(Data Element Scope: This value set may use a model element related to Medication.),(Inclusion Criteria: Includes concepts that represent generic, human use, prescribable atomoxetine and atomoxetine in combination with other medications.),(Exclusion Criteria: Excludes concepts that represent non-prescribable, branded drugs and excludes concepts that represent components or ingredients.)",
+  "compose": {
+    "include": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "04032023",
+      "concept": [ {
+        "code": "349591",
+        "display": "atomoxetine 10 MG Oral Capsule"
+      }, {
+        "code": "349592",
+        "display": "atomoxetine 18 MG Oral Capsule"
+      }, {
+        "code": "349593",
+        "display": "atomoxetine 25 MG Oral Capsule"
+      }, {
+        "code": "349594",
+        "display": "atomoxetine 40 MG Oral Capsule"
+      }, {
+        "code": "349595",
+        "display": "atomoxetine 60 MG Oral Capsule"
+      }, {
+        "code": "608139",
+        "display": "atomoxetine 100 MG Oral Capsule"
+      }, {
+        "code": "608143",
+        "display": "atomoxetine 80 MG Oral Capsule"
+      } ]
+    } ]
+  }
+}

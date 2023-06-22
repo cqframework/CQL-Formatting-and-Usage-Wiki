@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="DeterminingCoverage"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="9:1-9:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def localId="7" locator="15:1-15:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="6" locator="15:32-15:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="5" locator="15:41-15:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" locator="11:1-11:62" name="Commercial" id="urn:oid:2.16.840.1.113762.1.4.1165.46" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="3" locator="12:1-12:60" name="Medicaid" id="urn:oid:2.16.840.1.113762.1.4.1165.45" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+      <def localId="4" locator="13:1-13:60" name="Medicare" id="urn:oid:2.16.840.1.113762.1.4.1165.44" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def locator="17:1-17:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="17:1-17:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="9" locator="19:1-20:11" resultTypeName="t:String" name="Medicaid Product" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="9">
+               <a:s>define &quot;Medicaid Product&quot;:&#xd;
+	</a:s>
+               <a:s r="8">
+                  <a:s>'medicaid'</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="8" locator="20:2-20:11" resultTypeName="t:String" valueType="t:String" value="medicaid" xsi:type="Literal"/>
+      </def>
+      <def localId="11" locator="22:1-23:13" resultTypeName="t:String" name="Commercial Product" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="11">
+               <a:s>define &quot;Commercial Product&quot;:&#xd;
+	</a:s>
+               <a:s r="10">
+                  <a:s>'commercial'</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="10" locator="23:2-23:13" resultTypeName="t:String" valueType="t:String" value="commercial" xsi:type="Literal"/>
+      </def>
+      <def localId="13" locator="25:1-26:11" resultTypeName="t:String" name="Medicare Product" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="13">
+               <a:s>define &quot;Medicare Product&quot;:&#xd;
+	</a:s>
+               <a:s r="12">
+                  <a:s>'medicare'</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="12" locator="26:2-26:11" resultTypeName="t:String" valueType="t:String" value="medicare" xsi:type="Literal"/>
+      </def>
+      <def localId="46" locator="84:1-95:2" resultTypeName="t:Boolean" name="Is Enrolled On Date" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="46">
+               <a:s>define function &quot;Is Enrolled On Date&quot;(ProductLine </a:s>
+               <a:s r="25">
+                  <a:s>String</a:s>
+               </a:s>
+               <a:s>, IndexDate </a:s>
+               <a:s r="26">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="45">
+                  <a:s r="45">
+                     <a:s>exists </a:s>
+                     <a:s r="44">
+                        <a:s>(&#xd;
+		</a:s>
+                        <a:s r="44">
+                           <a:s>
+                              <a:s r="39">
+                                 <a:s r="38">
+                                    <a:s>(&#xd;
+			</a:s>
+                                    <a:s r="38">
+                                       <a:s>case </a:s>
+                                       <a:s r="27">
+                                          <a:s>ProductLine</a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+			  </a:s>
+                                       <a:s r="30">
+                                          <a:s>when </a:s>
+                                          <a:s r="28">
+                                             <a:s>&quot;Commercial Product&quot;</a:s>
+                                          </a:s>
+                                          <a:s> then </a:s>
+                                          <a:s r="29">
+                                             <a:s>[&quot;Participation&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Commercial&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+				</a:s>
+                                       <a:s r="33">
+                                          <a:s>when </a:s>
+                                          <a:s r="31">
+                                             <a:s>&quot;Medicare Product&quot;</a:s>
+                                          </a:s>
+                                          <a:s> then </a:s>
+                                          <a:s r="32">
+                                             <a:s>[&quot;Participation&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Medicare&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+				</a:s>
+                                       <a:s r="36">
+                                          <a:s>when </a:s>
+                                          <a:s r="34">
+                                             <a:s>&quot;Medicaid Product&quot;</a:s>
+                                          </a:s>
+                                          <a:s> then </a:s>
+                                          <a:s r="35">
+                                             <a:s>[&quot;Participation&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Medicaid&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+				else null&#xd;
+			end</a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+		)</a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="43">
+                              <a:s>where </a:s>
+                              <a:s r="43">
+                                 <a:s r="40">
+                                    <a:s>IndexDate</a:s>
+                                 </a:s>
+                                 <a:s> during </a:s>
+                                 <a:s r="42">
+                                    <a:s r="41">
+                                       <a:s>P</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="42">
+                                       <a:s>participationPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="45" locator="85:3-95:2" resultTypeName="t:Boolean" xsi:type="Exists">
+            <operand localId="44" locator="85:10-95:2" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <source localId="39" locator="86:3-93:5" alias="P">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="38" locator="86:3-93:3" xsi:type="Case">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <comparand localId="27" locator="87:9-87:19" resultTypeName="t:String" name="ProductLine" xsi:type="OperandRef"/>
+                     <caseItem localId="30" locator="88:6-88:67">
+                        <when localId="28" locator="88:11-88:30" resultTypeName="t:String" name="Commercial Product" xsi:type="ExpressionRef"/>
+                        <then localId="29" locator="88:37-88:67" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Commercial" xsi:type="ValueSetRef"/>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="33" locator="89:5-89:62">
+                        <when localId="31" locator="89:10-89:27" resultTypeName="t:String" name="Medicare Product" xsi:type="ExpressionRef"/>
+                        <then localId="32" locator="89:34-89:62" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Medicare" xsi:type="ValueSetRef"/>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="36" locator="90:5-90:62">
+                        <when localId="34" locator="90:10-90:27" resultTypeName="t:String" name="Medicaid Product" xsi:type="ExpressionRef"/>
+                        <then localId="35" locator="90:34-90:62" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Medicaid" xsi:type="ValueSetRef"/>
+                        </then>
+                     </caseItem>
+                     <else xsi:type="As">
+                        <operand localId="37" locator="91:10-91:13" resultTypeName="t:Any" xsi:type="Null"/>
+                        <asTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                        </asTypeSpecifier>
+                     </else>
+                  </expression>
+               </source>
+               <where localId="43" locator="94:4-94:47" resultTypeName="t:Boolean" xsi:type="In">
+                  <operand localId="40" locator="94:10-94:18" resultTypeName="t:DateTime" name="IndexDate" xsi:type="OperandRef"/>
+                  <operand localId="42" locator="94:27-94:47" path="participationPeriod" scope="P" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+         <operand name="ProductLine">
+            <operandTypeSpecifier localId="25" locator="84:51-84:56" resultTypeName="t:String" name="t:String" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="IndexDate">
+            <operandTypeSpecifier localId="26" locator="84:69-84:76" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="83" locator="114:1-121:4" name="Enrollment Periods" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="83">
+               <a:s>define function &quot;Enrollment Periods&quot;(ParticipationPeriod </a:s>
+               <a:s r="50">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="49">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="82">
+                  <a:s r="82">
+                     <a:s>
+                        <a:s r="55">
+                           <a:s r="54">
+                              <a:s>( </a:s>
+                              <a:s r="54">
+                                 <a:s>{ </a:s>
+                                 <a:s r="51">
+                                    <a:s>3 years</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="52">
+                                    <a:s>2 years</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="53">
+                                    <a:s>1 year</a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                           <a:s> Year</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  </a:s>
+                     <a:s r="64">
+                        <a:s>where </a:s>
+                        <a:s r="64">
+                           <a:s r="61">
+                              <a:s r="57">
+                                 <a:s>end of </a:s>
+                                 <a:s r="56">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> - </a:s>
+                              <a:s r="60">
+                                 <a:s>(</a:s>
+                                 <a:s r="60">
+                                    <a:s r="58">
+                                       <a:s>Year</a:s>
+                                    </a:s>
+                                    <a:s> - </a:s>
+                                    <a:s r="59">
+                                       <a:s>1 year</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> after </a:s>
+                           <a:s r="63">
+                              <a:s>start of </a:s>
+                              <a:s r="62">
+                                 <a:s>ParticipationPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  </a:s>
+                     <a:s r="81">
+                        <a:s>return &#xd;
+		  </a:s>
+                        <a:s r="80">
+                           <a:s>Interval[&#xd;
+		    </a:s>
+                           <a:s r="73">
+                              <a:s>Max(</a:s>
+                              <a:s r="72">
+                                 <a:s>{ </a:s>
+                                 <a:s r="69">
+                                    <a:s>successor of </a:s>
+                                    <a:s r="68">
+                                       <a:s>(</a:s>
+                                       <a:s r="68">
+                                          <a:s r="66">
+                                             <a:s>end of </a:s>
+                                             <a:s r="65">
+                                                <a:s>ParticipationPeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> - </a:s>
+                                          <a:s r="67">
+                                             <a:s>Year</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="71">
+                                    <a:s>start of </a:s>
+                                    <a:s r="70">
+                                       <a:s>ParticipationPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>, &#xd;
+				</a:s>
+                           <a:s r="79">
+                              <a:s r="75">
+                                 <a:s>end of </a:s>
+                                 <a:s r="74">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> - </a:s>
+                              <a:s r="78">
+                                 <a:s>(</a:s>
+                                 <a:s r="78">
+                                    <a:s r="76">
+                                       <a:s>Year</a:s>
+                                    </a:s>
+                                    <a:s> - </a:s>
+                                    <a:s r="77">
+                                       <a:s>1 year</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			]</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="82" locator="115:3-121:4" xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </elementType>
+            </resultTypeSpecifier>
+            <source localId="55" locator="115:3-115:39" alias="Year">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression localId="54" locator="115:3-115:34" xsi:type="List">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <element localId="51" locator="115:7-115:13" resultTypeName="t:Quantity" value="3" unit="years" xsi:type="Quantity"/>
+                  <element localId="52" locator="115:16-115:22" resultTypeName="t:Quantity" value="2" unit="years" xsi:type="Quantity"/>
+                  <element localId="53" locator="115:25-115:30" resultTypeName="t:Quantity" value="1" unit="year" xsi:type="Quantity"/>
+               </expression>
+            </source>
+            <where localId="64" locator="116:4-116:88" resultTypeName="t:Boolean" xsi:type="After">
+               <operand localId="61" locator="116:10-116:53" resultTypeName="t:DateTime" xsi:type="Subtract">
+                  <operand localId="57" locator="116:10-116:35" resultTypeName="t:DateTime" xsi:type="End">
+                     <operand localId="56" locator="116:17-116:35" name="ParticipationPeriod" xsi:type="OperandRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand localId="60" locator="116:39-116:53" resultTypeName="t:Quantity" xsi:type="Subtract">
+                     <operand localId="58" locator="116:40-116:43" resultTypeName="t:Quantity" name="Year" xsi:type="AliasRef"/>
+                     <operand localId="59" locator="116:47-116:52" resultTypeName="t:Quantity" value="1" unit="year" xsi:type="Quantity"/>
+                  </operand>
+               </operand>
+               <operand localId="63" locator="116:61-116:88" resultTypeName="t:DateTime" xsi:type="Start">
+                  <operand localId="62" locator="116:70-116:88" name="ParticipationPeriod" xsi:type="OperandRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </operand>
+            </where>
+            <return localId="81" locator="117:4-121:4">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </resultTypeSpecifier>
+               <expression localId="80" locator="118:5-121:4" lowClosed="true" highClosed="true" xsi:type="Interval">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <low localId="73" locator="119:7-119:93" resultTypeName="t:DateTime" xsi:type="Max">
+                     <source localId="72" locator="119:11-119:92" xsi:type="List">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <element localId="69" locator="119:13-119:60" resultTypeName="t:DateTime" xsi:type="Successor">
+                           <operand localId="68" locator="119:26-119:60" resultTypeName="t:DateTime" xsi:type="Subtract">
+                              <operand localId="66" locator="119:27-119:52" resultTypeName="t:DateTime" xsi:type="End">
+                                 <operand localId="65" locator="119:34-119:52" name="ParticipationPeriod" xsi:type="OperandRef">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                              <operand localId="67" locator="119:56-119:59" resultTypeName="t:Quantity" name="Year" xsi:type="AliasRef"/>
+                           </operand>
+                        </element>
+                        <element localId="71" locator="119:63-119:90" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="70" locator="119:72-119:90" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </element>
+                     </source>
+                  </low>
+                  <high localId="79" locator="120:5-120:48" resultTypeName="t:DateTime" xsi:type="Subtract">
+                     <operand localId="75" locator="120:5-120:30" resultTypeName="t:DateTime" xsi:type="End">
+                        <operand localId="74" locator="120:12-120:30" name="ParticipationPeriod" xsi:type="OperandRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                     <operand localId="78" locator="120:34-120:48" resultTypeName="t:Quantity" xsi:type="Subtract">
+                        <operand localId="76" locator="120:35-120:38" resultTypeName="t:Quantity" name="Year" xsi:type="AliasRef"/>
+                        <operand localId="77" locator="120:42-120:47" resultTypeName="t:Quantity" value="1" unit="year" xsi:type="Quantity"/>
+                     </operand>
+                  </high>
+               </expression>
+            </return>
+         </expression>
+         <operand name="ParticipationPeriod">
+            <operandTypeSpecifier localId="50" locator="114:58-114:75" xsi:type="IntervalTypeSpecifier">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <pointType localId="49" locator="114:67-114:74" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="106" locator="126:1-129:37" name="Participation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="106">
+               <a:s>define &quot;Participation&quot;:&#xd;
+  </a:s>
+               <a:s r="105">
+                  <a:s r="103">
+                     <a:s r="101">
+                        <a:s>[&quot;Participation&quot;: </a:s>
+                        <a:s>
+                           <a:s>&quot;Commercial&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  union </a:s>
+                     <a:s r="102">
+                        <a:s>[&quot;Participation&quot;: </a:s>
+                        <a:s>
+                           <a:s>&quot;Medicaid&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="104">
+                     <a:s>[&quot;Participation&quot;: </a:s>
+                     <a:s>
+                        <a:s>&quot;Medicare&quot;</a:s>
+                     </a:s>
+                     <a:s>]</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression localId="105" locator="127:3-129:37" xsi:type="Union">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <operand localId="103" locator="127:3-128:38" xsi:type="Union">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <operand localId="101" locator="127:3-127:33" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Commercial" xsi:type="ValueSetRef"/>
+               </operand>
+               <operand localId="102" locator="128:10-128:38" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Medicaid" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="104" locator="129:9-129:37" dataType="qdm53:Participation" codeProperty="code" xsi:type="Retrieve">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <codes name="Medicare" xsi:type="ValueSetRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="131" locator="134:1-140:2" name="Participation In Period" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="131">
+               <a:s>define function &quot;Participation In Period&quot;(ParticipationPeriod </a:s>
+               <a:s r="100">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="99">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="130">
+                  <a:s r="130">
+                     <a:s>collapse </a:s>
+                     <a:s r="129">
+                        <a:s>(&#xd;
+		</a:s>
+                        <a:s r="129">
+                           <a:s>
+                              <a:s r="108">
+                                 <a:s r="107">
+                                    <a:s>
+                                       <a:s>Participation</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s>
+                              <a:s>let </a:s>
+                              <a:s r="113">
+                                 <a:s>I: </a:s>
+                                 <a:s r="112">
+                                    <a:s r="110">
+                                       <a:s r="109">
+                                          <a:s>P</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="110">
+                                          <a:s>participationPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> intersect </a:s>
+                                    <a:s r="111">
+                                       <a:s>ParticipationPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="117">
+                              <a:s>where </a:s>
+                              <a:s r="117">
+                                 <a:s r="115">
+                                    <a:s r="114">
+                                       <a:s>P</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="115">
+                                       <a:s>participationPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> overlaps </a:s>
+                                 <a:s r="116">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="128">
+                              <a:s>return all </a:s>
+                              <a:s r="127">
+                                 <a:s>Interval[</a:s>
+                                 <a:s r="120">
+                                    <a:s>ToDate(</a:s>
+                                    <a:s r="119">
+                                       <a:s>start of </a:s>
+                                       <a:s r="118">
+                                          <a:s>I</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                                 <a:s>, </a:s>
+                                 <a:s r="126">
+                                    <a:s>predecessor of </a:s>
+                                    <a:s r="125">
+                                       <a:s>(</a:s>
+                                       <a:s r="125">
+                                          <a:s r="123">
+                                             <a:s>ToDate(</a:s>
+                                             <a:s r="122">
+                                                <a:s>end of </a:s>
+                                                <a:s r="121">
+                                                   <a:s>I</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>)</a:s>
+                                          </a:s>
+                                          <a:s> + </a:s>
+                                          <a:s r="124">
+                                             <a:s>1 day</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression localId="130" locator="135:2-140:2" xsi:type="Collapse">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+               </elementType>
+            </resultTypeSpecifier>
+            <operand localId="129" locator="135:11-140:2" xsi:type="Query">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </resultTypeSpecifier>
+               <source localId="108" locator="136:3-136:17" alias="P">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="107" locator="136:3-136:15" name="Participation" xsi:type="ExpressionRef">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="qdm53:Participation" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </expression>
+               </source>
+               <let localId="113" locator="137:8-137:61" identifier="I">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <expression localId="112" locator="137:11-137:61" xsi:type="Intersect">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <operand localId="110" locator="137:11-137:31" path="participationPeriod" scope="P" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                     <operand localId="111" locator="137:43-137:61" name="ParticipationPeriod" xsi:type="OperandRef">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </expression>
+               </let>
+               <where localId="117" locator="138:4-138:59" resultTypeName="t:Boolean" xsi:type="Overlaps">
+                  <operand localId="115" locator="138:10-138:30" path="participationPeriod" scope="P" xsi:type="Property">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+                  <operand localId="116" locator="138:41-138:59" name="ParticipationPeriod" xsi:type="OperandRef">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                  </operand>
+               </where>
+               <return localId="128" locator="139:4-139:85" distinct="false">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </resultTypeSpecifier>
+                  <expression localId="127" locator="139:15-139:85" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <low localId="120" locator="139:24-139:41" resultTypeName="t:Date" xsi:type="ToDate">
+                        <operand localId="119" locator="139:31-139:40" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="118" locator="139:40" name="I" xsi:type="QueryLetRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </low>
+                     <high localId="126" locator="139:44-139:84" resultTypeName="t:Date" xsi:type="Predecessor">
+                        <operand localId="125" locator="139:59-139:84" resultTypeName="t:Date" xsi:type="Add">
+                           <operand localId="123" locator="139:60-139:75" resultTypeName="t:Date" xsi:type="ToDate">
+                              <operand localId="122" locator="139:67-139:74" resultTypeName="t:DateTime" xsi:type="End">
+                                 <operand localId="121" locator="139:74" name="I" xsi:type="QueryLetRef">
+                                    <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                           </operand>
+                           <operand localId="124" locator="139:79-139:83" resultTypeName="t:Quantity" value="1" unit="day" xsi:type="Quantity"/>
+                        </operand>
+                     </high>
+                  </expression>
+               </return>
+            </operand>
+            <operand resultTypeName="t:Quantity" xsi:type="Null"/>
+         </expression>
+         <operand name="ParticipationPeriod">
+            <operandTypeSpecifier localId="100" locator="134:63-134:80" xsi:type="IntervalTypeSpecifier">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <pointType localId="99" locator="134:72-134:79" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="198" locator="146:1-162:5" resultTypeName="t:Integer" name="Gap Days In Period" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="198">
+               <a:s>define function &quot;Gap Days In Period&quot;(ParticipationPeriod </a:s>
+               <a:s r="134">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="133">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>, Periods </a:s>
+               <a:s r="137">
+                  <a:s>List&lt;</a:s>
+                  <a:s r="136">
+                     <a:s>Interval&lt;</a:s>
+                     <a:s r="135">
+                        <a:s>DateTime</a:s>
+                     </a:s>
+                     <a:s>></a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>):&#xd;
+		</a:s>
+               <a:s r="197">
+                  <a:s r="197">
+                     <a:s>case </a:s>
+                     <a:s r="139">
+                        <a:s>Count(</a:s>
+                        <a:s r="138">
+                           <a:s>Periods</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			</a:s>
+                     <a:s r="169">
+                        <a:s>when 1 then&#xd;
+			  </a:s>
+                        <a:s r="168">
+                           <a:s>if </a:s>
+                           <a:s r="145">
+                              <a:s r="143">
+                                 <a:s r="141">
+                                    <a:s>Periods</a:s>
+                                 </a:s>
+                                 <a:s>[0]</a:s>
+                              </a:s>
+                              <a:s> starts day of </a:s>
+                              <a:s r="144">
+                                 <a:s>ParticipationPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> then&#xd;
+				  </a:s>
+                           <a:s r="152">
+                              <a:s>difference in days between </a:s>
+                              <a:s r="149">
+                                 <a:s>end of </a:s>
+                                 <a:s r="148">
+                                    <a:s r="146">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[0]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="151">
+                                 <a:s>end of </a:s>
+                                 <a:s r="150">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			  else </a:s>
+                           <a:s r="167">
+                              <a:s>if </a:s>
+                              <a:s r="157">
+                                 <a:s r="155">
+                                    <a:s r="153">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[0]</a:s>
+                                 </a:s>
+                                 <a:s> ends day of </a:s>
+                                 <a:s r="156">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> then&#xd;
+				  </a:s>
+                              <a:s r="164">
+                                 <a:s>difference in days between </a:s>
+                                 <a:s r="159">
+                                    <a:s>start of </a:s>
+                                    <a:s r="158">
+                                       <a:s>ParticipationPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> and </a:s>
+                                 <a:s r="163">
+                                    <a:s>start of </a:s>
+                                    <a:s r="162">
+                                       <a:s r="160">
+                                          <a:s>Periods</a:s>
+                                       </a:s>
+                                       <a:s>[0]</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			  else &#xd;
+				  </a:s>
+                              <a:s r="166">
+                                 <a:s>maximum </a:s>
+                                 <a:s r="165">
+                                    <a:s>Integer</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			</a:s>
+                     <a:s r="194">
+                        <a:s>when 2 then&#xd;
+			  </a:s>
+                        <a:s r="193">
+                           <a:s>if </a:s>
+                           <a:s r="181">
+                              <a:s r="175">
+                                 <a:s r="173">
+                                    <a:s r="171">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[0]</a:s>
+                                 </a:s>
+                                 <a:s> starts day of </a:s>
+                                 <a:s r="174">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="180">
+                                 <a:s r="178">
+                                    <a:s r="176">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[1]</a:s>
+                                 </a:s>
+                                 <a:s> ends day of </a:s>
+                                 <a:s r="179">
+                                    <a:s>ParticipationPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> then&#xd;
+				  </a:s>
+                           <a:s r="190">
+                              <a:s>difference in days between </a:s>
+                              <a:s r="185">
+                                 <a:s>end of </a:s>
+                                 <a:s r="184">
+                                    <a:s r="182">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[0]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="189">
+                                 <a:s>start of </a:s>
+                                 <a:s r="188">
+                                    <a:s r="186">
+                                       <a:s>Periods</a:s>
+                                    </a:s>
+                                    <a:s>[1]</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			  else&#xd;
+				  </a:s>
+                           <a:s r="192">
+                              <a:s>maximum </a:s>
+                              <a:s r="191">
+                                 <a:s>Integer</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+			else&#xd;
+			  </a:s>
+                     <a:s r="196">
+                        <a:s>maximum </a:s>
+                        <a:s r="195">
+                           <a:s>Integer</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		end</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="197" locator="147:3-162:5" resultTypeName="t:Integer" xsi:type="Case">
+            <comparand localId="139" locator="147:8-147:21" resultTypeName="t:Integer" xsi:type="Count">
+               <source localId="138" locator="147:14-147:20" name="Periods" xsi:type="OperandRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xsi:type="IntervalTypeSpecifier">
+                        <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </elementType>
+                  </resultTypeSpecifier>
+               </source>
+            </comparand>
+            <caseItem localId="169" locator="148:4-154:21">
+               <when localId="140" locator="148:9" resultTypeName="t:Integer" valueType="t:Integer" value="1" xsi:type="Literal"/>
+               <then localId="168" locator="149:6-154:21" resultTypeName="t:Integer" xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand localId="145" locator="149:9-149:52" resultTypeName="t:Boolean" precision="Day" xsi:type="Starts">
+                        <operand localId="143" locator="149:9-149:18" xsi:type="Indexer">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <operand localId="141" locator="149:9-149:15" name="Periods" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand localId="142" locator="149:17" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                        </operand>
+                        <operand localId="144" locator="149:34-149:52" name="ParticipationPeriod" xsi:type="OperandRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </condition>
+                  <then localId="152" locator="150:7-150:81" resultTypeName="t:Integer" precision="Day" xsi:type="DifferenceBetween">
+                     <operand localId="149" locator="150:34-150:50" resultTypeName="t:DateTime" xsi:type="End">
+                        <operand localId="148" locator="150:41-150:50" xsi:type="Indexer">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <operand localId="146" locator="150:41-150:47" name="Periods" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand localId="147" locator="150:49" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                     <operand localId="151" locator="150:56-150:81" resultTypeName="t:DateTime" xsi:type="End">
+                        <operand localId="150" locator="150:63-150:81" name="ParticipationPeriod" xsi:type="OperandRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </operand>
+                  </then>
+                  <else localId="167" locator="151:11-154:21" resultTypeName="t:Integer" xsi:type="If">
+                     <condition asType="t:Boolean" xsi:type="As">
+                        <operand localId="157" locator="151:14-151:55" resultTypeName="t:Boolean" precision="Day" xsi:type="Ends">
+                           <operand localId="155" locator="151:14-151:23" xsi:type="Indexer">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <operand localId="153" locator="151:14-151:20" name="Periods" xsi:type="OperandRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand localId="154" locator="151:22" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </operand>
+                           <operand localId="156" locator="151:37-151:55" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </condition>
+                     <then localId="164" locator="152:7-152:85" resultTypeName="t:Integer" precision="Day" xsi:type="DifferenceBetween">
+                        <operand localId="159" locator="152:34-152:61" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="158" locator="152:43-152:61" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand localId="163" locator="152:67-152:85" resultTypeName="t:DateTime" xsi:type="Start">
+                           <operand localId="162" locator="152:76-152:85" xsi:type="Indexer">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <operand localId="160" locator="152:76-152:82" name="Periods" xsi:type="OperandRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand localId="161" locator="152:84" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </operand>
+                        </operand>
+                     </then>
+                     <else localId="166" locator="154:7-154:21" resultTypeName="t:Integer" valueType="t:Integer" xsi:type="MaxValue"/>
+                  </else>
+               </then>
+            </caseItem>
+            <caseItem localId="194" locator="155:4-159:21">
+               <when localId="170" locator="155:9" resultTypeName="t:Integer" valueType="t:Integer" value="2" xsi:type="Literal"/>
+               <then localId="193" locator="156:6-159:21" resultTypeName="t:Integer" xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand localId="181" locator="156:9-156:99" resultTypeName="t:Boolean" xsi:type="And">
+                        <operand localId="175" locator="156:9-156:52" resultTypeName="t:Boolean" precision="Day" xsi:type="Starts">
+                           <operand localId="173" locator="156:9-156:18" xsi:type="Indexer">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <operand localId="171" locator="156:9-156:15" name="Periods" xsi:type="OperandRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand localId="172" locator="156:17" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </operand>
+                           <operand localId="174" locator="156:34-156:52" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand localId="180" locator="156:58-156:99" resultTypeName="t:Boolean" precision="Day" xsi:type="Ends">
+                           <operand localId="178" locator="156:58-156:67" xsi:type="Indexer">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <operand localId="176" locator="156:58-156:64" name="Periods" xsi:type="OperandRef">
+                                 <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                    <elementType xsi:type="IntervalTypeSpecifier">
+                                       <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand localId="177" locator="156:66" resultTypeName="t:Integer" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                           </operand>
+                           <operand localId="179" locator="156:81-156:99" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </condition>
+                  <then localId="190" locator="157:7-157:74" resultTypeName="t:Integer" precision="Day" xsi:type="DifferenceBetween">
+                     <operand localId="185" locator="157:34-157:50" resultTypeName="t:DateTime" xsi:type="End">
+                        <operand localId="184" locator="157:41-157:50" xsi:type="Indexer">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <operand localId="182" locator="157:41-157:47" name="Periods" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand localId="183" locator="157:49" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                     <operand localId="189" locator="157:56-157:74" resultTypeName="t:DateTime" xsi:type="Start">
+                        <operand localId="188" locator="157:65-157:74" xsi:type="Indexer">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <operand localId="186" locator="157:65-157:71" name="Periods" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand localId="187" locator="157:73" resultTypeName="t:Integer" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        </operand>
+                     </operand>
+                  </then>
+                  <else localId="192" locator="159:7-159:21" resultTypeName="t:Integer" valueType="t:Integer" xsi:type="MaxValue"/>
+               </then>
+            </caseItem>
+            <else localId="196" locator="161:6-161:20" resultTypeName="t:Integer" valueType="t:Integer" xsi:type="MaxValue"/>
+         </expression>
+         <operand name="ParticipationPeriod">
+            <operandTypeSpecifier localId="134" locator="146:58-146:75" xsi:type="IntervalTypeSpecifier">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <pointType localId="133" locator="146:67-146:74" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+         <operand name="Periods">
+            <operandTypeSpecifier localId="137" locator="146:86-146:109" xsi:type="ListTypeSpecifier">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </elementType>
+               </resultTypeSpecifier>
+               <elementType localId="136" locator="146:91-146:108" xsi:type="IntervalTypeSpecifier">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <pointType localId="135" locator="146:100-146:107" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </elementType>
+            </operandTypeSpecifier>
+         </operand>
+      </def>
+      <def localId="202" locator="164:1-165:102" resultTypeName="t:Boolean" name="Is Continuously Enrolled In Period" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="202">
+               <a:s>define function &quot;Is Continuously Enrolled In Period&quot;(EnrollmentPeriod </a:s>
+               <a:s r="95">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="94">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>, AllowedGapDays </a:s>
+               <a:s r="96">
+                  <a:s>Integer</a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="201">
+                  <a:s r="201">
+                     <a:s r="199">
+                        <a:s>&quot;Gap Days In Period&quot;(</a:s>
+                        <a:s r="97">
+                           <a:s>EnrollmentPeriod</a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s r="132">
+                           <a:s>&quot;Participation In Period&quot;(</a:s>
+                           <a:s r="98">
+                              <a:s>EnrollmentPeriod</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s> &lt;= </a:s>
+                     <a:s r="200">
+                        <a:s>AllowedGapDays</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="201" locator="165:2-165:102" resultTypeName="t:Boolean" xsi:type="LessOrEqual">
+            <operand localId="199" locator="165:2-165:84" resultTypeName="t:Integer" name="Gap Days In Period" xsi:type="FunctionRef">
+               <operand localId="97" locator="165:23-165:38" name="EnrollmentPeriod" xsi:type="OperandRef">
+                  <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                     <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </operand>
+               <operand xsi:type="Query">
+                  <source alias="X">
+                     <expression localId="132" locator="165:41-165:83" name="Participation In Period" xsi:type="FunctionRef">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <operand localId="98" locator="165:67-165:82" name="EnrollmentPeriod" xsi:type="OperandRef">
+                           <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                        </operand>
+                     </expression>
+                  </source>
+                  <return distinct="false">
+                     <expression xsi:type="Interval">
+                        <low xsi:type="ToDateTime">
+                           <operand path="low" xsi:type="Property">
+                              <source name="X" xsi:type="AliasRef"/>
+                           </operand>
+                        </low>
+                        <lowClosedExpression path="lowClosed" xsi:type="Property">
+                           <source name="X" xsi:type="AliasRef"/>
+                        </lowClosedExpression>
+                        <high xsi:type="ToDateTime">
+                           <operand path="high" xsi:type="Property">
+                              <source name="X" xsi:type="AliasRef"/>
+                           </operand>
+                        </high>
+                        <highClosedExpression path="highClosed" xsi:type="Property">
+                           <source name="X" xsi:type="AliasRef"/>
+                        </highClosedExpression>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+            <operand localId="200" locator="165:89-165:102" resultTypeName="t:Integer" name="AllowedGapDays" xsi:type="OperandRef"/>
+         </expression>
+         <operand name="EnrollmentPeriod">
+            <operandTypeSpecifier localId="95" locator="164:71-164:88" xsi:type="IntervalTypeSpecifier">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <pointType localId="94" locator="164:80-164:87" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+         <operand name="AllowedGapDays">
+            <operandTypeSpecifier localId="96" locator="164:106-164:112" resultTypeName="t:Integer" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="209" locator="39:1-51:4" resultTypeName="t:Boolean" name="Is Enrolled" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>define function &quot;Is Enrolled&quot;(ProductLine </a:s>
+               <a:s r="14">
+                  <a:s>String</a:s>
+               </a:s>
+               <a:s>, IndexDate </a:s>
+               <a:s r="15">
+                  <a:s>DateTime</a:s>
+               </a:s>
+               <a:s>, ParticipationPeriod </a:s>
+               <a:s r="17">
+                  <a:s>Interval&lt;</a:s>
+                  <a:s r="16">
+                     <a:s>DateTime</a:s>
+                  </a:s>
+                  <a:s>></a:s>
+               </a:s>
+               <a:s>, AllowedGapDays </a:s>
+               <a:s r="18">
+                  <a:s>Integer</a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="208">
+                  <a:s r="208">
+                     <a:s>case&#xd;
+		// If this is not running for a specific product line, ignore enrollment considerations&#xd;
+		</a:s>
+                     <a:s r="22">
+                        <a:s>when </a:s>
+                        <a:s r="20">
+                           <a:s r="19">
+                              <a:s>ProductLine</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> then true</a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		else&#xd;
+			// Is the patient enrolled in the given product line on the given index date?&#xd;
+			</a:s>
+                     <a:s r="207">
+                        <a:s r="47">
+                           <a:s>&quot;Is Enrolled On Date&quot;(</a:s>
+                           <a:s r="23">
+                              <a:s>ProductLine</a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="24">
+                              <a:s>IndexDate</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			// Is the patient continuously enrolled in every year of the participation period&#xd;
+			  and </a:s>
+                        <a:s r="206">
+                           <a:s>AllTrue(&#xd;
+						</a:s>
+                           <a:s r="205">
+                              <a:s>
+                                 <a:s r="85">
+                                    <a:s r="84">
+                                       <a:s>(</a:s>
+                                       <a:s r="84">
+                                          <a:s>&quot;Enrollment Periods&quot;(</a:s>
+                                          <a:s r="48">
+                                             <a:s>ParticipationPeriod</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                    <a:s> EnrollmentPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+							</a:s>
+                              <a:s r="204">
+                                 <a:s>return </a:s>
+                                 <a:s r="203">
+                                    <a:s>&quot;Is Continuously Enrolled In Period&quot;(</a:s>
+                                    <a:s r="86">
+                                       <a:s>EnrollmentPeriod</a:s>
+                                    </a:s>
+                                    <a:s>, </a:s>
+                                    <a:s r="93">
+                                       <a:s>if </a:s>
+                                       <a:s r="90">
+                                          <a:s r="88">
+                                             <a:s>duration in months of </a:s>
+                                             <a:s r="87">
+                                                <a:s>EnrollmentPeriod</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> >= 6</a:s>
+                                       </a:s>
+                                       <a:s> then </a:s>
+                                       <a:s r="91">
+                                          <a:s>AllowedGapDays</a:s>
+                                       </a:s>
+                                       <a:s> else 0</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+					)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	end</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="208" locator="40:2-51:4" resultTypeName="t:Boolean" xsi:type="Case">
+            <caseItem localId="22" locator="42:3-42:36">
+               <when localId="20" locator="42:8-42:26" resultTypeName="t:Boolean" xsi:type="IsNull">
+                  <operand localId="19" locator="42:8-42:18" resultTypeName="t:String" name="ProductLine" xsi:type="OperandRef"/>
+               </when>
+               <then localId="21" locator="42:33-42:36" resultTypeName="t:Boolean" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            </caseItem>
+            <else localId="207" locator="45:4-50:6" resultTypeName="t:Boolean" xsi:type="And">
+               <operand localId="47" locator="45:4-45:48" resultTypeName="t:Boolean" name="Is Enrolled On Date" xsi:type="FunctionRef">
+                  <operand localId="23" locator="45:26-45:36" resultTypeName="t:String" name="ProductLine" xsi:type="OperandRef"/>
+                  <operand localId="24" locator="45:39-45:47" resultTypeName="t:DateTime" name="IndexDate" xsi:type="OperandRef"/>
+               </operand>
+               <operand localId="206" locator="47:10-50:6" resultTypeName="t:Boolean" xsi:type="AllTrue">
+                  <source localId="205" locator="48:7-49:143" xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source localId="85" locator="48:7-48:66" alias="EnrollmentPeriod">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xsi:type="IntervalTypeSpecifier">
+                              <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </resultTypeSpecifier>
+                        <expression localId="84" locator="48:7-48:49" name="Enrollment Periods" xsi:type="FunctionRef">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </resultTypeSpecifier>
+                           <operand localId="48" locator="48:29-48:47" name="ParticipationPeriod" xsi:type="OperandRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="204" locator="49:8-49:143">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression localId="203" locator="49:15-49:143" resultTypeName="t:Boolean" name="Is Continuously Enrolled In Period" xsi:type="FunctionRef">
+                           <operand localId="86" locator="49:52-49:67" name="EnrollmentPeriod" xsi:type="AliasRef">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand localId="93" locator="49:70-49:142" resultTypeName="t:Integer" xsi:type="If">
+                              <condition asType="t:Boolean" xsi:type="As">
+                                 <operand localId="90" locator="49:73-49:115" resultTypeName="t:Boolean" xsi:type="GreaterOrEqual">
+                                    <operand localId="88" locator="49:73-49:110" resultTypeName="t:Integer" precision="Month" xsi:type="DurationBetween">
+                                       <operand xsi:type="Start">
+                                          <operand localId="87" locator="49:95-49:110" name="EnrollmentPeriod" xsi:type="AliasRef">
+                                             <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                                <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                             </resultTypeSpecifier>
+                                          </operand>
+                                       </operand>
+                                       <operand xsi:type="End">
+                                          <operand localId="87" locator="49:95-49:110" name="EnrollmentPeriod" xsi:type="AliasRef">
+                                             <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                                <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                             </resultTypeSpecifier>
+                                          </operand>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="89" locator="49:115" resultTypeName="t:Integer" valueType="t:Integer" value="6" xsi:type="Literal"/>
+                                 </operand>
+                              </condition>
+                              <then localId="91" locator="49:122-49:135" resultTypeName="t:Integer" name="AllowedGapDays" xsi:type="OperandRef"/>
+                              <else localId="92" locator="49:142" resultTypeName="t:Integer" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </operand>
+                        </expression>
+                     </return>
+                  </source>
+               </operand>
+            </else>
+         </expression>
+         <operand name="ProductLine">
+            <operandTypeSpecifier localId="14" locator="39:43-39:48" resultTypeName="t:String" name="t:String" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="IndexDate">
+            <operandTypeSpecifier localId="15" locator="39:61-39:68" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+         <operand name="ParticipationPeriod">
+            <operandTypeSpecifier localId="17" locator="39:91-39:108" xsi:type="IntervalTypeSpecifier">
+               <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                  <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <pointType localId="16" locator="39:100-39:107" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </operandTypeSpecifier>
+         </operand>
+         <operand name="AllowedGapDays">
+            <operandTypeSpecifier localId="18" locator="39:126-39:132" resultTypeName="t:Integer" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+   </statements>
+</library>
+
+

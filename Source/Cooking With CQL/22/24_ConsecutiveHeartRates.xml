@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Test145" version="6.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_0_1_draft" version="5.0.2"/>
+   </usings>
+   <valueSets>
+      <def name="Heart Rate" id="X.Y.Z" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def name="CADEncounters145" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xmlns:ns0="urn:healthit-gov:qdm:v5_0_1_draft" name="ns0:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <expression xmlns:ns1="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" xsi:type="Retrieve">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xmlns:ns2="urn:healthit-gov:qdm:v5_0_1_draft" name="ns2:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+         </expression>
+      </def>
+      <def name="Consecutive Heart Rates Below 50 bpm" context="Patient" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType xsi:type="TupleTypeSpecifier">
+               <element name="Exam">
+                  <type xmlns:ns3="urn:healthit-gov:qdm:v5_0_1_draft" name="ns3:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+               </element>
+               <element name="Encounter">
+                  <type xmlns:ns4="urn:healthit-gov:qdm:v5_0_1_draft" name="ns4:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </element>
+            </elementType>
+         </resultTypeSpecifier>
+         <expression xsi:type="Query">
+            <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+               <elementType xsi:type="TupleTypeSpecifier">
+                  <element name="Exam">
+                     <type xmlns:ns5="urn:healthit-gov:qdm:v5_0_1_draft" name="ns5:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element name="Encounter">
+                     <type xmlns:ns6="urn:healthit-gov:qdm:v5_0_1_draft" name="ns6:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+               </elementType>
+            </resultTypeSpecifier>
+            <source alias="Exam">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns7="urn:healthit-gov:qdm:v5_0_1_draft" name="ns7:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression xmlns:ns8="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns8:PositivePhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns9="urn:healthit-gov:qdm:v5_0_1_draft" name="ns9:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <codes name="Heart Rate" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <source alias="Encounter">
+               <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                  <elementType xmlns:ns10="urn:healthit-gov:qdm:v5_0_1_draft" name="ns10:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+               </resultTypeSpecifier>
+               <expression name="CADEncounters145" xsi:type="ExpressionRef">
+                  <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                     <elementType xmlns:ns11="urn:healthit-gov:qdm:v5_0_1_draft" name="ns11:PositiveEncounterPerformed" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+               </expression>
+            </source>
+            <let xmlns:ns12="urn:healthit-gov:qdm:v5_0_1_draft" resultTypeName="ns12:PositivePhysicalExamPerformed" identifier="PriorExam">
+               <expression xmlns:ns13="urn:healthit-gov:qdm:v5_0_1_draft" resultTypeName="ns13:PositivePhysicalExamPerformed" xsi:type="Last">
+                  <source xsi:type="Query">
+                     <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                        <elementType xmlns:ns14="urn:healthit-gov:qdm:v5_0_1_draft" name="ns14:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                     </resultTypeSpecifier>
+                     <source alias="X">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType xmlns:ns15="urn:healthit-gov:qdm:v5_0_1_draft" name="ns15:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <expression xmlns:ns16="urn:healthit-gov:qdm:v5_0_1_draft" dataType="ns16:PositivePhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType xmlns:ns17="urn:healthit-gov:qdm:v5_0_1_draft" name="ns17:PositivePhysicalExamPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <codes name="Heart Rate" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where resultTypeName="t:Boolean" xsi:type="And">
+                        <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                           <operand path="relevantPeriod" scope="X" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                           <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                              <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                 <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                           </operand>
+                        </operand>
+                        <operand resultTypeName="t:Boolean" xsi:type="Before">
+                           <operand xsi:type="Start">
+                              <operand path="relevantPeriod" scope="X" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <operand resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand path="relevantPeriod" scope="Exam" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                        </operand>
+                     </where>
+                     <sort>
+                        <by resultTypeName="t:DateTime" direction="asc" xsi:type="ByExpression">
+                           <expression resultTypeName="t:DateTime" xsi:type="Start">
+                              <operand name="relevantPeriod" xsi:type="IdentifierRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </expression>
+                        </by>
+                     </sort>
+                  </source>
+               </expression>
+            </let>
+            <where resultTypeName="t:Boolean" xsi:type="And">
+               <operand resultTypeName="t:Boolean" xsi:type="And">
+                  <operand resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                     <operand path="relevantPeriod" scope="Exam" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                     <operand path="relevantPeriod" scope="Encounter" xsi:type="Property">
+                        <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                           <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                     </operand>
+                  </operand>
+                  <operand resultTypeName="t:Boolean" xsi:type="Less">
+                     <operand asType="t:Quantity" xsi:type="As">
+                        <operand resultTypeName="t:Any" path="result" scope="Exam" xsi:type="Property"/>
+                        <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                     <operand resultTypeName="t:Quantity" value="50" unit="bpm" xsi:type="Quantity"/>
+                  </operand>
+               </operand>
+               <operand resultTypeName="t:Boolean" xsi:type="Less">
+                  <operand asType="t:Quantity" xsi:type="As">
+                     <operand resultTypeName="t:Any" path="result" xsi:type="Property">
+                        <source xmlns:ns18="urn:healthit-gov:qdm:v5_0_1_draft" resultTypeName="ns18:PositivePhysicalExamPerformed" name="PriorExam" xsi:type="QueryLetRef"/>
+                     </operand>
+                     <asTypeSpecifier name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                  </operand>
+                  <operand resultTypeName="t:Quantity" value="50" unit="bpm" xsi:type="Quantity"/>
+               </operand>
+            </where>
+            <return distinct="true">
+               <expression xsi:type="Tuple">
+                  <element name="Exam">
+                     <value name="Exam" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="Encounter">
+                     <value name="Encounter" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

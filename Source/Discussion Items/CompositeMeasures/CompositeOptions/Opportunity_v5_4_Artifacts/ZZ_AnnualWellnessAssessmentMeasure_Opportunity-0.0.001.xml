@@ -1,0 +1,1317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ZZ_AnnualWellnessAssessmentMeasure_Opportunity" version="0.0.001"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:91" localIdentifier="ScreeningForAlcoholMisuse" path="Test01_ScreeningForAlcoholMisuse" version="1.1.000"/>
+      <def localId="3" locator="6:1-6:85" localIdentifier="HypertensionAssessment" path="Test02_HypertensionAssessment" version="1.0.000"/>
+      <def localId="4" locator="7:1-7:89" localIdentifier="ScreeningForBreastCancer" path="Test03_ScreeningForBreastCancer" version="1.0.000"/>
+      <def localId="5" locator="8:1-8:97" localIdentifier="ScreeningForColorectalCancer" path="Test04_ScreeningForColorectalCancer" version="1.0.000"/>
+      <def localId="6" locator="9:1-9:85" localIdentifier="ScreeningForDepression" path="Test05_ScreeningForDepression" version="1.0.000"/>
+   </includes>
+   <codeSystems>
+      <def localId="7" locator="11:1-11:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="8" locator="13:1-13:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="9" locator="14:1-14:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="10" locator="15:1-15:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="11" locator="16:1-16:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="13" locator="18:1-18:61" name="Birth date" id="21112-8" display="Birthdate" accessLevel="Public">
+         <codeSystem localId="12" locator="18:35-18:41" name="LOINC"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="20:1-20:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="20:1-20:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="15" locator="22:1-23:50" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="15">
+               <a:s>define &quot;SDE Ethnicity&quot;:&#xd;
+	</a:s>
+               <a:s r="14">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="14" locator="23:2-23:50" dataType="qdm53:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="17" locator="25:1-26:42" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="17">
+               <a:s>define &quot;SDE Payer&quot;:&#xd;
+	</a:s>
+               <a:s r="16">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="16" locator="26:2-26:42" dataType="qdm53:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="19" locator="28:1-29:40" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="19">
+               <a:s>define &quot;SDE Race&quot;:&#xd;
+	</a:s>
+               <a:s r="18">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="18" locator="29:2-29:40" dataType="qdm53:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="21" locator="31:1-32:57" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="21">
+               <a:s>define &quot;SDE Sex&quot;:&#xd;
+	</a:s>
+               <a:s r="20">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="20" locator="32:2-32:57" dataType="qdm53:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="23" locator="37:1-37:75" name="Patient Record" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="23">
+               <a:s>define &quot;Patient Record&quot;: </a:s>
+               <a:s r="22">
+                  <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Birth date&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="22" locator="37:26-37:75" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+            <codes xsi:type="ToList">
+               <operand name="Birth date" xsi:type="CodeRef"/>
+            </codes>
+         </expression>
+      </def>
+      <def localId="68" locator="39:1-44:125" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="68">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+  </a:s>
+               <a:s r="67">
+                  <a:s r="58">
+                     <a:s r="49">
+                        <a:s r="40">
+                           <a:s r="31">
+                              <a:s>(</a:s>
+                              <a:s r="31">
+                                 <a:s>
+                                    <a:s r="25">
+                                       <a:s r="24">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="27">
+                                    <a:s>where </a:s>
+                                    <a:s r="27">
+                                       <a:s r="26">
+                                          <a:s>ScreeningForAlcoholMisuse</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="27">
+                                          <a:s>&quot;Initial Population&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="30">
+                                    <a:s>return </a:s>
+                                    <a:s r="29">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="28">
+                                             <a:s>'Screening For Alcohol Misuse'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	  union </a:s>
+                           <a:s r="39">
+                              <a:s>(</a:s>
+                              <a:s r="39">
+                                 <a:s>
+                                    <a:s r="33">
+                                       <a:s r="32">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="35">
+                                    <a:s>where </a:s>
+                                    <a:s r="35">
+                                       <a:s r="34">
+                                          <a:s>HypertensionAssessment</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="35">
+                                          <a:s>&quot;Initial Population&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="38">
+                                    <a:s>return </a:s>
+                                    <a:s r="37">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="36">
+                                             <a:s>'Hypertension Assessment'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		union </a:s>
+                        <a:s r="48">
+                           <a:s>(</a:s>
+                           <a:s r="48">
+                              <a:s>
+                                 <a:s r="42">
+                                    <a:s r="41">
+                                       <a:s>
+                                          <a:s>&quot;Patient Record&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> P</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="44">
+                                 <a:s>where </a:s>
+                                 <a:s r="44">
+                                    <a:s r="43">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="44">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="47">
+                                 <a:s>return </a:s>
+                                 <a:s r="46">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>service: </a:s>
+                                       <a:s r="45">
+                                          <a:s>'Screening For Breast Cancer'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		union </a:s>
+                     <a:s r="57">
+                        <a:s>(</a:s>
+                        <a:s r="57">
+                           <a:s>
+                              <a:s r="51">
+                                 <a:s r="50">
+                                    <a:s>
+                                       <a:s>&quot;Patient Record&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="53">
+                              <a:s>where </a:s>
+                              <a:s r="53">
+                                 <a:s r="52">
+                                    <a:s>ScreeningForColorectalCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="53">
+                                    <a:s>&quot;Initial Population&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="56">
+                              <a:s>return </a:s>
+                              <a:s r="55">
+                                 <a:s>{ </a:s>
+                                 <a:s>
+                                    <a:s>service: </a:s>
+                                    <a:s r="54">
+                                       <a:s>'Screening For Colorectal Cancer'</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="66">
+                     <a:s>(</a:s>
+                     <a:s r="66">
+                        <a:s>
+                           <a:s r="60">
+                              <a:s r="59">
+                                 <a:s>
+                                    <a:s>&quot;Patient Record&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> P</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="62">
+                           <a:s>where </a:s>
+                           <a:s r="62">
+                              <a:s r="61">
+                                 <a:s>ScreeningForDepression</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="62">
+                                 <a:s>&quot;Initial Population&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="65">
+                           <a:s>return </a:s>
+                           <a:s r="64">
+                              <a:s>{ </a:s>
+                              <a:s>
+                                 <a:s>service: </a:s>
+                                 <a:s r="63">
+                                    <a:s>'Screening For Depression'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="67" locator="40:3-44:125" xsi:type="Union">
+            <operand localId="58" locator="40:3-43:138" xsi:type="Union">
+               <operand localId="40" locator="40:3-41:125" xsi:type="Union">
+                  <operand localId="31" locator="40:3-40:126" xsi:type="Query">
+                     <source localId="25" locator="40:4-40:21" alias="P">
+                        <expression localId="24" locator="40:4-40:19" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="27" locator="40:23-40:74" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <return localId="30" locator="40:76-40:125">
+                        <expression localId="29" locator="40:83-40:125" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="28" locator="40:94-40:123" valueType="t:String" value="Screening For Alcohol Misuse" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="39" locator="41:10-41:125" xsi:type="Query">
+                     <source localId="33" locator="41:11-41:28" alias="P">
+                        <expression localId="32" locator="41:11-41:26" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="35" locator="41:30-41:78" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     <return localId="38" locator="41:80-41:124">
+                        <expression localId="37" locator="41:87-41:124" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="36" locator="41:98-41:122" valueType="t:String" value="Hypertension Assessment" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand localId="48" locator="42:9-42:130" xsi:type="Query">
+                     <source localId="42" locator="42:10-42:27" alias="P">
+                        <expression localId="41" locator="42:10-42:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="44" locator="42:29-42:79" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                     <return localId="47" locator="42:81-42:129">
+                        <expression localId="46" locator="42:88-42:129" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="45" locator="42:99-42:127" valueType="t:String" value="Screening For Breast Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="57" locator="43:9-43:138" xsi:type="Query">
+                     <source localId="51" locator="43:10-43:27" alias="P">
+                        <expression localId="50" locator="43:10-43:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="53" locator="43:29-43:83" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                     <return localId="56" locator="43:85-43:137">
+                        <expression localId="55" locator="43:92-43:137" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="54" locator="43:103-43:135" valueType="t:String" value="Screening For Colorectal Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="66" locator="44:9-44:125" xsi:type="Query">
+               <source localId="60" locator="44:10-44:27" alias="P">
+                  <expression localId="59" locator="44:10-44:25" name="Patient Record" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="62" locator="44:29-44:77" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+               <return localId="65" locator="44:79-44:124">
+                  <expression localId="64" locator="44:86-44:124" xsi:type="Tuple">
+                     <element name="service">
+                        <value localId="63" locator="44:97-44:122" valueType="t:String" value="Screening For Depression" xsi:type="Literal"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="113" locator="46:1-51:118" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="113">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="112">
+                  <a:s r="103">
+                     <a:s r="94">
+                        <a:s r="85">
+                           <a:s r="76">
+                              <a:s>(</a:s>
+                              <a:s r="76">
+                                 <a:s>
+                                    <a:s r="70">
+                                       <a:s r="69">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="72">
+                                    <a:s>where </a:s>
+                                    <a:s r="72">
+                                       <a:s r="71">
+                                          <a:s>ScreeningForAlcoholMisuse</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="72">
+                                          <a:s>&quot;Denominator&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="75">
+                                    <a:s>return </a:s>
+                                    <a:s r="74">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="73">
+                                             <a:s>'Screening For Alcohol Misuse'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	  union </a:s>
+                           <a:s r="84">
+                              <a:s>(</a:s>
+                              <a:s r="84">
+                                 <a:s>
+                                    <a:s r="78">
+                                       <a:s r="77">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="80">
+                                    <a:s>where </a:s>
+                                    <a:s r="80">
+                                       <a:s r="79">
+                                          <a:s>HypertensionAssessment</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="80">
+                                          <a:s>&quot;Denominator&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="83">
+                                    <a:s>return </a:s>
+                                    <a:s r="82">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="81">
+                                             <a:s>'Hypertension Assessment'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		union </a:s>
+                        <a:s r="93">
+                           <a:s>(</a:s>
+                           <a:s r="93">
+                              <a:s>
+                                 <a:s r="87">
+                                    <a:s r="86">
+                                       <a:s>
+                                          <a:s>&quot;Patient Record&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> P</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="89">
+                                 <a:s>where </a:s>
+                                 <a:s r="89">
+                                    <a:s r="88">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="89">
+                                       <a:s>&quot;Denominator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="92">
+                                 <a:s>return </a:s>
+                                 <a:s r="91">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>service: </a:s>
+                                       <a:s r="90">
+                                          <a:s>'Screening For Breast Cancer'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		union </a:s>
+                     <a:s r="102">
+                        <a:s>(</a:s>
+                        <a:s r="102">
+                           <a:s>
+                              <a:s r="96">
+                                 <a:s r="95">
+                                    <a:s>
+                                       <a:s>&quot;Patient Record&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="98">
+                              <a:s>where </a:s>
+                              <a:s r="98">
+                                 <a:s r="97">
+                                    <a:s>ScreeningForColorectalCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="98">
+                                    <a:s>&quot;Denominator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="101">
+                              <a:s>return </a:s>
+                              <a:s r="100">
+                                 <a:s>{ </a:s>
+                                 <a:s>
+                                    <a:s>service: </a:s>
+                                    <a:s r="99">
+                                       <a:s>'Screening For Colorectal Cancer'</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="111">
+                     <a:s>(</a:s>
+                     <a:s r="111">
+                        <a:s>
+                           <a:s r="105">
+                              <a:s r="104">
+                                 <a:s>
+                                    <a:s>&quot;Patient Record&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> P</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="107">
+                           <a:s>where </a:s>
+                           <a:s r="107">
+                              <a:s r="106">
+                                 <a:s>ScreeningForDepression</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="107">
+                                 <a:s>&quot;Denominator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="110">
+                           <a:s>return </a:s>
+                           <a:s r="109">
+                              <a:s>{ </a:s>
+                              <a:s>
+                                 <a:s>service: </a:s>
+                                 <a:s r="108">
+                                    <a:s>'Screening For Depression'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="112" locator="47:3-51:118" xsi:type="Union">
+            <operand localId="103" locator="47:3-50:131" xsi:type="Union">
+               <operand localId="85" locator="47:3-48:118" xsi:type="Union">
+                  <operand localId="76" locator="47:3-47:119" xsi:type="Query">
+                     <source localId="70" locator="47:4-47:21" alias="P">
+                        <expression localId="69" locator="47:4-47:19" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="72" locator="47:23-47:67" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <return localId="75" locator="47:69-47:118">
+                        <expression localId="74" locator="47:76-47:118" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="73" locator="47:87-47:116" valueType="t:String" value="Screening For Alcohol Misuse" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="84" locator="48:10-48:118" xsi:type="Query">
+                     <source localId="78" locator="48:11-48:28" alias="P">
+                        <expression localId="77" locator="48:11-48:26" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="80" locator="48:30-48:71" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     <return localId="83" locator="48:73-48:117">
+                        <expression localId="82" locator="48:80-48:117" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="81" locator="48:91-48:115" valueType="t:String" value="Hypertension Assessment" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand localId="93" locator="49:9-49:123" xsi:type="Query">
+                     <source localId="87" locator="49:10-49:27" alias="P">
+                        <expression localId="86" locator="49:10-49:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="89" locator="49:29-49:72" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                     <return localId="92" locator="49:74-49:122">
+                        <expression localId="91" locator="49:81-49:122" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="90" locator="49:92-49:120" valueType="t:String" value="Screening For Breast Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="102" locator="50:9-50:131" xsi:type="Query">
+                     <source localId="96" locator="50:10-50:27" alias="P">
+                        <expression localId="95" locator="50:10-50:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="98" locator="50:29-50:76" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                     <return localId="101" locator="50:78-50:130">
+                        <expression localId="100" locator="50:85-50:130" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="99" locator="50:96-50:128" valueType="t:String" value="Screening For Colorectal Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="111" locator="51:9-51:118" xsi:type="Query">
+               <source localId="105" locator="51:10-51:27" alias="P">
+                  <expression localId="104" locator="51:10-51:25" name="Patient Record" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="107" locator="51:29-51:70" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+               <return localId="110" locator="51:72-51:117">
+                  <expression localId="109" locator="51:79-51:117" xsi:type="Tuple">
+                     <element name="service">
+                        <value localId="108" locator="51:90-51:115" valueType="t:String" value="Screening For Depression" xsi:type="Literal"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="149" locator="53:1-58:131" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="149">
+               <a:s>define &quot;Denominator Exclusions&quot;:&#xd;
+  </a:s>
+               <a:s r="148">
+                  <a:s r="139">
+                     <a:s r="130">
+                        <a:s r="121">
+                           <a:s>(</a:s>
+                           <a:s r="121">
+                              <a:s>
+                                 <a:s r="115">
+                                    <a:s r="114">
+                                       <a:s>
+                                          <a:s>&quot;Patient Record&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> P</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="117">
+                                 <a:s>where </a:s>
+                                 <a:s r="117">
+                                    <a:s r="116">
+                                       <a:s>ScreeningForAlcoholMisuse</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="117">
+                                       <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="120">
+                                 <a:s>return </a:s>
+                                 <a:s r="119">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>service: </a:s>
+                                       <a:s r="118">
+                                          <a:s>'Screening For Alcohol Misuse'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	  //union (&quot;Patient Record&quot; P where HypertensionAssessment.&quot;Denominator Exclusion&quot; return { service: 'Hypertension Assessment' })&#xd;
+		  union </a:s>
+                        <a:s r="129">
+                           <a:s>(</a:s>
+                           <a:s r="129">
+                              <a:s>
+                                 <a:s r="123">
+                                    <a:s r="122">
+                                       <a:s>
+                                          <a:s>&quot;Patient Record&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> P</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="125">
+                                 <a:s>where </a:s>
+                                 <a:s r="125">
+                                    <a:s r="124">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="125">
+                                       <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="128">
+                                 <a:s>return </a:s>
+                                 <a:s r="127">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>service: </a:s>
+                                       <a:s r="126">
+                                          <a:s>'Screening For Breast Cancer'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+  		union </a:s>
+                     <a:s r="138">
+                        <a:s>(</a:s>
+                        <a:s r="138">
+                           <a:s>
+                              <a:s r="132">
+                                 <a:s r="131">
+                                    <a:s>
+                                       <a:s>&quot;Patient Record&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="134">
+                              <a:s>where </a:s>
+                              <a:s r="134">
+                                 <a:s r="133">
+                                    <a:s>ScreeningForColorectalCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="134">
+                                    <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="137">
+                              <a:s>return </a:s>
+                              <a:s r="136">
+                                 <a:s>{ </a:s>
+                                 <a:s>
+                                    <a:s>service: </a:s>
+                                    <a:s r="135">
+                                       <a:s>'Screening For Colorectal Cancer'</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		  union </a:s>
+                  <a:s r="147">
+                     <a:s>(</a:s>
+                     <a:s r="147">
+                        <a:s>
+                           <a:s r="141">
+                              <a:s r="140">
+                                 <a:s>
+                                    <a:s>&quot;Patient Record&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> P</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="143">
+                           <a:s>where </a:s>
+                           <a:s r="143">
+                              <a:s r="142">
+                                 <a:s>ScreeningForDepression</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="143">
+                                 <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="146">
+                           <a:s>return </a:s>
+                           <a:s r="145">
+                              <a:s>{ </a:s>
+                              <a:s>
+                                 <a:s>service: </a:s>
+                                 <a:s r="144">
+                                    <a:s>'Screening For Depression'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="148" locator="54:3-58:131" xsi:type="Union">
+            <operand localId="130" locator="54:3-56:136" xsi:type="Union">
+               <operand localId="121" locator="54:3-54:130" xsi:type="Query">
+                  <source localId="115" locator="54:4-54:21" alias="P">
+                     <expression localId="114" locator="54:4-54:19" name="Patient Record" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where localId="117" locator="54:23-54:78" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                  <return localId="120" locator="54:80-54:129">
+                     <expression localId="119" locator="54:87-54:129" xsi:type="Tuple">
+                        <element name="service">
+                           <value localId="118" locator="54:98-54:127" valueType="t:String" value="Screening For Alcohol Misuse" xsi:type="Literal"/>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+               <operand localId="129" locator="56:11-56:136" xsi:type="Query">
+                  <source localId="123" locator="56:12-56:29" alias="P">
+                     <expression localId="122" locator="56:12-56:27" name="Patient Record" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where localId="125" locator="56:31-56:85" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                  <return localId="128" locator="56:87-56:135">
+                     <expression localId="127" locator="56:94-56:135" xsi:type="Tuple">
+                        <element name="service">
+                           <value localId="126" locator="56:105-56:133" valueType="t:String" value="Screening For Breast Cancer" xsi:type="Literal"/>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+            <operand xsi:type="Union">
+               <operand localId="138" locator="57:11-57:144" xsi:type="Query">
+                  <source localId="132" locator="57:12-57:29" alias="P">
+                     <expression localId="131" locator="57:12-57:27" name="Patient Record" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where localId="134" locator="57:31-57:89" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                  <return localId="137" locator="57:91-57:143">
+                     <expression localId="136" locator="57:98-57:143" xsi:type="Tuple">
+                        <element name="service">
+                           <value localId="135" locator="57:109-57:141" valueType="t:String" value="Screening For Colorectal Cancer" xsi:type="Literal"/>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+               <operand localId="147" locator="58:11-58:131" xsi:type="Query">
+                  <source localId="141" locator="58:12-58:29" alias="P">
+                     <expression localId="140" locator="58:12-58:27" name="Patient Record" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where localId="143" locator="58:31-58:83" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                  <return localId="146" locator="58:85-58:130">
+                     <expression localId="145" locator="58:92-58:130" xsi:type="Tuple">
+                        <element name="service">
+                           <value localId="144" locator="58:103-58:128" valueType="t:String" value="Screening For Depression" xsi:type="Literal"/>
+                        </element>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="194" locator="60:1-65:116" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="194">
+               <a:s>define &quot;Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="193">
+                  <a:s r="184">
+                     <a:s r="175">
+                        <a:s r="166">
+                           <a:s r="157">
+                              <a:s>(</a:s>
+                              <a:s r="157">
+                                 <a:s>
+                                    <a:s r="151">
+                                       <a:s r="150">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="153">
+                                    <a:s>where </a:s>
+                                    <a:s r="153">
+                                       <a:s r="152">
+                                          <a:s>ScreeningForAlcoholMisuse</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="153">
+                                          <a:s>&quot;Numerator&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="156">
+                                    <a:s>return </a:s>
+                                    <a:s r="155">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="154">
+                                             <a:s>'Screening For Alcohol Misuse'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	  union </a:s>
+                           <a:s r="165">
+                              <a:s>(</a:s>
+                              <a:s r="165">
+                                 <a:s>
+                                    <a:s r="159">
+                                       <a:s r="158">
+                                          <a:s>
+                                             <a:s>&quot;Patient Record&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> P</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="161">
+                                    <a:s>where </a:s>
+                                    <a:s r="161">
+                                       <a:s r="160">
+                                          <a:s>HypertensionAssessment</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="161">
+                                          <a:s>&quot;Numerator&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="164">
+                                    <a:s>return </a:s>
+                                    <a:s r="163">
+                                       <a:s>{ </a:s>
+                                       <a:s>
+                                          <a:s>service: </a:s>
+                                          <a:s r="162">
+                                             <a:s>'Hypertension Assessment'</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> }</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		union </a:s>
+                        <a:s r="174">
+                           <a:s>(</a:s>
+                           <a:s r="174">
+                              <a:s>
+                                 <a:s r="168">
+                                    <a:s r="167">
+                                       <a:s>
+                                          <a:s>&quot;Patient Record&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> P</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="170">
+                                 <a:s>where </a:s>
+                                 <a:s r="170">
+                                    <a:s r="169">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="170">
+                                       <a:s>&quot;Numerator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> </a:s>
+                              <a:s r="173">
+                                 <a:s>return </a:s>
+                                 <a:s r="172">
+                                    <a:s>{ </a:s>
+                                    <a:s>
+                                       <a:s>service: </a:s>
+                                       <a:s r="171">
+                                          <a:s>'Screening For Breast Cancer'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> }</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		union </a:s>
+                     <a:s r="183">
+                        <a:s>(</a:s>
+                        <a:s r="183">
+                           <a:s>
+                              <a:s r="177">
+                                 <a:s r="176">
+                                    <a:s>
+                                       <a:s>&quot;Patient Record&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> P</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="179">
+                              <a:s>where </a:s>
+                              <a:s r="179">
+                                 <a:s r="178">
+                                    <a:s>ScreeningForColorectalCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="179">
+                                    <a:s>&quot;Numerator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> </a:s>
+                           <a:s r="182">
+                              <a:s>return </a:s>
+                              <a:s r="181">
+                                 <a:s>{ </a:s>
+                                 <a:s>
+                                    <a:s>service: </a:s>
+                                    <a:s r="180">
+                                       <a:s>'Screening For Colorectal Cancer'</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> }</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		union </a:s>
+                  <a:s r="192">
+                     <a:s>(</a:s>
+                     <a:s r="192">
+                        <a:s>
+                           <a:s r="186">
+                              <a:s r="185">
+                                 <a:s>
+                                    <a:s>&quot;Patient Record&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> P</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="188">
+                           <a:s>where </a:s>
+                           <a:s r="188">
+                              <a:s r="187">
+                                 <a:s>ScreeningForDepression</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="188">
+                                 <a:s>&quot;Numerator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="191">
+                           <a:s>return </a:s>
+                           <a:s r="190">
+                              <a:s>{ </a:s>
+                              <a:s>
+                                 <a:s>service: </a:s>
+                                 <a:s r="189">
+                                    <a:s>'Screening For Depression'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> }</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="193" locator="61:3-65:116" xsi:type="Union">
+            <operand localId="184" locator="61:3-64:129" xsi:type="Union">
+               <operand localId="166" locator="61:3-62:116" xsi:type="Union">
+                  <operand localId="157" locator="61:3-61:117" xsi:type="Query">
+                     <source localId="151" locator="61:4-61:21" alias="P">
+                        <expression localId="150" locator="61:4-61:19" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="153" locator="61:23-61:65" name="Numerator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <return localId="156" locator="61:67-61:116">
+                        <expression localId="155" locator="61:74-61:116" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="154" locator="61:85-61:114" valueType="t:String" value="Screening For Alcohol Misuse" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="165" locator="62:10-62:116" xsi:type="Query">
+                     <source localId="159" locator="62:11-62:28" alias="P">
+                        <expression localId="158" locator="62:11-62:26" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="161" locator="62:30-62:69" name="Numerator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     <return localId="164" locator="62:71-62:115">
+                        <expression localId="163" locator="62:78-62:115" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="162" locator="62:89-62:113" valueType="t:String" value="Hypertension Assessment" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+               <operand xsi:type="Union">
+                  <operand localId="174" locator="63:9-63:121" xsi:type="Query">
+                     <source localId="168" locator="63:10-63:27" alias="P">
+                        <expression localId="167" locator="63:10-63:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="170" locator="63:29-63:70" name="Numerator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                     <return localId="173" locator="63:72-63:120">
+                        <expression localId="172" locator="63:79-63:120" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="171" locator="63:90-63:118" valueType="t:String" value="Screening For Breast Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+                  <operand localId="183" locator="64:9-64:129" xsi:type="Query">
+                     <source localId="177" locator="64:10-64:27" alias="P">
+                        <expression localId="176" locator="64:10-64:25" name="Patient Record" xsi:type="ExpressionRef"/>
+                     </source>
+                     <where localId="179" locator="64:29-64:74" name="Numerator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                     <return localId="182" locator="64:76-64:128">
+                        <expression localId="181" locator="64:83-64:128" xsi:type="Tuple">
+                           <element name="service">
+                              <value localId="180" locator="64:94-64:126" valueType="t:String" value="Screening For Colorectal Cancer" xsi:type="Literal"/>
+                           </element>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="192" locator="65:9-65:116" xsi:type="Query">
+               <source localId="186" locator="65:10-65:27" alias="P">
+                  <expression localId="185" locator="65:10-65:25" name="Patient Record" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="188" locator="65:29-65:68" name="Numerator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+               <return localId="191" locator="65:70-65:115">
+                  <expression localId="190" locator="65:77-65:115" xsi:type="Tuple">
+                     <element name="service">
+                        <value localId="189" locator="65:88-65:113" valueType="t:String" value="Screening For Depression" xsi:type="Literal"/>
+                     </element>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

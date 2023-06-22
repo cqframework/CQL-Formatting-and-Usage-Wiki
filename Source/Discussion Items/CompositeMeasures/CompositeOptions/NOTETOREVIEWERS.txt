@@ -1,0 +1,14 @@
+Note to Ballot Reviewers:
+
+The composite measure approach described in this IG is the first of two options:
+
+1.	Composite measures do not include composite score calculation logic, it is described by the IG and implementers are required to implement the calculation methods as described in the IG
+2.	Composite measures include only composite score calculation logic and implementers can process composite measures by evaluating the CQL for the measures, just as they would with any other measure
+
+For this ballot, we are seeking implementer and stakeholder feedback on this question.
+
+For review, we have included two composite measures, each packaged with both options in the composite examples folder.
+
+Note that in order to support Option 2, measure specifications and implementations would need to be able to support definition and evaluation of population context expressions, something the current IG explicitly disallows.
+
+Note also that Option 1 is consistent with the general principle of this IG that where logic is the same across all measures (such as the measure score formulas), they are communicated through the IG, rather than requiring the logic to be expressed in each measure.

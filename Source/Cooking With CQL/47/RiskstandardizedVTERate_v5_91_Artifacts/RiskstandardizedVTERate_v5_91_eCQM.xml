@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+			**************************************************************
+			Measure Details Section
+			**************************************************************
+		-->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="2c928085-7198-38ee-0171-eb1e4a4320ba"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title
+          value="V2_Risk-standardized Venous Thromboembolism (VTE) Rate Following Elective Primary Total Hip Arthroplasty (THA) and/or Total Knee Arthroplasty (TKA) Electronic Clinical Quality Measure (eCQM)"/>
+   <text
+         value="This measure estimates the combined risk-standardized major bleeding and VTE rate following elective primary THA/TKA at the clinician group level. The outcome is defined as any major bleeding and/or VTE event occurring from the date of the THA/TKA procedure to 35 days postdate of procedure (or procedure encounter if the procedure is done on an outpatient basis). Because this is a Merit-based Incentivized Payment System (MIPS) measure, the target population is patients 18 years and older across all payers."/>
+   <statusCode code="COMPLETED"/>
+   <setId root="0e673c98-4d6d-45dd-bf4c-931cedfb22e2"/>
+   <versionNumber value="0.0.036"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="d30be14c-fd58-4e52-afbc-a09f733789ba"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Brigham and Womens Health"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="188"/>
+            </id>
+            <name>
+               <item>
+                  <part value="Brigham and Womens Health"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Encounter Inpatient-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.666.5.307"/>
+         <title value="Encounter Inpatient"/>
+      </valueSet>
+   </definition>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Tobacco Use Screening-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1278"/>
+         <title value="Tobacco Use Screening"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Coagulation Disorder Conditions-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.17"/>
+         <title value="Coagulation Disorder Conditions"/>
+      </valueSet>
+   </definition>
+   <!--Total Hip, Total Knee Replacement-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1029.96"/>
+         <title value="Total Hip, Total Knee Replacement"/>
+      </valueSet>
+   </definition>
+   <!--Nonprimary Total Hip, Total Knee Replacement-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.5"/>
+         <title value="Nonprimary Total Hip, Total Knee Replacement"/>
+      </valueSet>
+   </definition>
+   <!--Pulmonary Embolism or DVT-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.17.4077.3.1036"/>
+         <title value="Pulmonary Embolism or DVT"/>
+      </valueSet>
+   </definition>
+   <!--Anticoagulant Medications, Oral-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.20"/>
+         <title value="Anticoagulant Medications, Oral"/>
+      </valueSet>
+   </definition>
+   <!--Fracture Exclusions For Hip And Knee Procedures-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.2"/>
+         <title value="Fracture Exclusions For Hip And Knee Procedures"/>
+      </valueSet>
+   </definition>
+   <!--Comorbidity Risk Factors-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.13"/>
+         <title value="Comorbidity Risk Factors"/>
+      </valueSet>
+   </definition>
+   <!--General Surgery-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.15"/>
+         <title value="General Surgery"/>
+      </valueSet>
+   </definition>
+   <!--Mechanical Complications Related To Hip and Knee Procedures-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.1"/>
+         <title value="Mechanical Complications Related To Hip and Knee Procedures"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.292"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Renal insufficiency-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.3157.1330"/>
+         <title value="Renal insufficiency"/>
+      </valueSet>
+   </definition>
+   <!--Malignant Neoplasm Complications Related To Hip and Knee Procedures-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.7"/>
+         <title value="Malignant Neoplasm Complications Related To Hip and Knee Procedures"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Venous Thromboembolism-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.279"/>
+         <title value="Venous Thromboembolism"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Anticoagulant Medications, Injection-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1206.21"/>
+         <title value="Anticoagulant Medications, Injection"/>
+      </valueSet>
+   </definition>
+   <!--Atrial Fibrillation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.17.4077.3.1001"/>
+         <title value="Atrial Fibrillation"/>
+      </valueSet>
+   </definition>
+   <!--Cancer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.526.3.1010"/>
+         <title value="Cancer"/>
+      </valueSet>
+   </definition>
+   <!--Left Against Medical Advice-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.308"/>
+         <title value="Left Against Medical Advice"/>
+      </valueSet>
+   </definition>
+   <!--Transfer From Acute Care Hospital-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.13.190.5.43"/>
+         <title value="Transfer From Acute Care Hospital"/>
+      </valueSet>
+   </definition>
+   <!--Current Smoking Tobacco User-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1111.99"/>
+         <title value="Current Smoking Tobacco User"/>
+      </valueSet>
+   </definition>
+   <!--Body mass index (BMI) [Ratio]-CODE:/CodeSystem/LOINC/Version/2.67/Code/39156-5/Info-->
+      <definition>
+      <cql-ext:code code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+         <displayName value="Body mass index (BMI) [Ratio]"/>
+      </cql-ext:code>
+   </definition>
+   <!--Outpatient surgery service (qualifier value)-CODE:/CodeSystem/SNOMEDCT/Version/2020-03/Code/2621000175106/Info-->
+      <definition>
+      <cql-ext:code code="2621000175106" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMEDCT">
+         <displayName value="Outpatient surgery service (qualifier value)"/>
+      </cql-ext:code>
+   </definition>
+   <!--Hospital-based outpatient emergency care center (environment)-CODE:/CodeSystem/SNOMEDCT/Version/2020-03/Code/73770003/Info-->
+      <definition>
+      <cql-ext:code code="73770003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT">
+         <displayName value="Hospital-based outpatient emergency care center (environment)"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/0e673c98-4d6d-45dd-bf4c-931cedfb22e2/RiskStandardizedVTERateFollowingTHA_TKAProcedures-0.0.036.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/0e673c98-4d6d-45dd-bf4c-931cedfb22e2/RiskStandardizedVTERateFollowingTHA_TKAProcedures-0.0.036.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/0e673c98-4d6d-45dd-bf4c-931cedfb22e2/RiskStandardizedVTERateFollowingTHA_TKAProcedures-0.0.036.json"/>
+            </translation>
+         </text>
+         <setId extension="0e673c98-4d6d-45dd-bf4c-931cedfb22e2"
+                identifierName="RiskStandardizedVTERateFollowingTHA_TKAProcedures"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="0.0.036"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="402803826cd4f54a016cde28210f096b"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.json"/>
+            </translation>
+         </text>
+         <setId extension="8bdc0a19-b210-4a58-8a07-f5d95a34eca9"
+                identifierName="MATGlobalCommonFunctions"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="5.0.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="11e3ffea-b6ff-40fe-aebd-7e827096b453"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20200101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="993" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The performance Measure is not a clinical guideline and does not establish a standard of medical care, and has not been tested for all potential applications. THE MEASURE AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="OUTCOME" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="OUTCOME"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain"
+                value="In order to account for differences in case mix among hospitals, the measure includes an adjustment for factors such as age, comorbid diseases, and indicators of patient frailty, which are clinically relevant and have relationships with the outcome. For each patient, risk-adjustment variables are obtained from inpatient, outpatient, and physician Medicare administrative claims data extending 12 months prior to the index admission, and all claims data for the index admission itself.&#xA;&#xA;The measure’s adjustment for case mix differences among hospitals is based on the clinical status of the patient at the time of the index admission. Accordingly, only 2019 Measure Updates: THA/TKA Complication 13 comorbidities that convey information about the patient at the time of the index admission, or any time within the preceding 12 months, and not complications that arise during the course of the hospitalization, are included in risk adjustment.&#xA;&#xA;The measure does not include an adjustment for socioeconomic status (SES) because the association between SES and health outcomes can be due, in part, to differences in the quality of health care that groups of patients with varying SES receive. The intent is for the measure to adjust for patient demographic and clinical characteristics while illuminating important quality differences. The National Quality Forum (NQF) re-endorsed the measure without adjustment for patient-level SES factors.&#xA;&#xA;In addition to the Suplemental Data Elements, we have added Comorbidity, BMI and smoking status as risk factors."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Composite Measure Rationale: This proposed measure addresses the CMS Quality Priority “making care safer by reducing harm caused by the delivery of care” and CMS’s preventable measure area of “Preventable Healthcare Harm”. This outcome-based measure will promote quality improvements without creating burden to the clinicians by using routinely documented EHR data. Because this eCQM will include risk adjustment, it has the potential to identify clinician groups whose performance is better or worse than would be expected on a clinician group’s patient case mix, which will ultimately inform consumers about the care quality and guide their choice in surgical group practice. A measure that reports both risk-standardized VTE and major bleeding rates is patient-centered in that it will assist healthcare providers to personalize care by identifying the appropriate VTE prophylactic regimen that balances each patient’s risk of VTE (from under coagulation) and risk of major bleeding (from over coagulation). Furthermore, it will strengthen incentives for quality improvement, and ultimately improve the quality of care received by patients, regardless of payer. By providing ongoing patient outcome data that can be used in near real time to improve practice, this proposed eCQM has the potential to lower healthcare costs associated with VTE and major bleeding following elective primary THA and TKA. &#xA;&#xA;The measure estimates the sum of clinician group-level risk standardized VTE rate and major bleeding rate following elective primary THA/TKA using hierarchical logistic regression models. In brief, the approach simultaneously models data at the patient and clinician group levels to account for variance in patient outcomes within and between clinician groups (Normand et al., 2007; Dimick et al., 2010;  Krell et al., 2014;  MacKenzie et al., 2015). At the patient level, it models the log-odds of a VTE event and/or bleeding event occurring during the index admission or within 35 days from surgery using age, sex, selected clinical covariates and a clinician group-specific random intercept. At the clinician group level, it models the clinician group-specific intercepts as arising from a normal distribution. The clinician group intercept represents the underlying risk of a VTE or major bleeding event at the clinician group level, after accounting for patient risk. The clinician group-specific intercepts are given a distribution to account for the clustering (non-independence) of patients within the same clinician group. If there were no differences among clinician groups, then after adjusting for patient risk, the clinician group intercepts should be identical across all clinician groups.  &#xA;&#xA;The risk-standardized VTE and/or major bleeding rate is calculated as the ratio of the number of “predicted” to the number of “expected” episodes with a VTE and/or major bleeding event, multiplied by the sum of national observed rates for VTE and major bleeding following TJA. For each clinician group, the numerator of the ratio is the number of VTE and/or bleeding events within 35 days predicted based on the clinician group’s performance with its observed case mix, and the denominator is the number of VTE and/or bleeding events expected based on the nation’s performance with that clinician group’s case mix. This approach is analogous to a ratio of “observed” to “expected” used in other types of statistical analyses. It conceptually allows for a comparison of a clinician group’s performance given its case mix to an average clinician group’s performance with the same case mix. Thus, a lower ratio indicates lower-than-expected bleeding event rates or better quality, and a higher ratio indicates higher-than-expected bleeding event rates or worse quality."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="1.&#x9;Patient Safety and Adverse Events Composite Technical Specifications, Patient Safety Indicator 90 (PSI 90) AHRQ Quality Indicators, Version 2019. July 2019."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain" value="" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The target population for the publicly reported measure includes admissions for adults 18 years of age or older undergoing elective primary THA and/or TKA procedures."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain" value="Equals Initial Population." xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="1.      Patients who were discharged against medical advice (AMA)&#xA;&#xA;2.      Patients who had more than two THA/TKA procedure codes during the index hospitalization&#xA;&#xA;3.      Patients with diagnosis codes for renal insufficiency within the 365 days prior to the THA/TKA procedure&#xA;&#xA;4.      Patients with diagnosis codes for chronic atrial fibrillation within the 365 days prior to the THA/TKA procedure&#xA;&#xA;5.      Patients with diagnosis codes for cancer within the 365 days prior to the THA/TKA procedure&#xA;&#xA;6.      Who received prescription orders for anticoagulant medications 10-90 Days Prior to Surgery and meets the following criteria:&#xA;         •       Patient who received an Anticoagulant Injection/Infusion&#xA;         •       Patient who received a tablet (Oral) Anticoagulant order, Quantity &gt; 1&#xA;&#xA;7.      Patients with diagnosis code for VTE or DVT within 30 days prior to the index admission&#xA;&#xA;8.      Patients with diagnosis code for coagulation disorder within 365 prior to the THA/TKA procedure&#xA;&#xA;9.      Diagnosed With Excluded Conditions Within 90 Days Prior To The Index Admission&#xA;&#xA;10.    Patients who had additional surgery within 35 days from the elective primary THA/TKA (TBD)"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="A patient will be in the numerator for this measure if they have a VTE event occurring from the date of THA/TKA procedure to 35 days postdate of procedure."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="1. Patient Characteristic Payer&#xA;2. Patient Characteristic Race&#xA;3. Patient Characteristic Sex&#xA;4. Patient Characteristic Ethnicity&#xA;5. Patient Characteristic Birthdate"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root=""/>
+         <title value=""/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="EncounterInpatient_EncounterPerformed_8tNBe"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EncounterInpatient_EncounterPerformed"
+                   root="123bb4da-c579-4188-831e-9a26b95a1ed8"/>
+               <code valueSet="2.16.840.1.113883.3.666.5.307"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_FkF49"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="ac247b20-2eef-4f67-a97f-794924b43b6c"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="TobaccoUseScreening_AssessmentPerformed_1WPlg"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.117"/>
+               </templateId>
+               <id extension="TobaccoUseScreening_AssessmentPerformed"
+                   root="646844b0-6f58-4b25-b73a-4ccfcbde5728"/>
+               <code valueSet="2.16.840.1.113883.3.526.3.1278"/>
+               <title value="Assessment, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_EXjMX"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="4af31c68-f406-4e65-b817-07b02bec301b"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="CoagulationDisorderConditions_Diagnosis_1eoQm"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="CoagulationDisorderConditions_Diagnosis"
+                   root="abe11560-420e-4257-9429-a1bfe7b0ea1e"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1206.17" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="TotalHipTotalKneeReplacement_ProcedurePerformed_0kbOA"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="TotalHipTotalKneeReplacement_ProcedurePerformed"
+                   root="d1dd90aa-dd0c-4047-a5b2-91c969f4405d"/>
+               <code valueSet="2.16.840.1.113762.1.4.1029.96"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="NonprimaryTotalHipTotalKneeReplacement_ProcedurePerformed_5dXki"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="NonprimaryTotalHipTotalKneeReplacement_ProcedurePerformed"
+                   root="1983695b-33f8-48c6-a3a9-6b42ad09dcc4"/>
+               <code valueSet="2.16.840.1.113762.1.4.1206.5"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="PulmonaryEmbolismorDVT_Diagnosis_PAZFY"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="PulmonaryEmbolismorDVT_Diagnosis"
+                   root="125f995d-c28d-4222-a53e-5cec10f5516f"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.17.4077.3.1036" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantMedicationsOral_MedicationOrder_H49Bd"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.51"/>
+               </templateId>
+               <id extension="AnticoagulantMedicationsOral_MedicationOrder"
+                   root="b5b41672-550b-429f-93ce-400b8e95c76a"/>
+               <title value="Medication, Order"/>
+               <statusCode code="ACTIVE"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1206.20"/>
+                     </playingMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="FractureExclusionsForHipAndKneeProcedures_Diagnosis_rdlel"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="FractureExclusionsForHipAndKneeProcedures_Diagnosis"
+                   root="e9c93c1e-5633-4fb8-bd9a-1282523a473f"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1206.2" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ComorbidityRiskFactors_Diagnosis_GONrx"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="ComorbidityRiskFactors_Diagnosis"
+                   root="b9407b98-a579-41a8-8bbe-d105dd7ac154"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1206.13" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="GeneralSurgery_ProcedurePerformed_tIlPo"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="GeneralSurgery_ProcedurePerformed"
+                   root="e790f9c8-37fb-44f9-b48b-0e2ac503beb0"/>
+               <code valueSet="2.16.840.1.113762.1.4.1206.15"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MechanicalComplicationsRelatedToHipandKneeProcedures_Diagnosis_TZmf2"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="MechanicalComplicationsRelatedToHipandKneeProcedures_Diagnosis"
+                   root="a8b09395-de55-46b8-9af2-28e64689d755"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1206.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_xA5kM"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="943fd468-a486-47eb-bcef-69bbc31a73a0"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.292"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Renalinsufficiency_Diagnosis_g4olU"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Renalinsufficiency_Diagnosis"
+                   root="7f55bffa-90fd-465b-b0e2-e5f52ebc9f2d"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.3157.1330" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="MalignantNeoplasmComplicationsRelatedToHipandKneeProcedures_Diagnosis_cL3Yn"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="MalignantNeoplasmComplicationsRelatedToHipandKneeProcedures_Diagnosis"
+                   root="3a0405f2-0b80-41ac-a056-043c1794a26b"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1206.7" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_79mih"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="4d7a4852-c3a7-4611-9be7-0fa0995977e7"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="VenousThromboembolism_Diagnosis_Pcuj4"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="VenousThromboembolism_Diagnosis"
+                   root="e269ff60-94a7-4c98-9a8d-f1cbaa72edfd"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.117.1.7.1.279" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_FRcGv"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="bbdfc466-2942-402e-abe9-50b88cf674d5"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantMedicationsInjection_MedicationOrder_BuRpJ"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.51"/>
+               </templateId>
+               <id extension="AnticoagulantMedicationsInjection_MedicationOrder"
+                   root="bb15ac9d-8235-48d7-a0ff-b68b2ac0a6ff"/>
+               <title value="Medication, Order"/>
+               <statusCode code="ACTIVE"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113762.1.4.1206.21"/>
+                     </playingMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AtrialFibrillation_Diagnosis_tRKiW"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AtrialFibrillation_Diagnosis"
+                   root="eaf0fcad-19b3-4a3b-9d60-a3f89bcc5edf"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.17.4077.3.1001" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Cancer_Diagnosis_0Ty66"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="Cancer_Diagnosis" root="c6482bf7-ff28-4291-9086-fb2e8bff1d6c"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.526.3.1010" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.62"/>
+               </templateId>
+               <id extension="39156-5_PhysicalExamPerformed"
+                   root="5BF50B70-35BC-4A10-AEBA-A61CCD5876E2"/>
+               <code code="5880005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="physical examination"/>
+               </code>
+               <title value="Physical Exam, Performed"/>
+               <statusCode code="COMPLETED"/>
+               <value code="39156-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="2621000175106_EncounterPerformed"
+                   root="7CC30C60-4EDE-4F87-BD54-33E14D346916"/>
+               <code code="2621000175106" codeSystem="2.16.840.1.113883.6.96"
+                     codeSystemName="SNOMEDCT"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="73770003_EncounterPerformed"
+                   root="4CB95F53-A763-4076-8143-FA7360649914"/>
+               <code code="73770003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="A890C7F4-1956-419C-913B-8BBA9900960D"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="488B63A7-0CDD-468E-916F-3167E776FEC8"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;Initial Population&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="DF1AE082-464B-41BB-8368-3AE476F4F0FD"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;Denominator&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="ED5AE650-87A2-4D20-8DF2-9F23DEF34450"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;Denominator Exclusions&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="AF922ED1-AB91-46B8-A344-4ABB48CEF957"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;Numerator&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="236E338C-E6BE-4951-8DFC-ECFDAC2822AC"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;SDE Sex&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="B28C541E-3C0D-4F18-98E0-2B566972A95C"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;SDE Ethnicity&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="57D302E7-79E4-48F1-B183-596948784312"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;SDE Payer&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="4D687C7E-0BCB-4FE1-B43F-391AC51F1316"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;SDE Race&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Risk Adjustment Variables"
+                   root="B5E8A123-D91A-4096-8CEC-B58754DBED32"/>
+               <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="RiskStandardizedVTERateFollowingTHA_TKAProcedures.&quot;Reasonable Risk Factors&quot;"
+                         root="AEE67FAB-ACCD-41DC-B9BA-E9139598880D"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

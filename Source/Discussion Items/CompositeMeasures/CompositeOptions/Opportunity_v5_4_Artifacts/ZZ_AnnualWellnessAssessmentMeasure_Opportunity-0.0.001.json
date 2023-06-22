@@ -1,0 +1,2628 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "ZZ_AnnualWellnessAssessmentMeasure_Opportunity",
+         "version" : "0.0.001"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:91",
+            "localIdentifier" : "ScreeningForAlcoholMisuse",
+            "path" : "Test01_ScreeningForAlcoholMisuse",
+            "version" : "1.1.000"
+         }, {
+            "localId" : "3",
+            "locator" : "6:1-6:85",
+            "localIdentifier" : "HypertensionAssessment",
+            "path" : "Test02_HypertensionAssessment",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "4",
+            "locator" : "7:1-7:89",
+            "localIdentifier" : "ScreeningForBreastCancer",
+            "path" : "Test03_ScreeningForBreastCancer",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "5",
+            "locator" : "8:1-8:97",
+            "localIdentifier" : "ScreeningForColorectalCancer",
+            "path" : "Test04_ScreeningForColorectalCancer",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "6",
+            "locator" : "9:1-9:85",
+            "localIdentifier" : "ScreeningForDepression",
+            "path" : "Test05_ScreeningForDepression",
+            "version" : "1.0.000"
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "7",
+            "locator" : "11:1-11:51",
+            "name" : "LOINC",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "8",
+            "locator" : "13:1-13:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "14:1-14:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "15:1-15:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "16:1-16:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "13",
+            "locator" : "18:1-18:61",
+            "name" : "Birth date",
+            "id" : "21112-8",
+            "display" : "Birthdate",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "12",
+               "locator" : "18:35-18:41",
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "20:1-20:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "20:1-20:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "15",
+            "locator" : "22:1-23:50",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "15",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\r\n\t" ]
+                  }, {
+                     "r" : "14",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "14",
+               "locator" : "23:2-23:50",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "17",
+            "locator" : "25:1-26:42",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "17",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\r\n\t" ]
+                  }, {
+                     "r" : "16",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "16",
+               "locator" : "26:2-26:42",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "19",
+            "locator" : "28:1-29:40",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "19",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\r\n\t" ]
+                  }, {
+                     "r" : "18",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "18",
+               "locator" : "29:2-29:40",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "21",
+            "locator" : "31:1-32:57",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "21",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\r\n\t" ]
+                  }, {
+                     "r" : "20",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "20",
+               "locator" : "32:2-32:57",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "23",
+            "locator" : "37:1-37:75",
+            "name" : "Patient Record",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "23",
+                  "s" : [ {
+                     "value" : [ "define ","\"Patient Record\"",": " ]
+                  }, {
+                     "r" : "22",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Birthdate\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Birth date\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "22",
+               "locator" : "37:26-37:75",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicBirthdate",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "type" : "ToList",
+                  "operand" : {
+                     "name" : "Birth date",
+                     "type" : "CodeRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "68",
+            "locator" : "39:1-44:125",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "68",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\r\n  " ]
+                  }, {
+                     "r" : "67",
+                     "s" : [ {
+                        "r" : "58",
+                        "s" : [ {
+                           "r" : "49",
+                           "s" : [ {
+                              "r" : "40",
+                              "s" : [ {
+                                 "r" : "31",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "31",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "25",
+                                          "s" : [ {
+                                             "r" : "24",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "27",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "27",
+                                          "s" : [ {
+                                             "r" : "26",
+                                             "s" : [ {
+                                                "value" : [ "ScreeningForAlcoholMisuse" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "27",
+                                             "s" : [ {
+                                                "value" : [ "\"Initial Population\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "30",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "29",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "28",
+                                                "s" : [ {
+                                                   "value" : [ "'Screening For Alcohol Misuse'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t  union " ]
+                              }, {
+                                 "r" : "39",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "39",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "33",
+                                          "s" : [ {
+                                             "r" : "32",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "35",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "35",
+                                          "s" : [ {
+                                             "r" : "34",
+                                             "s" : [ {
+                                                "value" : [ "HypertensionAssessment" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "35",
+                                             "s" : [ {
+                                                "value" : [ "\"Initial Population\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "38",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "37",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "36",
+                                                "s" : [ {
+                                                   "value" : [ "'Hypertension Assessment'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\tunion " ]
+                           }, {
+                              "r" : "48",
+                              "s" : [ {
+                                 "value" : [ "(" ]
+                              }, {
+                                 "r" : "48",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "42",
+                                       "s" : [ {
+                                          "r" : "41",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Record\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","P" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "44",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "44",
+                                       "s" : [ {
+                                          "r" : "43",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForBreastCancer" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "44",
+                                          "s" : [ {
+                                             "value" : [ "\"Initial Population\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "47",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "46",
+                                       "s" : [ {
+                                          "value" : [ "{ " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "service",": " ]
+                                          }, {
+                                             "r" : "45",
+                                             "s" : [ {
+                                                "value" : [ "'Screening For Breast Cancer'" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " }" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t\tunion " ]
+                        }, {
+                           "r" : "57",
+                           "s" : [ {
+                              "value" : [ "(" ]
+                           }, {
+                              "r" : "57",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "51",
+                                    "s" : [ {
+                                       "r" : "50",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "value" : [ "\"Patient Record\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","P" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "53",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "53",
+                                    "s" : [ {
+                                       "r" : "52",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForColorectalCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "53",
+                                       "s" : [ {
+                                          "value" : [ "\"Initial Population\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "56",
+                                 "s" : [ {
+                                    "value" : [ "return " ]
+                                 }, {
+                                    "r" : "55",
+                                    "s" : [ {
+                                       "value" : [ "{ " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "service",": " ]
+                                       }, {
+                                          "r" : "54",
+                                          "s" : [ {
+                                             "value" : [ "'Screening For Colorectal Cancer'" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " }" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\r\n\t\tunion " ]
+                     }, {
+                        "r" : "66",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "66",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "r" : "59",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Patient Record\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","P" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "62",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "62",
+                                 "s" : [ {
+                                    "r" : "61",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForDepression" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "62",
+                                    "s" : [ {
+                                       "value" : [ "\"Initial Population\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "65",
+                              "s" : [ {
+                                 "value" : [ "return " ]
+                              }, {
+                                 "r" : "64",
+                                 "s" : [ {
+                                    "value" : [ "{ " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "service",": " ]
+                                    }, {
+                                       "r" : "63",
+                                       "s" : [ {
+                                          "value" : [ "'Screening For Depression'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " }" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "67",
+               "locator" : "40:3-44:125",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "58",
+                  "locator" : "40:3-43:138",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "40",
+                     "locator" : "40:3-41:125",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "31",
+                        "locator" : "40:3-40:126",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "25",
+                           "locator" : "40:4-40:21",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "24",
+                              "locator" : "40:4-40:19",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "27",
+                           "locator" : "40:23-40:74",
+                           "name" : "Initial Population",
+                           "libraryName" : "ScreeningForAlcoholMisuse",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "30",
+                           "locator" : "40:76-40:125",
+                           "expression" : {
+                              "localId" : "29",
+                              "locator" : "40:83-40:125",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "28",
+                                    "locator" : "40:94-40:123",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Alcohol Misuse",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "39",
+                        "locator" : "41:10-41:125",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "33",
+                           "locator" : "41:11-41:28",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "32",
+                              "locator" : "41:11-41:26",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "35",
+                           "locator" : "41:30-41:78",
+                           "name" : "Initial Population",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "38",
+                           "locator" : "41:80-41:124",
+                           "expression" : {
+                              "localId" : "37",
+                              "locator" : "41:87-41:124",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "36",
+                                    "locator" : "41:98-41:122",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Hypertension Assessment",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  }, {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "48",
+                        "locator" : "42:9-42:130",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "42",
+                           "locator" : "42:10-42:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "41",
+                              "locator" : "42:10-42:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "44",
+                           "locator" : "42:29-42:79",
+                           "name" : "Initial Population",
+                           "libraryName" : "ScreeningForBreastCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "47",
+                           "locator" : "42:81-42:129",
+                           "expression" : {
+                              "localId" : "46",
+                              "locator" : "42:88-42:129",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "45",
+                                    "locator" : "42:99-42:127",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Breast Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "57",
+                        "locator" : "43:9-43:138",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "51",
+                           "locator" : "43:10-43:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "50",
+                              "locator" : "43:10-43:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "53",
+                           "locator" : "43:29-43:83",
+                           "name" : "Initial Population",
+                           "libraryName" : "ScreeningForColorectalCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "56",
+                           "locator" : "43:85-43:137",
+                           "expression" : {
+                              "localId" : "55",
+                              "locator" : "43:92-43:137",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "54",
+                                    "locator" : "43:103-43:135",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Colorectal Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "66",
+                  "locator" : "44:9-44:125",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "60",
+                     "locator" : "44:10-44:27",
+                     "alias" : "P",
+                     "expression" : {
+                        "localId" : "59",
+                        "locator" : "44:10-44:25",
+                        "name" : "Patient Record",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "62",
+                     "locator" : "44:29-44:77",
+                     "name" : "Initial Population",
+                     "libraryName" : "ScreeningForDepression",
+                     "type" : "ExpressionRef"
+                  },
+                  "return" : {
+                     "localId" : "65",
+                     "locator" : "44:79-44:124",
+                     "expression" : {
+                        "localId" : "64",
+                        "locator" : "44:86-44:124",
+                        "type" : "Tuple",
+                        "element" : [ {
+                           "name" : "service",
+                           "value" : {
+                              "localId" : "63",
+                              "locator" : "44:97-44:122",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "Screening For Depression",
+                              "type" : "Literal"
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "113",
+            "locator" : "46:1-51:118",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "113",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\r\n  " ]
+                  }, {
+                     "r" : "112",
+                     "s" : [ {
+                        "r" : "103",
+                        "s" : [ {
+                           "r" : "94",
+                           "s" : [ {
+                              "r" : "85",
+                              "s" : [ {
+                                 "r" : "76",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "76",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "70",
+                                          "s" : [ {
+                                             "r" : "69",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "72",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "72",
+                                          "s" : [ {
+                                             "r" : "71",
+                                             "s" : [ {
+                                                "value" : [ "ScreeningForAlcoholMisuse" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "72",
+                                             "s" : [ {
+                                                "value" : [ "\"Denominator\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "75",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "74",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "73",
+                                                "s" : [ {
+                                                   "value" : [ "'Screening For Alcohol Misuse'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t  union " ]
+                              }, {
+                                 "r" : "84",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "84",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "78",
+                                          "s" : [ {
+                                             "r" : "77",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "80",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "80",
+                                          "s" : [ {
+                                             "r" : "79",
+                                             "s" : [ {
+                                                "value" : [ "HypertensionAssessment" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "80",
+                                             "s" : [ {
+                                                "value" : [ "\"Denominator\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "83",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "82",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "81",
+                                                "s" : [ {
+                                                   "value" : [ "'Hypertension Assessment'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\tunion " ]
+                           }, {
+                              "r" : "93",
+                              "s" : [ {
+                                 "value" : [ "(" ]
+                              }, {
+                                 "r" : "93",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "87",
+                                       "s" : [ {
+                                          "r" : "86",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Record\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","P" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "89",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "89",
+                                       "s" : [ {
+                                          "r" : "88",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForBreastCancer" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "89",
+                                          "s" : [ {
+                                             "value" : [ "\"Denominator\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "92",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "91",
+                                       "s" : [ {
+                                          "value" : [ "{ " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "service",": " ]
+                                          }, {
+                                             "r" : "90",
+                                             "s" : [ {
+                                                "value" : [ "'Screening For Breast Cancer'" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " }" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t\tunion " ]
+                        }, {
+                           "r" : "102",
+                           "s" : [ {
+                              "value" : [ "(" ]
+                           }, {
+                              "r" : "102",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "96",
+                                    "s" : [ {
+                                       "r" : "95",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "value" : [ "\"Patient Record\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","P" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "98",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "98",
+                                    "s" : [ {
+                                       "r" : "97",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForColorectalCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "98",
+                                       "s" : [ {
+                                          "value" : [ "\"Denominator\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "101",
+                                 "s" : [ {
+                                    "value" : [ "return " ]
+                                 }, {
+                                    "r" : "100",
+                                    "s" : [ {
+                                       "value" : [ "{ " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "service",": " ]
+                                       }, {
+                                          "r" : "99",
+                                          "s" : [ {
+                                             "value" : [ "'Screening For Colorectal Cancer'" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " }" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\r\n\t\tunion " ]
+                     }, {
+                        "r" : "111",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "111",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "105",
+                                 "s" : [ {
+                                    "r" : "104",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Patient Record\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","P" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "107",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "107",
+                                 "s" : [ {
+                                    "r" : "106",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForDepression" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "107",
+                                    "s" : [ {
+                                       "value" : [ "\"Denominator\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "110",
+                              "s" : [ {
+                                 "value" : [ "return " ]
+                              }, {
+                                 "r" : "109",
+                                 "s" : [ {
+                                    "value" : [ "{ " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "service",": " ]
+                                    }, {
+                                       "r" : "108",
+                                       "s" : [ {
+                                          "value" : [ "'Screening For Depression'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " }" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "112",
+               "locator" : "47:3-51:118",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "103",
+                  "locator" : "47:3-50:131",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "85",
+                     "locator" : "47:3-48:118",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "76",
+                        "locator" : "47:3-47:119",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "70",
+                           "locator" : "47:4-47:21",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "69",
+                              "locator" : "47:4-47:19",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "72",
+                           "locator" : "47:23-47:67",
+                           "name" : "Denominator",
+                           "libraryName" : "ScreeningForAlcoholMisuse",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "75",
+                           "locator" : "47:69-47:118",
+                           "expression" : {
+                              "localId" : "74",
+                              "locator" : "47:76-47:118",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "73",
+                                    "locator" : "47:87-47:116",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Alcohol Misuse",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "84",
+                        "locator" : "48:10-48:118",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "78",
+                           "locator" : "48:11-48:28",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "77",
+                              "locator" : "48:11-48:26",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "80",
+                           "locator" : "48:30-48:71",
+                           "name" : "Denominator",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "83",
+                           "locator" : "48:73-48:117",
+                           "expression" : {
+                              "localId" : "82",
+                              "locator" : "48:80-48:117",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "81",
+                                    "locator" : "48:91-48:115",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Hypertension Assessment",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  }, {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "93",
+                        "locator" : "49:9-49:123",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "87",
+                           "locator" : "49:10-49:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "86",
+                              "locator" : "49:10-49:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "89",
+                           "locator" : "49:29-49:72",
+                           "name" : "Denominator",
+                           "libraryName" : "ScreeningForBreastCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "92",
+                           "locator" : "49:74-49:122",
+                           "expression" : {
+                              "localId" : "91",
+                              "locator" : "49:81-49:122",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "90",
+                                    "locator" : "49:92-49:120",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Breast Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "102",
+                        "locator" : "50:9-50:131",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "96",
+                           "locator" : "50:10-50:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "95",
+                              "locator" : "50:10-50:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "98",
+                           "locator" : "50:29-50:76",
+                           "name" : "Denominator",
+                           "libraryName" : "ScreeningForColorectalCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "101",
+                           "locator" : "50:78-50:130",
+                           "expression" : {
+                              "localId" : "100",
+                              "locator" : "50:85-50:130",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "99",
+                                    "locator" : "50:96-50:128",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Colorectal Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "111",
+                  "locator" : "51:9-51:118",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "105",
+                     "locator" : "51:10-51:27",
+                     "alias" : "P",
+                     "expression" : {
+                        "localId" : "104",
+                        "locator" : "51:10-51:25",
+                        "name" : "Patient Record",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "107",
+                     "locator" : "51:29-51:70",
+                     "name" : "Denominator",
+                     "libraryName" : "ScreeningForDepression",
+                     "type" : "ExpressionRef"
+                  },
+                  "return" : {
+                     "localId" : "110",
+                     "locator" : "51:72-51:117",
+                     "expression" : {
+                        "localId" : "109",
+                        "locator" : "51:79-51:117",
+                        "type" : "Tuple",
+                        "element" : [ {
+                           "name" : "service",
+                           "value" : {
+                              "localId" : "108",
+                              "locator" : "51:90-51:115",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "Screening For Depression",
+                              "type" : "Literal"
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "149",
+            "locator" : "53:1-58:131",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "149",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\r\n  " ]
+                  }, {
+                     "r" : "148",
+                     "s" : [ {
+                        "r" : "139",
+                        "s" : [ {
+                           "r" : "130",
+                           "s" : [ {
+                              "r" : "121",
+                              "s" : [ {
+                                 "value" : [ "(" ]
+                              }, {
+                                 "r" : "121",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "115",
+                                       "s" : [ {
+                                          "r" : "114",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Record\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","P" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "117",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "117",
+                                       "s" : [ {
+                                          "r" : "116",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForAlcoholMisuse" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "117",
+                                          "s" : [ {
+                                             "value" : [ "\"Denominator Exclusions\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "120",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "119",
+                                       "s" : [ {
+                                          "value" : [ "{ " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "service",": " ]
+                                          }, {
+                                             "r" : "118",
+                                             "s" : [ {
+                                                "value" : [ "'Screening For Alcohol Misuse'" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " }" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t  //union (\"Patient Record\" P where HypertensionAssessment.\"Denominator Exclusion\" return { service: 'Hypertension Assessment' })\r\n\t\t  union " ]
+                           }, {
+                              "r" : "129",
+                              "s" : [ {
+                                 "value" : [ "(" ]
+                              }, {
+                                 "r" : "129",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "123",
+                                       "s" : [ {
+                                          "r" : "122",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Record\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","P" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "125",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "125",
+                                       "s" : [ {
+                                          "r" : "124",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForBreastCancer" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "125",
+                                          "s" : [ {
+                                             "value" : [ "\"Denominator Exclusions\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "128",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "127",
+                                       "s" : [ {
+                                          "value" : [ "{ " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "service",": " ]
+                                          }, {
+                                             "r" : "126",
+                                             "s" : [ {
+                                                "value" : [ "'Screening For Breast Cancer'" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " }" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n  \t\tunion " ]
+                        }, {
+                           "r" : "138",
+                           "s" : [ {
+                              "value" : [ "(" ]
+                           }, {
+                              "r" : "138",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "132",
+                                    "s" : [ {
+                                       "r" : "131",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "value" : [ "\"Patient Record\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","P" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "134",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "134",
+                                    "s" : [ {
+                                       "r" : "133",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForColorectalCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "134",
+                                       "s" : [ {
+                                          "value" : [ "\"Denominator Exclusions\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "137",
+                                 "s" : [ {
+                                    "value" : [ "return " ]
+                                 }, {
+                                    "r" : "136",
+                                    "s" : [ {
+                                       "value" : [ "{ " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "service",": " ]
+                                       }, {
+                                          "r" : "135",
+                                          "s" : [ {
+                                             "value" : [ "'Screening For Colorectal Cancer'" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " }" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\r\n\t\t  union " ]
+                     }, {
+                        "r" : "147",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "147",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "141",
+                                 "s" : [ {
+                                    "r" : "140",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Patient Record\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","P" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "143",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "143",
+                                 "s" : [ {
+                                    "r" : "142",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForDepression" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "143",
+                                    "s" : [ {
+                                       "value" : [ "\"Denominator Exclusions\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "146",
+                              "s" : [ {
+                                 "value" : [ "return " ]
+                              }, {
+                                 "r" : "145",
+                                 "s" : [ {
+                                    "value" : [ "{ " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "service",": " ]
+                                    }, {
+                                       "r" : "144",
+                                       "s" : [ {
+                                          "value" : [ "'Screening For Depression'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " }" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "148",
+               "locator" : "54:3-58:131",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "130",
+                  "locator" : "54:3-56:136",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "121",
+                     "locator" : "54:3-54:130",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "115",
+                        "locator" : "54:4-54:21",
+                        "alias" : "P",
+                        "expression" : {
+                           "localId" : "114",
+                           "locator" : "54:4-54:19",
+                           "name" : "Patient Record",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "117",
+                        "locator" : "54:23-54:78",
+                        "name" : "Denominator Exclusions",
+                        "libraryName" : "ScreeningForAlcoholMisuse",
+                        "type" : "ExpressionRef"
+                     },
+                     "return" : {
+                        "localId" : "120",
+                        "locator" : "54:80-54:129",
+                        "expression" : {
+                           "localId" : "119",
+                           "locator" : "54:87-54:129",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "service",
+                              "value" : {
+                                 "localId" : "118",
+                                 "locator" : "54:98-54:127",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "Screening For Alcohol Misuse",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }
+                  }, {
+                     "localId" : "129",
+                     "locator" : "56:11-56:136",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "123",
+                        "locator" : "56:12-56:29",
+                        "alias" : "P",
+                        "expression" : {
+                           "localId" : "122",
+                           "locator" : "56:12-56:27",
+                           "name" : "Patient Record",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "125",
+                        "locator" : "56:31-56:85",
+                        "name" : "Denominator Exclusions",
+                        "libraryName" : "ScreeningForBreastCancer",
+                        "type" : "ExpressionRef"
+                     },
+                     "return" : {
+                        "localId" : "128",
+                        "locator" : "56:87-56:135",
+                        "expression" : {
+                           "localId" : "127",
+                           "locator" : "56:94-56:135",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "service",
+                              "value" : {
+                                 "localId" : "126",
+                                 "locator" : "56:105-56:133",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "Screening For Breast Cancer",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               }, {
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "138",
+                     "locator" : "57:11-57:144",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "132",
+                        "locator" : "57:12-57:29",
+                        "alias" : "P",
+                        "expression" : {
+                           "localId" : "131",
+                           "locator" : "57:12-57:27",
+                           "name" : "Patient Record",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "134",
+                        "locator" : "57:31-57:89",
+                        "name" : "Denominator Exclusions",
+                        "libraryName" : "ScreeningForColorectalCancer",
+                        "type" : "ExpressionRef"
+                     },
+                     "return" : {
+                        "localId" : "137",
+                        "locator" : "57:91-57:143",
+                        "expression" : {
+                           "localId" : "136",
+                           "locator" : "57:98-57:143",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "service",
+                              "value" : {
+                                 "localId" : "135",
+                                 "locator" : "57:109-57:141",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "Screening For Colorectal Cancer",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }
+                  }, {
+                     "localId" : "147",
+                     "locator" : "58:11-58:131",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "141",
+                        "locator" : "58:12-58:29",
+                        "alias" : "P",
+                        "expression" : {
+                           "localId" : "140",
+                           "locator" : "58:12-58:27",
+                           "name" : "Patient Record",
+                           "type" : "ExpressionRef"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "143",
+                        "locator" : "58:31-58:83",
+                        "name" : "Denominator Exclusions",
+                        "libraryName" : "ScreeningForDepression",
+                        "type" : "ExpressionRef"
+                     },
+                     "return" : {
+                        "localId" : "146",
+                        "locator" : "58:85-58:130",
+                        "expression" : {
+                           "localId" : "145",
+                           "locator" : "58:92-58:130",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "service",
+                              "value" : {
+                                 "localId" : "144",
+                                 "locator" : "58:103-58:128",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "Screening For Depression",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     }
+                  } ]
+               } ]
+            }
+         }, {
+            "localId" : "194",
+            "locator" : "60:1-65:116",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "194",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\r\n  " ]
+                  }, {
+                     "r" : "193",
+                     "s" : [ {
+                        "r" : "184",
+                        "s" : [ {
+                           "r" : "175",
+                           "s" : [ {
+                              "r" : "166",
+                              "s" : [ {
+                                 "r" : "157",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "157",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "151",
+                                          "s" : [ {
+                                             "r" : "150",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "153",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "153",
+                                          "s" : [ {
+                                             "r" : "152",
+                                             "s" : [ {
+                                                "value" : [ "ScreeningForAlcoholMisuse" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "153",
+                                             "s" : [ {
+                                                "value" : [ "\"Numerator\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "156",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "155",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "154",
+                                                "s" : [ {
+                                                   "value" : [ "'Screening For Alcohol Misuse'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\r\n\t  union " ]
+                              }, {
+                                 "r" : "165",
+                                 "s" : [ {
+                                    "value" : [ "(" ]
+                                 }, {
+                                    "r" : "165",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "r" : "159",
+                                          "s" : [ {
+                                             "r" : "158",
+                                             "s" : [ {
+                                                "s" : [ {
+                                                   "value" : [ "\"Patient Record\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " ","P" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "161",
+                                       "s" : [ {
+                                          "value" : [ "where " ]
+                                       }, {
+                                          "r" : "161",
+                                          "s" : [ {
+                                             "r" : "160",
+                                             "s" : [ {
+                                                "value" : [ "HypertensionAssessment" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "161",
+                                             "s" : [ {
+                                                "value" : [ "\"Numerator\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "164",
+                                       "s" : [ {
+                                          "value" : [ "return " ]
+                                       }, {
+                                          "r" : "163",
+                                          "s" : [ {
+                                             "value" : [ "{ " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "service",": " ]
+                                             }, {
+                                                "r" : "162",
+                                                "s" : [ {
+                                                   "value" : [ "'Hypertension Assessment'" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " }" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ")" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\r\n\t\tunion " ]
+                           }, {
+                              "r" : "174",
+                              "s" : [ {
+                                 "value" : [ "(" ]
+                              }, {
+                                 "r" : "174",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "168",
+                                       "s" : [ {
+                                          "r" : "167",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Record\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","P" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "170",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "170",
+                                       "s" : [ {
+                                          "r" : "169",
+                                          "s" : [ {
+                                             "value" : [ "ScreeningForBreastCancer" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "170",
+                                          "s" : [ {
+                                             "value" : [ "\"Numerator\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " " ]
+                                 }, {
+                                    "r" : "173",
+                                    "s" : [ {
+                                       "value" : [ "return " ]
+                                    }, {
+                                       "r" : "172",
+                                       "s" : [ {
+                                          "value" : [ "{ " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "service",": " ]
+                                          }, {
+                                             "r" : "171",
+                                             "s" : [ {
+                                                "value" : [ "'Screening For Breast Cancer'" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " }" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\r\n\t\tunion " ]
+                        }, {
+                           "r" : "183",
+                           "s" : [ {
+                              "value" : [ "(" ]
+                           }, {
+                              "r" : "183",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "177",
+                                    "s" : [ {
+                                       "r" : "176",
+                                       "s" : [ {
+                                          "s" : [ {
+                                             "value" : [ "\"Patient Record\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","P" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "179",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "179",
+                                    "s" : [ {
+                                       "r" : "178",
+                                       "s" : [ {
+                                          "value" : [ "ScreeningForColorectalCancer" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "179",
+                                       "s" : [ {
+                                          "value" : [ "\"Numerator\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " " ]
+                              }, {
+                                 "r" : "182",
+                                 "s" : [ {
+                                    "value" : [ "return " ]
+                                 }, {
+                                    "r" : "181",
+                                    "s" : [ {
+                                       "value" : [ "{ " ]
+                                    }, {
+                                       "s" : [ {
+                                          "value" : [ "service",": " ]
+                                       }, {
+                                          "r" : "180",
+                                          "s" : [ {
+                                             "value" : [ "'Screening For Colorectal Cancer'" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " }" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\r\n\t\tunion " ]
+                     }, {
+                        "r" : "192",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "192",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "186",
+                                 "s" : [ {
+                                    "r" : "185",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Patient Record\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","P" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "188",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "188",
+                                 "s" : [ {
+                                    "r" : "187",
+                                    "s" : [ {
+                                       "value" : [ "ScreeningForDepression" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "188",
+                                    "s" : [ {
+                                       "value" : [ "\"Numerator\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " " ]
+                           }, {
+                              "r" : "191",
+                              "s" : [ {
+                                 "value" : [ "return " ]
+                              }, {
+                                 "r" : "190",
+                                 "s" : [ {
+                                    "value" : [ "{ " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "service",": " ]
+                                    }, {
+                                       "r" : "189",
+                                       "s" : [ {
+                                          "value" : [ "'Screening For Depression'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " }" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "193",
+               "locator" : "61:3-65:116",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "184",
+                  "locator" : "61:3-64:129",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "166",
+                     "locator" : "61:3-62:116",
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "157",
+                        "locator" : "61:3-61:117",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "151",
+                           "locator" : "61:4-61:21",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "150",
+                              "locator" : "61:4-61:19",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "153",
+                           "locator" : "61:23-61:65",
+                           "name" : "Numerator",
+                           "libraryName" : "ScreeningForAlcoholMisuse",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "156",
+                           "locator" : "61:67-61:116",
+                           "expression" : {
+                              "localId" : "155",
+                              "locator" : "61:74-61:116",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "154",
+                                    "locator" : "61:85-61:114",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Alcohol Misuse",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "165",
+                        "locator" : "62:10-62:116",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "159",
+                           "locator" : "62:11-62:28",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "158",
+                              "locator" : "62:11-62:26",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "161",
+                           "locator" : "62:30-62:69",
+                           "name" : "Numerator",
+                           "libraryName" : "HypertensionAssessment",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "164",
+                           "locator" : "62:71-62:115",
+                           "expression" : {
+                              "localId" : "163",
+                              "locator" : "62:78-62:115",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "162",
+                                    "locator" : "62:89-62:113",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Hypertension Assessment",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  }, {
+                     "type" : "Union",
+                     "operand" : [ {
+                        "localId" : "174",
+                        "locator" : "63:9-63:121",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "168",
+                           "locator" : "63:10-63:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "167",
+                              "locator" : "63:10-63:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "170",
+                           "locator" : "63:29-63:70",
+                           "name" : "Numerator",
+                           "libraryName" : "ScreeningForBreastCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "173",
+                           "locator" : "63:72-63:120",
+                           "expression" : {
+                              "localId" : "172",
+                              "locator" : "63:79-63:120",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "171",
+                                    "locator" : "63:90-63:118",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Breast Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "183",
+                        "locator" : "64:9-64:129",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "177",
+                           "locator" : "64:10-64:27",
+                           "alias" : "P",
+                           "expression" : {
+                              "localId" : "176",
+                              "locator" : "64:10-64:25",
+                              "name" : "Patient Record",
+                              "type" : "ExpressionRef"
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "179",
+                           "locator" : "64:29-64:74",
+                           "name" : "Numerator",
+                           "libraryName" : "ScreeningForColorectalCancer",
+                           "type" : "ExpressionRef"
+                        },
+                        "return" : {
+                           "localId" : "182",
+                           "locator" : "64:76-64:128",
+                           "expression" : {
+                              "localId" : "181",
+                              "locator" : "64:83-64:128",
+                              "type" : "Tuple",
+                              "element" : [ {
+                                 "name" : "service",
+                                 "value" : {
+                                    "localId" : "180",
+                                    "locator" : "64:94-64:126",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                    "value" : "Screening For Colorectal Cancer",
+                                    "type" : "Literal"
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "192",
+                  "locator" : "65:9-65:116",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "186",
+                     "locator" : "65:10-65:27",
+                     "alias" : "P",
+                     "expression" : {
+                        "localId" : "185",
+                        "locator" : "65:10-65:25",
+                        "name" : "Patient Record",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "188",
+                     "locator" : "65:29-65:68",
+                     "name" : "Numerator",
+                     "libraryName" : "ScreeningForDepression",
+                     "type" : "ExpressionRef"
+                  },
+                  "return" : {
+                     "localId" : "191",
+                     "locator" : "65:70-65:115",
+                     "expression" : {
+                        "localId" : "190",
+                        "locator" : "65:77-65:115",
+                        "type" : "Tuple",
+                        "element" : [ {
+                           "name" : "service",
+                           "value" : {
+                              "localId" : "189",
+                              "locator" : "65:88-65:113",
+                              "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                              "value" : "Screening For Depression",
+                              "type" : "Literal"
+                           }
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}
+

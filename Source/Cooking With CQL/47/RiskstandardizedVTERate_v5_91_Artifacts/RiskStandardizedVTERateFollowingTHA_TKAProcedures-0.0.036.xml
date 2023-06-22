@@ -1,0 +1,3296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="RiskStandardizedVTERateFollowingTHA_TKAProcedures" version="0.0.036"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_5" version="5.5"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:64" localIdentifier="Global" path="MATGlobalCommonFunctions" version="5.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="37" locator="39:1-39:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="36" locator="39:32-39:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="35" locator="39:41-39:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="3" locator="7:1-7:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public"/>
+      <def localId="4" locator="8:1-8:55" name="SNOMEDCT" id="urn:oid:2.16.840.1.113883.6.96" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="5" locator="10:1-10:88" name="Anticoagulant Medications, Injection" id="urn:oid:2.16.840.1.113762.1.4.1206.21" accessLevel="Public"/>
+      <def localId="6" locator="11:1-11:83" name="Anticoagulant Medications, Oral" id="urn:oid:2.16.840.1.113762.1.4.1206.20" accessLevel="Public"/>
+      <def localId="7" locator="12:1-12:74" name="Atrial Fibrillation" id="urn:oid:2.16.840.1.113883.17.4077.3.1001" accessLevel="Public"/>
+      <def localId="8" locator="13:1-13:59" name="Cancer" id="urn:oid:2.16.840.1.113883.3.526.3.1010" accessLevel="Public"/>
+      <def localId="9" locator="14:1-14:83" name="Coagulation Disorder Conditions" id="urn:oid:2.16.840.1.113762.1.4.1206.17" accessLevel="Public"/>
+      <def localId="10" locator="15:1-15:76" name="Comorbidity Risk Factors" id="urn:oid:2.16.840.1.113762.1.4.1206.13" accessLevel="Public"/>
+      <def localId="11" locator="16:1-16:80" name="Current Smoking Tobacco User" id="urn:oid:2.16.840.1.113762.1.4.1111.99" accessLevel="Public"/>
+      <def localId="12" locator="17:1-17:71" name="Encounter Inpatient" id="urn:oid:2.16.840.1.113883.3.666.5.307" accessLevel="Public"/>
+      <def localId="13" locator="18:1-18:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="14" locator="19:1-19:98" name="Fracture Exclusions For Hip And Knee Procedures" id="urn:oid:2.16.840.1.113762.1.4.1206.2" accessLevel="Public"/>
+      <def localId="15" locator="20:1-20:67" name="General Surgery" id="urn:oid:2.16.840.1.113762.1.4.1206.15" accessLevel="Public"/>
+      <def localId="16" locator="21:1-21:83" name="Left Against Medical Advice" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.308" accessLevel="Public"/>
+      <def localId="17" locator="22:1-22:118" name="Malignant Neoplasm Complications Related To Hip and Knee Procedures" id="urn:oid:2.16.840.1.113762.1.4.1206.7" accessLevel="Public"/>
+      <def localId="18" locator="23:1-23:110" name="Mechanical Complications Related To Hip and Knee Procedures" id="urn:oid:2.16.840.1.113762.1.4.1206.1" accessLevel="Public"/>
+      <def localId="19" locator="24:1-24:95" name="Nonprimary Total Hip, Total Knee Replacement" id="urn:oid:2.16.840.1.113762.1.4.1206.5" accessLevel="Public"/>
+      <def localId="20" locator="25:1-25:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="21" locator="26:1-26:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+      <def localId="22" locator="27:1-27:80" name="Pulmonary Embolism or DVT" id="urn:oid:2.16.840.1.113883.17.4077.3.1036" accessLevel="Public"/>
+      <def localId="23" locator="28:1-28:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="24" locator="29:1-29:71" name="Renal insufficiency" id="urn:oid:2.16.840.1.113883.3.3157.1330" accessLevel="Public"/>
+      <def localId="25" locator="30:1-30:74" name="Tobacco Use Screening" id="urn:oid:2.16.840.1.113883.3.526.3.1278" accessLevel="Public"/>
+      <def localId="26" locator="31:1-31:85" name="Total Hip, Total Knee Replacement" id="urn:oid:2.16.840.1.113762.1.4.1029.96" accessLevel="Public"/>
+      <def localId="27" locator="32:1-32:85" name="Transfer From Acute Care Hospital" id="urn:oid:2.16.840.1.113883.13.190.5.43" accessLevel="Public"/>
+      <def localId="28" locator="33:1-33:78" name="Venous Thromboembolism" id="urn:oid:2.16.840.1.113883.3.117.1.7.1.279" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="30" locator="35:1-35:100" name="Body mass index (BMI) [Ratio]" id="39156-5" display="Body mass index (BMI) [Ratio]" accessLevel="Public">
+         <codeSystem localId="29" locator="35:54-35:60" name="LOINC"/>
+      </def>
+      <def localId="32" locator="36:1-36:168" name="Hospital-based outpatient emergency care center (environment)" id="73770003" display="Hospital-based outpatient emergency care center (environment)" accessLevel="Public">
+         <codeSystem localId="31" locator="36:87-36:96" name="SNOMEDCT"/>
+      </def>
+      <def localId="34" locator="37:1-37:139" name="Outpatient surgery service (qualifier value)" id="2621000175106" display="Outpatient surgery service (qualifier value)" accessLevel="Public">
+         <codeSystem localId="33" locator="37:75-37:84" name="SNOMEDCT"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="41:1-41:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="41:1-41:15" xmlns:ns0="urn:healthit-gov:qdm:v5_5" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="47" locator="138:1-141:69" name="Patient Encounters" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="47">
+               <a:s>define &quot;Patient Encounters&quot;:
+  </a:s>
+               <a:s r="46">
+                  <a:s>
+                     <a:s r="41">
+                        <a:s r="40">
+                           <a:s>( </a:s>
+                           <a:s r="40">
+                              <a:s r="38">
+                                 <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Encounter Inpatient&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="39">
+                                 <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Outpatient surgery service (qualifier value)&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="45">
+                     <a:s>where </a:s>
+                     <a:s r="45">
+                        <a:s r="43">
+                           <a:s r="42">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="43">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="45"> starts during </a:s>
+                        <a:s r="44">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="46" locator="139:3-141:69" xsi:type="Query">
+            <source localId="41" locator="139:3-140:94" alias="Encounter">
+               <expression localId="40" locator="139:3-140:84" xsi:type="Union">
+                  <operand localId="38" locator="139:5-139:51" xmlns:ns1="urn:healthit-gov:qdm:v5_5" dataType="ns1:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="139:30-139:50" name="Encounter Inpatient" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand localId="39" locator="140:11-140:82" xmlns:ns2="urn:healthit-gov:qdm:v5_5" dataType="ns2:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand locator="140:36-140:81" name="Outpatient surgery service (qualifier value)" xsi:type="CodeRef"/>
+                     </codes>
+                  </operand>
+               </expression>
+            </source>
+            <where localId="45" locator="141:5-141:69" xsi:type="In">
+               <operand locator="141:36-141:41" xsi:type="Start">
+                  <operand localId="43" locator="141:11-141:34" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+               </operand>
+               <operand localId="44" locator="141:50-141:69" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="57" locator="143:1-145:76" name="Primary THA-TKA Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="57">
+               <a:s>define &quot;Primary THA-TKA Procedures&quot;:
+  </a:s>
+               <a:s r="56">
+                  <a:s>
+                     <a:s r="51">
+                        <a:s r="50">
+                           <a:s r="50">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Total Hip, Total Knee Replacement&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> PrimaryProcedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="55">
+                     <a:s>where </a:s>
+                     <a:s r="55">
+                        <a:s r="53">
+                           <a:s r="52">
+                              <a:s>PrimaryProcedure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="53">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="55"> starts during </a:s>
+                        <a:s r="54">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="56" locator="144:3-145:76" xsi:type="Query">
+            <source localId="51" locator="144:3-144:80" alias="PrimaryProcedure">
+               <expression localId="50" locator="144:3-144:63" xmlns:ns3="urn:healthit-gov:qdm:v5_5" dataType="ns3:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="144:28-144:62" name="Total Hip, Total Knee Replacement" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="55" locator="145:5-145:76" xsi:type="In">
+               <operand locator="145:43-145:48" xsi:type="Start">
+                  <operand localId="53" locator="145:11-145:41" path="relevantPeriod" scope="PrimaryProcedure" xsi:type="Property"/>
+               </operand>
+               <operand localId="54" locator="145:57-145:76" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="70" locator="147:1-155:5" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="70">
+               <a:s>define &quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;:
+  </a:s>
+               <a:s r="69">
+                  <a:s>
+                     <a:s>from
+    </a:s>
+                     <a:s r="49">
+                        <a:s r="48">
+                           <a:s>
+                              <a:s>&quot;Patient Encounters&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Encounter</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="59">
+                        <a:s r="58">
+                           <a:s>
+                              <a:s>&quot;Primary THA-TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Procedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="64">
+                     <a:s>where </a:s>
+                     <a:s r="64">
+                        <a:s r="61">
+                           <a:s r="60">
+                              <a:s>Procedure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="61">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="64"> starts during </a:s>
+                        <a:s r="63">
+                           <a:s r="62">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="63">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="68">
+                     <a:s>return </a:s>
+                     <a:s r="67">
+                        <a:s>{
+      </a:s>
+                        <a:s>
+                           <a:s>QEncounter: </a:s>
+                           <a:s r="65">
+                              <a:s>Encounter</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s>
+                           <a:s>QProcedure: </a:s>
+                           <a:s r="66">
+                              <a:s>Procedure</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    }</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="69" locator="148:3-155:5" xsi:type="Query">
+            <source localId="49" locator="149:5-149:34" alias="Encounter">
+               <expression localId="48" locator="149:5-149:24" name="Patient Encounters" xsi:type="ExpressionRef"/>
+            </source>
+            <source localId="59" locator="150:5-150:42" alias="Procedure">
+               <expression localId="58" locator="150:5-150:32" name="Primary THA-TKA Procedures" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="64" locator="151:5-151:73" xsi:type="In">
+               <operand locator="151:36-151:41" xsi:type="Start">
+                  <operand localId="61" locator="151:11-151:34" path="relevantPeriod" scope="Procedure" xsi:type="Property"/>
+               </operand>
+               <operand localId="63" locator="151:50-151:73" path="relevantPeriod" scope="Encounter" xsi:type="Property"/>
+            </where>
+            <return localId="68" locator="152:5-155:5">
+               <expression localId="67" locator="152:12-155:5" xsi:type="Tuple">
+                  <element name="QEncounter">
+                     <value localId="65" locator="153:19-153:27" name="Encounter" xsi:type="AliasRef"/>
+                  </element>
+                  <element name="QProcedure">
+                     <value localId="66" locator="154:19-154:27" name="Procedure" xsi:type="AliasRef"/>
+                  </element>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="87" locator="90:1-93:124" name="Encounter Related To Elective Primary THA and TKA Procedures With Age" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="87">
+               <a:s>define &quot;Encounter Related To Elective Primary THA and TKA Procedures With Age&quot;:
+  </a:s>
+               <a:s r="86">
+                  <a:s>
+                     <a:s r="72">
+                        <a:s r="71">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="85">
+                     <a:s>with </a:s>
+                     <a:s r="74">
+                        <a:s r="73">
+                           <a:s r="73">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> PatientBirthday</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="84">
+                        <a:s r="82">
+                           <a:s r="75">
+                              <a:s>Global</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="82">
+                              <a:s>&quot;CalendarAgeInYearsAt&quot; ( </a:s>
+                              <a:s r="77">
+                                 <a:s r="76">
+                                    <a:s>PatientBirthday</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="77">
+                                    <a:s>birthDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="81">
+                                 <a:s>start of </a:s>
+                                 <a:s r="80">
+                                    <a:s r="79">
+                                       <a:s r="78">
+                                          <a:s>QE</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="79">
+                                          <a:s>QEncounter</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="80">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="83"> >= 18</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="86" locator="91:3-93:124" xsi:type="Query">
+            <source localId="72" locator="91:3-91:79" alias="QE">
+               <expression localId="71" locator="91:3-91:76" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="85" locator="92:5-93:124" alias="PatientBirthday" xsi:type="With">
+               <expression localId="73" locator="92:10-92:45" xmlns:ns4="urn:healthit-gov:qdm:v5_5" dataType="ns4:PatientCharacteristicBirthdate" xsi:type="Retrieve"/>
+               <suchThat localId="84" locator="93:17-93:124" xsi:type="GreaterOrEqual">
+                  <operand localId="82" locator="93:17-93:118" name="CalendarAgeInYearsAt" libraryName="Global" xsi:type="FunctionRef">
+                     <operand localId="77" locator="93:49-93:77" path="birthDatetime" scope="PatientBirthday" xsi:type="Property"/>
+                     <operand localId="81" locator="93:80-93:116" xsi:type="Start">
+                        <operand localId="80" locator="93:89-93:116" path="relevantPeriod" xsi:type="Property">
+                           <source localId="79" locator="93:89-93:101" path="QEncounter" scope="QE" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="83" locator="93:123-93:124" valueType="t:Integer" value="18" xsi:type="Literal"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="90" locator="116:1-117:80" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="90">
+               <a:s>define &quot;Initial Population&quot;:
+  </a:s>
+               <a:s r="89">
+                  <a:s>exists </a:s>
+                  <a:s r="88">
+                     <a:s>&quot;Encounter Related To Elective Primary THA and TKA Procedures With Age&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="89" locator="117:3-117:80" xsi:type="Exists">
+            <operand localId="88" locator="117:10-117:80" name="Encounter Related To Elective Primary THA and TKA Procedures With Age" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="92" locator="43:1-44:22" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="92">
+               <a:s>define &quot;Denominator&quot;:
+  </a:s>
+               <a:s r="91">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="91" locator="44:3-44:22" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="107" locator="46:1-49:119" name="Diagnosed With Atrial Fibrillation 365 Days Prior To Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="107">
+               <a:s>define &quot;Diagnosed With Atrial Fibrillation 365 Days Prior To Procedure&quot;:
+  </a:s>
+               <a:s r="106">
+                  <a:s>
+                     <a:s r="94">
+                        <a:s r="93">
+                           <a:s r="93">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Atrial Fibrillation&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AFDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="105">
+                     <a:s>with </a:s>
+                     <a:s r="96">
+                        <a:s r="95">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="104">
+                        <a:s r="98">
+                           <a:s r="97">
+                              <a:s>AFDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="98">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="104">
+                           <a:s>starts </a:s>
+                           <a:s r="103">
+                              <a:s>365 days</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="102">
+                           <a:s>start of </a:s>
+                           <a:s r="101">
+                              <a:s r="100">
+                                 <a:s r="99">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="100">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="101">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="106" locator="47:3-49:119" xsi:type="Query">
+            <source localId="94" locator="47:3-47:50" alias="AFDiagnosis">
+               <expression localId="93" locator="47:3-47:38" xmlns:ns5="urn:healthit-gov:qdm:v5_5" dataType="ns5:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="47:17-47:37" name="Atrial Fibrillation" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="105" locator="48:5-49:119" alias="QP" xsi:type="With">
+               <expression localId="95" locator="48:10-48:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="104" locator="49:17-49:119" xsi:type="And">
+                  <operand locator="49:53-49:68" xsi:type="In">
+                     <operand locator="49:46-49:51" xsi:type="Start">
+                        <operand localId="98" locator="49:17-49:44" path="prevalencePeriod" scope="AFDiagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="49:53-49:68" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="49:83-49:119" xsi:type="Subtract">
+                           <operand localId="102" locator="49:83-49:119" xsi:type="Start">
+                              <operand localId="101" locator="49:92-49:119" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="100" locator="49:92-49:104" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="103" locator="49:53-49:60" value="365" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="102" locator="49:83-49:119" xsi:type="Start">
+                           <operand localId="101" locator="49:92-49:119" path="relevantPeriod" xsi:type="Property">
+                              <source localId="100" locator="49:92-49:104" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="49:53-49:68" xsi:type="Not">
+                     <operand locator="49:53-49:68" xsi:type="IsNull">
+                        <operand localId="102" locator="49:83-49:119" xsi:type="Start">
+                           <operand localId="101" locator="49:92-49:119" path="relevantPeriod" xsi:type="Property">
+                              <source localId="100" locator="49:92-49:104" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="122" locator="51:1-54:123" name="Diagnosed With Cancer 365 Days Prior To Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="122">
+               <a:s>define &quot;Diagnosed With Cancer 365 Days Prior To Procedure&quot;:
+  </a:s>
+               <a:s r="121">
+                  <a:s>
+                     <a:s r="109">
+                        <a:s r="108">
+                           <a:s r="108">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Cancer&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> CancerDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="120">
+                     <a:s>with </a:s>
+                     <a:s r="111">
+                        <a:s r="110">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="119">
+                        <a:s r="113">
+                           <a:s r="112">
+                              <a:s>CancerDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="113">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="119">
+                           <a:s>starts </a:s>
+                           <a:s r="118">
+                              <a:s>365 days</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="117">
+                           <a:s>start of </a:s>
+                           <a:s r="116">
+                              <a:s r="115">
+                                 <a:s r="114">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="115">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="116">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="121" locator="52:3-54:123" xsi:type="Query">
+            <source localId="109" locator="52:3-52:41" alias="CancerDiagnosis">
+               <expression localId="108" locator="52:3-52:25" xmlns:ns6="urn:healthit-gov:qdm:v5_5" dataType="ns6:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="52:17-52:24" name="Cancer" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="120" locator="53:5-54:123" alias="QP" xsi:type="With">
+               <expression localId="110" locator="53:10-53:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="119" locator="54:17-54:123" xsi:type="And">
+                  <operand locator="54:57-54:72" xsi:type="In">
+                     <operand locator="54:50-54:55" xsi:type="Start">
+                        <operand localId="113" locator="54:17-54:48" path="prevalencePeriod" scope="CancerDiagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="54:57-54:72" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="54:87-54:123" xsi:type="Subtract">
+                           <operand localId="117" locator="54:87-54:123" xsi:type="Start">
+                              <operand localId="116" locator="54:96-54:123" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="115" locator="54:96-54:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="118" locator="54:57-54:64" value="365" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="117" locator="54:87-54:123" xsi:type="Start">
+                           <operand localId="116" locator="54:96-54:123" path="relevantPeriod" xsi:type="Property">
+                              <source localId="115" locator="54:96-54:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="54:57-54:72" xsi:type="Not">
+                     <operand locator="54:57-54:72" xsi:type="IsNull">
+                        <operand localId="117" locator="54:87-54:123" xsi:type="Start">
+                           <operand localId="116" locator="54:96-54:123" path="relevantPeriod" xsi:type="Property">
+                              <source localId="115" locator="54:96-54:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="137" locator="56:1-59:136" name="Diagnosed With Coagulation Disorder 365 Days Prior To Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="137">
+               <a:s>define &quot;Diagnosed With Coagulation Disorder 365 Days Prior To Procedure&quot;:
+  </a:s>
+               <a:s r="136">
+                  <a:s>
+                     <a:s r="124">
+                        <a:s r="123">
+                           <a:s r="123">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Coagulation Disorder Conditions&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> CoagulationDisorderDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="135">
+                     <a:s>with </a:s>
+                     <a:s r="126">
+                        <a:s r="125">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="134">
+                        <a:s r="128">
+                           <a:s r="127">
+                              <a:s>CoagulationDisorderDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="128">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="134">
+                           <a:s>starts </a:s>
+                           <a:s r="133">
+                              <a:s>365 days</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="132">
+                           <a:s>start of </a:s>
+                           <a:s r="131">
+                              <a:s r="130">
+                                 <a:s r="129">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="130">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="131">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="136" locator="57:3-59:136" xsi:type="Query">
+            <source localId="124" locator="57:3-57:79" alias="CoagulationDisorderDiagnosis">
+               <expression localId="123" locator="57:3-57:50" xmlns:ns7="urn:healthit-gov:qdm:v5_5" dataType="ns7:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="57:17-57:49" name="Coagulation Disorder Conditions" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="135" locator="58:5-59:136" alias="QP" xsi:type="With">
+               <expression localId="125" locator="58:10-58:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="134" locator="59:17-59:136" xsi:type="And">
+                  <operand locator="59:70-59:85" xsi:type="In">
+                     <operand locator="59:63-59:68" xsi:type="Start">
+                        <operand localId="128" locator="59:17-59:61" path="prevalencePeriod" scope="CoagulationDisorderDiagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="59:70-59:85" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="59:100-59:136" xsi:type="Subtract">
+                           <operand localId="132" locator="59:100-59:136" xsi:type="Start">
+                              <operand localId="131" locator="59:109-59:136" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="130" locator="59:109-59:121" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="133" locator="59:70-59:77" value="365" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="132" locator="59:100-59:136" xsi:type="Start">
+                           <operand localId="131" locator="59:109-59:136" path="relevantPeriod" xsi:type="Property">
+                              <source localId="130" locator="59:109-59:121" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="59:70-59:85" xsi:type="Not">
+                     <operand locator="59:70-59:85" xsi:type="IsNull">
+                        <operand localId="132" locator="59:100-59:136" xsi:type="Start">
+                           <operand localId="131" locator="59:109-59:136" path="relevantPeriod" xsi:type="Property">
+                              <source localId="130" locator="59:109-59:121" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="156" locator="61:1-66:125" name="Diagnosed With Excluded Conditions Within 90 Days Prior To The Index Admission" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="156">
+               <a:s>define &quot;Diagnosed With Excluded Conditions Within 90 Days Prior To The Index Admission&quot;:
+  </a:s>
+               <a:s r="155">
+                  <a:s>
+                     <a:s r="143">
+                        <a:s r="142">
+                           <a:s>( </a:s>
+                           <a:s r="142">
+                              <a:s r="140">
+                                 <a:s r="138">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Malignant Neoplasm Complications Related To Hip and Knee Procedures&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                                 <a:s>
+    union </a:s>
+                                 <a:s r="139">
+                                    <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                    <a:s>
+                                       <a:s>&quot;Mechanical Complications Related To Hip and Knee Procedures&quot;</a:s>
+                                    </a:s>
+                                    <a:s>]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="141">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Fracture Exclusions For Hip And Knee Procedures&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> ExistingConditions</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="154">
+                     <a:s>with </a:s>
+                     <a:s r="145">
+                        <a:s r="144">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="153">
+                        <a:s r="147">
+                           <a:s r="146">
+                              <a:s>ExistingConditions</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="147">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="153">
+                           <a:s>starts </a:s>
+                           <a:s r="152">
+                              <a:s>90 days</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="151">
+                           <a:s>start of </a:s>
+                           <a:s r="150">
+                              <a:s r="149">
+                                 <a:s r="148">
+                                    <a:s>QE</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="149">
+                                    <a:s>QEncounter</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="150">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="155" locator="62:3-66:125" xsi:type="Query">
+            <source localId="143" locator="62:3-64:95" alias="ExistingConditions">
+               <expression localId="142" locator="62:3-64:76" xsi:type="Union">
+                  <operand localId="140" locator="62:5-63:86" xsi:type="Union">
+                     <operand localId="138" locator="62:5-62:88" xmlns:ns8="urn:healthit-gov:qdm:v5_5" dataType="ns8:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                        <codes locator="62:19-62:87" name="Malignant Neoplasm Complications Related To Hip and Knee Procedures" xsi:type="ValueSetRef"/>
+                     </operand>
+                     <operand localId="139" locator="63:11-63:86" xmlns:ns9="urn:healthit-gov:qdm:v5_5" dataType="ns9:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                        <codes locator="63:25-63:85" name="Mechanical Complications Related To Hip and Knee Procedures" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="141" locator="64:11-64:74" xmlns:ns10="urn:healthit-gov:qdm:v5_5" dataType="ns10:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="64:25-64:73" name="Fracture Exclusions For Hip And Knee Procedures" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <relationship localId="154" locator="65:5-66:125" alias="QE" xsi:type="With">
+               <expression localId="144" locator="65:10-65:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="153" locator="66:17-66:125" xsi:type="And">
+                  <operand locator="66:60-66:74" xsi:type="In">
+                     <operand locator="66:53-66:58" xsi:type="Start">
+                        <operand localId="147" locator="66:17-66:51" path="prevalencePeriod" scope="ExistingConditions" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="66:60-66:74" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="66:89-66:125" xsi:type="Subtract">
+                           <operand localId="151" locator="66:89-66:125" xsi:type="Start">
+                              <operand localId="150" locator="66:98-66:125" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="149" locator="66:98-66:110" path="QEncounter" scope="QE" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="152" locator="66:60-66:66" value="90" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="151" locator="66:89-66:125" xsi:type="Start">
+                           <operand localId="150" locator="66:98-66:125" path="relevantPeriod" xsi:type="Property">
+                              <source localId="149" locator="66:98-66:110" path="QEncounter" scope="QE" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="66:60-66:74" xsi:type="Not">
+                     <operand locator="66:60-66:74" xsi:type="IsNull">
+                        <operand localId="151" locator="66:89-66:125" xsi:type="Start">
+                           <operand localId="150" locator="66:98-66:125" path="relevantPeriod" xsi:type="Property">
+                              <source localId="149" locator="66:98-66:110" path="QEncounter" scope="QE" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="171" locator="68:1-71:122" name="Diagnosed With Renal Insufficiency 365 Days Prior To Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="171">
+               <a:s>define &quot;Diagnosed With Renal Insufficiency 365 Days Prior To Procedure&quot;:
+  </a:s>
+               <a:s r="170">
+                  <a:s>
+                     <a:s r="158">
+                        <a:s r="157">
+                           <a:s r="157">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Renal insufficiency&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> RenalDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="169">
+                     <a:s>with </a:s>
+                     <a:s r="160">
+                        <a:s r="159">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="168">
+                        <a:s r="162">
+                           <a:s r="161">
+                              <a:s>RenalDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="162">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="168">
+                           <a:s>starts </a:s>
+                           <a:s r="167">
+                              <a:s>365 days</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="166">
+                           <a:s>start of </a:s>
+                           <a:s r="165">
+                              <a:s r="164">
+                                 <a:s r="163">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="164">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="165">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="170" locator="69:3-71:122" xsi:type="Query">
+            <source localId="158" locator="69:3-69:53" alias="RenalDiagnosis">
+               <expression localId="157" locator="69:3-69:38" xmlns:ns11="urn:healthit-gov:qdm:v5_5" dataType="ns11:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="69:17-69:37" name="Renal insufficiency" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="169" locator="70:5-71:122" alias="QP" xsi:type="With">
+               <expression localId="159" locator="70:10-70:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="168" locator="71:17-71:122" xsi:type="And">
+                  <operand locator="71:56-71:71" xsi:type="In">
+                     <operand locator="71:49-71:54" xsi:type="Start">
+                        <operand localId="162" locator="71:17-71:47" path="prevalencePeriod" scope="RenalDiagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="71:56-71:71" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="71:86-71:122" xsi:type="Subtract">
+                           <operand localId="166" locator="71:86-71:122" xsi:type="Start">
+                              <operand localId="165" locator="71:95-71:122" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="164" locator="71:95-71:107" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="167" locator="71:56-71:63" value="365" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="166" locator="71:86-71:122" xsi:type="Start">
+                           <operand localId="165" locator="71:95-71:122" path="relevantPeriod" xsi:type="Property">
+                              <source localId="164" locator="71:95-71:107" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="71:56-71:71" xsi:type="Not">
+                     <operand locator="71:56-71:71" xsi:type="IsNull">
+                        <operand localId="166" locator="71:86-71:122" xsi:type="Start">
+                           <operand localId="165" locator="71:95-71:122" path="relevantPeriod" xsi:type="Property">
+                              <source localId="164" locator="71:95-71:107" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="188" locator="73:1-77:113" name="Diagnosed With VTE or DVT 30 Days Prior To The Index Admission" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="188">
+               <a:s>define &quot;Diagnosed With VTE or DVT 30 Days Prior To The Index Admission&quot;:
+  </a:s>
+               <a:s r="187">
+                  <a:s>
+                     <a:s r="175">
+                        <a:s r="174">
+                           <a:s>( </a:s>
+                           <a:s r="174">
+                              <a:s r="172">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Venous Thromboembolism&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="173">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Pulmonary Embolism or DVT&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> VTEDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="186">
+                     <a:s>with </a:s>
+                     <a:s r="177">
+                        <a:s r="176">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="185">
+                        <a:s r="179">
+                           <a:s r="178">
+                              <a:s>VTEDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="179">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="185">
+                           <a:s>starts </a:s>
+                           <a:s r="184">
+                              <a:s>30 days</a:s>
+                           </a:s>
+                           <a:s> or less before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="183">
+                           <a:s>start of </a:s>
+                           <a:s r="182">
+                              <a:s r="181">
+                                 <a:s r="180">
+                                    <a:s>QE</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="181">
+                                    <a:s>QEncounter</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="182">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="187" locator="74:3-77:113" xsi:type="Query">
+            <source localId="175" locator="74:3-75:67" alias="VTEDiagnosis">
+               <expression localId="174" locator="74:3-75:54" xsi:type="Union">
+                  <operand localId="172" locator="74:5-74:43" xmlns:ns12="urn:healthit-gov:qdm:v5_5" dataType="ns12:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="74:19-74:42" name="Venous Thromboembolism" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand localId="173" locator="75:11-75:52" xmlns:ns13="urn:healthit-gov:qdm:v5_5" dataType="ns13:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="75:25-75:51" name="Pulmonary Embolism or DVT" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <relationship localId="186" locator="76:5-77:113" alias="QE" xsi:type="With">
+               <expression localId="176" locator="76:10-76:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="185" locator="77:17-77:113" xsi:type="And">
+                  <operand locator="77:54-77:68" xsi:type="In">
+                     <operand locator="77:47-77:52" xsi:type="Start">
+                        <operand localId="179" locator="77:17-77:45" path="prevalencePeriod" scope="VTEDiagnosis" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="77:54-77:68" lowClosed="true" highClosed="false" xsi:type="Interval">
+                        <low locator="77:77-77:113" xsi:type="Subtract">
+                           <operand localId="183" locator="77:77-77:113" xsi:type="Start">
+                              <operand localId="182" locator="77:86-77:113" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="181" locator="77:86-77:98" path="QEncounter" scope="QE" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="184" locator="77:54-77:60" value="30" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="183" locator="77:77-77:113" xsi:type="Start">
+                           <operand localId="182" locator="77:86-77:113" path="relevantPeriod" xsi:type="Property">
+                              <source localId="181" locator="77:86-77:98" path="QEncounter" scope="QE" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="77:54-77:68" xsi:type="Not">
+                     <operand locator="77:54-77:68" xsi:type="IsNull">
+                        <operand localId="183" locator="77:77-77:113" xsi:type="Start">
+                           <operand localId="182" locator="77:86-77:113" path="relevantPeriod" xsi:type="Property">
+                              <source localId="181" locator="77:86-77:98" path="QEncounter" scope="QE" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="203" locator="79:1-83:88" name="Diagnosed With VTE or DVT During The Index Admission" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="203">
+               <a:s>define &quot;Diagnosed With VTE or DVT During The Index Admission&quot;:
+  </a:s>
+               <a:s r="202">
+                  <a:s>
+                     <a:s r="192">
+                        <a:s r="191">
+                           <a:s>( </a:s>
+                           <a:s r="191">
+                              <a:s r="189">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Venous Thromboembolism&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="190">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Pulmonary Embolism or DVT&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> DVTDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="201">
+                     <a:s>with </a:s>
+                     <a:s r="194">
+                        <a:s r="193">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="200">
+                        <a:s r="196">
+                           <a:s r="195">
+                              <a:s>DVTDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="196">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="200"> starts during </a:s>
+                        <a:s r="199">
+                           <a:s r="198">
+                              <a:s r="197">
+                                 <a:s>QE</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="198">
+                                 <a:s>QEncounter</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="199">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="202" locator="80:3-83:88" xsi:type="Query">
+            <source localId="192" locator="80:3-81:67" alias="DVTDiagnosis">
+               <expression localId="191" locator="80:3-81:54" xsi:type="Union">
+                  <operand localId="189" locator="80:5-80:43" xmlns:ns14="urn:healthit-gov:qdm:v5_5" dataType="ns14:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="80:19-80:42" name="Venous Thromboembolism" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand localId="190" locator="81:11-81:52" xmlns:ns15="urn:healthit-gov:qdm:v5_5" dataType="ns15:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="81:25-81:51" name="Pulmonary Embolism or DVT" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <relationship localId="201" locator="82:5-83:88" alias="QE" xsi:type="With">
+               <expression localId="193" locator="82:10-82:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="200" locator="83:17-83:88" xsi:type="In">
+                  <operand locator="83:47-83:52" xsi:type="Start">
+                     <operand localId="196" locator="83:17-83:45" path="prevalencePeriod" scope="DVTDiagnosis" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="199" locator="83:61-83:88" path="relevantPeriod" xsi:type="Property">
+                     <source localId="198" locator="83:61-83:73" path="QEncounter" scope="QE" xsi:type="Property"/>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="218" locator="85:1-88:103" name="ED Visit Within 35 Days Of The Surgery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="218">
+               <a:s>define &quot;ED Visit Within 35 Days Of The Surgery&quot;:
+  </a:s>
+               <a:s r="217">
+                  <a:s>
+                     <a:s r="205">
+                        <a:s r="204">
+                           <a:s>
+                              <a:s>Global.&quot;ED Encounter&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EDVisit</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="216">
+                     <a:s>with </a:s>
+                     <a:s r="207">
+                        <a:s r="206">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="215">
+                        <a:s r="209">
+                           <a:s r="208">
+                              <a:s>EDVisit</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="209">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="215">
+                           <a:s>ends </a:s>
+                           <a:s r="214">
+                              <a:s>35 days</a:s>
+                           </a:s>
+                           <a:s> or less after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="213">
+                           <a:s>start of </a:s>
+                           <a:s r="212">
+                              <a:s r="211">
+                                 <a:s r="210">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="211">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="212">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="217" locator="86:3-88:103" xsi:type="Query">
+            <source localId="205" locator="86:3-86:31" alias="EDVisit">
+               <expression localId="204" locator="86:3-86:23" name="ED Encounter" libraryName="Global" xsi:type="ExpressionRef"/>
+            </source>
+            <relationship localId="216" locator="87:5-88:103" alias="QP" xsi:type="With">
+               <expression localId="206" locator="87:10-87:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="215" locator="88:17-88:103" xsi:type="And">
+                  <operand locator="88:45-88:59" xsi:type="In">
+                     <operand locator="88:40-88:43" xsi:type="End">
+                        <operand localId="209" locator="88:17-88:38" path="relevantPeriod" scope="EDVisit" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="88:45-88:59" lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <low localId="213" locator="88:67-88:103" xsi:type="Start">
+                           <operand localId="212" locator="88:76-88:103" path="relevantPeriod" xsi:type="Property">
+                              <source localId="211" locator="88:76-88:88" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </low>
+                        <high locator="88:67-88:103" xsi:type="Add">
+                           <operand localId="213" locator="88:67-88:103" xsi:type="Start">
+                              <operand localId="212" locator="88:76-88:103" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="211" locator="88:76-88:88" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="214" locator="88:45-88:51" value="35" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="88:45-88:59" xsi:type="Not">
+                     <operand locator="88:45-88:59" xsi:type="IsNull">
+                        <operand localId="213" locator="88:67-88:103" xsi:type="Start">
+                           <operand localId="212" locator="88:76-88:103" path="relevantPeriod" xsi:type="Property">
+                              <source localId="211" locator="88:76-88:88" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="233" locator="95:1-98:139" name="Existing Comorbidities Prior To Surgery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="233">
+               <a:s>define &quot;Existing Comorbidities Prior To Surgery&quot;:
+  </a:s>
+               <a:s r="232">
+                  <a:s>
+                     <a:s r="220">
+                        <a:s r="219">
+                           <a:s r="219">
+                              <a:s>[&quot;Diagnosis&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Comorbidity Risk Factors&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> Comorbidities</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="231">
+                     <a:s>with </a:s>
+                     <a:s r="222">
+                        <a:s r="221">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QualifyingEncounter</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="230">
+                        <a:s r="224">
+                           <a:s r="223">
+                              <a:s>Comorbidities</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="224">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="230">
+                           <a:s>starts </a:s>
+                           <a:s r="229">
+                              <a:s>12 months</a:s>
+                           </a:s>
+                           <a:s> or less on or before</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="228">
+                           <a:s>start of </a:s>
+                           <a:s r="227">
+                              <a:s r="226">
+                                 <a:s r="225">
+                                    <a:s>QualifyingEncounter</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="226">
+                                    <a:s>QEncounter</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="227">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="232" locator="96:3-98:139" xsi:type="Query">
+            <source localId="220" locator="96:3-96:57" alias="Comorbidities">
+               <expression localId="219" locator="96:3-96:43" xmlns:ns16="urn:healthit-gov:qdm:v5_5" dataType="ns16:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="96:17-96:42" name="Comorbidity Risk Factors" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="231" locator="97:5-98:139" alias="QualifyingEncounter" xsi:type="With">
+               <expression localId="221" locator="97:10-97:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="230" locator="98:17-98:139" xsi:type="And">
+                  <operand locator="98:55-98:71" xsi:type="In">
+                     <operand locator="98:48-98:53" xsi:type="Start">
+                        <operand localId="224" locator="98:17-98:46" path="prevalencePeriod" scope="Comorbidities" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="98:55-98:71" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low locator="98:86-98:139" xsi:type="Subtract">
+                           <operand localId="228" locator="98:86-98:139" xsi:type="Start">
+                              <operand localId="227" locator="98:95-98:139" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="226" locator="98:95-98:124" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="229" locator="98:55-98:63" value="12" unit="months" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="228" locator="98:86-98:139" xsi:type="Start">
+                           <operand localId="227" locator="98:95-98:139" path="relevantPeriod" xsi:type="Property">
+                              <source localId="226" locator="98:95-98:124" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                           </operand>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="98:55-98:71" xsi:type="Not">
+                     <operand locator="98:55-98:71" xsi:type="IsNull">
+                        <operand localId="228" locator="98:86-98:139" xsi:type="Start">
+                           <operand localId="227" locator="98:95-98:139" path="relevantPeriod" xsi:type="Property">
+                              <source localId="226" locator="98:95-98:124" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="248" locator="100:1-103:123" name="Had Additional Surgery Within 35 Days Post-Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="248">
+               <a:s>define &quot;Had Additional Surgery Within 35 Days Post-Procedure&quot;:
+  </a:s>
+               <a:s r="247">
+                  <a:s>
+                     <a:s r="235">
+                        <a:s r="234">
+                           <a:s r="234">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;General Surgery&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AdditionalProcedure</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="246">
+                     <a:s>with </a:s>
+                     <a:s r="237">
+                        <a:s r="236">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="245">
+                        <a:s r="239">
+                           <a:s r="238">
+                              <a:s>AdditionalProcedure</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="239">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="245">
+                           <a:s>starts </a:s>
+                           <a:s r="244">
+                              <a:s>35 days</a:s>
+                           </a:s>
+                           <a:s> or less on or after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="243">
+                           <a:s>start of </a:s>
+                           <a:s r="242">
+                              <a:s r="241">
+                                 <a:s r="240">
+                                    <a:s>QP</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="241">
+                                    <a:s>QProcedure</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="242">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="247" locator="101:3-103:123" xsi:type="Query">
+            <source localId="235" locator="101:3-101:65" alias="AdditionalProcedure">
+               <expression localId="234" locator="101:3-101:45" xmlns:ns17="urn:healthit-gov:qdm:v5_5" dataType="ns17:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="101:28-101:44" name="General Surgery" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="246" locator="102:5-103:123" alias="QP" xsi:type="With">
+               <expression localId="236" locator="102:10-102:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="245" locator="103:17-103:123" xsi:type="And">
+                  <operand locator="103:59-103:73" xsi:type="In">
+                     <operand locator="103:52-103:57" xsi:type="Start">
+                        <operand localId="239" locator="103:17-103:50" path="relevantPeriod" scope="AdditionalProcedure" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="103:59-103:73" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low localId="243" locator="103:87-103:123" xsi:type="Start">
+                           <operand localId="242" locator="103:96-103:123" path="relevantPeriod" xsi:type="Property">
+                              <source localId="241" locator="103:96-103:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </low>
+                        <high locator="103:87-103:123" xsi:type="Add">
+                           <operand localId="243" locator="103:87-103:123" xsi:type="Start">
+                              <operand localId="242" locator="103:96-103:123" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="241" locator="103:96-103:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="244" locator="103:59-103:65" value="35" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="103:59-103:73" xsi:type="Not">
+                     <operand locator="103:59-103:73" xsi:type="IsNull">
+                        <operand localId="243" locator="103:87-103:123" xsi:type="Start">
+                           <operand localId="242" locator="103:96-103:123" path="relevantPeriod" xsi:type="Property">
+                              <source localId="241" locator="103:96-103:108" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="259" locator="129:1-131:80" name="Non-Primary THA_TKA Procedures" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="259">
+               <a:s>define &quot;Non-Primary THA_TKA Procedures&quot;:
+  </a:s>
+               <a:s r="258">
+                  <a:s>
+                     <a:s r="253">
+                        <a:s r="252">
+                           <a:s r="252">
+                              <a:s>[&quot;Procedure, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Nonprimary Total Hip, Total Knee Replacement&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> NonPrimaryProcedures</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="257">
+                     <a:s>where </a:s>
+                     <a:s r="257">
+                        <a:s r="255">
+                           <a:s r="254">
+                              <a:s>NonPrimaryProcedures</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="255">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="257"> starts during </a:s>
+                        <a:s r="256">
+                           <a:s>&quot;Measurement Period&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="258" locator="130:3-131:80" xsi:type="Query">
+            <source localId="253" locator="130:3-130:95" alias="NonPrimaryProcedures">
+               <expression localId="252" locator="130:3-130:74" xmlns:ns18="urn:healthit-gov:qdm:v5_5" dataType="ns18:PositiveProcedurePerformed" templateId="PositiveProcedurePerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="130:28-130:73" name="Nonprimary Total Hip, Total Knee Replacement" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <where localId="257" locator="131:5-131:80" xsi:type="In">
+               <operand locator="131:47-131:52" xsi:type="Start">
+                  <operand localId="255" locator="131:11-131:45" path="relevantPeriod" scope="NonPrimaryProcedures" xsi:type="Property"/>
+               </operand>
+               <operand localId="256" locator="131:61-131:80" name="Measurement Period" xsi:type="ParameterRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="274" locator="105:1-110:8" name="Had More Than 2 THA_TKA Procedures Codes During The Index Admission" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="274">
+               <a:s>define &quot;Had More Than 2 THA_TKA Procedures Codes During The Index Admission&quot;:
+  </a:s>
+               <a:s r="273">
+                  <a:s>
+                     <a:s r="250">
+                        <a:s r="249">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="272">
+                     <a:s>where </a:s>
+                     <a:s r="272">
+                        <a:s r="270">
+                           <a:s>Count(</a:s>
+                           <a:s r="269">
+                              <a:s>
+                                 <a:s r="262">
+                                    <a:s r="261">
+                                       <a:s>(</a:s>
+                                       <a:s r="261">
+                                          <a:s r="251">
+                                             <a:s>&quot;Primary THA-TKA Procedures&quot;</a:s>
+                                          </a:s>
+                                          <a:s>
+        union </a:s>
+                                          <a:s r="260">
+                                             <a:s>&quot;Non-Primary THA_TKA Procedures&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                    <a:s>Procedures</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s r="268">
+                                 <a:s>where </a:s>
+                                 <a:s r="268">
+                                    <a:s r="264">
+                                       <a:s r="263">
+                                          <a:s>Procedures</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="264">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="268"> starts during </a:s>
+                                    <a:s r="267">
+                                       <a:s r="266">
+                                          <a:s r="265">
+                                             <a:s>QE</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="266">
+                                             <a:s>QEncounter</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="267">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+    )</a:s>
+                        </a:s>
+                        <a:s r="271">> 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="273" locator="106:3-110:8" xsi:type="Query">
+            <source localId="250" locator="106:3-106:79" alias="QE">
+               <expression localId="249" locator="106:3-106:76" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="272" locator="107:5-110:8" xsi:type="Greater">
+               <operand localId="270" locator="107:11-110:5" xsi:type="Count">
+                  <source localId="269" locator="107:17-109:82" xsi:type="Query">
+                     <source localId="262" locator="107:17-108:57" alias="Procedures">
+                        <expression localId="261" locator="107:17-108:47" xsi:type="Union">
+                           <operand localId="251" locator="107:18-107:45" name="Primary THA-TKA Procedures" xsi:type="ExpressionRef"/>
+                           <operand localId="260" locator="108:15-108:46" name="Non-Primary THA_TKA Procedures" xsi:type="ExpressionRef"/>
+                        </expression>
+                     </source>
+                     <where localId="268" locator="109:9-109:82" xsi:type="In">
+                        <operand locator="109:41-109:46" xsi:type="Start">
+                           <operand localId="264" locator="109:15-109:39" path="relevantPeriod" scope="Procedures" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="267" locator="109:55-109:82" path="relevantPeriod" xsi:type="Property">
+                           <source localId="266" locator="109:55-109:67" path="QEncounter" scope="QE" xsi:type="Property"/>
+                        </operand>
+                     </where>
+                  </source>
+               </operand>
+               <operand localId="271" locator="110:8" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="304" locator="119:1-127:3" name="Most Recent Documented BMI" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="304">
+               <a:s>define &quot;Most Recent Documented BMI&quot;:
+  </a:s>
+               <a:s r="303">
+                  <a:s>Last(</a:s>
+                  <a:s r="302">
+                     <a:s>
+                        <a:s r="276">
+                           <a:s r="275">
+                              <a:s r="275">
+                                 <a:s>[&quot;Physical Exam, Performed&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Body mass index (BMI) [Ratio]&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> LastBMI</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+      </a:s>
+                     <a:s r="298">
+                        <a:s>with </a:s>
+                        <a:s r="278">
+                           <a:s r="277">
+                              <a:s>
+                                 <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> QualifyingEncounter</a:s>
+                        </a:s>
+                        <a:s>
+        such that</a:s>
+                        <a:s r="297">
+                           <a:s r="293">
+                              <a:s>(</a:s>
+                              <a:s r="293">
+                                 <a:s r="286">
+                                    <a:s r="280">
+                                       <a:s r="279">
+                                          <a:s>LastBMI</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="280">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="286">
+                                       <a:s>starts </a:s>
+                                       <a:s r="285">
+                                          <a:s>12 months</a:s>
+                                       </a:s>
+                                       <a:s> or less on or before</a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="284">
+                                       <a:s>start of </a:s>
+                                       <a:s r="283">
+                                          <a:s r="282">
+                                             <a:s r="281">
+                                                <a:s>QualifyingEncounter</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="282">
+                                                <a:s>QEncounter</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="283">
+                                             <a:s>relevantPeriod</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+            or </a:s>
+                                 <a:s r="292">
+                                    <a:s r="288">
+                                       <a:s r="287">
+                                          <a:s>LastBMI</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="288">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="292"> starts during </a:s>
+                                    <a:s r="291">
+                                       <a:s r="290">
+                                          <a:s r="289">
+                                             <a:s>QualifyingEncounter</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="290">
+                                             <a:s>QEncounter</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="291">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        )</a:s>
+                           </a:s>
+                           <a:s>
+          and </a:s>
+                           <a:s r="296">
+                              <a:s r="295">
+                                 <a:s r="294">
+                                    <a:s>LastBMI</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="295">
+                                    <a:s>result</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> is not null</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+      </a:s>
+                     <a:s r="301">
+                        <a:s>sort by </a:s>
+                        <a:s r="300">
+                           <a:s r="299">
+                              <a:s>authorDatetime</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  )</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="303" locator="120:3-127:3" xsi:type="Last">
+            <source localId="302" locator="120:8-126:28" xsi:type="Query">
+               <source localId="276" locator="120:8-120:76" alias="LastBMI">
+                  <expression localId="275" locator="120:8-120:68" xmlns:ns19="urn:healthit-gov:qdm:v5_5" dataType="ns19:PositivePhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" codeProperty="code" xsi:type="Retrieve">
+                     <codes xsi:type="ToList">
+                        <operand locator="120:37-120:67" name="Body mass index (BMI) [Ratio]" xsi:type="CodeRef"/>
+                     </codes>
+                  </expression>
+               </source>
+               <relationship localId="298" locator="121:7-125:40" alias="QualifyingEncounter" xsi:type="With">
+                  <expression localId="277" locator="121:12-121:85" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+                  <suchThat localId="297" locator="122:18-125:40" xsi:type="And">
+                     <operand localId="293" locator="122:18-124:9" xsi:type="Or">
+                        <operand localId="286" locator="122:19-122:133" xsi:type="And">
+                           <operand locator="122:49-122:65" xsi:type="In">
+                              <operand locator="122:42-122:47" xsi:type="Start">
+                                 <operand localId="280" locator="122:19-122:40" path="relevantPeriod" scope="LastBMI" xsi:type="Property"/>
+                              </operand>
+                              <operand locator="122:49-122:65" lowClosed="true" highClosed="true" xsi:type="Interval">
+                                 <low locator="122:80-122:133" xsi:type="Subtract">
+                                    <operand localId="284" locator="122:80-122:133" xsi:type="Start">
+                                       <operand localId="283" locator="122:89-122:133" path="relevantPeriod" xsi:type="Property">
+                                          <source localId="282" locator="122:89-122:118" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="285" locator="122:49-122:57" value="12" unit="months" xsi:type="Quantity"/>
+                                 </low>
+                                 <high localId="284" locator="122:80-122:133" xsi:type="Start">
+                                    <operand localId="283" locator="122:89-122:133" path="relevantPeriod" xsi:type="Property">
+                                       <source localId="282" locator="122:89-122:118" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                                    </operand>
+                                 </high>
+                              </operand>
+                           </operand>
+                           <operand locator="122:49-122:65" xsi:type="Not">
+                              <operand locator="122:49-122:65" xsi:type="IsNull">
+                                 <operand localId="284" locator="122:80-122:133" xsi:type="Start">
+                                    <operand localId="283" locator="122:89-122:133" path="relevantPeriod" xsi:type="Property">
+                                       <source localId="282" locator="122:89-122:118" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                                    </operand>
+                                 </operand>
+                              </operand>
+                           </operand>
+                        </operand>
+                        <operand localId="292" locator="123:16-123:97" xsi:type="In">
+                           <operand locator="123:39-123:44" xsi:type="Start">
+                              <operand localId="288" locator="123:16-123:37" path="relevantPeriod" scope="LastBMI" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="291" locator="123:53-123:97" path="relevantPeriod" xsi:type="Property">
+                              <source localId="290" locator="123:53-123:82" path="QEncounter" scope="QualifyingEncounter" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="296" locator="125:15-125:40" xsi:type="Not">
+                        <operand locator="125:15-125:40" xsi:type="IsNull">
+                           <operand localId="295" locator="125:15-125:28" path="result" scope="LastBMI" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                  </suchThat>
+               </relationship>
+               <sort localId="301" locator="126:7-126:28">
+                  <by localId="300" locator="126:15-126:28" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+               </sort>
+            </source>
+         </expression>
+      </def>
+      <def localId="314" locator="112:1-114:73" name="Has Normal BMI" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="314">
+               <a:s>define &quot;Has Normal BMI&quot;:
+  </a:s>
+               <a:s r="313">
+                  <a:s>
+                     <a:s r="306">
+                        <a:s r="305">
+                           <a:s>
+                              <a:s>&quot;Most Recent Documented BMI&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> BMIValue</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="312">
+                     <a:s>where </a:s>
+                     <a:s r="312">
+                        <a:s r="308">
+                           <a:s r="307">
+                              <a:s>BMIValue</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="308">
+                              <a:s>result</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="312"> included in </a:s>
+                        <a:s r="311">
+                           <a:s>Interval[</a:s>
+                           <a:s r="309">
+                              <a:s>18.5 'kg/m2'</a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="310">
+                              <a:s>25 'kg/m2'</a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="313" locator="113:3-114:73" xsi:type="Query">
+            <source localId="306" locator="113:3-113:39" alias="BMIValue">
+               <expression localId="305" locator="113:3-113:30" name="Most Recent Documented BMI" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="312" locator="114:5-114:73" xsi:type="In">
+               <operand asType="t:Quantity" xsi:type="As">
+                  <operand localId="308" locator="114:11-114:25" path="result" scope="BMIValue" xsi:type="Property"/>
+               </operand>
+               <operand localId="311" locator="114:39-114:73" lowClosed="true" highClosed="false" xsi:type="Interval">
+                  <low localId="309" locator="114:48-114:59" value="18.5" unit="kg/m2" xsi:type="Quantity"/>
+                  <high localId="310" locator="114:62-114:71" value="25" unit="kg/m2" xsi:type="Quantity"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="328" locator="133:1-136:104" name="Outpatient Care Visit Within 35 Days Of the Surgery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="328">
+               <a:s>define &quot;Outpatient Care Visit Within 35 Days Of the Surgery&quot;:
+  </a:s>
+               <a:s r="327">
+                  <a:s>
+                     <a:s r="316">
+                        <a:s r="315">
+                           <a:s r="315">
+                              <a:s>[&quot;Encounter, Performed&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Hospital-based outpatient emergency care center (environment)&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> OutpatientVisit</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="326">
+                     <a:s>with </a:s>
+                     <a:s r="318">
+                        <a:s r="317">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="325">
+                        <a:s r="320">
+                           <a:s r="319">
+                              <a:s>OutpatientVisit</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="320">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="325">
+                           <a:s>starts </a:s>
+                           <a:s r="324">
+                              <a:s>35 days</a:s>
+                           </a:s>
+                           <a:s> or less after</a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="323">
+                           <a:s r="322">
+                              <a:s r="321">
+                                 <a:s>QP</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="322">
+                                 <a:s>QProcedure</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="323">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="327" locator="134:3-136:104" xsi:type="Query">
+            <source localId="316" locator="134:3-134:107" alias="OutpatientVisit">
+               <expression localId="315" locator="134:3-134:91" xmlns:ns20="urn:healthit-gov:qdm:v5_5" dataType="ns20:PositiveEncounterPerformed" templateId="PositiveEncounterPerformed" codeProperty="code" xsi:type="Retrieve">
+                  <codes xsi:type="ToList">
+                     <operand locator="134:28-134:90" name="Hospital-based outpatient emergency care center (environment)" xsi:type="CodeRef"/>
+                  </codes>
+               </expression>
+            </source>
+            <relationship localId="326" locator="135:5-136:104" alias="QP" xsi:type="With">
+               <expression localId="317" locator="135:10-135:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="325" locator="136:17-136:104" xsi:type="And">
+                  <operand locator="136:55-136:69" xsi:type="In">
+                     <operand locator="136:48-136:53" xsi:type="Start">
+                        <operand localId="320" locator="136:17-136:46" path="relevantPeriod" scope="OutpatientVisit" xsi:type="Property"/>
+                     </operand>
+                     <operand locator="136:55-136:69" lowClosed="false" highClosed="true" xsi:type="Interval">
+                        <low locator="136:91-136:104" xsi:type="End">
+                           <operand localId="323" locator="136:77-136:104" path="relevantPeriod" xsi:type="Property">
+                              <source localId="322" locator="136:77-136:89" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </low>
+                        <high locator="136:91-136:104" xsi:type="Add">
+                           <operand locator="136:91-136:104" xsi:type="End">
+                              <operand localId="323" locator="136:77-136:104" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="322" locator="136:77-136:89" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="324" locator="136:55-136:61" value="35" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand locator="136:55-136:69" xsi:type="Not">
+                     <operand locator="136:55-136:69" xsi:type="IsNull">
+                        <operand locator="136:91-136:104" xsi:type="End">
+                           <operand localId="323" locator="136:77-136:104" path="relevantPeriod" xsi:type="Property">
+                              <source localId="322" locator="136:77-136:89" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="350" locator="164:1-170:80" name="Screened and Identified as Tobacco User" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="350">
+               <a:s>define &quot;Screened and Identified as Tobacco User&quot;:
+  </a:s>
+               <a:s r="349">
+                  <a:s>
+                     <a:s r="344">
+                        <a:s r="343">
+                           <a:s>( </a:s>
+                           <a:s r="343">
+                              <a:s>Last(</a:s>
+                              <a:s r="342">
+                                 <a:s>
+                                    <a:s r="332">
+                                       <a:s r="331">
+                                          <a:s r="331">
+                                             <a:s>[&quot;Assessment, Performed&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Tobacco Use Screening&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> TobaccoUseScreening</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+      </a:s>
+                                 <a:s r="338">
+                                    <a:s>where </a:s>
+                                    <a:s r="338">
+                                       <a:s r="334">
+                                          <a:s r="333">
+                                             <a:s>TobaccoUseScreening</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="334">
+                                             <a:s>authorDatetime</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> </a:s>
+                                       <a:s r="338">
+                                          <a:s r="337">
+                                             <a:s>24 months</a:s>
+                                          </a:s>
+                                          <a:s> or less on or before</a:s>
+                                       </a:s>
+                                       <a:s> 
+      </a:s>
+                                       <a:s r="336">
+                                          <a:s>end of </a:s>
+                                          <a:s r="335">
+                                             <a:s>&quot;Measurement Period&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+      </a:s>
+                                 <a:s r="341">
+                                    <a:s>sort by </a:s>
+                                    <a:s r="340">
+                                       <a:s r="339">
+                                          <a:s>authorDatetime</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+  )</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> MostRecentTobaccoUseScreening</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="348">
+                     <a:s>where </a:s>
+                     <a:s r="348">
+                        <a:s r="346">
+                           <a:s r="345">
+                              <a:s>MostRecentTobaccoUseScreening</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="346">
+                              <a:s>result</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> in </a:s>
+                        <a:s r="347">
+                           <a:s>&quot;Current Smoking Tobacco User&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="349" locator="165:3-170:80" xsi:type="Query">
+            <source localId="344" locator="165:3-169:34" alias="MostRecentTobaccoUseScreening">
+               <expression localId="343" locator="165:3-169:4" xsi:type="Last">
+                  <source localId="342" locator="165:10-168:28" xsi:type="Query">
+                     <source localId="332" locator="165:10-165:79" alias="TobaccoUseScreening">
+                        <expression localId="331" locator="165:10-165:59" xmlns:ns21="urn:healthit-gov:qdm:v5_5" dataType="ns21:PositiveAssessmentPerformed" templateId="PositiveAssessmentPerformed" codeProperty="code" xsi:type="Retrieve">
+                           <codes locator="165:36-165:58" name="Tobacco Use Screening" xsi:type="ValueSetRef"/>
+                        </expression>
+                     </source>
+                     <where localId="338" locator="166:7-167:33" xsi:type="And">
+                        <operand locator="166:48-166:64" xsi:type="In">
+                           <operand localId="334" locator="166:13-166:46" path="authorDatetime" scope="TobaccoUseScreening" xsi:type="Property"/>
+                           <operand locator="166:48-166:64" lowClosed="true" highClosed="true" xsi:type="Interval">
+                              <low locator="167:7-167:33" xsi:type="Subtract">
+                                 <operand localId="336" locator="167:7-167:33" xsi:type="End">
+                                    <operand localId="335" locator="167:14-167:33" name="Measurement Period" xsi:type="ParameterRef"/>
+                                 </operand>
+                                 <operand localId="337" locator="166:48-166:56" value="24" unit="months" xsi:type="Quantity"/>
+                              </low>
+                              <high localId="336" locator="167:7-167:33" xsi:type="End">
+                                 <operand localId="335" locator="167:14-167:33" name="Measurement Period" xsi:type="ParameterRef"/>
+                              </high>
+                           </operand>
+                        </operand>
+                        <operand locator="166:48-166:64" xsi:type="Not">
+                           <operand locator="166:48-166:64" xsi:type="IsNull">
+                              <operand localId="336" locator="167:7-167:33" xsi:type="End">
+                                 <operand localId="335" locator="167:14-167:33" name="Measurement Period" xsi:type="ParameterRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                     </where>
+                     <sort localId="341" locator="168:7-168:28">
+                        <by localId="340" locator="168:15-168:28" direction="asc" path="authorDatetime" xsi:type="ByColumn"/>
+                     </sort>
+                  </source>
+               </expression>
+            </source>
+            <where localId="348" locator="170:5-170:80" xsi:type="InValueSet">
+               <code asType="t:Code" xsi:type="As">
+                  <operand localId="346" locator="170:11-170:46" path="result" scope="MostRecentTobaccoUseScreening" xsi:type="Property"/>
+               </code>
+               <valueset localId="347" locator="170:51-170:80" name="Current Smoking Tobacco User"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="355" locator="157:1-162:3" name="Reasonable Risk Factors" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="355">
+               <a:s>define &quot;Reasonable Risk Factors&quot;:
+  </a:s>
+               <a:s r="354">
+                  <a:s>{
+    </a:s>
+                  <a:s>
+                     <a:s>AbnormalBMI: </a:s>
+                     <a:s r="330">
+                        <a:s r="329">
+                           <a:s>&quot;Has Normal BMI&quot;</a:s>
+                        </a:s>
+                        <a:s> is null</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s>
+                     <a:s>TobacoUser: </a:s>
+                     <a:s r="352">
+                        <a:s r="351">
+                           <a:s>&quot;Screened and Identified as Tobacco User&quot;</a:s>
+                        </a:s>
+                        <a:s> is not null</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s>
+                     <a:s>HadExistingComorbidities: </a:s>
+                     <a:s r="353">
+                        <a:s>&quot;Existing Comorbidities Prior To Surgery&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  }</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="354" locator="158:3-162:3" xsi:type="Tuple">
+            <element name="AbnormalBMI">
+               <value localId="330" locator="159:18-159:41" xsi:type="IsNull">
+                  <operand localId="329" locator="159:18-159:33" name="Has Normal BMI" xsi:type="ExpressionRef"/>
+               </value>
+            </element>
+            <element name="TobacoUser">
+               <value localId="352" locator="160:17-160:69" xsi:type="Not">
+                  <operand locator="160:17-160:69" xsi:type="IsNull">
+                     <operand localId="351" locator="160:17-160:57" name="Screened and Identified as Tobacco User" xsi:type="ExpressionRef"/>
+                  </operand>
+               </value>
+            </element>
+            <element name="HadExistingComorbidities">
+               <value localId="353" locator="161:31-161:71" name="Existing Comorbidities Prior To Surgery" xsi:type="ExpressionRef"/>
+            </element>
+         </expression>
+      </def>
+      <def localId="370" locator="172:1-175:76" name="Transferred From Another Acute Care Facility or Discharged Against Medical Advice During Index Admission" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="370">
+               <a:s>define &quot;Transferred From Another Acute Care Facility or Discharged Against Medical Advice During Index Admission&quot;:
+  </a:s>
+               <a:s r="369">
+                  <a:s>
+                     <a:s r="357">
+                        <a:s r="356">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QE</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="368">
+                     <a:s>where </a:s>
+                     <a:s r="368">
+                        <a:s r="362">
+                           <a:s r="360">
+                              <a:s r="359">
+                                 <a:s r="358">
+                                    <a:s>QE</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="359">
+                                    <a:s>QEncounter</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="360">
+                                 <a:s>admissionSource</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="361">
+                              <a:s>&quot;Transfer From Acute Care Hospital&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      or </a:s>
+                        <a:s r="367">
+                           <a:s r="365">
+                              <a:s r="364">
+                                 <a:s r="363">
+                                    <a:s>QE</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="364">
+                                    <a:s>QEncounter</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="365">
+                                 <a:s>dischargeDisposition</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> in </a:s>
+                           <a:s r="366">
+                              <a:s>&quot;Left Against Medical Advice&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="369" locator="173:3-175:76" xsi:type="Query">
+            <source localId="357" locator="173:3-173:79" alias="QE">
+               <expression localId="356" locator="173:3-173:76" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="368" locator="174:5-175:76" xsi:type="Or">
+               <operand localId="362" locator="174:11-174:78" xsi:type="InValueSet">
+                  <code localId="360" locator="174:11-174:39" path="admissionSource" xsi:type="Property">
+                     <source localId="359" locator="174:11-174:23" path="QEncounter" scope="QE" xsi:type="Property"/>
+                  </code>
+                  <valueset localId="361" locator="174:44-174:78" name="Transfer From Acute Care Hospital"/>
+               </operand>
+               <operand localId="367" locator="175:10-175:76" xsi:type="InValueSet">
+                  <code localId="365" locator="175:10-175:43" path="dischargeDisposition" xsi:type="Property">
+                     <source localId="364" locator="175:10-175:22" path="QEncounter" scope="QE" xsi:type="Property"/>
+                  </code>
+                  <valueset localId="366" locator="175:48-175:76" name="Left Against Medical Advice"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="384" locator="177:1-181:82" name="Diagnosed With VTE or DVT in the ED Within 35 Days Of The Surgery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="384">
+               <a:s>define &quot;Diagnosed With VTE or DVT in the ED Within 35 Days Of The Surgery&quot;:
+  </a:s>
+               <a:s r="383">
+                  <a:s>
+                     <a:s r="374">
+                        <a:s r="373">
+                           <a:s>( </a:s>
+                           <a:s r="373">
+                              <a:s r="371">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Venous Thromboembolism&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>
+    union </a:s>
+                              <a:s r="372">
+                                 <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;Pulmonary Embolism or DVT&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> )</a:s>
+                        </a:s>
+                        <a:s> VTEDiagnosis</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="382">
+                     <a:s>with </a:s>
+                     <a:s r="376">
+                        <a:s r="375">
+                           <a:s>
+                              <a:s>&quot;ED Visit Within 35 Days Of The Surgery&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> EDVisit</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="381">
+                        <a:s r="378">
+                           <a:s r="377">
+                              <a:s>VTEDiagnosis</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="378">
+                              <a:s>prevalencePeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="381"> starts during </a:s>
+                        <a:s r="380">
+                           <a:s r="379">
+                              <a:s>EDVisit</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="380">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="383" locator="178:3-181:82" xsi:type="Query">
+            <source localId="374" locator="178:3-179:67" alias="VTEDiagnosis">
+               <expression localId="373" locator="178:3-179:54" xsi:type="Union">
+                  <operand localId="371" locator="178:5-178:43" xmlns:ns22="urn:healthit-gov:qdm:v5_5" dataType="ns22:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="178:19-178:42" name="Venous Thromboembolism" xsi:type="ValueSetRef"/>
+                  </operand>
+                  <operand localId="372" locator="179:11-179:52" xmlns:ns23="urn:healthit-gov:qdm:v5_5" dataType="ns23:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                     <codes locator="179:25-179:51" name="Pulmonary Embolism or DVT" xsi:type="ValueSetRef"/>
+                  </operand>
+               </expression>
+            </source>
+            <relationship localId="382" locator="180:5-181:82" alias="EDVisit" xsi:type="With">
+               <expression localId="375" locator="180:10-180:49" name="ED Visit Within 35 Days Of The Surgery" xsi:type="ExpressionRef"/>
+               <suchThat localId="381" locator="181:17-181:82" xsi:type="In">
+                  <operand locator="181:47-181:52" xsi:type="Start">
+                     <operand localId="378" locator="181:17-181:45" path="prevalencePeriod" scope="VTEDiagnosis" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="380" locator="181:61-181:82" path="relevantPeriod" scope="EDVisit" xsi:type="Property"/>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="406" locator="188:1-193:9" name="Had 2 or More VTE Diagnosis Codes During Outpatient Visit Within 35 Days Of The Surgery" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="406">
+               <a:s>define &quot;Had 2 or More VTE Diagnosis Codes During Outpatient Visit Within 35 Days Of The Surgery&quot;:
+  </a:s>
+               <a:s r="405">
+                  <a:s>
+                     <a:s r="391">
+                        <a:s r="390">
+                           <a:s>
+                              <a:s>&quot;Outpatient Care Visit Within 35 Days Of the Surgery&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> OV</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="404">
+                     <a:s>where </a:s>
+                     <a:s r="404">
+                        <a:s r="402">
+                           <a:s>Count(</a:s>
+                           <a:s r="401">
+                              <a:s>
+                                 <a:s r="395">
+                                    <a:s r="394">
+                                       <a:s>(</a:s>
+                                       <a:s r="394">
+                                          <a:s r="392">
+                                             <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Venous Thromboembolism&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                          <a:s>
+        union </a:s>
+                                          <a:s r="393">
+                                             <a:s>[&quot;Diagnosis&quot;: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;Pulmonary Embolism or DVT&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                    <a:s>VTEDiagnosis</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s r="400">
+                                 <a:s>where </a:s>
+                                 <a:s r="400">
+                                    <a:s r="397">
+                                       <a:s r="396">
+                                          <a:s>VTEDiagnosis</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="397">
+                                          <a:s>prevalencePeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s r="400"> starts during </a:s>
+                                    <a:s r="399">
+                                       <a:s r="398">
+                                          <a:s>OV</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="399">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+    )</a:s>
+                        </a:s>
+                        <a:s r="403">>= 2</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="405" locator="189:3-193:9" xsi:type="Query">
+            <source localId="391" locator="189:3-189:58" alias="OV">
+               <expression localId="390" locator="189:3-189:55" name="Outpatient Care Visit Within 35 Days Of the Surgery" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="404" locator="190:5-193:9" xsi:type="GreaterOrEqual">
+               <operand localId="402" locator="190:11-193:5" xsi:type="Count">
+                  <source localId="401" locator="190:17-192:75" xsi:type="Query">
+                     <source localId="395" locator="190:17-191:69" alias="VTEDiagnosis">
+                        <expression localId="394" locator="190:17-191:57" xsi:type="Union">
+                           <operand localId="392" locator="190:18-190:56" xmlns:ns24="urn:healthit-gov:qdm:v5_5" dataType="ns24:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes locator="190:32-190:55" name="Venous Thromboembolism" xsi:type="ValueSetRef"/>
+                           </operand>
+                           <operand localId="393" locator="191:15-191:56" xmlns:ns25="urn:healthit-gov:qdm:v5_5" dataType="ns25:Diagnosis" codeProperty="code" xsi:type="Retrieve">
+                              <codes locator="191:29-191:55" name="Pulmonary Embolism or DVT" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </expression>
+                     </source>
+                     <where localId="400" locator="192:9-192:75" xsi:type="In">
+                        <operand locator="192:45-192:50" xsi:type="Start">
+                           <operand localId="397" locator="192:15-192:43" path="prevalencePeriod" scope="VTEDiagnosis" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="399" locator="192:59-192:75" path="relevantPeriod" scope="OV" xsi:type="Property"/>
+                     </where>
+                  </source>
+               </operand>
+               <operand localId="403" locator="193:9" valueType="t:Integer" value="2" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="410" locator="183:1-186:103" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="410">
+               <a:s>define &quot;Numerator&quot;:
+  </a:s>
+               <a:s r="409">
+                  <a:s r="389">
+                     <a:s r="386">
+                        <a:s>exists </a:s>
+                        <a:s r="385">
+                           <a:s>&quot;Diagnosed With VTE or DVT During The Index Admission&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    or </a:s>
+                     <a:s r="388">
+                        <a:s>exists </a:s>
+                        <a:s r="387">
+                           <a:s>&quot;Diagnosed With VTE or DVT in the ED Within 35 Days Of The Surgery&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    or </a:s>
+                  <a:s r="408">
+                     <a:s>exists </a:s>
+                     <a:s r="407">
+                        <a:s>&quot;Had 2 or More VTE Diagnosis Codes During Outpatient Visit Within 35 Days Of The Surgery&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="409" locator="184:3-186:103" xsi:type="Or">
+            <operand localId="389" locator="184:3-185:81" xsi:type="Or">
+               <operand localId="386" locator="184:3-184:63" xsi:type="Exists">
+                  <operand localId="385" locator="184:10-184:63" name="Diagnosed With VTE or DVT During The Index Admission" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="388" locator="185:8-185:81" xsi:type="Exists">
+                  <operand localId="387" locator="185:15-185:81" name="Diagnosed With VTE or DVT in the ED Within 35 Days Of The Surgery" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="408" locator="186:8-186:103" xsi:type="Exists">
+               <operand localId="407" locator="186:15-186:103" name="Had 2 or More VTE Diagnosis Codes During Outpatient Visit Within 35 Days Of The Surgery" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="433" locator="195:1-198:168" name="Received Anticoagulant Medication Injection Between 10-90 Days Prior To Surgery Date" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="433">
+               <a:s>define &quot;Received Anticoagulant Medication Injection Between 10-90 Days Prior To Surgery Date&quot;:
+  </a:s>
+               <a:s r="432">
+                  <a:s>
+                     <a:s r="412">
+                        <a:s r="411">
+                           <a:s r="411">
+                              <a:s>[&quot;Medication, Order&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Anticoagulant Medications, Injection&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AntiCoagulantMed</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="431">
+                     <a:s>with </a:s>
+                     <a:s r="414">
+                        <a:s r="413">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="430">
+                        <a:s r="416">
+                           <a:s r="415">
+                              <a:s>AntiCoagulantMed</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="416">
+                              <a:s>relevantPeriod</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s r="430"> starts during </a:s>
+                        <a:s r="429">
+                           <a:s>Interval[</a:s>
+                           <a:s r="422">
+                              <a:s r="420">
+                                 <a:s>start of </a:s>
+                                 <a:s r="419">
+                                    <a:s r="418">
+                                       <a:s r="417">
+                                          <a:s>QP</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="418">
+                                          <a:s>QProcedure</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="419">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> - </a:s>
+                              <a:s r="421">
+                                 <a:s>90 days</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>, </a:s>
+                           <a:s r="428">
+                              <a:s r="426">
+                                 <a:s>start of </a:s>
+                                 <a:s r="425">
+                                    <a:s r="424">
+                                       <a:s r="423">
+                                          <a:s>QP</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="424">
+                                          <a:s>QProcedure</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="425">
+                                       <a:s>relevantPeriod</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> - </a:s>
+                              <a:s r="427">
+                                 <a:s>10 days</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>]</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="432" locator="196:3-198:168" xsi:type="Query">
+            <source localId="412" locator="196:3-196:80" alias="AntiCoagulantMed">
+               <expression localId="411" locator="196:3-196:63" xmlns:ns26="urn:healthit-gov:qdm:v5_5" dataType="ns26:PositiveMedicationOrder" templateId="PositiveMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="196:25-196:62" name="Anticoagulant Medications, Injection" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="431" locator="197:5-198:168" alias="QP" xsi:type="With">
+               <expression localId="413" locator="197:10-197:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="430" locator="198:17-198:168" xsi:type="In">
+                  <operand locator="198:49-198:54" xsi:type="Start">
+                     <operand localId="416" locator="198:17-198:47" path="relevantPeriod" scope="AntiCoagulantMed" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="429" locator="198:63-198:168" lowClosed="true" highClosed="true" xsi:type="Interval">
+                     <low localId="422" locator="198:72-198:118" xsi:type="Subtract">
+                        <operand localId="420" locator="198:72-198:108" xsi:type="Start">
+                           <operand localId="419" locator="198:81-198:108" path="relevantPeriod" xsi:type="Property">
+                              <source localId="418" locator="198:81-198:93" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                        <operand localId="421" locator="198:112-198:118" value="90" unit="days" xsi:type="Quantity"/>
+                     </low>
+                     <high localId="428" locator="198:121-198:167" xsi:type="Subtract">
+                        <operand localId="426" locator="198:121-198:157" xsi:type="Start">
+                           <operand localId="425" locator="198:130-198:157" path="relevantPeriod" xsi:type="Property">
+                              <source localId="424" locator="198:130-198:142" path="QProcedure" scope="QP" xsi:type="Property"/>
+                           </operand>
+                        </operand>
+                        <operand localId="427" locator="198:161-198:167" value="10" unit="days" xsi:type="Quantity"/>
+                     </high>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="479" locator="213:1-217:45" name="Received Oral Anticoagulant Medications Between 10-90 Days Prior To Procedure" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="479">
+               <a:s>define &quot;Received Oral Anticoagulant Medications Between 10-90 Days Prior To Procedure&quot;:
+  </a:s>
+               <a:s r="478">
+                  <a:s>
+                     <a:s r="452">
+                        <a:s r="451">
+                           <a:s r="451">
+                              <a:s>[&quot;Medication, Order&quot;: </a:s>
+                              <a:s>
+                                 <a:s>&quot;Anticoagulant Medications, Oral&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> AntiCoagulantMed</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="477">
+                     <a:s>with </a:s>
+                     <a:s r="454">
+                        <a:s r="453">
+                           <a:s>
+                              <a:s>&quot;Qualifying Encounters Related To Elective Primary THA and TKA Procedures&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> QP</a:s>
+                     </a:s>
+                     <a:s>
+      such that </a:s>
+                     <a:s r="476">
+                        <a:s r="470">
+                           <a:s r="456">
+                              <a:s r="455">
+                                 <a:s>AntiCoagulantMed</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="456">
+                                 <a:s>relevantPeriod</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="470"> starts during </a:s>
+                           <a:s r="469">
+                              <a:s>Interval[</a:s>
+                              <a:s r="462">
+                                 <a:s r="460">
+                                    <a:s>start of </a:s>
+                                    <a:s r="459">
+                                       <a:s r="458">
+                                          <a:s r="457">
+                                             <a:s>QP</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="458">
+                                             <a:s>QProcedure</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="459">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> - </a:s>
+                                 <a:s r="461">
+                                    <a:s>90 days</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>, </a:s>
+                              <a:s r="468">
+                                 <a:s r="466">
+                                    <a:s>start of </a:s>
+                                    <a:s r="465">
+                                       <a:s r="464">
+                                          <a:s r="463">
+                                             <a:s>QP</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="464">
+                                             <a:s>QProcedure</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="465">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> - </a:s>
+                                 <a:s r="467">
+                                    <a:s>10 days</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+        and </a:s>
+                        <a:s r="475">
+                           <a:s r="473">
+                              <a:s r="472">
+                                 <a:s r="471">
+                                    <a:s>AntiCoagulantMed</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="472">
+                                    <a:s>supply</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="473">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="474"> > 1</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="478" locator="214:3-217:45" xsi:type="Query">
+            <source localId="452" locator="214:3-214:75" alias="AntiCoagulantMed">
+               <expression localId="451" locator="214:3-214:58" xmlns:ns27="urn:healthit-gov:qdm:v5_5" dataType="ns27:PositiveMedicationOrder" templateId="PositiveMedicationOrder" codeProperty="code" xsi:type="Retrieve">
+                  <codes locator="214:25-214:57" name="Anticoagulant Medications, Oral" xsi:type="ValueSetRef"/>
+               </expression>
+            </source>
+            <relationship localId="477" locator="215:5-217:45" alias="QP" xsi:type="With">
+               <expression localId="453" locator="215:10-215:83" name="Qualifying Encounters Related To Elective Primary THA and TKA Procedures" xsi:type="ExpressionRef"/>
+               <suchThat localId="476" locator="216:17-217:45" xsi:type="And">
+                  <operand localId="470" locator="216:17-216:168" xsi:type="In">
+                     <operand locator="216:49-216:54" xsi:type="Start">
+                        <operand localId="456" locator="216:17-216:47" path="relevantPeriod" scope="AntiCoagulantMed" xsi:type="Property"/>
+                     </operand>
+                     <operand localId="469" locator="216:63-216:168" lowClosed="true" highClosed="true" xsi:type="Interval">
+                        <low localId="462" locator="216:72-216:118" xsi:type="Subtract">
+                           <operand localId="460" locator="216:72-216:108" xsi:type="Start">
+                              <operand localId="459" locator="216:81-216:108" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="458" locator="216:81-216:93" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="461" locator="216:112-216:118" value="90" unit="days" xsi:type="Quantity"/>
+                        </low>
+                        <high localId="468" locator="216:121-216:167" xsi:type="Subtract">
+                           <operand localId="466" locator="216:121-216:157" xsi:type="Start">
+                              <operand localId="465" locator="216:130-216:157" path="relevantPeriod" xsi:type="Property">
+                                 <source localId="464" locator="216:130-216:142" path="QProcedure" scope="QP" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="467" locator="216:161-216:167" value="10" unit="days" xsi:type="Quantity"/>
+                        </high>
+                     </operand>
+                  </operand>
+                  <operand localId="475" locator="217:13-217:45" xsi:type="Greater">
+                     <operand localId="473" locator="217:13-217:41" path="value" xsi:type="Property">
+                        <source localId="472" locator="217:13-217:35" path="supply" scope="AntiCoagulantMed" xsi:type="Property"/>
+                     </operand>
+                     <operand xsi:type="ToDecimal">
+                        <operand localId="474" locator="217:45" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+               </suchThat>
+            </relationship>
+         </expression>
+      </def>
+      <def localId="495" locator="200:1-211:68" name="Denominator Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="495">
+               <a:s>define &quot;Denominator Exclusions&quot;:
+  </a:s>
+               <a:s r="494">
+                  <a:s r="491">
+                     <a:s r="488">
+                        <a:s r="485">
+                           <a:s r="482">
+                              <a:s r="450">
+                                 <a:s r="447">
+                                    <a:s r="444">
+                                       <a:s r="441">
+                                          <a:s r="438">
+                                             <a:s r="435">
+                                                <a:s>exists </a:s>
+                                                <a:s r="434">
+                                                   <a:s>&quot;Transferred From Another Acute Care Facility or Discharged Against Medical Advice During Index Admission&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+    or </a:s>
+                                             <a:s r="437">
+                                                <a:s>exists </a:s>
+                                                <a:s r="436">
+                                                   <a:s>&quot;Had More Than 2 THA_TKA Procedures Codes During The Index Admission&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+    or </a:s>
+                                          <a:s r="440">
+                                             <a:s>exists </a:s>
+                                             <a:s r="439">
+                                                <a:s>&quot;Diagnosed With Renal Insufficiency 365 Days Prior To Procedure&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+    or </a:s>
+                                       <a:s r="443">
+                                          <a:s>exists </a:s>
+                                          <a:s r="442">
+                                             <a:s>&quot;Diagnosed With Atrial Fibrillation 365 Days Prior To Procedure&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+    or </a:s>
+                                    <a:s r="446">
+                                       <a:s>exists </a:s>
+                                       <a:s r="445">
+                                          <a:s>&quot;Diagnosed With Cancer 365 Days Prior To Procedure&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+    or </a:s>
+                                 <a:s r="449">
+                                    <a:s>exists </a:s>
+                                    <a:s r="448">
+                                       <a:s>&quot;Received Anticoagulant Medication Injection Between 10-90 Days Prior To Surgery Date&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+    or </a:s>
+                              <a:s r="481">
+                                 <a:s>exists </a:s>
+                                 <a:s r="480">
+                                    <a:s>&quot;Received Oral Anticoagulant Medications Between 10-90 Days Prior To Procedure&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+    or </a:s>
+                           <a:s r="484">
+                              <a:s>exists </a:s>
+                              <a:s r="483">
+                                 <a:s>&quot;Diagnosed With VTE or DVT 30 Days Prior To The Index Admission&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    or </a:s>
+                        <a:s r="487">
+                           <a:s>exists </a:s>
+                           <a:s r="486">
+                              <a:s>&quot;Diagnosed With Coagulation Disorder 365 Days Prior To Procedure&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    or </a:s>
+                     <a:s r="490">
+                        <a:s>exists </a:s>
+                        <a:s r="489">
+                           <a:s>&quot;Diagnosed With Excluded Conditions Within 90 Days Prior To The Index Admission&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    or </a:s>
+                  <a:s r="493">
+                     <a:s>exists </a:s>
+                     <a:s r="492">
+                        <a:s>&quot;Had Additional Surgery Within 35 Days Post-Procedure&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="494" locator="201:3-211:68" xsi:type="Or">
+            <operand localId="491" locator="201:3-210:94" xsi:type="Or">
+               <operand localId="488" locator="201:3-209:79" xsi:type="Or">
+                  <operand localId="485" locator="201:3-208:78" xsi:type="Or">
+                     <operand localId="482" locator="201:3-207:93" xsi:type="Or">
+                        <operand localId="450" locator="201:3-206:100" xsi:type="Or">
+                           <operand localId="447" locator="201:3-205:65" xsi:type="Or">
+                              <operand localId="444" locator="201:3-204:78" xsi:type="Or">
+                                 <operand localId="441" locator="201:3-203:78" xsi:type="Or">
+                                    <operand localId="438" locator="201:3-202:83" xsi:type="Or">
+                                       <operand localId="435" locator="201:3-201:115" xsi:type="Exists">
+                                          <operand localId="434" locator="201:10-201:115" name="Transferred From Another Acute Care Facility or Discharged Against Medical Advice During Index Admission" xsi:type="ExpressionRef"/>
+                                       </operand>
+                                       <operand localId="437" locator="202:8-202:83" xsi:type="Exists">
+                                          <operand localId="436" locator="202:15-202:83" name="Had More Than 2 THA_TKA Procedures Codes During The Index Admission" xsi:type="ExpressionRef"/>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="440" locator="203:8-203:78" xsi:type="Exists">
+                                       <operand localId="439" locator="203:15-203:78" name="Diagnosed With Renal Insufficiency 365 Days Prior To Procedure" xsi:type="ExpressionRef"/>
+                                    </operand>
+                                 </operand>
+                                 <operand localId="443" locator="204:8-204:78" xsi:type="Exists">
+                                    <operand localId="442" locator="204:15-204:78" name="Diagnosed With Atrial Fibrillation 365 Days Prior To Procedure" xsi:type="ExpressionRef"/>
+                                 </operand>
+                              </operand>
+                              <operand localId="446" locator="205:8-205:65" xsi:type="Exists">
+                                 <operand localId="445" locator="205:15-205:65" name="Diagnosed With Cancer 365 Days Prior To Procedure" xsi:type="ExpressionRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="449" locator="206:8-206:100" xsi:type="Exists">
+                              <operand localId="448" locator="206:15-206:100" name="Received Anticoagulant Medication Injection Between 10-90 Days Prior To Surgery Date" xsi:type="ExpressionRef"/>
+                           </operand>
+                        </operand>
+                        <operand localId="481" locator="207:8-207:93" xsi:type="Exists">
+                           <operand localId="480" locator="207:15-207:93" name="Received Oral Anticoagulant Medications Between 10-90 Days Prior To Procedure" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="484" locator="208:8-208:78" xsi:type="Exists">
+                        <operand localId="483" locator="208:15-208:78" name="Diagnosed With VTE or DVT 30 Days Prior To The Index Admission" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="487" locator="209:8-209:79" xsi:type="Exists">
+                     <operand localId="486" locator="209:15-209:79" name="Diagnosed With Coagulation Disorder 365 Days Prior To Procedure" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="490" locator="210:8-210:94" xsi:type="Exists">
+                  <operand localId="489" locator="210:15-210:94" name="Diagnosed With Excluded Conditions Within 90 Days Prior To The Index Admission" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="493" locator="211:8-211:68" xsi:type="Exists">
+               <operand localId="492" locator="211:15-211:68" name="Had Additional Surgery Within 35 Days Post-Procedure" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="497" locator="219:1-220:58" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="497">
+               <a:s>define &quot;SDE Sex&quot;:
+  </a:s>
+               <a:s r="496">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="496" locator="220:3-220:58" xmlns:ns28="urn:healthit-gov:qdm:v5_5" dataType="ns28:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="220:34-220:57" name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="499" locator="222:1-223:51" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="499">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+  </a:s>
+               <a:s r="498">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="498" locator="223:3-223:51" xmlns:ns29="urn:healthit-gov:qdm:v5_5" dataType="ns29:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="223:40-223:50" name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="501" locator="225:1-226:43" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="501">
+               <a:s>define &quot;SDE Payer&quot;:
+  </a:s>
+               <a:s r="500">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="500" locator="226:3-226:43" xmlns:ns30="urn:healthit-gov:qdm:v5_5" dataType="ns30:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="226:36-226:42" name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="503" locator="228:1-229:41" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="503">
+               <a:s>define &quot;SDE Race&quot;:
+  </a:s>
+               <a:s r="502">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="502" locator="229:3-229:41" xmlns:ns31="urn:healthit-gov:qdm:v5_5" dataType="ns31:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes locator="229:35-229:40" name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+   </statements>
+</library>

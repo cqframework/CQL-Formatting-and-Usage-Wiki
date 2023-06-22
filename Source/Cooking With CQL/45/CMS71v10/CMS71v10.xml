@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<QualityMeasureDocument xmlns="urn:hl7-org:v3" xmlns:cql-ext="urn:hhs-cql:hqmf-n1-extensions:v1"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         
+      <!--
+			**************************************************************
+			Measure Details Section
+			**************************************************************
+		-->
+         
+      <typeId extension="POQM_HD000001UV02" root="2.16.840.1.113883.1.3"/>
+   <templateId>
+      <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.1.2"/>
+   </templateId>
+   <id root="2c928085-7198-38ee-0171-9d0dad670517"/>
+   <code code="57024-2" codeSystem="2.16.840.1.113883.6.1">
+      <displayName value="Health Quality Measure Document"/>
+   </code>
+   <title value="Anticoagulation Therapy for Atrial Fibrillation/Flutter"/>
+   <text
+         value="Ischemic stroke patients with atrial fibrillation/flutter who are prescribed or continuing to take anticoagulation therapy at hospital discharge"/>
+   <statusCode code="COMPLETED"/>
+   <setId root="03876d69-085b-415c-ae9d-9924171040c2"/>
+   <versionNumber value="10.2.000"/>
+   <author>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="1.3.6.1.4.1.33895"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </author>
+   <custodian>
+      <responsibleParty classCode="ASSIGNED">
+         <representedResponsibleOrganization classCode="ORG" determinerCode="INSTANCE">
+            <id>
+               <item root="5"/>
+            </id>
+            <name>
+               <item>
+                  <part value="The Joint Commission"/>
+               </item>
+            </name>
+         </representedResponsibleOrganization>
+      </responsibleParty>
+   </custodian>
+   <!--Payer-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.3591"/>
+         <title value="Payer"/>
+      </valueSet>
+   </definition>
+   <!--Atrial Ablation-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.203"/>
+         <title value="Atrial Ablation"/>
+      </valueSet>
+   </definition>
+   <!--ONC Administrative Sex-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1"/>
+         <title value="ONC Administrative Sex"/>
+      </valueSet>
+   </definition>
+   <!--Ethnicity-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.837"/>
+         <title value="Ethnicity"/>
+      </valueSet>
+   </definition>
+   <!--Comfort Measures-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="1.3.6.1.4.1.33895.1.3.0.45"/>
+         <title value="Comfort Measures"/>
+      </valueSet>
+   </definition>
+   <!--Observation Services-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113762.1.4.1111.143"/>
+         <title value="Observation Services"/>
+      </valueSet>
+   </definition>
+   <!--Anticoagulant Therapy-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.200"/>
+         <title value="Anticoagulant Therapy"/>
+      </valueSet>
+   </definition>
+   <!--Non-Elective Inpatient Encounter-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.424"/>
+         <title value="Non-Elective Inpatient Encounter"/>
+      </valueSet>
+   </definition>
+   <!--Race-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.114222.4.11.836"/>
+         <title value="Race"/>
+      </valueSet>
+   </definition>
+   <!--Atrial Fibrillation/Flutter-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.202"/>
+         <title value="Atrial Fibrillation/Flutter"/>
+      </valueSet>
+   </definition>
+   <!--Emergency Department Visit-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.292"/>
+         <title value="Emergency Department Visit"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Health Care Facility for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.207"/>
+         <title value="Discharged to Health Care Facility for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <!--Hemorrhagic Stroke-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.212"/>
+         <title value="Hemorrhagic Stroke"/>
+      </valueSet>
+   </definition>
+   <!--Ischemic Stroke-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.247"/>
+         <title value="Ischemic Stroke"/>
+      </valueSet>
+   </definition>
+   <!--Medical Reason-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.473"/>
+         <title value="Medical Reason"/>
+      </valueSet>
+   </definition>
+   <!--Discharged to Home for Hospice Care-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.209"/>
+         <title value="Discharged to Home for Hospice Care"/>
+      </valueSet>
+   </definition>
+   <!--Discharge To Acute Care Facility-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.87"/>
+         <title value="Discharge To Acute Care Facility"/>
+      </valueSet>
+   </definition>
+   <!--Patient Refusal-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.93"/>
+         <title value="Patient Refusal"/>
+      </valueSet>
+   </definition>
+   <!--Left Against Medical Advice-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.308"/>
+         <title value="Left Against Medical Advice"/>
+      </valueSet>
+   </definition>
+   <!--Patient Expired-->
+     	 <definition>
+      <valueSet classCode="OBS" moodCode="DEF">
+         <id root="2.16.840.1.113883.3.117.1.7.1.309"/>
+         <title value="Patient Expired"/>
+      </valueSet>
+   </definition>
+   <!--Birth date-CODE:/CodeSystem/LOINC/Version/2.65/Code/21112-8/Info-->
+      <definition>
+      <cql-ext:code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+         <displayName value="Birth date"/>
+      </cql-ext:code>
+   </definition>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/03876d69-085b-415c-ae9d-9924171040c2/AnticoagulationTherapyforAtrialFibrillationFlutter-10.2.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/03876d69-085b-415c-ae9d-9924171040c2/AnticoagulationTherapyforAtrialFibrillationFlutter-10.2.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/03876d69-085b-415c-ae9d-9924171040c2/AnticoagulationTherapyforAtrialFibrillationFlutter-10.2.000.json"/>
+            </translation>
+         </text>
+         <setId extension="03876d69-085b-415c-ae9d-9924171040c2"
+                identifierName="AnticoagulationTherapyforAtrialFibrillationFlutter"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="10.2.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="402803826fbe8264016fd870697e05f6"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/d838ba65-b0cf-4494-a10f-8e4565b85137/TJC_Overall-4.4.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/d838ba65-b0cf-4494-a10f-8e4565b85137/TJC_Overall-4.4.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/d838ba65-b0cf-4494-a10f-8e4565b85137/TJC_Overall-4.4.000.json"/>
+            </translation>
+         </text>
+         <setId extension="d838ba65-b0cf-4494-a10f-8e4565b85137" identifierName="TJC_Overall"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="4.4.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <relatedDocument typeCode="COMP">
+      <expressionDocument>
+         <id root="402803826cd4f54a016cde28210f096b"/>
+         <text mediaType="text/cql">
+            <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.cql"/>
+            <translation mediaType="application/elm+xml">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.xml"/>
+            </translation>
+            <translation mediaType="application/elm+json">
+               <reference value="https://emeasuretool.cms.gov/libraries/8bdc0a19-b210-4a58-8a07-f5d95a34eca9/MATGlobalCommonFunctions-5.0.000.json"/>
+            </translation>
+         </text>
+         <setId extension="8bdc0a19-b210-4a58-8a07-f5d95a34eca9"
+                identifierName="MATGlobalCommonFunctions"
+                root="https://emeasuretool.cms.gov/libraries"/>
+         <versionNumber value="5.0.000"/>
+      </expressionDocument>
+   </relatedDocument>
+   <controlVariable>
+      <measurePeriod>
+         <id extension="measureperiod" root="88039f97-0b37-4b10-a283-3d13924bdcc9"/>
+         <code code="MSRTP" codeSystem="2.16.840.1.113883.5.4">
+            <originalText value="Measurement Period"/>
+         </code>
+         <value xsi:type="PIVL_TS">
+            <phase highClosed="true" lowClosed="true">
+               <low value="20200101"/>
+               <width unit="a" value="1" xsi:type="PQ"/>
+            </phase>
+            <period unit="a" value="1"/>
+         </value>
+      </measurePeriod>
+   </controlVariable>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="eCQM Identifier (Measure Authoring Tool)"/>
+         </code>
+         <value mediaType="text/plain" value="71" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code nullFlavor="OTH">
+            <originalText value="NQF Number"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="COPY" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Copyright"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Measure specifications are in the Public Domain.&#xA;&#xA;LOINC(R) copyright 2004-2019 Regenstrief Institute, Inc. &#xA;This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2019 International Health Terminology Standards Development Organisation. All Rights Reserved."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DISC" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Disclaimer"/>
+         </code>
+         <value mediaType="text/plain"
+                value="These performance measures are not clinical guidelines and do not establish a standard of medical care, and have not been tested for all potential applications. The measures and specifications are provided without warranty."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRSCORE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Scoring"/>
+         </code>
+         <value code="PROPOR" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="Proportion"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRTYPE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Measure Type"/>
+         </code>
+         <value code="PROCESS" codeSystem="2.16.840.1.113883.5.1063" xsi:type="CD">
+            <displayName value="PROCESS"/>
+         </value>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="STRAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Stratification"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRADJ" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Risk Adjustment"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="MSRAGG" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rate Aggregation"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="RAT" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Rationale"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Nonvalvular atrial fibrillation (NVAF) is a common arrhythmia and an important risk factor for stroke. It is one of several conditions and lifestyle factors that have been identified as risk factors for stroke. It has been estimated that over 2 million adults in the United States have NVAF. While the median age of patients with atrial fibrillation is 75 years, the incidence increases with advancing age. For example, The Framingham Heart Study noted a dramatic increase in stroke risk associated with atrial fibrillation with advancing age, from 1.5% for those 50 to 59 years of age to 23.5% for those 80 to 89 years of age. Furthermore, a prior stroke or transient ischemic attack (TIA) are among a limited number of predictors of high stroke risk within the population of patients with atrial fibrillation. Therefore, much emphasis has been placed on identifying methods for preventing recurrent ischemic stroke as well as preventing first stroke. Prevention strategies focus on the modifiable risk factors such as hypertension, smoking, and atrial fibrillation. Analysis of five placebo-controlled clinical trials investigating the efficacy of warfarin in the primary prevention of thromboembolic stroke, found the relative risk of thromboembolic stroke was reduced by 68% for atrial fibrillation patients treated with warfarin. The administration of anticoagulation therapy, unless there are contraindications, is an established effective strategy in preventing recurrent stroke in high stroke risk-atrial fibrillation patients with TIA or prior stroke."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="CRS" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Clinical Recommendation Statement"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The administration of anticoagulation therapy, unless there are contraindications, is an established effective strategy in preventing recurrent stroke in high stroke risk atrial fibrillation patients with TIA or prior stroke"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IDUR" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Improvement Notation"/>
+         </code>
+         <value mediaType="text/plain" value="Improvement noted as an increase in rate"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Berge, E., Abdelnoor, M., Nakstad, P. H., et al. (2000, April 8). Low molecular-weight heparin versus aspirin in patients with acute ischaemic stroke and atrial fibrillation: A double-blind randomised study. Lancet, 355(9211), 1205-1210."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Centers for Disease Control and Prevention. (2009, May 1). Prevalence and most common causes of disability among adults—United States, 2005. Morbidity and Mortality Weekly Report, 58(16), 421-426."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Connolly, S. J., Ezekowitz, M. D., Yusuf, S., et al. (2009, September 17). Dabigatran versus warfarin in patients with atrial fibrillation. New England Journal of Medicine, 361(12), 1139-1151."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Fuster, V., Ryden, L. E., Asinger, R. W., et al. (2001, October). ACC/AHA/ESC guidelines for the management of patients with atrial fibrillation: Executive summary. A report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines and the European Society of Cardiology Committee for Practice Guidelines and Policy Conferences (Committee to Develop Guidelines for the Management of Patients with Atrial Fibrillation). Journal of the American College of Cardiology, 38(4), 1231-1266."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Fuster, V., Ryden, L. E., Cannom, D. S., et al. (2006, August 15). ACC/AHA/ESC 2006 guidelines for the management of patients with atrial fibrillation: A report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines and the European Society of Cardiology Committee for Practice Guidelines (writing committee to revise the 2001 guidelines for the management of patients with atrial fibrillation). Circulation, 114(7), e257-354."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Goldstein, L. B., Adams, R., Alberts, M. J., et al. (2006, June). Primary prevention of ischemic stroke: A guideline from the American Heart Association/American Stroke Association Stroke Council: Cosponsored by the Atherosclerotic Peripheral Vascular Disease Interdisciplinary Working Group; Cardiovascular Nursing Council; Clinical Cardiology Council; Nutrition, Physical Activity, and Metabolism Council; and the Quality of Care and Outcomes Research Interdisciplinary Working Group: The American Academy of Neurology affirms the value of this guideline. Stroke, 37(6), 1583-1633."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Gorelick, P. B., Sacco, R. L., Smith, D. B., et al. (1999, March). Prevention of a first stroke: A review of guidelines and a multidisciplinary consensus statement from the National Stroke Association. JAMA, 281(12), 1112-1120."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Hart, R. G., Benavente, O., McBride R., et al. (1999, October 5). Antithrombotic therapy to prevent stroke in patients with atrial fibrillation: A meta-analysis. Annals of Internal Medicine, 131(7), 492-501."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Jauch, E. C., Saver, J. L., Adams, H. P., Jr., et al. (2013). Guidelines for the early management of patients with acute ischemic stroke: A guideline for health care professionals from the American Heart Association/American Stroke Association. Stroke, 44(3), 870-947."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Kernan, W. N., Ovbiagele, B., Black, H. R., et al. (2014, May). Guidelines for the prevention of stroke in patients with stroke and transient ischemic attack: A guideline for health care professionals from the American Heart Association/American Stroke Association. Stroke, 45(7), 2160-2223."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Lin, H. J., Wolf, P. A., Kelly-Hayes, M., et al. (1996, October). Stroke severity in atrial fibrillation: The Framingham Study. Stroke 27(10), 1760-1764"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Penado, S., Cano, M., Acha, O., et al. (2003, February 15). Atrial fibrillation as a risk factor for stroke recurrence. American Journal of Medicine, 114,(3), 206-210."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Powers, W. J., Rabinstein, A. A., Ackerson, T., et al. (2018, January). 2018 guidelines for the early management of patients with acute ischemic stroke: A guideline for health care professionals from the American Heart Association/American Stroke Association. Stroke, 49, e31-e32."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Roger, V. L., Go, A. S., Lloyd-Jones, D. M., et al. (2012, January 3). Heart disease and stroke statistics—2012 update: A report from the American Heart Association. Circulation, 125(1), e2-e220."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Saxena, R., &amp; Koudstaal, P. J. (2011). Anticoagulants for preventing stroke in patients with nonrheumatic atrial fibrillation and a history of stroke or transient ischemic attack (review). Cochrane Database of Systematic Reviews, (4), CD000185."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Saxena, R., Lewis, S., Berge, E., et al. (2001, October). Risk of early death and recurrent stroke and effect of heparin in 3,169 patients with acute ischemic stroke and atrial fibrillation in the International Stroke Trial. Stroke, 32(10), 2333-2337."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Van Walraven, C., Hart, R. G., Singer, D. E., et al. (2002, November 20).Oral anticoagulants vs. aspirin in nonvalvular atrial fibrillation: An individual patient meta-analysis. JAMA, 288(19), 2441-2448."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="REF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Reference"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Wann, L. S., Curtis, A. B., Ellenbogen, K. A., et al. (2011, March 15). 2011 ACCF/AHA/HRS focused update on the management of patients with atrial fibrillation (update on dabigatran): A report of the American College of Cardiology Foundation/American Heart Association Task Force on Practice Guidelines. Journal of the American College of Cardiology, 57(11), 1330-1337."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DEF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Definition"/>
+         </code>
+         <value mediaType="text/plain" value="None" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="GUIDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Guidance"/>
+         </code>
+         <value mediaType="text/plain"
+                value="The &quot;Non-elective Inpatient Encounter&quot; value set intends to capture all non-scheduled hospitalizations. This value set is a subset of the &quot;Inpatient Encounter&quot; value set, excluding concepts that specifically refer to elective hospital admissions. Non-elective Inpatient Encounters include emergency, urgent, and unplanned admissions.&#xA;&#xA;The &quot;Medication, Discharge&quot; datatype refers to the discharge medication list and is intended to express medications ordered for post-discharge use.&#xA;&#xA;This eCQM is an episode-based measure.&#xA;&#xA;This version of the eCQM uses QDM version 5.5.  Please refer to the eCQI resource center (https://ecqi.healthit.gov/qdm) for more information on the QDM."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="TRANF" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Transmission Format"/>
+         </code>
+         <value mediaType="text/plain" value="TBD" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="IPOP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Initial Population"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations for patients age 18 and older, discharged from inpatient care (non-elective admissions) with a principal diagnosis of ischemic or hemorrhagic stroke and a length of stay less than or equal to 120 days that ends during measurement period."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENOM" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations for patients with a principal diagnosis of ischemic stroke, and a history of atrial ablation, or current or history of atrial fibrillation/flutter."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exclusions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations for patients admitted for elective carotid intervention. This exclusion is implicitly modeled by only including non-elective hospitalizations&#xA;Inpatient hospitalizations for patients discharged to another hospital&#xA;Inpatient hospitalizations for patients who left against medical advice&#xA;Inpatient hospitalizations for patients who expired&#xA;Inpatient hospitalizations for patients discharged to home for hospice care&#xA;Inpatient hospitalizations for patients discharged to a health care facility for hospice care&#xA;Inpatient hospitalizations for patients with comfort measures documented"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMER" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations for patients prescribed or continuing to take anticoagulation therapy at hospital discharge."
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="NUMEX" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Numerator Exclusions"/>
+         </code>
+         <value mediaType="text/plain" value="Not Applicable" xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Denominator Exceptions"/>
+         </code>
+         <value mediaType="text/plain"
+                value="Inpatient hospitalizations for patients with a documented reason for not prescribing anticoagulation therapy at discharge"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <subjectOf>
+      <measureAttribute>
+         <code code="SDE" codeSystem="2.16.840.1.113883.5.4">
+            <displayName value="Supplemental Data Elements"/>
+         </code>
+         <value mediaType="text/plain"
+                value="For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+                xsi:type="ED"/>
+      </measureAttribute>
+   </subjectOf>
+   <componentOf>
+      <qualityMeasureSet classCode="ACT">
+         <id root=""/>
+         <title value="eMeasure Stroke (eSTK)"/>
+      </qualityMeasureSet>
+   </componentOf>
+   <!--Data Criteria Section-->
+   <component>
+      <dataCriteriaSection>
+         <templateId>
+            <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.2.6"/>
+         </templateId>
+         <code code="57025-9" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Data Criteria Section"/>
+         <text/>
+         <entry typeCode="DRIV">
+            <localVariableName value="Payer_PatientCharacteristicPayer_VVhRT"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.58"/>
+               </templateId>
+               <id extension="Payer_PatientCharacteristicPayer"
+                   root="d43a2296-8608-4b74-9ad8-35fc68b16209"/>
+               <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Payer"/>
+               </code>
+               <title value="Patient Characteristic Payer"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.3591" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AtrialAblation_ProcedurePerformed_iqW6v"/>
+            <procedureCriteria classCode="PROC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.67"/>
+               </templateId>
+               <id extension="AtrialAblation_ProcedurePerformed"
+                   root="40280381-3d61-56a7-013d-61a5141e015b"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.203"/>
+               <title value="Procedure, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </procedureCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ONCAdministrativeSex_PatientCharacteristicSex_ksY1g"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.55"/>
+               </templateId>
+               <id extension="ONCAdministrativeSex_PatientCharacteristicSex"
+                   root="ca76d49d-3b03-4944-9f2f-ed8a1a8803f8"/>
+               <code code="263495000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Gender"/>
+               </code>
+               <title value="Patient Characteristic Sex"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113762.1.4.1" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Ethnicity_PatientCharacteristicEthnicity_pzsmt"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.56"/>
+               </templateId>
+               <id extension="Ethnicity_PatientCharacteristicEthnicity"
+                   root="8fcb8ef8-ba43-4a9b-a528-3bcb8c67be55"/>
+               <code code="54133-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Ethnicity"/>
+               </code>
+               <title value="Patient Characteristic Ethnicity"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.837" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ComfortMeasures_InterventionOrder_RVY4V"/>
+            <actCriteria classCode="ACT" moodCode="RQO">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.35"/>
+               </templateId>
+               <id extension="ComfortMeasures_InterventionOrder"
+                   root="3637ec90-b43f-409c-81b3-26b19aed477f"/>
+               <code valueSet="1.3.6.1.4.1.33895.1.3.0.45"/>
+               <title value="Intervention, Order"/>
+               <statusCode code="ACTIVE"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ComfortMeasures_InterventionPerformed_gLfFb"/>
+            <actCriteria classCode="ACT" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.36"/>
+               </templateId>
+               <id extension="ComfortMeasures_InterventionPerformed"
+                   root="3637ec90-b43f-409c-81b3-26b19aed477f"/>
+               <code valueSet="1.3.6.1.4.1.33895.1.3.0.45"/>
+               <title value="Intervention, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </actCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="ObservationServices_EncounterPerformed_Ru444"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="ObservationServices_EncounterPerformed"
+                   root="215b8958-753d-4e97-88e4-80e69c50bd14"/>
+               <code valueSet="2.16.840.1.113762.1.4.1111.143"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantTherapy_MedicationDischarge_N3rLe"/>
+            <substanceAdministrationCriteria classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.48"/>
+               </templateId>
+               <id extension="AnticoagulantTherapy_MedicationDischarge"
+                   root="40280381-3d61-56a7-013d-61a514210185"/>
+               <code code="10183-2" codeSystem="2.16.840.1.113883.6.1"/>
+               <title value="Medication, Discharge"/>
+               <statusCode code="ACTIVE"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.200"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AnticoagulantTherapy_MedicationNotDischarged_1nSsz"/>
+            <substanceAdministrationCriteria actionNegationInd="TRUE" classCode="SBADM" moodCode="RQO">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.48"/>
+               </templateId>
+               <id extension="AnticoagulantTherapy_MedicationNotDischarged"
+                   root="40280381-3d61-56a7-013d-61a514210185"/>
+               <code code="10183-2" codeSystem="2.16.840.1.113883.6.1"/>
+               <title value="Medication, Not Discharged"/>
+               <statusCode code="ACTIVE"/>
+			            <participation typeCode="CSM">
+                  <role classCode="MANU">
+                     <playingManufacturedMaterial classCode="MMAT" determinerCode="KIND">
+                        <code valueSet="2.16.840.1.113883.3.117.1.7.1.200"/>
+                     </playingManufacturedMaterial>
+                  </role>
+               </participation>
+		          </substanceAdministrationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Non-ElectiveInpatientEncounter_EncounterPerformed_rsW1I"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="Non-ElectiveInpatientEncounter_EncounterPerformed"
+                   root="f31f4e2b-6cb3-4ed7-bf7e-197bf6453c3f"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.424"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="Race_PatientCharacteristicRace_B7tXC"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.59"/>
+               </templateId>
+               <id extension="Race_PatientCharacteristicRace"
+                   root="146da556-db63-4054-844b-bb87f2cf9409"/>
+               <code code="32624-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+                  <displayName value="Race"/>
+               </code>
+               <title value="Patient Characteristic Race"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.114222.4.11.836" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="AtrialFibrillation/Flutter_Diagnosis_lVqt9"/>
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.110"/>
+               </templateId>
+               <id extension="AtrialFibrillation/Flutter_Diagnosis"
+                   root="85439cd3-7a96-425f-af18-bd3b450b617c"/>
+               <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                  <displayName value="Diagnosis"/>
+               </code>
+               <title value="Diagnosis"/>
+               <statusCode code="COMPLETED"/>
+               <value valueSet="2.16.840.1.113883.3.117.1.7.1.202" xsi:type="CD"/>
+            </observationCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <localVariableName value="EmergencyDepartmentVisit_EncounterPerformed_Gjdjf"/>
+            <encounterCriteria classCode="ENC" moodCode="EVN">
+               <templateId>
+                  <item extension="2019-05-01" root="2.16.840.1.113883.10.20.28.4.5"/>
+               </templateId>
+               <id extension="EmergencyDepartmentVisit_EncounterPerformed"
+                   root="943fd468-a486-47eb-bcef-69bbc31a73a0"/>
+               <code valueSet="2.16.840.1.113883.3.117.1.7.1.292"/>
+               <title value="Encounter, Performed"/>
+               <statusCode code="COMPLETED"/>
+            </encounterCriteria>
+         </entry>
+         <entry typeCode="DRIV">
+            <observationCriteria classCode="OBS" moodCode="EVN">
+               <templateId>
+                  <item extension="2017-05-01" root="2.16.840.1.113883.10.20.28.4.54"/>
+               </templateId>
+               <id extension="21112-8_PatientCharacteristicBirthdate"
+                   root="4E568D70-F811-482A-BCC4-07921EEB7B09"/>
+               <code code="21112-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+               <title value="Patient Characteristic Birthdate"/>
+               <statusCode code="COMPLETED"/>
+            </observationCriteria>
+         </entry>
+      </dataCriteriaSection>
+   </component>
+   <component>
+      <populationCriteriaSection>
+         <templateId>
+            <item extension="2017-08-01" root="2.16.840.1.113883.10.20.28.2.7"/>
+         </templateId>
+         <id extension="PopulationCriteria1" root="88601B42-EF46-4993-A22D-26494DE8AC61"/>
+         <code code="57026-7" codeSystem="2.16.840.1.113883.6.1"/>
+         <title value="Population Criteria Section"/>
+         <text/>
+         <component typeCode="COMP">
+            <initialPopulationCriteria classCode="OBS" moodCode="EVN">
+               <id extension="initialPopulation" root="37E35A96-8B9D-4806-96A8-49506EA46987"/>
+               <code code="IPOP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;Initial Population&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </initialPopulationCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominator" root="23FEEA63-51C1-457A-8032-CB1658BD7C29"/>
+               <code code="DENOM" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;Denominator&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExclusionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExclusions" root="720C5409-B5E0-43EB-A4CC-CBD73B3A7F6A"/>
+               <code code="DENEX" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;Denominator Exclusions&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExclusionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <denominatorExceptionCriteria classCode="OBS" moodCode="EVN">
+               <id extension="denominatorExceptions" root="BA0E3A00-C48C-43E3-A9B6-BAA4651B2794"/>
+               <code code="DENEXCEP" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;Denominator Exceptions&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </denominatorExceptionCriteria>
+         </component>
+         <component typeCode="COMP">
+            <numeratorCriteria classCode="OBS" moodCode="EVN">
+               <id extension="numerator" root="90408BB5-9561-4FBF-AF07-74FF64EC86C4"/>
+               <code code="NUMER" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;Numerator&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </numeratorCriteria>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="94685D7D-245F-496D-943B-8B5C60E34732"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;SDE Ethnicity&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="33386E78-BCA3-4BC9-80C8-3CC7C4D10030"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;SDE Payer&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="F3CE2562-DD5A-49F4-A4EE-3F5EC7EE1084"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;SDE Race&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+         <component typeCode="COMP">
+            <cql-ext:supplementalDataElement>
+               <id extension="Supplemental Data Elements"
+                   root="9A1F6AF0-9D56-4F6E-A4B1-0AEF9E4952BF"/>
+               <code code="SDE" codeSystem="2.16.840.1.113883.5.4" codeSystemName="Act Code"/>
+               <precondition typeCode="PRCN">
+                  <criteriaReference classCode="OBS" moodCode="EVN">
+                     <id extension="AnticoagulationTherapyforAtrialFibrillationFlutter.&quot;SDE Sex&quot;"
+                         root="F48F0230-3167-41B9-AAAB-68A279AB33EB"/>
+                  </criteriaReference>
+               </precondition>
+            </cql-ext:supplementalDataElement>
+         </component>
+      </populationCriteriaSection>
+   </component>
+</QualityMeasureDocument>

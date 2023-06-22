@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="Test02_HypertensionAssessment" version="1.0.000"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:51" localIdentifier="AWV" path="AnnualWellness" version="1.0.000"/>
+   </includes>
+   <parameters>
+      <def localId="7" locator="10:1-10:49" name="Measurement Period" accessLevel="Public">
+         <parameterTypeSpecifier localId="6" locator="10:32-10:49" xsi:type="IntervalTypeSpecifier">
+            <pointType localId="5" locator="10:41-10:48" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="3" locator="7:1-7:77" name="Diastolic Blood Pressure" id="urn:oid:2.16.840.1.113883.3.526.3.1033" accessLevel="Public"/>
+      <def localId="4" locator="8:1-8:76" name="Systolic Blood Pressure" id="urn:oid:2.16.840.1.113883.3.526.3.1032" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def locator="12:1-12:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="12:1-12:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="11" locator="14:1-15:44" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="11">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="10">
+                  <a:s>exists </a:s>
+                  <a:s r="9">
+                     <a:s>( </a:s>
+                     <a:s r="9">
+                        <a:s r="8">
+                           <a:s>AWV</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="9">
+                           <a:s>&quot;Annual Wellness Encounters&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="10" locator="15:2-15:44" xsi:type="Exists">
+            <operand localId="9" locator="15:9-15:44" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="13" locator="17:1-18:21" name="Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="13">
+               <a:s>define &quot;Denominator&quot;:&#xd;
+	</a:s>
+               <a:s r="12">
+                  <a:s>&quot;Initial Population&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="12" locator="18:2-18:21" name="Initial Population" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="50" locator="20:1-32:2" name="Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="50">
+               <a:s>define &quot;Numerator&quot;:&#xd;
+	</a:s>
+               <a:s r="49">
+                  <a:s>exists </a:s>
+                  <a:s r="48">
+                     <a:s>( </a:s>
+                     <a:s r="48">
+                        <a:s>
+                           <a:s r="15">
+                              <a:s r="14">
+                                 <a:s r="14">
+                                    <a:s>[&quot;Physical Exam, Performed&quot;]</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> Exam</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="22">
+                           <a:s>with </a:s>
+                           <a:s r="17">
+                              <a:s r="16">
+                                 <a:s>
+                                    <a:s>AWV.&quot;Annual Wellness Encounters&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> WellnessEncounter</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+				such that </a:s>
+                           <a:s r="21">
+                              <a:s r="19">
+                                 <a:s r="18">
+                                    <a:s>Exam</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="19">
+                                    <a:s>relevantPeriod</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> during </a:s>
+                              <a:s r="20">
+                                 <a:s>&quot;Measurement Period&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			</a:s>
+                        <a:s r="47">
+                           <a:s>where </a:s>
+                           <a:s r="47">
+                              <a:s r="34">
+                                 <a:s>exists </a:s>
+                                 <a:s r="33">
+                                    <a:s>( </a:s>
+                                    <a:s r="33">
+                                       <a:s>
+                                          <a:s r="24">
+                                             <a:s r="23">
+                                                <a:s>
+                                                   <a:s>Exam.components</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> Systolic</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+					</a:s>
+                                       <a:s r="32">
+                                          <a:s>where </a:s>
+                                          <a:s r="32">
+                                             <a:s r="28">
+                                                <a:s r="26">
+                                                   <a:s r="25">
+                                                      <a:s>Systolic</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="26">
+                                                      <a:s>code</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="27">
+                                                   <a:s>&quot;Systolic Blood Pressure&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>&#xd;
+						and </a:s>
+                                             <a:s r="31">
+                                                <a:s r="30">
+                                                   <a:s r="29">
+                                                      <a:s>Systolic</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="30">
+                                                      <a:s>result</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> is not null</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+			)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+				and </a:s>
+                              <a:s r="46">
+                                 <a:s>exists </a:s>
+                                 <a:s r="45">
+                                    <a:s>( </a:s>
+                                    <a:s r="45">
+                                       <a:s>
+                                          <a:s r="36">
+                                             <a:s r="35">
+                                                <a:s>
+                                                   <a:s>Exam.components</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s> Diastolic</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>&#xd;
+						</a:s>
+                                       <a:s r="44">
+                                          <a:s>where </a:s>
+                                          <a:s r="44">
+                                             <a:s r="40">
+                                                <a:s r="38">
+                                                   <a:s r="37">
+                                                      <a:s>Diastolic</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="38">
+                                                      <a:s>code</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> in </a:s>
+                                                <a:s r="39">
+                                                   <a:s>&quot;Diastolic Blood Pressure&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>&#xd;
+							and </a:s>
+                                             <a:s r="43">
+                                                <a:s r="42">
+                                                   <a:s r="41">
+                                                      <a:s>Diastolic</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="42">
+                                                      <a:s>result</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s> is not null</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>&#xd;
+				)</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="49" locator="21:2-32:2" xsi:type="Exists">
+            <operand localId="48" locator="21:9-32:2" xsi:type="Query">
+               <source localId="15" locator="21:11-21:43" alias="Exam">
+                  <expression localId="14" locator="21:11-21:38" dataType="qdm53:PositivePhysicalExamPerformed" templateId="PositivePhysicalExamPerformed" xsi:type="Retrieve"/>
+               </source>
+               <relationship localId="22" locator="22:4-23:61" alias="WellnessEncounter" xsi:type="With">
+                  <expression localId="16" locator="22:9-22:40" name="Annual Wellness Encounters" libraryName="AWV" xsi:type="ExpressionRef"/>
+                  <suchThat localId="21" locator="23:15-23:61" xsi:type="IncludedIn">
+                     <operand localId="19" locator="23:15-23:33" path="relevantPeriod" scope="Exam" xsi:type="Property"/>
+                     <operand localId="20" locator="23:42-23:61" name="Measurement Period" xsi:type="ParameterRef"/>
+                  </suchThat>
+               </relationship>
+               <where localId="47" locator="24:4-31:5" xsi:type="And">
+                  <operand localId="34" locator="24:10-27:4" xsi:type="Exists">
+                     <operand localId="33" locator="24:17-27:4" xsi:type="Query">
+                        <source localId="24" locator="24:19-24:42" alias="Systolic">
+                           <expression localId="23" locator="24:19-24:33" path="components" scope="Exam" xsi:type="Property"/>
+                        </source>
+                        <where localId="32" locator="25:6-26:37" xsi:type="And">
+                           <operand localId="28" locator="25:12-25:53" xsi:type="InValueSet">
+                              <code localId="26" locator="25:12-25:24" path="code" scope="Systolic" xsi:type="Property"/>
+                              <valueset localId="27" locator="25:29-25:53" name="Systolic Blood Pressure"/>
+                           </operand>
+                           <operand localId="31" locator="26:11-26:37" xsi:type="Not">
+                              <operand locator="26:11-26:37" xsi:type="IsNull">
+                                 <operand localId="30" locator="26:11-26:25" path="result" scope="Systolic" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+                  <operand localId="46" locator="28:9-31:5" xsi:type="Exists">
+                     <operand localId="45" locator="28:16-31:5" xsi:type="Query">
+                        <source localId="36" locator="28:18-28:42" alias="Diastolic">
+                           <expression localId="35" locator="28:18-28:32" path="components" scope="Exam" xsi:type="Property"/>
+                        </source>
+                        <where localId="44" locator="29:7-30:39" xsi:type="And">
+                           <operand localId="40" locator="29:13-29:56" xsi:type="InValueSet">
+                              <code localId="38" locator="29:13-29:26" path="code" scope="Diastolic" xsi:type="Property"/>
+                              <valueset localId="39" locator="29:31-29:56" name="Diastolic Blood Pressure"/>
+                           </operand>
+                           <operand localId="43" locator="30:12-30:39" xsi:type="Not">
+                              <operand locator="30:12-30:39" xsi:type="IsNull">
+                                 <operand localId="42" locator="30:12-30:27" path="result" scope="Diastolic" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

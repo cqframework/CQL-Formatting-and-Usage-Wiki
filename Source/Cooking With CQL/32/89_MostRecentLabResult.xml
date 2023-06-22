@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="MostRecentLabResult"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="8:1-8:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <parameters>
+      <def localId="5" locator="12:1-12:49" name="Measurement Period" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+            <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+         <parameterTypeSpecifier localId="4" locator="12:32-12:49" xsi:type="IntervalTypeSpecifier">
+            <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+               <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+            </resultTypeSpecifier>
+            <pointType localId="3" locator="12:41-12:48" resultTypeName="t:DateTime" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+         </parameterTypeSpecifier>
+      </def>
+   </parameters>
+   <valueSets>
+      <def localId="2" locator="10:1-10:84" name="HbA1c Laboratory Test" id="urn:oid:2.16.840.1.113883.3.464.1003.198.12.1013" accessLevel="Public">
+         <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+            <elementType name="t:Code" xsi:type="NamedTypeSpecifier"/>
+         </resultTypeSpecifier>
+      </def>
+   </valueSets>
+   <statements>
+      <def locator="14:1-14:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="14:1-14:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="24" locator="16:1-21:17" resultTypeName="t:Boolean" name="Has Most Recent Elevated Hba1c" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="24">
+               <a:s>define &quot;Has Most Recent Elevated Hba1c&quot;:&#xd;
+	</a:s>
+               <a:s r="23">
+                  <a:s r="21">
+                     <a:s r="20">
+                        <a:s>Last(</a:s>
+                        <a:s r="19">
+                           <a:s>
+                              <a:s r="7">
+                                 <a:s r="6">
+                                    <a:s r="6">
+                                       <a:s>[&quot;Laboratory Test, Performed&quot;: </a:s>
+                                       <a:s>
+                                          <a:s>&quot;HbA1c Laboratory Test&quot;</a:s>
+                                       </a:s>
+                                       <a:s>]</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> HbA1c</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="15">
+                              <a:s>where </a:s>
+                              <a:s r="15">
+                                 <a:s r="11">
+                                    <a:s r="9">
+                                       <a:s r="8">
+                                          <a:s>HbA1c</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="9">
+                                          <a:s>relevantPeriod</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> during </a:s>
+                                    <a:s r="10">
+                                       <a:s>&quot;Measurement Period&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+				and </a:s>
+                                 <a:s r="14">
+                                    <a:s r="13">
+                                       <a:s r="12">
+                                          <a:s>HbA1c</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="13">
+                                          <a:s>result</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> is not null</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			</a:s>
+                           <a:s r="18">
+                              <a:s>sort by </a:s>
+                              <a:s r="17">
+                                 <a:s r="16">
+                                    <a:s>resultDatetime</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+	)</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="21">
+                        <a:s>result</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> > </a:s>
+                  <a:s r="22">
+                     <a:s>9 '%'</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="23" locator="17:2-21:17" resultTypeName="t:Boolean" xsi:type="Greater">
+            <operand asType="t:Quantity" xsi:type="As">
+               <operand localId="21" locator="17:2-21:9" path="result" xsi:type="Property">
+                  <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                     <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                     <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                     <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                  </resultTypeSpecifier>
+                  <source localId="20" locator="17:2-21:2" resultTypeName="qdm53:PositiveLaboratoryTestPerformed" xsi:type="Last">
+                     <source localId="19" locator="17:7-20:25" xsi:type="Query">
+                        <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                           <elementType name="qdm53:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                        </resultTypeSpecifier>
+                        <source localId="7" locator="17:7-17:67" alias="HbA1c">
+                           <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                              <elementType name="qdm53:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                           </resultTypeSpecifier>
+                           <expression localId="6" locator="17:7-17:61" dataType="qdm53:PositiveLaboratoryTestPerformed" templateId="PositiveLaboratoryTestPerformed" codeProperty="code" xsi:type="Retrieve">
+                              <resultTypeSpecifier xsi:type="ListTypeSpecifier">
+                                 <elementType name="qdm53:PositiveLaboratoryTestPerformed" xsi:type="NamedTypeSpecifier"/>
+                              </resultTypeSpecifier>
+                              <codes name="HbA1c Laboratory Test" xsi:type="ValueSetRef"/>
+                           </expression>
+                        </source>
+                        <where localId="15" locator="18:4-19:32" resultTypeName="t:Boolean" xsi:type="And">
+                           <operand localId="11" locator="18:10-18:57" resultTypeName="t:Boolean" xsi:type="IncludedIn">
+                              <operand localId="9" locator="18:10-18:29" path="relevantPeriod" scope="HbA1c" xsi:type="Property">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                              <operand localId="10" locator="18:38-18:57" name="Measurement Period" xsi:type="ParameterRef">
+                                 <resultTypeSpecifier xsi:type="IntervalTypeSpecifier">
+                                    <pointType name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                                 </resultTypeSpecifier>
+                              </operand>
+                           </operand>
+                           <operand localId="14" locator="19:9-19:32" resultTypeName="t:Boolean" xsi:type="Not">
+                              <operand locator="19:9-19:32" resultTypeName="t:Boolean" xsi:type="IsNull">
+                                 <operand localId="13" locator="19:9-19:20" path="result" scope="HbA1c" xsi:type="Property">
+                                    <resultTypeSpecifier xsi:type="ChoiceTypeSpecifier">
+                                       <type name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                                       <type name="qdm53:Ratio" xsi:type="NamedTypeSpecifier"/>
+                                    </resultTypeSpecifier>
+                                 </operand>
+                              </operand>
+                           </operand>
+                        </where>
+                        <sort localId="18" locator="20:4-20:25">
+                           <by localId="17" locator="20:12-20:25" resultTypeName="t:DateTime" direction="asc" path="resultDatetime" xsi:type="ByColumn"/>
+                        </sort>
+                     </source>
+                  </source>
+               </operand>
+            </operand>
+            <operand localId="22" locator="21:13-21:17" resultTypeName="t:Quantity" value="9" unit="%" xsi:type="Quantity"/>
+         </expression>
+      </def>
+   </statements>
+</library>
+
+

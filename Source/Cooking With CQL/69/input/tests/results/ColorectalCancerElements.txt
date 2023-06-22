@@ -1,0 +1,105 @@
+Executing CQL...
+CQL path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\69\input\cql
+Data path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\69\input\tests\library\ColorectalCancerElements
+Terminology path: c:\Users\Bryn\Documents\Src\SS\CQL-Formatting-and-Usage-Wiki\Source\Cooking With CQL\69\input\vocabulary\valueset
+Patient=Patient(id=denom-EXM130)
+AsOf=2022-12-01T14:29:52.612
+Flexible Sigmoidoscopy Performed=[]
+Flexible Sigmoidoscopy from Patient History=[]
+CT Colonography Performed=[]
+Total Colectomy Performed=[]
+Total Colectomy from Patient History=[]
+Fecal Occult Blood Test Result=[]
+Fecal Immunochemical Test DNA Result=[]
+Colonoscopy Performed=[Procedure(id=denom-EXM130-2)]
+Colonoscopy from Patient History=[]
+Active Malignant Neoplasm=[]
+Fecal Occult Blood Test Result Within 1 Year=[]
+Most Recent Fecal Occult Blood Test Result=null
+Fecal Immunochemical Test DNA Result Within 3 Years=[]
+Most Recent Fecal Immunochemical Test DNA Result=null
+Flexible Sigmoidoscopy Performed Within 5 Years=[]
+Most Recent Flexible Sigmoidoscopy Performed=null
+CT Colonography Performed Within 5 Years=[]
+Most Recent CT Colonography Performed=null
+Colonoscopy Performed Within 10 Years=[]
+Most Recent Colonoscopy Performed=Procedure(id=denom-EXM130-2)
+Has Active Malignant Neoplasm=false
+Has Total Colectomy Performed=false
+Has History of Total Colectomy=false
+Has Appropriate Colorectal Cancer Screening=false
+Has History of Appropriate Colorectal Cancer Screening=false
+
+Patient=Patient(id=numer-EXM130)
+AsOf=2022-12-01T14:29:52.760
+Flexible Sigmoidoscopy Performed=[]
+Flexible Sigmoidoscopy from Patient History=[]
+CT Colonography Performed=[]
+Total Colectomy Performed=[]
+Total Colectomy from Patient History=[]
+Fecal Occult Blood Test Result=[]
+Fecal Immunochemical Test DNA Result=[]
+Colonoscopy Performed=[Procedure(id=numer-EXM130-1)]
+Colonoscopy from Patient History=[]
+Active Malignant Neoplasm=[]
+Fecal Occult Blood Test Result Within 1 Year=[]
+Most Recent Fecal Occult Blood Test Result=null
+Fecal Immunochemical Test DNA Result Within 3 Years=[]
+Most Recent Fecal Immunochemical Test DNA Result=null
+Flexible Sigmoidoscopy Performed Within 5 Years=[]
+Most Recent Flexible Sigmoidoscopy Performed=null
+CT Colonography Performed Within 5 Years=[]
+Most Recent CT Colonography Performed=null
+Colonoscopy Performed Within 10 Years=[Procedure(id=numer-EXM130-1)]
+Most Recent Colonoscopy Performed=Procedure(id=numer-EXM130-1)
+Has Active Malignant Neoplasm=false
+Has Total Colectomy Performed=false
+Has History of Total Colectomy=false
+Has Appropriate Colorectal Cancer Screening=true
+Has History of Appropriate Colorectal Cancer Screening=false
+
+
+Evaluation logs:
+14:29:50.681 [pool-2-thread-1] INFO  ca.uhn.fhir.context.FhirContext - Creating new FHIR context for FHIR version [R4]
+14:29:50.880 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
+14:29:51.645 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
+14:29:51.714 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
+14:29:51.945 [pool-2-thread-1] INFO  c.u.f.c.support.DefaultProfileValidationSupport - Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
+14:29:52.615 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://fhir.org/guides/cqf/common/ValueSet/active-condition is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.615 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/birthsex is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.615 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://utah.edu/fhir/lcs-cds/ValueSet/conditionclinical is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.615 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://utah.edu/fhir/lcs-cds/ValueSet/currentsmoker is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-ethnicity is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/detailed-race is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://fhir.org/guides/cqf/common/ValueSet/inactive-condition is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.89 is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-ethnicity-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.616 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/omb-race-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.617 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/simple-language is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.617 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-allergy-substance is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-careteam-provider-roles is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-clinical-note-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-lab-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-diagnosticreport-report-and-note-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-category is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-documentreference-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-encounter-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-narrative-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.618 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-ndc-vaccine-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smoking-status-status is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-smokingstatus is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-observation-value-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-code is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-procedure-icd10pcs is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provenance-participant-type is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-role is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-provider-specialty is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-smoking-status-observation-codes is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+14:29:52.619 [pool-2-thread-1] WARN  o.o.c.c.e.e.terminology.BundleTerminologyProvider - ValueSet http://hl7.org/fhir/us/core/ValueSet/us-core-vaccines-cvx is not expanded. Falling back to compose definition. This will potentially produce incorrect results. 
+elapsed: 2.135 seconds
+

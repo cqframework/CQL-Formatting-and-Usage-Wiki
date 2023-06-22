@@ -1,0 +1,1884 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "AnticoagulationTherapyforAtrialFibrillationFlutter",
+         "version" : "10.2.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_5",
+            "version" : "5.5"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:64",
+            "localIdentifier" : "Global",
+            "path" : "MATGlobalCommonFunctions",
+            "version" : "5.0.000"
+         }, {
+            "localId" : "3",
+            "locator" : "6:1-6:48",
+            "localIdentifier" : "TJC",
+            "path" : "TJC_Overall",
+            "version" : "4.4.000"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "8:1-8:77",
+            "name" : "Anticoagulant Therapy",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.200",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "9:1-9:71",
+            "name" : "Atrial Ablation",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.203",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "6",
+            "locator" : "10:1-10:83",
+            "name" : "Atrial Fibrillation/Flutter",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.202",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "11:1-11:87",
+            "name" : "Discharge To Acute Care Facility",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.87",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "12:1-12:107",
+            "name" : "Discharged to Health Care Facility for Hospice Care",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.207",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "13:1-13:91",
+            "name" : "Discharged to Home for Hospice Care",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.209",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "14:1-14:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "15:1-15:83",
+            "name" : "Left Against Medical Advice",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.308",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "16:1-16:70",
+            "name" : "Medical Reason",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.473",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "13",
+            "locator" : "17:1-17:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "14",
+            "locator" : "18:1-18:71",
+            "name" : "Patient Expired",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.309",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "15",
+            "locator" : "19:1-19:70",
+            "name" : "Patient Refusal",
+            "id" : "urn:oid:2.16.840.1.113883.3.117.1.7.1.93",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "16",
+            "locator" : "20:1-20:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "17",
+            "locator" : "21:1-21:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "23:1-23:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "23:1-23:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_5}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "19",
+            "locator" : "25:1-26:51",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "19",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\n  " ]
+                  }, {
+                     "r" : "18",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "18",
+               "locator" : "26:3-26:51",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "26:40-26:50",
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "21",
+            "locator" : "28:1-29:43",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "21",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\n  " ]
+                  }, {
+                     "r" : "20",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "20",
+               "locator" : "29:3-29:43",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "29:36-29:42",
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "23",
+            "locator" : "31:1-32:41",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "23",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\n  " ]
+                  }, {
+                     "r" : "22",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "22",
+               "locator" : "32:3-32:41",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "32:35-32:40",
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "25",
+            "locator" : "34:1-35:58",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "25",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\n  " ]
+                  }, {
+                     "r" : "24",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "24",
+               "locator" : "35:3-35:58",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "35:34-35:57",
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "38",
+            "locator" : "37:1-40:63",
+            "name" : "Reason for Not Giving Anticoagulant at Discharge",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "38",
+                  "s" : [ {
+                     "value" : [ "define ","\"Reason for Not Giving Anticoagulant at Discharge\"",":\n  " ]
+                  }, {
+                     "r" : "37",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "27",
+                           "s" : [ {
+                              "r" : "26",
+                              "s" : [ {
+                                 "r" : "26",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Medication, Not Discharged\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Anticoagulant Therapy\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NoAnticoagulant" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "36",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "36",
+                           "s" : [ {
+                              "r" : "31",
+                              "s" : [ {
+                                 "r" : "29",
+                                 "s" : [ {
+                                    "r" : "28",
+                                    "s" : [ {
+                                       "value" : [ "NoAnticoagulant" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "29",
+                                    "s" : [ {
+                                       "value" : [ "negationRationale" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "30",
+                                 "s" : [ {
+                                    "value" : [ "\"Medical Reason\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n      or " ]
+                           }, {
+                              "r" : "35",
+                              "s" : [ {
+                                 "r" : "33",
+                                 "s" : [ {
+                                    "r" : "32",
+                                    "s" : [ {
+                                       "value" : [ "NoAnticoagulant" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "33",
+                                    "s" : [ {
+                                       "value" : [ "negationRationale" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " in " ]
+                              }, {
+                                 "r" : "34",
+                                 "s" : [ {
+                                    "value" : [ "\"Patient Refusal\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "37",
+               "locator" : "38:3-40:63",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "27",
+                  "locator" : "38:3-38:73",
+                  "alias" : "NoAnticoagulant",
+                  "expression" : {
+                     "localId" : "26",
+                     "locator" : "38:3-38:57",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}NegativeMedicationDischarge",
+                     "templateId" : "NegativeMedicationDischarge",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "38:34-38:56",
+                        "name" : "Anticoagulant Therapy",
+                        "type" : "ValueSetRef"
+                     }
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "36",
+                  "locator" : "39:5-40:63",
+                  "type" : "Or",
+                  "operand" : [ {
+                     "localId" : "31",
+                     "locator" : "39:11-39:63",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "29",
+                        "locator" : "39:11-39:43",
+                        "path" : "negationRationale",
+                        "scope" : "NoAnticoagulant",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "30",
+                        "locator" : "39:48-39:63",
+                        "name" : "Medical Reason"
+                     }
+                  }, {
+                     "localId" : "35",
+                     "locator" : "40:10-40:63",
+                     "type" : "InValueSet",
+                     "code" : {
+                        "localId" : "33",
+                        "locator" : "40:10-40:42",
+                        "path" : "negationRationale",
+                        "scope" : "NoAnticoagulant",
+                        "type" : "Property"
+                     },
+                     "valueset" : {
+                        "localId" : "34",
+                        "locator" : "40:47-40:63",
+                        "name" : "Patient Refusal"
+                     }
+                  } ]
+               }
+            }
+         }, {
+            "localId" : "40",
+            "locator" : "42:1-43:52",
+            "name" : "Anticoagulant Therapy at Discharge",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "40",
+                  "s" : [ {
+                     "value" : [ "define ","\"Anticoagulant Therapy at Discharge\"",":\n  " ]
+                  }, {
+                     "r" : "39",
+                     "s" : [ {
+                        "value" : [ "[","\"Medication, Discharge\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Anticoagulant Therapy\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "39",
+               "locator" : "43:3-43:52",
+               "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveMedicationDischarge",
+               "templateId" : "PositiveMedicationDischarge",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "locator" : "43:29-43:51",
+                  "name" : "Anticoagulant Therapy",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "43",
+            "locator" : "45:1-46:50",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "43",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n  " ]
+                  }, {
+                     "r" : "42",
+                     "s" : [ {
+                        "r" : "41",
+                        "s" : [ {
+                           "value" : [ "TJC" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "42",
+                        "s" : [ {
+                           "value" : [ "\"Encounter with Principal Diagnosis and Age\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "42",
+               "locator" : "46:3-46:50",
+               "name" : "Encounter with Principal Diagnosis and Age",
+               "libraryName" : "TJC",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "56",
+            "locator" : "58:1-61:107",
+            "name" : "Encounter with Atrial Ablation Procedure",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "56",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with Atrial Ablation Procedure\"",":\n  " ]
+                  }, {
+                     "r" : "55",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "45",
+                           "s" : [ {
+                              "r" : "44",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "54",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "47",
+                           "s" : [ {
+                              "r" : "46",
+                              "s" : [ {
+                                 "r" : "46",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Procedure, Performed\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Atrial Ablation\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","AtrialAblation" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "53",
+                           "s" : [ {
+                              "r" : "49",
+                              "s" : [ {
+                                 "r" : "48",
+                                 "s" : [ {
+                                    "value" : [ "AtrialAblation" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "49",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "53",
+                              "value" : [ " ","starts before"," " ]
+                           }, {
+                              "r" : "52",
+                              "s" : [ {
+                                 "value" : [ "start of " ]
+                              }, {
+                                 "r" : "51",
+                                 "s" : [ {
+                                    "r" : "50",
+                                    "s" : [ {
+                                       "value" : [ "IschemicStrokeEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "51",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "55",
+               "locator" : "59:3-61:107",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "45",
+                  "locator" : "59:3-59:57",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "44",
+                     "locator" : "59:3-59:33",
+                     "name" : "Ischemic Stroke Encounter",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "54",
+                  "locator" : "60:5-61:107",
+                  "alias" : "AtrialAblation",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "46",
+                     "locator" : "60:10-60:52",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}PositiveProcedurePerformed",
+                     "templateId" : "PositiveProcedurePerformed",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "60:35-60:51",
+                        "name" : "Atrial Ablation",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "53",
+                     "locator" : "61:17-61:107",
+                     "type" : "Before",
+                     "operand" : [ {
+                        "locator" : "61:47-61:52",
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "49",
+                           "locator" : "61:17-61:45",
+                           "path" : "relevantPeriod",
+                           "scope" : "AtrialAblation",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "localId" : "52",
+                        "locator" : "61:61-61:107",
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "51",
+                           "locator" : "61:70-61:107",
+                           "path" : "relevantPeriod",
+                           "scope" : "IschemicStrokeEncounter",
+                           "type" : "Property"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "70",
+            "locator" : "68:1-72:51",
+            "name" : "Encounter with a History of Atrial Fibrillation or Flutter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "70",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with a History of Atrial Fibrillation or Flutter\"",":\n  " ]
+                  }, {
+                     "r" : "69",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "59",
+                           "s" : [ {
+                              "r" : "58",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "68",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "61",
+                           "s" : [ {
+                              "r" : "60",
+                              "s" : [ {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "value" : [ "[","\"Diagnosis\"",": " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "\"Atrial Fibrillation/Flutter\"" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "]" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","AtrialFibrillationFlutter" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "67",
+                           "s" : [ {
+                              "r" : "63",
+                              "s" : [ {
+                                 "r" : "62",
+                                 "s" : [ {
+                                    "value" : [ "AtrialFibrillationFlutter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "63",
+                                 "s" : [ {
+                                    "value" : [ "prevalencePeriod" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "67",
+                              "value" : [ " ","starts on or before"," \n      " ]
+                           }, {
+                              "r" : "66",
+                              "s" : [ {
+                                 "value" : [ "end of " ]
+                              }, {
+                                 "r" : "65",
+                                 "s" : [ {
+                                    "r" : "64",
+                                    "s" : [ {
+                                       "value" : [ "IschemicStrokeEncounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "65",
+                                    "s" : [ {
+                                       "value" : [ "relevantPeriod" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "69",
+               "locator" : "69:3-72:51",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "59",
+                  "locator" : "69:3-69:57",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "58",
+                     "locator" : "69:3-69:33",
+                     "name" : "Ischemic Stroke Encounter",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "68",
+                  "locator" : "70:5-72:51",
+                  "alias" : "AtrialFibrillationFlutter",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "60",
+                     "locator" : "70:10-70:53",
+                     "dataType" : "{urn:healthit-gov:qdm:v5_5}Diagnosis",
+                     "codeProperty" : "code",
+                     "type" : "Retrieve",
+                     "codes" : {
+                        "locator" : "70:24-70:52",
+                        "name" : "Atrial Fibrillation/Flutter",
+                        "type" : "ValueSetRef"
+                     }
+                  },
+                  "suchThat" : {
+                     "localId" : "67",
+                     "locator" : "71:17-72:51",
+                     "type" : "SameOrBefore",
+                     "operand" : [ {
+                        "locator" : "71:60-71:65",
+                        "type" : "Start",
+                        "operand" : {
+                           "localId" : "63",
+                           "locator" : "71:17-71:58",
+                           "path" : "prevalencePeriod",
+                           "scope" : "AtrialFibrillationFlutter",
+                           "type" : "Property"
+                        }
+                     }, {
+                        "localId" : "66",
+                        "locator" : "72:7-72:51",
+                        "type" : "End",
+                        "operand" : {
+                           "localId" : "65",
+                           "locator" : "72:14-72:51",
+                           "path" : "relevantPeriod",
+                           "scope" : "IschemicStrokeEncounter",
+                           "type" : "Property"
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "84",
+            "locator" : "74:1-78:5",
+            "name" : "Encounter with Current Diagnosis Code of Atrial Fibrillation or Flutter",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "84",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with Current Diagnosis Code of Atrial Fibrillation or Flutter\"",":\n  " ]
+                  }, {
+                     "r" : "83",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "74",
+                           "s" : [ {
+                              "r" : "73",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Ischemic Stroke Encounter\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","IschemicStrokeEncounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "82",
+                        "s" : [ {
+                           "value" : [ "where " ]
+                        }, {
+                           "r" : "82",
+                           "s" : [ {
+                              "value" : [ "exists " ]
+                           }, {
+                              "r" : "81",
+                              "s" : [ {
+                                 "value" : [ "( " ]
+                              }, {
+                                 "r" : "81",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "76",
+                                       "s" : [ {
+                                          "r" : "75",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "value" : [ "IschemicStrokeEncounter",".","diagnoses" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","Diagnosis" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n        " ]
+                                 }, {
+                                    "r" : "80",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "80",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "80",
+                                          "s" : [ {
+                                             "r" : "78",
+                                             "s" : [ {
+                                                "r" : "77",
+                                                "s" : [ {
+                                                   "value" : [ "Diagnosis" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "78",
+                                                "s" : [ {
+                                                   "value" : [ "code" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " in " ]
+                                          }, {
+                                             "r" : "79",
+                                             "s" : [ {
+                                                "value" : [ "\"Atrial Fibrillation/Flutter\"" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " )" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n    )" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "83",
+               "locator" : "75:3-78:5",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "74",
+                  "locator" : "75:3-75:57",
+                  "alias" : "IschemicStrokeEncounter",
+                  "expression" : {
+                     "localId" : "73",
+                     "locator" : "75:3-75:33",
+                     "name" : "Ischemic Stroke Encounter",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ ],
+               "where" : {
+                  "localId" : "82",
+                  "locator" : "76:5-78:5",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "81",
+                     "locator" : "76:18-78:5",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "76",
+                        "locator" : "76:20-76:62",
+                        "alias" : "Diagnosis",
+                        "expression" : {
+                           "localId" : "75",
+                           "locator" : "76:20-76:52",
+                           "path" : "diagnoses",
+                           "scope" : "IschemicStrokeEncounter",
+                           "type" : "Property"
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "80",
+                        "locator" : "77:9-77:65",
+                        "type" : "InValueSet",
+                        "code" : {
+                           "localId" : "78",
+                           "locator" : "77:17-77:30",
+                           "path" : "code",
+                           "scope" : "Diagnosis",
+                           "type" : "Property"
+                        },
+                        "valueset" : {
+                           "localId" : "79",
+                           "locator" : "77:35-77:63",
+                           "name" : "Atrial Fibrillation/Flutter"
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "87",
+            "locator" : "80:1-83:83",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "87",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n  " ]
+                  }, {
+                     "r" : "86",
+                     "s" : [ {
+                        "r" : "72",
+                        "s" : [ {
+                           "r" : "57",
+                           "s" : [ {
+                              "value" : [ "\"Encounter with Atrial Ablation Procedure\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n    union " ]
+                        }, {
+                           "r" : "71",
+                           "s" : [ {
+                              "value" : [ "\"Encounter with a History of Atrial Fibrillation or Flutter\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    union " ]
+                     }, {
+                        "r" : "85",
+                        "s" : [ {
+                           "value" : [ "\"Encounter with Current Diagnosis Code of Atrial Fibrillation or Flutter\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "86",
+               "locator" : "81:3-83:83",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "72",
+                  "locator" : "81:3-82:70",
+                  "type" : "Union",
+                  "operand" : [ {
+                     "localId" : "57",
+                     "locator" : "81:3-81:44",
+                     "name" : "Encounter with Atrial Ablation Procedure",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "71",
+                     "locator" : "82:11-82:70",
+                     "name" : "Encounter with a History of Atrial Fibrillation or Flutter",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "85",
+                  "locator" : "83:11-83:83",
+                  "name" : "Encounter with Current Diagnosis Code of Atrial Fibrillation or Flutter",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "99",
+            "locator" : "48:1-51:85",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "99",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n  " ]
+                  }, {
+                     "r" : "98",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "89",
+                           "s" : [ {
+                              "r" : "88",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Denominator\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Encounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "97",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "91",
+                           "s" : [ {
+                              "r" : "90",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Anticoagulant Therapy at Discharge\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","DischargeAnticoagulant" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "96",
+                           "s" : [ {
+                              "r" : "93",
+                              "s" : [ {
+                                 "r" : "92",
+                                 "s" : [ {
+                                    "value" : [ "DischargeAnticoagulant" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "93",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "96",
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "95",
+                              "s" : [ {
+                                 "r" : "94",
+                                 "s" : [ {
+                                    "value" : [ "Encounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "95",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "98",
+               "locator" : "49:3-51:85",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "89",
+                  "locator" : "49:3-49:25",
+                  "alias" : "Encounter",
+                  "expression" : {
+                     "localId" : "88",
+                     "locator" : "49:3-49:15",
+                     "name" : "Denominator",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "97",
+                  "locator" : "50:5-51:85",
+                  "alias" : "DischargeAnticoagulant",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "90",
+                     "locator" : "50:10-50:45",
+                     "name" : "Anticoagulant Therapy at Discharge",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "96",
+                     "locator" : "51:17-51:85",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "93",
+                        "locator" : "51:17-51:53",
+                        "path" : "authorDatetime",
+                        "scope" : "DischargeAnticoagulant",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "95",
+                        "locator" : "51:62-51:85",
+                        "path" : "relevantPeriod",
+                        "scope" : "Encounter",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "111",
+            "locator" : "53:1-56:87",
+            "name" : "Denominator Exceptions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "111",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exceptions\"",":\n  " ]
+                  }, {
+                     "r" : "110",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "101",
+                           "s" : [ {
+                              "r" : "100",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Denominator\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Encounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "109",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "103",
+                           "s" : [ {
+                              "r" : "102",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Reason for Not Giving Anticoagulant at Discharge\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","NoDischargeAnticoagulant" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "108",
+                           "s" : [ {
+                              "r" : "105",
+                              "s" : [ {
+                                 "r" : "104",
+                                 "s" : [ {
+                                    "value" : [ "NoDischargeAnticoagulant" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "105",
+                                 "s" : [ {
+                                    "value" : [ "authorDatetime" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "r" : "108",
+                              "value" : [ " ","during"," " ]
+                           }, {
+                              "r" : "107",
+                              "s" : [ {
+                                 "r" : "106",
+                                 "s" : [ {
+                                    "value" : [ "Encounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "107",
+                                 "s" : [ {
+                                    "value" : [ "relevantPeriod" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "110",
+               "locator" : "54:3-56:87",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "101",
+                  "locator" : "54:3-54:25",
+                  "alias" : "Encounter",
+                  "expression" : {
+                     "localId" : "100",
+                     "locator" : "54:3-54:15",
+                     "name" : "Denominator",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "109",
+                  "locator" : "55:5-56:87",
+                  "alias" : "NoDischargeAnticoagulant",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "102",
+                     "locator" : "55:10-55:59",
+                     "name" : "Reason for Not Giving Anticoagulant at Discharge",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "108",
+                     "locator" : "56:17-56:87",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "105",
+                        "locator" : "56:17-56:55",
+                        "path" : "authorDatetime",
+                        "scope" : "NoDischargeAnticoagulant",
+                        "type" : "Property"
+                     }, {
+                        "localId" : "107",
+                        "locator" : "56:64-56:87",
+                        "path" : "relevantPeriod",
+                        "scope" : "Encounter",
+                        "type" : "Property"
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "128",
+            "locator" : "63:1-66:155",
+            "name" : "Encounter with Comfort Measures during Hospitalization",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "128",
+                  "s" : [ {
+                     "value" : [ "define ","\"Encounter with Comfort Measures during Hospitalization\"",":\n  " ]
+                  }, {
+                     "r" : "127",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "113",
+                           "s" : [ {
+                              "r" : "112",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "\"Denominator\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","Encounter" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    " ]
+                     }, {
+                        "r" : "126",
+                        "s" : [ {
+                           "value" : [ "with " ]
+                        }, {
+                           "r" : "115",
+                           "s" : [ {
+                              "r" : "114",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "TJC",".","\"Intervention Comfort Measures\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","ComfortMeasure" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n      such that " ]
+                        }, {
+                           "r" : "125",
+                           "s" : [ {
+                              "r" : "121",
+                              "s" : [ {
+                                 "value" : [ "Coalesce","(" ]
+                              }, {
+                                 "r" : "118",
+                                 "s" : [ {
+                                    "value" : [ "start of " ]
+                                 }, {
+                                    "r" : "117",
+                                    "s" : [ {
+                                       "r" : "116",
+                                       "s" : [ {
+                                          "value" : [ "ComfortMeasure" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "117",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ", " ]
+                              }, {
+                                 "r" : "120",
+                                 "s" : [ {
+                                    "r" : "119",
+                                    "s" : [ {
+                                       "value" : [ "ComfortMeasure" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "120",
+                                    "s" : [ {
+                                       "value" : [ "authorDatetime" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           }, {
+                              "r" : "125",
+                              "value" : [ "during"," " ]
+                           }, {
+                              "r" : "124",
+                              "s" : [ {
+                                 "r" : "122",
+                                 "s" : [ {
+                                    "value" : [ "Global" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "124",
+                                 "s" : [ {
+                                    "value" : [ "\"HospitalizationWithObservation\""," ( " ]
+                                 }, {
+                                    "r" : "123",
+                                    "s" : [ {
+                                       "value" : [ "Encounter" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " )" ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "127",
+               "locator" : "64:3-66:155",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "113",
+                  "locator" : "64:3-64:25",
+                  "alias" : "Encounter",
+                  "expression" : {
+                     "localId" : "112",
+                     "locator" : "64:3-64:15",
+                     "name" : "Denominator",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "relationship" : [ {
+                  "localId" : "126",
+                  "locator" : "65:5-66:155",
+                  "alias" : "ComfortMeasure",
+                  "type" : "With",
+                  "expression" : {
+                     "localId" : "114",
+                     "locator" : "65:10-65:44",
+                     "name" : "Intervention Comfort Measures",
+                     "libraryName" : "TJC",
+                     "type" : "ExpressionRef"
+                  },
+                  "suchThat" : {
+                     "localId" : "125",
+                     "locator" : "66:17-66:155",
+                     "type" : "In",
+                     "operand" : [ {
+                        "localId" : "121",
+                        "locator" : "66:17-66:95",
+                        "type" : "Coalesce",
+                        "operand" : [ {
+                           "localId" : "118",
+                           "locator" : "66:26-66:63",
+                           "type" : "Start",
+                           "operand" : {
+                              "localId" : "117",
+                              "locator" : "66:35-66:63",
+                              "path" : "relevantPeriod",
+                              "scope" : "ComfortMeasure",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "localId" : "120",
+                           "locator" : "66:66-66:94",
+                           "path" : "authorDatetime",
+                           "scope" : "ComfortMeasure",
+                           "type" : "Property"
+                        } ]
+                     }, {
+                        "localId" : "124",
+                        "locator" : "66:103-66:155",
+                        "name" : "HospitalizationWithObservation",
+                        "libraryName" : "Global",
+                        "type" : "FunctionRef",
+                        "operand" : [ {
+                           "localId" : "123",
+                           "locator" : "66:145-66:153",
+                           "name" : "Encounter",
+                           "type" : "AliasRef"
+                        } ]
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "158",
+            "locator" : "85:1-93:66",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "158",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\n  " ]
+                  }, {
+                     "r" : "157",
+                     "s" : [ {
+                        "r" : "155",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "155",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "130",
+                                 "s" : [ {
+                                    "r" : "129",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "\"Denominator\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","Encounter" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n      " ]
+                           }, {
+                              "r" : "154",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "154",
+                                 "s" : [ {
+                                    "r" : "149",
+                                    "s" : [ {
+                                       "r" : "144",
+                                       "s" : [ {
+                                          "r" : "139",
+                                          "s" : [ {
+                                             "r" : "134",
+                                             "s" : [ {
+                                                "r" : "132",
+                                                "s" : [ {
+                                                   "r" : "131",
+                                                   "s" : [ {
+                                                      "value" : [ "Encounter" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "132",
+                                                   "s" : [ {
+                                                      "value" : [ "dischargeDisposition" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " in " ]
+                                             }, {
+                                                "r" : "133",
+                                                "s" : [ {
+                                                   "value" : [ "\"Discharge To Acute Care Facility\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n        or " ]
+                                          }, {
+                                             "r" : "138",
+                                             "s" : [ {
+                                                "r" : "136",
+                                                "s" : [ {
+                                                   "r" : "135",
+                                                   "s" : [ {
+                                                      "value" : [ "Encounter" ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "." ]
+                                                }, {
+                                                   "r" : "136",
+                                                   "s" : [ {
+                                                      "value" : [ "dischargeDisposition" ]
+                                                   } ]
+                                                } ]
+                                             }, {
+                                                "value" : [ " in " ]
+                                             }, {
+                                                "r" : "137",
+                                                "s" : [ {
+                                                   "value" : [ "\"Left Against Medical Advice\"" ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n        or " ]
+                                       }, {
+                                          "r" : "143",
+                                          "s" : [ {
+                                             "r" : "141",
+                                             "s" : [ {
+                                                "r" : "140",
+                                                "s" : [ {
+                                                   "value" : [ "Encounter" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "141",
+                                                "s" : [ {
+                                                   "value" : [ "dischargeDisposition" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ " in " ]
+                                          }, {
+                                             "r" : "142",
+                                             "s" : [ {
+                                                "value" : [ "\"Patient Expired\"" ]
+                                             } ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "\n        or " ]
+                                    }, {
+                                       "r" : "148",
+                                       "s" : [ {
+                                          "r" : "146",
+                                          "s" : [ {
+                                             "r" : "145",
+                                             "s" : [ {
+                                                "value" : [ "Encounter" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "146",
+                                             "s" : [ {
+                                                "value" : [ "dischargeDisposition" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " in " ]
+                                       }, {
+                                          "r" : "147",
+                                          "s" : [ {
+                                             "value" : [ "\"Discharged to Home for Hospice Care\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n        or " ]
+                                 }, {
+                                    "r" : "153",
+                                    "s" : [ {
+                                       "r" : "151",
+                                       "s" : [ {
+                                          "r" : "150",
+                                          "s" : [ {
+                                             "value" : [ "Encounter" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "151",
+                                          "s" : [ {
+                                             "value" : [ "dischargeDisposition" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " in " ]
+                                    }, {
+                                       "r" : "152",
+                                       "s" : [ {
+                                          "value" : [ "\"Discharged to Health Care Facility for Hospice Care\"" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n  )" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    union " ]
+                     }, {
+                        "r" : "156",
+                        "s" : [ {
+                           "value" : [ "\"Encounter with Comfort Measures during Hospitalization\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "157",
+               "locator" : "86:3-93:66",
+               "type" : "Union",
+               "operand" : [ {
+                  "localId" : "155",
+                  "locator" : "86:3-92:3",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "130",
+                     "locator" : "86:5-86:27",
+                     "alias" : "Encounter",
+                     "expression" : {
+                        "localId" : "129",
+                        "locator" : "86:5-86:17",
+                        "name" : "Denominator",
+                        "type" : "ExpressionRef"
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "154",
+                     "locator" : "87:7-91:98",
+                     "type" : "Or",
+                     "operand" : [ {
+                        "localId" : "149",
+                        "locator" : "87:13-90:82",
+                        "type" : "Or",
+                        "operand" : [ {
+                           "localId" : "144",
+                           "locator" : "87:13-89:62",
+                           "type" : "Or",
+                           "operand" : [ {
+                              "localId" : "139",
+                              "locator" : "87:13-88:74",
+                              "type" : "Or",
+                              "operand" : [ {
+                                 "localId" : "134",
+                                 "locator" : "87:13-87:80",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "localId" : "132",
+                                    "locator" : "87:13-87:42",
+                                    "path" : "dischargeDisposition",
+                                    "scope" : "Encounter",
+                                    "type" : "Property"
+                                 },
+                                 "valueset" : {
+                                    "localId" : "133",
+                                    "locator" : "87:47-87:80",
+                                    "name" : "Discharge To Acute Care Facility"
+                                 }
+                              }, {
+                                 "localId" : "138",
+                                 "locator" : "88:12-88:74",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "localId" : "136",
+                                    "locator" : "88:12-88:41",
+                                    "path" : "dischargeDisposition",
+                                    "scope" : "Encounter",
+                                    "type" : "Property"
+                                 },
+                                 "valueset" : {
+                                    "localId" : "137",
+                                    "locator" : "88:46-88:74",
+                                    "name" : "Left Against Medical Advice"
+                                 }
+                              } ]
+                           }, {
+                              "localId" : "143",
+                              "locator" : "89:12-89:62",
+                              "type" : "InValueSet",
+                              "code" : {
+                                 "localId" : "141",
+                                 "locator" : "89:12-89:41",
+                                 "path" : "dischargeDisposition",
+                                 "scope" : "Encounter",
+                                 "type" : "Property"
+                              },
+                              "valueset" : {
+                                 "localId" : "142",
+                                 "locator" : "89:46-89:62",
+                                 "name" : "Patient Expired"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "148",
+                           "locator" : "90:12-90:82",
+                           "type" : "InValueSet",
+                           "code" : {
+                              "localId" : "146",
+                              "locator" : "90:12-90:41",
+                              "path" : "dischargeDisposition",
+                              "scope" : "Encounter",
+                              "type" : "Property"
+                           },
+                           "valueset" : {
+                              "localId" : "147",
+                              "locator" : "90:46-90:82",
+                              "name" : "Discharged to Home for Hospice Care"
+                           }
+                        } ]
+                     }, {
+                        "localId" : "153",
+                        "locator" : "91:12-91:98",
+                        "type" : "InValueSet",
+                        "code" : {
+                           "localId" : "151",
+                           "locator" : "91:12-91:41",
+                           "path" : "dischargeDisposition",
+                           "scope" : "Encounter",
+                           "type" : "Property"
+                        },
+                        "valueset" : {
+                           "localId" : "152",
+                           "locator" : "91:46-91:98",
+                           "name" : "Discharged to Health Care Facility for Hospice Care"
+                        }
+                     } ]
+                  }
+               }, {
+                  "localId" : "156",
+                  "locator" : "93:11-93:66",
+                  "name" : "Encounter with Comfort Measures during Hospitalization",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         } ]
+      }
+   }
+}

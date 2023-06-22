@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ZZ_AnnualWellnessAssessmentMeasure_PatientLinearCombination" version="0.0.001"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:91" localIdentifier="ScreeningForAlcoholMisuse" path="Test01_ScreeningForAlcoholMisuse" version="1.1.000"/>
+      <def localId="3" locator="6:1-6:85" localIdentifier="HypertensionAssessment" path="Test02_HypertensionAssessment" version="1.0.000"/>
+      <def localId="4" locator="7:1-7:89" localIdentifier="ScreeningForBreastCancer" path="Test03_ScreeningForBreastCancer" version="1.0.000"/>
+      <def localId="5" locator="8:1-8:97" localIdentifier="ScreeningForColorectalCancer" path="Test04_ScreeningForColorectalCancer" version="1.0.000"/>
+      <def localId="6" locator="9:1-9:85" localIdentifier="ScreeningForDepression" path="Test05_ScreeningForDepression" version="1.0.000"/>
+   </includes>
+   <codeSystems>
+      <def localId="7" locator="11:1-11:51" name="LOINC" id="urn:oid:2.16.840.1.113883.6.1" accessLevel="Public"/>
+   </codeSystems>
+   <valueSets>
+      <def localId="8" locator="13:1-13:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="9" locator="14:1-14:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="10" locator="15:1-15:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="11" locator="16:1-16:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+   </valueSets>
+   <codes>
+      <def localId="13" locator="18:1-18:61" name="Birth date" id="21112-8" display="Birthdate" accessLevel="Public">
+         <codeSystem localId="12" locator="18:35-18:41" name="LOINC"/>
+      </def>
+   </codes>
+   <statements>
+      <def locator="20:1-20:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="20:1-20:15" dataType="qdm53:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="15" locator="22:1-23:50" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="15">
+               <a:s>define &quot;SDE Ethnicity&quot;:&#xd;
+	</a:s>
+               <a:s r="14">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="14" locator="23:2-23:50" dataType="qdm53:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="17" locator="25:1-26:42" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="17">
+               <a:s>define &quot;SDE Payer&quot;:&#xd;
+	</a:s>
+               <a:s r="16">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="16" locator="26:2-26:42" dataType="qdm53:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="19" locator="28:1-29:40" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="19">
+               <a:s>define &quot;SDE Race&quot;:&#xd;
+	</a:s>
+               <a:s r="18">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="18" locator="29:2-29:40" dataType="qdm53:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="21" locator="31:1-32:57" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="21">
+               <a:s>define &quot;SDE Sex&quot;:&#xd;
+	</a:s>
+               <a:s r="20">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="20" locator="32:2-32:57" dataType="qdm53:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="23" locator="34:1-34:75" name="Patient Record" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="23">
+               <a:s>define &quot;Patient Record&quot;: </a:s>
+               <a:s r="22">
+                  <a:s>[&quot;Patient Characteristic Birthdate&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Birth date&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="22" locator="34:26-34:75" dataType="qdm53:PatientCharacteristicBirthdate" codeProperty="code" xsi:type="Retrieve">
+            <codes xsi:type="ToList">
+               <operand name="Birth date" xsi:type="CodeRef"/>
+            </codes>
+         </expression>
+      </def>
+      <def localId="33" locator="36:1-39:60" name="Is In Screening For Alcohol Misuse Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="33">
+               <a:s>define &quot;Is In Screening For Alcohol Misuse Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="32">
+                  <a:s r="28">
+                     <a:s r="25">
+                        <a:s r="24">
+                           <a:s>ScreeningForAlcoholMisuse</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="25">
+                           <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  and </a:s>
+                     <a:s r="27">
+                        <a:s r="26">
+                           <a:s>ScreeningForAlcoholMisuse</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="27">
+                           <a:s>&quot;Denominator&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		and </a:s>
+                  <a:s r="31">
+                     <a:s>not </a:s>
+                     <a:s r="30">
+                        <a:s r="29">
+                           <a:s>ScreeningForAlcoholMisuse</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="30">
+                           <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="32" locator="37:3-39:60" xsi:type="And">
+            <operand localId="28" locator="37:3-38:46" xsi:type="And">
+               <operand localId="25" locator="37:3-37:48" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+               <operand localId="27" locator="38:8-38:46" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="31" locator="39:7-39:60" xsi:type="Not">
+               <operand localId="30" locator="39:11-39:60" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="38" locator="41:1-43:44" name="Is In Screening For Alcohol Misuse Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="38">
+               <a:s>define &quot;Is In Screening For Alcohol Misuse Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="37">
+                  <a:s r="34">
+                     <a:s>&quot;Is In Screening For Alcohol Misuse Denominator&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="36">
+                     <a:s r="35">
+                        <a:s>ScreeningForAlcoholMisuse</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="36">
+                        <a:s>&quot;Numerator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="37" locator="42:3-43:44" xsi:type="And">
+            <operand localId="34" locator="42:3-42:50" name="Is In Screening For Alcohol Misuse Denominator" xsi:type="ExpressionRef"/>
+            <operand localId="36" locator="43:8-43:44" name="Numerator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="44" locator="45:1-47:43" name="Is In Hypertension Assessment Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="44">
+               <a:s>define &quot;Is In Hypertension Assessment Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="43">
+                  <a:s r="40">
+                     <a:s r="39">
+                        <a:s>HypertensionAssessment</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="40">
+                        <a:s>&quot;Initial Population&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="42">
+                     <a:s r="41">
+                        <a:s>HypertensionAssessment</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="42">
+                        <a:s>&quot;Denominator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="43" locator="46:3-47:43" xsi:type="And">
+            <operand localId="40" locator="46:3-46:45" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+            <operand localId="42" locator="47:8-47:43" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="49" locator="50:1-52:41" name="Is In Hypertension Assessment Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="49">
+               <a:s>define &quot;Is In Hypertension Assessment Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="48">
+                  <a:s r="45">
+                     <a:s>&quot;Is In Hypertension Assessment Denominator&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="47">
+                     <a:s r="46">
+                        <a:s>HypertensionAssessment</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="47">
+                        <a:s>&quot;Numerator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="48" locator="51:3-52:41" xsi:type="And">
+            <operand localId="45" locator="51:3-51:45" name="Is In Hypertension Assessment Denominator" xsi:type="ExpressionRef"/>
+            <operand localId="47" locator="52:8-52:41" name="Numerator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="59" locator="54:1-57:59" name="Is In Screening For Breast Cancer Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="59">
+               <a:s>define &quot;Is In Screening For Breast Cancer Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="58">
+                  <a:s r="54">
+                     <a:s r="51">
+                        <a:s r="50">
+                           <a:s>ScreeningForBreastCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="51">
+                           <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  and </a:s>
+                     <a:s r="53">
+                        <a:s r="52">
+                           <a:s>ScreeningForBreastCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="53">
+                           <a:s>&quot;Denominator&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		and </a:s>
+                  <a:s r="57">
+                     <a:s>not </a:s>
+                     <a:s r="56">
+                        <a:s r="55">
+                           <a:s>ScreeningForBreastCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="56">
+                           <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="58" locator="55:3-57:59" xsi:type="And">
+            <operand localId="54" locator="55:3-56:45" xsi:type="And">
+               <operand localId="51" locator="55:3-55:47" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+               <operand localId="53" locator="56:8-56:45" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="57" locator="57:7-57:59" xsi:type="Not">
+               <operand localId="56" locator="57:11-57:59" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="64" locator="59:1-61:43" name="Is In Screening For Breast Cancer Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="64">
+               <a:s>define &quot;Is In Screening For Breast Cancer Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="63">
+                  <a:s r="60">
+                     <a:s>&quot;Is In Screening For Breast Cancer Denominator&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="62">
+                     <a:s r="61">
+                        <a:s>ScreeningForBreastCancer</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="62">
+                        <a:s>&quot;Numerator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="63" locator="60:3-61:43" xsi:type="And">
+            <operand localId="60" locator="60:3-60:49" name="Is In Screening For Breast Cancer Denominator" xsi:type="ExpressionRef"/>
+            <operand localId="62" locator="61:8-61:43" name="Numerator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="74" locator="63:1-66:63" name="Is In Screening For Colorectal Cancer Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="74">
+               <a:s>define &quot;Is In Screening For Colorectal Cancer Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="73">
+                  <a:s r="69">
+                     <a:s r="66">
+                        <a:s r="65">
+                           <a:s>ScreeningForColorectalCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="66">
+                           <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  and </a:s>
+                     <a:s r="68">
+                        <a:s r="67">
+                           <a:s>ScreeningForColorectalCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="68">
+                           <a:s>&quot;Denominator&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		and </a:s>
+                  <a:s r="72">
+                     <a:s>not </a:s>
+                     <a:s r="71">
+                        <a:s r="70">
+                           <a:s>ScreeningForColorectalCancer</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="71">
+                           <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="73" locator="64:3-66:63" xsi:type="And">
+            <operand localId="69" locator="64:3-65:49" xsi:type="And">
+               <operand localId="66" locator="64:3-64:51" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+               <operand localId="68" locator="65:8-65:49" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="72" locator="66:7-66:63" xsi:type="Not">
+               <operand localId="71" locator="66:11-66:63" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="79" locator="68:1-70:47" name="Is In Screening For Colorectal Cancer Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="79">
+               <a:s>define &quot;Is In Screening For Colorectal Cancer Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="78">
+                  <a:s r="75">
+                     <a:s>&quot;Is In Screening For Colorectal Cancer Denominator&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="77">
+                     <a:s r="76">
+                        <a:s>ScreeningForColorectalCancer</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="77">
+                        <a:s>&quot;Numerator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="78" locator="69:3-70:47" xsi:type="And">
+            <operand localId="75" locator="69:3-69:53" name="Is In Screening For Colorectal Cancer Denominator" xsi:type="ExpressionRef"/>
+            <operand localId="77" locator="70:8-70:47" name="Numerator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="89" locator="72:1-75:57" name="Is In Screening For Depression Denominator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="89">
+               <a:s>define &quot;Is In Screening For Depression Denominator&quot;:&#xd;
+  </a:s>
+               <a:s r="88">
+                  <a:s r="84">
+                     <a:s r="81">
+                        <a:s r="80">
+                           <a:s>ScreeningForDepression</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="81">
+                           <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+	  and </a:s>
+                     <a:s r="83">
+                        <a:s r="82">
+                           <a:s>ScreeningForDepression</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="83">
+                           <a:s>&quot;Denominator&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		and </a:s>
+                  <a:s r="87">
+                     <a:s>not </a:s>
+                     <a:s r="86">
+                        <a:s r="85">
+                           <a:s>ScreeningForDepression</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="86">
+                           <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="88" locator="73:3-75:57" xsi:type="And">
+            <operand localId="84" locator="73:3-74:43" xsi:type="And">
+               <operand localId="81" locator="73:3-73:45" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+               <operand localId="83" locator="74:8-74:43" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="87" locator="75:7-75:57" xsi:type="Not">
+               <operand localId="86" locator="75:11-75:57" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="94" locator="77:1-79:41" name="Is In Screening For Depression Numerator" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="94">
+               <a:s>define &quot;Is In Screening For Depression Numerator&quot;:&#xd;
+  </a:s>
+               <a:s r="93">
+                  <a:s r="90">
+                     <a:s>&quot;Is In Screening For Depression Denominator&quot;</a:s>
+                  </a:s>
+                  <a:s>&#xd;
+	  and </a:s>
+                  <a:s r="92">
+                     <a:s r="91">
+                        <a:s>ScreeningForDepression</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="92">
+                        <a:s>&quot;Numerator&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="93" locator="78:3-79:41" xsi:type="And">
+            <operand localId="90" locator="78:3-78:46" name="Is In Screening For Depression Denominator" xsi:type="ExpressionRef"/>
+            <operand localId="92" locator="79:8-79:41" name="Numerator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="101" locator="122:1-123:24" name="ToScore" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="101">
+               <a:s>define function ToScore(value </a:s>
+               <a:s r="96">
+                  <a:s>Boolean</a:s>
+               </a:s>
+               <a:s>):&#xd;
+  </a:s>
+               <a:s r="100">
+                  <a:s r="100">
+                     <a:s>if </a:s>
+                     <a:s r="97">
+                        <a:s>value</a:s>
+                     </a:s>
+                     <a:s> then 1 else 0</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="100" locator="123:3-123:24" xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand localId="97" locator="123:6-123:10" name="value" xsi:type="OperandRef"/>
+            </condition>
+            <then localId="98" locator="123:17" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            <else localId="99" locator="123:24" valueType="t:Integer" value="0" xsi:type="Literal"/>
+         </expression>
+         <operand name="value">
+            <operandTypeSpecifier localId="96" locator="122:31-122:37" name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="115" locator="81:1-86:57" name="Denominator Score" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="115">
+               <a:s>define &quot;Denominator Score&quot;:&#xd;
+  </a:s>
+               <a:s r="114">
+                  <a:s r="111">
+                     <a:s r="108">
+                        <a:s r="105">
+                           <a:s r="102">
+                              <a:s>ToScore(</a:s>
+                              <a:s r="95">
+                                 <a:s>&quot;Is In Screening For Alcohol Misuse Denominator&quot;</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	  + </a:s>
+                           <a:s r="104">
+                              <a:s>ToScore(</a:s>
+                              <a:s r="103">
+                                 <a:s>&quot;Is In Hypertension Assessment Denominator&quot;</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		+ </a:s>
+                        <a:s r="107">
+                           <a:s>ToScore(</a:s>
+                           <a:s r="106">
+                              <a:s>&quot;Is In Screening For Breast Cancer Denominator&quot;</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		+ </a:s>
+                     <a:s r="110">
+                        <a:s>ToScore(</a:s>
+                        <a:s r="109">
+                           <a:s>&quot;Is In Screening For Colorectal Cancer Denominator&quot;</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		+ </a:s>
+                  <a:s r="113">
+                     <a:s>ToScore(</a:s>
+                     <a:s r="112">
+                        <a:s>&quot;Is In Screening For Depression Denominator&quot;</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="114" locator="82:3-86:57" xsi:type="Add">
+            <operand localId="111" locator="82:3-85:64" xsi:type="Add">
+               <operand localId="108" locator="82:3-84:60" xsi:type="Add">
+                  <operand localId="105" locator="82:3-83:57" xsi:type="Add">
+                     <operand localId="102" locator="82:3-82:59" name="ToScore" xsi:type="FunctionRef">
+                        <operand localId="95" locator="82:11-82:58" name="Is In Screening For Alcohol Misuse Denominator" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="104" locator="83:6-83:57" name="ToScore" xsi:type="FunctionRef">
+                        <operand localId="103" locator="83:14-83:56" name="Is In Hypertension Assessment Denominator" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="107" locator="84:5-84:60" name="ToScore" xsi:type="FunctionRef">
+                     <operand localId="106" locator="84:13-84:59" name="Is In Screening For Breast Cancer Denominator" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="110" locator="85:5-85:64" name="ToScore" xsi:type="FunctionRef">
+                  <operand localId="109" locator="85:13-85:63" name="Is In Screening For Colorectal Cancer Denominator" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="113" locator="86:5-86:57" name="ToScore" xsi:type="FunctionRef">
+               <operand localId="112" locator="86:13-86:56" name="Is In Screening For Depression Denominator" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="130" locator="88:1-93:55" name="Numerator Score" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="130">
+               <a:s>define &quot;Numerator Score&quot;:&#xd;
+  </a:s>
+               <a:s r="129">
+                  <a:s r="126">
+                     <a:s r="123">
+                        <a:s r="120">
+                           <a:s r="117">
+                              <a:s>ToScore(</a:s>
+                              <a:s r="116">
+                                 <a:s>&quot;Is In Screening For Alcohol Misuse Numerator&quot;</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s>&#xd;
+	  + </a:s>
+                           <a:s r="119">
+                              <a:s>ToScore(</a:s>
+                              <a:s r="118">
+                                 <a:s>&quot;Is In Hypertension Assessment Numerator&quot;</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+		+ </a:s>
+                        <a:s r="122">
+                           <a:s>ToScore(</a:s>
+                           <a:s r="121">
+                              <a:s>&quot;Is In Screening For Breast Cancer Numerator&quot;</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>&#xd;
+		+ </a:s>
+                     <a:s r="125">
+                        <a:s>ToScore(</a:s>
+                        <a:s r="124">
+                           <a:s>&quot;Is In Screening For Colorectal Cancer Numerator&quot;</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		+ </a:s>
+                  <a:s r="128">
+                     <a:s>ToScore(</a:s>
+                     <a:s r="127">
+                        <a:s>&quot;Is In Screening For Depression Numerator&quot;</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="129" locator="89:3-93:55" xsi:type="Add">
+            <operand localId="126" locator="89:3-92:62" xsi:type="Add">
+               <operand localId="123" locator="89:3-91:58" xsi:type="Add">
+                  <operand localId="120" locator="89:3-90:55" xsi:type="Add">
+                     <operand localId="117" locator="89:3-89:57" name="ToScore" xsi:type="FunctionRef">
+                        <operand localId="116" locator="89:11-89:56" name="Is In Screening For Alcohol Misuse Numerator" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="119" locator="90:6-90:55" name="ToScore" xsi:type="FunctionRef">
+                        <operand localId="118" locator="90:14-90:54" name="Is In Hypertension Assessment Numerator" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="122" locator="91:5-91:58" name="ToScore" xsi:type="FunctionRef">
+                     <operand localId="121" locator="91:13-91:57" name="Is In Screening For Breast Cancer Numerator" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="125" locator="92:5-92:62" name="ToScore" xsi:type="FunctionRef">
+                  <operand localId="124" locator="92:13-92:61" name="Is In Screening For Colorectal Cancer Numerator" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="128" locator="93:5-93:55" name="ToScore" xsi:type="FunctionRef">
+               <operand localId="127" locator="93:13-93:54" name="Is In Screening For Depression Numerator" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="148" locator="95:1-101:49" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="148">
+               <a:s>define &quot;Initial Population&quot;:&#xd;
+	</a:s>
+               <a:s r="147">
+                  <a:s>
+                     <a:s r="132">
+                        <a:s r="131">
+                           <a:s>
+                              <a:s>&quot;Patient Record&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> P</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="146">
+                     <a:s>where </a:s>
+                     <a:s r="146">
+                        <a:s r="143">
+                           <a:s r="140">
+                              <a:s r="137">
+                                 <a:s r="134">
+                                    <a:s r="133">
+                                       <a:s>ScreeningForAlcoholMisuse</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="134">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+			or </a:s>
+                                 <a:s r="136">
+                                    <a:s r="135">
+                                       <a:s>HypertensionAssessment</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="136">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			or </a:s>
+                              <a:s r="139">
+                                 <a:s r="138">
+                                    <a:s>ScreeningForBreastCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="139">
+                                    <a:s>&quot;Initial Population&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			or </a:s>
+                           <a:s r="142">
+                              <a:s r="141">
+                                 <a:s>ScreeningForColorectalCancer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="142">
+                                 <a:s>&quot;Initial Population&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			or </a:s>
+                        <a:s r="145">
+                           <a:s r="144">
+                              <a:s>ScreeningForDepression</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="145">
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="147" locator="96:2-101:49" xsi:type="Query">
+            <source localId="132" locator="96:2-96:19" alias="P">
+               <expression localId="131" locator="96:2-96:17" name="Patient Record" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="146" locator="97:3-101:49" xsi:type="Or">
+               <operand localId="143" locator="97:9-100:55" xsi:type="Or">
+                  <operand localId="140" locator="97:9-99:51" xsi:type="Or">
+                     <operand localId="137" locator="97:9-98:49" xsi:type="Or">
+                        <operand localId="134" locator="97:9-97:54" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                        <operand localId="136" locator="98:7-98:49" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="139" locator="99:7-99:51" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="142" locator="100:7-100:55" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="145" locator="101:7-101:49" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="166" locator="103:1-109:42" name="Measure Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="166">
+               <a:s>define &quot;Measure Population&quot;:&#xd;
+	</a:s>
+               <a:s r="165">
+                  <a:s>
+                     <a:s r="150">
+                        <a:s r="149">
+                           <a:s>
+                              <a:s>&quot;Patient Record&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> P</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="164">
+                     <a:s>where </a:s>
+                     <a:s r="164">
+                        <a:s r="161">
+                           <a:s r="158">
+                              <a:s r="155">
+                                 <a:s r="152">
+                                    <a:s r="151">
+                                       <a:s>ScreeningForAlcoholMisuse</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="152">
+                                       <a:s>&quot;Denominator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>&#xd;
+			or </a:s>
+                                 <a:s r="154">
+                                    <a:s r="153">
+                                       <a:s>HypertensionAssessment</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="154">
+                                       <a:s>&quot;Denominator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			or </a:s>
+                              <a:s r="157">
+                                 <a:s r="156">
+                                    <a:s>ScreeningForBreastCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="157">
+                                    <a:s>&quot;Denominator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			or </a:s>
+                           <a:s r="160">
+                              <a:s r="159">
+                                 <a:s>ScreeningForColorectalCancer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="160">
+                                 <a:s>&quot;Denominator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			or </a:s>
+                        <a:s r="163">
+                           <a:s r="162">
+                              <a:s>ScreeningForDepression</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="163">
+                              <a:s>&quot;Denominator&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="165" locator="104:2-109:42" xsi:type="Query">
+            <source localId="150" locator="104:2-104:19" alias="P">
+               <expression localId="149" locator="104:2-104:17" name="Patient Record" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="164" locator="105:3-109:42" xsi:type="Or">
+               <operand localId="161" locator="105:9-108:48" xsi:type="Or">
+                  <operand localId="158" locator="105:9-107:44" xsi:type="Or">
+                     <operand localId="155" locator="105:9-106:42" xsi:type="Or">
+                        <operand localId="152" locator="105:9-105:47" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                        <operand localId="154" locator="106:7-106:42" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="157" locator="107:7-107:44" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="160" locator="108:7-108:48" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="163" locator="109:7-109:42" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="181" locator="111:1-117:54" name="Measure Population Exclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="181">
+               <a:s>define &quot;Measure Population Exclusions&quot;:&#xd;
+  </a:s>
+               <a:s r="180">
+                  <a:s>
+                     <a:s r="168">
+                        <a:s r="167">
+                           <a:s>
+                              <a:s>&quot;Patient Record&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> P</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>&#xd;
+		</a:s>
+                  <a:s r="179">
+                     <a:s>where </a:s>
+                     <a:s r="179">
+                        <a:s r="176">
+                           <a:s r="173">
+                              <a:s r="170">
+                                 <a:s r="169">
+                                    <a:s>ScreeningForAlcoholMisuse</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="170">
+                                    <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>&#xd;
+			//and HypertensionAssessment.&quot;Denominator Exclusions&quot;&#xd;
+			and </a:s>
+                              <a:s r="172">
+                                 <a:s r="171">
+                                    <a:s>ScreeningForBreastCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="172">
+                                    <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>&#xd;
+			and </a:s>
+                           <a:s r="175">
+                              <a:s r="174">
+                                 <a:s>ScreeningForColorectalCancer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="175">
+                                 <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>&#xd;
+			and </a:s>
+                        <a:s r="178">
+                           <a:s r="177">
+                              <a:s>ScreeningForDepression</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="178">
+                              <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="180" locator="112:3-117:54" xsi:type="Query">
+            <source localId="168" locator="112:3-112:20" alias="P">
+               <expression localId="167" locator="112:3-112:18" name="Patient Record" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="179" locator="113:3-117:54" xsi:type="And">
+               <operand localId="176" locator="113:9-116:60" xsi:type="And">
+                  <operand localId="173" locator="113:9-115:56" xsi:type="And">
+                     <operand localId="170" locator="113:9-113:58" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <operand localId="172" locator="115:8-115:56" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="175" locator="116:8-116:60" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="178" locator="117:8-117:54" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="186" locator="119:1-120:40" name="Measure Observation" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="186">
+               <a:s>define function &quot;Measure Observation&quot;(PatientCharacteristic </a:s>
+               <a:s r="182">
+                  <a:s>&quot;Patient Characteristic Birthdate&quot;</a:s>
+               </a:s>
+               <a:s>):&#xd;
+	</a:s>
+               <a:s r="185">
+                  <a:s r="185">
+                     <a:s r="183">
+                        <a:s>&quot;Numerator Score&quot;</a:s>
+                     </a:s>
+                     <a:s> / </a:s>
+                     <a:s r="184">
+                        <a:s>&quot;Denominator Score&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="185" locator="120:2-120:40" xsi:type="Divide">
+            <operand xsi:type="ToDecimal">
+               <operand localId="183" locator="120:2-120:18" name="Numerator Score" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand xsi:type="ToDecimal">
+               <operand localId="184" locator="120:22-120:40" name="Denominator Score" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+         <operand name="PatientCharacteristic">
+            <operandTypeSpecifier localId="182" locator="119:61-119:94" name="qdm53:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+   </statements>
+</library>
+
+

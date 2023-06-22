@@ -1,0 +1,614 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Test02_HypertensionAssessment",
+         "version" : "1.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "localIdentifier" : "AWV",
+            "path" : "AnnualWellness",
+            "version" : "1.0.000"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "7",
+            "locator" : "12:1-12:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "6",
+               "locator" : "12:32-12:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "5",
+                  "locator" : "12:41-12:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "3",
+            "locator" : "8:1-8:77",
+            "name" : "Diastolic Blood Pressure",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1033",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "4",
+            "locator" : "9:1-9:76",
+            "name" : "Systolic Blood Pressure",
+            "id" : "urn:oid:2.16.840.1.113883.3.526.3.1032",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "14:1-14:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "14:1-14:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "11",
+            "locator" : "16:1-17:42",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "11",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n\t" ]
+                  }, {
+                     "r" : "10",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "9",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "9",
+                           "s" : [ {
+                              "r" : "8",
+                              "s" : [ {
+                                 "value" : [ "AWV" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "9",
+                              "s" : [ {
+                                 "value" : [ "\"Annual Wellness Encounters\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "10",
+               "locator" : "17:2-17:42",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "9",
+                  "locator" : "17:9-17:42",
+                  "name" : "Annual Wellness Encounters",
+                  "libraryName" : "AWV",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "13",
+            "locator" : "19:1-20:21",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "13",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n\t" ]
+                  }, {
+                     "r" : "12",
+                     "s" : [ {
+                        "value" : [ "\"Initial Population\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "12",
+               "locator" : "20:2-20:21",
+               "name" : "Initial Population",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "50",
+            "locator" : "22:1-34:2",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "50",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n\t" ]
+                  }, {
+                     "r" : "49",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "48",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "48",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "15",
+                                 "s" : [ {
+                                    "r" : "14",
+                                    "s" : [ {
+                                       "r" : "14",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Physical Exam, Performed\"","]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","Exam" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "22",
+                              "s" : [ {
+                                 "value" : [ "with " ]
+                              }, {
+                                 "r" : "17",
+                                 "s" : [ {
+                                    "r" : "16",
+                                    "s" : [ {
+                                       "s" : [ {
+                                          "value" : [ "AWV",".","\"Annual Wellness Encounters\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","WellnessEncounter" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t\t\tsuch that " ]
+                              }, {
+                                 "r" : "21",
+                                 "s" : [ {
+                                    "r" : "19",
+                                    "s" : [ {
+                                       "r" : "18",
+                                       "s" : [ {
+                                          "value" : [ "Exam" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "19",
+                                       "s" : [ {
+                                          "value" : [ "relevantPeriod" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","during"," " ]
+                                 }, {
+                                    "r" : "20",
+                                    "s" : [ {
+                                       "value" : [ "\"Measurement Period\"" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "47",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "47",
+                                 "s" : [ {
+                                    "r" : "34",
+                                    "s" : [ {
+                                       "value" : [ "exists " ]
+                                    }, {
+                                       "r" : "33",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "33",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "r" : "24",
+                                                "s" : [ {
+                                                   "r" : "23",
+                                                   "s" : [ {
+                                                      "s" : [ {
+                                                         "value" : [ "Exam",".","components" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " ","Systolic" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\t\t\t\t" ]
+                                          }, {
+                                             "r" : "32",
+                                             "s" : [ {
+                                                "value" : [ "where " ]
+                                             }, {
+                                                "r" : "32",
+                                                "s" : [ {
+                                                   "r" : "28",
+                                                   "s" : [ {
+                                                      "r" : "26",
+                                                      "s" : [ {
+                                                         "r" : "25",
+                                                         "s" : [ {
+                                                            "value" : [ "Systolic" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "26",
+                                                         "s" : [ {
+                                                            "value" : [ "code" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " in " ]
+                                                   }, {
+                                                      "r" : "27",
+                                                      "s" : [ {
+                                                         "value" : [ "\"Systolic Blood Pressure\"" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\n\t\t\t\t\t\tand " ]
+                                                }, {
+                                                   "r" : "31",
+                                                   "s" : [ {
+                                                      "r" : "30",
+                                                      "s" : [ {
+                                                         "r" : "29",
+                                                         "s" : [ {
+                                                            "value" : [ "Systolic" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "30",
+                                                         "s" : [ {
+                                                            "value" : [ "result" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " is not null" ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t\t\t)" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\tand " ]
+                                 }, {
+                                    "r" : "46",
+                                    "s" : [ {
+                                       "value" : [ "exists " ]
+                                    }, {
+                                       "r" : "45",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "45",
+                                          "s" : [ {
+                                             "s" : [ {
+                                                "r" : "36",
+                                                "s" : [ {
+                                                   "r" : "35",
+                                                   "s" : [ {
+                                                      "s" : [ {
+                                                         "value" : [ "Exam",".","components" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ " ","Diastolic" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "\n\t\t\t\t\t\t" ]
+                                          }, {
+                                             "r" : "44",
+                                             "s" : [ {
+                                                "value" : [ "where " ]
+                                             }, {
+                                                "r" : "44",
+                                                "s" : [ {
+                                                   "r" : "40",
+                                                   "s" : [ {
+                                                      "r" : "38",
+                                                      "s" : [ {
+                                                         "r" : "37",
+                                                         "s" : [ {
+                                                            "value" : [ "Diastolic" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "38",
+                                                         "s" : [ {
+                                                            "value" : [ "code" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " in " ]
+                                                   }, {
+                                                      "r" : "39",
+                                                      "s" : [ {
+                                                         "value" : [ "\"Diastolic Blood Pressure\"" ]
+                                                      } ]
+                                                   } ]
+                                                }, {
+                                                   "value" : [ "\n\t\t\t\t\t\t\tand " ]
+                                                }, {
+                                                   "r" : "43",
+                                                   "s" : [ {
+                                                      "r" : "42",
+                                                      "s" : [ {
+                                                         "r" : "41",
+                                                         "s" : [ {
+                                                            "value" : [ "Diastolic" ]
+                                                         } ]
+                                                      }, {
+                                                         "value" : [ "." ]
+                                                      }, {
+                                                         "r" : "42",
+                                                         "s" : [ {
+                                                            "value" : [ "result" ]
+                                                         } ]
+                                                      } ]
+                                                   }, {
+                                                      "value" : [ " is not null" ]
+                                                   } ]
+                                                } ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "\n\t\t\t\t)" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "49",
+               "locator" : "23:2-34:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "48",
+                  "locator" : "23:9-34:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "15",
+                     "locator" : "23:11-23:43",
+                     "alias" : "Exam",
+                     "expression" : {
+                        "localId" : "14",
+                        "locator" : "23:11-23:38",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PositivePhysicalExamPerformed",
+                        "templateId" : "PositivePhysicalExamPerformed",
+                        "type" : "Retrieve"
+                     }
+                  } ],
+                  "relationship" : [ {
+                     "localId" : "22",
+                     "locator" : "24:4-25:61",
+                     "alias" : "WellnessEncounter",
+                     "type" : "With",
+                     "expression" : {
+                        "localId" : "16",
+                        "locator" : "24:9-24:40",
+                        "name" : "Annual Wellness Encounters",
+                        "libraryName" : "AWV",
+                        "type" : "ExpressionRef"
+                     },
+                     "suchThat" : {
+                        "localId" : "21",
+                        "locator" : "25:15-25:61",
+                        "type" : "IncludedIn",
+                        "operand" : [ {
+                           "localId" : "19",
+                           "locator" : "25:15-25:33",
+                           "path" : "relevantPeriod",
+                           "scope" : "Exam",
+                           "type" : "Property"
+                        }, {
+                           "localId" : "20",
+                           "locator" : "25:42-25:61",
+                           "name" : "Measurement Period",
+                           "type" : "ParameterRef"
+                        } ]
+                     }
+                  } ],
+                  "where" : {
+                     "localId" : "47",
+                     "locator" : "26:4-33:5",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "34",
+                        "locator" : "26:10-29:4",
+                        "type" : "Exists",
+                        "operand" : {
+                           "localId" : "33",
+                           "locator" : "26:17-29:4",
+                           "type" : "Query",
+                           "source" : [ {
+                              "localId" : "24",
+                              "locator" : "26:19-26:42",
+                              "alias" : "Systolic",
+                              "expression" : {
+                                 "localId" : "23",
+                                 "locator" : "26:19-26:33",
+                                 "path" : "components",
+                                 "scope" : "Exam",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "localId" : "32",
+                              "locator" : "27:6-28:37",
+                              "type" : "And",
+                              "operand" : [ {
+                                 "localId" : "28",
+                                 "locator" : "27:12-27:53",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "localId" : "26",
+                                    "locator" : "27:12-27:24",
+                                    "path" : "code",
+                                    "scope" : "Systolic",
+                                    "type" : "Property"
+                                 },
+                                 "valueset" : {
+                                    "localId" : "27",
+                                    "locator" : "27:29-27:53",
+                                    "name" : "Systolic Blood Pressure"
+                                 }
+                              }, {
+                                 "localId" : "31",
+                                 "locator" : "28:11-28:37",
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "locator" : "28:11-28:37",
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "localId" : "30",
+                                       "locator" : "28:11-28:25",
+                                       "path" : "result",
+                                       "scope" : "Systolic",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              } ]
+                           }
+                        }
+                     }, {
+                        "localId" : "46",
+                        "locator" : "30:9-33:5",
+                        "type" : "Exists",
+                        "operand" : {
+                           "localId" : "45",
+                           "locator" : "30:16-33:5",
+                           "type" : "Query",
+                           "source" : [ {
+                              "localId" : "36",
+                              "locator" : "30:18-30:42",
+                              "alias" : "Diastolic",
+                              "expression" : {
+                                 "localId" : "35",
+                                 "locator" : "30:18-30:32",
+                                 "path" : "components",
+                                 "scope" : "Exam",
+                                 "type" : "Property"
+                              }
+                           } ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "localId" : "44",
+                              "locator" : "31:7-32:39",
+                              "type" : "And",
+                              "operand" : [ {
+                                 "localId" : "40",
+                                 "locator" : "31:13-31:56",
+                                 "type" : "InValueSet",
+                                 "code" : {
+                                    "localId" : "38",
+                                    "locator" : "31:13-31:26",
+                                    "path" : "code",
+                                    "scope" : "Diastolic",
+                                    "type" : "Property"
+                                 },
+                                 "valueset" : {
+                                    "localId" : "39",
+                                    "locator" : "31:31-31:56",
+                                    "name" : "Diastolic Blood Pressure"
+                                 }
+                              }, {
+                                 "localId" : "43",
+                                 "locator" : "32:12-32:39",
+                                 "type" : "Not",
+                                 "operand" : {
+                                    "locator" : "32:12-32:39",
+                                    "type" : "IsNull",
+                                    "operand" : {
+                                       "localId" : "42",
+                                       "locator" : "32:12-32:27",
+                                       "path" : "result",
+                                       "scope" : "Diastolic",
+                                       "type" : "Property"
+                                    }
+                                 }
+                              } ]
+                           }
+                        }
+                     } ]
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}
