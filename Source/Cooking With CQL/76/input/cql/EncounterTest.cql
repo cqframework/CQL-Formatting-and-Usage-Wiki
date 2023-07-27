@@ -24,4 +24,11 @@ define "Encounters By ValueSet":
 define "Encounters By Code":
   ["Encounter": "Inpatient"]
 
-  
+define "Encounters Except":
+  ["Encounter": "Inpatient Encounters"] E
+    where case
+      when exists ((E.type) T where T ~ "Inpatient") then getThreshold(E) > 10
+      else getThreshold(E) > 15
+    end
+
+define function getThreshold(encounter Encounter): 1
