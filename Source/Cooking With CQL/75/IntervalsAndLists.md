@@ -40,7 +40,7 @@ You can determine the boundaries of an interval using `start of` and `end of`
 
 ```cql
 start of Interval[3, 5) // 3
-end of Interval[3, 4)   // 4
+end of Interval[3, 5)   // 4
 ```
 
 For a "unit" interval, you can use `point from` to extract the single point:
@@ -55,7 +55,7 @@ You can determine width and size of an interval:
 ```cql
 width of Interval[3, 5)    // 1
 width of Interval[3, 5]    // 2
-Size(Interval[3, 5]        // 3, because the interval contains the points 3, 4, and 5
+Size(Interval[3, 5])       // 3, because the interval contains the points 3, 4, and 5
 ```
 
 The `size` of an interval is the number of points it contains, whereas the width of an interval is how wide it is on the number line.
