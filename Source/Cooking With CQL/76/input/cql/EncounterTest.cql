@@ -32,3 +32,9 @@ define "Encounters Except":
     end
 
 define function getThreshold(encounter Encounter): 1
+
+define "Office Visit Encounters By Code Alternate (Anti-pattern)":
+  [Encounter] E
+    where "Inpatient" in E.type
+
+// Don't use this approach because it will resolve as a List in, not a terminology in

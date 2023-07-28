@@ -1,4 +1,4 @@
-#Direct-reference Code Encounters
+# Direct-reference Code Encounters
 
 The `type` element of [Encounters](http://hl7.org/fhir/us/qicore/StructureDefinition-qicore-encounter-definitions.html#key_Encounter.type) is plural (or multi-cardinality), meaning that a given Encounter may have multiple types associated with it:
 
@@ -93,3 +93,4 @@ Note that this latter workaround will typically result in an unrestricted data r
 * [CQLIT-368](https://oncprojectracking.healthit.gov/support/browse/CQLIT-368)
 * [Translator Issue #1181](https://github.com/cqframework/clinical_quality_language/issues/1181)
 * [Encounter Authoring Patterns](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Authoring-Patterns---QICore-v4.1.1#accessing-encounters-with-a-direct-reference-code)
+

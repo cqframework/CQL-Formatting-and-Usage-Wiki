@@ -31,8 +31,18 @@ define "Antithrombotic Therapy at Discharge (by Reference)":
       and Antithrombotic.intent = 'order'
 
 define fluent function medication(medicationRequest MedicationRequest):
-  singleton from ([Medication: id = medicationRequest.medication.reference.getId()])
-
-define fluent function medicationAlternate(medicationRequest MedicationRequest):
   singleton from ([Medication] M where M.id = medicationRequest.medication.reference.getId())
+
+define fluent function medicationIs(medicationRequest MedicationRequest, valueSet ValueSet):
+  medicationRequest.medication in valueSet
+    or medicationRequest.medication().code in valueSet
+
+define "Antithrombotic Therapy at Discharge (combined)":
+  ["MedicationRequest"] Antithrombotic
+    where Antithrombotic.medicationIs("Antithrombotic Therapy")
+      and (Antithrombotic.isCommunity() or Antithrombotic.isDischarge())
+      and Antithrombotic.status in { 'active', 'completed' }
+      and Antithrombotic.intent = 'order'
+
+
 

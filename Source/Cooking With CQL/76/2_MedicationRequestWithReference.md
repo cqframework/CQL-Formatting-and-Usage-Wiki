@@ -1,4 +1,4 @@
-#MedicationRequest With Medication Reference
+# MedicationRequest With Medication Reference
 
 #### Medication ordered (as a reference)
 _Updated 2023-07-25_
@@ -92,7 +92,7 @@ define "Antithrombotic Therapy at Discharge (by Reference)":
       and Antithrombotic.status in { 'active', 'completed' }
       and Antithrombotic.intent = 'order'
 
-define fluent function medicationAlternate(medicationRequest MedicationRequest):
+define fluent function medication(medicationRequest MedicationRequest):
   singleton from ([Medication] M where M.id = medicationRequest.medication.reference.getId())
 ```
 
