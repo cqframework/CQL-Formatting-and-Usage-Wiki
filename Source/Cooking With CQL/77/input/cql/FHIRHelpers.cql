@@ -6,9 +6,10 @@
  https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers
 @allowFluent: true
 
-@update: Refresh based on AU 2022 content
+@update: 4.1.000 -> Refresh based on AU 2022 content
+4.2.000 -> Version updated to ensure correct ELM output from MADiE
 */
-library FHIRHelpers version '4.1.000'
+library FHIRHelpers version '4.2.000'
 
 using FHIR version '4.0.1'
 

@@ -1,1 +1,1 @@
-1. Authoring Patterns (QICore STU5)
+1. VS Code CQL Plugin User Guide
