@@ -1,4 +1,14 @@
-library FHIRHelpers version '4.3.000'
+/*
+@author: Bryn Rhodes
+@description: This library defines functions to convert between FHIR
+ data types and CQL system-defined types, as well as functions to support
+ FHIRPath implementation. For more information, the FHIRHelpers wiki page:
+ https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers
+@allowFluent: true
+
+@update: Refresh based on AU 2022 content
+*/
+library FHIRHelpers version '4.1.000'
 
 using FHIR version '4.0.1'
 
@@ -384,69 +394,97 @@ define function conformsTo(resource Resource, structure String) returns Boolean:
 /*
 @description: Returns true if the given code is equal to a code in the valueset, so long as the valueset only contains one codesystem. If the valueset contains more than one codesystem, an error is thrown.
 @comment: If the valueset cannot be resolved as a uri to a value set, an error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 For example:
+
 ```fhirpath
 Observation.component.where(code.memberOf('http://hl7.org/fhir/ValueSet/observation-vitalsignresult'))
 ```
+
 This expression returns components that have a code that is a member of the observation-vitalsignresult valueset.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function memberOf(code code, valueSet String) returns Boolean: external
 /*
 @description: Returns true if the code is a member of the given valueset.
 @comment: If the valueset cannot be resolved as a uri to a value set, an error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 For example:
+
 ```fhirpath
 Observation.component.where(code.memberOf('http://hl7.org/fhir/ValueSet/observation-vitalsignresult'))
 ```
+
 This expression returns components that have a code that is a member of the observation-vitalsignresult valueset.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function memberOf(coding Coding, valueSet String) returns Boolean: external
 /*
 @description: Returns true if any code in the concept is a member of the given valueset.
 @comment: If the valueset cannot be resolved as a uri to a value set, an error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 For example:
+
 ```fhirpath
 Observation.component.where(code.memberOf('http://hl7.org/fhir/ValueSet/observation-vitalsignresult'))
 ```
+
 This expression returns components that have a code that is a member of the observation-vitalsignresult valueset.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function memberOf(concept CodeableConcept, valueSet String) returns Boolean: external
 /*
 @description: Returns true if the source code is equivalent to the given code, or if the source code subsumes the given code (i.e. the source code is an ancestor of the given code in a subsumption hierarchy), and false otherwise.
+
 @comment: If the Codings are from different code systems, the relationships between the code systems must be well-defined or a run-time error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function subsumes(coding Coding, subsumedCoding Coding) returns Boolean: external
 /*
 @description: Returns true if any Coding in the source or given elements is equivalent to or subsumes the given code.
+
 @comment: If the Codings are from different code systems, the relationships between the code systems must be well-defined or a run-time error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function subsumes(concept CodeableConcept, subsumedConcept CodeableConcept) returns Boolean: external
 /*
 @description: Returns true if the source code is equivalent to the given code, or if the source code is subsumed by the given code (i.e. the source code is a descendant of the given code in a subsumption hierarchy), and false otherwise.
+
 @comment: If the Codings are from different code systems, the relationships between the code systems must be well-defined or a run-time error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function subsumedBy(coding Coding, subsumingCoding Coding) returns Boolean: external
 /*
 @description: Returns true if any Coding in the source or given elements is equivalent to or subsumed by the given code.
+
 @comment: If the Codings are from different code systems, the relationships between the code systems must be well-defined or a run-time error is thrown.
+
 Note that implementations are encouraged to make use of a terminology service to provide this functionality.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function subsumedBy(concept CodeableConcept, subsumingConcept CodeableConcept) returns Boolean: external
 /*
 @description: When invoked on an xhtml element, returns true if the rules around HTML usage are met, and false if they are not. The return value is undefined (null) on any other kind of element.
+
 @seealso: https://hl7.org/fhir/fhirpath.html#functions
 */
 define function htmlChecks(element Element) returns Boolean: external
