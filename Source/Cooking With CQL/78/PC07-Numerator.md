@@ -84,8 +84,14 @@ define "Delivery Encounters":
 
 define "Delivery Encounters with Severe Obstetric Complications":
     "Delivery Encounters" Encounter
-      with [Condition: "Severe Maternal Moridity Diagnoses"] Condition
-        such that Global.PrevalenceInterval(Condition) overlaps Global.NormalizeInterval(Encounter)
+      let complications: "POAIsNoOrUTD"(Encounter)
+      where exists complications
+      return {
+        id: Encounter.id,
+        code: Encounter.code,
+        ...
+        diagnoses: complications
+      }
 
 /* Additional breakdown per grouped/extensional value set */
 define "Delivery Encounters with Acute Heart Failure":
@@ -105,23 +111,66 @@ define "Delivery Encounters with Conversion of Cardiac Rhythm":
 
 Question: Would it be reasonable for this information to be provided as supplemental data? For example:
 
+Consider use of the `case` expression:
+https://cql.hl7.org/03-developersguide.html#conditional-expressions
+
 ```cql
+
+Delivery Encounters with Severe Obstetric Complications Diagnosis or Procedure (Excluding Blood Transfusion)
+"Delivery Encounters At Greater than or Equal to 20 Weeks Gestation" TwentyWeeksPlusEncounter
+  where exists ( TwentyWeeksPlusEncounter.diagnoses EncounterDiagnoses
+      where EncounterDiagnoses.code in "Severe Maternal Morbidity Diagnoses"
+        and EncounterDiagnoses.presentOnAdmissionIndicator in "Present on Admission = No or Unable To Determine"
+  )
+    or exists ( ["Procedure, Performed": "Severe Maternal Morbidity Procedures"] EncounterProcedures
+        where Global."NormalizeInterval" ( EncounterProcedures.relevantDatetime, EncounterProcedures.relevantPeriod ) starts during day of PCMaternal."HospitalizationWithEDOBTriageObservation" ( TwentyWeeksPlusEncounter )
+    )
+
+define function POAIsNoOrUTD(Encounter "Encounter, Performed")
+    Encounter.diagnoses EncounterDiagnoses
+        where EncounterDiagnoses.presentOnAdmissionIndicator in "Present on Admission is No or Unable To Determine"
+        return EncounterDiagnoses.code
+
 define "Delivery Encounter Complication":
   "Delivery Encounters with Severe Obstetric Complications" Encounter
-    let complication: "EncounterCondition"(Encounter)
+    let complication: "POAIsNoOrUTD"(Encounter)
     return {
         id: Encounter.id,
         code: Encounter.code,
-        complicationCode: complication.code,
-        complicationCategory:
-          case 
-            when complication.code in "Acute Heart Failure" then 'Acute Heart Failure'
-            when complication.code in "Acute Myocardial Infarction" then 'Acute Myocardial Infarction'
-            when complication.code in "Acute Renal Failure" then 'Acute Renal Failure'
-            ...
-            else null
-          end
+        complications: 
+          complication C
+            return {
+                code: C,
+                category:
+                    case 
+                        when complication.code in "Acute Heart Failure" then 'Acute Heart Failure'
+                        when complication.code in "Acute Myocardial Infarction" then 'Acute Myocardial Infarction'
+                        when complication.code in "Acute Renal Failure" then 'Acute Renal Failure'
+                        ...
+                        else null
+                    end
+            }
     }
+
+{ 
+    id: '123', 
+    code: '99201', 
+    complications: { 
+        { code: 'XXX123', category: 'Acute Heart Failure' }, 
+        { code: 'XXX124', category: 'Acute Heart Failure' }, 
+        { code: 'XXX125', category: 'Acute Heart Failure' }, 
+        { code: 'XXX123', category: 'Acute Renal Failure' } 
+    } 
+},
+{ 
+    id: '124', 
+    code: '99201', 
+    complications: { 
+        { code: 'SNOMEDFORHF', category: 'Acute Heart Failure' }, 
+        { code: 'SNOMEDFORRF', category: 'Acute Renal Failure' } 
+    } 
+},
+...
 
 define "Delivery Encounter Procedure":
   "Delivery Encounters with Severe Maternal Morbidity Procedures" Encounter
