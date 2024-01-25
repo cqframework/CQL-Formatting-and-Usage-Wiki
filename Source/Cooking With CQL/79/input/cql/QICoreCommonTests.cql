@@ -1,8 +1,8 @@
 library QICoreCommonTests
 
-using FHIR version '4.0.1'
+using QICore version '4.1.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.3.000'
 
 include QICoreCommon called Common
 
@@ -104,13 +104,13 @@ define DeviceUseStatement:
 // QICoreDiagnosticReportLab
 // @profile: http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab
 define DiagnosticReportLab:
-  [DiagnosticReport] D
+  [DiagnosticReportLab] D
     //where D.category ~ "http://terminology.hl7.org/CodeSystem/v2-0074#LAB"
 
 // QICoreDiagnosticReportNote
 // @profile: http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note
 define DiagnosticReportNote:
-  [DiagnosticReport] D
+  [DiagnosticReportNote] D
 
 // QICoreEncounter
 // @profile: http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter
@@ -270,8 +270,8 @@ define MedicationStatement:
 
 // QICoreNutritionOrder
 // @profile: http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nutritionorder
-define NutritionOrder:
-  [NutritionOrder]
+//define NutritionOrder:
+//  [NutritionOrder]
 
 // QICoreObservation
 // @profile: http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation
@@ -488,9 +488,9 @@ define TestSlices:
 
 define TestSimpleExtensions:
   Patient P
-    where P.birthsex() = 'M'
+    where P.birthsex = 'M'
 
 define TestComplexExtensions:
   Patient P
-    where exists ((P.race().ombCategory) C where C ~ "American Indian or Alaska Native")
-      and exists ((P.race().detailed) C where C ~ "Alaska Native")
+    where exists ((P.race.ombCategory) C where C ~ "American Indian or Alaska Native")
+      and exists ((P.race.detailed) C where C ~ "Alaska Native")
