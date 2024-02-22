@@ -4,7 +4,7 @@ The Clinical Quality Language (CQL) specification was originally published norma
 
 To date, the major areas of feedback we have received are:
 
-* Better support for documentation and unit testing through tags
+* Better support for documentation and unit testing through tags (See proposal here: https://github.com/cqframework/cql-language-server/issues/40)
 * Support for a "default comparison precision"
 * Better support for direct manipulation of uncertainty
 * Ability to define types in the language (DDL)
