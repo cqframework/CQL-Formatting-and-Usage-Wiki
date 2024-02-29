@@ -1,5 +1,5 @@
 # MATGlobalCommonFunctionsQDM version 8.0.000
-The MATGlobalCommonFunctions library provides common functions and expressions used throughout electronic. Clinical Quality Measures (eCQM) published for use in Centers for Medicare and Medicaid (CMS) quality programs. Upversion to 8.0.000 to support 2024 AU efforts. No content changes were made from version 7.2.000 to this version 8.0.000
+The MATGlobalCommonFunctions library provides common functions and expressions used throughout electronic Clinical Quality Measures (eCQM) published for use in Centers for Medicare and Medicaid (CMS) quality programs. No content changes were made from version 7.2.000 to this version 8.0.000
 
 ## Using Quality Data Model (QDM) version '5.6'
 
