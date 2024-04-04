@@ -25,6 +25,8 @@ Additionally, I am trying to traverse a list of periods to say that the statemen
 
 ## Discussion
 
+### Terminology
+
 The submitted example is using:
 
 ```cql
