@@ -384,7 +384,6 @@ define "Medication Ingredients":
     return ingredients
 ```
 
-// TODO: "determines the overall result of the query" is the "result clause", not the "aggregate clause"
 [**Aggregate clause**](https://cql.hl7.org/03-developersguide.html#aggregate-queries): allows an expression to be repeatedly evaluated for each element of a list. **Important Note: The aggregate clause is a new feature of CQL 1.5, and is trial-use.**
 
 ```cql
@@ -509,8 +508,7 @@ flatten { { 1, 2, 3 }, { 3, 4, 5 } }
 
 4. [Aggregate Operators](https://cql.hl7.org/02-authorsguide.html#aggregate-operators)
 
-// TODO: It returns, not would return, right? (i.e. no passive voice)
-This would return the number of encounters in the list
+This returns the number of encounters in the list
 
 ```cql
 Count([Encounter])
@@ -646,11 +644,7 @@ Can be used on numbers, strings, integers, dates, decimals
 
 ### [**Logical Operators**](https://cql.hl7.org/02-authorsguide.html#logical-operators)
 
-// TODO: `is` and `as` are not logical operators, they are type operators
-// TODO: `in` is a membership operator, not a logical operator
-// TODO: Logical operators are `and`, `or`, `not`, `xor`, and `implies`
-// TODO: In other words, they are only operators that take boolean values as input and return boolean values
-`and`, `is`, `in`, `as`, `or`, `not`
+Logical operators are only operators that take boolean values as input and return boolean values.
 
 ```cql
 AgeInYears() >= 18 and AgeInYears() < 24
@@ -659,15 +653,8 @@ AgeInYears() >= 18 and AgeInYears() < 24
 ```cql
 define TestPrimitives:
   Patient P
-    where P.gender.value = 'male'
-      and P.active.value is true
-      and P.maritalStatus in "Marital Status"
-```
-
-```cql
-define "Former smoker observation":
-  "Most recent smoking status observation" O
-    where (O.value as CodeableConcept) ~ "Former Smoker"
+    where P.gender.value = 'male' 
+      and P.gender.value != 'female'
 ```
 
 ```cql
@@ -675,6 +662,24 @@ define "Absence of Cervix":
   [Procedure: "Hysterectomy with No Residual Cervix"] NoCervixProcedure
     where FC.ToInterval(NoCervixProcedure.performed) ends on or before end of "Measurement Period" 
       and NoCervixProcedure.status = 'completed'
+```
+
+### [**Type Operators**](https://cql.hl7.org/09-b-cqlreference.html#type-operators-1)
+
+The as operator allows the result of an expression to be cast as a given target type
+
+```cql
+define "Former smoker observation":
+  "Most recent smoking status observation" O
+    where (O.value as CodeableConcept) ~ "Former Smoker"
+```
+
+The is operator allows the type of a result to be tested
+
+```cql
+define "Patient is Active":
+  Patient P
+    where P.active.value is true
 ```
 
 ### [**Nullological Operators**](https://cql.hl7.org/03-developersguide.html#nullological-operators)
