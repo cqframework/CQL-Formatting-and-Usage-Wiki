@@ -86,16 +86,6 @@ define function MostRecent(observations List<Observation>):
 
 In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
 
-TODO: This should probably just be Queries, not "Alias functionality"
-### [**Alias functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
-
-A query construct often begins by introducing an alias for the primary source.
- 
-```cql
-["Encounter": "Inpatient"] E
-  where E.period during "Measurement Period"
-```
-
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
 
 The clauses described in the clauses section later must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
@@ -155,6 +145,14 @@ define "Info":
 ## Queries
 
 // TODO: Move the Alias stuff to here:
+### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
+
+A query construct often begins by introducing an alias for the primary source.
+ 
+```cql
+["Encounter": "Inpatient"] E
+  where E.period during "Measurement Period"
+```
 
 ### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
 
