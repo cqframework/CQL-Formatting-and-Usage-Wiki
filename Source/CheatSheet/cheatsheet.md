@@ -1,32 +1,32 @@
-# Foundation of CQL
+# CQL Cheat Sheet
 
-CQL is a Health Level 7 Standard for the expression of clinical knowledge.  
+Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standard for representing clinical logic. This cheat sheet provides a quick reference for the most commonly used features of the language. For more resources, see the [Getting Started](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Getting-Started) page of the CQL Formatting and Usage Wiki.
 
 ## Syntax
 
 ### [**Declarations**](https://cql.hl7.org/02-authorsguide.html#declarations)
 
-Constructs expressed within CQL are packaged in containers called libraries. Each library allows a set of declarations to provide information about the library as well as to define constructs that will be available within the library.
+Constructs expressed within CQL are packaged in libraries. Each library consists of a set of declarations such as terminology, expressions, and functions that are used to define and share clinical logic.
 
-1) [Library syntax](https://cql.hl7.org/02-authorsguide.html#library) -The `library` declaration specifies both the name of the library and optional version
+1) [Library syntax](https://cql.hl7.org/02-authorsguide.html#library) - The `library` declaration specifies both the name of the library and optional version
 
 ```cql
 library AlphoraCommon version '1.0.0'
 ```
 
-2) [Using syntax](https://cql.hl7.org/02-authorsguide.html#data-models) - A CQL library can reference zero or more data models using declarations via the `using` syntax. These data models define the structures that can be used within retrieval expressions in the library.
+2) [Using syntax](https://cql.hl7.org/02-authorsguide.html#data-models) - A CQL library can reference zero or more data models with the `using` declaration. These data models define the structures that can be referenced in the library.
 
 ```cql
 using FHIR version '4.0.1'
 ```
 
-3) [Include syntax](https://cql.hl7.org/02-authorsguide.html#libraries) - A CQL library can reference zero or more other CQL libraries with the `include` declarations. 
+3) [Include syntax](https://cql.hl7.org/02-authorsguide.html#libraries) - A CQL library can reference zero or more other CQL libraries with the `include` declaration. Declarations in included libraries can be used anywhere within the referencing library. The `called` clause defines an optional qualifier to use to reference declarations in the included library.
 
 ```cql
 include FHIRCommon called FC
 ```
 
-4) [Parameter syntax](https://cql.hl7.org/02-authorsguide.html#parameters) -  CQL library can define zero or more parameters using the `parameter` declaration. A parameter includes an alias name for a default value or data type that can be used throughout the code by that alias value.
+4) [Parameter syntax](https://cql.hl7.org/02-authorsguide.html#parameters) - A CQL library can define zero or more parameters using the `parameter` declaration. Parameters defined in a library can be referenced anywhere within the library.
 
 ```cql
 parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)
@@ -36,48 +36,53 @@ parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)
 parameter MeasurementPeriod Interval<DateTime>
 ```
 
-5) [Context syntax](https://cql.hl7.org/02-authorsguide.html#context)- The `context` declaration defines the scope of data available to statements within the language. When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. By contrast, if the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context.
+5) [Context syntax](https://cql.hl7.org/02-authorsguide.html#context) - The `context` declaration defines the "extent" of data available to be retrieved (e.g. the data for a patient). When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. If the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context.
 
 ```cql
-context Patient, context Practitioner, context Unfiltered
+context Patient
+context Practitioner
+context Unfiltered
 ```
 
-6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology)\- `Value Sets and Code Systems` are declared before they are referenced within the CQL code.
+6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology) - Value set and code system declarations allow terminology to be referenced anywhere within the library.
 
 ```cql
-valueset "Acute Pharyngitis": 'urn:oid:2.16.840.1.113883.3.464.1003.102.12.1011'
+valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
 ```
 
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
-The retrieve expression is the central construct for accessing clinical information within CQL. The retrieve in CQL has two main parts: first, the type part and second, the filter part.
+The retrieve expression is the central construct for accessing clinical information within CQL. The retrieve in CQL has two main parts: the "type part" and the "terminology filter part".
 
-1) [the type part](https://cql.hl7.org/02-authorsguide.html#clinical-statement-structure) : identifies the type of data that is to be retrieved
+1) [type part](https://cql.hl7.org/02-authorsguide.html#clinical-statement-structure) : identifies the type of data that is to be retrieved
 
 ```cql
 [Encounter]
 ```
-2) [the filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
+
+2) [terminology filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
 
 ```cql
-[Condition: "Acute Pharyngitis"\] where Acute Pharyngitis is the value set.
+[Condition: "Acute Pharyngitis"] where Acute Pharyngitis is the value set.
 ```
 
+TODO: This isn't right, it's not an example of a function, the link isn't to the function declaration section of the spec, and functions don't have to be quoted identifiers :)
 3) [function](https://cql.hl7.org/02-authorsguide.html#statements) : A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
 
+TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
 ```cql
 define "Inpatient Encounters": 
 [Encounter: class = "Inpatient Encounter"]
 ```
 
+TODO: This should probably just be Queries, not "Alias functionality"
 ### [**Alias functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
 
 A query construct often begins by introducing an alias for the primary source.
  
 ```cql
 ["Encounter": "Inpatient"] E
-
-where E.period during "Measurement Period"
+  where E.period during "Measurement Period"
 ```
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
@@ -92,23 +97,31 @@ The clauses described in the clauses section later must appear in the correct or
   <sort-clause>
 ```
 
-### [**Quotation Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier) 
+TODO: Should probably organize discussions about each clause here
 
+TODO: Identifiers should probably be introduced before queries?
+TODO: The link is to "identifier", but if this is about "identifiers" vs "strings", we should probably have links to both?
+TODO: Probably call it "Identifiers vs Strings", rather than "Quotation Syntax"?
+### [**Quotation Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier) 
 
 Strings have single quotes (including string representation of code values)
 
 ``` cql
-'John Doe', 'g/dl'
+'John Doe'
+'g/dl'
 'male'
 ```
 
+TODO: Probably need to introduce "Identifiers" somewhere?
 Identifiers that include spaces or other non-alphnumeric characters have double quotes 
 
 ```cql
 "Marital Status - Married" // A Concept declaration
 "SNOMED CT" // A CodeSystem declaration
 "Inpatient Encounters" // A defined expression
-```  
+```
+
+TODO: The link is to "identifier", which isn't relevant to any of these topics?
 ### [**Bracket Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
 
 1. Intervals use [] and ()
@@ -130,6 +143,8 @@ define "Info":
 
 ## Queries
 
+// TODO: Move the Alias stuff to here:
+
 ### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
 
 CQL provides single-source queries to allow for the retrieval of data from a single source. The query in the example below returns "Ambulatory/ED Visit" encounters performed where the patient also has a condition of "Acute Pharyngitis" that overlaps after the period of the encounter. It will only return Encounters.
@@ -140,7 +155,9 @@ define Encounter Ambulatory
     with [Condition: "Acute Pharyngitis"] P
       such that P.onset during A.period
         and P.abatement after end of A.period
-```  
+```
+
+// TODO: All the things from the "developer's guide" should probably be on Page 2, like organize the whole thing so that the first page is just "Author's Guide" stuff, the simple CQL, and the more advanced content is on page 2
 
 ### [**Multi-source queries**](https://cql.hl7.org/03-developersguide.html#multi-source-queries) 
 
@@ -200,7 +217,9 @@ True/False
 4. [String](https://cql.hl7.org/02-authorsguide.html#string) 
 
 ```cql
-'pending' , 'active', 'complete'
+'pending'
+'active'
+'complete'
 ```
 
 5. [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) 
@@ -273,7 +292,7 @@ Interval[3, 5)
 ```cql
 define "Inpatient Encounters":
   ["Encounter": "Inpatient"] Encounter
-  where Encounter.period during "Measurement Period"
+    where Encounter.period during "Measurement Period"
 ```
 
 ```cql
@@ -298,7 +317,7 @@ define "Had chest CT in past year":
   )
 ```  
 
-[**With/Without clause + such that**](https://cql.hl7.org/02-authorsguide.html#sorting) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
+[**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#sorting) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
 
 ```cql
 define "Inpatient Encounters":
@@ -319,8 +338,8 @@ define "Inpatient Encounters":
 
 ```cql
 define "Performed Encounters":
-  ["Encounter,Performed" : "Inpatient"]Encounter
-    sort by start/end of period.
+  ["Encounter" : "Inpatient"] Encounter
+    sort by start of period
 ```
 
 [**Let clause**](https://cql.hl7.org/03-developersguide.html): to help introduce content that can be referenced within the scope of the query, they do not impact the type of the result unless referenced within a return clause.
@@ -332,6 +351,7 @@ define "Medication Ingredients":
     return ingredients
 ```
 
+// TODO: "determines the overall result of the query" is the "result clause", not the "aggregate clause"
 [**Aggregate clause**](https://cql.hl7.org/03-developersguide.html): determines the overall result of the query. 
 
 ```cql
@@ -359,13 +379,15 @@ CQL provides a complete set of arithmetic operations for expressing computationa
 - Floor () - round to the greatest integer less than a decimal
 - Ceiling () - round to the least integer greater than a decimal
 - Convert ()
+
 ```cql
 convert 5000 'g' to 'kg'.
 ```
+
 - Count ()
 
 ```cql
-Count ({1, 2, 3, 4, 5})
+Count({ 1, 2, 3, 4, 5 })
 ```
 
 - Sum() 
@@ -389,15 +411,17 @@ if a list contains a single element, the singleton from operator can be used to 
 ```cql
 singleton from { 1 }
 ```
+
 to obtain the index of a value within the list
 
-IndexOf({'a', 'b', 'c' }, 'b')
+IndexOf({ 'a', 'b', 'c' }, 'b')
 
 to obtain the number of elements in a list
 
 ```cql
 Count({ 1, 2, 3, 4, 5 }) 
 ```
+
 Membership in lists can be determined using the in operator and its inverse, contains
 
 ```cql
@@ -408,7 +432,7 @@ Membership in lists can be determined using the in operator and its inverse, con
 To test whether a list contains any elements
 
 ```cql
-exists ( { 1, 2, 3, 4, 5 } )
+exists ({ 1, 2, 3, 4, 5 })
 ```
 
 The First and Last operators can be used to retrieve the first and last elements of a list.
@@ -435,22 +459,24 @@ Distinct({ 1, 2, 3, 4, 4})
 
 To combine lists (union eliminates duplicates).
 ```cql
-{ 1, 2, 3} union { 3, 4, 5 }
+{ 1, 2, 3 } union { 3, 4, 5 }
 ```
 
 To only return the elements that are in both lists.
 
 ```cql
-{ 1, 2, 3} intersection { 3, 4, 5}
+{ 1, 2, 3 } intersection { 3, 4, 5 }
 ```
 
 The flatten operation can flatten lists of lists.
+
 ```cql
 flatten { { 1, 2, 3 }, { 3, 4, 5 } }
 ```
 
 4. [Aggregate Operators](https://cql.hl7.org/02-authorsguide.html#aggregate-operators)
 
+// TODO: It returns, not would return, right? (i.e. no passive voice)
 This would return the number of encounters in the list
 
 ```cql
@@ -473,6 +499,7 @@ Sum({ 1, 2, 3, 4, 5 })
 
 2. [Extracting Date and Time Components](https://cql.hl7.org/02-authorsguide.html#extracting-date-and-time-components) - 
 extracts only date/time/year.
+
 ```cql
 date from @2014-01-25T14:30:14 // returns @2014-01-25
 time from @2014-01-25T14:30:14 // returns @T14:30:14
@@ -482,6 +509,7 @@ year from @2014-01-25T14:30:14 // return 2014
 3.  [Date Time Arithmetic](https://cql.hl7.org/02-authorsguide.html#datetime-arithmetic) -
 
 where we are subtracting 1 year out of todays date to return the date 1 year back from now
+
 ```cql
 Today() - 1 year
 ```
@@ -585,6 +613,10 @@ Can be used on numbers, strings, integers, dates, decimals
 
 ### [**Logical Operators**](https://cql.hl7.org/02-authorsguide.html#logical-operators)
 
+// TODO: `is` and `as` are not logical operators, they are type operators
+// TODO: `in` is a membership operator, not a logical operator
+// TODO: Logical operators are `and`, `or`, `not`, `xor`, and `implies`
+// TODO: In other words, they are only operators that take boolean values as input and return boolean values
 `and`, `is`, `in`, `as`, `or`, `not`
 
 ```cql
@@ -615,6 +647,7 @@ define "Absence of Cervix":
 ### [**Nullological Operators**](https://cql.hl7.org/03-developersguide.html#nullological-operators)
 
 1.  Null Test is used to test whether an expression is `null`
+
 ```cql
 X is null 
 X is not null
@@ -627,6 +660,8 @@ Coalesce(X, Y, Z)
 ```
 
 ### [**String Operators**](https://cql.hl7.org/03-developersguide.html#string-operators)
+
+// TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation
 
 1. `Length` Operator is used to determine the length of string 
 
