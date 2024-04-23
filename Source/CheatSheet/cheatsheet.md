@@ -86,6 +86,12 @@ define function MostRecent(observations List<Observation>):
 
 In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
 
+TODO: Identifiers should probably be introduced before queries?
+### [**Identifiers**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
+TODO: Probably need to introduce "Identifiers" somewhere?
+Identifiers that include spaces or other non-alphnumeric characters have double quotes 
+
+
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
 
 The clauses described in the clauses section later must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
@@ -100,10 +106,7 @@ The clauses described in the clauses section later must appear in the correct or
 
 TODO: Should probably organize discussions about each clause here
 
-TODO: Identifiers should probably be introduced before queries?
-TODO: The link is to "identifier", but if this is about "identifiers" vs "strings", we should probably have links to both?
-TODO: Probably call it "Identifiers vs Strings", rather than "Quotation Syntax"?
-### [**Quotation Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier) 
+### [**Strings**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
 
 Strings have single quotes (including string representation of code values)
 
@@ -112,9 +115,6 @@ Strings have single quotes (including string representation of code values)
 'g/dl'
 'male'
 ```
-
-TODO: Probably need to introduce "Identifiers" somewhere?
-Identifiers that include spaces or other non-alphnumeric characters have double quotes 
 
 ```cql
 "Marital Status - Married" // A Concept declaration
