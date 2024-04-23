@@ -63,8 +63,11 @@ The retrieve expression is the central construct for accessing clinical informat
 2) [terminology filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
 
 ```cql
-[Condition: "Acute Pharyngitis"] where Acute Pharyngitis is the value set.
+[Condition: "Acute Pharyngitis"] //where Acute Pharyngitis is the value set.
+[Condition: class in "Inpatient Encounters"] //retrieves conditions with class in "Inpatient Encounters"
+[Condition: code ~ "Diabetes"] //retrieves conditions with codes equivalent to "Diabetes"
 ```
+TODO: Check that above code covers code path
 
 <!-- TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
 ```cql
@@ -128,10 +131,10 @@ This applies to definitions, functions, valuesets, codes, etc...
 "Inpatient Encounters" // A Defined Code
 ```
 
+TODO: Do we need more info about identifiers?
 <!-- TODO: Identifiers should probably be introduced before queries?
 ### [**Identifiers**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
-TODO: Probably need to introduce "Identifiers" somewhere?
-Identifiers that include spaces or other non-alphnumeric characters -->
+Identifiers can include spaces or other non-alphnumeric characters -->
 
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
@@ -146,7 +149,8 @@ The clauses described in the clauses section later must appear in the correct or
   <sort-clause>
 ```
 
-TODO: Should probably organize discussions about each clause here
+TODO: link to Query clauses section
+<!-- TODO: Should probably organize discussions about each clause here -->
 
 ## Bracket Syntax
 
@@ -666,7 +670,7 @@ define "Absence of Cervix":
 
 ### [**Type Operators**](https://cql.hl7.org/09-b-cqlreference.html#type-operators-1)
 
-The as operator allows the result of an expression to be cast as a given target type
+The `as` operator allows the result of an expression to be cast as a given target type
 
 ```cql
 define "Former smoker observation":
@@ -674,7 +678,7 @@ define "Former smoker observation":
     where (O.value as CodeableConcept) ~ "Former Smoker"
 ```
 
-The is operator allows the type of a result to be tested
+The `is` operator allows the type of a result to be tested
 
 ```cql
 define "Patient is Active":
@@ -699,7 +703,8 @@ Coalesce(X, Y, Z)
 
 ### [**String Operators**](https://cql.hl7.org/03-developersguide.html#string-operators)
 
-// TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation
+<!-- // TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation 
+  NOTE: spec defines these as string operators. This section matches the spec logic.-->
 
 1. `Length` Operator is used to determine the length of string 
 
