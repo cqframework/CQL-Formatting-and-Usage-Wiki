@@ -66,14 +66,25 @@ The retrieve expression is the central construct for accessing clinical informat
 [Condition: "Acute Pharyngitis"] where Acute Pharyngitis is the value set.
 ```
 
-TODO: This isn't right, it's not an example of a function, the link isn't to the function declaration section of the spec, and functions don't have to be quoted identifiers :)
-3) [function](https://cql.hl7.org/02-authorsguide.html#statements) : A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
-
-TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
+<!-- TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
 ```cql
 define "Inpatient Encounters": 
-[Encounter: class = "Inpatient Encounter"]
-```
+[Encounter: class ~ "Inpatient Encounter"]
+```  -->
+
+### [**Function Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
+
+A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
+
+'''cql
+define function MostRecent(observations List<Observation>):
+  Last(
+    observations O
+      sort by issued
+  )
+'''
+
+In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
 
 TODO: This should probably just be Queries, not "Alias functionality"
 ### [**Alias functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
