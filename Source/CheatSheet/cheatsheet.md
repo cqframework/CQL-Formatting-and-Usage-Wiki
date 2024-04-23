@@ -76,20 +76,62 @@ define "Inpatient Encounters":
 
 A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
 
-'''cql
+```cql
 define function MostRecent(observations List<Observation>):
   Last(
     observations O
       sort by issued
   )
-'''
+```
 
 In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
 
-TODO: Identifiers should probably be introduced before queries?
+## Strings vs Identifiers
+
+**Strings use single quotation marks.**
+
+[Single Quotes](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
+
+Single quotes are limited to string literals
+1) text
+```cql
+define "string literal": 'hello'
+```
+
+2) codesystem and valueset object identifiers (OID)
+```cql
+valueset "example":  'urn:oid:2.16.840.1.113883.3.560.100.2'
+```
+
+3) version identifiers
+```cql
+valueset "example":  'urn:oid:2.16.840.1.113883.3.560.100.2' version '123'
+```
+
+4) code declarations
+```cql
+code "code": '123' from "codesystem identifier"
+```
+
+5) units
+```cql
+define "quantity": 12.0 'L'
+```
+
+**Identifiers may use double quotation marks.**
+
+[Quoted Identifiers](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#QUOTEDIDENTIFIER)
+This applies to definitions, functions, valuesets, codes, etc... 
+
+```cql
+"SNOMED CT" // A CodeSystem declaration
+"Inpatient Encounters" // A Defined Code
+```
+
+<!-- TODO: Identifiers should probably be introduced before queries?
 ### [**Identifiers**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
 TODO: Probably need to introduce "Identifiers" somewhere?
-Identifiers that include spaces or other non-alphnumeric characters have double quotes 
+Identifiers that include spaces or other non-alphnumeric characters -->
 
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
@@ -105,22 +147,6 @@ The clauses described in the clauses section later must appear in the correct or
 ```
 
 TODO: Should probably organize discussions about each clause here
-
-### [**Strings**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
-
-Strings have single quotes (including string representation of code values)
-
-``` cql
-'John Doe'
-'g/dl'
-'male'
-```
-
-```cql
-"Marital Status - Married" // A Concept declaration
-"SNOMED CT" // A CodeSystem declaration
-"Inpatient Encounters" // A defined expression
-```
 
 ## Bracket Syntax
 
