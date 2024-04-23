@@ -122,10 +122,9 @@ Strings have single quotes (including string representation of code values)
 "Inpatient Encounters" // A defined expression
 ```
 
-TODO: The link is to "identifier", which isn't relevant to any of these topics?
-### [**Bracket Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
+## Bracket Syntax
 
-1. Intervals use [] and ()
+1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and ()
 
 ```cql
 Interval[3,5) // An interval >= 3 and < 5
@@ -133,7 +132,7 @@ Interval(3,5) // An interval > 3 and < 5
 Interval(3,5] // An interval > 3 and <= 5
 ```
 
-2. Lists and Tuples use { }
+2. [Lists and Tuples](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#tupleSelector) use { }
 
 ``` cql
 { 1, 2, 3 } union { 3, 4, 5 }
