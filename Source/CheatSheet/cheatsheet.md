@@ -169,7 +169,6 @@ define "Info":
 
 ## Queries
 
-// TODO: Move the Alias stuff to here:
 ### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
 
 A query construct often begins by introducing an alias for the primary source.
@@ -386,7 +385,7 @@ define "Medication Ingredients":
 ```
 
 // TODO: "determines the overall result of the query" is the "result clause", not the "aggregate clause"
-[**Aggregate clause**](https://cql.hl7.org/03-developersguide.html): determines the overall result of the query. 
+[**Aggregate clause**](https://cql.hl7.org/03-developersguide.html#aggregate-queries): allows an expression to be repeatedly evaluated for each element of a list. **Important Note: The aggregate clause is a new feature of CQL 1.5, and is trial-use.**
 
 ```cql
 define FactorialOfFive:
