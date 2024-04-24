@@ -450,7 +450,7 @@ CQL provides a complete set of arithmetic operations for expressing computationa
 - Multiply \* , Divide /
 
 ```cql
-3 months * 2 months //returns 5 months
+3 months * 2 months //returns 6 months
 12 months / 2 months //returns 6 months
 ```
 
