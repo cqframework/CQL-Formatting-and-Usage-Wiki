@@ -254,45 +254,45 @@ end
 
 ### [**Simple values**](https://cql.hl7.org/02-authorsguide.html#simple-values) 
 
-1. [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) 
+1. [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) type in CQL supports logical operators.
 
 ```cql
-True/False
+True/False/Null
 ```
 
-2. [Integer](https://cql.hl7.org/02-authorsguide.html#integer)
+2. [Integer](https://cql.hl7.org/02-authorsguide.html#integer) type in CQL supports the representation of whole numbers, positive and negative.
 
 ```cql
 16, -28
 ```
 
-3. [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) 
+3. [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) type in CQL supports the representation of real numbers, positive and negative
 
 ```cql
 100.015
 ```
 
-4. [String](https://cql.hl7.org/02-authorsguide.html#string) 
+4. [String](https://cql.hl7.org/02-authorsguide.html#string) values in CQL are represented using single quotes. String values are case sensitive and normalize whitespace.
 
 ```cql
 'pending'
-'active'
+'John Doe'
 'complete'
 ```
 
-5. [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) 
+5. [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent only dates on a calendar, irrespective of the time of day
 
 ```cql
 @2014-01-25
 ```
 
-6. [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time)
+6. [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent an instant along the timeline, known to at least the year precision, and potentially to the millisecond precision
 
 ```cql
 @2014-01-25T14:30:14.559
 ```
 
-7. [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) 
+7. [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent a time of day, independent of the date
  
 ```cql
 @T12:00
@@ -550,6 +550,8 @@ Sum({ 1, 2, 3, 4, 5 })
 ```
 
 ### [**Date Time Operators**](https://cql.hl7.org/02-authorsguide.html#datetime-operators)
+
+**Important Note: All Date, Time and DateTime values are specified using an at-symbol (@) followed by an ISO-8601 textual representation of the DateTine value**
 
 1. [Comparing Dates and Times](https://cql.hl7.org/02-authorsguide.html#comparing-dates-and-times) - Using comparison operators on dates
 
