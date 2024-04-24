@@ -63,10 +63,23 @@ The retrieve expression is the central construct for accessing clinical informat
 2) [terminology filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
 
 ```cql
-[Condition: "Acute Pharyngitis"] //where Acute Pharyngitis is the value set.
-[Condition: class in "Inpatient Encounters"] //retrieves conditions with class in "Inpatient Encounters"
-[Condition: code ~ "Diabetes"] //retrieves conditions with codes equivalent to "Diabetes"
+[Condition: "Acute Pharyngitis"]
 ```
+
+This example filters the retrieve to only the Acute Pharyngitis value set.
+
+```cql
+[Condition: class in "Inpatient Encounters"]
+```
+
+This example retrieves Conditions with class in "Inpatient Encounters"
+
+```cql
+[Condition: code ~ "Diabetes"]
+```
+
+This example retrieves conditions with codes equivalent to "Diabetes"
+
 TODO: Check that above code covers code path
 
 <!-- TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
