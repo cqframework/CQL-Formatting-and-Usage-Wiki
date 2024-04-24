@@ -314,7 +314,7 @@ True/False/Null
 2 : 20
 ```
 
-3. [Code](https://cql.hl7.org/02-authorsguide.html#code) TODO: Add code description
+3. [Codes](https://cql.hl7.org/02-authorsguide.html#code) in CQL supports a top-level construct for dealing with codes using a structure called Code that is consistent with the way terminologies are typically represented. The code type is made up of four elements- code, display, version and system.
 
 ```cql
 code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'
