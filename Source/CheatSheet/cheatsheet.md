@@ -47,7 +47,8 @@ context Unfiltered
 6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology) - Value set and code system declarations allow terminology to be referenced anywhere within the library.
 
 ```cql
-valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
+include valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
+include codesystem "SNOMED": 'http://snomed.info/sct'
 ```
 
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
@@ -62,31 +63,25 @@ The retrieve expression is the central construct for accessing clinical informat
 
 2) [terminology filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
 
+- The example below filters the results to only Conditions whose code is in the "Acute Pharyngitis" value set.
+
 ```cql
 [Condition: "Acute Pharyngitis"]
 ```
 
-The example above filters the retrieve to only the Acute Pharyngitis value set.
+- The example below returns Conditions with class in "Inpatient Encounters"
 
 ```cql
 [Condition: class in "Inpatient Encounters"]
 ```
 
-The example above retrieves Conditions with class in "Inpatient Encounters"
+- The example below retrieves Conditions with codes equivalent to "Diabetes"
 
 ```cql
 [Condition: code ~ "Diabetes"]
 ```
 
-The example above retrieves conditions with codes equivalent to "Diabetes"
-
 TODO: Check that above code covers code path
-
-<!-- TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
-```cql
-define "Inpatient Encounters": 
-[Encounter: class ~ "Inpatient Encounter"]
-```  -->
 
 ### [**Function Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
 
@@ -192,7 +187,6 @@ A query construct often begins by introducing an alias for the primary source.
  
 ```cql
 ["Encounter": "Inpatient"] E
-  where E.period during "Measurement Period"
 ```
 
 ### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
@@ -385,7 +379,7 @@ define "Encounter Without Procedure ":
     )
 ``` 
 
-[**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#sorting) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
+[**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#relationships) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
 
 ```cql
 define "Inpatient Encounters":
@@ -402,7 +396,7 @@ define "Inpatient Encounters":
     return Encounter.period
 ```
 
-[**Sort clause**](https://cql.hl7.org/02-authorsguide.html#sorting): to order the results ascending or descending.
+[**Sort clause**](https://cql.hl7.org/02-authorsguide.html#sorting): to order the results ascending or descending. If no order is specified, the order will defult to ascending.
 
 ```cql
 define "Performed Encounters":
