@@ -440,11 +440,44 @@ define "FirstInpatientEncounter":
 ### [**Arithmetic Operators**](https://cql.hl7.org/02-authorsguide.html#arithmetic-operators)
 CQL provides a complete set of arithmetic operations for expressing computational logic.
 
-- Addition + , Subtraction - , Multiply \* , Divide /
-- Truncate () – round the value backwards
-- Round () - round the value frontwards
-- Floor () - round to the greatest integer less than a decimal
-- Ceiling () - round to the least integer greater than a decimal
+- Addition + , Subtraction - 
+
+```cql
+5 + 10 //returns 15
+100 - 5 //returns 95
+```
+
+- Multiply \* , Divide /
+
+```cql
+3 months * 2 months //returns 5 months
+12 months / 2 months //returns 6 months
+```
+
+- Truncate () – Returns the integer component of its argument
+
+```cql
+Truncate(12.4) //returns 12
+```
+
+- Round () - round to the nearest whole value
+
+```cql
+Round(123.5) //returns 123
+```
+
+- Floor () - round to the first integer less than or equal to it's argument (decimal)
+
+```cql
+Floor(123.456) //returns 123
+```
+
+- Ceiling () - round to the first integer greater than or equal to it's argument (decimal)
+
+```cql
+Ceiling(123.456) //returns 124
+```
+
 - Convert ()
 
 ```cql
