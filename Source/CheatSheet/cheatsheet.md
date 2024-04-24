@@ -577,27 +577,28 @@ First({ 1, 2, 3, 4, 5 })
 
 3.  [Computing Lists](https://cql.hl7.org/02-authorsguide.html#computing-lists)
 
-To eliminate duplicates.
+- `distinct` is used to eliminate duplicates.
 
 ```cql
-Distinct({ 1, 2, 3, 4, 4})
+Distinct({ 1, 2, 3, 4, 4}) // returns { 1, 2, 3, 4 }
 ```
 
-To combine lists (union eliminates duplicates).
+- `union` is used to combine lists and eliminates duplicates.
+
 ```cql
-{ 1, 2, 3 } union { 3, 4, 5 }
+{ 1, 2, 3 } union { 3, 4, 5 } // returns { 1, 2, 3, 4, 5 }
 ```
 
-To only return the elements that are in both lists.
+- `intersect` is used to only return the elements that are in both lists.
 
 ```cql
-{ 1, 2, 3 } intersect { 3, 4, 5 }
+{ 1, 2, 3 } intersect { 3, 4, 5 } // returns { 3 }
 ```
 
-The flatten operation can flatten lists of lists.
+- `flatten` is used to flatten lists of lists (does not eliminate duplicates).
 
 ```cql
-flatten { { 1, 2, 3 }, { 3, 4, 5 } }
+flatten { { 1, 2, 3 }, { 3, 4, 5 } } // returns { 1, 2, 3, 3, 4, 5 }
 ```
 
 4. [Aggregate Operators](https://cql.hl7.org/02-authorsguide.html#aggregate-operators)
@@ -608,10 +609,10 @@ This returns the number of encounters in the list
 Count([Encounter])
 ```
 
-This would return the sum of the values in the list i.e 15
+This would return the sum of the values in the list
 
 ```cql
-Sum({ 1, 2, 3, 4, 5 })
+Sum({ 1, 2, 3, 4, 5 }) // returns 15
 ```
 
 ### [**Date Time Operators**](https://cql.hl7.org/02-authorsguide.html#datetime-operators)
