@@ -279,44 +279,48 @@ True/False
 
 ### [**Clinical Values**](https://cql.hl7.org/02-authorsguide.html#clinical-values)
 
-1. [Quantities](https://cql.hl7.org/02-authorsguide.html#quantities) 
+1. [Quantities](https://cql.hl7.org/02-authorsguide.html#quantities) are a number with an associated value.
 
 ```cql
 3 months
 5 'mg'
 ```
 
-2. [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) 
+2. [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) uses standard mathematical operations to express the relationship between two quantities. 
 
 ```cql
 5 'mg' : 10 'mL'
+2 : 20
 ```
 
-3. [Code](https://cql.hl7.org/02-authorsguide.html#code) 
+3. [Code](https://cql.hl7.org/02-authorsguide.html#code) TODO: Add code description
 
 ```cql
 code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'
 ```
 
-4. [Tuples](https://cql.hl7.org/02-authorsguide.html#structured-values-tuples) 
+4. [Tuples](https://cql.hl7.org/02-authorsguide.html#structured-values-tuples) are values that contain named elements, each having a value of some type. In this example, the tuple type is set using the keyword `Patient`
 
 ```cql
 define "PatientExpression": 
   Patient { Name: 'Patrick', DOB: @2014-01-01 }
 ```
 
-5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information)
+5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information) is common in clinical settings, and CQL uses the keyword `null` to represent the unknown or missing information. In this example, the statement will return Observations that have no status. 
 
 ```cql
-null
+define "Missing Status":
+  [Observation] O 
+    where O.status is null
 ```
 
-6. [List Values](https://cql.hl7.org/02-authorsguide.html#list-values) 
+6. [List Values](https://cql.hl7.org/02-authorsguide.html#list-values) can be of any type of value (including other lists). Although some operations may result in lists containing mixed types, in normal use cases, lists contain items that are all of the same type.
 
 ```cql
 { 1, 2, 3, 4, 5 }
 ```
-7. [Interval values](https://cql.hl7.org/02-authorsguide.html#interval-values) 
+
+7. [Interval values](https://cql.hl7.org/02-authorsguide.html#interval-values) can be inclusive or exclusive and represent the low and high points of an interval
 
 ```cql
 Interval[3, 5)
@@ -501,7 +505,7 @@ To combine lists (union eliminates duplicates).
 To only return the elements that are in both lists.
 
 ```cql
-{ 1, 2, 3 } intersection { 3, 4, 5 }
+{ 1, 2, 3 } intersect { 3, 4, 5 }
 ```
 
 The flatten operation can flatten lists of lists.
