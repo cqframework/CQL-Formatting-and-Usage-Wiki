@@ -349,7 +349,9 @@ Interval[3, 5)
 
 ## Query Clauses  
 
-[**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data 
+[**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data. Where clauses are allowed to contain any arbitrary combination of operations of CQL, so long as the overall result of the condition is boolean-valued.
+
+In the example below, the `where` clause is used to filter encounters based on the encounter period
 
 ```cql
 define "Inpatient Encounters":
@@ -357,11 +359,22 @@ define "Inpatient Encounters":
     where Encounter.period during "Measurement Period"
 ```
 
+`where exists` filters data based on an existing query
+
 ```cql
-define "Quantitative Laboratory Encounters ":
+define "Quantitative Laboratory Encounters":
   [Encounter] E
     where exists (["Observation"] O)
 ```
+
+```cql
+define "Had chest CT in past year":
+  exists ("Chest CT procedure" P
+    where FC.ToInterval(P.performed) ends 1 year or less before Today() 
+  )
+``` 
+
+`where not exists` filters data based on a missing or non existant query
 
 ```cql
 define "Encounter Without Procedure ":
@@ -370,14 +383,7 @@ define "Encounter Without Procedure ":
     ( [Procedure] P
       where P.performed as dateTime during E.period 
     )
-```
-
-```cql
-define "Had chest CT in past year":
-  exists ("Chest CT procedure" P
-    where FC.ToInterval(P.performed) ends 1 year or less before Today() 
-  )
-```  
+``` 
 
 [**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#sorting) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
 
