@@ -66,19 +66,19 @@ The retrieve expression is the central construct for accessing clinical informat
 [Condition: "Acute Pharyngitis"]
 ```
 
-This example filters the retrieve to only the Acute Pharyngitis value set.
+The example above filters the retrieve to only the Acute Pharyngitis value set.
 
 ```cql
 [Condition: class in "Inpatient Encounters"]
 ```
 
-This example retrieves Conditions with class in "Inpatient Encounters"
+The example above retrieves Conditions with class in "Inpatient Encounters"
 
 ```cql
 [Condition: code ~ "Diabetes"]
 ```
 
-This example retrieves conditions with codes equivalent to "Diabetes"
+The example above retrieves conditions with codes equivalent to "Diabetes"
 
 TODO: Check that above code covers code path
 
@@ -197,11 +197,19 @@ A query construct often begins by introducing an alias for the primary source.
 
 ### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
 
-CQL provides single-source queries to allow for the retrieval of data from a single source. The query in the example below returns "Ambulatory/ED Visit" encounters performed where the patient also has a condition of "Acute Pharyngitis" that overlaps after the period of the encounter. It will only return Encounters.
+CQL provides single-source queries to allow for the retrieval of data from a single source. If the expression is singular the query ranges over only that element.
 
-``` cql
-define Encounter Ambulatory
-  [Encounter: "Ambulatory/ED Visit"] E
+```cql
+define "Ambulatory Encounters":
+  [Encounter: "Ambulatory/ED Visit] E
+    where E.status ~ 'finished'
+```
+
+If the expression is plural, the query ranges over all the elements in the list.
+
+```cql
+define "Ambulatory Encounter With Acute Pharyngitis":
+  [Encounter: "Ambulatory/ED Visit] E
     with [Condition: "Acute Pharyngitis"] P
       such that P.onset during A.period
         and P.abatement after end of A.period
