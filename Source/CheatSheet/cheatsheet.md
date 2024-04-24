@@ -139,11 +139,17 @@ This applies to definitions, functions, valuesets, codes, etc...
 "Inpatient Encounters" // A Defined Code
 ```
 
-TODO: Do we need more info about identifiers?
-<!-- TODO: Identifiers should probably be introduced before queries?
+<!-- TODO: Do we need more info about identifiers?
+TODO: Identifiers should probably be introduced before queries? -->
 ### [**Identifiers**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
-Identifiers can include spaces or other non-alphnumeric characters -->
+Identifiers are names used to refer to various types of elements in CQL, such as query names and valueset names. Identifiers can include spaces or other non-alphnumeric characters. Identifiers should describe it's intended usage and can be either quoted or unquoted. Unquoted identifiers do not normalize whitespace.
 
+```cql
+define "Inpatient Encounters"
+define InpatientEncounters
+code "123 Code": '123'
+```
+TODO: Better example for identifiers
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
 
