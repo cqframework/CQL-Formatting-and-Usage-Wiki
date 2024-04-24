@@ -463,7 +463,7 @@ Truncate(12.4) //returns 12
 - Round () - round to the nearest whole value
 
 ```cql
-Round(123.5) //returns 123
+Round(123.5) //returns 124
 ```
 
 - Floor () - round to the first integer less than or equal to it's argument (decimal)
@@ -514,7 +514,9 @@ singleton from { 1 }
 
 to obtain the index of a value within the list
 
+```cql
 IndexOf({ 'a', 'b', 'c' }, 'b')
+```
 
 to obtain the number of elements in a list
 
@@ -545,8 +547,32 @@ First({ 1, 2, 3, 4, 5 })
 
 `includes`, `includes in`, `properly includes` and `properly included in` are tools we can use to compare lists
 
+- `includes` returns true if if every element in list Y is also in list X
+
 ```cql
-{ 1, 2, 3 } includes { 1, 2 } // returns true
+{ 1, 2, 3, 4, 5 } includes { 5, 2, 3 } // returns true
+{ 1, 2, 3, 4, 5 } includes { 4, 5, 6 } // returns false
+```
+
+- `included in` returns true if every element in list X is also in list Y
+
+```cql
+{ 5, 2, 3 } included in { 1, 2, 3, 4, 5 } // returns true
+{ 4, 5, 6 } included in { 1, 2, 3, 4, 5 } // returns false
+```
+
+- `properly includes` returns true if every element in list Y is also in list X, and list X has more elements than list Y
+
+```cql
+{ 1, 2, 3 } properly includes { 1, 2, 3, 4, 5} // returns true
+{ 1, 2, 3 } properly includes { 1, 2, 3 } // returns false
+```
+
+- `properly included in` return true if if every element in list X is also in list Y, and list Y has more elements than list X
+
+```cql
+{ 2, 3, 4 } properly included in { 1, 2, 3, 4, 5 } // returns true
+{ 1, 2, 3 } properly included in { 1, 2, 3 } // returns false
 ```
 
 3.  [Computing Lists](https://cql.hl7.org/02-authorsguide.html#computing-lists)
