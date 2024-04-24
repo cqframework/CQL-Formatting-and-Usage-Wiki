@@ -147,7 +147,7 @@ Identifiers can include spaces or other non-alphnumeric characters -->
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
 
-The clauses described in the clauses section later must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
+The clauses, described in the clauses section later, must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
 
 ```bnf
 <primary-source> <alias>
@@ -657,18 +657,20 @@ CQL supports the representation of intervals, or ranges, of values of various ty
 1. [General Interval Operators](https://cql.hl7.org/02-authorsguide.html#operating-on-intervals) - `contains`, `start of`, `end of`,`point from` , `width of`
 
 ```cql
-point from Interval[3, 3]
-width of Interval[3, 5]
+point from Interval[3, 3] // returns 3
+width of Interval[3, 5] // returns 2
+end of Interval[3, 5) // returns 4 
 ```
+
 2. [Comparing Intervals](https://cql.hl7.org/02-authorsguide.html#comparing-intervals) \- the comparison between two interval values using a complete set of operations. This includes `same as`, `before`, `meets before`, `overlaps before` among others.
 
 ```cql
-X same as Y
-Interval [3,5) // includes all numbers >= 3 and < 5
-start of Interval[3, 5) // 3
-width of Interval[3, 5) // 1
-end of Interval[3, 5) // 4
+Interval[2, 6] same Interval[2, 6] // returns true
+Interval[1, 5] before Interval[6, 10] // return true
+Interval[1, 7] overlaps before Interval[5, 10] // returns true
+Interval[1, 5] meets before Interval[6, 10] // retursn true
 ```
+
 3. [Timing operators on Intervals](https://cql.hl7.org/02-authorsguide.html#timing-relationships)
 
 -  `same year as`
