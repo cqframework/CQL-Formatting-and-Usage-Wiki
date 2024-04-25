@@ -139,17 +139,15 @@ This applies to definitions, functions, valuesets, codes, etc...
 "Inpatient Encounters" // A Defined Code
 ```
 
-<!-- TODO: Do we need more info about identifiers?
-TODO: Identifiers should probably be introduced before queries? -->
-### [**Identifiers**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
-Identifiers are names used to refer to various types of elements in CQL, such as query names and valueset names. Identifiers can include spaces or other non-alphnumeric characters. Identifiers should describe it's intended usage and can be either quoted or unquoted. Unquoted identifiers do not normalize whitespace.
+### [**Identifiers**](https://cql.hl7.org/03-developersguide.html#identifiers)
+Identifiers are used to name various elements within the language. There are three types of identifiers in CQL, simple, delimited, and quoted.
 
 ```cql
-define "Inpatient Encounters"
-define InpatientEncounters
-code "123 Code": '123'
+Foo1 // simple
+`Encounter, Performed` // delimited
+"Inpatient Encounters" // quoted
 ```
-TODO: Better example for identifiers
+
 
 ## Bracket Syntax
 
@@ -163,7 +161,7 @@ Interval(3,5] // An interval > 3 and <= 5
 
 2. [Lists and Tuples](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#tupleSelector) use { }
 
-``` cql
+```cql
 { 1, 2, 3 } union { 3, 4, 5 }
 
 define "Info": 
@@ -347,7 +345,7 @@ define "Missing Status":
 Interval[3, 5)
 ```
 
-## Query Clauses  
+## <a name="query-clauses">Query Clauses</a>  
 
 [**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data. Where clauses are allowed to contain any arbitrary combination of operations of CQL, so long as the overall result of the condition is boolean-valued.
 
@@ -829,7 +827,7 @@ Split('completed;refused;pending', ';') // returns { 'completed', 'refused', 'pe
 
 1.  Sort clauses don’t require usage of an alias. We don’t need to say E.sort by length of stay.
 
-```
+```cql
 [Encounter: "Inpatient"] E
   return Tuple { id: E.identifier, lengthOfStay: duration in days of E.period }
   sort by lengthOfStay
