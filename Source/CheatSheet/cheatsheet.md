@@ -75,10 +75,10 @@ The retrieve expression is the central construct for accessing clinical informat
 [Condition: class in "Inpatient Encounters"]
 ```
 
-- The example below retrieves Conditions with codes equivalent to "Diabetes"
+- The example below retrieves Conditions with codes equivalent to "Diabetes". If a retrieve is looking for a code using equivalence, it must be a direct-refrence code (not a valueset).
 
 ```cql
-[Condition: code ~ "Diabetes"]
+[Condition: code ~ "Diabetes Code"]
 ```
 
 TODO: Check that above code covers code path
@@ -151,21 +151,6 @@ code "123 Code": '123'
 ```
 TODO: Better example for identifiers
 
-### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
-
-The clauses, described in the clauses section later, must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
-
-```bnf
-<primary-source> <alias>
-  <with-or-without-clauses>
-  <where-clause>
-  <return-clause>
-  <sort-clause>
-```
-
-TODO: link to Query clauses section
-<!-- TODO: Should probably organize discussions about each clause here -->
-
 ## Bracket Syntax
 
 1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and ()
@@ -186,6 +171,21 @@ define "Info":
 ```
 
 ## Queries
+
+### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
+
+The clauses, described in the clauses section later, must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
+
+```bnf
+<primary-source> <alias>
+  <with-or-without-clauses>
+  <where-clause>
+  <return-clause>
+  <sort-clause>
+```
+
+TODO: link to Query clauses section
+<!-- TODO: Should probably organize discussions about each clause here -->
 
 ### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
 
