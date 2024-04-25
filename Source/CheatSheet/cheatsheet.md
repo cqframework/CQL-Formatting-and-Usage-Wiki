@@ -668,10 +668,10 @@ end of Interval[3, 5) // returns 4
 2. [Comparing Intervals](https://cql.hl7.org/02-authorsguide.html#comparing-intervals) \- the comparison between two interval values using a complete set of operations. This includes `same as`, `before`, `meets before`, `overlaps before` among others.
 
 ```cql
-Interval[2, 6] same Interval[2, 6] // returns true
-Interval[1, 5] before Interval[6, 10] // return true
+Interval[2, 6] same as Interval[2, 6] // returns true
+Interval[1, 5] before Interval[6, 10] // returns true
 Interval[1, 7] overlaps before Interval[5, 10] // returns true
-Interval[1, 5] meets before Interval[6, 10] // retursn true
+Interval[1, 5] meets before Interval[6, 10] // returns true
 ```
 
 3. [Timing operators on Intervals](https://cql.hl7.org/02-authorsguide.html#timing-relationships)
