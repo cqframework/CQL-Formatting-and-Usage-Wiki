@@ -69,19 +69,20 @@ The retrieve expression is the central construct for accessing clinical informat
 [Condition: "Acute Pharyngitis"]
 ```
 
-- The example below returns Conditions with class in "Inpatient Encounters"
+- The example below returns Conditions with class in the "Inpatient Encounters" value set.
 
 ```cql
+valueset "Inpatient Encounters": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 [Condition: class in "Inpatient Encounters"]
 ```
 
-- The example below retrieves Conditions with codes equivalent to "Diabetes". If a retrieve is looking for a code using equivalence, it must be a direct-refrence code (not a valueset).
+- The example below retrieves Conditions with codes equivalent to the "Diabetes Code" direct-reference code.
 
 ```cql
+code "Diabetes Code": '123' from "LOINC"
 [Condition: code ~ "Diabetes Code"]
 ```
 
-TODO: Check that above code covers code path
 
 ### [**Function Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
 
@@ -109,7 +110,7 @@ Single quotes are limited to string literals
 define "string literal": 'hello'
 ```
 
-2) codesystem and valueset object identifiers (OID)
+2) code system and value set object identifiers (OID)
 ```cql
 valueset "example":  'urn:oid:2.16.840.1.113883.3.560.100.2'
 ```
@@ -135,7 +136,7 @@ define "quantity": 12.0 'L'
 This applies to definitions, functions, valuesets, codes, etc... 
 
 ```cql
-"SNOMED CT" // A CodeSystem declaration
+"SNOMED CT" // A code system declaration
 "Inpatient Encounters" // A Defined Code
 ```
 
@@ -181,9 +182,7 @@ The clauses, described in the clauses section later, must appear in the correct 
   <return-clause>
   <sort-clause>
 ```
-
-TODO: link to Query clauses section
-<!-- TODO: Should probably organize discussions about each clause here -->
+[link to query-clauses](#queryclauses)
 
 ### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
 
@@ -213,7 +212,7 @@ define "Ambulatory Encounter With Acute Pharyngitis":
         and P.abatement after end of A.period
 ```
 
-// TODO: All the things from the "developer's guide" should probably be on Page 2, like organize the whole thing so that the first page is just "Author's Guide" stuff, the simple CQL, and the more advanced content is on page 2
+<!-- // TODO: All the things from the "developer's guide" should probably be on Page 2, like organize the whole thing so that the first page is just "Author's Guide" stuff, the simple CQL, and the more advanced content is on page 2 -->
 
 ### [**Multi-source queries**](https://cql.hl7.org/03-developersguide.html#multi-source-queries) 
 
@@ -345,7 +344,7 @@ define "Missing Status":
 Interval[3, 5)
 ```
 
-## <a name="query-clauses">Query Clauses</a>  
+## <a name="queryclauses">Query Clauses</a>  
 
 [**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data. Where clauses are allowed to contain any arbitrary combination of operations of CQL, so long as the overall result of the condition is boolean-valued.
 
@@ -797,7 +796,7 @@ Coalesce(X, Y, Z)
 ### [**String Operators**](https://cql.hl7.org/03-developersguide.html#string-operators)
 
 <!-- // TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation 
-  NOTE: spec defines these as string operators. This section matches the spec logic.-->
+  NOTE (https://cql.hl7.org/03-developersguide.html#string-operators): spec defines these as string operators. This section matches the spec logic.-->
 
 1. `Length` Operator is used to determine the length of string 
 
