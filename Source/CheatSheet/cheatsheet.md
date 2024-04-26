@@ -477,19 +477,19 @@ Ceiling(123.456) //returns 124
 - Convert ()
 
 ```cql
-convert 5000 'g' to 'kg'.
+convert 5000 'g' to 'kg' // returns 5.0 'kg'
 ```
 
 - Count ()
 
 ```cql
-Count({ 1, 2, 3, 4, 5 })
+Count({ 1, 2, 3, 4, 5 }) // returns 5
 ```
 
 - Sum() 
 
 ```cql
-Sum({1,2,3,4}) // returns the sum of values
+Sum({ 1, 2, 3, 4, 5}) // returns 15
 ```
 
 - Indexing
@@ -511,13 +511,13 @@ singleton from { 1 }
 to obtain the index of a value within the list
 
 ```cql
-IndexOf({ 'a', 'b', 'c' }, 'b')
+IndexOf({ 'a', 'b', 'c' }, 'b') // returns 1
 ```
 
 to obtain the number of elements in a list
 
 ```cql
-Count({ 1, 2, 3, 4, 5 }) 
+Count({ 1, 2, 3, 4, 5 }) // returns 5
 ```
 
 Membership in lists can be determined using the in operator and its inverse, contains
@@ -536,7 +536,7 @@ exists ({ 1, 2, 3, 4, 5 })
 The First and Last operators can be used to retrieve the first and last elements of a list.
 
 ```cql
-First({ 1, 2, 3, 4, 5 })
+First({ 1, 2, 3, 4, 5 }) // returns 11
 ```
 
 2. [Comparing Lists](https://cql.hl7.org/02-authorsguide.html#comparing-lists)
@@ -806,13 +806,13 @@ Length(X)
 2. `PositionOf` Operator is used to determine the position of a string and will return the index of the string
 
 ```cql
-PositionOf('cde', 'abcdefg')
+PositionOf('cde', 'abcdefg') // returns 2
 ```
 
 3. `Combine` operator is used to combine a list of strings
 
 ```cql
-Combine({ 'ab', 'cd', 'ef' })
+Combine({ 'ab', 'cd', 'ef' }) /// returns 'abcdef'
 ```
 
 4. `Split` Operator is used to split a list of strings
@@ -852,7 +852,7 @@ Eg. If two encounters have the same value for lengthOfStay, that value will only
 - String Equivalence ignores case, locale, and normalizes whitespace (meaning all whitespace characters are equivalent). 
 
 ```cql
-('Abel' = 'abel') is true
+('Abel' = 'Abel') is true
 ```
 
 4.  The Sum function works on lists of quantities or numbers not a list of structures like Encounters
