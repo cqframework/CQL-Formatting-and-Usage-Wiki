@@ -16,7 +16,7 @@ define "Stopped ART at Facility during the measurement period":
         EOS.statusHistory.status contains 'finished'
           and EOS.statusHistory.period ends after start of "Measurement Period"
           and EOS.statusHistory[0].period ends before end of "Measurement Period"
-      })
+      }))
 ```
 
 I am defining an episode of care where I want to filter EOS.type match the concept on ART. However, there is a discrepancy between a FHIR.concept and system.concept list and I couldn't use the ToConcept function from FhirHelpers library because of a type mismatch. Is it because it's a list instead of just one codeableconcept? I am using FHIR 4.0.1.
@@ -103,9 +103,8 @@ Putting all of this together, we have:
 
 ```cql
 define "Stopped ART at Facility during the measurement period":
-  [EpisodeOfCare] EOS
-    where EOS.type in "On ART"
-      and exists (EOS.statusHistory H
+  [EpisodeOfCare: "On ART"] EOS
+    where exists (EOS.statusHistory H
          where H.status = 'finished'
            and H.period ends during "Measurement Period"
       )

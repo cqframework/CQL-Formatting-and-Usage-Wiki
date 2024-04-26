@@ -188,6 +188,8 @@ And note that best-practice is to move the terminology filter to the retrieve wh
     such that O.basedOn.references(SR)
 ```
 
+### Additional Filtering
+
 Looking at the rest of the `where` clause:
 
 ```cql
@@ -256,7 +258,7 @@ The filter also makes use of a definition for "Age_greater_than_18_months".
 
 First, from a conventions standpoint, the identifier should be:
 
-```
+```cql
 "Age Greater Than 18 Months"
 ```
 
@@ -277,7 +279,7 @@ A followup question was asked,
 
 And the answer is no, there is not a way to define a valueset as a list of codes in CQL, and that is by design. As noted in the terminology section above, terminology management is a non-trivial problem, and CQL is intentionally silent on how that happens, separating that as an architectural concern. CQL allows you to reference any terminologies you have defined, but CQL is not a terminology management language. It is focused on making use of properly managed terminologies.
 
-That being said, it is straightforward to define ValueSet resources either directly in JSON, or with FSH and then use the SUSHI compiler to generate the JSON. Once you have JSON ValueSet resources, adding them to the terminology folder in the IG will make them available to the CQL engine for testing and evaluation. See [Using Terminology](https://github.com/cqframework/vscode-cql/wiki/User-Guide#using-terminology) in the VS Code CQL Plugin User's Guide for more information
+That being said, it is straightforward to define ValueSet resources either directly in JSON, or with FSH and then use the SUSHI compiler to generate the JSON. Once you have JSON ValueSet resources, adding them to the vocabulary folder in the IG will make them available to the CQL engine for testing and evaluation. See [Using Terminology](https://github.com/cqframework/vscode-cql/wiki/User-Guide#using-terminology) in the VS Code CQL Plugin User's Guide for more information
 
 ### Updated Queries:
 

@@ -3,6 +3,8 @@ library TestHIVAssay
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1'
+//include fhir.cqf.common.FHIRCommon called FC
+include HIVCommon called HC
 
 valueset "Assay 1": 'http://example.org/fhir/ValueSet/assay-1'
 valueset "Assay 2": 'http://example.org/fhir/ValueSet/assay-2'
@@ -34,7 +36,8 @@ define "Should Continue With Performing HIV Assay 2":
   [Observation: "HIV Diagnostic Tests"] O
     with [ServiceRequest: "Assay 1"] SR
       such that O.basedOn.references(SR)
-    where O.status in { 'final', 'amended' }
+    where exists (HC."Active HIV Diagnosis")
+      and O.status in { 'final', 'amended' }
       and O.value in "Reactive"
       and AgeInMonths() > 18
 

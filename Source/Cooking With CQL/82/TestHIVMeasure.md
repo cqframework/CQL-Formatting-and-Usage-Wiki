@@ -34,13 +34,13 @@ The first part of the answer to this question is that CQL does not by itself def
 
 To support those goals, quality measures make use of the [context](https://cql.hl7.org/02-authorsguide.html#context) feature of CQL, and more specifically, the `Patient` context defined as part of the FHIR model info. You can think of the `Patient` context in CQL as roughly equivalent to the `Patient` compartment of FHIR, in that it scopes the resources available to any given query to a particular patient.
 
-Any [retrieve]() that is evaluated in the `Patient` context, will only return data related to that specific patient. In CQL, this is the [Retrieve Context](https://cql.hl7.org/02-authorsguide.html#retrieve-context).
+Any retrieve that is evaluated in the `Patient` context, will only return data related to that specific patient. In CQL, this is the [Retrieve Context](https://cql.hl7.org/02-authorsguide.html#retrieve-context).
 
 CQL is written this way to make it easier to reason about the criteria related to a patient, eliminating the need for authors to express the relationship to the patient.
 
 When CQL is evaluated, the implementation environment determines how to provide data to the engine, and for what context.
 
-In the case of a decision support rule, there is typically only a single patient in context, and the CQL is evaluated for that context.
+In the case of a decision support rule, there is typically only a single patient in context, and the CQL is evaluated for that patient.
 
 In the case of a quality measure, there is generally a population of patients being considered, and the CQL is either evaluated for each patient in that context, and the results aggregated, or the CQL is transformed in such a way that it can be applied to a entire data store, and the patient relationships are respected as part of that transformation.
 
