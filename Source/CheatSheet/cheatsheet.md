@@ -47,8 +47,8 @@ context Unfiltered
 6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology) - Value set and code system declarations allow terminology to be referenced anywhere within the library.
 
 ```cql
-include valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
-include codesystem "SNOMED": 'http://snomed.info/sct'
+valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
+codesystem "SNOMED": 'http://snomed.info/sct'
 ```
 
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
@@ -86,7 +86,7 @@ code "Diabetes Code": '123' from "LOINC"
 
 ### [**Function Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
 
-A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
+A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name.
 
 ```cql
 define function MostRecent(observations List<Observation>):
@@ -97,6 +97,15 @@ define function MostRecent(observations List<Observation>):
 ```
 
 In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
+
+### [**Identifiers**](https://cql.hl7.org/03-developersguide.html#identifiers)
+Identifiers are used to name various elements within the language. There are three types of identifiers in CQL, simple, delimited, and quoted.
+
+```cql
+Foo1 // simple
+`Encounter, Performed` // delimited
+"Inpatient Encounters" // quoted
+```
 
 ## Strings vs Identifiers
 
@@ -140,19 +149,9 @@ This applies to definitions, functions, valuesets, codes, etc...
 "Inpatient Encounters" // A Defined Code
 ```
 
-### [**Identifiers**](https://cql.hl7.org/03-developersguide.html#identifiers)
-Identifiers are used to name various elements within the language. There are three types of identifiers in CQL, simple, delimited, and quoted.
-
-```cql
-Foo1 // simple
-`Encounter, Performed` // delimited
-"Inpatient Encounters" // quoted
-```
-
-
 ## Bracket Syntax
 
-1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and ()
+1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and (). Following standard mathematics notation, inclusive (closed) boundaries are indicated with square brackets, and exclusive (open) boundaries are indicated with parentheses.
 
 ```cql
 Interval[3,5) // An interval >= 3 and < 5
@@ -182,7 +181,7 @@ The clauses, described in the clauses section later, must appear in the correct 
   <return-clause>
   <sort-clause>
 ```
-[link to query-clauses](#queryclauses)
+[Jump to query clauses section](#queryclauses)
 
 ### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
 
@@ -773,9 +772,9 @@ define "Former smoker observation":
 The `is` operator allows the type of a result to be tested
 
 ```cql
-define "Patient is Active":
+define "Patient BirthDate is a Date":
   Patient P
-    where P.active.value is true
+    return P.birthDate is FHIR.date
 ```
 
 ### [**Nullological Operators**](https://cql.hl7.org/03-developersguide.html#nullological-operators)
