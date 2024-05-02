@@ -205,7 +205,7 @@ If the expression is plural, the query ranges over all the elements in the list.
 
 ```cql
 define "Ambulatory Encounter With Acute Pharyngitis":
-  [Encounter: "Ambulatory/ED Visit] E
+  [Encounter: "Ambulatory/ED Visit"] E
     with [Condition: "Acute Pharyngitis"] P
       such that P.onset during A.period
         and P.abatement after end of A.period
@@ -351,7 +351,7 @@ In the example below, the `where` clause is used to filter encounters based on t
 
 ```cql
 define "Inpatient Encounters":
-  ["Encounter": "Inpatient"] Encounter
+  [Encounter: "Inpatient"] Encounter
     where Encounter.period during "Measurement Period"
 ```
 
@@ -385,7 +385,7 @@ define "Encounter Without Procedure ":
 
 ```cql
 define "Inpatient Encounters":
-  [Encounter": "Inpatient"] Encounter
+  [Encounter: "Inpatient"] Encounter
     with ["Observation": "Streptococcus Test"] Lab Test
       such that Observation.issued during Encounter.period
 ```  
@@ -812,7 +812,7 @@ PositionOf('cde', 'abcdefg') // returns 2
 3. `Combine` operator is used to combine a list of strings
 
 ```cql
-Combine({ 'ab', 'cd', 'ef' }) /// returns 'abcdef'
+Combine({ 'ab', 'cd', 'ef' }) // returns 'abcdef'
 ```
 
 4. `Split` Operator is used to split a list of strings
