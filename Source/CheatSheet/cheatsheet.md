@@ -2,54 +2,17 @@
 
 Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standard for representing clinical logic. This cheat sheet provides a quick reference for the most commonly used features of the language. For more resources, see the [Getting Started](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Getting-Started) page of the CQL Formatting and Usage Wiki.
 
-## Syntax
+## [**Declarations**](https://cql.hl7.org/02-authorsguide.html#declarations)
 
-### [**Declarations**](https://cql.hl7.org/02-authorsguide.html#declarations)
+CQL libraries consist of a set of _declarations_:
 
-Constructs expressed within CQL are packaged in libraries. Each library consists of a set of declarations such as terminology, expressions, and functions that are used to define and share clinical logic.
-
-1) [Library syntax](https://cql.hl7.org/02-authorsguide.html#library) - The `library` declaration specifies both the name of the library and optional version
-
-```cql
-library AlphoraCommon version '1.0.0'
-```
-
-2) [Using syntax](https://cql.hl7.org/02-authorsguide.html#data-models) - A CQL library can reference zero or more data models with the `using` declaration. These data models define the structures that can be referenced in the library.
-
-```cql
-using FHIR version '4.0.1'
-```
-
-3) [Include syntax](https://cql.hl7.org/02-authorsguide.html#libraries) - A CQL library can reference zero or more other CQL libraries with the `include` declaration. Declarations in included libraries can be used anywhere within the referencing library. The `called` clause defines an optional qualifier to use to reference declarations in the included library.
-
-```cql
-include FHIRCommon called FC
-```
-
-4) [Parameter syntax](https://cql.hl7.org/02-authorsguide.html#parameters) - A CQL library can define zero or more parameters using the `parameter` declaration. Parameters defined in a library can be referenced anywhere within the library.
-
-```cql
-parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)
-```
-
-```cql
-parameter MeasurementPeriod Interval<DateTime>
-```
-
-5) [Context syntax](https://cql.hl7.org/02-authorsguide.html#context) - The `context` declaration defines the "extent" of data available to be retrieved (e.g. the data for a patient). When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. If the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context.
-
-```cql
-context Patient
-context Practitioner
-context Unfiltered
-```
-
-6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology) - Value set and code system declarations allow terminology to be referenced anywhere within the library.
-
-```cql
-valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
-codesystem "SNOMED": 'http://snomed.info/sct'
-```
+|---|---|
+|`library AlphoraCommon version '1.0.0'`| The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version |
+|`using FHIR version '4.0.1'`| [Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library |
+|`include FHIRCommon called FC`| [Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library |
+|`codesystem LOINC: 'http://loinc.org'`\n`valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'`\n`code "Blood pressure panel": '85354-9' from LOINC`| [Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies |
+|`parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)`|[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library |
+|`context Patient`\n`context Practitioner`\n`context Unfiltered`|[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the "extent" of data available to be retrieved (e.g. the data for a patient). When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. If the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context. |
 
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
