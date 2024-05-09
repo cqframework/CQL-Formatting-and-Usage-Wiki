@@ -6,6 +6,7 @@ Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standa
 
 CQL libraries consist of a set of _declarations_:
 
+|Example|Declaration|
 |---|---|
 |`library AlphoraCommon version '1.0.0'`| The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version |
 |`using FHIR version '4.0.1'`| [Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library |
