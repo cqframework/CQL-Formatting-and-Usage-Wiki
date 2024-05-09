@@ -6,92 +6,53 @@ Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standa
 
 CQL libraries consist of a set of _declarations_:
 
-<table>
-  <tr><th>Example</th><th>Declaration</th></tr>
-<tr>
-<td>
+The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version
 
 ```cql
 library AlphoraCommon version '1.0.0'
 ```
 
-</td>
-<td>The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version</td>
-</tr>  
-<tr>
-<td>
- 
+[Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library
+
 ```cql
 using FHIR version '4.0.1'
 ```
 
-</td>
-<td>[Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library</td>
-</tr>
+[Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library
 
-<tr>
-<td>
-  
 ```cql
 include FHIRCommon called FC
 ```
-  
-</td>  
-<td>[Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library</td>
-</tr>
 
-<tr>
-<td>
+[Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies
 
 ```cql
 codesystem LOINC: 'http://loinc.org'
-valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+valueset "Inpatient Encounter Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 code "Blood pressure panel": '85354-9' from LOINC
 ```
-  
-</td>  
-<td>[Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies</td>
-</tr>
 
-<tr>
-<td>
-  
+[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library
+
 ```cql
 parameter "Measurement Period" default Interval[@2013-01-01, @2014-01-01)
 ```
-  
-</td>
-<td>[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library</td>
-</tr>
 
-<tr>
-<td>
+[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the _extent_ of data available to be retrieved (e.g. the data for a patient)
 
 ```cql
 context Patient
 ```
-  
-</td>
-<td>[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the _extent_ of data available to be retrieved (e.g. the data for a patient)</td>  
-</tr>
 
-<tr>
-<td>
+[Statement](https://cql.hl7.org/02-authorsguide.html#statements) declarations let you define named expressions that can be used to build quality measures and decision support rules
 
 ```cql
 define "Inpatient Encounter":
   [Encounter: "Inpatient Encounter Codes"] Encounter
-		where Encounter.status = 'finished'
-		and Encounter.period ends during day of "Measurement Period"
+    where Encounter.status = 'finished'
+      and Encounter.period ends during day of "Measurement Period"
 ```
   
-</td>
-<td>[Statement](https://cql.hl7.org/02-authorsguide.html#statements) declarations let you define named expressions that can be used to build quality measures and decision support rules</td>
-</tr>
-
-</table>
-
-
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
 The retrieve expression is the central construct for accessing clinical information within CQL. The retrieve in CQL has two main parts: the "type part" and the "terminology filter part".
