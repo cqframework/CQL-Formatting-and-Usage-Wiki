@@ -6,14 +6,91 @@ Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standa
 
 CQL libraries consist of a set of _declarations_:
 
-|Example|Declaration|
-|---|---|
-|`library AlphoraCommon version '1.0.0'`| The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version |
-|`using FHIR version '4.0.1'`| [Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library |
-|`include FHIRCommon called FC`| [Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library |
-|`codesystem LOINC: 'http://loinc.org'`<br/>`valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'`<br/>`code "Blood pressure panel": '85354-9' from LOINC`| [Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies |
-|`parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)`|[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library |
-|`context Patient`<br/>`context Practitioner`<br/>`context Unfiltered`|[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the "extent" of data available to be retrieved (e.g. the data for a patient). When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. If the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context. |
+<table>
+  <tr><th>Example</th><th>Declaration</th></tr>
+<tr>
+<td>
+
+```cql
+library AlphoraCommon version '1.0.0'
+```
+
+</td>
+<td>The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version</td>
+</tr>  
+<tr>
+<td>
+ 
+```cql
+using FHIR version '4.0.1'
+```
+
+</td>
+<td>[Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library</td>
+</tr>
+
+<tr>
+<td>
+  
+```cql
+include FHIRCommon called FC
+```
+  
+</td>  
+<td>[Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library</td>
+</tr>
+
+<tr>
+<td>
+
+```cql
+codesystem LOINC: 'http://loinc.org'
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+code "Blood pressure panel": '85354-9' from LOINC
+```
+  
+</td>  
+<td>[Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies</td>
+</tr>
+
+<tr>
+<td>
+  
+```cql
+parameter "Measurement Period" default Interval[@2013-01-01, @2014-01-01)
+```
+  
+</td>
+<td>[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library</td>
+</tr>
+
+<tr>
+<td>
+
+```cql
+context Patient
+```
+  
+</td>
+<td>[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the _extent_ of data available to be retrieved (e.g. the data for a patient)</td>  
+</tr>
+
+<tr>
+<td>
+
+```cql
+define "Inpatient Encounter":
+  [Encounter: "Inpatient Encounter Codes"] Encounter
+		where Encounter.status = 'finished'
+		and Encounter.period ends during day of "Measurement Period"
+```
+  
+</td>
+<td>[Statement](https://cql.hl7.org/02-authorsguide.html#statements) declarations let you define named expressions that can be used to build quality measures and decision support rules</td>
+</tr>
+
+</table>
+
 
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
