@@ -252,8 +252,8 @@ end
 | Type | Examples |
 |----|----|
 | [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) | `true`, `false` |
-| [Integer](https://cql.hl7.org/02-authorsguide.html#integer) | 16, -28 |
-| [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) | 100.015 |
+| [Integer](https://cql.hl7.org/02-authorsguide.html#integer) | `16`, `-28` |
+| [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) | `100.015` |
 | [String](https://cql.hl7.org/02-authorsguide.html#string) | `pending`, `John Doe`, `complete` |
 | [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25` |
 | [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25T14:30:14.559Z` |
