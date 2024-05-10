@@ -28,7 +28,7 @@ include FHIRCommon called FC
 
 ```cql
 codesystem LOINC: 'http://loinc.org'
-valueset "Inpatient Encounter Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 code "Blood pressure panel": '85354-9' from LOINC
 ```
 
@@ -119,30 +119,15 @@ Foo1 // simple
 [Single Quotes](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
 
 Single quotes are used for string values, as well as for the values of parts of declarations such as terminology identifiers
-1) text
-```cql
-define "String Value": 'hello'
-```
 
-2) Code system and value set identifiers
-```cql
-valueset "Example Value Set":  'http://example.org/fhir/ValueSet/example'
-```
-
-3) version identifiers
-```cql
-valueset "Example Code System":  'http://example.org/fhir/ValueSet/example' version '123'
-```
-
-4) code declarations
-```cql
-code "Example Code": '123' from "http://example.org/fhir/CodeSystem/example"
-```
-
-5) units
-```cql
-define "Example Quantity": 12.0 'L'
-```
+| Type | Example |
+|----|----|
+| Text | define "String Value": `'hello'` |
+| Code System identifiers | codesystem "Example Code System": `'http://example.org/fhir/CodeSystem/example'` |
+| Value Set identifiers | valueset "Example Value Set": `'http://example.org/fhir/ValueSet/example'` |
+| Version identifiers | valueset "Example Code System":  'http://example.org/fhir/ValueSet/example' version `'123'` |
+| Code Declarations | code "Example Code": `'123'` from "Example Code System" |
+| Units | define "Example Quantity": 12.0 `'L'` |
 
 **Double quotes are used for identifiers**
 
@@ -192,7 +177,7 @@ The clauses, described in the clauses section later, must appear in the correct 
 
 ### [**Aliases**](https://cql.hl7.org/02-authorsguide.html#queries)
 
-Queries begin by introducing an alias (`E` in the following example), followed by _clauses_ (a where clause in this example):
+Queries begin by introducing an alias (`E` in the following example), followed by _clauses_ (a `where` clause in this example):
  
 ```cql
 define "Ambulatory Encounters":
@@ -321,7 +306,7 @@ define "Had chest CT in past year":
   )
 ``` 
 
-`where not exists` filters data based on a missing or non existant query
+`where not exists` filters data based on a missing or non existent query
 
 ```cql
 define "Encounter Without Procedure ":
