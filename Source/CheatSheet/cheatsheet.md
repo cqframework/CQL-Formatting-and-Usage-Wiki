@@ -48,7 +48,7 @@ context Patient
 
 ```cql
 define "Inpatient Encounter":
-  [Encounter: "Inpatient Encounter Codes"] Encounter
+  [Encounter: "Encounter Inpatient"] Encounter
     where Encounter.status = 'finished'
       and Encounter.period ends during day of "Measurement Period"
 ```
@@ -71,22 +71,25 @@ The retrieve expression is the central construct for accessing clinical informat
 [Condition: "Acute Pharyngitis"]
 ```
 
-- The example below returns Conditions with class in the "Inpatient Encounters" value set.
+- The example below returns Encounters with type in the "Encounter Inpatient" value set.
 
 ```cql
-valueset "Inpatient Encounters": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
-[Condition: class in "Inpatient Encounters"]
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+
+define "Inpatient Encounter":
+  [Encounter: type in "Encounter Inpatient"]
 ```
 
 - The example below retrieves Conditions with codes equivalent to the "Diabetes Code" direct-reference code.
 
 ```cql
 code "Diabetes Code": '123' from "LOINC"
-[Condition: code ~ "Diabetes Code"]
+
+define "Diabetes Conditions":
+  [Condition: code ~ "Diabetes Code"]
 ```
 
-
-### [**Function Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
+### [**Functions**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
 
 A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name.
 
@@ -115,43 +118,44 @@ Foo1 // simple
 
 [Single Quotes](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
 
-Single quotes are limited to string literals
+Single quotes are used for string values, as well as for the values of parts of declarations such as terminology identifiers
 1) text
 ```cql
-define "string literal": 'hello'
+define "String Value": 'hello'
 ```
 
-2) code system and value set object identifiers (OID)
+2) Code system and value set identifiers
 ```cql
-valueset "example":  'urn:oid:2.16.840.1.113883.3.560.100.2'
+valueset "Example Value Set":  'http://example.org/fhir/ValueSet/example'
 ```
 
 3) version identifiers
 ```cql
-valueset "example":  'urn:oid:2.16.840.1.113883.3.560.100.2' version '123'
+valueset "Example Code System":  'http://example.org/fhir/ValueSet/example' version '123'
 ```
 
 4) code declarations
 ```cql
-code "code": '123' from "codesystem identifier"
+code "Example Code": '123' from "http://example.org/fhir/CodeSystem/example"
 ```
 
 5) units
 ```cql
-define "quantity": 12.0 'L'
+define "Example Quantity": 12.0 'L'
 ```
 
-**Identifiers may use double quotation marks.**
+**Double quotes are used for identifiers**
 
 [Quoted Identifiers](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#QUOTEDIDENTIFIER)
-This applies to definitions, functions, valuesets, codes, etc... 
+
+This applies to expression definitions, functions, valuesets, codes, etc... 
 
 ```cql
 "SNOMED CT" // A code system declaration
-"Inpatient Encounters" // A Defined Code
+"Inpatient Encounters" // A Value Set
 ```
 
-## Bracket Syntax
+## Brackets
 
 1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and (). Following standard mathematics notation, inclusive (closed) boundaries are indicated with square brackets, and exclusive (open) boundaries are indicated with parentheses.
 
@@ -164,7 +168,8 @@ Interval(3,5] // An interval > 3 and <= 5
 2. [Lists and Tuples](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#tupleSelector) use { }
 
 ```cql
-{ 1, 2, 3 } union { 3, 4, 5 }
+define "Union Example":
+  { 1, 2, 3 } union { 3, 4, 5 }
 
 define "Info": 
   Tuple { Name: 'Patrick', DOB: @2014-01-01 }
@@ -185,25 +190,17 @@ The clauses, described in the clauses section later, must appear in the correct 
 ```
 [Jump to query clauses section](#queryclauses)
 
-### [**Alias Functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
+### [**Aliases**](https://cql.hl7.org/02-authorsguide.html#queries)
 
-A query construct often begins by introducing an alias for the primary source.
+Queries begin by introducing an alias (`E` in the following example), followed by _clauses_ (a where clause in this example):
  
-```cql
-["Encounter": "Inpatient"] E
-```
-
-### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
-
-CQL provides single-source queries to allow for the retrieval of data from a single source. If the expression is singular the query ranges over only that element.
-
 ```cql
 define "Ambulatory Encounters":
   [Encounter: "Ambulatory/ED Visit] E
-    where E.status ~ 'finished'
+    where E.status = 'finished'
 ```
 
-If the expression is plural, the query ranges over all the elements in the list.
+### [**With/Without**](https://cql.hl7.org/02-authorsguide.html#relationships)
 
 ```cql
 define "Ambulatory Encounter With Acute Pharyngitis":
@@ -252,71 +249,23 @@ end
 
 ### [**Simple values**](https://cql.hl7.org/02-authorsguide.html#simple-values) 
 
-1. [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) type in CQL supports logical operators.
-
-```cql
-True/False/Null
-```
-
-2. [Integer](https://cql.hl7.org/02-authorsguide.html#integer) type in CQL supports the representation of whole numbers, positive and negative.
-
-```cql
-16, -28
-```
-
-3. [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) type in CQL supports the representation of real numbers, positive and negative
-
-```cql
-100.015
-```
-
-4. [String](https://cql.hl7.org/02-authorsguide.html#string) values in CQL are represented using single quotes. String values are case sensitive and normalize whitespace.
-
-```cql
-'pending'
-'John Doe'
-'complete'
-```
-
-5. [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent only dates on a calendar, irrespective of the time of day
-
-```cql
-@2014-01-25
-```
-
-6. [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent an instant along the timeline, known to at least the year precision, and potentially to the millisecond precision
-
-```cql
-@2014-01-25T14:30:14.559
-```
-
-7. [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) values are used to represent a time of day, independent of the date
- 
-```cql
-@T12:00
-```
+| Type | Examples |
+|----|----|
+| [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) | `true`, `false` |
+| [Integer](https://cql.hl7.org/02-authorsguide.html#integer) | 16, -28 |
+| [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) | 100.015 |
+| [String](https://cql.hl7.org/02-authorsguide.html#string) | `pending`, `John Doe`, `complete` |
+| [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25` |
+| [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25T14:30:14.559Z` |
+| [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@T12:00` |
 
 ### [**Clinical Values**](https://cql.hl7.org/02-authorsguide.html#clinical-values)
 
-1. [Quantities](https://cql.hl7.org/02-authorsguide.html#quantities) are a number with an associated value.
-
-```cql
-3 months
-5 'mg'
-```
-
-2. [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) uses standard mathematical operations to express the relationship between two quantities. 
-
-```cql
-5 'mg' : 10 'mL'
-2 : 20
-```
-
-3. [Codes](https://cql.hl7.org/02-authorsguide.html#code) in CQL supports a top-level construct for dealing with codes using a structure called Code that is consistent with the way terminologies are typically represented. The code type is made up of four elements- code, display, version and system.
-
-```cql
-code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'
-```
+| Type | Examples |
+|----|----|
+| [Quantity](https://cql.hl7.org/02-authorsguide.html#quantities) | `3 months`, `5 'mg'` |
+| [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) | `5 'mg' : 10 'mL'`, `2 : 20` |
+| [Code](https://cql.hl7.org/02-authorsguide.html#code) | `code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'` |
 
 4. [Tuples](https://cql.hl7.org/02-authorsguide.html#structured-values-tuples) are values that contain named elements, each having a value of some type. In this example, the tuple type is set using the keyword `Patient`
 
@@ -325,12 +274,12 @@ define "PatientExpression":
   Patient { Name: 'Patrick', DOB: @2014-01-01 }
 ```
 
-5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information) is common in clinical settings, and CQL uses the keyword `null` to represent the unknown or missing information. In this example, the statement will return Observations that have no status. 
+5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information) is common in clinical settings, and CQL uses the keyword `null` to represent the unknown or missing information. In this example, the statement will return Observations that have no value. 
 
 ```cql
 define "Missing Status":
   [Observation] O 
-    where O.status is null
+    where O.value is null
 ```
 
 6. [List Values](https://cql.hl7.org/02-authorsguide.html#list-values) can be of any type of value (including other lists). Although some operations may result in lists containing mixed types, in normal use cases, lists contain items that are all of the same type.
@@ -846,15 +795,15 @@ Eg. If two encounters have the same value for lengthOfStay, that value will only
 
 -  Note the use of the equivalent operator (~) rather than equality (=). For codes, equivalence tests only if the `system` and `code` are the same, but does not check the `version` or `display` elements
 
-- String Equality is case sensitive 
+- String Equality (`=`) is case sensitive 
 
 ```cql
 ('Abel' = 'abel') is false
 ```
-- String Equivalence ignores case, locale, and normalizes whitespace (meaning all whitespace characters are equivalent). 
+- String Equivalence (`~`) ignores case, locale, and normalizes whitespace (meaning all whitespace characters are equivalent). 
 
 ```cql
-('Abel' = 'Abel') is true
+('Abel' ~ 'abel') is true
 ```
 
 4.  The Sum function works on lists of quantities or numbers not a list of structures like Encounters
