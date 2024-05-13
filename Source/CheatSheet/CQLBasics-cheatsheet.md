@@ -1,6 +1,6 @@
 # CQL Basics Cheat Sheet
 
-## Values
+## [Values](https://cql.hl7.org/02-authorsguide.html#values)
 
 |Value|Description|Example|
 |-----|-----------|-------|
@@ -21,7 +21,7 @@
 |List|A collection of values of any type|<pre lang="cql">{ 1, 2, 3, 4, 5 }&#13;[Condition: code in "Acute Pharyngitis"]</pre>|
 |Interval|Set of values between two boundaries that can be inclusive ([]) or exclusive (())|<pre lang="cql">Interval[3, 5) // 3 and 4, but not 5&#13;Interval[@2014-01-01, @2015-01-01) // same as Interval[@2014-01-01, @2014-12-31]</pre>|
 
-## Symbols
+## [Symbols](https://cql.hl7.org/03-developersguide.html#symbols)
 
 |Symbol|Description|
 |------|-----------|
@@ -32,10 +32,10 @@
 |<>|Angle-brackets for delimiting generic types within type specifiers|
 |.|Period for qualifiers and accessors|
 |,|Comma for delimiting items in a syntactic list|
-|= != <= < > >=|Comparison operators for comparing values|
+|= != ~ !~ <= < > >=|Comparison operators for comparing values|
 |+ - * / ^|Arithmetic operators for performing calculations|
 
-## Identifiers
+## [Identifiers](https://cql.hl7.org/03-developersguide.html#identifiers)
 
 |Type|Description|Example|
 |----|-----------|-------|
@@ -44,14 +44,14 @@
 |Quoted|Any sequence of characters enclosed in double-quotes (")|<pre lang="cql">"Inpatient Encounters"</pre>|
 |Qualified|Identifiers can be combined using the qualifier operator (.)|<pre lang="cql">Common.ConditionsIndicatingSexualActivity</pre>|
 
-## Comments
+## [Comments](https://cql.hl7.org/03-developersguide.html#comments)
 
 |Type|Example|
 |----|-------|
 |single-line|<pre lang="cql">define "Foo": 1 + 1 // This is a single-line comment</pre>|
 |multi-line|<pre lang="cql">/\*&#13;This is a multi-line comment&#13;Any text enclosed within is ignored&#13;\*/</pre>|
 
-## Declarations
+## [Declarations](https://cql.hl7.org/02-authorsguide.html#declarations)
 
 |Construct|Description|
 |---------|-----------|
@@ -97,21 +97,21 @@ define function MostRecent(observations List<Observation>):
   )
 ```
 
-## Named Expressions
+## [Named Expressions](https://cql.hl7.org/02-authorsguide.html#statements)
 
 |Type|Example|
 |----|-------|
 |Statement|<pre lang="cql">define SimpleStatement: 'This is simple!'</pre>|
 |Function|<pre lang="cql">define function MostRecent(observations List<Observation>):&#13;  Last(&#13;    observations O&#13;      sort by issued&#13;  )</pre>|
 
-## Retrieve (Primary Source)
+## [Retrieve (Primary Source)](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
 |Concept|Description|Example|
 |-------|-----------|-------|
 |Clinical Statement|Determines the structure of the data that is returned by the retrieve, as well as the semantics of the data involved|<pre lang="cql">[Encounter]</pre>|
 |Filtering with Terminology|The retrieve expression allows the results to be filtered using terminology, including valuesets, code systems, or by specifying a single code|<pre lang="cql">[Condition: severity in "Acute Severity"]</pre>|
 
-## Query
+## [Query](https://cql.hl7.org/02-authorsguide.html#queries)
 
 |Clause|Operation|Example|
 |------|---------|-------|
