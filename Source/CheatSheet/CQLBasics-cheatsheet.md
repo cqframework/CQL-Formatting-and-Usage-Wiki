@@ -40,7 +40,7 @@
 |Type|Description|Example|
 |----|-----------|-------|
 |Simple|Any alphabetical character or an underscore, followed by any number of alpha-numeric characters or underscores|<pre lang="cql">Foo1</pre>|
-|Delimited|any sequence of characters enclosed in backticks (`)|<pre lang="cql">`Encounter, Performed`</pre>|
+|Delimited|any sequence of characters enclosed in backticks (`)|<pre lang="cql">\`Encounter, Performed\`</pre>|
 |Quoted|Any sequence of characters enclosed in double-quotes (")|<pre lang="cql">"Inpatient Encounters"</pre>|
 |Qualified|Identifiers can be combined using the qualifier operator (.)|<pre lang="cql">Common.ConditionsIndicatingSexualActivity</pre>|
 
