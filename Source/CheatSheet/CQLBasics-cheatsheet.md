@@ -7,7 +7,7 @@
 |Null|The null literal|<pre lang="cql">null</pre>|
 |Boolean|The boolean literals|<pre lang="cql">true, false</pre>|
 |Integer|Sequences of digits in the range 0..2<sup>31</sup>-1|<pre lang="cql">16, -28</pre>|
-|Long|Sequences of digits in the range 0..2<sup>63</sup>-1|<pre lang="cql">16000000000, -28000000000</pre>|
+|Long|Sequences of digits in the range 0..2<sup>63</sup>-1|<pre lang="cql">16000000000L, -28000000000L</pre>|
 |Decimal|Sequences of digits with a decimal point, in the range 0.0.. (10<sup>28</sup>-1)/10<sup>8</sup>|<pre lang="cql">100.015</pre>|
 |String|Strings of any character enclosed within single-ticks (')|<pre lang="cql">'pending', 'active', 'complete'</pre>|
 |Date|The at-symbol (@) followed by an ISO-8601 compliant representation of a date|<pre lang="cql">@2014-01-25</pre>|
@@ -17,7 +17,7 @@
 |Ratio|A ratio of two quantities, separated by a colon (:)|<pre lang="cql">1:128&#13;5 'mg' : 10 'mL'</pre>|
 |Code|Construct consistent with the way terminologies are typically represented|<pre lang="cql">Code '66071002' from "SNOMED-CT" display 'Type B viral hepatitis'</pre>|
 |Concept|Construct to specify multiple terminologies used to code for the same concept|<pre lang="cql">Concept {&#13;  Code '66071002' from "SNOMED-CT",&#13;  Code 'B18.1' from "ICD-10-CM"&#13;} display 'Type B viral hepatitis'</pre>|
-|Tuple|Structured values that contain named elements, each having a value of some type|<pre lang="cql">define "Info":&#13;  Tuple {&#13;    Name: 'Patrick',&#13;    DOB: @2014-01-01,&#13;    Address: Tuple { Line1: '41 Spinning Ave', City: 'Dayton', State: 'OH' },&#13;    Phones: { Tuple { Number: '202-413-1234', Use: 'Home' } }&#13;  }</pre>|
+|Tuple|Structured values that contain named elements, each having a value of some type|<pre lang="cql">Tuple {&#13;    Name: 'Patrick',&#13;    DOB: @2014-01-01,&#13;    Address: Tuple { Line1: '41 Spinning Ave', City: 'Dayton', State: 'OH' },&#13;    Phones: { Tuple { Number: '202-413-1234', Use: 'Home' } }&#13;  }</pre>|
 |List|A collection of values of any type|<pre lang="cql">{ 1, 2, 3, 4, 5 }&#13;[Condition: code in "Acute Pharyngitis"]</pre>|
 |Interval|Set of values between two boundaries that can be inclusive ([]) or exclusive (())|<pre lang="cql">Interval[3, 5) // 3 and 4, but not 5&#13;Interval[@2014-01-01, @2015-01-01) // same as Interval[@2014-01-01, @2014-12-31]</pre>|
 
