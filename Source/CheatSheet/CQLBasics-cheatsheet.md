@@ -88,7 +88,7 @@ define "Inpatient Encounters":
     where Common.NormalizePeriod(Encounter.period) ends during day of "Measurement Period"
 
 define "Most Recent Blood Pressure Labs":
-  MostRecent([Observation: value in "Blood Pressure Codes"]) 
+  MostRecent([Observation: "Blood Pressure Codes"]) 
 
 define function MostRecent(observations List<Observation>):
   Last(
