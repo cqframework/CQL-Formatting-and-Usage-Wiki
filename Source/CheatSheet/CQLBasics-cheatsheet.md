@@ -109,7 +109,8 @@ define function MostRecent(observations List<Observation>):
 |Concept|Description|Example|
 |-------|-----------|-------|
 |Clinical Statement|Determines the structure of the data that is returned by the retrieve, as well as the semantics of the data involved|<pre lang="cql">[Encounter]</pre>|
-|Filtering with Terminology|The retrieve expression allows the results to be filtered using terminology, including valuesets, code systems, or by specifying a single code|<pre lang="cql">[Condition: severity in "Acute Severity"]</pre>|
+|Filtering with Terminology|The retrieve expression allows the results to be filtered using terminology, including valuesets, code systems, or by specifying a single code|<pre lang="cql">[Condition: "Diabetes"]</pre>|
+|Filtering with a Path|The terminology path can be set in the retrieve (otherwise defaults based on model info)|<pre lang="cql">[Condition: severity in "Acute Severity"]</pre>|
 
 ## [Query](https://cql.hl7.org/02-authorsguide.html#queries)
 
