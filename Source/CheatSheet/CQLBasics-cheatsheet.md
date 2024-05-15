@@ -116,7 +116,7 @@ define function MostRecent(observations List<Observation>):
 
 |Clause|Operation|Example|
 |------|---------|-------|
-|Relationship (with/without)|Allows relationships between the primary source and other clinical information to be used to filter the result|<pre lang="cql">[Encounter: "Ambulatory/ED Visit"] E&#13;  with [Condition: "Acute Pharyngitis"] P&#13;    such that P.onsetDateTime during E.period&#13;      and P.abatementDate after end of E.period</pre>|
+|Relationship (with/without)|Allows relationships between the primary source and other clinical information to be used to filter the result|<pre lang="cql">[Encounter: "Ambulatory/ED Visit"] E&#13;  with [Condition: "Acute Pharyngitis"] P&#13;    such that P.onset during E.period&#13;      and P.abatement after end of E.period</pre>|
 |Where|The where clause allows conditions to be expressed that filter the result to only the information that meets the condition|<pre lang="cql">[Encounter: "Inpatient"] E&#13;  where duration in days of E.period >= 120</pre>|
-|Return|The return clause allows the result set to be shaped as needed, removing elements, or including new calculated values|<pre lang="cql">[Encounter: "Inpatient"] E&#13;  return E.lengthOfStay</pre>|
+|Return|The return clause allows the result set to be shaped as needed, removing elements, or including new calculated values|<pre lang="cql">[Encounter: "Inpatient"] E&#13;  return duration in days of E.period</pre>|
 |Sort|The sort clause allows the result set to be ordered according to any criteria as needed|<pre lang="cql">[Encounter: "Inpatient"] E&#13;  sort by start of period</pre>|
