@@ -45,28 +45,35 @@ X overlaps after Y ::= end of X > end of Y and start of X <= end of Y
 
 #### Examples
 
+```cql
 /*
     |-----|
        |-----|
 */
+```
 
 overlaps before is true
 overlaps is true
 overlaps after is false
 
+```cql
 /*
         |-----|
         |-----|    
 */
+```
 
 overlaps before is false
 overlaps is true
 overlaps after is false
 
+
+```cql
 /*
            |-----|
         |-----|    
 */
+```
 
 overlaps before is false
 overlaps is true
