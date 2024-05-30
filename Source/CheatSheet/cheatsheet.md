@@ -2,54 +2,57 @@
 
 Clinical Quality Language [(CQL)](http://cql.hl7.org) is a Health Level 7 Standard for representing clinical logic. This cheat sheet provides a quick reference for the most commonly used features of the language. For more resources, see the [Getting Started](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/wiki/Getting-Started) page of the CQL Formatting and Usage Wiki.
 
-## Syntax
+## [**Declarations**](https://cql.hl7.org/02-authorsguide.html#declarations)
 
-### [**Declarations**](https://cql.hl7.org/02-authorsguide.html#declarations)
+CQL libraries consist of a set of _declarations_:
 
-Constructs expressed within CQL are packaged in libraries. Each library consists of a set of declarations such as terminology, expressions, and functions that are used to define and share clinical logic.
-
-1) [Library syntax](https://cql.hl7.org/02-authorsguide.html#library) - The `library` declaration specifies both the name of the library and optional version
+The [Library](https://cql.hl7.org/02-authorsguide.html#library) declaration specifies the name of the library and optionally a version
 
 ```cql
 library AlphoraCommon version '1.0.0'
 ```
 
-2) [Using syntax](https://cql.hl7.org/02-authorsguide.html#data-models) - A CQL library can reference zero or more data models with the `using` declaration. These data models define the structures that can be referenced in the library.
+[Using](https://cql.hl7.org/02-authorsguide.html#data-models) declarations indicate which data model(s) can be used in the library
 
 ```cql
 using FHIR version '4.0.1'
 ```
 
-3) [Include syntax](https://cql.hl7.org/02-authorsguide.html#libraries) - A CQL library can reference zero or more other CQL libraries with the `include` declaration. Declarations in included libraries can be used anywhere within the referencing library. The `called` clause defines an optional qualifier to use to reference declarations in the included library.
+[Include](https://cql.hl7.org/02-authorsguide.html#libraries) declarations allow you to reference declarations from other libraries. The `called` clause lets you specify what identifier to use to access declarations in the included library
 
 ```cql
 include FHIRCommon called FC
 ```
 
-4) [Parameter syntax](https://cql.hl7.org/02-authorsguide.html#parameters) - A CQL library can define zero or more parameters using the `parameter` declaration. Parameters defined in a library can be referenced anywhere within the library.
+[Terminology](https://cql.hl7.org/02-authorsguide.html#terminology) declarations let you reference externally defined terminologies
 
 ```cql
-parameter MeasurementPeriod default Interval[@2013-01-01, @2014-01-01)
+codesystem LOINC: 'http://loinc.org'
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+code "Blood pressure panel": '85354-9' from LOINC
 ```
+
+[Parameter](https://cql.hl7.org/02-authorsguide.html#parameters) declarations let you define parameters that can be used in the library
 
 ```cql
-parameter MeasurementPeriod Interval<DateTime>
+parameter "Measurement Period" default Interval[@2013-01-01, @2014-01-01)
 ```
 
-5) [Context syntax](https://cql.hl7.org/02-authorsguide.html#context) - The `context` declaration defines the "extent" of data available to be retrieved (e.g. the data for a patient). When no context is specified in the library, and the model has not declared a default context, the default context is Unfiltered. If the Unfiltered context is used, the results of any given retrieve will not be limited to a particular context.
+[Context](https://cql.hl7.org/02-authorsguide.html#context) declarations define the _extent_ of data available to be retrieved (e.g. the data for a patient)
 
 ```cql
 context Patient
-context Practitioner
-context Unfiltered
 ```
 
-6) [Value Sets & Code Systems](https://cql.hl7.org/02-authorsguide.html#terminology) - Value set and code system declarations allow terminology to be referenced anywhere within the library.
+[Statement](https://cql.hl7.org/02-authorsguide.html#statements) declarations let you define named expressions that can be used to build quality measures and decision support rules
 
 ```cql
-valueset "Acute Pharyngitis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1011'
+define "Inpatient Encounter":
+  [Encounter: "Encounter Inpatient"] Encounter
+    where Encounter.status = 'finished'
+      and Encounter.period ends during day of "Measurement Period"
 ```
-
+  
 ### [**Retrieve syntax**](https://cql.hl7.org/02-authorsguide.html#retrieve)
 
 The retrieve expression is the central construct for accessing clinical information within CQL. The retrieve in CQL has two main parts: the "type part" and the "terminology filter part".
@@ -62,32 +65,106 @@ The retrieve expression is the central construct for accessing clinical informat
 
 2) [terminology filter part](https://cql.hl7.org/02-authorsguide.html#filtering-with-terminology) : the retrieve expression allows the results to be filtered using terminology, including value sets, code systems, or by specifying a single code.
 
+- The example below filters the results to only Conditions whose code is in the "Acute Pharyngitis" value set.
+
 ```cql
-[Condition: "Acute Pharyngitis"] where Acute Pharyngitis is the value set.
+[Condition: "Acute Pharyngitis"]
 ```
 
-TODO: This isn't right, it's not an example of a function, the link isn't to the function declaration section of the spec, and functions don't have to be quoted identifiers :)
-3) [function](https://cql.hl7.org/02-authorsguide.html#statements) : A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name. A colon must end the quoted identifier.
+- The example below returns Encounters with type in the "Encounter Inpatient" value set.
 
-TODO: Do we want to introduce the code path here? If we do, it needs to be done correctly, (i.e. it shouldn't be using an `=`, it should be using either `in` or `~`, and if it uses `~`, it should be a direct-reference code, not a value set)
 ```cql
-define "Inpatient Encounters": 
-[Encounter: class = "Inpatient Encounter"]
+valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
+
+define "Inpatient Encounter":
+  [Encounter: type in "Encounter Inpatient"]
 ```
 
-TODO: This should probably just be Queries, not "Alias functionality"
-### [**Alias functionality**](https://cql.hl7.org/02-authorsguide.html#queries)
+- The example below retrieves Conditions with codes equivalent to the "Diabetes Code" direct-reference code.
 
-A query construct often begins by introducing an alias for the primary source.
- 
 ```cql
-["Encounter": "Inpatient"] E
-  where E.period during "Measurement Period"
+code "Diabetes Code": '123' from "LOINC"
+
+define "Diabetes Conditions":
+  [Condition: code ~ "Diabetes Code"]
 ```
+
+### [**Functions**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#function)
+
+A function in CQL is a named expression that is allowed to take any number of arguments. A function can be invoked directly by name.
+
+```cql
+define function MostRecent(observations List<Observation>):
+  Last(
+    observations O
+      sort by issued
+  )
+```
+
+In this example, the function takes a list of Observations, sorts them by their issued date and returns the last one that has been issued.
+
+### [**Identifiers**](https://cql.hl7.org/03-developersguide.html#identifiers)
+Identifiers are used to name various elements within the language. There are three types of identifiers in CQL, simple, delimited, and quoted.
+
+```cql
+Foo1 // simple
+`Encounter, Performed` // delimited
+"Inpatient Encounters" // quoted
+```
+
+## Strings vs Identifiers
+
+**Strings use single quotation marks.**
+
+[Single Quotes](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#string) 
+
+Single quotes are used for string values, as well as for the values of parts of declarations such as terminology identifiers
+
+| Type | Example |
+|----|----|
+| Text | define "String Value": `'hello'` |
+| Code System identifiers | codesystem "Example Code System": `'http://example.org/fhir/CodeSystem/example'` |
+| Value Set identifiers | valueset "Example Value Set": `'http://example.org/fhir/ValueSet/example'` |
+| Version identifiers | valueset "Example Code System":  'http://example.org/fhir/ValueSet/example' version `'123'` |
+| Code Declarations | code "Example Code": `'123'` from "Example Code System" |
+| Units | define "Example Quantity": 12.0 `'L'` |
+
+**Double quotes are used for identifiers**
+
+[Quoted Identifiers](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#QUOTEDIDENTIFIER)
+
+This applies to expression definitions, functions, valuesets, codes, etc... 
+
+```cql
+"SNOMED CT" // A code system declaration
+"Inpatient Encounters" // A Value Set
+```
+
+## Brackets
+
+1. [Intervals](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#intervalSelector) use [] and (). Following standard mathematics notation, inclusive (closed) boundaries are indicated with square brackets, and exclusive (open) boundaries are indicated with parentheses.
+
+```cql
+Interval[3,5) // An interval >= 3 and < 5
+Interval(3,5) // An interval > 3 and < 5
+Interval(3,5] // An interval > 3 and <= 5
+```
+
+2. [Lists and Tuples](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#tupleSelector) use { }
+
+```cql
+define "Union Example":
+  { 1, 2, 3 } union { 3, 4, 5 }
+
+define "Info": 
+  Tuple { Name: 'Patrick', DOB: @2014-01-01 }
+```
+
+## Queries
 
 ### [**Full Query Syntax**](https://cql.hl7.org/02-authorsguide.html#full-query)
 
-The clauses described in the clauses section later must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
+The clauses, described in the clauses section later, must appear in the correct order in order to specify a valid CQL query. The general order of clauses is:
 
 ```bnf
 <primary-source> <alias>
@@ -96,68 +173,29 @@ The clauses described in the clauses section later must appear in the correct or
   <return-clause>
   <sort-clause>
 ```
+[Jump to query clauses section](#queryclauses)
 
-TODO: Should probably organize discussions about each clause here
+### [**Aliases**](https://cql.hl7.org/02-authorsguide.html#queries)
 
-TODO: Identifiers should probably be introduced before queries?
-TODO: The link is to "identifier", but if this is about "identifiers" vs "strings", we should probably have links to both?
-TODO: Probably call it "Identifiers vs Strings", rather than "Quotation Syntax"?
-### [**Quotation Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier) 
-
-Strings have single quotes (including string representation of code values)
-
-``` cql
-'John Doe'
-'g/dl'
-'male'
+Queries begin by introducing an alias (`E` in the following example), followed by _clauses_ (a `where` clause in this example):
+ 
+```cql
+define "Ambulatory Encounters":
+  [Encounter: "Ambulatory/ED Visit] E
+    where E.status = 'finished'
 ```
 
-TODO: Probably need to introduce "Identifiers" somewhere?
-Identifiers that include spaces or other non-alphnumeric characters have double quotes 
+### [**With/Without**](https://cql.hl7.org/02-authorsguide.html#relationships)
 
 ```cql
-"Marital Status - Married" // A Concept declaration
-"SNOMED CT" // A CodeSystem declaration
-"Inpatient Encounters" // A defined expression
-```
-
-TODO: The link is to "identifier", which isn't relevant to any of these topics?
-### [**Bracket Syntax**](https://cql.hl7.org/19-l-cqlsyntaxdiagrams.html#identifier)
-
-1. Intervals use [] and ()
-
-```cql
-Interval[3,5) // An interval >= 3 and < 5
-Interval(3,5) // An interval > 3 and < 5
-Interval(3,5] // An interval > 3 and <= 5
-```
-
-2. Lists and Tuples use { }
-
-``` cql
-{ 1, 2, 3 } union { 3, 4, 5 }
-
-define "Info": 
-  Tuple { Name: 'Patrick', DOB: @2014-01-01 }
-```
-
-## Queries
-
-// TODO: Move the Alias stuff to here:
-
-### [**Single-source queries**](https://cql.hl7.org/03-developersguide.html#queries-1) 
-
-CQL provides single-source queries to allow for the retrieval of data from a single source. The query in the example below returns "Ambulatory/ED Visit" encounters performed where the patient also has a condition of "Acute Pharyngitis" that overlaps after the period of the encounter. It will only return Encounters.
-
-``` cql
-define Encounter Ambulatory
+define "Ambulatory Encounter With Acute Pharyngitis":
   [Encounter: "Ambulatory/ED Visit"] E
     with [Condition: "Acute Pharyngitis"] P
       such that P.onset during A.period
         and P.abatement after end of A.period
 ```
 
-// TODO: All the things from the "developer's guide" should probably be on Page 2, like organize the whole thing so that the first page is just "Author's Guide" stuff, the simple CQL, and the more advanced content is on page 2
+<!-- // TODO: All the things from the "developer's guide" should probably be on Page 2, like organize the whole thing so that the first page is just "Author's Guide" stuff, the simple CQL, and the more advanced content is on page 2 -->
 
 ### [**Multi-source queries**](https://cql.hl7.org/03-developersguide.html#multi-source-queries) 
 
@@ -196,110 +234,79 @@ end
 
 ### [**Simple values**](https://cql.hl7.org/02-authorsguide.html#simple-values) 
 
-1. [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) 
-
-```cql
-True/False
-```
-
-2. [Integer](https://cql.hl7.org/02-authorsguide.html#integer)
-
-```cql
-16, -28
-```
-
-3. [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) 
-
-```cql
-100.015
-```
-
-4. [String](https://cql.hl7.org/02-authorsguide.html#string) 
-
-```cql
-'pending'
-'active'
-'complete'
-```
-
-5. [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) 
-
-```cql
-@2014-01-25
-```
-
-6. [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time)
-
-```cql
-@2014-01-25T14:30:14.559
-```
-
-7. [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) 
- 
-```cql
-@T12:00
-```
+| Type | Examples |
+|----|----|
+| [Boolean](https://cql.hl7.org/02-authorsguide.html#boolean) | `true`, `false` |
+| [Integer](https://cql.hl7.org/02-authorsguide.html#integer) | `16`, `-28` |
+| [Decimal](https://cql.hl7.org/02-authorsguide.html#decimal) | `100.015` |
+| [String](https://cql.hl7.org/02-authorsguide.html#string) | `pending`, `John Doe`, `complete` |
+| [Date](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25` |
+| [DateTime](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@2014-01-25T14:30:14.559Z` |
+| [Time](https://cql.hl7.org/02-authorsguide.html#date-datetime-and-time) | `@T12:00` |
 
 ### [**Clinical Values**](https://cql.hl7.org/02-authorsguide.html#clinical-values)
 
-1. [Quantities](https://cql.hl7.org/02-authorsguide.html#quantities) 
+| Type | Examples |
+|----|----|
+| [Quantity](https://cql.hl7.org/02-authorsguide.html#quantities) | `3 months`, `5 'mg'` |
+| [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) | `5 'mg' : 10 'mL'`, `2 : 20` |
+| [Code](https://cql.hl7.org/02-authorsguide.html#code) | `code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'` |
 
-```cql
-3 months
-5 'mg'
-```
-
-2. [Ratio](https://cql.hl7.org/02-authorsguide.html#ratios) 
-
-```cql
-5 'mg' : 10 'mL'
-```
-
-3. [Code](https://cql.hl7.org/02-authorsguide.html#code) 
-
-```cql
-code "Blood pressure": '55284-4' from "LOINC" display 'Blood pressure'
-```
-
-4. [Tuples](https://cql.hl7.org/02-authorsguide.html#structured-values-tuples) 
+4. [Tuples](https://cql.hl7.org/02-authorsguide.html#structured-values-tuples) are values that contain named elements, each having a value of some type. In this example, the tuple type is set using the keyword `Patient`
 
 ```cql
 define "PatientExpression": 
   Patient { Name: 'Patrick', DOB: @2014-01-01 }
 ```
 
-5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information)
+5. [Missing Information](https://cql.hl7.org/02-authorsguide.html#missing-information) is common in clinical settings, and CQL uses the keyword `null` to represent the unknown or missing information. In this example, the statement will return Observations that have no value. 
 
 ```cql
-null
+define "Missing Status":
+  [Observation] O 
+    where O.value is null
 ```
 
-6. [List Values](https://cql.hl7.org/02-authorsguide.html#list-values) 
+6. [List Values](https://cql.hl7.org/02-authorsguide.html#list-values) can be of any type of value (including other lists). Although some operations may result in lists containing mixed types, in normal use cases, lists contain items that are all of the same type.
 
 ```cql
 { 1, 2, 3, 4, 5 }
 ```
-7. [Interval values](https://cql.hl7.org/02-authorsguide.html#interval-values) 
+
+7. [Interval values](https://cql.hl7.org/02-authorsguide.html#interval-values) can be inclusive or exclusive and represent the low and high points of an interval
 
 ```cql
 Interval[3, 5)
 ```
 
-## Query Clauses  
+## <a name="queryclauses">Query Clauses</a>  
 
-[**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data 
+[**Where clause where exists + where not exists + exists**](https://cql.hl7.org/02-authorsguide.html#filtering) to filter retrieved data. Where clauses are allowed to contain any arbitrary combination of operations of CQL, so long as the overall result of the condition is boolean-valued.
+
+In the example below, the `where` clause is used to filter encounters based on the encounter period
 
 ```cql
 define "Inpatient Encounters":
-  ["Encounter": "Inpatient"] Encounter
+  [Encounter: "Inpatient"] Encounter
     where Encounter.period during "Measurement Period"
 ```
 
+`where exists` filters data based on an existing query
+
 ```cql
-define "Quantitative Laboratory Encounters ":
+define "Quantitative Laboratory Encounters":
   [Encounter] E
     where exists (["Observation"] O)
 ```
+
+```cql
+define "Had chest CT in past year":
+  exists ("Chest CT procedure" P
+    where FC.ToInterval(P.performed) ends 1 year or less before Today() 
+  )
+``` 
+
+`where not exists` filters data based on a missing or non existent query
 
 ```cql
 define "Encounter Without Procedure ":
@@ -308,20 +315,13 @@ define "Encounter Without Procedure ":
     ( [Procedure] P
       where P.performed as dateTime during E.period 
     )
-```
+``` 
 
-```cql
-define "Had chest CT in past year":
-  exists ("Chest CT procedure" P
-    where FC.ToInterval(P.performed) ends 1 year or less before Today() 
-  )
-```  
-
-[**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#sorting) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
+[**With/Without clause and such that**](https://cql.hl7.org/02-authorsguide.html#relationships) : to define relationships with other data. When multiple with or without clauses appear in a single query, the result will only include elements that meet the “such that” conditions for all the relationship clauses.
 
 ```cql
 define "Inpatient Encounters":
-  [Encounter": "Inpatient"] Encounter
+  [Encounter: "Inpatient"] Encounter
     with ["Observation": "Streptococcus Test"] Lab Test
       such that Observation.issued during Encounter.period
 ```  
@@ -334,7 +334,7 @@ define "Inpatient Encounters":
     return Encounter.period
 ```
 
-[**Sort clause**](https://cql.hl7.org/02-authorsguide.html#sorting): to order the results ascending or descending.
+[**Sort clause**](https://cql.hl7.org/02-authorsguide.html#sorting): to order the results ascending or descending. If no order is specified, the order will defult to ascending.
 
 ```cql
 define "Performed Encounters":
@@ -351,8 +351,7 @@ define "Medication Ingredients":
     return ingredients
 ```
 
-// TODO: "determines the overall result of the query" is the "result clause", not the "aggregate clause"
-[**Aggregate clause**](https://cql.hl7.org/03-developersguide.html): determines the overall result of the query. 
+[**Aggregate clause**](https://cql.hl7.org/03-developersguide.html#aggregate-queries): allows an expression to be repeatedly evaluated for each element of a list. **Important Note: The aggregate clause is a new feature of CQL 1.5, and is trial-use.**
 
 ```cql
 define FactorialOfFive:
@@ -373,27 +372,60 @@ define "FirstInpatientEncounter":
 ### [**Arithmetic Operators**](https://cql.hl7.org/02-authorsguide.html#arithmetic-operators)
 CQL provides a complete set of arithmetic operations for expressing computational logic.
 
-- Addition + , Subtraction - , Multiply \* , Divide /
-- Truncate () – round the value backwards
-- Round () - round the value frontwards
-- Floor () - round to the greatest integer less than a decimal
-- Ceiling () - round to the least integer greater than a decimal
+- Addition + , Subtraction - 
+
+```cql
+5 + 10 //returns 15
+100 - 5 //returns 95
+```
+
+- Multiply \* , Divide /
+
+```cql
+3 months * 2 months //returns 6 months
+12 months / 2 months //returns 6 months
+```
+
+- Truncate () – Returns the integer component of its argument
+
+```cql
+Truncate(12.4) //returns 12
+```
+
+- Round () - round to the nearest whole value
+
+```cql
+Round(123.5) //returns 124
+```
+
+- Floor () - round to the first integer less than or equal to it's argument (decimal)
+
+```cql
+Floor(123.456) //returns 123
+```
+
+- Ceiling () - round to the first integer greater than or equal to it's argument (decimal)
+
+```cql
+Ceiling(123.456) //returns 124
+```
+
 - Convert ()
 
 ```cql
-convert 5000 'g' to 'kg'.
+convert 5000 'g' to 'kg' // returns 5.0 'kg'
 ```
 
 - Count ()
 
 ```cql
-Count({ 1, 2, 3, 4, 5 })
+Count({ 1, 2, 3, 4, 5 }) // returns 5
 ```
 
 - Sum() 
 
 ```cql
-Sum({1,2,3,4}) // returns the sum of values
+Sum({ 1, 2, 3, 4, 5}) // returns 15
 ```
 
 - Indexing
@@ -414,12 +446,14 @@ singleton from { 1 }
 
 to obtain the index of a value within the list
 
-IndexOf({ 'a', 'b', 'c' }, 'b')
+```cql
+IndexOf({ 'a', 'b', 'c' }, 'b') // returns 1
+```
 
 to obtain the number of elements in a list
 
 ```cql
-Count({ 1, 2, 3, 4, 5 }) 
+Count({ 1, 2, 3, 4, 5 }) // returns 5
 ```
 
 Membership in lists can be determined using the in operator and its inverse, contains
@@ -438,58 +472,84 @@ exists ({ 1, 2, 3, 4, 5 })
 The First and Last operators can be used to retrieve the first and last elements of a list.
 
 ```cql
-First({ 1, 2, 3, 4, 5 })
+First({ 1, 2, 3, 4, 5 }) // returns 11
 ```
 
 2. [Comparing Lists](https://cql.hl7.org/02-authorsguide.html#comparing-lists)
 
 `includes`, `includes in`, `properly includes` and `properly included in` are tools we can use to compare lists
 
+- `includes` returns true if if every element in list Y is also in list X
+
 ```cql
-{ 1, 2, 3 } includes { 1, 2 } // returns true
+{ 1, 2, 3, 4, 5 } includes { 5, 2, 3 } // returns true
+{ 1, 2, 3, 4, 5 } includes { 4, 5, 6 } // returns false
+```
+
+- `included in` returns true if every element in list X is also in list Y
+
+```cql
+{ 5, 2, 3 } included in { 1, 2, 3, 4, 5 } // returns true
+{ 4, 5, 6 } included in { 1, 2, 3, 4, 5 } // returns false
+```
+
+- `properly includes` returns true if every element in list Y is also in list X, and list X has more elements than list Y
+
+```cql
+{ 1, 2, 3 } properly includes { 1, 2, 3, 4, 5} // returns true
+{ 1, 2, 3 } properly includes { 1, 2, 3 } // returns false
+```
+
+- `properly included in` return true if if every element in list X is also in list Y, and list Y has more elements than list X
+
+```cql
+{ 2, 3, 4 } properly included in { 1, 2, 3, 4, 5 } // returns true
+{ 1, 2, 3 } properly included in { 1, 2, 3 } // returns false
 ```
 
 3.  [Computing Lists](https://cql.hl7.org/02-authorsguide.html#computing-lists)
 
-To eliminate duplicates.
+- `distinct` is used to eliminate duplicates.
 
 ```cql
-Distinct({ 1, 2, 3, 4, 4})
+Distinct({ 1, 2, 3, 4, 4}) // returns { 1, 2, 3, 4 }
 ```
 
-To combine lists (union eliminates duplicates).
+- `union` is used to combine lists and eliminates duplicates.
+
 ```cql
-{ 1, 2, 3 } union { 3, 4, 5 }
+{ 1, 2, 3 } union { 3, 4, 5 } // returns { 1, 2, 3, 4, 5 }
 ```
 
-To only return the elements that are in both lists.
+- `intersect` is used to only return the elements that are in both lists.
 
 ```cql
-{ 1, 2, 3 } intersection { 3, 4, 5 }
+{ 1, 2, 3 } intersect { 3, 4, 5 } // returns { 3 }
 ```
 
-The flatten operation can flatten lists of lists.
+- `flatten` is used to flatten lists of lists (does not eliminate duplicates).
 
 ```cql
-flatten { { 1, 2, 3 }, { 3, 4, 5 } }
+flatten { { 1, 2, 3 }, { 3, 4, 5 } } // returns { 1, 2, 3, 3, 4, 5 }
 ```
 
 4. [Aggregate Operators](https://cql.hl7.org/02-authorsguide.html#aggregate-operators)
 
-// TODO: It returns, not would return, right? (i.e. no passive voice)
-This would return the number of encounters in the list
+This returns the number of encounters in the list
 
 ```cql
 Count([Encounter])
 ```
 
-This would return the sum of the values in the list i.e 15
+This would return the sum of the values in the list
 
 ```cql
-Sum({ 1, 2, 3, 4, 5 })
+Sum({ 1, 2, 3, 4, 5 }) // returns 15
 ```
 
 ### [**Date Time Operators**](https://cql.hl7.org/02-authorsguide.html#datetime-operators)
+
+**Important Note: All Date, Time and DateTime values are specified using an at-symbol (@) followed by an ISO-8601 textual representation of the DateTine value**
 
 1. [Comparing Dates and Times](https://cql.hl7.org/02-authorsguide.html#comparing-dates-and-times) - Using comparison operators on dates
 
@@ -535,18 +595,20 @@ CQL supports the representation of intervals, or ranges, of values of various ty
 1. [General Interval Operators](https://cql.hl7.org/02-authorsguide.html#operating-on-intervals) - `contains`, `start of`, `end of`,`point from` , `width of`
 
 ```cql
-point from Interval[3, 3]
-width of Interval[3, 5]
+point from Interval[3, 3] // returns 3
+width of Interval[3, 5] // returns 2
+end of Interval[3, 5) // returns 4 
 ```
+
 2. [Comparing Intervals](https://cql.hl7.org/02-authorsguide.html#comparing-intervals) \- the comparison between two interval values using a complete set of operations. This includes `same as`, `before`, `meets before`, `overlaps before` among others.
 
 ```cql
-X same as Y
-Interval [3,5) // includes all numbers >= 3 and < 5
-start of Interval[3, 5) // 3
-width of Interval[3, 5) // 1
-end of Interval[3, 5) // 4
+Interval[2, 6] same as Interval[2, 6] // returns true
+Interval[1, 5] before Interval[6, 10] // returns true
+Interval[1, 7] overlaps before Interval[5, 10] // returns true
+Interval[1, 5] meets before Interval[6, 10] // returns true
 ```
+
 3. [Timing operators on Intervals](https://cql.hl7.org/02-authorsguide.html#timing-relationships)
 
 -  `same year as`
@@ -613,11 +675,7 @@ Can be used on numbers, strings, integers, dates, decimals
 
 ### [**Logical Operators**](https://cql.hl7.org/02-authorsguide.html#logical-operators)
 
-// TODO: `is` and `as` are not logical operators, they are type operators
-// TODO: `in` is a membership operator, not a logical operator
-// TODO: Logical operators are `and`, `or`, `not`, `xor`, and `implies`
-// TODO: In other words, they are only operators that take boolean values as input and return boolean values
-`and`, `is`, `in`, `as`, `or`, `not`
+Logical operators are only operators that take boolean values as input and return boolean values.
 
 ```cql
 AgeInYears() >= 18 and AgeInYears() < 24
@@ -626,15 +684,8 @@ AgeInYears() >= 18 and AgeInYears() < 24
 ```cql
 define TestPrimitives:
   Patient P
-    where P.gender.value = 'male'
-      and P.active.value is true
-      and P.maritalStatus in "Marital Status"
-```
-
-```cql
-define "Former smoker observation":
-  "Most recent smoking status observation" O
-    where (O.value as CodeableConcept) ~ "Former Smoker"
+    where P.gender.value = 'male' 
+      and P.gender.value != 'female'
 ```
 
 ```cql
@@ -642,6 +693,24 @@ define "Absence of Cervix":
   [Procedure: "Hysterectomy with No Residual Cervix"] NoCervixProcedure
     where FC.ToInterval(NoCervixProcedure.performed) ends on or before end of "Measurement Period" 
       and NoCervixProcedure.status = 'completed'
+```
+
+### [**Type Operators**](https://cql.hl7.org/09-b-cqlreference.html#type-operators-1)
+
+The `as` operator allows the result of an expression to be cast as a given target type
+
+```cql
+define "Former smoker observation":
+  "Most recent smoking status observation" O
+    where (O.value as CodeableConcept) ~ "Former Smoker"
+```
+
+The `is` operator allows the type of a result to be tested
+
+```cql
+define "Patient BirthDate is a Date":
+  Patient P
+    return P.birthDate is FHIR.date
 ```
 
 ### [**Nullological Operators**](https://cql.hl7.org/03-developersguide.html#nullological-operators)
@@ -661,7 +730,8 @@ Coalesce(X, Y, Z)
 
 ### [**String Operators**](https://cql.hl7.org/03-developersguide.html#string-operators)
 
-// TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation
+<!-- // TODO: If it must be invoked with parentheses, it's a "function", whereas "operator" means a symbolic or keyword-based operation 
+  NOTE (https://cql.hl7.org/03-developersguide.html#string-operators): spec defines these as string operators. This section matches the spec logic.-->
 
 1. `Length` Operator is used to determine the length of string 
 
@@ -672,13 +742,13 @@ Length(X)
 2. `PositionOf` Operator is used to determine the position of a string and will return the index of the string
 
 ```cql
-PositionOf('cde', 'abcdefg')
+PositionOf('cde', 'abcdefg') // returns 2
 ```
 
 3. `Combine` operator is used to combine a list of strings
 
 ```cql
-Combine({ 'ab', 'cd', 'ef' })
+Combine({ 'ab', 'cd', 'ef' }) // returns 'abcdef'
 ```
 
 4. `Split` Operator is used to split a list of strings
@@ -691,7 +761,7 @@ Split('completed;refused;pending', ';') // returns { 'completed', 'refused', 'pe
 
 1.  Sort clauses don’t require usage of an alias. We don’t need to say E.sort by length of stay.
 
-```
+```cql
 [Encounter: "Inpatient"] E
   return Tuple { id: E.identifier, lengthOfStay: duration in days of E.period }
   sort by lengthOfStay
@@ -710,15 +780,15 @@ Eg. If two encounters have the same value for lengthOfStay, that value will only
 
 -  Note the use of the equivalent operator (~) rather than equality (=). For codes, equivalence tests only if the `system` and `code` are the same, but does not check the `version` or `display` elements
 
-- String Equality is case sensitive 
+- String Equality (`=`) is case sensitive 
 
 ```cql
 ('Abel' = 'abel') is false
 ```
-- String Equivalence ignores case, locale, and normalizes whitespace (meaning all whitespace characters are equivalent). 
+- String Equivalence (`~`) ignores case, locale, and normalizes whitespace (meaning all whitespace characters are equivalent). 
 
 ```cql
-('Abel' = 'abel') is true
+('Abel' ~ 'abel') is true
 ```
 
 4.  The Sum function works on lists of quantities or numbers not a list of structures like Encounters
