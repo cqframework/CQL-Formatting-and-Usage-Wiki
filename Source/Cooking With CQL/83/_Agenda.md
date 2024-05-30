@@ -1,7 +1,6 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. [CQLIT-447 - Medication Ordered pattern and doNotPerform](CQLIT-447.md)
+2. [CQLIT-448 - Condition bodysite](CQLIT-448.md)
+3. [CQLIT-449 - Medication-related resources primary code path usage in retrieves](CQLIT-449.md)
+4. [CQLIT-460 - Overlaps before clarification](CQLIT-460.md)
+5. [Quantity Comparison Question](QuantityComparison.md)
+
