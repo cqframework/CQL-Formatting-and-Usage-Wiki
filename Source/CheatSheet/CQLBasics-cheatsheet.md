@@ -2,7 +2,7 @@
 
 ## [Values](https://cql.hl7.org/02-authorsguide.html#values)
 
-|Value|Description|Example|
+|Type|Description|Example|
 |-----|-----------|-------|
 |Null|The null literal|<pre lang="cql">null</pre>|
 |Boolean|The boolean literals|<pre lang="cql">true, false</pre>|
