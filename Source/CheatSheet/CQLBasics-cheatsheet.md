@@ -2,9 +2,9 @@
 
 ## [Values](https://cql.hl7.org/02-authorsguide.html#values)
 
-|Value|Description|Example|
+|Type|Description|Example|
 |-----|-----------|-------|
-|Null|The null literal|<pre lang="cql">null</pre>|
+|Any|The null literal|<pre lang="cql">null</pre>|
 |Boolean|The boolean literals|<pre lang="cql">true, false</pre>|
 |Integer|Sequences of digits in the range 0..2<sup>31</sup>-1|<pre lang="cql">16, -28</pre>|
 |Long|Sequences of digits in the range 0..2<sup>63</sup>-1|<pre lang="cql">16000000000L, -28000000000L</pre>|
