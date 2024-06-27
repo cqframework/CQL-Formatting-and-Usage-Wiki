@@ -15,7 +15,7 @@ Quote from Author's guide:
 
 Section 5.5.2
 
-https://cql.hl7.org/STU4/02-authorsguide.html#timing-and-interval-operators
+https://cql.hl7.org/02-authorsguide.html#timing-and-interval-operators
 
 The table indicates that the start of X and the start of Y can be equal, which disagrees with the CQL Reference.
 

@@ -1,7 +1,7 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. [Comment Period on Public Draft FHIR-based eCQMs for EH](01-PublicComment.md)
+2. [CMS Connectathon](02-CMSConnectathon.md)
+3. [CQL Cheat Sheet](CQL%20Cheat%20Sheet.pdf)
+4. [Deep Dive on Sub-Queries](04-SubQueries.md)
+5. [Allergy/Intolerance Category Filter](05-AllergyIntoleranceFilter.md)
+6. [Aggregates with Empty Lists](06-AggregatesWithEmptyLists.md)
+7. [Aggregate Clause Question](07-AggregateQuestion.md)
