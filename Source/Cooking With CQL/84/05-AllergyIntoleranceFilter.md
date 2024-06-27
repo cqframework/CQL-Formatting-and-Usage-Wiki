@@ -5,7 +5,7 @@ How do I test for medication category?
 ```cql
 [AllergyIntolerance] A
    where A.category in { 'medication', 'food' }
-``
+```
 
 I've tried using A.category.value, and type casting to System.String, all to no avail.
 
