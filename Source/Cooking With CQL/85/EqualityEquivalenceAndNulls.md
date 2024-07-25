@@ -93,8 +93,8 @@ false or null // null
 For truth tables, see the [Logical Operators](https://cql.hl7.org/09-b-cqlreference.html#logical-operators-3) reference. The key point is that these semantics:
 
 1. Follow from the "I don't know" semantic:
-    a. `true and null` is `null` because the result could be true or false, depending on what the missing value is
-    b. `false and null` is `false` because no matter what the missing value is, the result would still be `false`
+    1. `true and null` is `null` because the result could be true or false, depending on what the missing value is
+    2. `false and null` is `false` because no matter what the missing value is, the result would still be `false`
 2. Obey [DeMorgan's laws](https://en.wikipedia.org/wiki/De_Morgan%27s_laws), allowing for important optimization techniques to be applied by implementations
 
 ### Equivalent
@@ -108,10 +108,9 @@ null as Integer ~ null // true
 
 > NOTE: A bare `null` is of type `System.Any`, so type casts are used in the above expressions so that the expression can resolve to a particular overload of the Equality and Equivalence operators. Without that cast, the compiler would complain that the call was ambiguous between the various overloads of these operators. When a `null` selector appears within an expression, it is implicitly cast to the appropriate type, so this cast is only necessary when the expected type of the `null` cannot be inferred by the context.
 
-However, while the Equivalent operator considers `null` equivalent to `null`, that does not mean that `null` is equivalent to any other value, such an empty list or an empty string:
+However, while the Equivalent operator considers `null` equivalent to `null`, that does not mean that `null` is equivalent to other values, such an empty empty string:
 
 ```cql
-null ~ List<Integer> { } // false
 null ~ '' // false
 ```
 
