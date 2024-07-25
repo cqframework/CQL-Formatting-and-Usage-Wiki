@@ -41,7 +41,7 @@ define "SPO2 Observation":
 
 define "Low SPO2 Observation":
   "SPO2 Observation" O
-    where O.value < 0.92 '%'
+    where O.value < 92 '%'
 
 define function LowSPO2Revised(onDate Date):
   "Low SPO2 Observation" O
