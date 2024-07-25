@@ -1,7 +1,4 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. [Equality, Equivalence, and Nulls in CQL](EqualityEquivalenceAndNulls.md)
+2. [Consecutive SPO2 Readings](ConsecutiveSPO2Readings.md)
+3. [Terminology in CQL](TerminologyInCQL.md)
+4. [Medication Daily Dose](MedicationDailyDose.md)
