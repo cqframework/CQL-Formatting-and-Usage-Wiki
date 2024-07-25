@@ -20,7 +20,7 @@ define function LowSPO2(onDate Date):
   from [Observation: "SPO2 Value Set"] O // these will be observations related to one patient
     where O.status in { 'final', 'amended', 'corrected' }
       and date from start of O.effective.toInterval() = onDate
-      and O.value < 0.92 '%'
+      and O.value < 92 '%'
 ```
 
 Then you can use that function to count the number of "low SPO2 observations" on each of the last 3 days where "last" is with respect to the "Index Date" parameter
