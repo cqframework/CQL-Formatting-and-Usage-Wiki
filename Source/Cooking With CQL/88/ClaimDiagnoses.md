@@ -7,7 +7,7 @@ In QICore STU 6, the [Claim](https://hl7.org/fhir/us/qicore/StructureDefinition-
 
 When looking for diagnoses on a claim, the first thing to do is identify the claims that are related to a particular encounter.
 
-Reviewing the Claim resource from the perspective of accessing measurement-relevant information, it consists of:
+Reviewing the [Claim](http://hl7.org/fhir/R4/claim.html) resource from the perspective of accessing measurement-relevant information, it consists of:
 
 * Claim-level information such as identifiers, patient-relationship, insurance relationships, and overall status and use
 * Pertinent diagnosis information
