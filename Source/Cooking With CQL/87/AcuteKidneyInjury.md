@@ -175,7 +175,7 @@ define "Encounter With 1.5 Times Serum Creatinine Increase":
     "Encounter With Creatinine And Without Obstetrical Complications" QualifyingEncounter
     ["Laboratory Test, Performed": "Creatinine Mass Per Volume"] CreatinineTest
     let LowestCreatinineTestWithin7DaysPrior: "LowestSerumCreatinineWithin7DaysPrior"(QualifyingEncounter, CreatinineTest)
-    where LowestCreatinineTestWithin7DaysPrior * 1.5 >= CreatinineTest.result.value
+    where CreatinineTest.result.value >= LowestCreatinineTestWithin7DaysPrior * 1.5
       and CreatinineTest.result.value > "Serum Creatinine Normal"
       ...
     return QualifyingEncounter
@@ -199,7 +199,7 @@ define "Encounter With 2 Times Serum Creatinine Increase":
     "Encounter With 1.5 Times Serum Creatinine Increase" EncounterWithHighCreatinine
     ["Laboratory Test, Performed": "Creatinine Mass Per Volume"] CreatinineTest
     let LowestCreatinineTestPrior: "LowestSerumCreatininePrior"(EncounterWithHighCreatinine, CreatinineTest)
-    where LowestCreatinineTestPrior * 2.0 >= CreatinineTest.result.value
+    where CreatinineTest.result.value >= LowestCreatinineTestPrior * 2.0
       and CreatinineTest.result.value > "Serum Creatinine Normal"
       ...
     return EncounterWithHighCreatinine
@@ -277,7 +277,7 @@ define "Encounter With 1.5 Times Serum Creatinine Increase":
       LowestCreatinineTestWithin7DaysPrior: "LowestSerumCreatinineWithin7DaysPrior"(QualifyingEncounter, CreatinineTest),
       CreatinineTestTime: Global."EarliestOf" ( CreatinineTest.relevantDatetime, CreatinineTest.relevantPeriod ),
       HospitalWithObservation: Global."HospitalizationWithObservation" ( EncounterWithHighCreatinine )
-    where LowestCreatinineTestWithin7DaysPrior * 1.5 >= CreatinineTest.result.value
+    where CreatinineTest.result.value >= LowestCreatinineTestWithin7DaysPrior * 1.5
       and CreatinineTest.result.value > "Serum Creatinine Normal"
       and CreatinineTestTime during Interval[start of HospitalWithObservation + 48 hours, start of HospitalWithObservation + 30 days]
     return QualifyingEncounter
@@ -296,7 +296,7 @@ define "Encounter With 2 Times Serum Creatinine Increase":
       LowestCreatinineTestPrior: "LowestSerumCreatininePrior"(EncounterWithHighCreatinine, CreatinineTest)
       CreatinineTestTime: Global."EarliestOf" ( CreatinineTest.relevantDatetime, CreatinineTest.relevantPeriod ),
       HospitalWithObservation: Global."HospitalizationWithObservation" ( EncounterWithHighCreatinine )
-    where LowestCreatinineTestPrior * 2.0 >= CreatinineTest.result.value
+    where CreatinineTest.result.value >= LowestCreatinineTestPrior * 2.0
       and CreatinineTest.result.value > "Serum Creatinine Normal"
       and CreatinineTestTime during Interval[start of HospitalWithObservation + 48 hours, start of HospitalWithObservation + 30 days]
     return EncounterWithHighCreatinine
