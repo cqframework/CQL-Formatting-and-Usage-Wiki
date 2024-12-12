@@ -307,3 +307,20 @@ define function "LowestSerumCreatininePrior"(QualifyingEncounter "Encounter, Per
       where Global."EarliestOf"(Test.relevantDatetime, Test.relevantPeriod) before Global."EarliestOf"(CreatinineTest.relevantDatetime, CreatinineTest.relevantPeriod)
   ).result.value
 ```
+
+
+define function "LowestSerumCreatinineWithin7DaysPrior"(QualifyingEncounter "Encounter, Performed", CreatinineTest "Laboratory Test, Performed"):
+  First(
+    ("SerumCreatinineSequenceByQuantity"(QualifyingEncounter)) Test
+      where Global."EarliestOf"(Test.relevantDatetime, Test.relevantPeriod) 7 days or less before Global."EarliestOf"(CreatinineTest.relevantDatetime, CreatinineTest.relevantPeriod)
+  ).result.value
+
+define Test:
+  ["Encounter, Performed": "Relevant Encounters"] QualifyingEncounter
+    let Lowest: "LowestSerumCreatinineWithin7DaysPrior"(
+        QualifyingEncounter, 
+        First(
+            ["Laboratory Test, Performed": "Relevant Tests"] Test
+              where Test.result is not null
+                and Test.result.value > 10
+        ))
