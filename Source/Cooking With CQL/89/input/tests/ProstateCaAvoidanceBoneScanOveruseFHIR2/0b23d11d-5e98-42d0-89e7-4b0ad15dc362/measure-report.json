@@ -1,0 +1,103 @@
+{
+    "resourceType": "MeasureReport",
+    "id": "45fc1bde-3500-4f65-9d1f-5d31a6787b33",
+    "meta": {
+      "profile": [ "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/test-case-cqfm" ]
+    },
+    "contained": [ {
+      "resourceType": "Parameters",
+      "id": "ab692917-6026-4adb-9b99-8325c1324a73-parameters",
+      "parameter": [ {
+        "name": "subject",
+        "valueString": "0b23d11d-5e98-42d0-89e7-4b0ad15dc362"
+      } ]
+    } ],
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-inputParameters",
+      "valueReference": {
+        "reference": "#ab692917-6026-4adb-9b99-8325c1324a73-parameters"
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-testCaseDescription",
+      "valueMarkdown": "Patient with prostate cancer diagnosis and bone scan starts 1 minute after start of prostate cancer diagnosis. "
+    } ],
+    "modifierExtension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-isTestCase",
+      "valueBoolean": true
+    } ],
+    "status": "complete",
+    "type": "individual",
+    "measure": "https://madie.cms.gov/Measure/ProstateCaAvoidanceBoneScanOveruseFHIR",
+    "period": {
+      "start": "2025-01-01",
+      "end": "2025-12-31"
+    },
+    "group": [ {
+      "id": "65674cb70f81f93fca7d75f2",
+      "population": [ {
+        "id": "39BB4399-7C7D-48B6-A49A-3A73DB83F10F",
+        "code": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "initial-population",
+            "display": "Initial Population"
+          } ]
+        },
+        "count": 1
+      }, {
+        "id": "BEBCB6B6-6EFC-43CA-ABAC-9B6097BBC2AB",
+        "code": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "denominator",
+            "display": "Denominator"
+          } ]
+        },
+        "count": 1
+      }, {
+        "id": "E712FB6E-F76B-46C1-BB4E-5E0FEF5C2390",
+        "code": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "numerator",
+            "display": "Numerator"
+          } ]
+        },
+        "count": 0
+      }, {
+        "id": "F352B1F3-5574-4F4D-8E53-6181E6BBC0A5",
+        "code": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "denominator-exception",
+            "display": "Denominator Exception"
+          } ]
+        },
+        "count": 0
+      } ],
+      "measureScore": {
+        "value": 1.0
+      }
+    } ],
+    "evaluatedResource": [ {
+      "reference": "Patient/0b23d11d-5e98-42d0-89e7-4b0ad15dc362"
+    }, {
+      "reference": "Condition/cf6b934c-a954-42c4-a77a-940acb88267b"
+    }, {
+      "reference": "Procedure/523345e5-6088-441b-b6e5-b5c5edc1f9b7"
+    }, {
+      "reference": "Observation/b48e9e53-e64d-4be4-a9e2-0cce67af66d5"
+    }, {
+      "reference": "Observation/3730aed7-c478-47e1-84b7-5ea662995074"
+    }, {
+      "reference": "Observation/e5588c4f-f11e-40e8-a515-e8d4884a4757"
+    }, {
+      "reference": "Observation/651fa924-f3d9-47a8-bd61-d28acb986dab"
+    }, {
+      "reference": "Coverage/9e8640c5-5a59-4fc0-af7b-e3d725e74fef"
+    }, {
+      "reference": "Organization/846ef4a1-3cdc-4d6b-9c0c-35343a205598"
+    }, {
+      "reference": "Practitioner/bc5e87fd-2e32-4409-9bbf-e4950881ce4b"
+    } ]
+  }

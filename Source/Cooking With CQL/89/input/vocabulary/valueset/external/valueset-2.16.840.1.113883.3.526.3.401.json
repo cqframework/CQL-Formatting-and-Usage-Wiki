@@ -1,0 +1,40 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.526.3.401",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.401",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113883.3.526.3.401"
+  } ],
+  "version": "20170504",
+  "name": "ProstateSpecificAntigenTest",
+  "title": "Prostate Specific Antigen Test",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20240502",
+    "timestamp": "2024-05-06T09:32:25-06:00",
+    "contains": [ {
+      "system": "http://loinc.org",
+      "version": "2.76",
+      "code": "19195-7",
+      "display": "Prostate specific Ag [Units/volume] in Serum or Plasma"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.76",
+      "code": "2857-1",
+      "display": "Prostate specific Ag [Mass/volume] in Serum or Plasma"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.76",
+      "code": "35741-8",
+      "display": "Prostate specific Ag [Mass/volume] in Serum or Plasma by Detection limit <= 0.01 ng/mL"
+    }, {
+      "system": "http://loinc.org",
+      "version": "2.76",
+      "code": "83112-3",
+      "display": "Prostate specific Ag [Mass/volume] in Serum or Plasma by Immunoassay"
+    } ]
+  }
+}
