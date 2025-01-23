@@ -1,0 +1,1 @@
+QI-Core 6 Uplift Presentation: https://docs.google.com/presentation/d/15B-2ZfdpcfMQb3X2nRBIBIhYKeTS7QROKX7oU9n3cn4/edit?usp=sharing
