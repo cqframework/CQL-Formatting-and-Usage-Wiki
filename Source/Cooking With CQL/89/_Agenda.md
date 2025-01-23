@@ -1,1 +1,2 @@
-QI-Core 6 Uplift Presentation: https://docs.google.com/presentation/d/15B-2ZfdpcfMQb3X2nRBIBIhYKeTS7QROKX7oU9n3cn4/edit?usp=sharing
+1. QI-Core 6 Uplift Presentation: https://docs.google.com/presentation/d/15B-2ZfdpcfMQb3X2nRBIBIhYKeTS7QROKX7oU9n3cn4/edit?usp=sharing
+2. MADiE Demonstration of using external validation for QICore 6.0.0 test cases
