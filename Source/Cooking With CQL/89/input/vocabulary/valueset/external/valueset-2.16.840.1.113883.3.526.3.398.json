@@ -1,0 +1,500 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.526.3.398",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.398",
+  "identifier": [ {
+    "system": "urn:ietf:rfc:3986",
+    "value": "2.16.840.1.113883.3.526.3.398"
+  } ],
+  "version": "20170504",
+  "name": "ProstateCancerTreatment",
+  "title": "Prostate Cancer Treatment",
+  "status": "active",
+  "experimental": false,
+  "publisher": "NLM",
+  "expansion": {
+    "identifier": "20240502",
+    "timestamp": "2024-05-06T09:32:25-06:00",
+    "contains": [ {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55810",
+      "display": "Prostatectomy, perineal radical"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55812",
+      "display": "Prostatectomy, perineal radical; with lymph node biopsy(s) (limited pelvic lymphadenectomy)"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55815",
+      "display": "Prostatectomy, perineal radical; with bilateral pelvic lymphadenectomy, including external iliac, hypogastric and obturator nodes"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55840",
+      "display": "Prostatectomy, retropubic radical, with or without nerve sparing"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55842",
+      "display": "Prostatectomy, retropubic radical, with or without nerve sparing; with lymph node biopsy(s) (limited pelvic lymphadenectomy)"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55845",
+      "display": "Prostatectomy, retropubic radical, with or without nerve sparing; with bilateral pelvic lymphadenectomy, including external iliac, hypogastric, and obturator nodes"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55866",
+      "display": "Laparoscopy, surgical prostatectomy, retropubic radical, including nerve sparing, includes robotic assistance, when performed"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55875",
+      "display": "Transperineal placement of needles or catheters into prostate for interstitial radioelement application, with or without cystoscopy"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "55880",
+      "display": "Ablation of malignant prostate tissue, transrectal, with high intensity-focused ultrasound (HIFU), including ultrasound guidance"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "77427",
+      "display": "Radiation treatment management, 5 treatments"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "77435",
+      "display": "Stereotactic body radiation therapy, treatment management, per treatment course, to 1 or more lesions, including image guidance, entire course not to exceed 5 fractions"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "77772",
+      "display": "Remote afterloading high dose rate radionuclide interstitial or intracavitary brachytherapy, includes basic dosimetry, when performed; over 12 channels"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "77778",
+      "display": "Interstitial radiation source application, complex, includes supervision, handling, loading of radiation source, when performed"
+    }, {
+      "system": "http://www.ama-assn.org/go/cpt",
+      "version": "2024",
+      "code": "77799",
+      "display": "Unlisted procedure, clinical brachytherapy"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "10492003",
+      "display": "Radionuclide therapy for glandular suppression (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "113120007",
+      "display": "Interstitial brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "116244007",
+      "display": "Enucleation of prostate (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "118161009",
+      "display": "Laser enucleation of the prostate (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "118162002",
+      "display": "Laser enucleation of the prostate with intravesical morcellation (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "118163007",
+      "display": "Open enucleation of the prostate (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "14473006",
+      "display": "Surface brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "168922004",
+      "display": "Interstitial contrast radiology (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "169327006",
+      "display": "Radium contact therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "169328001",
+      "display": "Beta source contact therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "169329009",
+      "display": "Mold technique gamma/beta (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "169340001",
+      "display": "Internal metabolic radiotherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "169359004",
+      "display": "Internal radiotherapy - permanent seeds (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176106009",
+      "display": "Radical cystoprostatourethrectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176258007",
+      "display": "Open prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176260009",
+      "display": "Transvesical two stage prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176261008",
+      "display": "Radical prostatectomy without pelvic node excision (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176262001",
+      "display": "Radical prostatectomy with pelvic node sampling (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176263006",
+      "display": "Radical prostatectomy with pelvic lymphadenectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176267007",
+      "display": "Open excision of prostatic lesion (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "176288003",
+      "display": "Transurethral laser prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "19149007",
+      "display": "Subtotal retropubic prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "21190008",
+      "display": "Two stage subtotal suprapubic prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "21372000",
+      "display": "Radium therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228677009",
+      "display": "Cesium 137 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228684001",
+      "display": "Iridium 192 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228688003",
+      "display": "Californium 252 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228690002",
+      "display": "Iodine 125 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228692005",
+      "display": "Radon 222 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228693000",
+      "display": "Ruthenium 106 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228694006",
+      "display": "Strontium 90 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228695007",
+      "display": "Tantalum 182 brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228697004",
+      "display": "Yttrium 90 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228698009",
+      "display": "Iodine 131 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228699001",
+      "display": "Phosphorus 32 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228701001",
+      "display": "Strontium 89 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "228702008",
+      "display": "Gold 198 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "236252003",
+      "display": "Revision of transurethral prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "24242005",
+      "display": "Cobalt-60 therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "26294005",
+      "display": "Radical prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "271291003",
+      "display": "Temporary implant radiotherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "27877006",
+      "display": "Excision of lesion of periprostatic tissue (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "28579000",
+      "display": "Radical retropubic prostatectomy with lymph node biopsy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "30426000",
+      "display": "Subtotal prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "312235007",
+      "display": "Radiolabeled antibody therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "314202001",
+      "display": "Endoscopic resection of prostate using an electrotome (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "359922007",
+      "display": "Excisional periprostatic biopsy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "359926005",
+      "display": "Excision of periprostatic tissue (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "36253005",
+      "display": "Suprapubic prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "37851009",
+      "display": "Radical perineal prostatectomy with bilateral pelvic lymphadenectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "384691004",
+      "display": "Intraluminal brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "384692006",
+      "display": "Intracavitary brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "38915000",
+      "display": "Radionuclide therapy for gland ablation (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "394902000",
+      "display": "High dose brachytherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "394918006",
+      "display": "Iodine seed radiotherapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "399180008",
+      "display": "Interstitial radioactive colloid therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "399315003",
+      "display": "Radionuclide therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "41371003",
+      "display": "Perineal prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "41416003",
+      "display": "Radical retropubic prostatectomy with bilateral pelvic lymphadenectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "427541000119103",
+      "display": "Intravenous radionuclide therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "427985002",
+      "display": "Endoscopic excision of prostate using laser (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "433224001",
+      "display": "Radionuclide rhenium 186 hydroxyethylidene diphosphonate therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "440093006",
+      "display": "Insertion of radioactive implant into interstitial tissue using ultrasound guidance (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "440094000",
+      "display": "Insertion of radioactive implant into interstitial tissue of prostate with transperineal insertion of catheter (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "57525009",
+      "display": "Subtotal perineal prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "62867004",
+      "display": "External beam radiation therapy with radioactive cesium (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "65381004",
+      "display": "Intra-articular radionuclide therapy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "65551008",
+      "display": "Radical retropubic prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "67598001",
+      "display": "Retropubic prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "68986004",
+      "display": "Transurethral resection of prostate, first stage of two stages (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "72388004",
+      "display": "Radical perineal prostatectomy with lymph node biopsy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "764675000",
+      "display": "Radionuclide imaging using samarium (153-Sm) lexidronam (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "77613002",
+      "display": "External beam radiation therapy with iodine-125 (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "81232004",
+      "display": "Radical cystoprostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "83154001",
+      "display": "Excision of lesion of prostate (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "84755001",
+      "display": "Radiation therapy treatment management (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "85768003",
+      "display": "Excision of median bar of prostate by transurethral approach (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "87795007",
+      "display": "Complete transurethral resection of prostate, including control of postoperative bleeding (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "8782006",
+      "display": "Radical perineal prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "90199006",
+      "display": "Transurethral prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "90470006",
+      "display": "Prostatectomy (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "2023-09",
+      "code": "91531008",
+      "display": "One stage subtotal suprapubic prostatectomy (procedure)"
+    } ]
+  }
+}
