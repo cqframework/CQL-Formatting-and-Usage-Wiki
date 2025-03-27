@@ -1,0 +1,313 @@
+{
+  "resourceType": "Bundle",
+  "id": "612e6b0202c62a011f2ec156",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://madie.cms.gov/Patient/eb754c68-82c7-48cd-a2f0-26ee1cd92544",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "eb754c68-82c7-48cd-a2f0-26ee1cd92544",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">SCIP_HipFxRank1_SMDCT <b>DENEXPASS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>66c70c125db369967b4b164e75338304</td></tr><tr><td>Date of birth</td><td><span>01 September 2000</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "612e6b0202c62a011f2ec156"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "usual",
+            "family": "DENEXPass ",
+            "given": [
+              "SCIP_HipFxRank1_SMDCT"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2001-09-01"
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Encounter/5ca62965b8484628b8de1fae",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5ca62965b8484628b8de1fae",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183452005"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/eb754c68-82c7-48cd-a2f0-26ee1cd92544"
+        },
+        "period": {
+          "start": "2026-09-02T06:00:00+00:00",
+          "end": "2026-12-31T12:59:00+00:00"
+        },
+        "length": {
+          "value": 120,
+          "unit": "days"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/claim/5ca62962b8484628b8de1ec5",
+      "resource": {
+        "resourceType": "Claim",
+        "id": "5ca62962b8484628b8de1ec5",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim"
+          ]
+        },
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+              "code": "institutional"
+            }
+          ]
+        },
+        "use": "claim",
+        "patient": {
+          "reference": "Patient/d170a0a8-b5ad-4303-b6df-e304dd5f92ad"
+        },
+        "created": "2026-12-01",
+        "provider": {
+          "reference": "Practitioner/practitioner-123456"
+        },
+        "priority": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+              "code": "normal"
+            }
+          ]
+        },
+        "procedure": [
+          {
+            "sequence": 1,
+            "procedureCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://www.cms.gov/Medicare/Coding/ICD10",
+                  "code": "0SQ90ZZ",
+                  "display": "Repair Right Hip Joint, Open Approach"
+                }
+              ]
+            },
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/ex-procedure-type",
+                    "code": "primary"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "insurance": [
+          {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {
+              "reference": "Coverage/5fa041661c76ba66d9959367"
+            }
+          }
+        ],
+        "item": [
+          {
+            "sequence": 1,
+            "procedureSequence": [
+              1
+            ],
+            "productOrService": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/ex-USCLS",
+                  "code": "99555"
+                }
+              ]
+            },
+            "encounter": [
+              {
+                "reference": "Encounter/5ca62965b8484628b8de1fae"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Coverage/5fa041661c76ba66d9959373",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "5fa041661c76ba66d9959373",
+        "status": "active",
+        "beneficiary": {
+          "reference": "Patient/eb754c68-82c7-48cd-a2f0-26ee1cd92544"
+        },
+        "period": {
+          "start": "2001-09-01T08:00:00+00:00"
+        },
+        "payor": [
+          {
+            "reference": "Organization/123456"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Organization/123456",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "123456",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "temp",
+            "system": "urn:oid:2.16.840.1.113883.4.4",
+            "value": "21-3259825"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "pay",
+                "display": "Payer"
+              }
+            ]
+          }
+        ],
+        "name": "Blue Cross Blue Shield of Texas",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(+1) 972-766-6900"
+          }
+        ],
+        "address": [
+          {
+            "use": "billing",
+            "type": "postal",
+            "line": [
+              "P.O. Box 660044"
+            ],
+            "city": "Dallas",
+            "state": "TX",
+            "postalCode": "75266-0044",
+            "country": "USA"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Practitioner/practitioner-123456",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-123456",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "9999999896"
+          }
+        ],
+        "name": [
+          {
+            "family": "Evil",
+            "prefix": [
+              "Dr"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

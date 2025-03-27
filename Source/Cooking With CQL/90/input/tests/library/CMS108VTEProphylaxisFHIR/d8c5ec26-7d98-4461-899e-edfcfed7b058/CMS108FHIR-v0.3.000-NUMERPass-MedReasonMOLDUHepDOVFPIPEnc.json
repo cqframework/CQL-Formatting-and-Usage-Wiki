@@ -1,0 +1,323 @@
+{
+  "resourceType": "Bundle",
+  "id": "612e6a8402c62a011f2ea3c7",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://madie.cms.gov/Patient/d8c5ec26-7d98-4461-899e-edfcfed7b058",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "d8c5ec26-7d98-4461-899e-edfcfed7b058",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">MedReason_MO_LDUHep_DO_VFP_IPEnc <b>NUMERPASS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>cdd1ec13b77c1be95c04b9f3b51d6649</td></tr><tr><td>Date of birth</td><td><span>02 January 1974</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "1002-5",
+                  "display": "American Indian or Alaska Native",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "American Indian or Alaska Native"
+              }
+            ]
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "extension": [
+              {
+                "url": "ombCategory",
+                "valueCoding": {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2135-2",
+                  "display": "Hispanic or Latino",
+                  "userSelected": true
+                }
+              },
+              {
+                "url": "text",
+                "valueString": "Hispanic or Latino"
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "https://bonnie-fhir.healthit.gov/",
+            "value": "612e6a8402c62a011f2ea3c7"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "usual",
+            "family": "NUMERPass",
+            "given": [
+              "MedReason_MO_LDUHep_DO_VFP_IPEnc"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1975-01-02"
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Encounter/5ca6295fb8484628b8de1da8",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5ca6295fb8484628b8de1da8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+          ]
+        },
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "inpatient encounter"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "8715000"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/d8c5ec26-7d98-4461-899e-edfcfed7b058"
+        },
+        "period": {
+          "start": "2026-11-01T08:00:00+00:00",
+          "end": "2026-11-26T08:15:00+00:00"
+        },
+        "length": {
+          "value": 25,
+          "unit": "days"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Coverage/5fa0414e1c76ba66d99591cf",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "5fa0414e1c76ba66d99591cf",
+        "status": "active",
+        "beneficiary": {
+          "reference": "Patient/d8c5ec26-7d98-4461-899e-edfcfed7b058"
+        },
+        "period": {
+          "start": "1975-01-02T08:00:00+00:00"
+        },
+        "payor": [
+          {
+            "reference": "Organization/123456"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/MedicationRequest/5ca6295fb8484628b8de1daa",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "5ca6295fb8484628b8de1daa",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested"
+          ]
+        },
+        "status": "completed",
+        "intent": "order",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                "code": "inpatient"
+              }
+            ]
+          }
+        ],
+        "doNotPerform": true,
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1361574"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/d8c5ec26-7d98-4461-899e-edfcfed7b058"
+        },
+        "authoredOn": "2026-11-01T09:00:00+00:00",
+        "requester": {
+          "reference": "Practitioner/123456"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "183932001",
+                "display": "Procedure contraindicated (situation)"
+              }
+            ]
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2026-11-01T09:00:00+00:00"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/ServiceRequest/venous-foot-pumps-vfp-8a30",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "venous-foot-pumps-vfp-8a30",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "183932001",
+                  "display": "Procedure contraindicated (situation)"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "completed",
+        "intent": "order",
+        "doNotPerform": true,
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "version": "2025-03",
+              "code": "442023007",
+              "display": "Venous foot pump, device (physical object)",
+              "userSelected": true
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/d8c5ec26-7d98-4461-899e-edfcfed7b058"
+        },
+        "authoredOn": "2026-11-01T09:00:00+00:00"
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Organization/123456",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "123456",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "temp",
+            "system": "urn:oid:2.16.840.1.113883.4.4",
+            "value": "21-3259825"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "pay",
+                "display": "Payer"
+              }
+            ]
+          }
+        ],
+        "name": "Blue Cross Blue Shield of Texas",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(+1) 972-766-6900"
+          }
+        ],
+        "address": [
+          {
+            "use": "billing",
+            "type": "postal",
+            "line": [
+              "P.O. Box 660044"
+            ],
+            "city": "Dallas",
+            "state": "TX",
+            "postalCode": "75266-0044",
+            "country": "USA"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://madie.cms.gov/Practitioner/practitioner-123456",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-123456",
+        "identifier": [
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "123456"
+          }
+        ],
+        "name": [
+          {
+            "family": "Evil",
+            "prefix": [
+              "Dr"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,6285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #ffffff;;
+            margin: 0px;
+            padding: 10px;
+            height: 100%;
+            font-size: 1em;
+        }
+
+        p, li {
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            margin: 0 0 20px 0;
+            font-weight: normal;
+        }
+
+        td {
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        tr {
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        table.colstu td {
+            border: 1px grey solid;
+            border-spacing: 0;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: #fff5e6;
+        }
+
+        table.colsd td {
+            border: 1px grey solid;
+            border-spacing: 0;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: #efefef;
+        }
+
+        table.colsn td {
+            border: 1px grey solid;
+            border-spacing: 0;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: #e6ffe6;
+        }
+
+        table.colse td {
+            border: 1px grey solid;
+            border-spacing: 0;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: #e6e6e6;
+        }
+
+        table.colsi td {
+            border: 1px grey solid;
+            border-spacing: 0;
+            padding: 5px;
+            border-collapse: collapse;
+            background-color: #ffffe6;
+        }
+
+        table.list td {
+            border-top: 1px silver solid;
+            border-spacing: 0;
+        }
+
+        table.bare td {
+            border-spacing: 0;
+        }
+
+        ul.dict li {
+            font-size: 11px;
+            line-height: 1.2em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+        }
+
+        table.dict td {
+            padding: 3px 7px 2px 7px;
+            font-size: 11px;
+            line-height: 1.2em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        table.dict p {
+            font-size: 11px;
+        }
+
+        table {
+            margin-bottom: 10px;
+            border-collapse: collapse;
+        }
+
+        table.codes td {
+            border: 1px solid silver;
+            padding: 3px 7px 2px 7px;
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        table.grid {
+            margin-bottom: 10px;
+            border: 1px black solid;
+            margin-right: auto;
+
+        }
+
+        table.grid th {
+            border: 1px solid silver;
+            padding: 3px 7px 2px 7px;
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            font-weight: bold;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        table.grid td {
+            border: 1px solid silver;
+            padding: 3px 7px 2px 7px;
+            font-size: 12px;
+            line-height: 1.4em;
+            font-family: verdana;
+            font-weight: normal;
+            padding: 3px;
+            vertical-align: top;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding: 0 0 0 25px;
+        }
+
+        .dense li {
+            margin: 0 0 0 0;
+        }
+
+        li {
+            margin: 0 0 5px 0;
+        }
+
+        h1 {
+            font-size: 16px;
+            margin: 0 0 4px 0;
+            font-family: verdana;
+            border-bottom: 1px solid #7e7e7e;
+            padding-bottom: 2px;
+        }
+
+        h2 {
+            font-family: verdana;
+            line-height: 1.2em;
+            font-size: 14px;
+            margin: 0 0 3px 0;
+            margin-top: 15px;
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 2px;
+        }
+
+        h3 {
+            font-family: verdana;
+            line-height: 1.2em;
+            font-size: 12px;
+            margin: 0 0 3px 0;
+            margin-top: 10px;
+        }
+
+        h4 {
+            font-family: verdana;
+            line-height: 1.2em;
+            font-size: 11px;
+            margin: 0 0 3px 0;
+            margin-top: 10px;
+        }
+
+        div.sidebar h2 {
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 2px;
+            padding-top: 0px;
+            margin-top: 0px;
+            font-weight: normal;
+            margin-left: 8px;
+            margin-bottom: 0px;
+            font-size: 12px;
+        }
+
+        div.sidebar p {
+            padding-bottom: 0px;
+            padding-top: 10px;
+            font-weight: normal;
+            margin-left: 8px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        div.sidebar ul {
+            list-style: none;
+            padding: 0px;
+            margin-left: 6px;
+            font-size: 11px;
+            line-height: 2.125em;
+        }
+
+        div.sidebar li {
+            margin: 0px 0px 0px 6px;
+            padding: 0px;
+            font-size: 11px;
+            line-height: 2.125em;
+        }
+
+        a {
+            color: #428bca;
+            text-decoration: none;
+        }
+
+        a.xmltag :visited {
+            color: Navy;
+        }
+
+        a.xmltag :hover {
+            color: Blue;
+        }
+
+        pre {
+            display: block;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        pre a {
+            color: darkgreen;
+            text-decoration: none;
+            border: 0;
+
+        }
+
+        /* PrismJS 1.21.0
+        https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+abap+abnf+actionscript+ada+agda+al+antlr4+apacheconf+apl+applescript+aql+arduino+arff+asciidoc+aspnet+asm6502+autohotkey+autoit+bash+basic+batch+bbcode+birb+bison+bnf+brainfuck+brightscript+bro+bsl+c+csharp+cpp+cil+clojure+cmake+coffeescript+concurnas+csp+crystal+css-extras+cypher+d+dart+dax+dhall+diff+django+dns-zone-file+docker+ebnf+editorconfig+eiffel+ejs+elixir+elm+etlua+erb+erlang+excel-formula+fsharp+factor+firestore-security-rules+flow+fortran+ftl+gml+gcode+gdscript+gedcom+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+hcl+hlsl+http+hpkp+hsts+ichigojam+icon+ignore+inform7+ini+io+j+java+javadoc+javadoclike+javastacktrace+jolie+jq+jsdoc+js-extras+json+json5+jsonp+jsstacktrace+js-templates+julia+keyman+kotlin+latex+latte+less+lilypond+liquid+lisp+livescript+llvm+lolcode+lua+makefile+markdown+markup-templating+matlab+mel+mizar+mongodb+monkey+moonscript+n1ql+n4js+nand2tetris-hdl+naniscript+nasm+neon+nginx+nim+nix+nsis+objectivec+ocaml+opencl+oz+parigp+parser+pascal+pascaligo+pcaxis+peoplecode+perl+php+phpdoc+php-extras+plsql+powerquery+powershell+processing+prolog+properties+protobuf+pug+puppet+pure+purebasic+purescript+python+q+qml+qore+r+racket+jsx+tsx+reason+regex+renpy+rest+rip+roboconf+robotframework+ruby+rust+sas+sass+scss+scala+scheme+shell-session+smali+smalltalk+smarty+sml+solidity+solution-file+soy+sparql+splunk-spl+sqf+sql+stan+iecst+stylus+swift+t4-templating+t4-cs+t4-vb+tap+tcl+tt2+textile+toml+turtle+twig+typescript+typoscript+unrealscript+vala+vbnet+velocity+verilog+vhdl+vim+visual-basic+warpscript+wasm+wiki+xeora+xml-doc+xojo+xquery+yaml+yang+zig&plugins=keep-markup */
+        /**
+         * prism.js default theme for JavaScript, CSS and HTML
+         * Based on dabblet (http://dabblet.com)
+         * @author Lea Verou
+         */
+
+        code[class*="language-"],
+        pre[class*="language-"] {
+            color: black;
+            background: none;
+            text-shadow: 0 1px white;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.5;
+
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
+
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
+        }
+
+        pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+        code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+            text-shadow: none;
+            background: #b3d4fc;
+        }
+
+        pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+        code[class*="language-"]::selection, code[class*="language-"] ::selection {
+            text-shadow: none;
+            background: #b3d4fc;
+        }
+
+        @media print {
+            code[class*="language-"],
+            pre[class*="language-"] {
+                text-shadow: none;
+            }
+        }
+
+        /* Code blocks */
+        pre[class*="language-"] {
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto;
+        }
+
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+            background: #f5f2f0;
+        }
+
+        /* Inline code */
+        :not(pre) > code[class*="language-"] {
+            padding: .1em;
+            border-radius: .3em;
+            white-space: normal;
+        }
+        /*
+  ===============================
+  Liquid Narrative Styling Start
+  ===============================
+  */
+
+        .narrative-table {
+            border: 1pt inset rgb(0, 0, 0);
+            line-height: 10pt;
+            border-collapse: separate;
+            -webkit-border-horizontal-spacing: 2px;
+            -webkit-border-vertical-spacing: 2px;
+        }
+
+        .narrative-table>tbody {
+            display: table-row-group;
+            vertical-align: middle;
+        }
+
+        .narrative-table>tbody>tr {
+            display: table-row;
+            background-color: lightgray;
+            vertical-align: inherit;
+        }
+
+        .narrative-table>tbody>tr>th {
+            padding: 5px;
+        }
+
+        .section-header {
+            background-color: #656565;
+            color: whitesmoke;
+            vertical-align: inherit;
+        }
+
+        .row-header {
+            background-color: #656565;
+            color: whitesmoke;
+            vertical-align: inherit;
+        }
+
+        .tab-one {
+            padding-left: 5px;
+        }
+
+        @media (min-width: 768px) {
+            .row-header {
+                min-width: 138px;
+                max-width: 138px;
+            }
+
+            .content-container {
+                max-width: 576px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .row-header {
+                min-width: 181px;
+                max-width: 181px;
+            }
+
+            .content-container {
+                max-width: 745px;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .row-header {
+                min-width: 213px;
+                max-width: 213px;
+            }
+
+            .content-container {
+                max-width: 873px;
+            }
+        }
+
+        /*
+        ===============================
+        Liquid Narrative Styling End
+        ===============================
+        */
+    </style>
+</head>
+<body>
+<div xmlns="http://www.w3.org/1999/xhtml" class="col-12">
+  <table class="narrative-table">
+    <tbody>
+<tr>
+
+<th colspan="2" scope="row" class="row-header">Knowledge Artifact Metadata</th>
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+<th colspan="2" scope="row" class="row-header">Measure Metadata</th>
+
+</tr>
+
+  
+<tr>
+
+<th scope="row" class="row-header">Short Name Identifier</th>
+
+<td class="content-container">CMS108FHIR</td>
+</tr>
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Version Independent Identifier</th>
+
+<td class="content-container">urn:uuid:fa570e9c-c75f-4972-a77e-9488816d14af</td>
+</tr>
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Version Specific Identifier</th>
+
+<td class="content-container">urn:uuid:fb0be218-30e9-449d-85a2-2d80c6380250</td>
+</tr>
+
+
+
+  
+    
+    
+<tr>
+
+<th scope="row" class="row-header">Publisher (CMS) Identifier</th>
+
+<td class="content-container">108FHIR</td>
+</tr>
+
+  
+
+
+
+<tr>
+
+<th scope="row" class="row-header">Version Number</th>
+
+<td class="content-container">Draft based on 0.3.000</td>
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+<th scope="row" class="row-header">Rationale</th>
+
+<td class="content-container">The estimated annual incidence of deep-vein thrombosis (DVT) and pulmonary embolism (PE), known collectively as venous thromboembolism (VTE), ranges from 350,000 to 600,000 (Maynard, 2016). According to the Centers for Disease Control and Prevention (CDC) 2020 statistics, 1-2 per 1,000 adults in the United States are clinically diagnosed with VTE each year (CDC, 2020). Increased incidence is reported in the elderly (1 per 100) compared to young adults (1 per 10,000) (Henke et al., 2020). 
+
+VTE is a known complication of hospitalization, frequently extending the length of stay and increasing hospital mortality (Maynard, 2016). Approximately 20% of VTE are associated with a surgical procedure (Henke et al., 2020). Hospitalized patients at high-risk for VTE may develop an asymptomatic DVT, and die from PE even before the diagnosis is suspected. The majority of fatal events occur as sudden or abrupt death, underscoring the importance of prevention as the most critical action step for reducing death from PE (Geerts et al., 2008).
+
+American Society of Hematology (ASH) 2018 VTE prophylaxis guidelines strongly recommend pharmacological prophylaxis using unfractionated heparin (UFH), low molecular weight heparin (LMWH) or fondaparinux for acutely and critically ill hospitalized medical patients, unless contraindicated. The use of mechanical prophylaxis is an acceptable alternative for patients with increased risk of bleeding and preferred over no prophylaxis. ASH 2019 guidelines for surgical patients similarly recommend pharmacological or mechanical prophylaxis over no VTE prophylaxis. (NOTE: Some select surgeries have previously been monitored in the Surgical Care Improvement Project; since performance on these surgeries has achieved very high levels, they are not included in this measure.)
+
+Despite its proven effectiveness, VTE prophylaxis remains underused or inappropriately used in both medical and surgical patients (Kahn et al., 2018). The ENDORSE study evaluated prophylaxis rates in 17,084 major surgery patients and found that more than one third of patients at risk for VTE (38%) did not receive prophylaxis with various rates reported for different types of surgery (Cohen et al., 2008). More recently, a systemic review of multiple randomized controlled trials found that system-wide interventions, such as computer alerts to physicians and other healthcare professionals, increased the use of appropriate VTE prophylaxis while reducing the number of symptomatic VTE at three months (Kahn et al., 2018).</td>
+</tr>
+
+
+<tr>
+
+<th scope="row" class="row-header">Clinical Recommendation Statement</th>
+
+<td class="content-container">Failure to recognize and protect patients at risk for venous thromboembolism (VTE) increases the chances for acutely ill hospitalized patients at high risk for developing a deep vein thrombosis or dying from a pulmonary embolism. Screening all patients is the only evidence based practice in reducing incidence of disease. All hospitalized patients should be evaluated for primary VTE prophylaxis, and given appropriate prophylaxis when indicated.</td>
+</tr>
+
+
+
+
+<tr>
+
+<th scope="row" class="row-header">Guidance</th>
+
+<td class="content-container">When low dose unfractionated heparin is administered for VTE prophylaxis, the intended administration route for low dose unfractionated heparin is subcutaneous.
+
+Reasons for no pharmacological and no mechanical VTE prophylaxis must be explicitly documented by the medical doctor, advanced practice registered nurse, physician assistant or pharmacist and linked with VTE prophylaxis. The only exception is patient refusal may be documented by a nurse. Ambulation alone is not a sufficient reason for not administering VTE prophylaxis. In order for ambulation/patient ambulating to be considered as an acceptable reason, there needs to be explicit documentation, e.g., &quot;patient out of bed and ambulating in halls - no VTE prophylaxis needed.&quot;
+
+This measure does not require the use of a specific risk assessment model or tool (e.g., Caprini, Padua, and IMPROVE) to determine VTE risk. 
+
+The denominator population includes patients with inpatient hospitalizations and patients from Acute Hospital Care at Home programs, who are treated and billed as inpatients but receive care in their home. Inpatient hospitalizations for patients with a principal procedure of selected surgeries are excluded from the measure’s denominator. Selected surgeries include general surgery, gynecological surgery, hip fracture surgery, hip/knee replacement surgery, intracranial neurosurgery, and urological surgery.
+
+Inpatient hospitalizations for patients administered apixaban or edoxaban, medications included in the “Oral Factor Xa Inhibitor for VTE Prophylaxis or VTE Treatment” value set, would be counted in the numerator population only when the patients also have either a prior or present diagnosis of atrial fibrillation, a prior diagnosis of VTE, or a prior or present procedure of hip/knee replacement surgery.
+
+This eCQM is an episode-based measure. An episode is defined as each inpatient hospitalization or encounter that ends during the measurement period.
+
+This FHIR-based measure has been derived from the QDM-based measure: CMS108v14.
+
+Please refer to the HL7 QI-Core Implementation Guide (https://hl7.org/fhir/us/qicore/STU4.1.1/) for more information on QI-Core and mapping recommendations from QDM to QI-Core 4.1.1 (https://hl7.org/fhir/us/qicore/STU4.1.1/qdm-to-qicore.html).</td>
+</tr>
+
+
+  
+    
+<tr>
+
+<th scope="row" class="row-header">Supplemental Data Guidance</th>
+
+<td class="content-container">For every patient evaluated by this measure also identify payer, race, ethnicity and sex; SDE Ethnicity-Patient's Ethnicity:
+Hispanic or Latino
+Not Hispanic or Latino 
+ SDE Race-Patient's Race:
+Native Hawaiian or Other Pacific Islander
+Asian
+American Indian or Alaska Native
+Other Race
+White
+Black or African American 
+ SDE Sex-Patient's Sex:
+Gender identity restricted to only Male and Female used in administrative situations requiring a restriction to these two categories. 
+ SDE Payer 
+ </td>
+</tr>
+
+  
+
+
+
+
+
+  
+    
+    <tr>
+
+<th colspan="2" scope="row" class="row-header">Measure Population Criteria (ID: 67a4f4d006c4af260fd8a4d9)</th>
+
+</tr>
+  
+  
+  
+  
+    <tr>
+      
+        
+<th scope="row" class="row-header">Initial Population</th>
+
+      
+      <td class="content-container">
+        
+        <em>ID</em>: 97C2359B-EBFC-44FE-B4D5-A8D961468ACD
+        <br/>
+        
+        
+          <em>Description</em>:
+          <p style="white-space: pre-line" class="tab-one">Inpatient hospitalizations for patients age 18 and older, discharged from hospital inpatient acute care without a diagnosis of venous thromboembolism (VTE) or obstetrics that ends during the measurement period</p>
+        
+        
+          
+            
+            <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-initial-population">Initial Population</a> 
+          
+        
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      
+        
+<th scope="row" class="row-header">Denominator</th>
+
+      
+      <td class="content-container">
+        
+        <em>ID</em>: 9E8A9B37-BE83-4016-B3B6-3292843AED49
+        <br/>
+        
+        
+          <em>Description</em>:
+          <p style="white-space: pre-line" class="tab-one">Equals Initial Population</p>
+        
+        
+          
+            
+            <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-denominator">Denominator</a> 
+          
+        
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      
+        
+<th scope="row" class="row-header">Denominator Exclusion</th>
+
+      
+      <td class="content-container">
+        
+        <em>ID</em>: 89FBDFC1-C17F-4351-89BC-0EAB887E9E01
+        <br/>
+        
+        
+          <em>Description</em>:
+          <p style="white-space: pre-line" class="tab-one">- Inpatient hospitalizations for patients who have a length of stay less than 2 days
+- Inpatient hospitalizations for patients who are direct admits to intensive care unit (ICU), or transferred to ICU the day of or the day after hospital admission with ICU length of stay greater than or equal to one day
+- Inpatient hospitalizations for patients with a principal diagnosis of mental disorders or stroke
+- Inpatient hospitalizations for patients with a principal procedure of selected surgeries
+- Inpatient hospitalizations for patients with comfort measures documented anytime between the day of arrival and the day after hospital admission
+- Inpatient hospitalizations for patients with comfort measures documented by the day after surgery end date for surgeries that end the day after hospital admission</p>
+        
+        
+          
+            
+            <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-denominator-exclusions">Denominator Exclusions</a> 
+          
+        
+      </td>
+    </tr>
+  
+
+  
+    <tr>
+      
+        
+<th scope="row" class="row-header">Numerator</th>
+
+      
+      <td class="content-container">
+        
+        <em>ID</em>: A15A4A4F-D0C2-465E-9A39-BA83690F2108
+        <br/>
+        
+        
+          <em>Description</em>:
+          <p style="white-space: pre-line" class="tab-one">Inpatient hospitalizations for patients who received VTE prophylaxis:
+- between the day of arrival and the day after hospital admission
+- the day of or the day after surgery end date (for surgeries that end the day after hospital admission)
+
+Inpatient hospitalizations for patients who have documentation of a reason why no VTE prophylaxis was given:
+- between the day of arrival and the day after hospital admission
+- the day of or the day after surgery end date (for surgeries that end the day after hospital admission)</p>
+        
+        
+          
+            
+            <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-numerator">Numerator</a> 
+          
+        
+      </td>
+    </tr>
+  
+
+  
+  
+  
+<tr>
+
+<th scope="row" class="row-header">Population Basis</th>
+
+<td class="content-container">Encounter</td>
+</tr>
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Scoring</th>
+
+<td class="content-container">[http://terminology.hl7.org/CodeSystem/measure-scoring#proportion: 'Proportion']</td>
+</tr>
+
+
+
+
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Type</th>
+
+<td class="content-container">[http://terminology.hl7.org/CodeSystem/measure-type#process: 'Process']</td>
+</tr>
+
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Rate Aggregation</th>
+
+<td class="content-container">None</td>
+</tr>
+
+
+
+  
+<tr>
+
+<th scope="row" class="row-header">Improvement Notation</th>
+
+<td class="content-container">[http://terminology.hl7.org/CodeSystem/measure-improvement-notation#increase: 'Increased score indicates improvement']</td>
+</tr>
+
+
+
+
+  <tr>
+
+<th colspan="2" scope="row" class="row-header">Supplemental Data Elements</th>
+
+</tr>
+
+
+<tr>
+  
+<th scope="row" class="row-header">Supplemental Data Element</th>
+
+  <td class="content-container">
+    
+      <em>ID</em>: sde-ethnicity
+      
+      <br/>
+      
+    
+    
+      
+        
+          <em>Usage Code</em>: [http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data]
+        
+        <br/>
+      
+    
+    
+      <em>Description</em>: SDE Ethnicity
+    
+    
+      
+        <br/>
+        
+        <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-sde-ethnicity">SDE Ethnicity</a> 
+      
+    
+  </td>
+</tr>
+
+<tr>
+  
+<th scope="row" class="row-header">Supplemental Data Element</th>
+
+  <td class="content-container">
+    
+      <em>ID</em>: sde-race
+      
+      <br/>
+      
+    
+    
+      
+        
+          <em>Usage Code</em>: [http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data]
+        
+        <br/>
+      
+    
+    
+      <em>Description</em>: SDE Race
+    
+    
+      
+        <br/>
+        
+        <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-sde-race">SDE Race</a> 
+      
+    
+  </td>
+</tr>
+
+<tr>
+  
+<th scope="row" class="row-header">Supplemental Data Element</th>
+
+  <td class="content-container">
+    
+      <em>ID</em>: sde-sex
+      
+      <br/>
+      
+    
+    
+      
+        
+          <em>Usage Code</em>: [http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data]
+        
+        <br/>
+      
+    
+    
+      <em>Description</em>: SDE Sex
+    
+    
+      
+        <br/>
+        
+        <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-sde-sex">SDE Sex</a> 
+      
+    
+  </td>
+</tr>
+
+<tr>
+  
+<th scope="row" class="row-header">Supplemental Data Element</th>
+
+  <td class="content-container">
+    
+      <em>ID</em>: sde-payer
+      
+      <br/>
+      
+    
+    
+      
+        
+          <em>Usage Code</em>: [http://terminology.hl7.org/CodeSystem/measure-data-usage#supplemental-data]
+        
+        <br/>
+      
+    
+    
+      <em>Description</em>: SDE Payer
+    
+    
+      
+        <br/>
+        
+        <em>Logic Definition</em>: <a href="#cms108vteprophylaxisfhir-sde-payer">SDE Payer</a> 
+      
+    
+  </td>
+</tr>
+
+
+<tr>
+
+<th colspan="2" scope="row" class="row-header">Measure Logic</th>
+
+</tr>
+
+<tr>
+
+<th scope="row" class="row-header">Primary Library</th>
+
+<td class="content-container">https://madie.cms.gov/Library/CMS108VTEProphylaxisFHIR</td>
+</tr>
+
+
+
+
+  
+  
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library SDE
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/SupplementalDataElements|5.0.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/SupplementalDataElements|5.0.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library FHIRHelpers
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/FHIRHelpers|4.4.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/FHIRHelpers|4.4.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library VTE
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/VTE|8.13.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/VTE|8.13.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library CQMCommon
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/CQMCommon|4.0.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/CQMCommon|4.0.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library QICoreCommon
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/QICoreCommon|4.0.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/QICoreCommon|4.0.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Library TJC
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: https://madie.cms.gov/Library/TJCOverall|8.16.000
+    <br/>
+    <em>Canonical URL</em>: <tt>https://madie.cms.gov/Library/TJCOverall|8.16.000</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system SNOMEDCT
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://snomed.info/sct
+    <br/>
+    <em>Canonical URL</em>: <tt>http://snomed.info/sct</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system ConditionClinicalStatusCodes
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://terminology.hl7.org/CodeSystem/condition-clinical
+    <br/>
+    <em>Canonical URL</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system ConditionVerificationStatusCodes
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://terminology.hl7.org/CodeSystem/condition-ver-status
+    <br/>
+    <em>Canonical URL</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-ver-status</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system LOINC
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://loinc.org
+    <br/>
+    <em>Canonical URL</em>: <tt>http://loinc.org</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system TaskCodeSystem
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://hl7.org/fhir/CodeSystem/task-code
+    <br/>
+    <em>Canonical URL</em>: <tt>http://hl7.org/fhir/CodeSystem/task-code</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system Diagnosis Type
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://terminology.hl7.org/CodeSystem/ex-diagnosistype
+    <br/>
+    <em>Canonical URL</em>: <tt>http://terminology.hl7.org/CodeSystem/ex-diagnosistype</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Code system Procedure Type
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://terminology.hl7.org/codesystem/ex-procedure-type
+    <br/>
+    <em>Canonical URL</em>: <tt>http://terminology.hl7.org/codesystem/ex-procedure-type</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Encounter Inpatient
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Obstetrical or Pregnancy Related Conditions
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.263
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.263</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Venous Thromboembolism
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.279
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.279</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Obstetrics VTE
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.264
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.264</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Low Dose Unfractionated Heparin for VTE Prophylaxis
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Subcutaneous route
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.223
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.223</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Low Molecular Weight Heparin for VTE Prophylaxis
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Injectable Factor Xa Inhibitor for VTE Prophylaxis
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Warfarin
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Rivaroxaban for VTE Prophylaxis
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Application of Intermittent Pneumatic Compression Devices
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Application of Venous Foot Pumps
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.64
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.64</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Application of Graduated Compression Stockings
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.66
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.66</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Observation Services
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Emergency Department Visit
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set General or Neuraxial Anesthesia
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.1743
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.1743</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Oral Factor Xa Inhibitor for VTE Prophylaxis or VTE Treatment
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.134
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.134</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Atrial Fibrillation or Flutter
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.202
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.202</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Hip Replacement Surgery
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.259
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.259</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Knee Replacement Surgery
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.261
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.261</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Low Risk
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.400
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.400</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set INR
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.213
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.213</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Unfractionated Heparin
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.218
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.218</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Intravenous route
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.222
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.222</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Direct Thrombin Inhibitor
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.205
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.205</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Glycoprotein IIb/IIIa Inhibitors
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.41
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.41</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Medical Reason For Not Providing Treatment
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.473
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.473</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Venous foot pumps
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Intermittent pneumatic compression devices
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.214
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.214</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Graduated compression stockings
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.256
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.256</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Patient Refusal
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.93
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.93</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Payer Type
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Intensive Care Unit
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.206
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1029.206</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Ischemic Stroke
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.247
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.247</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Hip Fracture Surgery
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.258
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.258</tt>
+    
+  </td>
+</tr>
+
+<tr>
+  
+  
+  
+  
+  
+<th scope="row" class="row-header">Dependency</th>
+
+  
+  <td class="content-container">
+    
+    <em>Description</em>: Value set Comfort Measures
+    
+    <br/>
+    
+    
+    
+    
+    
+    
+    <em>Resource</em>: http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45
+    <br/>
+    <em>Canonical URL</em>: <tt>http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45</tt>
+    
+  </td>
+</tr>
+
+
+  
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Male (finding)
+        <br/>
+      
+      <em>Code</em>: 248153007
+      <br/>
+      <em>System</em>: <tt>http://snomed.info/sct</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Female (finding)
+        <br/>
+      
+      <em>Code</em>: 248152002
+      <br/>
+      <em>System</em>: <tt>http://snomed.info/sct</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Active
+        <br/>
+      
+      <em>Code</em>: active
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Recurrence
+        <br/>
+      
+      <em>Code</em>: recurrence
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Relapse
+        <br/>
+      
+      <em>Code</em>: relapse
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Confirmed
+        <br/>
+      
+      <em>Code</em>: confirmed
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-ver-status</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Inactive
+        <br/>
+      
+      <em>Code</em>: inactive
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Remission
+        <br/>
+      
+      <em>Code</em>: remission
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Resolved
+        <br/>
+      
+      <em>Code</em>: resolved
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/condition-clinical</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Risk for venous thromboembolism
+        <br/>
+      
+      <em>Code</em>: 72136-5
+      <br/>
+      <em>System</em>: <tt>http://loinc.org</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Fulfill
+        <br/>
+      
+      <em>Code</em>: fulfill
+      <br/>
+      <em>System</em>: <tt>http://hl7.org/fhir/CodeSystem/task-code</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+        <em>Display</em>: Principal Diagnosis
+        <br/>
+      
+      <em>Code</em>: principal
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/CodeSystem/ex-diagnosistype</tt>
+    </td>
+  </tr>
+
+  <tr>
+    <th scope="row" class="row-header">Direct Reference Code</th>
+    <td class="content-container">
+      
+      <em>Code</em>: primary
+      <br/>
+      <em>System</em>: <tt>http://terminology.hl7.org/codesystem/ex-procedure-type</tt>
+    </td>
+  </tr>
+
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: Measurement Period
+    <br/>
+    <em>Use</em>: in
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: 1
+    <br/>
+    <em>Type</em>: Period
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: Numerator
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: *
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: Denominator
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: *
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: Initial Population
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: *
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: Denominator Exclusions
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: *
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: SDE Sex
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: 1
+    <br/>
+    <em>Type</em>: Coding
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: SDE Payer
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: *
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: SDE Ethnicity
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: 1
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  <tr>
+  
+<th scope="row" class="row-header">Parameter</th>
+
+  <td class="content-container">
+    <em>Name</em>: SDE Race
+    <br/>
+    <em>Use</em>: out
+    <br/>
+    <em>Min Cardinality</em>: 0
+    <br/>
+    <em>Max Cardinality</em>: 1
+    <br/>
+    <em>Type</em>: Resource
+  </td>
+</tr>
+  
+  
+  <tr>
+    <th colspan="2" scope="row" class="section-header"><a name="effective-data-requirements"> </a>Measure Logic Data Requirements</th>
+  </tr>
+  
+  
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Patient
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: extension, birthDate, birthDate.value, url
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Encounter
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: type, status, status.value, period, period.low, period.lowClosed, period.high, period.highClosed, location
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: type</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Encounter
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: type, status, status.value, period, period.low, period.lowClosed, period.high, period.highClosed, location
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: type</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Encounter
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: period, period.low, period.lowClosed, period.high, period.highClosed, location
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Encounter
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: type, status, status.value, period, period.low, period.lowClosed, period.high, period.highClosed, location
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: type</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Condition
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-encounter-diagnosis
+    <br/>        
+  
+   
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Condition
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-problems-health-concerns
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, verificationStatus, onset
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.202
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Condition
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-problems-health-concerns
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, clinicalStatus, verificationStatus, onset
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.279
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Condition
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-problems-health-concerns
+    <br/>        
+  
+   
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, dosage, dosage.route, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, effective, id, id.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.134
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, dosage, dosage.route, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.218
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.205
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.41
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.64
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.66
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.259
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.261
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, status, status.value, performed
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.1743
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Observation
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-simple-observation
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, value, status, status.value, id, id.value, effective
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+  
+    <span class="tab-one"><em>Code</em>: </span>
+    <br/>
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Observation
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-lab
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, value, status, status.value, id, id.value, issued, issued.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.213
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Resource
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/StructureDefinition/Resource
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: id, id.value
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, id, id.value, statusReason, extension
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, id, id.value, statusReason, extension
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, id, id.value, statusReason, extension
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, id, id.value, statusReason, extension
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationAdministration
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, id, id.value, statusReason, extension
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, intent, intent.value, id, id.value, reasonCode, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, intent, intent.value, id, id.value, reasonCode, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, intent, intent.value, id, id.value, reasonCode, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, intent, intent.value, id, id.value, reasonCode, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, intent, intent.value, id, id.value, reasonCode, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1045.39
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.219
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.211
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.232
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: medication</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.50
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: MedicationRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: medication.reference.value, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Medication
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: id.value, code
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Task
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskrejected
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: focus, code, statusReason
+    <br/>
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, id, id.value, extension, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, id, id.value, extension, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.214
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, id, id.value, extension, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.256
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.230
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.214
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, status, status.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.256
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: ServiceRequest
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, intent, intent.value, status, status.value, doNotPerform, doNotPerform.value, id, id.value, authoredOn, authoredOn.value
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/1.3.6.1.4.1.33895.1.3.0.45
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, extension, id, id.value, statusReason
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.65
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, extension, id, id.value, statusReason
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.64
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Procedure
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: code, extension, id, id.value, statusReason
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: code</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1110.66
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Coverage
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: type, period
+    <br/>
+   
+  
+    <em>Code Filter(s)</em>: 
+    <br/>
+  
+  
+    <span class="tab-one"><em>Path</em>: type</span>
+    <br/>
+  
+  
+  
+    <span class="tab-one"><em>ValueSet</em>:</span> http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591
+    <br/> 
+  
+  
+  
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Location
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location
+    <br/>        
+  
+   
+   
+   
+  </td>
+</tr>
+
+<tr>
+  <th scope="row" class="row-header">Data Requirement</th>
+  <td class="content-container">
+    <em>Type</em>: Claim
+    <br/>
+  
+    <em>Profile(s)</em>: 
+  
+    http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim
+    <br/>        
+  
+   
+   
+    <em>Must Support Elements</em>: status, status.value, use, use.value, item
+    <br/>
+   
+   
+  </td>
+</tr>
+
+  
+  <tr>
+
+<th colspan="2" scope="row" class="row-header">Measure Logic Definitions</th>
+
+</tr>
+  
+          
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="supplementaldataelements-sde-sex"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> SupplementalDataElements</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Sex&quot;:
+  case
+    when Patient.sex = '248153007' then &quot;Male (finding)&quot;
+    when Patient.sex = '248152002' then &quot;Female (finding)&quot;
+    else null
+  end</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-sde-sex"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Sex&quot;:
+  SDE.&quot;SDE Sex&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-inpatient-encounter"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Inpatient Encounter&quot;:
+  [Encounter: &quot;Encounter Inpatient&quot;] EncounterInpatient
+    where EncounterInpatient.status = 'finished'
+      and EncounterInpatient.period ends during day of &quot;Measurement Period&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="vte-admission-without-vte-or-obstetrical-conditions"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> VTE</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Admission Without VTE Or Obstetrical Conditions&quot;:
+  CQMCommon.&quot;Inpatient Encounter&quot; InpatientEncounter
+   where not (exists ((InpatientEncounter.encounterDiagnosis()) EncDx 
+                    where ( EncDx.code in &quot;Obstetrical or Pregnancy Related Conditions&quot;
+                         or EncDx.code in &quot;Venous Thromboembolism&quot;
+                         or EncDx.code in &quot;Obstetrics VTE&quot;)
+                    )
+            )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="vte-encounter-with-age-range-and-without-vte-diagnosis-or-obstetrical-conditions"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> VTE</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot;:
+ ( CQMCommon.&quot;Inpatient Encounter&quot; InpatientEncounter
+     where AgeInYearsAt(date from start of InpatientEncounter.period) &gt;= 18 )
+    intersect &quot;Admission Without VTE Or Obstetrical Conditions&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-pharmacological-or-mechanical-vte-prophylaxis-received"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Pharmacological or Mechanical VTE Prophylaxis Received&quot;:
+  ( [&quot;MedicationAdministration&quot;: medication in &quot;Low Dose Unfractionated Heparin for VTE Prophylaxis&quot;] VTEMedication
+      where VTEMedication.status = 'completed'
+        and VTEMedication.dosage.route in &quot;Subcutaneous route&quot;
+  )
+    union ( [&quot;MedicationAdministration&quot;: medication in &quot;Low Molecular Weight Heparin for VTE Prophylaxis&quot;] LMWH
+        where LMWH.status = 'completed'
+    )
+    union ( [&quot;MedicationAdministration&quot;: medication in &quot;Injectable Factor Xa Inhibitor for VTE Prophylaxis&quot;] FactorXa
+        where FactorXa.status = 'completed'
+    )
+    union ( [&quot;MedicationAdministration&quot;: medication in &quot;Warfarin&quot;] WarfarinAdm
+        where WarfarinAdm.status = 'completed'
+    )
+    union ( [&quot;MedicationAdministration&quot;: medication in &quot;Rivaroxaban for VTE Prophylaxis&quot;] Rivaroxaban
+        where Rivaroxaban.status = 'completed'
+    )
+    union ( ( [&quot;Procedure&quot;: &quot;Application of Intermittent Pneumatic Compression Devices&quot;]
+        union [&quot;Procedure&quot;: &quot;Application of Venous Foot Pumps&quot;]
+        union [&quot;Procedure&quot;: &quot;Application of Graduated Compression Stockings&quot;] ) DeviceApplied
+        where DeviceApplied.status = 'completed'
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-vte-prophylaxis-received-from-day-of-start-of-hospitalization-to-day-after-admission-or-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With VTE Prophylaxis Received From Day Of Start Of Hospitalization To Day After Admission Or Procedure&quot;:
+  ( from
+      VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+      &quot;Pharmacological or Mechanical VTE Prophylaxis Received&quot; VTEProphylaxis
+      where Coalesce(VTEProphylaxis.effective.toInterval(), VTEProphylaxis.performed.toInterval()) starts during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )
+      return QualifyingEncounter
+  )
+    union ( from
+        VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+        [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+        &quot;Pharmacological or Mechanical VTE Prophylaxis Received&quot; VTEProphylaxis
+        where AnesthesiaProcedure.status = 'completed'
+          and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+          and Coalesce(VTEProphylaxis.effective.toInterval(), VTEProphylaxis.performed.toInterval()) starts during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+        return QualifyingEncounter
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-medication-oral-factor-xa-inhibitor-administered-on-day-of-or-day-after-admission-or-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Medication Oral Factor Xa Inhibitor Administered On Day Of Or Day After Admission Or Procedure&quot;:
+  ( from
+      VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+      [&quot;MedicationAdministration&quot;: medication in &quot;Oral Factor Xa Inhibitor for VTE Prophylaxis or VTE Treatment&quot;] FactorXaMedication
+      where FactorXaMedication.status = 'completed'
+        and FactorXaMedication.effective.toInterval ( ) starts during day of ( start of QualifyingEncounter.period ).CalendarDayOfOrDayAfter ( )
+      return QualifyingEncounter
+  )
+    union ( from
+        VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+        [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+        [&quot;MedicationAdministration&quot;: medication in &quot;Oral Factor Xa Inhibitor for VTE Prophylaxis or VTE Treatment&quot;] FactorXaMedication
+        where FactorXaMedication.status = 'completed'
+          and AnesthesiaProcedure.status = 'completed'
+          and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+          and FactorXaMedication.effective.toInterval ( ) starts during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+        return QualifyingEncounter
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-prior-or-present-diagnosis-of-atrial-fibrillation-or-prior-diagnosis-of-vte"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prior Diagnosis Of VTE&quot;:
+  ( VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+      with [&quot;ConditionProblemsHealthConcerns&quot;: &quot;Atrial Fibrillation or Flutter&quot;] AtrialFibrillation
+        such that AtrialFibrillation.isActive ( )
+          and AtrialFibrillation.verificationStatus is not null
+          and AtrialFibrillation.verificationStatus ~ QICoreCommon.&quot;confirmed&quot;
+          and AtrialFibrillation.onset.toInterval ( ) starts on or before end of QualifyingEncounter.period
+  )
+    union ( VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+        where exists ( ( QualifyingEncounter.encounterDiagnosis ( ) ) EncDx
+            where EncDx.code in &quot;Atrial Fibrillation or Flutter&quot;
+        )
+    )
+    union ( VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+        with [&quot;ConditionProblemsHealthConcerns&quot;: &quot;Venous Thromboembolism&quot;] VTEDiagnosis
+          such that ( VTEDiagnosis.clinicalStatus ~ QICoreCommon.&quot;inactive&quot;
+              or VTEDiagnosis.clinicalStatus ~ QICoreCommon.&quot;remission&quot;
+              or VTEDiagnosis.clinicalStatus ~ QICoreCommon.&quot;resolved&quot;
+          )
+            and VTEDiagnosis.verificationStatus is not null
+            and VTEDiagnosis.verificationStatus ~ QICoreCommon.&quot;confirmed&quot;
+            and VTEDiagnosis.onset.toInterval ( ) before start of QualifyingEncounter.period
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-prior-or-present-procedure-of-hip-or-knee-replacement-surgery"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Prior Or Present Procedure Of Hip Or Knee Replacement Surgery&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with ( [&quot;Procedure&quot;: &quot;Hip Replacement Surgery&quot;]
+      union [&quot;Procedure&quot;: &quot;Knee Replacement Surgery&quot;] ) HipKneeProcedure
+      such that HipKneeProcedure.status = 'completed'
+        and HipKneeProcedure.performed.toInterval ( ) starts on or before end of QualifyingEncounter.period</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-low-risk-indicator-for-vte"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Low Risk Indicator For VTE&quot;:
+  ( [&quot;SimpleObservation&quot;: &quot;Risk for venous thromboembolism&quot;] VTERiskAssessment
+      where VTERiskAssessment.value as Concept in &quot;Low Risk&quot;
+        and VTERiskAssessment.status in { 'final', 'amended', 'corrected' }
+      return {
+        id: VTERiskAssessment.id,
+        LowRiskDatetime: VTERiskAssessment.effective.earliest ( )
+      }
+  )
+    union ( [&quot;LaboratoryResultObservation&quot;: &quot;INR&quot;] INRLabTest
+        where INRLabTest.value as Quantity &gt; 3.0
+          and INRLabTest.status in { 'final', 'amended', 'corrected' }
+        return {
+          id: INRLabTest.id,
+          LowRiskDatetime: INRLabTest.issued
+        }
+    )
+    union ( ( ( [&quot;MedicationAdministration&quot;: medication in &quot;Unfractionated Heparin&quot;] UnfractionatedHeparin
+          where UnfractionatedHeparin.dosage.route in &quot;Intravenous route&quot;
+      )
+        union [&quot;MedicationAdministration&quot;: medication in &quot;Direct Thrombin Inhibitor&quot;]
+        union [&quot;MedicationAdministration&quot;: medication in &quot;Glycoprotein IIb/IIIa Inhibitors&quot;] ) AnticoagulantMedication
+        where AnticoagulantMedication.status = 'completed'
+        return {
+          id: AnticoagulantMedication.id,
+          LowRiskDatetime: start of AnticoagulantMedication.effective.toInterval ( )
+        }
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-low-risk-for-vte-or-anticoagulant-administered-from-day-of-start-of-hospitalization-to-day-after-admission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Low Risk For VTE Or Anticoagulant Administered From Day Of Start Of Hospitalization To Day After Admission&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with &quot;Low Risk Indicator For VTE&quot; LowRiskForVTE
+      such that LowRiskForVTE.LowRiskDatetime during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-low-risk-for-vte-or-anticoagulant-administered-on-day-of-or-day-after-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Low Risk For VTE Or Anticoagulant Administered On Day Of Or Day After Procedure&quot;:
+  from
+    VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+    [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+    &quot;Low Risk Indicator For VTE&quot; LowRiskForVTE
+    where AnesthesiaProcedure.status = 'completed'
+      and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+      and LowRiskForVTE.LowRiskDatetime during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+    return QualifyingEncounter</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-low-risk-for-vte-or-anticoagulant-administered"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Low Risk For VTE Or Anticoagulant Administered&quot;:
+  &quot;Low Risk For VTE Or Anticoagulant Administered From Day Of Start Of Hospitalization To Day After Admission&quot;
+    union &quot;Low Risk For VTE Or Anticoagulant Administered On Day Of Or Day After Procedure&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-vte-prophylaxis-medication-administered-or-ordered"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No VTE Prophylaxis Medication Administered Or Ordered&quot;:
+  ( ( [MedicationAdministrationNotDone: &quot;Low Dose Unfractionated Heparin for VTE Prophylaxis&quot;]
+      union [MedicationAdministrationNotDone: &quot;Low Molecular Weight Heparin for VTE Prophylaxis&quot;]
+      union [MedicationAdministrationNotDone: &quot;Injectable Factor Xa Inhibitor for VTE Prophylaxis&quot;]
+      union [MedicationAdministrationNotDone: &quot;Warfarin&quot;]
+      union [MedicationAdministrationNotDone: &quot;Rivaroxaban for VTE Prophylaxis&quot;] ) NoMedicationAdm
+      return {
+        id: NoMedicationAdm.id,
+        MedicationStatusReason: NoMedicationAdm.statusReason,
+        authoredOn: NoMedicationAdm.recorded
+      }
+  )
+    union ( ( [&quot;MedicationNotRequested&quot;: &quot;Low Dose Unfractionated Heparin for VTE Prophylaxis&quot;]
+        union [&quot;MedicationNotRequested&quot;: &quot;Low Molecular Weight Heparin for VTE Prophylaxis&quot;]
+        union [&quot;MedicationNotRequested&quot;: &quot;Injectable Factor Xa Inhibitor for VTE Prophylaxis&quot;]
+        union [&quot;MedicationNotRequested&quot;: &quot;Warfarin&quot;]
+        union [&quot;MedicationNotRequested&quot;: &quot;Rivaroxaban for VTE Prophylaxis&quot;] ) NoMedicationOrder
+        where NoMedicationOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+        return {
+          id: NoMedicationOrder.id,
+          MedicationStatusReason: { NoMedicationOrder.reasonCode }, //CQLIT-521 
+          
+          authoredOn: NoMedicationOrder.authoredOn
+        }
+    )
+    union ( from
+        ( [&quot;MedicationRequest&quot;: &quot;Low Dose Unfractionated Heparin for VTE Prophylaxis&quot;]
+          union [&quot;MedicationRequest&quot;: &quot;Low Molecular Weight Heparin for VTE Prophylaxis&quot;]
+          union [&quot;MedicationRequest&quot;: &quot;Injectable Factor Xa Inhibitor for VTE Prophylaxis&quot;]
+          union [&quot;MedicationRequest&quot;: &quot;Warfarin&quot;]
+          union [&quot;MedicationRequest&quot;: &quot;Rivaroxaban for VTE Prophylaxis&quot;] ) MedicationOrderReject,
+        [TaskRejected] T
+        where T.focus.references ( MedicationOrderReject )
+          and T.code ~ QICoreCommon.&quot;Fulfill&quot;
+          and MedicationOrderReject.status = 'active'
+        return {
+          id: MedicationOrderReject.id,
+          MedicationStatusReason: { T.statusReason },
+          authoredOn: MedicationOrderReject.authoredOn
+        }
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-vte-prophylaxis-medication-due-to-medical-reason-from-day-of-start-of-hospitalization-to-day-after-admission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No VTE Prophylaxis Medication Due To Medical Reason From Day Of Start Of Hospitalization To Day After Admission&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with &quot;No VTE Prophylaxis Medication Administered Or Ordered&quot; NoVTEMedication
+      such that exists ( NoVTEMedication.MedicationStatusReason MedRsn
+          where MedRsn in &quot;Medical Reason For Not Providing Treatment&quot;
+      )
+        and NoVTEMedication.authoredOn during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-mechanical-vte-prophylaxis-performed-or-ordered"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No Mechanical VTE Prophylaxis Performed Or Ordered&quot;:
+  ( ( [ServiceNotRequested: &quot;Venous foot pumps&quot;]
+      union [ServiceNotRequested: &quot;Intermittent pneumatic compression devices&quot;]
+      union [ServiceNotRequested: &quot;Graduated compression stockings&quot;] ) DeviceNotOrder
+      where DeviceNotOrder.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+      return {
+        id: DeviceNotOrder.id,
+        requestStatusReason: DeviceNotOrder.reasonRefused,
+        authoredOn: DeviceNotOrder.authoredOn
+      }
+  )
+    union ( from
+        ( [ServiceRequest: &quot;Venous foot pumps&quot;]
+          union [ServiceRequest: &quot;Intermittent pneumatic compression devices&quot;]
+          union [ServiceRequest: &quot;Graduated compression stockings&quot;] ) DeviceOrderReject,
+        [TaskRejected] T
+        where DeviceOrderReject.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+          and DeviceOrderReject.status = 'active'
+          and T.focus.references ( DeviceOrderReject )
+          and T.code ~ QICoreCommon.&quot;Fulfill&quot;
+        return {
+          id: DeviceOrderReject.id,
+          requestStatusReason: T.statusReason,
+          authoredOn: DeviceOrderReject.authoredOn
+        }
+    )
+    union ( ( [ProcedureNotDone: &quot;Application of Intermittent Pneumatic Compression Devices&quot;]
+        union [ProcedureNotDone: &quot;Application of Venous Foot Pumps&quot;]
+        union [ProcedureNotDone: &quot;Application of Graduated Compression Stockings&quot;] ) DeviceNotApplied
+        let DeviceNotDoneTiming: DeviceNotApplied.recorded
+        return {
+          id: DeviceNotApplied.id,
+          requestStatusReason: DeviceNotApplied.statusReason,
+          authoredOn: DeviceNotDoneTiming
+        }
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-mechanical-vte-prophylaxis-due-to-medical-reason-from-day-of-start-of-hospitalization-to-day-after-admission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No Mechanical VTE Prophylaxis Due To Medical Reason From Day Of Start Of Hospitalization To Day After Admission&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with &quot;No Mechanical VTE Prophylaxis Performed Or Ordered&quot; NoVTEDevice
+      such that NoVTEDevice.requestStatusReason in &quot;Medical Reason For Not Providing Treatment&quot;
+        and NoVTEDevice.authoredOn during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-vte-prophylaxis-medication-due-to-medical-reason-on-day-of-or-day-after-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No VTE Prophylaxis Medication Due To Medical Reason On Day Of Or Day After Procedure&quot;:
+  from
+    VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+    [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+    &quot;No VTE Prophylaxis Medication Administered Or Ordered&quot; NoVTEMedication
+    where exists ( NoVTEMedication.MedicationStatusReason MedRsn
+        where MedRsn in &quot;Medical Reason For Not Providing Treatment&quot;
+    )
+      and AnesthesiaProcedure.status = 'completed'
+      and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+      and NoVTEMedication.authoredOn during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+    return QualifyingEncounter</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-mechanical-vte-prophylaxis-due-to-medical-reason-on-day-of-or-day-after-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No Mechanical VTE Prophylaxis Due To Medical Reason On Day Of Or Day After Procedure&quot;:
+  from
+    VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+    [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+    &quot;No Mechanical VTE Prophylaxis Performed Or Ordered&quot; NoVTEDevice
+    where NoVTEDevice.requestStatusReason in &quot;Medical Reason For Not Providing Treatment&quot;
+      and AnesthesiaProcedure.status = 'completed'
+      and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+      and NoVTEDevice.authoredOn during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+    return QualifyingEncounter</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-no-vte-prophylaxis-due-to-medical-reason"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With No VTE Prophylaxis Due To Medical Reason&quot;:
+  ( &quot;No VTE Prophylaxis Medication Due To Medical Reason From Day Of Start Of Hospitalization To Day After Admission&quot;
+      intersect &quot;No Mechanical VTE Prophylaxis Due To Medical Reason From Day Of Start Of Hospitalization To Day After Admission&quot;
+  )
+    union ( &quot;No VTE Prophylaxis Medication Due To Medical Reason On Day Of Or Day After Procedure&quot;
+        intersect &quot;No Mechanical VTE Prophylaxis Due To Medical Reason On Day Of Or Day After Procedure&quot;
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-mechanical-or-pharmacological-vte-prophylaxis-due-to-patient-refusal"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No Mechanical or Pharmacological VTE Prophylaxis Due To Patient Refusal&quot;:
+  ( &quot;No VTE Prophylaxis Medication Administered Or Ordered&quot; NoVTEMedication
+      where exists ( NoVTEMedication.MedicationStatusReason MedRsn
+          where MedRsn in &quot;Patient Refusal&quot;
+      )
+  )
+    union ( &quot;No Mechanical VTE Prophylaxis Performed Or Ordered&quot; NoVTEDevice
+        where NoVTEDevice.requestStatusReason in &quot;Patient Refusal&quot;
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-vte-prophylaxis-due-to-patient-refusal-from-day-of-start-of-hospitalization-to-day-after-admission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No VTE Prophylaxis Due To Patient Refusal From Day Of Start Of Hospitalization To Day After Admission&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with &quot;No Mechanical or Pharmacological VTE Prophylaxis Due To Patient Refusal&quot; PatientRefusal
+      such that PatientRefusal.authoredOn during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-no-vte-prophylaxis-due-to-patient-refusal-on-day-of-or-day-after-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;No VTE Prophylaxis Due To Patient Refusal On Day Of Or Day After Procedure&quot;:
+  from
+    VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+    [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+    &quot;No Mechanical or Pharmacological VTE Prophylaxis Due To Patient Refusal&quot; PatientRefusal
+    where AnesthesiaProcedure.status = 'completed'
+      and QICoreCommon.&quot;ToInterval&quot; ( AnesthesiaProcedure.performed ) ends 1 day after day of start of QualifyingEncounter.period
+      and PatientRefusal.authoredOn during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+    return QualifyingEncounter</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-no-vte-prophylaxis-due-to-patient-refusal"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With No VTE Prophylaxis Due To Patient Refusal&quot;:
+  &quot;No VTE Prophylaxis Due To Patient Refusal From Day Of Start Of Hospitalization To Day After Admission&quot;
+    union &quot;No VTE Prophylaxis Due To Patient Refusal On Day Of Or Day After Procedure&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-numerator"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Numerator&quot;:
+  &quot;Encounter With VTE Prophylaxis Received From Day Of Start Of Hospitalization To Day After Admission Or Procedure&quot;
+    union ( &quot;Encounter With Medication Oral Factor Xa Inhibitor Administered On Day Of Or Day After Admission Or Procedure&quot;
+        intersect ( &quot;Encounter With Prior Or Present Diagnosis Of Atrial Fibrillation Or Prior Diagnosis Of VTE&quot;
+            union &quot;Encounter With Prior Or Present Procedure Of Hip Or Knee Replacement Surgery&quot;
+        )
+    )
+    union &quot;Encounter With Low Risk For VTE Or Anticoagulant Administered&quot;
+    union &quot;Encounter With No VTE Prophylaxis Due To Medical Reason&quot;
+    union &quot;Encounter With No VTE Prophylaxis Due To Patient Refusal&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-initial-population"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Initial Population&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-denominator"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Denominator&quot;:
+  &quot;Initial Population&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="supplementaldataelements-sde-payer"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> SupplementalDataElements</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Payer&quot;:
+  [Coverage: type in &quot;Payer Type&quot;] Payer
+    return {
+      code: Payer.type,
+      period: Payer.period
+    }</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-sde-payer"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Payer&quot;:
+  SDE.&quot;SDE Payer&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="supplementaldataelements-sde-ethnicity"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> SupplementalDataElements</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Ethnicity&quot;:
+  Patient.ethnicity E
+    return Tuple {
+      codes: { E.ombCategory } union E.detailed,
+      display: E.text
+    }</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-sde-ethnicity"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Ethnicity&quot;:
+  SDE.&quot;SDE Ethnicity&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-less-than-2-days"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter Less Than 2 Days&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    where QualifyingEncounter.period.lengthInDays ( ) &lt; 2</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-icu-location-stay-1-day-or-more"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With ICU Location Stay 1 Day Or More&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    where exists ( QualifyingEncounter.location Location
+        where Location.location.getLocation ( ).type in &quot;Intensive Care Unit&quot;
+          and Location.period.lengthInDays ( ) &gt;= 1
+          and Location.period starts on or after start of QualifyingEncounter.period
+          and date from ( start of Location.period ) during ( start of QualifyingEncounter.period ).CalendarDayOfOrDayAfter ( )
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-principal-diagnosis-of-mental-disorder-or-stroke"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Principal Diagnosis Of Mental Disorder Or Stroke&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+      // where QualifyingEncounter.principalDiagnosis().code in &quot;Mental Health Diagnoses&quot;
+        //  or QualifyingEncounter.principalDiagnosis().code in &quot;Hemorrhagic Stroke&quot;
+          //  or QualifyingEncounter.principalDiagnosis().code in &quot;Ischemic Stroke&quot;
+    
+    
+    
+    where QualifyingEncounter.principalDiagnosis ( ).code in &quot;Ischemic Stroke&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-principal-procedure-of-selected-surgery"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*  Removed from QI-Core v6 due to Principal Px retrieved from Claim profile                   
+define &quot;Selected Surgery&quot;:
+  (	[&quot;Procedure&quot;: &quot;General Surgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Gynecological Surgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Hip Fracture Surgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Hip Replacement Surgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Intracranial Neurosurgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Knee Replacement Surgery&quot;]
+        union [&quot;Procedure&quot;: &quot;Urological Surgery&quot;] ) Procedure
+        where Procedure.status = 'completed'
+  
+define &quot;Encounter With Principal Procedure Of Selected Surgery&quot;:
+    from
+      VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+      &quot;Selected Surgery&quot; SelectedProcedure
+      let 
+        claim: [Claim] C where C.status = 'active' and C.use = 'claim' and exists (C.item I where I.encounter.references(QualifyingEncounter)),
+        claimItem: claim.item I where I.encounter.references(QualifyingEncounter),
+        claimProcedure: claim.procedure P where P.sequence in claimItem.procedureSequence
+      where claimProcedure.type.includesCode(&quot;Primary procedure&quot;) 
+     // where QualifyingEncounter.principalProcedure().id = SelectedProcedure.id
+         and QualifyingEncounter.id = SelectedProcedure.id
+        and end of SelectedProcedure.performed.toInterval () during QualifyingEncounter.period
+      return QualifyingEncounter
+*/
+// QA: CQIT-217 will use principalProcedure() once it's finalized 
+
+
+
+define &quot;Encounter With Principal Procedure Of Selected Surgery&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    let claim: [Claim] C
+      where C.status = 'active'
+        and C.use = 'claim'
+        and exists ( C.item I
+            where I.encounter.references ( QualifyingEncounter )
+        ),
+    claimItem: claim.item I
+      where I.encounter.references ( QualifyingEncounter ),
+    claimProcedure: claim.procedure P
+      where P.sequence in claimItem.procedureSequence
+    where claimProcedure.type.includesCode ( &quot;Primary procedure&quot; )
+      and claimProcedure.procedure in &quot;Hip Fracture Surgery&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-intervention-comfort-measures"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*  and exists( claimProcedure.procedure P 
+                 where P in &quot;Gynecological Surgery&quot;
+                    or P in &quot;Hip Fracture Surgery&quot;
+                    or P in &quot;Hip Replacement Surgery&quot;
+                    or P in &quot;Intracranial Neurosurgery&quot;
+                    or P in &quot;Knee Replacement Surgery&quot;
+                    or P in &quot;Urological Surgery&quot;
+                      ) */
+
+
+define &quot;Intervention Comfort Measures&quot;:
+  ( [&quot;ServiceRequest&quot;: &quot;Comfort Measures&quot;] InterventionRequest
+      where InterventionRequest.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
+        and InterventionRequest.status in { 'active', 'on-hold', 'completed' }
+        and InterventionRequest.doNotPerform is not true
+  )
+    union ( [&quot;Procedure&quot;: &quot;Comfort Measures&quot;] InterventionPerformed
+        where InterventionPerformed.status in { 'completed', 'in-progress' }
+    )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-intervention-comfort-measures-from-day-of-start-of-hospitalization-to-day-after-admission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Intervention Comfort Measures From Day Of Start Of Hospitalization To Day After Admission&quot;:
+  VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter
+    with &quot;Intervention Comfort Measures&quot; ComfortMeasure
+      such that Coalesce(start of ComfortMeasure.performed.toInterval(), ComfortMeasure.authoredOn) during day of QualifyingEncounter.FromDayOfStartOfHospitalizationToDayAfterAdmission ( )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-encounter-with-intervention-comfort-measures-on-day-of-or-day-after-procedure"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Encounter With Intervention Comfort Measures On Day Of Or Day After Procedure&quot;:
+  from
+    VTE.&quot;Encounter With Age Range And Without VTE Diagnosis Or Obstetrical Conditions&quot; QualifyingEncounter,
+    [&quot;Procedure&quot;: &quot;General or Neuraxial Anesthesia&quot;] AnesthesiaProcedure,
+    &quot;Intervention Comfort Measures&quot; ComfortMeasure
+    where AnesthesiaProcedure.status = 'completed'
+      and AnesthesiaProcedure.performed.toInterval ( ) ends 1 day after day of start of QualifyingEncounter.period
+      and Coalesce(start of ComfortMeasure.performed.toInterval(), ComfortMeasure.authoredOn) during day of ( end of AnesthesiaProcedure.performed.toInterval ( ) ).CalendarDayOfOrDayAfter ( )
+    return QualifyingEncounter</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-denominator-exclusions"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;Denominator Exclusions&quot;:
+  &quot;Encounter Less Than 2 Days&quot;
+    union &quot;Encounter With ICU Location Stay 1 Day Or More&quot;
+    union &quot;Encounter With Principal Diagnosis Of Mental Disorder Or Stroke&quot;
+    union &quot;Encounter With Principal Procedure Of Selected Surgery&quot;
+    union &quot;Encounter With Intervention Comfort Measures From Day Of Start Of Hospitalization To Day After Admission&quot;
+    union &quot;Encounter With Intervention Comfort Measures On Day Of Or Day After Procedure&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="supplementaldataelements-sde-race"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> SupplementalDataElements</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Race&quot;:
+  Patient.race R
+    return Tuple {
+      codes: R.ombCategory union R.detailed,
+      display: R.text
+    }</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-sde-race"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define &quot;SDE Race&quot;:
+  SDE.&quot;SDE Race&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="fhirhelpers-tostring"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> FHIRHelpers</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define function ToString(value uri): value.value</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="fhirhelpers-tointerval"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> FHIRHelpers</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Converts the given [Period](https://hl7.org/fhir/datatypes.html#Period)
+value to a CQL DateTime Interval
+@comment: If the start value of the given period is unspecified, the starting
+boundary of the resulting interval will be open (meaning the start of the interval
+is unknown, as opposed to interpreted as the beginning of time).
+*/
+define function ToInterval(period FHIR.Period):
+    if period is null then
+        null
+    else
+        if period.&quot;start&quot; is null then
+            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
+        else
+            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-encounterdiagnosis"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*  
+@description: Returns the Condition resources referenced by the diagnosis element of the Encounter  
+*/
+define fluent function encounterDiagnosis(Encounter Encounter ):
+  Encounter.reasonReference D
+    return singleton from (([ConditionEncounterDiagnosis] union [ConditionProblemsHealthConcerns]) C where D.references(C.id))</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-references"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Returns true if the given reference is to the given resourceId
+@comment: Returns true if the `resourceId` parameter exactly equals the tail of the given reference.
+NOTE: This function assumes resources from the same source server.
+*/
+define fluent function references(reference Reference, resourceId String):
+  resourceId = Last(Split(reference.reference, '/'))</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-tointerval"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
+@comment: Normalizes a choice type of DateTime, Quanitty, Interval&lt;DateTime&gt;, or Interval&lt;Quantity&gt; types
+to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
+representations for timing-valued elements in QICore, allowing this function to be used across any resource.
+The input can be provided as a DateTime, Quantity, Interval&lt;DateTime&gt; or Interval&lt;Quantity&gt;.
+The intent of this function is to provide a clear and concise mechanism to treat single
+elements that have multiple possible representations as intervals so that logic doesn't have to account
+for the variability. More complex calculations (such as medication request period or dispense period
+calculation) need specific guidance and consideration. That guidance may make use of this function, but
+the focus of this function is on single element calculations where the semantics are unambiguous.
+If the input is a DateTime, the result a DateTime Interval beginning and ending on that DateTime.
+If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age,
+and the result is a DateTime Interval beginning on the Date the patient turned that age and ending immediately before one year later.
+If the input is a DateTime Interval, the result is the input.
+If the input is a Quantity Interval, the quantities are expected to be calendar-durations interpreted as an Age, and the result
+is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending
+immediately before one year later than the date the patient turned the age given as the end of the quantity interval.
+If the input is a Timing, an error will be thrown indicating that Timing calculations are not implemented. Any other input will reslt in a null DateTime Interval
+*/
+define fluent function toInterval(choice Choice&lt;DateTime, Quantity, Interval&lt;DateTime&gt;, Interval&lt;Quantity&gt;, Timing&gt;):
+  case
+	  when choice is DateTime then
+    	Interval[choice as DateTime, choice as DateTime]
+		when choice is Interval&lt;DateTime&gt; then
+  		choice as Interval&lt;DateTime&gt;
+		when choice is Quantity then
+		  Interval[Patient.birthDate + (choice as Quantity),
+			  Patient.birthDate + (choice as Quantity) + 1 year)
+		when choice is Interval&lt;Quantity&gt; then
+		  Interval[Patient.birthDate + (choice.low as Quantity),
+			  Patient.birthDate + (choice.high as Quantity) + 1 year)
+		when choice is Timing then
+      Message(null, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a Timing value is not supported') as Interval&lt;DateTime&gt;
+		else
+			null as Interval&lt;DateTime&gt;
+	end</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cms108vteprophylaxisfhir-fromdayofstartofhospitalizationtodayafteradmission"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CMS108VTEProphylaxisFHIR</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define fluent function &quot;FromDayOfStartOfHospitalizationToDayAfterAdmission&quot;(Encounter Encounter):
+  Interval[date from ( start of Encounter.hospitalizationWithObservation ( ) ), date from ( start of Encounter.period ) + 1 days]</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-hospitalizationwithobservation"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Hospitalization with Observation returns the total interval from the start of any immediately prior emergency department visit through the observation visit to the discharge of the given encounter
+*/
+define fluent function hospitalizationWithObservation(TheEncounter Encounter ):
+  TheEncounter Visit
+  		let ObsVisit: Last([Encounter: &quot;Observation Services&quot;] LastObs
+  				where LastObs.status = 'finished'
+            and LastObs.period ends 1 hour or less on or before start of Visit.period
+  				sort by end of period
+  			),
+  			VisitStart: Coalesce(start of ObsVisit.period, start of Visit.period),
+  			EDVisit: Last([Encounter: &quot;Emergency Department Visit&quot;] LastED
+  				where LastED.status = 'finished'
+            and LastED.period ends 1 hour or less on or before VisitStart
+  				sort by end of period
+  			)
+  		return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="tjcoverall-calendardayofordayafter"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> TJCOverall</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">define fluent function CalendarDayOfOrDayAfter(StartValue DateTime):
+  Interval [date from (StartValue), date from (StartValue) + 1 day]</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-isactive"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/* Candidates for FHIRCommon */
+
+/*
+@description: Returns true if the given condition has a clinical status of active, recurrence, or relapse
+*/
+define fluent function isActive(condition Choice&lt;&quot;ConditionEncounterDiagnosis&quot;, &quot;ConditionProblemsHealthConcerns&quot;&gt;):
+  condition.clinicalStatus ~ &quot;active&quot;
+    or condition.clinicalStatus ~ &quot;recurrence&quot;
+    or condition.clinicalStatus ~ &quot;relapse&quot;</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-earliest"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Given an interval, return the starting point if the interval has a starting boundary specified,
+otherwise, return the ending point
+*/
+define fluent function earliest(choice Choice&lt;DateTime, Quantity, Interval&lt;DateTime&gt;, Interval&lt;Quantity&gt;&gt; ):
+  (choice.toInterval()) period
+    return
+      if (period.&quot;hasStart&quot;()) then start of period
+      else end of period</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="fhirhelpers-toconcept"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> FHIRHelpers</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Converts the given FHIR [CodeableConcept](https://hl7.org/fhir/datatypes.html#CodeableConcept) value to a CQL Concept.
+*/
+define function ToConcept(concept FHIR.CodeableConcept):
+    if concept is null then
+        null
+    else
+        System.Concept {
+            codes: concept.coding C return ToCode(C),
+            display: concept.text.value
+        }</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-tointerval"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
+@comment: Normalizes a choice type of DateTime, Quanitty, Interval&lt;DateTime&gt;, or Interval&lt;Quantity&gt; types
+to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
+representations for timing-valued elements in QICore, allowing this function to be used across any resource.
+The input can be provided as a DateTime, Quantity, Interval&lt;DateTime&gt; or Interval&lt;Quantity&gt;.
+The intent of this function is to provide a clear and concise mechanism to treat single
+elements that have multiple possible representations as intervals so that logic doesn't have to account
+for the variability. More complex calculations (such as medication request period or dispense period
+calculation) need specific guidance and consideration. That guidance may make use of this function, but
+the focus of this function is on single element calculations where the semantics are unambiguous.
+If the input is a DateTime, the result a DateTime Interval beginning and ending on that DateTime.
+If the input is a Quantity, the quantity is expected to be a calendar-duration interpreted as an Age,
+and the result is a DateTime Interval beginning on the Date the patient turned that age and ending immediately before one year later.
+If the input is a DateTime Interval, the result is the input.
+If the input is a Quantity Interval, the quantities are expected to be calendar-durations interpreted as an Age, and the result
+is a DateTime Interval beginning on the date the patient turned the age given as the start of the quantity interval, and ending
+immediately before one year later than the date the patient turned the age given as the end of the quantity interval.
+If the input is a Timing, an error will be thrown indicating that Timing calculations are not implemented. Any other input will reslt in a null DateTime Interval
+@deprecated: This function is deprecated. Use the fluent function `toInterval()` instead
+*/
+define function ToInterval(choice Choice&lt;DateTime, Quantity, Interval&lt;DateTime&gt;, Interval&lt;Quantity&gt;, Timing&gt;):
+  case
+	  when choice is DateTime then
+    	Interval[choice as DateTime, choice as DateTime]
+		when choice is Interval&lt;DateTime&gt; then
+  		choice as Interval&lt;DateTime&gt;
+		when choice is Quantity then
+		  Interval[Patient.birthDate + (choice as Quantity),
+			  Patient.birthDate + (choice as Quantity) + 1 year)
+		when choice is Interval&lt;Quantity&gt; then
+		  Interval[Patient.birthDate + (choice.low as Quantity),
+			  Patient.birthDate + (choice.high as Quantity) + 1 year)
+		when choice is Timing then
+      Message(null, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a Timing value is not supported') as Interval&lt;DateTime&gt;
+		else
+			null as Interval&lt;DateTime&gt;
+	end</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="fhirhelpers-tocode"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> FHIRHelpers</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Converts the given FHIR [Coding](https://hl7.org/fhir/datatypes.html#Coding) value to a CQL Code.
+*/
+define function ToCode(coding FHIR.Coding):
+    if coding is null then
+        null
+    else
+        System.Code {
+          code: coding.code.value,
+          system: coding.system.value,
+          version: coding.version.value,
+          display: coding.display.value
+        }</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-lengthindays"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Calculates the difference in calendar days between the start and end of the given interval.
+*/
+define fluent function lengthInDays(Value Interval&lt;DateTime&gt; ):
+  difference in days between start of Value and end of Value</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-getlocation"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Returns the Location resource specified by the given reference.
+*/
+define fluent function getLocation(reference Reference):
+  singleton from (
+    [Location] L where reference.references(L)
+  )</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-principaldiagnosis"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Returns the condition that is specified as the principal diagnosis for the encounter
+@deprecated: This function is deprecated. Use the claimDiagnosis function for principal diagnosis and present on admission use cases. See
+[ClaimDiagnoses](https://github.com/cqframework/CQL-Formatting-and-Usage-Wiki/blob/master/Source/Cooking%20With%20CQL/88/ClaimDiagnoses.md) 
+discussion for more information.
+*/
+define fluent function principalDiagnosis(encounter Encounter):
+  encounter E1
+	let 
+	  PD: E1.claimDiagnosis() where PD.type.includesCode(&quot;Principal Diagnosis&quot;)
+	return (([ConditionEncounterDiagnosis] union [ConditionProblemsHealthConcerns]) C where exists (PD.diagnosis.reference R where R = C.id))</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="cqmcommon-claimdiagnosis"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> CQMCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Returns the claim diagnosis elements for the given encounter
+*/
+define fluent function claimDiagnosis(encounter Encounter):
+  encounter E
+    let 
+      claim: ([Claim] C where C.status = 'active' and C.use = 'claim' and exists (C.item I where I.encounter.references(E))),
+      claimItem: (claim.item I where I.encounter.references(E))
+    return claim.diagnosis D where D.sequence in claimItem.diagnosisSequence</code></pre>
+  </td>
+
+</tr>
+        
+<tr>
+  <th scope="row" rowspan="2" class="row-header">
+    
+      
+      <a name="qicorecommon-includescode"> </a>
+    
+    Logic Definition
+  </th>
+
+  <td class="content-container"><em>Library Name:</em> QICoreCommon</td>
+
+</tr>
+<tr>
+
+  <td>
+    <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">/*
+@description: Returns true if the given code is in the given codeList
+@comment: Returns true if the `code` is equivalent to any of the codes in the given `codeList`, false otherwise.
+*/
+define fluent function includesCode(codeList List&lt;Concept&gt;, code Code):
+  exists (codeList C where C ~ code)</code></pre>
+  </td>
+
+</tr>
+
+  
+
+<tr>
+  <th colspan="2" scope="row" class="row-header">Generated using version 0.4.6 of the sample-content-ig Liquid templates</th>
+</tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
