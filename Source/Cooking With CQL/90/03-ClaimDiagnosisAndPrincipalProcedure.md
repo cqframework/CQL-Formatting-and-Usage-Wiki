@@ -225,7 +225,7 @@ define fluent function principalProcedure(encounter Encounter):
     let 
       claim: [Claim] C where C.status = 'active' and C.use = 'claim' and exists (C.item I where I.encounter.references(E)),
       claimItem: claim.item I where I.encounter.references(E),
-      claimProcedure: claim.procedure P where P.sequence in claimItem.procedureSequence
-    where claimProcedure.type.includesCode("Primary procedure")
+      primaryClaimProcedure: claim.procedure P where P.sequence in claimItem.procedureSequence and type.includesCode("Primary procedure")
+    return singleton from primaryClaimProcedure
 ```
 
