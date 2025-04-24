@@ -397,7 +397,18 @@ define fluent function principalDiagnosis(encounter Encounter):
   encounter E1
 	let 
 	  PD: E1.claimDiagnosis() where PD.type.includesCode("Principal Diagnosis")
-	return (([ConditionEncounterDiagnosis] union [ConditionProblemsHealthConcerns]) C where exists (PD.diagnosis.reference R where R = C.id))
+	  // TODO: Address potential for diagnosis[x] (CodeableConcept|Reference(Condition))
+	return
+	  singleton from (
+		case
+			when PD.diagnosis is Concept then PD.diagnosis
+			else (([ConditionEncounterDiagnosis] union [ConditionProblemsHealthConcerns]) C where exists (PD.diagnosis.reference R where R = C.id)).code
+		end
+	  )
+
+// TODO: presentOnAdmission?
+define fluent function presentOnAdmission(encounter Encounter, poaValueSet ValueSet):
+
 /*
 @description: Returns the claim diagnosis elements for the given encounter
 */

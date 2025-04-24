@@ -1,7 +1,4 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. Reminder: CQL Common Assets for FHIR (US-Based) is currently in Ballot (https://hl7.org/fhir/us/cql/2025May/)
+1. CQL Cheat Sheet: https://bit.ly/cql-cheat-sheet 
+1. CQL 2.0 Feature Review
+
