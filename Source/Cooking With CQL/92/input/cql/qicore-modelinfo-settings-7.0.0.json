@@ -1,0 +1,1695 @@
+{
+    "resourceType": "Parameters",
+    "parameter": [
+        {
+            "name": "modelName",
+            "valueString": "QICore"
+        },
+        {
+            "name": "modelVersion",
+            "valueString": "7.0.0"
+        },
+        {
+            "name": "modelNamespace",
+            "valueString": "hl7.fhir.us.qicore"
+        },
+        {
+            "name": "modelUrl",
+            "valueString": "http://hl7.org/fhir/us/qicore"
+        },
+        {
+            "name": "patientClassName",
+            "valueString": "Patient"
+        },
+        {
+            "name": "patientBirthDatePropertyName",
+            "valueString": "birthDate"
+        },
+        {
+            "name": "targetQualifier",
+            "valueString": "QICore"
+        },
+        {
+            "name": "targetUrl",
+            "valueString": "http://hl7.org/fhir"
+        },
+        {
+            "name": "useCqlPrimitives",
+            "valueBoolean": false
+        },
+        {
+            "name": "createSliceElements",
+            "valueBoolean": false
+        },
+        {
+            "name": "includeMetadata",
+            "valueBoolean": false
+        },
+        {
+            "name": "flatten",
+            "valueBoolean": false
+        },
+        {
+            "name": "dependency",
+            "part": [
+                {
+                    "name": "modelName",
+                    "valueString": "hl7.fhir.us.core"
+                },
+                {
+                    "name": "modelVersion",
+                    "valueString": "7.0.0"
+                },
+                {
+                    "name": "modelUrl",
+                    "valueString": "http://hl7.org/fhir/us/core"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-adverseevent"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "AdverseEvent"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-allergyintolerance"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "AllergyIntolerance"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-bodystructure"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "BodyStructure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careplan"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CarePlan"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careteam"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CareTeam"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claim"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Claim"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-claimresponse"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ClaimResponse"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communication"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Communication"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationnotdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Communication Not Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CommunicationDone"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationrequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "CommunicationRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-encounter-diagnosis"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Condition Encounter Diagnosis"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-condition-problems-health-concerns"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Condition Problems Health Concerns"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-coverage"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Coverage"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-device"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Device"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceprohibited"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Device Prohibited"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "codeCodeableConcept"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "codeCodeableConcept"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequested"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceRequested"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "codeCodeableConcept"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-deviceusestatement"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DeviceUseStatement"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "device.code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DiagnosticReport Profile for Laboratory Results Reporting"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "DiagnosticReport Profile for Report and Note Exchange"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Encounter"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "type"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-familymemberhistory"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "FamilyMemberHistory"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-flag"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Flag"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-goal"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Goal"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "category"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-imagingstudy"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImagingStudy"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunization"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Immunization"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "vaccineCode"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Immunization Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "vaccineCode"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationnotdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Immunization Not Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "vaccineCode"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationevaluation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImmunizationEvaluation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationrecommendation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ImmunizationRecommendation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-lab"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Laboratory Result Observation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-location"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Location"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medication"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Medication"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationprohibited"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Medication Prohibited"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministration"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationAdministration"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationAdministration Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationadministrationnotdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationAdministration Not Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispense"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationDispense"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispensedeclined"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationDispense Declined"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationdispensedone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationDispense Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationrequested"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationRequested"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationstatement"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "MedicationStatement"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "medication"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nonpatient-observation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "NonPatient Observation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nutritionorder"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "NutritionOrder"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-clinical-result"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Observation Clinical Result"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-screening-assessment"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Observation Screening Assessment"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-organization"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Organization"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Patient"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitioner"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Practitioner"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-practitionerrole"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "PractitionerRole"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedure"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Procedure"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-proceduredone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Procedure Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Procedure Not Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-questionnaireresponse"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "QuestionnaireResponse"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-relatedperson"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "RelatedPerson"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-serviceprohibited"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Service Prohibited"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ServiceRequest"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequested"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "ServiceRequested"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-simple-observation"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Simple Observation"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-substance"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Substance"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-task"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Task"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskdone"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Task Done"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        },
+        {
+            "name": "profile",
+            "part": [
+                {
+                    "name": "url",
+                    "valueUri": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-taskrejected"
+                },
+                {
+                    "name": "isIncluded",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "isRetrievable",
+                    "valueBoolean": true
+                },
+                {
+                    "name": "label",
+                    "valueString": "Task Rejected"
+                },
+                {
+                    "name": "primaryCodePath",
+                    "valueString": "code"
+                }
+            ]
+        }
+    ]
+}
