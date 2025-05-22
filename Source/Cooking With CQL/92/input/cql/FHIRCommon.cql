@@ -2,11 +2,11 @@
 @author: Bryn Rhodes
 @description: Common terminologies and functions used in FHIR-based CQL artifacts
 */
-library FHIRCommon version '2.0.0-ballot'
+library FHIRCommon version '2.0.0'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '2.0.0-ballot'
+include FHIRHelpers version '2.0.0'
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -20,6 +20,7 @@ codesystem "ConditionVerificationStatusCodes": 'http://terminology.hl7.org/CodeS
 codesystem "AllergyIntoleranceClinicalStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'
 codesystem "AllergyIntoleranceVerificationStatusCodes": 'http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'
 codesystem "ConditionCategoryCodes": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "ObservationStatusCodes": 'http://hl7.org/fhir/observation-status'
 codesystem "ObservationCategoryCodes": 'http://terminology.hl7.org/CodeSystem/observation-category'
 
 valueset "Active Condition": 'http://fhir.org/guides/cqf/common/ValueSet/active-condition'
@@ -57,6 +58,8 @@ code "allergy-confirmed": 'confirmed' from AllergyIntoleranceVerificationStatusC
 code "allergy-refuted": 'refuted' from AllergyIntoleranceVerificationStatusCodes
 
 // MedicationRequest Category Codes
+code "Inpatient": 'inpatient' from "MedicationRequestCategory" display 'Inpatient'
+code "Outpatient": 'outpatient' from "MedicationRequestCategory" display 'Outpatient'
 code "Community": 'community' from "MedicationRequestCategory" display 'Community'
 code "Discharge": 'discharge' from "MedicationRequestCategory" display 'Discharge'
 
@@ -68,6 +71,16 @@ code "CM": 'CM' from "Diagnosis Role" display 'Comorbidity diagnosis'
 code "pre-op": 'pre-op' from "Diagnosis Role" display 'pre-op diagnosis'
 code "post-op": 'post-op' from "Diagnosis Role" display 'post-op diagnosis'
 code "billing": 'billing' from "Diagnosis Role" display 'billing diagnosis'
+
+// Observation Status Codes
+code "observation-registered": 'registered' from "ObservationStatusCodes" display 'Registered'
+code "observation-preliminary": 'preliminary' from "ObservationStatusCodes" display 'Preliminary'
+code "observation-final": 'final' from "ObservationStatusCodes" display 'Final'
+code "observation-amended": 'amended' from "ObservationStatusCodes" display 'Amended'
+code "observation-corrected": 'corrected' from "ObservationStatusCodes" display 'Corrected'
+code "observation-cancelled": 'cancelled' from "ObservationStatusCodes" display 'Cancelled'
+code "observation-entered-in-error": 'entered-in-error' from "ObservationStatusCodes" display 'Entered in Error'
+code "observation-unknown": 'unknown' from "ObservationStatusCodes" display 'Unknown'
 
 // Observation Category Codes
 code "social-history": 'social-history' from "ObservationCategoryCodes" display 'Social History'
@@ -85,56 +98,6 @@ code "problem-list-item": 'problem-list-item' from "ConditionCategoryCodes" disp
 code "encounter-diagnosis": 'encounter-diagnosis' from "ConditionCategoryCodes" display 'Encounter Diagnosis'
 
 context Patient
-
-/*
-@description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
-@comment: Normalizes a choice type of FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instance, FHIR.string, FHIR.Age, or FHIR.Range types
-to an equivalent interval. This selection of choice types is a superset of the majority of choice types that are used as possible
-representations for timing-valued elements in FHIR, allowing this function to be used across any resource.
-
-The input can be provided as a dateTime, Period, Timing, instant, string, Age, or Range.
-The intent of this function is to provide a clear and concise mechanism to treat single
-elements that have multiple possible representations as intervals so that logic doesn't have to account
-for the variability. More complex calculations (such as medication request period or dispense period
-calculation) need specific guidance and consideration. That guidance may make use of this function, but
-the focus of this function is on single element calculations where the semantics are unambiguous.
-If the input is a dateTime, the result a DateTime Interval beginning and ending on that dateTime.
-If the input is a Period, the result is a DateTime Interval.
-If the input is a Timing, an error is raised indicating a single interval cannot be computed from a Timing.
-If the input is an instant, the result is a DateTime Interval beginning and ending on that instant.
-If the input is a string, an error is raised indicating a single interval cannot be computed from a string.
-If the input is an Age, the result is a DateTime Interval beginning when the patient was the given Age,
-and ending immediately prior to when the patient was the given Age plus one year.
-If the input is a Range, the result is a DateTime Interval beginning when the patient was the Age given
-by the low end of the Range, and ending immediately prior to when the patient was the Age given by the
-high end of the Range plus one year.
-
-NOTE: Due to the
-complexity of determining a single interval from a Timing or String type, this function will throw a run-time exception if it is used
-with a Timing or String.
-@deprecated: This function is deprecated. Use the fluent function `toInterval()` instead
-*/
-define function ToInterval(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant, FHIR.string, FHIR.Age, FHIR.Range>):
-  case
-    when choice is FHIR.dateTime then
-      Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
-    when choice is FHIR.Period then
-      FHIRHelpers.ToInterval(choice as FHIR.Period)
-    when choice is FHIR.instant then
-      Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
-    when choice is FHIR.Age then
-      Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age),
-        FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age) + 1 year)
-    when choice is FHIR.Range then
-      Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).low),
-        FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).high) + 1 year)
-    when choice is FHIR.Timing then
-      Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a Timing value is not supported')
-    when choice is FHIR.string then
-      Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a String value is not supported')
-    else
-      null as Interval<DateTime>
-  end
 
 /*
 @description: Normalizes a value that is a choice of timing-valued types to an equivalent interval
@@ -186,32 +149,55 @@ define fluent function toInterval(choice Choice<FHIR.dateTime, FHIR.Period, FHIR
   end
 
 /*
-@description: Returns an interval representing the normalized Abatement of a given Condition resource.
-@comment: NOTE: Due to the complexity of determining an interval from a String, this function will throw
-a run-time exception if used with a Condition instance that has a String as the abatement value.
-@deprecated: This function is deprecated. Use the fluent function `abatementInterval()` instead.
+@description: Given an interval, return true if the interval has a starting boundary specified
+(i.e. the start of the interval is not null and not the minimum DateTime value)
 */
-define function ToAbatementInterval(condition Condition):
-  if condition.abatement is FHIR.dateTime then
-    Interval[FHIRHelpers.ToDateTime(condition.abatement as FHIR.dateTime), FHIRHelpers.ToDateTime(condition.abatement as FHIR.dateTime)]
-  else if condition.abatement is FHIR.Period then
-    FHIRHelpers.ToInterval(condition.abatement as FHIR.Period)
-  else if condition.abatement is FHIR.string then
-    Message(null as Interval<DateTime>, true, 'NOT_IMPLEMENTED', 'Error', 'Calculation of an interval from a String value is not supported')
-  else if condition.abatement is FHIR.Age then
-    Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age),
-      FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(condition.abatement as FHIR.Age) + 1 year)
-  else if condition.abatement is FHIR.Range then
-    Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((condition.abatement as FHIR.Range).low),
-      FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((condition.abatement as FHIR.Range).high) + 1 year)
-  else if condition.abatement is FHIR.boolean then
-    Interval[end of ToInterval(condition.onset), condition.recordedDate)
-  else 
-    null
+define fluent function hasStart(period Interval<DateTime>):
+  not ( start of period is null
+      or start of period = minimum DateTime
+  )
+
+/*
+@description: Given an interval, returns true if the interval has an ending boundary specified
+(i.e. the end of the interval is not null and not the maximum DateTime value)
+*/
+define fluent function hasEnd(period Interval<DateTime>):
+  not (
+    end of period is null
+      or end of period = maximum DateTime
+  )
+
+/*
+@description: Given an interval, returns the ending point if the interval has an ending boundary specified,
+otherwise, returns the starting point
+*/
+define fluent function latest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range> ):
+  (choice.toInterval()) period
+    return
+      if (period.hasEnd()) then end of period
+      else start of period
+
+/*
+@description: Given an interval, return the starting point if the interval has a starting boundary specified,
+otherwise, return the ending point
+*/
+define fluent function earliest(choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Age, FHIR.Range> ):
+  (choice.toInterval()) period
+    return
+      if (period.hasStart()) then start of period
+      else end of period
 
 /*
 @description: Returns an interval representing the normalized Abatement of a given Condition resource.
-@comment: NOTE: Due to the complexity of determining an interval from a String, this function will throw
+@comment: @comment: If the abatement element of the Condition is represented as a DateTime, the result
+is an interval beginning and ending on that DateTime.
+If the abatement is represented as a Quantity, the quantity is expected to be a calendar-duration and is interpreted as the age of the patient. The
+result is an interval from the date the patient turned that age to immediately before one year later.
+If the abatement is represented as a Quantity Interval, the quantities are expected to be calendar-durations and are interpreted as an age range during
+which the abatement occurred. The result is an interval from the date the patient turned the starting age of the quantity interval, and ending immediately
+before one year later than the date the patient turned the ending age of the quantity interval.
+
+NOTE: Due to the complexity of determining an interval from a String, this function will throw
 a run-time exception if used with a Condition instance that has a String as the abatement value.
 */
 define fluent function abatementInterval(condition Condition):
@@ -231,25 +217,6 @@ define fluent function abatementInterval(condition Condition):
     Interval[end of ToInterval(condition.onset), condition.recordedDate)
   else 
     null
-
-/*
-@description: Returns an interval representing the normalized prevalence period of a given Condition resource.
-@comment: Uses the ToInterval and ToAbatementInterval functions to determine the widest potential interval from
-onset to abatement as specified in the given Condition.
-@deprecated: This function is deprecated. Use the `prevalenceInterval()` fluent function instead
-*/
-define function ToPrevalenceInterval(condition Condition):
-if condition.clinicalStatus ~ "active"
-  or condition.clinicalStatus ~ "recurrence"
-  or condition.clinicalStatus ~ "relapse" then
-  Interval[start of ToInterval(condition.onset), end of ToAbatementInterval(condition)]
-else
-  (end of ToAbatementInterval(condition)) abatementDate
-    return 
-	  if abatementDate is null then
-        Interval[start of ToInterval(condition.onset), abatementDate)
-      else
-        Interval[start of ToInterval(condition.onset), abatementDate]
 
 /*
 @description: Returns an interval representing the normalized prevalence period of a given Condition resource.
@@ -302,24 +269,16 @@ define fluent function references(references List<FHIR.Reference>, resourceId St
   exists (references R where R.references(resourceId))
 
 /*
-@description: Returns any extensions defined on the given resource with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the
-CQL model info.
-@deprecated: This function is deprecated. Use the `extensions()` fluent function instead
+@description: Returns true if the given code is in the given codeList
+@comment: Returns true if the `code` is equivalent to any of the codes in the given `codeList`, false otherwise.
 */
-define function Extensions(domainResource DomainResource, url String):
-  domainResource.extension E
-    where E.url = url
-    return E
+define fluent function includesCode(codeList List<CodeableConcept>, code Coding):
+  exists (codeList C where C ~ code)
 
 /*
 @description: Returns any extensions defined on the given resource with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the
-CQL model info.
 */
-define fluent function extensions(domainResource DomainResource, url String):
+define fluent function exts(domainResource DomainResource, url String):
   domainResource.extension E
     where E.url = url
     return E
@@ -328,36 +287,14 @@ define fluent function extensions(domainResource DomainResource, url String):
 @description: Returns the single extension (if present) on the given resource with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
 is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `extension()` fluent function instead
 */
-define function Extension(domainResource DomainResource, url String):
-  singleton from "Extensions"(domainResource, url)
-
-/*
-@description: Returns the single extension (if present) on the given resource with the specified url.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-*/
-define fluent function extension(domainResource DomainResource, url String):
-  singleton from "Extensions"(domainResource, url)
+define fluent function ext(domainResource DomainResource, url String):
+  singleton from domainResource.exts(url)
 
 /*
 @description: Returns any extensions defined on the given element with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `extensions()` fluent function instead
 */
-define function Extensions(element Element, url String):
-  element.extension E
-    where E.url = url
-    return E
-
-/*
-@description: Returns any extensions defined on the given element with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-*/
-define fluent function extensions(element Element, url String):
+define fluent function exts(element Element, url String):
   element.extension E
     where E.url = url
     return E
@@ -366,38 +303,14 @@ define fluent function extensions(element Element, url String):
 @description: Returns the single extension (if present) on the given element with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
 is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `extension()` fluent function instead
 */
-define function Extension(element Element, url String):
-  singleton from Extensions(element, url)
-
-/*
-@description: Returns the single extension (if present) on the given element with the specified url.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-*/
-define fluent function extension(element Element, url String):
-  singleton from Extensions(element, url)
+define fluent function ext(element Element, url String):
+  singleton from element.exts(url)
 
 /*
 @description: Returns any modifier extensions defined on the given resource with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the
-CQL model info.
-@deprecated: This function is deprecated. Use the `modifierExtensions()` fluent function instead
 */
-define function ModifierExtensions(domainResource DomainResource, url String):
-  domainResource.modifierExtension E
-    where E.url = url
-    return E
-
-/*
-@description: Returns any modifier extensions defined on the given resource with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the
-CQL model info.
-*/
-define fluent function modifierExtensions(domainResource DomainResource, url String):
+define fluent function modifierExts(domainResource DomainResource, url String):
   domainResource.modifierExtension E
     where E.url = url
     return E
@@ -406,36 +319,14 @@ define fluent function modifierExtensions(domainResource DomainResource, url Str
 @description: Returns the single modifier extension (if present) on the given resource with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
 is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `modifierExtension()` fluent function instead
 */
-define function ModifierExtension(domainResource DomainResource, url String):
-  singleton from ModifierExtensions(domainResource, url)
-
-/*
-@description: Returns the single modifier extension (if present) on the given resource with the specified url.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-*/
-define fluent function modifierExtension(domainResource DomainResource, url String):
-  singleton from ModifierExtensions(domainResource, url)
+define fluent function modifierExt(domainResource DomainResource, url String):
+  singleton from domainResource.modifierExts(url)
 
 /*
 @description: Returns any modifier extensions defined on the given element with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `modifierExtensions()` fluent function instead
 */
-define function ModifierExtensions(element BackboneElement, url String):
-  element.modifierExtension E
-    where E.url = url
-    return E
-
-/*
-@description: Returns any modifier extensions defined on the given element with the specified url.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-*/
-define fluent function modifierExtensions(element BackboneElement, url String):
+define fluent function modifierExts(element BackboneElement, url String):
   element.modifierExtension E
     where E.url = url
     return E
@@ -444,167 +335,311 @@ define fluent function modifierExtensions(element BackboneElement, url String):
 @description: Returns the single modifier extension (if present) on the given element with the specified url.
 @comment: This function uses singleton from to ensure that a run-time exception is thrown if there
 is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `modifierExtension()` fluent function instead
 */
-define function ModifierExtension(element BackboneElement, url String):
-  singleton from ModifierExtensions(element, url)
+define fluent function modifierExt(element BackboneElement, url String):
+  singleton from element.modifierExts(url)
 
 /*
-@description: Returns the single modifier extension (if present) on the given element with the specified url.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+@description: Returns true if the given condition has a clinical status of active, recurrence, or relapse
 */
-define fluent function modifierExtension(element BackboneElement, url String):
-  singleton from ModifierExtensions(element, url)
+define fluent function isActive(condition FHIR.Condition):
+  condition.clinicalStatus ~ "active"
+    or condition.clinicalStatus ~ "recurrence"
+    or condition.clinicalStatus ~ "relapse"
+
+define fluent function active(conditions List<FHIR.Condition>):
+  conditions C
+    where C.clinicalStatus ~ "active"
+      or C.clinicalStatus ~ "recurrence"
+      or C.clinicalStatus ~ "relapse"
+
+define fluent function isAllergyActive(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-active"
+
+define fluent function allergyActive(allergyIntolerances List<FHIR.AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-active"
+
+define fluent function isAllergyInactive(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-inactive"
+
+define fluent function allergyInactive(allergyIntolerances List<FHIR.AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-inactive"
+
+define fluent function isAllergyResolved(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.clinicalStatus ~ "allergy-resolved"
+
+define fluent function allergyResolved(allergyIntolerances List<FHIR.AllergyIntolerance>):
+  allergyIntolerances A
+    where A.clinicalStatus ~ "allergy-resolved"
+
+define fluent function isAllergyConfirmed(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-confirmed"
+
+define fluent function allergyConfirmed(allergyIntolerances List<FHIR.AllergyIntolerance>):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-confirmed"
+
+define fluent function isAllergyUnconfirmed(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-unconfirmed"
+
+define fluent function allergyUnconfirmed(allergyIntolerances FHIR.AllergyIntolerance):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-unconfirmed"
+
+define fluent function isAllergyRefuted(allergyIntolerance FHIR.AllergyIntolerance):
+  allergyIntolerance.verificationStatus ~ "allergy-refuted"
+
+define fluent function allergyRefuted(allergyIntolerances FHIR.AllergyIntolerance):
+  allergyIntolerances A
+    where A.verificationStatus ~ "allergy-refuted"
 
 /*
-@description: Returns any base-FHIR extensions defined on the given resource with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `baseExtension()` fluent function instead
+@description: Returns true if the given condition has the given category
 */
-define function BaseExtensions(domainResource DomainResource, id String):
-  domainResource.extension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function hasCategory(condition FHIR.Condition, category Code):
+  exists (condition.category C
+    where C ~ category
+  )
 
 /*
-@description: Returns any base-FHIR extensions defined on the given resource with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
+@description: Returns true if the given condition is a problem list item.
 */
-define fluent function baseExtensions(domainResource DomainResource, id String):
-  domainResource.extension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isProblemListItem(condition FHIR.Condition):
+  exists (condition.category C
+    where C ~ "problem-list-item"
+  )
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given resource with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `baseExtension()` fluent function instead
+@description: Returns true if the given condition is an encounter diagnosis
 */
-define function BaseExtension(domainResource DomainResource, id String):
-  singleton from BaseExtensions(domainResource, id)
+define fluent function isEncounterDiagnosis(condition FHIR.Condition):
+  exists (condition.category C
+    where C ~ "encounter-diagnosis"
+  )
+
+define fluent function isUnconfirmed(condition FHIR.Condition):
+  condition.verificationStatus ~ "unconfirmed"
+
+define fluent function unconfirmed(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus ~ "unconfirmed"
+
+define fluent function isProvisional(condition FHIR.Condition):
+  condition.verificationStatus ~ "provisional"
+
+define fluent function provisional(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus ~ "provisional"
+
+define fluent function isDifferential(condition FHIR.Condition):
+  condition.verificationStatus ~ "differential"
+
+define fluent function differential(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus ~ "differential"
+
+define fluent function isConfirmed(condition FHIR.Condition):
+  condition.verificationStatus ~ "confirmed"
+
+define fluent function confirmed(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus ~ "confirmed"
+
+define fluent function isRefuted(condition FHIR.Condition):
+  condition.verificationStatus ~ "refuted"
+
+define fluent function refuted(conditions List<FHIR.Condition>):
+  conditions C
+    where C.verificationStatus ~ "refuted"
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given resource with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+@description: Returns true if the given observation has the given category
 */
-define fluent function baseExtension(domainResource DomainResource, id String):
-  singleton from BaseExtensions(domainResource, id)
+define fluent function hasCategory(observation FHIR.Observation, category Code):
+  exists (observation.category C
+    where C ~ category
+  )
 
 /*
-@description: Returns any base-FHIR extensions defined on the given element with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `baseExtensions()` fluent function instead
+@description: Returns true if the given observation is a social history observation
 */
-define function BaseExtensions(element Element, id String):
-  element.extension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isSocialHistory(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "social-history"
+  )
 
 /*
-@description: Returns any base-FHIR extensions defined on the given element with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
+@description: Returns true if the given observation is a vital sign
 */
-define fluent function baseExtensions(element Element, id String):
-  element.extension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isVitalSign(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "vital-signs"
+  )
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given element with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `baseExtension()` fluent function instead
+@description: Returns true if the given observation is an imaging observation
 */
-define function BaseExtension(element Element, id String):
-  singleton from BaseExtensions(element, id)
+define fluent function isImaging(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "imaging"
+  )
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given element with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+@description: Returns true if the given observation is a laboratory observation
 */
-define fluent function baseExtension(element Element, id String):
-  singleton from BaseExtensions(element, id)
+define fluent function isLaboratory(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "laboratory"
+  )
 
 /*
-@description: Returns any base-FHIR modifier extensions defined on the given resource with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `baseModifierExtensions()` fluent function instead
+@description: Returns true if the given observation is a procedure observation
 */
-define function BaseModifierExtensions(domainResource DomainResource, id String):
-  domainResource.modifierExtension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isProcedure(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "procedure"
+  )
 
 /*
-@description: Returns any base-FHIR modifier extensions defined on the given resource with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
+@description: Returns true if the given observation is a survey observation
 */
-define fluent function baseModifierExtensions(domainResource DomainResource, id String):
-  domainResource.modifierExtension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isSurvey(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "survey"
+  )
 
 /*
-@description: Returns the single base-FHIR modifier extension (if present) on the given resource with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `baseModifierExtension()` fluent function instead
+@description: Returns true if the given observation is an exam observation
 */
-define function BaseModifierExtension(domainResource DomainResource, id String):
-  singleton from BaseModifierExtensions(domainResource, id)
+define fluent function isExam(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "exam"
+  )
 
 /*
-@description: Returns the single base-FHIR modifier extension (if present) on the given resource with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+@description: Returns true if the given observation is a therapy observation
 */
-define fluent function baseModifierExtension(domainResource DomainResource, id String):
-  singleton from BaseModifierExtensions(domainResource, id)
+define fluent function isTherapy(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "therapy"
+  )
 
 /*
-@description: Returns any base-FHIR modifier extensions defined on the given element with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
-@deprecated: This function is deprecated. Use the `baseModifierExtensions()` fluent function instead
+@description: Returns true if the given observation is an activity observation
 */
-define function BaseModifierExtensions(element BackboneElement, id String):
-  element.modifierExtension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isActivity(observation FHIR.Observation):
+  exists (observation.category C
+    where C ~ "activity"
+  )
 
 /*
-@description: Returns any base-FHIR modifier extensions defined on the given element with the specified id.
-@comment: NOTE: Extensions are not the preferred approach, but are used as a way to access
-content that is defined by extensions but not yet surfaced in the CQL model info.
+@description: Returns true if the given observation has status
 */
-define fluent function baseModifierExtensions(element BackboneElement, id String):
-  element.modifierExtension E
-    where E.url = ('http://hl7.org/fhir/StructureDefinition/' + id)
-    return E
+define fluent function isResulted(observation FHIR.Observation):
+  observation.status ~ "observation-final".code
+    or observation.status ~ "observation-amended".code
+    or observation.status ~ "observation-corrected".code
+
+define fluent function resulted(observations List<FHIR.Observation>):
+  observations observation
+    where observation.status ~ "observation-final".code
+      or observation.status ~ "observation-amended".code
+      or observation.status ~ "observation-corrected".code
+
+define fluent function isFinal(observation FHIR.Observation):
+  observation.status ~ "observation-final".code
+
+define fluent function final(observations List<FHIR.Observation>):
+  observations observation
+    where observation.status ~ "observation-final".code
+
+define fluent function isAmended(observation FHIR.Observation):
+  observation.status ~ "observation-amended".code
+
+define fluent function amended(observations List<FHIR.Observation>):
+  observations observation
+    where observation.status ~ "observation-amended".code
+
+define fluent function isCorrected(observation FHIR.Observation):
+  observation.status ~ "observation-corrected".code
+
+define fluent function corrected(observations List<FHIR.Observation>):
+  observations observation
+    where observation.status ~ "observation-corrected".code
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given element with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
-@deprecated: This function is deprecated. Use the `baseModifierExtension()` fluent function instead
+@description: Returns true if the given MedicationRequest has a category of Community
 */
-define function BaseModifierExtension(element BackboneElement, id String):
-  singleton from BaseModifierExtensions(element, id)
+define fluent function isCommunity(medicationRequest MedicationRequest):
+  exists (medicationRequest.category C
+    where C ~ Community
+  )
 
 /*
-@description: Returns the single base-FHIR extension (if present) on the given element with the specified id.
-@comment: This function uses singleton from to ensure that a run-time exception is thrown if there
-is more than one extension on the given resource with the specified url.
+@description: Returns true if the given MedicationRequest has a category of Discharge
 */
-define fluent function baseModifierExtension(element BackboneElement, id String):
-  singleton from BaseModifierExtensions(element, id)
+define fluent function isDischarge(medicationRequest MedicationRequest):
+  exists (medicationRequest.category C
+    where C ~ Discharge
+  )
+
+/*
+@description: Returns true if the given MedicationRequest has the given category
+*/
+define fluent function hasCategory(medicationRequest MedicationRequest, category Code):
+  exists (medicationRequest.category C
+    where C ~ category
+  )
+
+/*
+@description: Returns the most recent Condition by recordedDate
+*/
+define fluent function mostRecent(conditions List<Condition>):
+  Last(
+    conditions C
+      sort by recordedDate
+  )
+
+/*
+@description: Returns the most recent Observation by issued
+*/
+define fluent function mostRecent(observations List<FHIR.Observation>):
+  Last(
+    observations O
+      sort by case when issued is DateTime then issued else issued.value end
+  )
+
+/*
+@description: Returns the most recent MedicationRequest by authoredOn
+*/
+define fluent function mostRecent(medicationRequests List<"MedicationRequest">):
+  Last(
+    medicationRequests MR
+      sort by authoredOn
+  )
+
+/*
+@description: Returns the most recent ServiceRequest by authoredOn
+*/
+define fluent function mostRecent(serviceRequests List<FHIR.ServiceRequest>):
+  Last(
+    serviceRequests SR
+      sort by authoredOn.value
+  )
+
+define function Email(contactPoints List<ContactPoint>):
+  singleton from (contactPoints P where P.system = 'email')
+
+define function Fax(contactPoints List<ContactPoint>):
+  singleton from (contactPoints P where P.system = 'fax')
+
+define function Mobile(contactPoints List<ContactPoint>):
+  singleton from (contactPoints P where P.use = 'mobile')
+
+define function Pager(contactPoints List<ContactPoint>):
+  singleton from (contactPoints P where P.system = 'pager')
+
+define function Work(contactPoints List<ContactPoint>):
+  singleton from (contactPoints P where P.use = 'work')
