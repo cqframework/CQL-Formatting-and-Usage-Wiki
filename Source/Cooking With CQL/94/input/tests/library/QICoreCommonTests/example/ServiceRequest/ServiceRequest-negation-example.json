@@ -1,0 +1,58 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "negation-example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: negation-example</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>priority</b>: urgent</p><p><b>doNotPerform</b>: true</p><p><b>code</b>: Excision of appendix (procedure) <span style=\"background: LightGoldenRodYellow\">(Details : {[not stated] code 'null' = 'null)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><p><b>occurrence</b>: Apr 5, 2013 12:00:00 AM</p><p><b>authoredOn</b>: Apr 4, 2013 12:00:00 AM</p><p><b>bodySite</b>: Appendix structure <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '66754008' = 'Appendix', given as 'Appendix structure'})</span></p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "416406003",
+            "display": "Procedure discontinued (situation)"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "priority": "urgent",
+  "doNotPerform": true,
+  "code": {
+    "coding": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-reference",
+            "valueUri": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1018.240"
+          }
+        ]
+      }
+    ],
+    "text": "Excision of appendix (procedure)"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "occurrenceDateTime": "2013-04-05",
+  "authoredOn": "2013-04-04",
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "66754008",
+          "display": "Appendix structure"
+        }
+      ]
+    }
+  ]
+}

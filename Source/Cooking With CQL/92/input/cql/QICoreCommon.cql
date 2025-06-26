@@ -5,7 +5,7 @@ library QICoreCommon version '5.0.000'
 
 using QICore version '7.0.0'
 
-include fhir.uv.cql.FHIRHelpers version '2.0.0' called FHIRHelpers
+include hl7.fhir.uv.cql.FHIRHelpers version '2.0.0' called FHIRHelpers
 
 codesystem "TaskCodeSystem": 'http://hl7.org/fhir/CodeSystem/task-code' 
 
