@@ -1,4 +1,6 @@
-Timezone and Precision Test Cases:
+This document discusses timezone and time precision testing for CQL logic. From the perspective of software developers of CQL authoring systems, this document discusses the capabilities that need to be present in a CQL authoring system. From the perspective of CQL logic developers (e.g. measure developers, decision-support rule authors, etc.,), this topic discusses the types of date/time calculations that are present in clinical logic, and what types of tests would typically be constructed to demonstrate that logic is behaving as expected.
+
+Although this list is not exhaustive, the following categories of date/time calculations are prevalent in clinical logic:
 
 1. Comparison calculations
 2. "Day Of" calculations
@@ -6,11 +8,9 @@ Timezone and Precision Test Cases:
 4. Boundary calculations
 5. Measure Period value
 
-For the purposes of testing measure logic, the following test cases must be possible to construct:
-
 # Comparison Calculations
 
-For comparison calculations, consider the example calculation using the timing phrase `starts on or before`
+Comparison calculations involve direct comparison of two date/time values. For comparison calculations, consider the example calculation using the timing phrase `starts on or before`
 
 ```cql
 define ProcedureStartsOnOrAfter:
@@ -44,9 +44,9 @@ The expectation is that an Encounter resource would be created with:
 }
 ```
 
-Consistent with expectations for FHIR data, if seconds are not provided they may be zero-filled.
+Consistent with expectations for FHIR data, if seconds are not provided they may be zero-filled. Note that milliseconds are not expected to be zero-filled, however. In other words, it should be possible for measure developers to provide time values with millisecond precision, but unless milliseconds are provided by the user, they should not be assumed.
 
-However, if the user enters the following value for the start of the encounter:
+In addition, if the user enters the following value for the start of the encounter:
 
 ```
 2026-01-01
@@ -154,8 +154,7 @@ define ProcedureWithin24Hours:
       such that P.performed.toInterval() starts 24 hours or less after start of E.period
 ```
 
-This is admittedly an edge case, but it is known to occur, and worth discussion about how we can best ensure cases such as these are handled correctly.
-
+This is admittedly an edge case, but it is known to occur, however, it is a behavior that can be (and is being) tested and demonstrated correct at the infrastructure level. As such, there is not currently a need to construct test cases that demonstrate this behavior.
 
 # Boundary Calculations
 
