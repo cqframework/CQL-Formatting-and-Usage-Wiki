@@ -19,29 +19,29 @@ Consider the example FHIR- and CQL-based CMS130FHIR for Colorectal Cancer Screen
 
 Broadly, the narrative is grouped into the following sections:
 
-* Metadata
-    * Identifiers, Versioning, Effective Period
+* Metadata ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1635))
+    * Identifiers, Versioning, Effective Period 
     * Contributors, Steward
     * Description, Rationale, Recommendation Statement
     * Copyrights and Disclaimers
     * References
     * Guidance
-* Groups (Rates)
+* Groups (Rates) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1725))
     * Basis
     * Scoring
     * Improvement Notation
     * Populations
     * Stratifiers
-* Supplemental Data
+* Supplemental Data ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1908))
 * Logic
-    * Primary Library (Link)
+    * Primary Library (Link) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1721))
     * Contents (Links to sections)
     * Population Criteria
         * Groups (Rates)
             * Population Criteria Definitions (CQL)
             * Stratifier Definitions (CQL)
-    * Logic Definitions (CQL)
-    * Terminology
-    * Dependencies
-    * Data Requirements
+    * Logic Definitions (CQL) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L116))
+    * Terminology ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L982))
+    * Dependencies ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L890))
+    * Data Requirements ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1199))
 
