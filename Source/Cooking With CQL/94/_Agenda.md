@@ -1,1 +1,6 @@
-1. Estimated Denominator Measures
+1. [CMS Connectathon Report](CMSConnectathonReport)
+2. [CQL R2 Ballot Review](CQL2BallotReview)
+3. [Measure Narrative Review](MeasureNarrativeReview)
+4. [Reference.type caveat](ReferenceTypeCaveat)
+5. [TimezoneTesting](TimezoneTesting)
+6. [Estimated Denominator Measures](EstimatedDenominator)
