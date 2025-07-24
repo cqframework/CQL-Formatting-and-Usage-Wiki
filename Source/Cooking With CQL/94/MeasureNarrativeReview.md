@@ -6,13 +6,16 @@ Broadly, measure specifications are made up of the following information:
 
 | Component | Description | FHIR Representation |
 |----|----|----|
-| **Metadata** | Identifiers, narrative description, supporting evidence, topics, governance, relationship to other artifacts, etc. | Measure |
-| **Structure** | The population criteria of the measure (i.e. initial population, numerator, denominator, etc) | Measure.group |
-| **Logic** | The conditions involved in building the criteria | Library |
+| **Metadata** | Identifiers, narrative description, supporting evidence, topics, governance, relationship to other artifacts, etc. | [Measure](https://hl7.org/fhir/R4/measure.html) |
+| **Structure** | The population criteria of the measure (i.e. initial population, numerator, denominator, etc) | [Measure.group](https://hl7.org/fhir/R4/measure-definitions.html#Measure.group) |
+| **Logic** | The conditions involved in building the criteria | [Library](https://hl7.org/fhir/R4/library.html) |
 
 Consider the example FHIR- and CQL-based CMS130FHIR for Colorectal Cancer Screening in the CMS 2025 Connectathon repository:
 
-https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html
+* [Measure](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json)
+* [Library](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/library/CMS130FHIRColorectalCancerScreening.json)
+* [CQL](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/cql/CMS130FHIRColorectalCancerScreening.cql)
+* [Narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html)
 
 Broadly, the narrative is grouped into the following sections:
 
