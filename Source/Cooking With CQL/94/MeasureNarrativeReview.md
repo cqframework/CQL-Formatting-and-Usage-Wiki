@@ -36,12 +36,12 @@ Broadly, the narrative is grouped into the following sections:
 * Logic
     * Primary Library (Link) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1721))
     * Contents (Links to sections)
-    * Population Criteria
+    * Population Criteria ([narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html#population-criteria))
         * Groups (Rates)
             * Population Criteria Definitions (CQL)
             * Stratifier Definitions (CQL)
-    * Logic Definitions (CQL) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L116))
-    * Terminology ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L982))
-    * Dependencies ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L890))
-    * Data Requirements ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1199))
+    * Logic Definitions (CQL) ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L116)) ([narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html#definitions))
+    * Terminology ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L982)) ([narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html#terminology))
+    * Dependencies ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L890)) ([narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html#dependencies))
+    * Data Requirements ([json](https://github.com/cqframework/ecqm-content-cms-2025/blob/master/input/resources/measure/CMS130FHIRColorectalCancerScreening.json#L1199)) ([narrative](https://build.fhir.org/ig/cqframework/ecqm-content-cms-2025/Measure-CMS130FHIRColorectalCancerScreening.html#data-requirements))
 
