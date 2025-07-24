@@ -24,6 +24,16 @@ define fluent function isNotAtProceduralHospitalLocation(encounter Encounter):
   )
 ```
 
+Alternatively, the getLocation() function could be used:
+
+```cql
+define fluent function isNotAtProceduralHospitalLocation(encounter Encounter):
+  not exists (
+    encounter.location EncounterLocation
+      where EncounterLocation.getLocation().type in "Procedural Hospital Locations"
+  )
+```
+
 In addition, as part of feedback about the use of this function, it was recommended that a direct-reference code be used, rather than a value set:
 
 ```cql
