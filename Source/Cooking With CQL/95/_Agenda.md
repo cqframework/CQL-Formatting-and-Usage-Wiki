@@ -1,7 +1,4 @@
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. [Connectathon 40 Report](Connectathon40Report.md)
+2. [CQL R2 Ballot Results](CQLR2BallotResults.md)
+3. [CT Scan Representation](CTScanRepresentation.md)
+4. [CQL US Review](CQLUSReview.md)
