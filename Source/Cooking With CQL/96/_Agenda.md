@@ -1,3 +1,8 @@
+Announcements
+1. January 2026 Ballots
+2. January 2026 Connectathon 41
+
+Agenda
 1. Age Stratifier Example:
     1. 1 week, 1 month, 1 year: How to characterize
 2. Value-based Stratifiers for non-subject-based measures
