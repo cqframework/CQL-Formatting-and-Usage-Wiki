@@ -4,29 +4,29 @@ This page documents proposed changes to the [Observation Patterns](https://build
 
 The USCoreCommon library defines functions and terminology declarations to support determining status of an observation:
 
-* [`isResulted()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isResulted,-%28observation%20FHIR): returns true if the status is `final`, `amended`, or `corrected`
-* [`isFinal()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isFinal,-%28observation%20FHIR): Returns true if the status is `final`
-* [`isAmended()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isAmended,-%28observation%20FHIR): Returns true if the status is `amended`
-* [`isCorrected()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isCorrected,-%28observation%20FHIR): Returns true if the status is `corrected`
+* [`isResulted()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isResulted,-%28observation%20FHIR): returns true if the status is `final`, `amended`, or `corrected`
+* [`isFinal()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isFinal,-%28observation%20FHIR): Returns true if the status is `final`
+* [`isAmended()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isAmended,-%28observation%20FHIR): Returns true if the status is `amended`
+* [`isCorrected()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isCorrected,-%28observation%20FHIR): Returns true if the status is `corrected`
 
 As well as for filtering lists of observations with a given status:
 
-* [`resulted()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,resulted,-%28observations%20List): returns Observations in the given list with a status is `final`, `amended`, or `corrected`
-* [`final()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,final,-%28observations%20List): Returns Observations in the given list with a status is `final`
-* [`amended()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,amended,-%28observations%20List): Returns Observations in the given list with a status is `amended`
-* [`corrected()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,corrected,-%28observations%20List): Returns Observations in the given list with a status is `corrected`
+* [`resulted()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,resulted,-%28observations%20List): returns Observations in the given list with a status is `final`, `amended`, or `corrected`
+* [`final()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,final,-%28observations%20List): Returns Observations in the given list with a status is `final`
+* [`amended()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,amended,-%28observations%20List): Returns Observations in the given list with a status is `amended`
+* [`corrected()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,corrected,-%28observations%20List): Returns Observations in the given list with a status is `corrected`
 
 #### Category
 
-* [`.hasCategory(Code)`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,hasCategory,-%28observation%20FHIR): Returns true if the given observation has the given category
-* [`.isSocialHistory()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isSocialHistory,-%28observation%20FHIR): Returns true if the given observation has a category of social history
-* [`.isVitalSign()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isVitalSign,-%28observation%20FHIR): Returns true if the given observation has a category of vital sign
-* [`.isImaging()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isImaging,-%28observation%20FHIR): Returns true if the given observation has a category of imaging
-* [`.isLaboratory()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isLaboratory,-%28observation%20FHIR): Returns true if the given observation has a category of laboratory
-* [`.isProcedure()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isProcedure,-%28observation%20FHIR): Returns true if the given observation has a category of procedure
-* [`.isSurvey()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isSurvey,-%28observation%20FHIR): Returns true if the given observation has a category of survey
-* [`.isExam()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isExam,-%28observation%20FHIR): Returns true if the given observation has a category of exam
-* [`.isActivity()`]({{site.data.fhir.ver.cql}}/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isActivity,-%28observation%20FHIR): Returns true if the given observation has a category of activity
+* [`.hasCategory(Code)`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,hasCategory,-%28observation%20FHIR): Returns true if the given observation has the given category
+* [`.isSocialHistory()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isSocialHistory,-%28observation%20FHIR): Returns true if the given observation has a category of social history
+* [`.isVitalSign()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isVitalSign,-%28observation%20FHIR): Returns true if the given observation has a category of vital sign
+* [`.isImaging()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isImaging,-%28observation%20FHIR): Returns true if the given observation has a category of imaging
+* [`.isLaboratory()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isLaboratory,-%28observation%20FHIR): Returns true if the given observation has a category of laboratory
+* [`.isProcedure()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isProcedure,-%28observation%20FHIR): Returns true if the given observation has a category of procedure
+* [`.isSurvey()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isSurvey,-%28observation%20FHIR): Returns true if the given observation has a category of survey
+* [`.isExam()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isExam,-%28observation%20FHIR): Returns true if the given observation has a category of exam
+* [`.isActivity()`](http://hl7.org/fhir/uv/cql/Library-FHIRCommon.html#:~:text=define%20fluent%20function-,isActivity,-%28observation%20FHIR): Returns true if the given observation has a category of activity
 
 #### Interpretation
 
