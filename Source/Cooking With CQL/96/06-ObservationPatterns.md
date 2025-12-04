@@ -32,22 +32,22 @@ As well as for filtering lists of observations with a given status:
 
 Note that the interpretation element of an observation may not be present, and may not be coded as expected. Care must be taken in the use of this element to ensure that data conforms with the expectations of the logic.
 
-* [`.positive()`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,positive,-%28observations%20List): Returns Observations in the given list that have an interpretation of positive
-* [`.negative()`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,negative,-%28observations%20List): Returns Observations in the given list that have an interpretation of negative
+* [`.positive()`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,positive,-%28observations%20List): Returns Observations in the given list that have an interpretation of positive
+* [`.negative()`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,negative,-%28observations%20List): Returns Observations in the given list that have an interpretation of negative
 
 #### Timings
 
-* [`.during(Encounter)`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,during,-%28observations%20List): Returns Observations in the given list that were issued during the given Encounter
-* [`.within(Quantity)`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,within,-%28observations%20List): Returns Observations in the given list that were issued within the given time duration before now
-* [`.consecutively()`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,consecutively,-%28observations%20List): Returns Observations consecutively by when they were issued
-* [`.consecutivelyFrom(Observation)`](Library-USCoreCommon.html#:~:text=define%20fluent%20function-,consecutivelyFrom,-%28observations%20List): Returns Observations consecutively by when they were issued, on or after when the given Observation was issued  
+* [`.during(Encounter)`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,during,-%28observations%20List): Returns Observations in the given list that were issued during the given Encounter
+* [`.within(Quantity)`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,within,-%28observations%20List): Returns Observations in the given list that were issued within the given time duration before now
+* [`.consecutively()`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,consecutively,-%28observations%20List): Returns Observations consecutively by when they were issued
+* [`.consecutivelyFrom(Observation)`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreCommon.html#:~:text=define%20fluent%20function-,consecutivelyFrom,-%28observations%20List): Returns Observations consecutively by when they were issued, on or after when the given Observation was issued  
 
 #### Observation Elements
 
 In addition, the USCoreElements library defines expressions for accessing the various USCore profiles, such as:
 
-* [`"All Laboratory Results"`](Library-USCoreElements.html#:~:text=observation%2Dlab%0A*/%0Adefine-,%22All%20Laboratory%20Results%22,-%3A%0A%20%20%5B%22LaboratoryResultObservationProfile)
-* [`"Resulted Laboratory Results"`](Library-USCoreElements.html#:~:text=%22Resulted%20Laboratory%20Results%22)
+* [`"All Laboratory Results"`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreElements.html#:~:text=observation%2Dlab%0A*/%0Adefine-,%22All%20Laboratory%20Results%22,-%3A%0A%20%20%5B%22LaboratoryResultObservationProfile)
+* [`"Resulted Laboratory Results"`](http://build.fhir.org/ig/HL7/us-cql-ig/Library-USCoreElements.html#:~:text=%22Resulted%20Laboratory%20Results%22)
 * `"Pediatric BMI for Age"`
 
 In general, the expressions to retrieve observations for a particular profile include the `.resulted()` function to ensure only final, amended, or corrected observations are returned.
