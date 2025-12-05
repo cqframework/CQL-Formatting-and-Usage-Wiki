@@ -54,9 +54,9 @@ In general, the expressions to retrieve observations for a particular profile in
 
 ### Examples
 
-#### Three Concurrent Negative Stick Tests
+#### Three Consecutive Negative Stick Tests
 
-This example illustrates logic for identifying three concurrent negative "stick tests":
+This example illustrates logic for identifying three consecutive negative "stick tests":
 
 ```cql
 define StickTest:
