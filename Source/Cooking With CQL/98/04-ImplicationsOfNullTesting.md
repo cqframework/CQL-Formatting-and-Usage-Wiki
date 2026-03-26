@@ -22,3 +22,10 @@ And the question then is, if this is appropriate for this case, is it a general 
 2. Adding the null test increases reading load, it's harder to think about the null test and then the rank filtering. This is especially true when the test is part of a larger expression.
 3. From an implementation perspective, there is potentially an additional operation being performed, which from a formal perspective is unnecessary (i.e. an optimizing engine could optimize that null test away, but for an engine that didn't do that it represents an additional instruction).
 
+And so the general answer to the question is no, null tests should not be included for all tests:
+
+```cql
+where Procedure.rank = 1
+```
+
+Recognizing that for elements that are nullable, this will exclude them from the result.
