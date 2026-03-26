@@ -1,0 +1,47 @@
+{
+  "resourceType": "DeviceRequest",
+  "id": "negation-example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: negation-example</p><p><b>status</b>: completed</p><p><b>intent</b>: original-order</p><p><b>code</b>: Venous Foot Pumps (VFP) value set <span style=\"background: LightGoldenRodYellow\">(Details : {[not stated] code 'null' = 'null)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>authoredOn</b>: Apr 5, 2016 1:20:00 PM</p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-doNotPerformReason",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "410534003",
+            "display": "Not indicated (qualifier value)"
+          }
+        ]
+      }
+    }
+  ],
+  "modifierExtension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/request-doNotPerform",
+      "valueBoolean": true
+    }
+  ],
+  "status": "completed",
+  "intent": "original-order",
+  "codeCodeableConcept": {
+    "coding": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-reference",
+            "valueUri": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113883.3.117.1.7.1.230"
+          }
+        ]
+      }
+    ],
+    "text": "Venous Foot Pumps (VFP) value set"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2016-04-05T09:20:00-04:00"
+}
