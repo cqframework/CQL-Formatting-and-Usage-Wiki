@@ -140,6 +140,8 @@ define "Bilateral Mastectomy Procedure":
 
 In addition, the possibility of derived profiles means that some logic can be simplified. For example, in QICore 6.0.0, ConditionEncounterDiagnosis and ConditionProblemHealthConcerns are separate types, whereas in QICore 6.0.0-derived, they both ultimately derive from Condition, allowing logic that needs to deal with both to be written at the Condition level, rather than the EncounterDiagnosis and ProblemHealthConcern level:
 
+6.0.0:
+
 ```cql
 define "Bilateral Mastectomy Diagnosis":
   ( ( [ConditionEncounterDiagnosis: "History of bilateral mastectomy"]
@@ -147,6 +149,8 @@ define "Bilateral Mastectomy Diagnosis":
   ).verified ( ) ) BilateralMastectomyHistory
     where BilateralMastectomyHistory.prevalenceInterval ( ) starts on or before end of "Measurement Period"
 ```
+
+6.0.0-derived:
 
 ```cql
 define "Bilateral Mastectomy Diagnosis":
