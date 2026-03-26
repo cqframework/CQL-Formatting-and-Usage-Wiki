@@ -150,7 +150,7 @@ define "Bilateral Mastectomy Diagnosis":
 
 ```cql
 define "Bilateral Mastectomy Diagnosis":
-  ( ( [Condition: "History of bilateral mastectomy"] ).verified ( ) ) BilateralMastectomyHistory
+  ( ( [FHIR.Condition: "History of bilateral mastectomy"] ).verified ( ) ) BilateralMastectomyHistory
     where BilateralMastectomyHistory.prevalenceInterval ( ) starts on or before end of "Measurement Period"
 ```
 
