@@ -1,0 +1,21 @@
+{
+    "resourceType": "Group",
+    "id": "AttributionCriteria",
+    "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/artifact-url",
+        "valueUri": "https://example.org/Group/AttributionCriteria"
+    }, { 
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "https://example.org/Library/Membership"
+    }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/characteristicExpression",
+        "valueExpression": {
+            "language": "text/cql-identifier",
+            "expression": "Membership Criteria"
+        }
+    }],
+    "active": true,
+    "type": "person",
+    "actual": false,
+    "name": "AttributionCriteria"
+}

@@ -1,0 +1,21 @@
+{
+    "resourceType": "Group",
+    "id": "HasImagingStudiesWithModality",
+    "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/artifact-url",
+        "valueUri": "https://example.org/Group/HasImagingStudiesWithModality"
+    }, { 
+        "url": "http://hl7.org/fhir/StructureDefinition/cqf-library",
+        "valueCanonical": "https://example.org/Library/Membership"
+    }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/characteristicExpression",
+        "valueExpression": {
+            "language": "text/cql-identifier",
+            "expression": "Has Imaging Studies With Modality"
+        }
+    }],
+    "active": true,
+    "type": "person",
+    "actual": false,
+    "name": "HasImagingStudiesWithModality"
+}
