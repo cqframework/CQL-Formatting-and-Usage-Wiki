@@ -79,3 +79,23 @@ which should evaluate to `null` and the encounter should _not_ be returned.
 
 So how the test behaves will be dependent on how the actual Interval value is being represented in the underlying data.
 
+We have confirmed that when a Diagnosis is entered with a null start and end in MADiE:
+
+![Diagnosis U/I](MADiEDiagnosisScreenShot.png)
+
+ the actual QDM representation that is sent to the engine is:
+
+```json
+{
+    "prevalencePeriod": {
+        "qdmDataType": "Interval",
+        "high": null,
+        "highClosed": true,
+        "low": null,
+        "lowClosed": true
+    }
+}
+```
+
+
+
