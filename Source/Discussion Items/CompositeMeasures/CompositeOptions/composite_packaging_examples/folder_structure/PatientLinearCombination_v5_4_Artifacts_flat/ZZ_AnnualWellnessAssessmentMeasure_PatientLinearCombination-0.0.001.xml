@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:a="urn:hl7-org:cql-annotations:r1">
+   <identifier id="ZZ_AnnualWellnessAssessmentMeasure_PatientLinearCombination" version="0.0.001"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="1" locator="3:1-3:23" localIdentifier="QDM" uri="urn:healthit-gov:qdm:v5_3" version="5.3"/>
+   </usings>
+   <includes>
+      <def localId="2" locator="5:1-5:91" localIdentifier="ScreeningForAlcoholMisuse" path="Test01_ScreeningForAlcoholMisuse" version="1.1.000"/>
+      <def localId="3" locator="7:1-7:85" localIdentifier="HypertensionAssessment" path="Test02_HypertensionAssessment" version="1.0.000"/>
+      <def localId="4" locator="9:1-9:89" localIdentifier="ScreeningForBreastCancer" path="Test03_ScreeningForBreastCancer" version="1.0.000"/>
+      <def localId="5" locator="11:1-11:97" localIdentifier="ScreeningForColorectalCancer" path="Test04_ScreeningForColorectalCancer" version="1.0.000"/>
+      <def localId="6" locator="13:1-13:85" localIdentifier="ScreeningForDepression" path="Test05_ScreeningForDepression" version="1.0.000"/>
+   </includes>
+   <valueSets>
+      <def localId="7" locator="16:1-16:68" name="ONC Administrative Sex" id="urn:oid:2.16.840.1.113762.1.4.1" accessLevel="Public"/>
+      <def localId="8" locator="17:1-17:53" name="Race" id="urn:oid:2.16.840.1.114222.4.11.836" accessLevel="Public"/>
+      <def localId="9" locator="18:1-18:58" name="Ethnicity" id="urn:oid:2.16.840.1.114222.4.11.837" accessLevel="Public"/>
+      <def localId="10" locator="19:1-19:55" name="Payer" id="urn:oid:2.16.840.1.114222.4.11.3591" accessLevel="Public"/>
+   </valueSets>
+   <statements>
+      <def locator="23:1-23:15" name="Patient" context="Patient">
+         <expression xsi:type="SingletonFrom">
+            <operand locator="23:1-23:15" xmlns:ns0="urn:healthit-gov:qdm:v5_3" dataType="ns0:Patient" templateId="Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="12" locator="25:1-26:50" name="SDE Ethnicity" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="12">
+               <a:s>define &quot;SDE Ethnicity&quot;:
+	</a:s>
+               <a:s r="11">
+                  <a:s>[&quot;Patient Characteristic Ethnicity&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Ethnicity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="11" locator="26:2-26:50" xmlns:ns1="urn:healthit-gov:qdm:v5_3" dataType="ns1:PatientCharacteristicEthnicity" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Ethnicity" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="14" locator="28:1-29:42" name="SDE Payer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="14">
+               <a:s>define &quot;SDE Payer&quot;:
+	</a:s>
+               <a:s r="13">
+                  <a:s>[&quot;Patient Characteristic Payer&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Payer&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="13" locator="29:2-29:42" xmlns:ns2="urn:healthit-gov:qdm:v5_3" dataType="ns2:PatientCharacteristicPayer" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Payer" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="16" locator="31:1-32:40" name="SDE Race" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="16">
+               <a:s>define &quot;SDE Race&quot;:
+	</a:s>
+               <a:s r="15">
+                  <a:s>[&quot;Patient Characteristic Race&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;Race&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="15" locator="32:2-32:40" xmlns:ns3="urn:healthit-gov:qdm:v5_3" dataType="ns3:PatientCharacteristicRace" codeProperty="code" xsi:type="Retrieve">
+            <codes name="Race" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="18" locator="34:1-35:57" name="SDE Sex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="18">
+               <a:s>define &quot;SDE Sex&quot;:
+	</a:s>
+               <a:s r="17">
+                  <a:s>[&quot;Patient Characteristic Sex&quot;: </a:s>
+                  <a:s>
+                     <a:s>&quot;ONC Administrative Sex&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="17" locator="35:2-35:57" xmlns:ns4="urn:healthit-gov:qdm:v5_3" dataType="ns4:PatientCharacteristicSex" codeProperty="code" xsi:type="Retrieve">
+            <codes name="ONC Administrative Sex" xsi:type="ValueSetRef"/>
+         </expression>
+      </def>
+      <def localId="79" locator="37:1-51:17" name="Denominator Score" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="79">
+               <a:s>define &quot;Denominator Score&quot;:
+	</a:s>
+               <a:s r="78">
+                  <a:s>if </a:s>
+                  <a:s r="27">
+                     <a:s r="20">
+                        <a:s r="19">
+                           <a:s>ScreeningForAlcoholMisuse</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="20">
+                           <a:s>&quot;Initial Population&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+		and </a:s>
+                     <a:s r="26">
+                        <a:s>( </a:s>
+                        <a:s r="26">
+                           <a:s r="22">
+                              <a:s r="21">
+                                 <a:s>ScreeningForAlcoholMisuse</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="22">
+                                 <a:s>&quot;Denominator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+				and </a:s>
+                           <a:s r="25">
+                              <a:s>not </a:s>
+                              <a:s r="24">
+                                 <a:s r="23">
+                                    <a:s>ScreeningForAlcoholMisuse</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="24">
+                                    <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+		)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> then 1 else </a:s>
+                  <a:s r="77">
+                     <a:s r="29">0 + </a:s>
+                     <a:s r="76">
+                        <a:s>if </a:s>
+                        <a:s r="34">
+                           <a:s r="31">
+                              <a:s r="30">
+                                 <a:s>HypertensionAssessment</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="31">
+                                 <a:s>&quot;Initial Population&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+		and </a:s>
+                           <a:s r="33">
+                              <a:s r="32">
+                                 <a:s>HypertensionAssessment</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="33">
+                                 <a:s>&quot;Denominator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 1 else </a:s>
+                        <a:s r="75">
+                           <a:s r="36">0 + </a:s>
+                           <a:s r="74">
+                              <a:s>if </a:s>
+                              <a:s r="45">
+                                 <a:s r="38">
+                                    <a:s r="37">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="38">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+		and </a:s>
+                                 <a:s r="44">
+                                    <a:s>( </a:s>
+                                    <a:s r="44">
+                                       <a:s r="40">
+                                          <a:s r="39">
+                                             <a:s>ScreeningForBreastCancer</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="40">
+                                             <a:s>&quot;Denominator&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+				and </a:s>
+                                       <a:s r="43">
+                                          <a:s>not </a:s>
+                                          <a:s r="42">
+                                             <a:s r="41">
+                                                <a:s>ScreeningForBreastCancer</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="42">
+                                                <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+		)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> then 1 else </a:s>
+                              <a:s r="73">
+                                 <a:s r="47">0 + </a:s>
+                                 <a:s r="72">
+                                    <a:s>if </a:s>
+                                    <a:s r="56">
+                                       <a:s r="49">
+                                          <a:s r="48">
+                                             <a:s>ScreeningForColorectalCancer</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="49">
+                                             <a:s>&quot;Initial Population&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+		and </a:s>
+                                       <a:s r="55">
+                                          <a:s>( </a:s>
+                                          <a:s r="55">
+                                             <a:s r="51">
+                                                <a:s r="50">
+                                                   <a:s>ScreeningForColorectalCancer</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="51">
+                                                   <a:s>&quot;Denominator&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+				and </a:s>
+                                             <a:s r="54">
+                                                <a:s>not </a:s>
+                                                <a:s r="53">
+                                                   <a:s r="52">
+                                                      <a:s>ScreeningForColorectalCancer</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="53">
+                                                      <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+		)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> then 1 else </a:s>
+                                    <a:s r="71">
+                                       <a:s r="58">0 + </a:s>
+                                       <a:s r="70">
+                                          <a:s>if </a:s>
+                                          <a:s r="67">
+                                             <a:s r="60">
+                                                <a:s r="59">
+                                                   <a:s>ScreeningForDepression</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="60">
+                                                   <a:s>&quot;Initial Population&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+		and </a:s>
+                                             <a:s r="66">
+                                                <a:s>( </a:s>
+                                                <a:s r="66">
+                                                   <a:s r="62">
+                                                      <a:s r="61">
+                                                         <a:s>ScreeningForDepression</a:s>
+                                                      </a:s>
+                                                      <a:s>.</a:s>
+                                                      <a:s r="62">
+                                                         <a:s>&quot;Denominator&quot;</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                   <a:s>
+				and </a:s>
+                                                   <a:s r="65">
+                                                      <a:s>not </a:s>
+                                                      <a:s r="64">
+                                                         <a:s r="63">
+                                                            <a:s>ScreeningForDepression</a:s>
+                                                         </a:s>
+                                                         <a:s>.</a:s>
+                                                         <a:s r="64">
+                                                            <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+		)</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> then 1 else 0</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="78" locator="38:2-51:17" xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand localId="27" locator="38:5-41:3" xsi:type="And">
+                  <operand localId="20" locator="38:5-38:50" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                  <operand localId="26" locator="39:7-41:3" xsi:type="And">
+                     <operand localId="22" locator="39:9-39:47" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <operand localId="25" locator="40:9-40:62" xsi:type="Not">
+                        <operand localId="24" locator="40:13-40:62" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+            </condition>
+            <then localId="28" locator="41:10" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            <else localId="77" locator="41:17-51:17" xsi:type="Add">
+               <operand localId="29" locator="41:17" valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <operand localId="76" locator="41:21-51:17" xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand localId="34" locator="41:24-42:42" xsi:type="And">
+                        <operand localId="31" locator="41:24-41:66" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                        <operand localId="33" locator="42:7-42:42" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                  </condition>
+                  <then localId="35" locator="42:49" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                  <else localId="75" locator="42:56-51:17" xsi:type="Add">
+                     <operand localId="36" locator="42:56" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <operand localId="74" locator="42:60-51:17" xsi:type="If">
+                        <condition asType="t:Boolean" xsi:type="As">
+                           <operand localId="45" locator="42:63-45:3" xsi:type="And">
+                              <operand localId="38" locator="42:63-42:107" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                              <operand localId="44" locator="43:7-45:3" xsi:type="And">
+                                 <operand localId="40" locator="43:9-43:46" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                                 <operand localId="43" locator="44:9-44:61" xsi:type="Not">
+                                    <operand localId="42" locator="44:13-44:61" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                                 </operand>
+                              </operand>
+                           </operand>
+                           <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                        </condition>
+                        <then localId="46" locator="45:10" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        <else localId="73" locator="45:17-51:17" xsi:type="Add">
+                           <operand localId="47" locator="45:17" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           <operand localId="72" locator="45:21-51:17" xsi:type="If">
+                              <condition asType="t:Boolean" xsi:type="As">
+                                 <operand localId="56" locator="45:24-48:3" xsi:type="And">
+                                    <operand localId="49" locator="45:24-45:72" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                    <operand localId="55" locator="46:7-48:3" xsi:type="And">
+                                       <operand localId="51" locator="46:9-46:50" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                       <operand localId="54" locator="47:9-47:65" xsi:type="Not">
+                                          <operand localId="53" locator="47:13-47:65" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                       </operand>
+                                    </operand>
+                                 </operand>
+                                 <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                              </condition>
+                              <then localId="57" locator="48:10" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                              <else localId="71" locator="48:17-51:17" xsi:type="Add">
+                                 <operand localId="58" locator="48:17" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 <operand localId="70" locator="48:21-51:17" xsi:type="If">
+                                    <condition asType="t:Boolean" xsi:type="As">
+                                       <operand localId="67" locator="48:24-51:3" xsi:type="And">
+                                          <operand localId="60" locator="48:24-48:66" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                          <operand localId="66" locator="49:7-51:3" xsi:type="And">
+                                             <operand localId="62" locator="49:9-49:44" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                             <operand localId="65" locator="50:9-50:59" xsi:type="Not">
+                                                <operand localId="64" locator="50:13-50:59" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                             </operand>
+                                          </operand>
+                                       </operand>
+                                       <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                                    </condition>
+                                    <then localId="68" locator="51:10" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                                    <else localId="69" locator="51:17" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                              </else>
+                           </operand>
+                        </else>
+                     </operand>
+                  </else>
+               </operand>
+            </else>
+         </expression>
+      </def>
+      <def localId="155" locator="53:1-72:54" name="Numerator Score" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="155">
+               <a:s>define &quot;Numerator Score&quot;:
+	</a:s>
+               <a:s r="154">
+                  <a:s>if </a:s>
+                  <a:s r="91">
+                     <a:s r="88">
+                        <a:s r="81">
+                           <a:s r="80">
+                              <a:s>ScreeningForAlcoholMisuse</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="81">
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+		and </a:s>
+                        <a:s r="87">
+                           <a:s>( </a:s>
+                           <a:s r="87">
+                              <a:s r="83">
+                                 <a:s r="82">
+                                    <a:s>ScreeningForAlcoholMisuse</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="83">
+                                    <a:s>&quot;Denominator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+				and </a:s>
+                              <a:s r="86">
+                                 <a:s>not </a:s>
+                                 <a:s r="85">
+                                    <a:s r="84">
+                                       <a:s>ScreeningForAlcoholMisuse</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="85">
+                                       <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+		)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+		and </a:s>
+                     <a:s r="90">
+                        <a:s r="89">
+                           <a:s>ScreeningForAlcoholMisuse</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="90">
+                           <a:s>&quot;Numerator&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> then 1 else </a:s>
+                  <a:s r="153">
+                     <a:s r="93">0 + </a:s>
+                     <a:s r="152">
+                        <a:s>if </a:s>
+                        <a:s r="101">
+                           <a:s r="98">
+                              <a:s r="95">
+                                 <a:s r="94">
+                                    <a:s>HypertensionAssessment</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="95">
+                                    <a:s>&quot;Initial Population&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+		and </a:s>
+                              <a:s r="97">
+                                 <a:s r="96">
+                                    <a:s>HypertensionAssessment</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="97">
+                                    <a:s>&quot;Denominator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+		and </a:s>
+                           <a:s r="100">
+                              <a:s r="99">
+                                 <a:s>HypertensionAssessment</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="100">
+                                 <a:s>&quot;Numerator&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> then 1 else </a:s>
+                        <a:s r="151">
+                           <a:s r="103">0 + </a:s>
+                           <a:s r="150">
+                              <a:s>if </a:s>
+                              <a:s r="115">
+                                 <a:s r="112">
+                                    <a:s r="105">
+                                       <a:s r="104">
+                                          <a:s>ScreeningForBreastCancer</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="105">
+                                          <a:s>&quot;Initial Population&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+		and </a:s>
+                                    <a:s r="111">
+                                       <a:s>( </a:s>
+                                       <a:s r="111">
+                                          <a:s r="107">
+                                             <a:s r="106">
+                                                <a:s>ScreeningForBreastCancer</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="107">
+                                                <a:s>&quot;Denominator&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+				and </a:s>
+                                          <a:s r="110">
+                                             <a:s>not </a:s>
+                                             <a:s r="109">
+                                                <a:s r="108">
+                                                   <a:s>ScreeningForBreastCancer</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="109">
+                                                   <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+		)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+		and </a:s>
+                                 <a:s r="114">
+                                    <a:s r="113">
+                                       <a:s>ScreeningForBreastCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="114">
+                                       <a:s>&quot;Numerator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> then 1 else </a:s>
+                              <a:s r="149">
+                                 <a:s r="117">0 + </a:s>
+                                 <a:s r="148">
+                                    <a:s>if </a:s>
+                                    <a:s r="129">
+                                       <a:s r="126">
+                                          <a:s r="119">
+                                             <a:s r="118">
+                                                <a:s>ScreeningForColorectalCancer</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="119">
+                                                <a:s>&quot;Initial Population&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+		and </a:s>
+                                          <a:s r="125">
+                                             <a:s>( </a:s>
+                                             <a:s r="125">
+                                                <a:s r="121">
+                                                   <a:s r="120">
+                                                      <a:s>ScreeningForColorectalCancer</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="121">
+                                                      <a:s>&quot;Denominator&quot;</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+				and </a:s>
+                                                <a:s r="124">
+                                                   <a:s>not </a:s>
+                                                   <a:s r="123">
+                                                      <a:s r="122">
+                                                         <a:s>ScreeningForColorectalCancer</a:s>
+                                                      </a:s>
+                                                      <a:s>.</a:s>
+                                                      <a:s r="123">
+                                                         <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+		)</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+		and </a:s>
+                                       <a:s r="128">
+                                          <a:s r="127">
+                                             <a:s>ScreeningForColorectalCancer</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="128">
+                                             <a:s>&quot;Numerator&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> then 1 else </a:s>
+                                    <a:s r="147">
+                                       <a:s r="131">0 + </a:s>
+                                       <a:s r="146">
+                                          <a:s>if </a:s>
+                                          <a:s r="143">
+                                             <a:s r="140">
+                                                <a:s r="133">
+                                                   <a:s r="132">
+                                                      <a:s>ScreeningForDepression</a:s>
+                                                   </a:s>
+                                                   <a:s>.</a:s>
+                                                   <a:s r="133">
+                                                      <a:s>&quot;Initial Population&quot;</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+		and </a:s>
+                                                <a:s r="139">
+                                                   <a:s>( </a:s>
+                                                   <a:s r="139">
+                                                      <a:s r="135">
+                                                         <a:s r="134">
+                                                            <a:s>ScreeningForDepression</a:s>
+                                                         </a:s>
+                                                         <a:s>.</a:s>
+                                                         <a:s r="135">
+                                                            <a:s>&quot;Denominator&quot;</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s>
+				and </a:s>
+                                                      <a:s r="138">
+                                                         <a:s>not </a:s>
+                                                         <a:s r="137">
+                                                            <a:s r="136">
+                                                               <a:s>ScreeningForDepression</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="137">
+                                                               <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                   <a:s>
+		)</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+		and </a:s>
+                                             <a:s r="142">
+                                                <a:s r="141">
+                                                   <a:s>ScreeningForDepression</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="142">
+                                                   <a:s>&quot;Numerator&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> then 1 else 0</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="154" locator="54:2-72:54" xsi:type="If">
+            <condition asType="t:Boolean" xsi:type="As">
+               <operand localId="91" locator="54:5-58:43" xsi:type="And">
+                  <operand localId="88" locator="54:5-57:3" xsi:type="And">
+                     <operand localId="81" locator="54:5-54:50" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                     <operand localId="87" locator="55:7-57:3" xsi:type="And">
+                        <operand localId="83" locator="55:9-55:47" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                        <operand localId="86" locator="56:9-56:62" xsi:type="Not">
+                           <operand localId="85" locator="56:13-56:62" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="90" locator="58:7-58:43" name="Numerator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+               </operand>
+               <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+            </condition>
+            <then localId="92" locator="58:50" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            <else localId="153" locator="58:57-72:54" xsi:type="Add">
+               <operand localId="93" locator="58:57" valueType="t:Integer" value="0" xsi:type="Literal"/>
+               <operand localId="152" locator="58:61-72:54" xsi:type="If">
+                  <condition asType="t:Boolean" xsi:type="As">
+                     <operand localId="101" locator="58:64-60:40" xsi:type="And">
+                        <operand localId="98" locator="58:64-59:42" xsi:type="And">
+                           <operand localId="95" locator="58:64-58:106" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                           <operand localId="97" locator="59:7-59:42" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                        </operand>
+                        <operand localId="100" locator="60:7-60:40" name="Numerator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                  </condition>
+                  <then localId="102" locator="60:47" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                  <else localId="151" locator="60:54-72:54" xsi:type="Add">
+                     <operand localId="103" locator="60:54" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                     <operand localId="150" locator="60:58-72:54" xsi:type="If">
+                        <condition asType="t:Boolean" xsi:type="As">
+                           <operand localId="115" locator="60:61-64:42" xsi:type="And">
+                              <operand localId="112" locator="60:61-63:3" xsi:type="And">
+                                 <operand localId="105" locator="60:61-60:105" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                                 <operand localId="111" locator="61:7-63:3" xsi:type="And">
+                                    <operand localId="107" locator="61:9-61:46" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                                    <operand localId="110" locator="62:9-62:61" xsi:type="Not">
+                                       <operand localId="109" locator="62:13-62:61" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                                    </operand>
+                                 </operand>
+                              </operand>
+                              <operand localId="114" locator="64:7-64:42" name="Numerator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                           </operand>
+                           <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                        </condition>
+                        <then localId="116" locator="64:49" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        <else localId="149" locator="64:56-72:54" xsi:type="Add">
+                           <operand localId="117" locator="64:56" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           <operand localId="148" locator="64:60-72:54" xsi:type="If">
+                              <condition asType="t:Boolean" xsi:type="As">
+                                 <operand localId="129" locator="64:63-68:46" xsi:type="And">
+                                    <operand localId="126" locator="64:63-67:3" xsi:type="And">
+                                       <operand localId="119" locator="64:63-64:111" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                       <operand localId="125" locator="65:7-67:3" xsi:type="And">
+                                          <operand localId="121" locator="65:9-65:50" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                          <operand localId="124" locator="66:9-66:65" xsi:type="Not">
+                                             <operand localId="123" locator="66:13-66:65" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                          </operand>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="128" locator="68:7-68:46" name="Numerator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                                 </operand>
+                                 <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                              </condition>
+                              <then localId="130" locator="68:53" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                              <else localId="147" locator="68:60-72:54" xsi:type="Add">
+                                 <operand localId="131" locator="68:60" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 <operand localId="146" locator="68:64-72:54" xsi:type="If">
+                                    <condition asType="t:Boolean" xsi:type="As">
+                                       <operand localId="143" locator="68:67-72:40" xsi:type="And">
+                                          <operand localId="140" locator="68:67-71:3" xsi:type="And">
+                                             <operand localId="133" locator="68:67-68:109" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                             <operand localId="139" locator="69:7-71:3" xsi:type="And">
+                                                <operand localId="135" locator="69:9-69:44" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                                <operand localId="138" locator="70:9-70:59" xsi:type="Not">
+                                                   <operand localId="137" locator="70:13-70:59" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                                </operand>
+                                             </operand>
+                                          </operand>
+                                          <operand localId="142" locator="72:7-72:40" name="Numerator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                                       </operand>
+                                       <asTypeSpecifier name="t:Boolean" xsi:type="NamedTypeSpecifier"/>
+                                    </condition>
+                                    <then localId="144" locator="72:47" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                                    <else localId="145" locator="72:54" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                                 </operand>
+                              </else>
+                           </operand>
+                        </else>
+                     </operand>
+                  </else>
+               </operand>
+            </else>
+         </expression>
+      </def>
+      <def localId="173" locator="74:1-80:49" name="Initial Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="173">
+               <a:s>define &quot;Initial Population&quot;:
+	</a:s>
+               <a:s r="172">
+                  <a:s>
+                     <a:s r="157">
+                        <a:s r="156">
+                           <a:s r="156">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> P</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="171">
+                     <a:s>where </a:s>
+                     <a:s r="171">
+                        <a:s r="168">
+                           <a:s r="165">
+                              <a:s r="162">
+                                 <a:s r="159">
+                                    <a:s r="158">
+                                       <a:s>ScreeningForAlcoholMisuse</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="159">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+			or </a:s>
+                                 <a:s r="161">
+                                    <a:s r="160">
+                                       <a:s>HypertensionAssessment</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="161">
+                                       <a:s>&quot;Initial Population&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+			or </a:s>
+                              <a:s r="164">
+                                 <a:s r="163">
+                                    <a:s>ScreeningForBreastCancer</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="164">
+                                    <a:s>&quot;Initial Population&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+			or </a:s>
+                           <a:s r="167">
+                              <a:s r="166">
+                                 <a:s>ScreeningForColorectalCancer</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="167">
+                                 <a:s>&quot;Initial Population&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+			or </a:s>
+                        <a:s r="170">
+                           <a:s r="169">
+                              <a:s>ScreeningForDepression</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="170">
+                              <a:s>&quot;Initial Population&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="172" locator="75:2-80:49" xsi:type="Query">
+            <source localId="157" locator="75:2-75:39" alias="P">
+               <expression localId="156" locator="75:2-75:37" xmlns:ns5="urn:healthit-gov:qdm:v5_3" dataType="ns5:PatientCharacteristicBirthdate" xsi:type="Retrieve"/>
+            </source>
+            <where localId="171" locator="76:3-80:49" xsi:type="Or">
+               <operand localId="168" locator="76:9-79:55" xsi:type="Or">
+                  <operand localId="165" locator="76:9-78:51" xsi:type="Or">
+                     <operand localId="162" locator="76:9-77:49" xsi:type="Or">
+                        <operand localId="159" locator="76:9-76:54" name="Initial Population" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                        <operand localId="161" locator="77:7-77:49" name="Initial Population" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="164" locator="78:7-78:51" name="Initial Population" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="167" locator="79:7-79:55" name="Initial Population" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="170" locator="80:7-80:49" name="Initial Population" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="207" locator="83:1-97:4" name="Measure Population" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>define &quot;Measure Population&quot;:
+	</a:s>
+               <a:s r="206">
+                  <a:s>
+                     <a:s r="175">
+                        <a:s r="174">
+                           <a:s r="174">
+                              <a:s>[&quot;Patient Characteristic Birthdate&quot;]</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> P</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+		</a:s>
+                  <a:s r="205">
+                     <a:s>where </a:s>
+                     <a:s r="205">
+                        <a:s r="198">
+                           <a:s r="191">
+                              <a:s r="184">
+                                 <a:s r="181">
+                                    <a:s>( </a:s>
+                                    <a:s r="181">
+                                       <a:s r="177">
+                                          <a:s r="176">
+                                             <a:s>ScreeningForAlcoholMisuse</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="177">
+                                             <a:s>&quot;Denominator&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+				and </a:s>
+                                       <a:s r="180">
+                                          <a:s>not </a:s>
+                                          <a:s r="179">
+                                             <a:s r="178">
+                                                <a:s>ScreeningForAlcoholMisuse</a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="179">
+                                                <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+		)</a:s>
+                                 </a:s>
+                                 <a:s>
+			or </a:s>
+                                 <a:s r="183">
+                                    <a:s r="182">
+                                       <a:s>HypertensionAssessment</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="183">
+                                       <a:s>&quot;Denominator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+			or </a:s>
+                              <a:s r="190">
+                                 <a:s>( </a:s>
+                                 <a:s r="190">
+                                    <a:s r="186">
+                                       <a:s r="185">
+                                          <a:s>ScreeningForBreastCancer</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="186">
+                                          <a:s>&quot;Denominator&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+					and </a:s>
+                                    <a:s r="189">
+                                       <a:s>not </a:s>
+                                       <a:s r="188">
+                                          <a:s r="187">
+                                             <a:s>ScreeningForBreastCancer</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="188">
+                                             <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+			)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+			or </a:s>
+                           <a:s r="197">
+                              <a:s>( </a:s>
+                              <a:s r="197">
+                                 <a:s r="193">
+                                    <a:s r="192">
+                                       <a:s>ScreeningForColorectalCancer</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="193">
+                                       <a:s>&quot;Denominator&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+					and </a:s>
+                                 <a:s r="196">
+                                    <a:s>not </a:s>
+                                    <a:s r="195">
+                                       <a:s r="194">
+                                          <a:s>ScreeningForColorectalCancer</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="195">
+                                          <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+			)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+			or </a:s>
+                        <a:s r="204">
+                           <a:s>( </a:s>
+                           <a:s r="204">
+                              <a:s r="200">
+                                 <a:s r="199">
+                                    <a:s>ScreeningForDepression</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="200">
+                                    <a:s>&quot;Denominator&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+					and </a:s>
+                              <a:s r="203">
+                                 <a:s>not </a:s>
+                                 <a:s r="202">
+                                    <a:s r="201">
+                                       <a:s>ScreeningForDepression</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="202">
+                                       <a:s>&quot;Denominator Exclusions&quot;</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+			)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="206" locator="84:2-97:4" xsi:type="Query">
+            <source localId="175" locator="84:2-84:39" alias="P">
+               <expression localId="174" locator="84:2-84:37" xmlns:ns6="urn:healthit-gov:qdm:v5_3" dataType="ns6:PatientCharacteristicBirthdate" xsi:type="Retrieve"/>
+            </source>
+            <where localId="205" locator="85:3-97:4" xsi:type="Or">
+               <operand localId="198" locator="85:9-94:4" xsi:type="Or">
+                  <operand localId="191" locator="85:9-91:4" xsi:type="Or">
+                     <operand localId="184" locator="85:9-88:42" xsi:type="Or">
+                        <operand localId="181" locator="85:9-87:3" xsi:type="And">
+                           <operand localId="177" locator="85:11-85:49" name="Denominator" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                           <operand localId="180" locator="86:9-86:62" xsi:type="Not">
+                              <operand localId="179" locator="86:13-86:62" name="Denominator Exclusions" libraryName="ScreeningForAlcoholMisuse" xsi:type="ExpressionRef"/>
+                           </operand>
+                        </operand>
+                        <operand localId="183" locator="88:7-88:42" name="Denominator" libraryName="HypertensionAssessment" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="190" locator="89:7-91:4" xsi:type="And">
+                        <operand localId="186" locator="89:9-89:46" name="Denominator" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                        <operand localId="189" locator="90:10-90:62" xsi:type="Not">
+                           <operand localId="188" locator="90:14-90:62" name="Denominator Exclusions" libraryName="ScreeningForBreastCancer" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="197" locator="92:7-94:4" xsi:type="And">
+                     <operand localId="193" locator="92:9-92:50" name="Denominator" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                     <operand localId="196" locator="93:10-93:66" xsi:type="Not">
+                        <operand localId="195" locator="93:14-93:66" name="Denominator Exclusions" libraryName="ScreeningForColorectalCancer" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="204" locator="95:7-97:4" xsi:type="And">
+                  <operand localId="200" locator="95:9-95:44" name="Denominator" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                  <operand localId="203" locator="96:10-96:60" xsi:type="Not">
+                     <operand localId="202" locator="96:14-96:60" name="Denominator Exclusions" libraryName="ScreeningForDepression" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="212" locator="99:1-100:40" name="Measure Observation" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>define function &quot;Measure Observation&quot;(PatientCharacteristic </a:s>
+               <a:s r="208">
+                  <a:s>&quot;Patient Characteristic Birthdate&quot;</a:s>
+               </a:s>
+               <a:s> ):
+	</a:s>
+               <a:s r="211">
+                  <a:s r="211">
+                     <a:s r="209">
+                        <a:s>&quot;Numerator Score&quot;</a:s>
+                     </a:s>
+                     <a:s> / </a:s>
+                     <a:s r="210">
+                        <a:s>&quot;Denominator Score&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="211" locator="100:2-100:40" xsi:type="Divide">
+            <operand xsi:type="ToDecimal">
+               <operand localId="209" locator="100:2-100:18" name="Numerator Score" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand xsi:type="ToDecimal">
+               <operand localId="210" locator="100:22-100:40" name="Denominator Score" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+         <operand name="PatientCharacteristic">
+            <operandTypeSpecifier localId="208" locator="99:61-99:94" xmlns:ns7="urn:healthit-gov:qdm:v5_3" name="ns7:PatientCharacteristicBirthdate" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+   </statements>
+</library>

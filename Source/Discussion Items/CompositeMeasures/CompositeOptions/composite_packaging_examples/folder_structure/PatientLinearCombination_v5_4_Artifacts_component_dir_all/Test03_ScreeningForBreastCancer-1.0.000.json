@@ -1,0 +1,1108 @@
+{
+   "library" : {
+      "identifier" : {
+         "id" : "Test03_ScreeningForBreastCancer",
+         "version" : "1.0.000"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "1",
+            "locator" : "3:1-3:23",
+            "localIdentifier" : "QDM",
+            "uri" : "urn:healthit-gov:qdm:v5_3",
+            "version" : "5.3"
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "2",
+            "locator" : "5:1-5:51",
+            "localIdentifier" : "AWV",
+            "path" : "AnnualWellness",
+            "version" : "1.0.000"
+         }, {
+            "localId" : "3",
+            "locator" : "7:1-7:64",
+            "localIdentifier" : "Global",
+            "path" : "MATGlobalCommonFunctions",
+            "version" : "2.0.000"
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "20",
+            "locator" : "24:1-24:49",
+            "name" : "Measurement Period",
+            "accessLevel" : "Public",
+            "parameterTypeSpecifier" : {
+               "localId" : "19",
+               "locator" : "24:32-24:49",
+               "type" : "IntervalTypeSpecifier",
+               "pointType" : {
+                  "localId" : "18",
+                  "locator" : "24:41-24:48",
+                  "name" : "{urn:hl7-org:elm-types:r1}DateTime",
+                  "type" : "NamedTypeSpecifier"
+               }
+            }
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "4",
+            "locator" : "9:1-9:87",
+            "name" : "LOINC:2.46",
+            "id" : "urn:oid:2.16.840.1.113883.6.1",
+            "version" : "urn:hl7:version:2.46",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "5",
+            "locator" : "10:1-10:97",
+            "name" : "SNOMEDCT:2016-03",
+            "id" : "urn:oid:2.16.840.1.113883.6.96",
+            "version" : "urn:hl7:version:2016-03",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "valueSets" : {
+         "def" : [ {
+            "localId" : "6",
+            "locator" : "12:1-12:68",
+            "name" : "ONC Administrative Sex",
+            "id" : "urn:oid:2.16.840.1.113762.1.4.1",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "7",
+            "locator" : "13:1-13:53",
+            "name" : "Race",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.836",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "8",
+            "locator" : "14:1-14:58",
+            "name" : "Ethnicity",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.837",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "9",
+            "locator" : "15:1-15:55",
+            "name" : "Payer",
+            "id" : "urn:oid:2.16.840.1.114222.4.11.3591",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "10",
+            "locator" : "16:1-16:74",
+            "name" : "Mammography",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.108.12.1018",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "11",
+            "locator" : "17:1-17:58",
+            "name" : "Female",
+            "id" : "urn:oid:2.16.840.1.113883.3.560.100.2",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "12",
+            "locator" : "18:1-18:83",
+            "name" : "Bilateral Mastectomy",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.198.12.1005",
+            "accessLevel" : "Public"
+         }, {
+            "localId" : "13",
+            "locator" : "19:1-19:84",
+            "name" : "Unilateral Mastectomy",
+            "id" : "urn:oid:2.16.840.1.113883.3.464.1003.198.12.1020",
+            "accessLevel" : "Public"
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "15",
+            "locator" : "21:1-21:66",
+            "name" : "Birthdate",
+            "id" : "21112-8",
+            "display" : "Birth date",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "14",
+               "locator" : "21:34-21:45",
+               "name" : "LOINC:2.46"
+            }
+         }, {
+            "localId" : "17",
+            "locator" : "22:1-22:63",
+            "name" : "Dead",
+            "id" : "419099009",
+            "display" : "Dead",
+            "accessLevel" : "Public",
+            "codeSystem" : {
+               "localId" : "16",
+               "locator" : "22:31-22:48",
+               "name" : "SNOMEDCT:2016-03"
+            }
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "locator" : "26:1-26:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "type" : "SingletonFrom",
+               "operand" : {
+                  "locator" : "26:1-26:15",
+                  "dataType" : "{urn:healthit-gov:qdm:v5_3}Patient",
+                  "templateId" : "Patient",
+                  "type" : "Retrieve"
+               }
+            }
+         }, {
+            "localId" : "22",
+            "locator" : "28:1-29:50",
+            "name" : "SDE Ethnicity",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "22",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Ethnicity\"",":\n\t" ]
+                  }, {
+                     "r" : "21",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Ethnicity\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Ethnicity\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "21",
+               "locator" : "29:2-29:50",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicEthnicity",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Ethnicity",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "24",
+            "locator" : "31:1-32:42",
+            "name" : "SDE Payer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "24",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Payer\"",":\n\t" ]
+                  }, {
+                     "r" : "23",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Payer\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Payer\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "23",
+               "locator" : "32:2-32:42",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicPayer",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Payer",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "26",
+            "locator" : "34:1-35:40",
+            "name" : "SDE Race",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "26",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Race\"",":\n\t" ]
+                  }, {
+                     "r" : "25",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Race\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"Race\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "25",
+               "locator" : "35:2-35:40",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicRace",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "Race",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "28",
+            "locator" : "37:1-38:57",
+            "name" : "SDE Sex",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "28",
+                  "s" : [ {
+                     "value" : [ "define ","\"SDE Sex\"",":\n\t" ]
+                  }, {
+                     "r" : "27",
+                     "s" : [ {
+                        "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "\"ONC Administrative Sex\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "]" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "27",
+               "locator" : "38:2-38:57",
+               "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+               "codeProperty" : "code",
+               "type" : "Retrieve",
+               "codes" : {
+                  "name" : "ONC Administrative Sex",
+                  "type" : "ValueSetRef"
+               }
+            }
+         }, {
+            "localId" : "32",
+            "locator" : "40:1-41:44",
+            "name" : "Initial Population",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "32",
+                  "s" : [ {
+                     "value" : [ "define ","\"Initial Population\"",":\n\t" ]
+                  }, {
+                     "r" : "31",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "30",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "30",
+                           "s" : [ {
+                              "r" : "29",
+                              "s" : [ {
+                                 "value" : [ "AWV" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "30",
+                              "s" : [ {
+                                 "value" : [ "\"Annual Wellness Encounters\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " )" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "31",
+               "locator" : "41:2-41:44",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "30",
+                  "locator" : "41:9-41:44",
+                  "name" : "Annual Wellness Encounters",
+                  "libraryName" : "AWV",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "48",
+            "locator" : "43:1-47:2",
+            "name" : "Denominator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "48",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator\"",":\n\t" ]
+                  }, {
+                     "r" : "47",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "46",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "46",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "34",
+                                 "s" : [ {
+                                    "r" : "33",
+                                    "s" : [ {
+                                       "r" : "33",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Patient Characteristic Birthdate\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Birthdate\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","BirthDate" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "45",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "45",
+                                 "s" : [ {
+                                    "r" : "42",
+                                    "s" : [ {
+                                       "r" : "40",
+                                       "s" : [ {
+                                          "r" : "35",
+                                          "s" : [ {
+                                             "value" : [ "Global" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "40",
+                                          "s" : [ {
+                                             "value" : [ "\"CalendarAgeInYearsAt\"","(" ]
+                                          }, {
+                                             "r" : "37",
+                                             "s" : [ {
+                                                "r" : "36",
+                                                "s" : [ {
+                                                   "value" : [ "BirthDate" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "37",
+                                                "s" : [ {
+                                                   "value" : [ "birthDatetime" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ", " ]
+                                          }, {
+                                             "r" : "39",
+                                             "s" : [ {
+                                                "value" : [ "start of " ]
+                                             }, {
+                                                "r" : "38",
+                                                "s" : [ {
+                                                   "value" : [ "\"Measurement Period\"" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ ")" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "<"," ","75" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\tand " ]
+                                 }, {
+                                    "r" : "44",
+                                    "s" : [ {
+                                       "value" : [ "exists " ]
+                                    }, {
+                                       "r" : "43",
+                                       "s" : [ {
+                                          "value" : [ "( " ]
+                                       }, {
+                                          "r" : "43",
+                                          "s" : [ {
+                                             "value" : [ "[","\"Patient Characteristic Sex\"",": " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "\"Female\"" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " )" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "47",
+               "locator" : "44:2-47:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "46",
+                  "locator" : "44:9-47:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "34",
+                     "locator" : "44:11-44:69",
+                     "alias" : "BirthDate",
+                     "expression" : {
+                        "localId" : "33",
+                        "locator" : "44:11-44:59",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicBirthdate",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "type" : "ToList",
+                           "operand" : {
+                              "name" : "Birthdate",
+                              "type" : "CodeRef"
+                           }
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "45",
+                     "locator" : "45:4-46:59",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "42",
+                        "locator" : "45:10-45:98",
+                        "type" : "Less",
+                        "operand" : [ {
+                           "localId" : "40",
+                           "locator" : "45:10-45:94",
+                           "name" : "CalendarAgeInYearsAt",
+                           "libraryName" : "Global",
+                           "type" : "FunctionRef",
+                           "operand" : [ {
+                              "localId" : "37",
+                              "locator" : "45:40-45:62",
+                              "path" : "birthDatetime",
+                              "scope" : "BirthDate",
+                              "type" : "Property"
+                           }, {
+                              "localId" : "39",
+                              "locator" : "45:65-45:93",
+                              "type" : "Start",
+                              "operand" : {
+                                 "localId" : "38",
+                                 "locator" : "45:74-45:93",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }, {
+                           "localId" : "41",
+                           "locator" : "45:97-45:98",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "75",
+                           "type" : "Literal"
+                        } ]
+                     }, {
+                        "localId" : "44",
+                        "locator" : "46:9-46:59",
+                        "type" : "Exists",
+                        "operand" : {
+                           "localId" : "43",
+                           "locator" : "46:16-46:59",
+                           "dataType" : "{urn:healthit-gov:qdm:v5_3}PatientCharacteristicSex",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Female",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "63",
+            "locator" : "49:1-53:2",
+            "name" : "Numerator",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "63",
+                  "s" : [ {
+                     "value" : [ "define ","\"Numerator\"",":\n\t" ]
+                  }, {
+                     "r" : "62",
+                     "s" : [ {
+                        "value" : [ "exists " ]
+                     }, {
+                        "r" : "61",
+                        "s" : [ {
+                           "value" : [ "( " ]
+                        }, {
+                           "r" : "61",
+                           "s" : [ {
+                              "s" : [ {
+                                 "r" : "50",
+                                 "s" : [ {
+                                    "r" : "49",
+                                    "s" : [ {
+                                       "r" : "49",
+                                       "s" : [ {
+                                          "value" : [ "[","\"Diagnostic Study, Performed\"",": " ]
+                                       }, {
+                                          "s" : [ {
+                                             "value" : [ "\"Mammography\"" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "]" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " ","Mammogram" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t\t" ]
+                           }, {
+                              "r" : "60",
+                              "s" : [ {
+                                 "value" : [ "where " ]
+                              }, {
+                                 "r" : "60",
+                                 "s" : [ {
+                                    "r" : "53",
+                                    "s" : [ {
+                                       "r" : "52",
+                                       "s" : [ {
+                                          "r" : "51",
+                                          "s" : [ {
+                                             "value" : [ "Mammogram" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "52",
+                                          "s" : [ {
+                                             "value" : [ "result" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " is not null" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n\t\t\t\tand " ]
+                                 }, {
+                                    "r" : "59",
+                                    "s" : [ {
+                                       "r" : "55",
+                                       "s" : [ {
+                                          "r" : "54",
+                                          "s" : [ {
+                                             "value" : [ "Mammogram" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "55",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "59",
+                                       "s" : [ {
+                                          "value" : [ "ends " ]
+                                       }, {
+                                          "r" : "58",
+                                          "s" : [ {
+                                             "value" : [ "26 ","months" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " or less on or before" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " " ]
+                                    }, {
+                                       "r" : "57",
+                                       "s" : [ {
+                                          "value" : [ "end of " ]
+                                       }, {
+                                          "r" : "56",
+                                          "s" : [ {
+                                             "value" : [ "\"Measurement Period\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n\t)" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "62",
+               "locator" : "50:2-53:2",
+               "type" : "Exists",
+               "operand" : {
+                  "localId" : "61",
+                  "locator" : "50:9-53:2",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "50",
+                     "locator" : "50:11-50:66",
+                     "alias" : "Mammogram",
+                     "expression" : {
+                        "localId" : "49",
+                        "locator" : "50:11-50:56",
+                        "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveDiagnosticStudyPerformed",
+                        "templateId" : "PositiveDiagnosticStudyPerformed",
+                        "codeProperty" : "code",
+                        "type" : "Retrieve",
+                        "codes" : {
+                           "name" : "Mammography",
+                           "type" : "ValueSetRef"
+                        }
+                     }
+                  } ],
+                  "relationship" : [ ],
+                  "where" : {
+                     "localId" : "60",
+                     "locator" : "51:4-52:96",
+                     "type" : "And",
+                     "operand" : [ {
+                        "localId" : "53",
+                        "locator" : "51:10-51:37",
+                        "type" : "Not",
+                        "operand" : {
+                           "locator" : "51:10-51:37",
+                           "type" : "IsNull",
+                           "operand" : {
+                              "localId" : "52",
+                              "locator" : "51:10-51:25",
+                              "path" : "result",
+                              "scope" : "Mammogram",
+                              "type" : "Property"
+                           }
+                        }
+                     }, {
+                        "localId" : "59",
+                        "locator" : "52:9-52:96",
+                        "type" : "In",
+                        "operand" : [ {
+                           "locator" : "52:34-52:37",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "55",
+                              "locator" : "52:9-52:32",
+                              "path" : "relevantPeriod",
+                              "scope" : "Mammogram",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "locator" : "52:39-52:55",
+                           "lowClosed" : true,
+                           "highClosed" : true,
+                           "type" : "Interval",
+                           "low" : {
+                              "locator" : "52:70-52:96",
+                              "type" : "Subtract",
+                              "operand" : [ {
+                                 "localId" : "57",
+                                 "locator" : "52:70-52:96",
+                                 "type" : "End",
+                                 "operand" : {
+                                    "localId" : "56",
+                                    "locator" : "52:77-52:96",
+                                    "name" : "Measurement Period",
+                                    "type" : "ParameterRef"
+                                 }
+                              }, {
+                                 "localId" : "58",
+                                 "locator" : "52:39-52:47",
+                                 "value" : 26,
+                                 "unit" : "months",
+                                 "type" : "Quantity"
+                              } ]
+                           },
+                           "high" : {
+                              "localId" : "57",
+                              "locator" : "52:70-52:96",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "56",
+                                 "locator" : "52:77-52:96",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           }
+                        } ]
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "85",
+            "locator" : "55:1-61:6",
+            "name" : "Denominator Exclusions",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "85",
+                  "s" : [ {
+                     "value" : [ "define ","\"Denominator Exclusions\"",":\n\t" ]
+                  }, {
+                     "r" : "84",
+                     "s" : [ {
+                        "r" : "72",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "71",
+                           "s" : [ {
+                              "value" : [ "( " ]
+                           }, {
+                              "r" : "71",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "65",
+                                    "s" : [ {
+                                       "r" : "64",
+                                       "s" : [ {
+                                          "r" : "64",
+                                          "s" : [ {
+                                             "value" : [ "[","\"Procedure, Performed\"",": " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "\"Bilateral Mastectomy\"" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","Bilateral" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t\t" ]
+                              }, {
+                                 "r" : "70",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "70",
+                                    "s" : [ {
+                                       "r" : "67",
+                                       "s" : [ {
+                                          "r" : "66",
+                                          "s" : [ {
+                                             "value" : [ "Bilateral" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "67",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","ends on or before"," " ]
+                                    }, {
+                                       "r" : "69",
+                                       "s" : [ {
+                                          "value" : [ "end of " ]
+                                       }, {
+                                          "r" : "68",
+                                          "s" : [ {
+                                             "value" : [ "\"Measurement Period\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t)" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t\tor " ]
+                     }, {
+                        "r" : "83",
+                        "s" : [ {
+                           "r" : "81",
+                           "s" : [ {
+                              "value" : [ "Count","(" ]
+                           }, {
+                              "r" : "80",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "r" : "74",
+                                    "s" : [ {
+                                       "r" : "73",
+                                       "s" : [ {
+                                          "r" : "73",
+                                          "s" : [ {
+                                             "value" : [ "[","\"Procedure, Performed\"",": " ]
+                                          }, {
+                                             "s" : [ {
+                                                "value" : [ "\"Unilateral Mastectomy\"" ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "]" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","Unilateral" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n\t\t\t\t" ]
+                              }, {
+                                 "r" : "79",
+                                 "s" : [ {
+                                    "value" : [ "where " ]
+                                 }, {
+                                    "r" : "79",
+                                    "s" : [ {
+                                       "r" : "76",
+                                       "s" : [ {
+                                          "r" : "75",
+                                          "s" : [ {
+                                             "value" : [ "Unilateral" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "76",
+                                          "s" : [ {
+                                             "value" : [ "relevantPeriod" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " ","ends on or before"," " ]
+                                    }, {
+                                       "r" : "78",
+                                       "s" : [ {
+                                          "value" : [ "end of " ]
+                                       }, {
+                                          "r" : "77",
+                                          "s" : [ {
+                                             "value" : [ "\"Measurement Period\"" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n\t\t)" ]
+                           } ]
+                        }, {
+                           "value" : [ "="," ","2" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "84",
+               "locator" : "56:2-61:6",
+               "type" : "Or",
+               "operand" : [ {
+                  "localId" : "72",
+                  "locator" : "56:2-58:2",
+                  "type" : "Exists",
+                  "operand" : {
+                     "localId" : "71",
+                     "locator" : "56:9-58:2",
+                     "type" : "Query",
+                     "source" : [ {
+                        "localId" : "65",
+                        "locator" : "56:11-56:68",
+                        "alias" : "Bilateral",
+                        "expression" : {
+                           "localId" : "64",
+                           "locator" : "56:11-56:58",
+                           "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveProcedurePerformed",
+                           "templateId" : "PositiveProcedurePerformed",
+                           "codeProperty" : "code",
+                           "type" : "Retrieve",
+                           "codes" : {
+                              "name" : "Bilateral Mastectomy",
+                              "type" : "ValueSetRef"
+                           }
+                        }
+                     } ],
+                     "relationship" : [ ],
+                     "where" : {
+                        "localId" : "70",
+                        "locator" : "57:4-57:79",
+                        "type" : "SameOrBefore",
+                        "operand" : [ {
+                           "locator" : "57:35-57:38",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "67",
+                              "locator" : "57:10-57:33",
+                              "path" : "relevantPeriod",
+                              "scope" : "Bilateral",
+                              "type" : "Property"
+                           }
+                        }, {
+                           "localId" : "69",
+                           "locator" : "57:53-57:79",
+                           "type" : "End",
+                           "operand" : {
+                              "localId" : "68",
+                              "locator" : "57:60-57:79",
+                              "name" : "Measurement Period",
+                              "type" : "ParameterRef"
+                           }
+                        } ]
+                     }
+                  }
+               }, {
+                  "localId" : "83",
+                  "locator" : "59:6-61:6",
+                  "type" : "Equal",
+                  "operand" : [ {
+                     "localId" : "81",
+                     "locator" : "59:6-61:3",
+                     "type" : "Count",
+                     "source" : {
+                        "localId" : "80",
+                        "locator" : "59:12-60:81",
+                        "type" : "Query",
+                        "source" : [ {
+                           "localId" : "74",
+                           "locator" : "59:12-59:71",
+                           "alias" : "Unilateral",
+                           "expression" : {
+                              "localId" : "73",
+                              "locator" : "59:12-59:60",
+                              "dataType" : "{urn:healthit-gov:qdm:v5_3}PositiveProcedurePerformed",
+                              "templateId" : "PositiveProcedurePerformed",
+                              "codeProperty" : "code",
+                              "type" : "Retrieve",
+                              "codes" : {
+                                 "name" : "Unilateral Mastectomy",
+                                 "type" : "ValueSetRef"
+                              }
+                           }
+                        } ],
+                        "relationship" : [ ],
+                        "where" : {
+                           "localId" : "79",
+                           "locator" : "60:5-60:81",
+                           "type" : "SameOrBefore",
+                           "operand" : [ {
+                              "locator" : "60:37-60:40",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "76",
+                                 "locator" : "60:11-60:35",
+                                 "path" : "relevantPeriod",
+                                 "scope" : "Unilateral",
+                                 "type" : "Property"
+                              }
+                           }, {
+                              "localId" : "78",
+                              "locator" : "60:55-60:81",
+                              "type" : "End",
+                              "operand" : {
+                                 "localId" : "77",
+                                 "locator" : "60:62-60:81",
+                                 "name" : "Measurement Period",
+                                 "type" : "ParameterRef"
+                              }
+                           } ]
+                        }
+                     }
+                  }, {
+                     "localId" : "82",
+                     "locator" : "61:6",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                     "value" : "2",
+                     "type" : "Literal"
+                  } ]
+               } ]
+            }
+         } ]
+      }
+   }
+}

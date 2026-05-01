@@ -244,3 +244,4 @@ define fluent function ageInYears(patient Patient):
 ```
 
 > These changes are proposed for inclusion in the US CQL IG: (https://jira.hl7.org/browse/FHIR-53458)
+
