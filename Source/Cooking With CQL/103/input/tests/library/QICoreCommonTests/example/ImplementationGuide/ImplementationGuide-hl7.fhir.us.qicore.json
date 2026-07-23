@@ -1,0 +1,2053 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "hl7.fhir.us.qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>QICore</h2><p>The official URL for this implementation guide is: </p><pre>http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore</pre><div><p>The QICore Implementation Guide defines a set of FHIR profiles with extensions and bindings needed to create interoperable, quality-focused applications. The profiles in this implementation guide derive from and extend the <a href=\"http://hl7.org/fhir/us/core\">US Core</a> profiles to provide a common foundation for building, sharing, and evaluating knowledge artifacts across quality improvement efforts in the US Realm.</p>\n</div></div>"
+  },
+  "url": "http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore",
+  "version": "4.0.0",
+  "name": "QICore",
+  "title": "QI-Core Implementation Guide",
+  "status": "draft",
+  "experimental": false,
+  "date": "2020-03-24T21:02:44+00:00",
+  "publisher": "Clinical Quality Improvement WG",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.org/special/committees/CQI"
+        }
+      ]
+    }
+  ],
+  "description": "The QICore Implementation Guide defines a set of FHIR profiles with extensions and bindings needed to create interoperable, quality-focused applications. The profiles in this implementation guide derive from and extend the [US Core](http://hl7.org/fhir/us/core) profiles to provide a common foundation for building, sharing, and evaluating knowledge artifacts across quality improvement efforts in the US Realm.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "packageId": "hl7.fhir.us.qicore",
+  "license": "CC0-1.0",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "uri": "http://hl7.org/fhir/us/core",
+      "packageId": "hl7.fhir.us.core",
+      "version": "3.1.0"
+    }
+  ],
+  "definition": {
+    "grouping": [
+      {
+        "id": "careplan-profile-spreadsheet.xml",
+        "name": "QICoreCarePlan"
+      },
+      {
+        "id": "careteam-profile-spreadsheet.xml",
+        "name": "QICoreCareTeam"
+      }
+    ],
+    "resource": [
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "AdverseEvent"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "AdverseEvent-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "AdverseEvent/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "AllergyIntolerance"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "AllergyIntolerance-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "AllergyIntolerance/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "AllergyIntolerance"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "AllergyIntolerance-example-refuted.html"
+          }
+        ],
+        "reference": {
+          "reference": "AllergyIntolerance/example-refuted"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "BodyStructure"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "BodyStructure-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "BodyStructure/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CarePlan"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CarePlan-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "CarePlan/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careplan"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CareTeam"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CareTeam-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "CareTeam/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-careteam"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Claim"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Claim-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Claim/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Communication"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Communication-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Communication/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Communication"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Communication-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Communication/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-communicationnotdone"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CommunicationRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CommunicationRequest-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "CommunicationRequest/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Condition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Condition-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Condition/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Condition"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Condition-appendicitis-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Condition/appendicitis-example"
+        }
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Coverage"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Coverage-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Coverage/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Device"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Device-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Device/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DeviceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DeviceRequest-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "DeviceRequest/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicerequest"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DeviceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DeviceRequest-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "DeviceRequest/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-devicenotrequested"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DeviceUseStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DeviceUseStatement-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "DeviceUseStatement/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DiagnosticReport"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DiagnosticReport-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "DiagnosticReport/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-lab"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "DiagnosticReport"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "DiagnosticReport-note-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "DiagnosticReport/note-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-diagnosticreport-note"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Encounter"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Encounter-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Encounter/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "FamilyMemberHistory"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "FamilyMemberHistory-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "FamilyMemberHistory/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Flag"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Flag-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Flag/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Goal"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Goal-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Goal/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ImagingStudy"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ImagingStudy-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ImagingStudy/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-imagingstudy"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Immunization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Immunization-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Immunization/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Immunization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Immunization-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Immunization/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-immunizationnotdone"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ImmunizationEvaluation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ImmunizationEvaluation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ImmunizationEvaluation/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ImmunizationRecommendation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ImmunizationRecommendation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ImmunizationRecommendation/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Location"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Location-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Location/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Medication"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Medication-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Medication/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationAdministration"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationAdministration-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationAdministration/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationAdministration"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationAdministration-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationAdministration/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-mednotadministered"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationDispense"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationDispense-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationDispense/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationDispense"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationDispense-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationDispense/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotdispensed"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationRequest-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationRequest/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationRequest-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationRequest/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-medicationnotrequested"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "MedicationStatement"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "MedicationStatement-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "MedicationStatement/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "NutritionOrder"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "NutritionOrder-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "NutritionOrder/example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-nutritionorder"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Observation"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Observation-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Observation/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observationcancelled"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Organization"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Organization-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Organization/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Patient"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Patient-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Patient/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Practitioner"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Practitioner-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Practitioner/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "PractitionerRole"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "PractitionerRole-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "PractitionerRole/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Procedure"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Procedure-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Procedure/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Procedure"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Procedure-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Procedure/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-procedurenotdone"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-appropriateness-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/appropriateness-example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-negation-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/negation-example"
+        },
+        "exampleCanonical": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicenotrequested"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-referral-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/referral-example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ServiceRequest"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ServiceRequest-elective-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "ServiceRequest/elective-example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "RelatedPerson"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "RelatedPerson-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "RelatedPerson/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Specimen"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Specimen-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Specimen/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Substance"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Substance-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Substance/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "Task"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "Task-example.html"
+          }
+        ],
+        "reference": {
+          "reference": "Task/example"
+        },
+        "exampleBoolean": true
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CodeSystem-appropriateness-score.html"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/appropriateness-score"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CodeSystem-communication-medium.html"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/communication-medium"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "CodeSystem"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "CodeSystem-diagnosticorder-precondition.html"
+          }
+        ],
+        "reference": {
+          "reference": "CodeSystem/diagnosticorder-precondition"
+        },
+        "exampleBoolean": false
+      },
+      
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-appropriateness-score.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-appropriateness-score"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-bodystructure-precoordinated.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-bodystructure-precoordinated"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-goal-reason-rejected.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-goal-reason-rejected"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-medication-dose-type.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-medication-dose-type"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-negation-reason.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-negation-reason"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-patient-disability.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-patient-disability"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-priority.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-priority"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "ValueSet"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "ValueSet-qicore-procedure-type.html"
+          }
+        ],
+        "reference": {
+          "reference": "ValueSet/qicore-procedure-type"
+        },
+        "exampleBoolean": false
+      },
+ 
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-adverseevent.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-adverseevent"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-allergyintolerance.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-allergyintolerance"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-bodystructure.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-bodystructure"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-claim.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-claim"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-communication.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-communication"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-communicationnotdone.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-communicationnotdone"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-communicationrequest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-communicationrequest"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-condition.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-condition"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-coverage.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-coverage"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-device.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-device"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-devicenotrequested.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-devicenotrequested"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-devicerequest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-devicerequest"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-deviceusestatement.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-deviceusestatement"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-diagnosticreport-lab.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-diagnosticreport-lab"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-diagnosticreport-note.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-diagnosticreport-note"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-encounter.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-encounter"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-familymemberhistory.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-familymemberhistory"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-flag.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-flag"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-goal.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-goal"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-imagingstudy.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-imagingstudy"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-immunization.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-immunization"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-immunizationnotdone.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-immunizationnotdone"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-immunizationevaluation.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-immunizationevaluation"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-immunizationrec.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-immunizationrec"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-location.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-location"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medication.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medication"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationadministration.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationadministration"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-mednotadministered.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-mednotadministered"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationdispense.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationdispense"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationnotdispensed.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationnotdispensed"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationnotrequested.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationnotrequested"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationrequest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationrequest"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-medicationstatement.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-medicationstatement"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-nutritionorder.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-nutritionorder"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-observation.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-observation"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-observationcancelled.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-observationcancelled"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-organization.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-organization"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-patient.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-patient"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-practitioner.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-practitioner"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-practitionerrole.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-practitionerrole"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-procedure.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-procedure"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-procedurenotdone.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-procedurenotdone"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-relatedperson.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-relatedperson"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-servicenotrequested.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-servicenotrequested"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-servicerequest.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-servicerequest"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-specimen.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-specimen"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-substance.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-substance"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-task.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-task"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-encounter-procedure.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-encounter-procedure"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-encounter-diagnosisPresentOnAdmission.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-encounter-diagnosisPresentOnAdmission"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-doNotPerformReason.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-doNotPerformReason"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-servicerequest-appropriatenessScore.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-servicerequest-appropriatenessScore"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-notDone.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-notDone"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-notDoneReason.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-notDoneReason"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-isElective.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-isElective"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:extension"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-recorded.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-recorded"
+        },
+        "exampleBoolean": false
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-careplan.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-careplan"
+        },
+        "name": "QICoreCarePlan",
+        "description": "Defines constraints and extensions on the CarePlan resource for the minimal set of data to query and retrieve a patient's Care Plan.",
+        "groupingId": "careplan-profile-spreadsheet.xml"
+      },
+      {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString": "StructureDefinition:resource"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+            "valueUri": "StructureDefinition-qicore-careteam.html"
+          }
+        ],
+        "reference": {
+          "reference": "StructureDefinition/qicore-careteam"
+        },
+        "name": "QICoreCareTeam",
+        "description": "Profile of CareTeam for decision support/quality metrics. Defines the core set of elements and extensions for quality rule and measure authors.",
+        "groupingId": "careteam-profile-spreadsheet.xml"
+      }
+    ]
+  }
+}

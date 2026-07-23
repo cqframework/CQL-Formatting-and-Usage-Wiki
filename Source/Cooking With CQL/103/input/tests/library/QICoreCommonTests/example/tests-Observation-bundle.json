@@ -1,0 +1,2881 @@
+{
+  "resourceType": "Bundle",
+  "id": "tests-Observation-bundle",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "blood-glucose",
+      "meta": {
+        "versionId": "1165",
+        "lastUpdated": "2016-03-09T15:29:58.328+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-glucose</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Glucose Bld-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2339-0' = 'Glucose [Mass/volume] in Blood', given as 'Glucose Bld-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 76.0 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>40.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>109.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2339-0",
+          "display": "Glucose Bld-mCnc"
+        } ],
+        "text": "Glucose Bld-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 76.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 40.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 109.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/blood-glucose/_history/1165"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "blood-pressure",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-pressure</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Blood pressure systolic and diastolic <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '85354-9' = 'Blood pressure panel with all children optional', given as 'Blood pressure panel with all children optional'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8480-6' = 'Systolic blood pressure', given as 'Systolic blood pressure'})</span></p><p><b>value</b>: 109 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8462-4' = 'Diastolic blood pressure', given as 'Diastolic blood pressure'})</span></p><p><b>value</b>: 44 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p></blockquote></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "85354-9",
+          "display": "Blood pressure panel with all children optional"
+        } ],
+        "text": "Blood pressure systolic and diastolic"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "Systolic blood pressure"
+          } ],
+          "text": "Systolic blood pressure"
+        },
+        "valueQuantity": {
+          "value": 109,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          } ],
+          "text": "Diastolic blood pressure"
+        },
+        "valueQuantity": {
+          "value": 44,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/blood-pressure"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "bmi",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: bmi</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: BMI <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '39156-5' = 'Body mass index (BMI) [Ratio]', given as 'Body mass index (BMI) [Ratio]'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 16.2 kg/m2<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code kg/m2 = 'kg/m2')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "39156-5",
+          "display": "Body mass index (BMI) [Ratio]"
+        } ],
+        "text": "BMI"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 16.2,
+        "unit": "kg/m2",
+        "system": "http://unitsofmeasure.org",
+        "code": "kg/m2"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/bmi"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "bp-data-absent",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: bp-data-absent</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Blood pressure systolic and diastolic <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '85354-9' = 'Blood pressure panel with all children optional', given as 'Blood pressure panel with all children optional'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: <a href=\"Encounter-1036.html\">Generated Summary: id: 1036; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span></a></p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8480-6' = 'Systolic blood pressure', given as 'Systolic blood pressure'})</span></p><p><b>value</b>: 109 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8462-4' = 'Diastolic blood pressure', given as 'Diastolic blood pressure'})</span></p><p><b>dataAbsentReason</b>: Unknown <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/data-absent-reason code 'unknown' = 'Unknown', given as 'Unknown'})</span></p></blockquote></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "85354-9",
+          "display": "Blood pressure panel with all children optional"
+        } ],
+        "text": "Blood pressure systolic and diastolic"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "reference": "Encounter/1036"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "Systolic blood pressure"
+          } ],
+          "text": "Systolic blood pressure"
+        },
+        "valueQuantity": {
+          "value": 109,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        }
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          } ],
+          "text": "Diastolic blood pressure"
+        },
+        "dataAbsentReason": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+            "code": "unknown",
+            "display": "Unknown"
+          } ],
+          "text": "Unknown"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/bp-data-absent"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "bun",
+      "meta": {
+        "versionId": "1237",
+        "lastUpdated": "2016-03-09T15:29:58.597+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: bun</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: BUN SerPl-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '3094-0' = 'Urea nitrogen [Mass/volume] in Serum or Plasma', given as 'BUN SerPl-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 10.0 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>5.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>20.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "3094-0",
+          "display": "BUN SerPl-mCnc"
+        } ],
+        "text": "BUN SerPl-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 10.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 5.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 20.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/bun/_history/1237"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "erythrocytes",
+      "meta": {
+        "versionId": "1189",
+        "lastUpdated": "2016-03-09T15:29:58.419+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: erythrocytes</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: RBC # Bld Auto <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '789-8' = 'Erythrocytes [#/volume] in Blood by Automated count', given as 'RBC # Bld Auto'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 4.58 10*6/uL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>4.1 10*6/uL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code 10*6/uL = '10*6/uL')</span></td><td>6.1 10*6/uL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code 10*6/uL = '10*6/uL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "789-8",
+          "display": "RBC # Bld Auto"
+        } ],
+        "text": "RBC # Bld Auto"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 4.58,
+        "unit": "10*6/uL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 4.1,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        },
+        "high": {
+          "value": 6.1,
+          "unit": "10*6/uL",
+          "system": "http://unitsofmeasure.org",
+          "code": "10*6/uL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/erythrocytes/_history/1189"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "example",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Hemoglobin [Mass/volume] in Venous blood <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '30350-3' = 'Hemoglobin [Mass/volume] in Venous blood', given as 'Hemoglobin [Mass/volume] in Venous blood'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><p><b>effective</b>: Apr 2, 2013 9:30:10 AM --&gt; Apr 5, 2013 9:30:10 AM</p><p><b>issued</b>: Apr 3, 2013 2:30:10 PM</p><p><b>value</b>: 7.2 g/dl<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code g/dL = 'g/dL')</span></p><p><b>interpretation</b>: Below low normal <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/v2-0078 code 'L' = 'Low', given as 'Low'})</span></p><p><b>bodySite</b>: Superficial forearm vein <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '308046002' = 'Superficial forearm vein', given as 'Superficial forearm vein'})</span></p><p><b>method</b>: Injection to forearm <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '120220003' = 'Injection to forearm', given as 'Injection to forearm'})</span></p><p><b>specimen</b>: <a href=\"Specimen-example.html\">Generated Summary: id: example; <span title=\"Codes: {http://snomed.info/sct 122555007}\">Venous blood specimen</span>; receivedTime: Mar 4, 2011 7:03:00 AM</a></p><p><b>derivedFrom</b>: <a href=\"Observation-example.html\">Generated Summary: id: example; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span>; <span title=\"Codes: {http://loinc.org 30350-3}\">Hemoglobin [Mass/volume] in Venous blood</span>; effective: Apr 2, 2013 9:30:10 AM --&gt; Apr 5, 2013 9:30:10 AM; issued: Apr 3, 2013 2:30:10 PM; 7.2 g/dl; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/v2-0078 L}\">Below low normal</span>; <span title=\"Codes: {http://snomed.info/sct 308046002}\">Superficial forearm vein</span>; <span title=\"Codes: {http://snomed.info/sct 120220003}\">Injection to forearm</span></a></p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8480-6' = 'Systolic blood pressure', given as 'Systolic blood pressure'}; {SNOMED CT code '271649006' = 'Systolic blood pressure', given as 'Systolic blood pressure'}; {http://acme.org/devices/clinical-codes code 'bp-s' = 'bp-s', given as 'Systolic Blood pressure'})</span></p><p><b>value</b>: 107 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p><p><b>interpretation</b>: Normal <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/v2-0078 code 'N' = 'Normal', given as 'normal'})</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8462-4' = 'Diastolic blood pressure', given as 'Diastolic blood pressure'})</span></p><p><b>value</b>: 60 mmHg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mm[Hg] = 'mm[Hg]')</span></p><p><b>interpretation</b>: Below low normal <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/v2-0078 code 'L' = 'Low', given as 'low'})</span></p></blockquote></div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/StructureDefinition/observation-bodyPosition",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "33586001",
+            "display": "Sitting position (finding)"
+          } ]
+        }
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/observation-delta",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "1250004",
+            "display": "Decreased (qualifier value)"
+          } ]
+        }
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "30350-3",
+          "display": "Hemoglobin [Mass/volume] in Venous blood"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "encounter": {
+        "reference": "Encounter/example"
+      },
+      "effectivePeriod": {
+        "start": "2013-04-02T10:30:10+01:00",
+        "end": "2013-04-05T10:30:10+01:00"
+      },
+      "issued": "2013-04-03T15:30:10+01:00",
+      "valueQuantity": {
+        "value": 7.2,
+        "unit": "g/dl",
+        "system": "http://unitsofmeasure.org",
+        "code": "g/dL"
+      },
+      "interpretation": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0078",
+          "code": "L",
+          "display": "Low"
+        } ],
+        "text": "Below low normal"
+      } ],
+      "bodySite": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "308046002",
+          "display": "Superficial forearm vein"
+        } ]
+      },
+      "method": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "120220003",
+          "display": "Injection to forearm"
+        } ]
+      },
+      "specimen": {
+        "reference": "Specimen/example"
+      },
+      "derivedFrom": [ {
+        "reference": "Observation/example"
+      } ],
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "Systolic blood pressure"
+          }, {
+            "system": "http://snomed.info/sct",
+            "code": "271649006",
+            "display": "Systolic blood pressure"
+          }, {
+            "system": "http://acme.org/devices/clinical-codes",
+            "code": "bp-s",
+            "display": "Systolic Blood pressure"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 107,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        },
+        "interpretation": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0078",
+            "code": "N",
+            "display": "normal"
+          } ],
+          "text": "Normal"
+        } ]
+      }, {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          } ]
+        },
+        "valueQuantity": {
+          "value": 60,
+          "unit": "mmHg",
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]"
+        },
+        "interpretation": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0078",
+            "code": "L",
+            "display": "low"
+          } ],
+          "text": "Below low normal"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "head-circumference",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: head-circumference</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: head_circumference <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8287-5' = 'Head Occipital-frontal circumference by Tape measure', given as 'Head Occipital-frontal circumference by Tape measure'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy V Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: <a href=\"Encounter-1036.html\">Generated Summary: id: 1036; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span></a></p><p><b>effective</b>: 12/08/2010 12:00:00 AM</p><p><b>value</b>: 51.2 cm<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code cm = 'cm')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8287-5",
+          "display": "Head Occipital-frontal circumference by Tape measure"
+        } ],
+        "text": "head_circumference"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy V Shaw"
+      },
+      "encounter": {
+        "reference": "Encounter/1036"
+      },
+      "effectiveDateTime": "2010-08-12",
+      "valueQuantity": {
+        "value": 51.2,
+        "unit": "cm",
+        "system": "http://unitsofmeasure.org",
+        "code": "cm"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/head-circumference"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "heart-rate",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: heart-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: heart_rate <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8867-4' = 'Heart rate', given as 'Heart Rate'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 44.0 {beats}/min<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code {beats}/min = '{beats}/min')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8867-4",
+          "display": "Heart Rate"
+        } ],
+        "text": "heart_rate"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 44.0,
+        "unit": "{beats}/min",
+        "system": "http://unitsofmeasure.org",
+        "code": "{beats}/min"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/heart-rate"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "height",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: height</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: height <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8302-2' = 'Body height', given as 'Body height'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 111.506 cm<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code cm = 'cm')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8302-2",
+          "display": "Body height"
+        } ],
+        "text": "height"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 111.506,
+        "unit": "cm",
+        "system": "http://unitsofmeasure.org",
+        "code": "cm"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/height"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "hemoglobin",
+      "meta": {
+        "versionId": "1046",
+        "lastUpdated": "2016-03-09T15:29:57.818+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: hemoglobin</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Hgb Bld-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '718-7' = 'Hemoglobin [Mass/volume] in Blood', given as 'Hgb Bld-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 17.0 g/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>16.5 g/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code g/dL = 'g/dL')</span></td><td>21.5 g/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code g/dL = 'g/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "718-7",
+          "display": "Hgb Bld-mCnc"
+        } ],
+        "text": "Hgb Bld-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 17.0,
+        "unit": "g/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 16.5,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "high": {
+          "value": 21.5,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/hemoglobin/_history/1046"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "length",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: length</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: length <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8306-3' = 'Body height --lying', given as 'Body height --lying'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 25 cm<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code cm = 'cm')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8306-3",
+          "display": "Body height --lying"
+        } ],
+        "text": "length"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 25,
+        "unit": "cm",
+        "system": "http://unitsofmeasure.org",
+        "code": "cm"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/length"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "mchc",
+      "meta": {
+        "versionId": "879",
+        "lastUpdated": "2016-03-09T15:29:57.124+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: mchc</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: MCHC RBC Auto-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '786-4' = 'MCHC [Mass/volume] by Automated count', given as 'MCHC RBC Auto-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 34.7 g/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>30.0 g/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code g/dL = 'g/dL')</span></td><td>34.0 g/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code g/dL = 'g/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "786-4",
+          "display": "MCHC RBC Auto-mCnc"
+        } ],
+        "text": "MCHC RBC Auto-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 34.7,
+        "unit": "g/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 30.0,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "high": {
+          "value": 34.0,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/mchc/_history/879"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "negation-example",
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: negation-example</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Hemoglobin lab test <span style=\"background: LightGoldenRodYellow\">(Details : {[not stated] code 'null' = 'null)</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>encounter</b>: <a href=\"Encounter-example.html\">Generated Summary: id: example; status: in-progress; <span title=\"{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}\">inpatient encounter</span>; <span title=\"Codes: {http://www.ama-assn.org/go/cpt 99223}\">Inpatient Hospital Care</span></a></p><p><b>effective</b>: Apr 2, 2013 9:30:10 AM --&gt; Apr 5, 2013 9:30:10 AM</p><p><b>issued</b>: Apr 3, 2013 2:30:10 PM</p></div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneReason",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "410536001",
+            "display": "Contraindicated (qualifier value)"
+          } ]
+        }
+      } ],
+      "modifierExtension": [ {
+        "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDone",
+        "valueBoolean": true
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "extension": [ {
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-reference",
+            "valueUri": "http://cts.nlm.nih.gov/fhir/2.16.840.1.113762.1.4.1045.131"
+          } ]
+        } ],
+        "text": "Hemoglobin lab test"
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "encounter": {
+        "reference": "Encounter/example"
+      },
+      "effectivePeriod": {
+        "start": "2013-04-02T10:30:10+01:00",
+        "end": "2013-04-05T10:30:10+01:00"
+      },
+      "issued": "2013-04-03T15:30:10+01:00"
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/negation-example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "neutrophils",
+      "meta": {
+        "versionId": "1106",
+        "lastUpdated": "2016-03-09T15:29:58.052+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: neutrophils</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Neutrophils % <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '770-8' = 'Neutrophils/100 leukocytes in Blood by Automated count', given as 'Neutrophils/100 leukocytes in Blood by Automated count'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 40.0 %</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>37.0 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></td><td>67.0 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "770-8",
+          "display": "Neutrophils/100 leukocytes in Blood by Automated count"
+        } ],
+        "text": "Neutrophils %"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 40.0,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 37.0,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "high": {
+          "value": 67.0,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/neutrophils/_history/1106"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "oxygen-saturation",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: oxygen-saturation</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: oxygen_saturation <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '59408-5' = 'Oxygen saturation in Arterial blood by Pulse oximetry', given as 'Oxygen saturation in Arterial blood by Pulse oximetry'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 99.0 %O2<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "59408-5",
+          "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        } ],
+        "text": "oxygen_saturation"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 99.0,
+        "unit": "%O2",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/oxygen-saturation"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "pediatric-bmi-example",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-bmi-for-age" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: pediatric-bmi-example</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: BMI <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '59576-9' = 'Body mass index (BMI) [Percentile] Per age and sex', given as 'Body mass index (BMI) [Percentile] Per age and gender'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Infant Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 05/05/2019 5:12:29 AM</p><p><b>value</b>: 65 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "59576-9",
+          "display": "Body mass index (BMI) [Percentile] Per age and gender"
+        } ],
+        "text": "BMI"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Infant Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "2019-05-04T12:12:29-07:00",
+      "valueQuantity": {
+        "value": 65,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/pediatric-bmi-example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "pediatric-wt-example",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/pediatric-weight-for-height" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: pediatric-wt-example</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: BMI <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '77606-2' = 'Weight-for-length Per age and sex', given as 'Weight-for-length Per age and gender'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Infant Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 05/05/2019 5:12:29 AM</p><p><b>value</b>: 65 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "77606-2",
+          "display": "Weight-for-length Per age and gender"
+        } ],
+        "text": "BMI"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Infant Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "2019-05-04T12:12:29-07:00",
+      "valueQuantity": {
+        "value": 65,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/pediatric-wt-example"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "respiratory-rate",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: respiratory-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: respiratory_rate <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '9279-1' = 'Respiratory rate', given as 'Respiratory rate'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 26.0 breaths per minute<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code /min = '/min')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "9279-1",
+          "display": "Respiratory rate"
+        } ],
+        "text": "respiratory_rate"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 26.0,
+        "unit": "breaths per minute",
+        "system": "http://unitsofmeasure.org",
+        "code": "/min"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/respiratory-rate"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "satO2-fiO2",
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: satO2-fiO2</p><p><b>identifier</b>: o1223435-10</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Oxygen saturation in Arterial blood <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2708-6' = 'Oxygen saturation in Arterial blood', given as 'Oxygen saturation in Arterial blood'}; {LOINC code '59408-5' = 'Oxygen saturation in Arterial blood by Pulse oximetry', given as 'Oxygen saturation in Arterial blood by Pulse oximetry'}; {urn:iso:std:iso:11073:10101 code '150456' = '150456', given as 'MDC_PULS_OXIM_SAT_O2'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/12/2014 7:30:10 PM</p><p><b>value</b>: 95 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></p><p><b>interpretation</b>: Normal (applies to non-numeric results) <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation code 'N' = 'Normal', given as 'Normal'})</span></p><p><b>device</b>: Acme Pulse Oximeter 2000</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>90 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></td><td>99 %<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code % = '%')</span></td></tr></table><h3>Components</h3><table class=\"grid\"><tr><td>-</td><td><b>Code</b></td><td><b>Value[x]</b></td></tr><tr><td>*</td><td>Inhaled oxygen flow rate <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '3151-8' = 'Inhaled oxygen flow rate', given as 'Inhaled oxygen flow rate'})</span></td><td>6 liters/min<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code l/min = 'l/min')</span></td></tr></table></div>"
+      },
+      "identifier": [ {
+        "system": "http://goodcare.org/observation/id",
+        "value": "o1223435-10"
+      } ],
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2708-6",
+          "display": "Oxygen saturation in Arterial blood"
+        }, {
+          "system": "http://loinc.org",
+          "code": "59408-5",
+          "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
+        }, {
+          "system": "urn:iso:std:iso:11073:10101",
+          "code": "150456",
+          "display": "MDC_PULS_OXIM_SAT_O2"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/example"
+      },
+      "effectiveDateTime": "2014-12-05T09:30:10+01:00",
+      "valueQuantity": {
+        "value": 95,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      },
+      "interpretation": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "N",
+          "display": "Normal"
+        } ],
+        "text": "Normal (applies to non-numeric results)"
+      } ],
+      "device": {
+        "display": "Acme Pulse Oximeter 2000"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 90,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        },
+        "high": {
+          "value": 99,
+          "unit": "%",
+          "system": "http://unitsofmeasure.org",
+          "code": "%"
+        }
+      } ],
+      "component": [ {
+        "code": {
+          "coding": [ {
+            "system": "http://loinc.org",
+            "code": "3151-8",
+            "display": "Inhaled oxygen flow rate"
+          } ],
+          "text": "Inhaled oxygen flow rate"
+        },
+        "valueQuantity": {
+          "value": 6,
+          "unit": "liters/min",
+          "system": "http://unitsofmeasure.org",
+          "code": "l/min"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/satO2-fiO2"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-calcium",
+      "meta": {
+        "versionId": "902",
+        "lastUpdated": "2016-03-09T15:29:57.227+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-calcium</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Calcium SerPl-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '17861-6' = 'Calcium [Mass/volume] in Serum or Plasma', given as 'Calcium SerPl-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 7.7 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>8.5 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>10.5 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "17861-6",
+          "display": "Calcium SerPl-mCnc"
+        } ],
+        "text": "Calcium SerPl-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 7.7,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 8.5,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 10.5,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-calcium/_history/902"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-chloride",
+      "meta": {
+        "versionId": "950",
+        "lastUpdated": "2016-03-09T15:29:57.427+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-chloride</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Chloride SerPl-sCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2075-0' = 'Chloride [Moles/volume] in Serum or Plasma', given as 'Chloride SerPl-sCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 105.0 mmol/L</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>95.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>105.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2075-0",
+          "display": "Chloride SerPl-sCnc"
+        } ],
+        "text": "Chloride SerPl-sCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 105.0,
+        "unit": "mmol/L",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 95.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "high": {
+          "value": 105.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-chloride/_history/950"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-co2",
+      "meta": {
+        "versionId": "962",
+        "lastUpdated": "2016-03-09T15:29:57.477+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-co2</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: CO2 SerPl-sCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2028-9' = 'Carbon dioxide, total [Moles/volume] in Serum or Plasma', given as 'CO2 SerPl-sCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 24.0 mmol/L</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>22.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>29.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2028-9",
+          "display": "CO2 SerPl-sCnc"
+        } ],
+        "text": "CO2 SerPl-sCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 24.0,
+        "unit": "mmol/L",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 22.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "high": {
+          "value": 29.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-co2/_history/962"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-creatinine",
+      "meta": {
+        "versionId": "926",
+        "lastUpdated": "2016-03-09T15:29:57.327+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-creatinine</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Creat SerPl-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2160-0' = 'Creatinine [Mass/volume] in Serum or Plasma', given as 'Creat SerPl-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 1.0 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>0.2 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>0.6 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2160-0",
+          "display": "Creat SerPl-mCnc"
+        } ],
+        "text": "Creat SerPl-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 1.0,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 0.2,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 0.6,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-creatinine/_history/926"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-potassium",
+      "meta": {
+        "versionId": "938",
+        "lastUpdated": "2016-03-09T15:29:57.376+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-potassium</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Potassium SerPl-sCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2823-3' = 'Potassium [Moles/volume] in Serum or Plasma', given as 'Potassium SerPl-sCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 5.4 mmol/L</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>3.5 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>5.5 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2823-3",
+          "display": "Potassium SerPl-sCnc"
+        } ],
+        "text": "Potassium SerPl-sCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 5.4,
+        "unit": "mmol/L",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 3.5,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "high": {
+          "value": 5.5,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-potassium/_history/938"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-sodium",
+      "meta": {
+        "versionId": "914",
+        "lastUpdated": "2016-03-09T15:29:57.277+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-sodium</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Sodium SerPl-sCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2951-2' = 'Sodium [Moles/volume] in Serum or Plasma', given as 'Sodium SerPl-sCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 137.0 mmol/L</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>135.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>145.0 mmol/L<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mmol/L = 'mmol/L')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2951-2",
+          "display": "Sodium SerPl-sCnc"
+        } ],
+        "text": "Sodium SerPl-sCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 137.0,
+        "unit": "mmol/L",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 135.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "high": {
+          "value": 145.0,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-sodium/_history/914"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "serum-total-bilirubin",
+      "meta": {
+        "versionId": "1364",
+        "lastUpdated": "2016-03-09T15:29:59.089+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: serum-total-bilirubin</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: Bilirub SerPl-mCnc <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '1975-2' = 'Bilirubin.total [Mass/volume] in Serum or Plasma', given as 'Bilirub SerPl-mCnc'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 07/07/2005 12:00:00 AM</p><p><b>value</b>: 8.6 mg/dL</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>AppliesTo</b></td></tr><tr><td>*</td><td>2.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>7.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>Normal Range <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/referencerange-meaning code 'normal' = 'Normal Range', given as 'Normal Range'})</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "1975-2",
+          "display": "Bilirub SerPl-mCnc"
+        } ],
+        "text": "Bilirub SerPl-mCnc"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-07",
+      "valueQuantity": {
+        "value": 8.6,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 2.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 7.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "appliesTo": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/referencerange-meaning",
+            "code": "normal",
+            "display": "Normal Range"
+          } ],
+          "text": "Normal Range"
+        } ]
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/serum-total-bilirubin/_history/1364"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "some-day-smoker",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: some-day-smoker</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Social History <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'social-history' = 'Social History', given as 'Social History'})</span></p><p><b>code</b>: Tobacco smoking status NHIS <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '72166-2' = 'Tobacco smoking status', given as 'Tobacco smoking status NHIS'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>issued</b>: 18/03/2016 4:27:04 PM</p><p><b>value</b>: Current some day smoker <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '428041000124106' = 'Occasional tobacco smoker)</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "social-history",
+          "display": "Social History"
+        } ],
+        "text": "Social History"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "72166-2",
+          "display": "Tobacco smoking status NHIS"
+        } ],
+        "text": "Tobacco smoking status NHIS"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "issued": "2016-03-18T05:27:04Z",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "428041000124106"
+        } ],
+        "text": "Current some day smoker"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/some-day-smoker"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "temperature",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: temperature</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: temperature <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '8310-5' = 'Body temperature', given as 'Body temperature'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 36.55556 Cel<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code Cel = 'Cel')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "8310-5",
+          "display": "Body temperature"
+        } ],
+        "text": "temperature"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 36.55556,
+        "unit": "Cel",
+        "system": "http://unitsofmeasure.org",
+        "code": "Cel"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/temperature"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-bacteria",
+      "meta": {
+        "versionId": "206540",
+        "lastUpdated": "2016-04-18T03:56:41.250+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-bacteria</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: BACTERIA <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '25145-4' = 'Bacteria [Presence] in Urine sediment by Light microscopy', given as 'Bacteria [Presence] in Urine sediment by Light microscopy'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 4+ <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260350009' = 'Present ++++ out of ++++ (qualifier value)', given as '++++'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>0-1+</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "25145-4",
+          "display": "Bacteria [Presence] in Urine sediment by Light microscopy"
+        } ],
+        "text": "BACTERIA"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260350009",
+          "display": "++++"
+        } ],
+        "text": "4+"
+      },
+      "referenceRange": [ {
+        "text": "0-1+"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-bacteria/_history/206540"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-bilirubin",
+      "meta": {
+        "versionId": "206456",
+        "lastUpdated": "2016-04-18T03:37:21.259+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-bilirubin</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: BILIRUBIN <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5770-3' = 'Bilirubin.total [Presence] in Urine by Test strip', given as 'Bilirubin.total [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Negative <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260385009' = 'Negative', given as 'Negative'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5770-3",
+          "display": "Bilirubin.total [Presence] in Urine by Test strip"
+        } ],
+        "text": "BILIRUBIN"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260385009",
+          "display": "Negative"
+        } ],
+        "text": "Negative"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-bilirubin/_history/206456"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-cells",
+      "meta": {
+        "versionId": "206624",
+        "lastUpdated": "2016-04-18T04:23:12.123+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-cells</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: EPITHELIAL CELLS <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5787-7' = 'Epithelial cells [#/area] in Urine sediment by Microscopy high power field', given as 'Epithelial cells [#/area] in Urine sediment by Microscopy high power field'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 1-5 cells/HPF</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>None Seen/HPF</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5787-7",
+          "display": "Epithelial cells [#/area] in Urine sediment by Microscopy high power field"
+        } ],
+        "text": "EPITHELIAL CELLS"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueRange": {
+        "low": {
+          "value": 1,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        },
+        "high": {
+          "value": 5,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        }
+      },
+      "referenceRange": [ {
+        "text": "None Seen/HPF"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-cells/_history/206624"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-clarity",
+      "meta": {
+        "versionId": "206432",
+        "lastUpdated": "2016-04-18T03:33:00.502+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-clarity</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: APPEARANCE <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '32167-9' = 'Clarity of Urine', given as 'Clarity of Urine'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Hazy <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '81858005' = 'Cloudy', given as 'Cloudy'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Clear</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "32167-9",
+          "display": "Clarity of Urine"
+        } ],
+        "text": "APPEARANCE"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "81858005",
+          "display": "Cloudy"
+        } ],
+        "text": "Hazy"
+      },
+      "referenceRange": [ {
+        "text": "Clear"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-clarity/_history/206432"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-color",
+      "meta": {
+        "versionId": "206419",
+        "lastUpdated": "2016-04-18T03:27:43.203+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-color</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: COLOR <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5778-6' = 'Color of Urine', given as 'Color of Urine'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Yellow <span style=\"background: LightGoldenRodYellow\">(Details : {http://snomed.inbnm,fo/sct code '371244009' = '371244009', given as 'Yellow'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Yellow</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5778-6",
+          "display": "Color of Urine"
+        } ],
+        "text": "COLOR"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.inbnm,fo/sct",
+          "code": "371244009",
+          "display": "Yellow"
+        } ],
+        "text": "Yellow"
+      },
+      "referenceRange": [ {
+        "text": "Yellow"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-color/_history/206419"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-epi-cells",
+      "meta": {
+        "versionId": "206624",
+        "lastUpdated": "2016-04-18T04:23:12.123+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-epi-cells</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: EPITHELIAL CELLS <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5787-7' = 'Epithelial cells [#/area] in Urine sediment by Microscopy high power field', given as 'Epithelial cells [#/area] in Urine sediment by Microscopy high power field'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 1-5 cells/HPF</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>None Seen/HPF</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5787-7",
+          "display": "Epithelial cells [#/area] in Urine sediment by Microscopy high power field"
+        } ],
+        "text": "EPITHELIAL CELLS"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueRange": {
+        "low": {
+          "value": 1,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        },
+        "high": {
+          "value": 5,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        }
+      },
+      "referenceRange": [ {
+        "text": "None Seen/HPF"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-epi-cells/_history/206624"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-glucose",
+      "meta": {
+        "versionId": "206444",
+        "lastUpdated": "2016-04-18T03:35:42.751+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-glucose</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: GLUCOSE <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '25428-4' = 'Glucose [Presence] in Urine by Test strip', given as 'Glucose [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Negative <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260385009' = 'Negative', given as 'Negative'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "25428-4",
+          "display": "Glucose [Presence] in Urine by Test strip"
+        } ],
+        "text": "GLUCOSE"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260385009",
+          "display": "Negative"
+        } ],
+        "text": "Negative"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-glucose/_history/206444"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-hemoglobin",
+      "meta": {
+        "versionId": "206504",
+        "lastUpdated": "2016-04-18T03:45:25.300+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-hemoglobin</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: BLOOD <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5794-3' = 'Hemoglobin [Presence] in Urine by Test strip', given as 'Hemoglobin [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Trace <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260405006' = 'Trace', given as 'Trace'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5794-3",
+          "display": "Hemoglobin [Presence] in Urine by Test strip"
+        } ],
+        "text": "BLOOD"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260405006",
+          "display": "Trace"
+        } ],
+        "text": "Trace"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-hemoglobin/_history/206504"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-ketone",
+      "meta": {
+        "versionId": "206468",
+        "lastUpdated": "2016-04-18T03:39:00.812+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-ketone</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: KETONE <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '2514-8' = 'Ketones [Presence] in Urine by Test strip', given as 'Ketones [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Negative <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260385009' = 'Negative', given as 'Negative'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "2514-8",
+          "display": "Ketones [Presence] in Urine by Test strip"
+        } ],
+        "text": "KETONE"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260385009",
+          "display": "Negative"
+        } ],
+        "text": "Negative"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-ketone/_history/206468"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-leukocyte-esterase",
+      "meta": {
+        "versionId": "206552",
+        "lastUpdated": "2016-04-18T03:58:45.747+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-leukocyte-esterase</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: LEUK ESTERASE <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5799-2' = 'Leukocyte esterase [Presence] in Urine by Test strip', given as 'Leukocyte esterase [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 2+ <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260348001' = 'Present ++ out of ++++ (qualifier value)', given as '++'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5799-2",
+          "display": "Leukocyte esterase [Presence] in Urine by Test strip"
+        } ],
+        "text": "LEUK ESTERASE"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260348001",
+          "display": "++"
+        } ],
+        "text": "2+"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-leukocyte-esterase/_history/206552"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-nitrite",
+      "meta": {
+        "versionId": "206492",
+        "lastUpdated": "2016-04-18T03:42:34.440+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-nitrite</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: NITRITE <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5802-4' = 'Nitrite [Presence] in Urine by Test strip', given as 'Nitrite [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Positive <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '10828004' = 'Positive', given as 'Positive'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5802-4",
+          "display": "Nitrite [Presence] in Urine by Test strip"
+        } ],
+        "text": "NITRITE"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "10828004",
+          "display": "Positive"
+        } ],
+        "text": "Positive"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-nitrite/_history/206492"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-ph",
+      "meta": {
+        "versionId": "206600",
+        "lastUpdated": "2016-04-18T04:12:25.425+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-ph</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: PH <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5803-2' = 'pH of Urine by Test strip', given as 'pH of Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 6.0 (pH)<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code [pH] = '[pH]')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>5.0 (pH)<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code [pH] = '[pH]')</span></td><td>8.0 (pH)<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code [pH] = '[pH]')</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5803-2",
+          "display": "pH of Urine by Test strip"
+        } ],
+        "text": "PH"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 6.0,
+        "unit": "(pH)",
+        "system": "http://unitsofmeasure.org",
+        "code": "[pH]"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 5.0,
+          "unit": "(pH)",
+          "system": "http://unitsofmeasure.org",
+          "code": "[pH]"
+        },
+        "high": {
+          "value": 8.0,
+          "unit": "(pH)",
+          "system": "http://unitsofmeasure.org",
+          "code": "[pH]"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-ph/_history/206600"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-protein",
+      "meta": {
+        "versionId": "206480",
+        "lastUpdated": "2016-04-18T03:40:36.404+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-protein</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: PROTEIN <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '20454-5' = 'Protein [Presence] in Urine by Test strip', given as 'Protein [Presence] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Negative <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '260385009' = 'Negative', given as 'Negative'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Negative</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "20454-5",
+          "display": "Protein [Presence] in Urine by Test strip"
+        } ],
+        "text": "PROTEIN"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "260385009",
+          "display": "Negative"
+        } ],
+        "text": "Negative"
+      },
+      "referenceRange": [ {
+        "text": "Negative"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-protein/_history/206480"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-rbcs",
+      "meta": {
+        "versionId": "206565",
+        "lastUpdated": "2016-04-18T04:00:52.434+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-rbcs</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: RBC <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '13945-1' = 'Erythrocytes [#/area] in Urine sediment by Microscopy high power field', given as 'Erythrocytes [#/area] in Urine sediment by Microscopy high power field'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Occasional <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '84638005' = 'Occasional (qualifier value)', given as 'Occasional'})</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>None Seen/HPF</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "13945-1",
+          "display": "Erythrocytes [#/area] in Urine sediment by Microscopy high power field"
+        } ],
+        "text": "RBC"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "84638005",
+          "display": "Occasional"
+        } ],
+        "text": "Occasional"
+      },
+      "referenceRange": [ {
+        "text": "None Seen/HPF"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-rbcs/_history/206565"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-sediment",
+      "meta": {
+        "versionId": "206577",
+        "lastUpdated": "2016-04-18T04:07:12.383+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-sediment</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: COMMENT <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '11279-7' = 'Urine sediment comments by Light microscopy Narrative', given as 'Urine sediment comments by Light microscopy Narrative'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: Recommend Urine Culture</p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "11279-7",
+          "display": "Urine sediment comments by Light microscopy Narrative"
+        } ],
+        "text": "COMMENT"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueString": "Recommend Urine Culture"
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-sediment/_history/206577"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urine-wbcs",
+      "meta": {
+        "versionId": "206635",
+        "lastUpdated": "2016-04-18T04:25:02.064+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urine-wbcs</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: WBC <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5821-4' = 'Leukocytes [#/area] in Urine sediment by Microscopy high power field', given as 'Leukocytes [#/area] in Urine sediment by Microscopy high power field'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 20-30 cells/HPF</p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>None Seen/HPF</td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5821-4",
+          "display": "Leukocytes [#/area] in Urine sediment by Microscopy high power field"
+        } ],
+        "text": "WBC"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueRange": {
+        "low": {
+          "value": 20,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        },
+        "high": {
+          "value": 30,
+          "unit": "cells/HPF",
+          "system": "http://unitsofmeasure.org",
+          "code": "/[HPF]"
+        }
+      },
+      "referenceRange": [ {
+        "text": "None Seen/HPF"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urine-wbcs/_history/206635"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "urobilinogen",
+      "meta": {
+        "versionId": "206612",
+        "lastUpdated": "2016-04-18T04:20:46.618+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: urobilinogen</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: UROBILINOGEN <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '20405-7' = 'Urobilinogen [Mass/volume] in Urine by Test strip', given as 'Urobilinogen [Mass/volume] in Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 0.3 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>0.1 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td><td>1.0 mg/dL<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg/dL = 'mg/dL')</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "20405-7",
+          "display": "Urobilinogen [Mass/volume] in Urine by Test strip"
+        } ],
+        "text": "UROBILINOGEN"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 0.3,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 0.1,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        },
+        "high": {
+          "value": 1.0,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/urobilinogen/_history/206612"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "usg",
+      "meta": {
+        "versionId": "206588",
+        "lastUpdated": "2016-04-18T04:10:12.426+00:00",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: usg</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'laboratory' = 'Laboratory', given as 'Laboratory'})</span></p><p><b>code</b>: SPEC GRAV <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '5811-5' = 'Specific gravity of Urine by Test strip', given as 'Specific gravity of Urine by Test strip'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>effective</b>: 05/07/2005 12:00:00 AM</p><p><b>value</b>: 1.017 {urine specific gravity}<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code {urine specific gravity} = '{urine specific gravity}')</span></p><h3>ReferenceRanges</h3><table class=\"grid\"><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>1.003 {urine specific gravity}<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code {urine specific gravity} = '{urine specific gravity}')</span></td><td>1.035 {urine specific gravity}<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code {urine specific gravity} = '{urine specific gravity}')</span></td></tr></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        } ],
+        "text": "Laboratory"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "5811-5",
+          "display": "Specific gravity of Urine by Test strip"
+        } ],
+        "text": "SPEC GRAV"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "effectiveDateTime": "2005-07-05",
+      "valueQuantity": {
+        "value": 1.017,
+        "system": "http://unitsofmeasure.org",
+        "code": "{urine specific gravity}"
+      },
+      "referenceRange": [ {
+        "low": {
+          "value": 1.003,
+          "system": "http://unitsofmeasure.org",
+          "code": "{urine specific gravity}"
+        },
+        "high": {
+          "value": 1.035,
+          "system": "http://unitsofmeasure.org",
+          "code": "{urine specific gravity}"
+        }
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/usg/_history/206588"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "vitals-panel",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: vitals-panel</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Vital signs panel <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '85353-1' = 'Vital signs, weight, height, head circumference, oxygen saturation and BMI panel', given as 'Vital signs, weight, height, head circumference, oxygen saturation and BMI panel'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>hasMember</b>: </p><ul><li><a href=\"Observation-respiratory-rate.html\">Respiratory rate. Generated Summary: id: respiratory-rate; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span>; <span title=\"Codes: {http://loinc.org 9279-1}\">respiratory_rate</span>; effective: 02/07/1999 12:00:00 AM; 26.0 breaths per minute</a></li><li><a href=\"Observation-heart-rate.html\">Heart rate. Generated Summary: id: heart-rate; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span>; <span title=\"Codes: {http://loinc.org 8867-4}\">heart_rate</span>; effective: 02/07/1999 12:00:00 AM; 44.0 {beats}/min</a></li><li><a href=\"Observation-blood-pressure.html\">Blood Pressure. Generated Summary: id: blood-pressure; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/observation-category vital-signs}\">Vital Signs</span>; <span title=\"Codes: {http://loinc.org 85354-9}\">Blood pressure systolic and diastolic</span>; effective: 02/07/1999 12:00:00 AM</a></li></ul></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "85353-1",
+          "display": "Vital signs, weight, height, head circumference, oxygen saturation and BMI panel"
+        } ],
+        "text": "Vital signs panel"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "hasMember": [ {
+        "reference": "Observation/respiratory-rate",
+        "display": "Respiratory rate"
+      }, {
+        "reference": "Observation/heart-rate",
+        "display": "Heart rate"
+      }, {
+        "reference": "Observation/blood-pressure",
+        "display": "Blood Pressure"
+      } ]
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/vitals-panel"
+    }
+  }, {
+    "resource": {
+      "resourceType": "Observation",
+      "id": "weight",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/vitalsigns" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: weight</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span style=\"background: LightGoldenRodYellow\">(Details : {http://terminology.hl7.org/CodeSystem/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: weight <span style=\"background: LightGoldenRodYellow\">(Details : {LOINC code '29463-7' = 'Body weight', given as 'Body Weight'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Amy Shaw. Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20</a></p><p><b>encounter</b>: GP Visit</p><p><b>effective</b>: 02/07/1999 12:00:00 AM</p><p><b>value</b>: 20.09414 kg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code kg = 'kg')</span></p></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        } ],
+        "text": "Vital Signs"
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "29463-7",
+          "display": "Body Weight"
+        } ],
+        "text": "weight"
+      },
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Amy Shaw"
+      },
+      "encounter": {
+        "display": "GP Visit"
+      },
+      "effectiveDateTime": "1999-07-02",
+      "valueQuantity": {
+        "value": 20.09414,
+        "unit": "kg",
+        "system": "http://unitsofmeasure.org",
+        "code": "kg"
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "Observation/weight"
+    }
+  } ]
+}
