@@ -24,7 +24,7 @@ In response to requests for representation in FHIR of an electronically transmit
 
 ## Diagnoses Active During an Encounter
 
-Quality improvement applications often need to determine whether or not a particular diagnosis was active during an encounter, but due to variations in data representation and collection patterns, this is not a straightforward question to answer. To address [FHIR-57466](https://jira.hl7.org/browse/FHIR-57446), the following section was added to condition patterns:
+Quality improvement applications often need to determine whether or not a particular diagnosis was active during an encounter, but due to variations in data representation and collection patterns, this is not a straightforward question to answer. To address [FHIR-57446](https://jira.hl7.org/browse/FHIR-57446), the following section was added to condition patterns:
 
 [Evidence of Diagnosis During an Encounter](https://build.fhir.org/ig/HL7/us-cql-ig/en/patterns-condition.html#evidence-of-diagnosis-during-an-encounter)
 
