@@ -1,0 +1,39 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "elective-example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: elective-example</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>code</b>: Stomach Bypass <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '442338001' = 'Bypass of stomach', given as 'Bypass of stomach (procedure)'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>authoredOn</b>: Mar 30, 2015 12:00:00 AM</p><p><b>requester</b>: Dr. Beverly Crusher</p><p><b>performer</b>: <a href=\"Practitioner-example.html\">Dr Cecil Surgeon. Generated Summary: id: example; 23; active; Adam Careful </a></p></div>"
+  },
+  "modifierExtension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-isElective",
+      "valueBoolean": true
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "442338001",
+        "display": "Bypass of stomach (procedure)"
+      }
+    ],
+    "text": "Stomach Bypass"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2015-03-30",
+  "requester": {
+    "display": "Dr. Beverly Crusher"
+  },
+  "performer": [
+    {
+      "reference": "Practitioner/example",
+      "display": "Dr Cecil Surgeon"
+    }
+  ]
+}

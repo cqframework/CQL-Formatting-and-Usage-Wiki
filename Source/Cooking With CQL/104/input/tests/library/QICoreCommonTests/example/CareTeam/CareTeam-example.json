@@ -1,0 +1,30 @@
+{
+  "resourceType": "CareTeam",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>status</b>: active</p><p><b>subject</b>: Eve Everywoman</p><h3>Participants</h3><table class=\"grid\"><tr><td>-</td><td><b>Role</b></td><td><b>Member</b></td></tr><tr><td>*</td><td>MW - Midwife <span style=\"background: LightGoldenRodYellow\">(Details : {SNOMED CT code '75271001' = 'Professional midwife', given as 'MW - Midwife'})</span></td><td>Mabel Midwife</td></tr></table></div>"
+  },
+  "status": "active",
+  "subject": {
+    "display": "Eve Everywoman"
+  },
+  "participant": [
+    {
+      "role": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "75271001",
+              "display": "MW - Midwife"
+            }
+          ]
+        }
+      ],
+      "member": {
+        "display": "Mabel Midwife"
+      }
+    }
+  ]
+}

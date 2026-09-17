@@ -1,0 +1,43 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "appropriateness-example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: appropriateness-example</p><p><b>status</b>: completed</p><p><b>intent</b>: order</p><p><b>code</b>: CT, head, wo iv contrast <span style=\"background: LightGoldenRodYellow\">(Details : {http://www.ama-assn.org/go/cpt code '70450' = '70450', given as 'CT, head, wo iv contrast'})</span></p><p><b>subject</b>: <a href=\"Patient-example.html\">Generated Summary: id: example; Medical record number = 12345 (USUAL); active; Peter James Chalmers (OFFICIAL), Jim Chalmers , Peter James Windsor (MAIDEN); ph: (03) 5555 6473(WORK), ph: (03) 3410 5613(MOBILE), ph: (03) 5555 8834(OLD); gender: male; birthDate: 1974-12-25; </a></p><p><b>authoredOn</b>: Mar 30, 2015 12:00:00 AM</p><p><b>requester</b>: Dr. Beverly Crusher</p><p><b>reasonCode</b>: Headache, Chronic, no new features <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/sid/icd-9-cm code '70450' = '70450', given as 'Headache, Chronic, no new features'})</span></p></div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-servicerequest-appropriatenessScore",
+      "valueCode": "appropriate"
+    }
+  ],
+  "status": "completed",
+  "intent": "order",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.ama-assn.org/go/cpt",
+        "code": "70450",
+        "display": "CT, head, wo iv contrast"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authoredOn": "2015-03-30",
+  "requester": {
+    "display": "Dr. Beverly Crusher"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/sid/icd-9-cm",
+          "code": "70450",
+          "display": "Headache, Chronic, no new features"
+        }
+      ]
+    }
+  ]
+}
