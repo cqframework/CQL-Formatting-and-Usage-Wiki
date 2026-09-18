@@ -470,12 +470,6 @@ define "Qualifying Encounter":
   Elements."Blood Pressure Screening Encounters" ScreeningEncounter
     where ScreeningEncounter.period ends during day of "Measurement Period"
 
-define "Qualifying Encounter (Combined)":
-  [Encounter: Concepts."Encounter to Screen for Blood Pressure"] ScreeningEncounter
-    where ScreeningEncounter.status ~ 'finished'
-      and ScreeningEncounter.class !~ Concepts."virtual"
-      and ScreeningEncounter.period ends during day of "Measurement Period"
-
 define "Qualifying Encounter for Adult":
   "Qualifying Encounter" QualifyingEncounter
     where AgeInYearsAt(date from start of "Measurement Period") >= 18
