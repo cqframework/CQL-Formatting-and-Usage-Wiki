@@ -27,7 +27,7 @@ To ensure correct functioning of the contents of these shared libraries, we are 
 | [ClaimCommon](https://madie.cms.gov/cql-libraries/6ad8c979bf531c0659c86b75/edit/details) | [ClaimCommonTests](https://madie.cms.gov/measures/6ad8c9ff1fbcbfc8d7e0c9aa/edit/details/) |
 | [ClaimElements](https://madie.cms.gov/cql-libraries/6ad8cc29bf531c0659c86b76/edit/details) | [ClaimElementsTests](https://madie.cms.gov/measures/6ad8ccb11fbcbfc8d7e0c9b5/edit/details/) |
 | [CQMConcepts](https://madie.cms.gov/cql-libraries/6ad7e87bbf531c0659c86b73/edit/details) | [CQMConceptsTests](https://madie.cms.gov/measures/6ad7e9421fbcbfc8d7e0c8d2/edit/details/) |
-| [CQMElements](https://madie.cms.gov/cql-libraries/6ad7ed9abf531c0659c86b74/edit/details) | [CQMElementsTests]https://madie.cms.gov/measures/6ad7eeae1fbcbfc8d7e0c8de/edit/details/) |
+| [CQMElements](https://madie.cms.gov/cql-libraries/6ad7ed9abf531c0659c86b74/edit/details) | [CQMElementsTests](https://madie.cms.gov/measures/6ad7eeae1fbcbfc8d7e0c8de/edit/details/) |
 | [CQMInferences](https://madie.cms.gov/cql-libraries/6ad8d1c1bf531c0659c86b7a/edit/details) | _in-progress_ |
 | [FHIRBuilders](https://madie.cms.gov/cql-libraries/6ad7ddacbf531c0659c86b71/edit/details) | [FHIRBuildersTests](https://madie.cms.gov/measures/6ad7de9d1fbcbfc8d7e0c8bb/edit/details/) |
 | [MedicationCommon](https://madie.cms.gov/cql-libraries/6ad8cd51bf531c0659c86b77/edit/details) | [MedicationCommonTests](https://madie.cms.gov/measures/6ad8cdd11fbcbfc8d7e0c9bd/edit/details/) |
