@@ -21,3 +21,4 @@ The Clinical Quality Framework project has added a page for the Learning Health 
 https://confluence.hl7.org/spaces/CQIWC/pages/498538059/Learning+Health+Ecosystem
 
 This page introduces the new Learning Health Ecosystem diagram and provides freely available, public domain materials including a powerpoint of the diagram with supporting slides. This diagram is a helpful starting point for discussions about the Learning Health Ecosystem, and especially how standards reduce friction in the exchanges of information that enable a Learning Health Ecosystem.
+
