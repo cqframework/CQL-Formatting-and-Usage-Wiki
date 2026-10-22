@@ -1,14 +1,20 @@
-1. Age Stratifier Example:
-    1. 1 week, 1 month, 1 year: How to characterize
-2. Value-based Stratifiers for non-subject-based measures
-3. Timing best-practice documentation (https://jira.hl7.org/browse/FHIR-53145)
-    Update authoring best-practices
-    Also add to Using CQL IG
-
-1. Perhaps Time for Timing (hat tip Peter)
-2. Calculate Age in QDM
-3. $cql operation and Test Case Representation/Packaging
-4. Hospitalizations in FHIR
-5. Member month calculation
-6. ServiceRequest generation example
-7. QuestionnaireResponse generation example
+1. Announcements
+    1. Using CQL Reconciliation and Publication Timeline
+    2. Learning Health Ecosystem Materials (https://confluence.hl7.org/spaces/CQIWC/pages/498538059/Learning+Health+Ecosystem)
+2. Shared Library Updates
+    1. Newly Available Shared Libraries
+    2. Shared Library Testing Approaches
+3. Pattern Additions/Updates
+    1. Claim diagnoses
+    2. Evidence of diagnosis during an encounter
+    3. History of condition
+    4. Known issues list
+    5. Slice index
+    6. Qualifying type names
+    7. Unspecified primary code paths
+    8. Reason for visit
+    9. Immunization recommendations
+    10. Nutrition orders
+    11. Encounter priority and elective vs non-elective encounters
+    12. Procedure/order priority and elective vs non-elective procedures
+    13. Encounter normalization logic
